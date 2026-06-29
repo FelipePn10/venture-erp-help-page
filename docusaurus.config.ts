@@ -49,10 +49,6 @@ const config: Config = {
     },
     navbar: {
       title: 'VENTURE',
-      logo: {
-        alt: 'VENTURE',
-        src: 'img/logo.svg',
-      },
       hideOnScroll: false,
       items: [
         {
@@ -62,7 +58,6 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
       links: [
         {
           title: 'Documentação',
