@@ -1,0 +1,70 @@
+---
+sidebar_position: 3
+title: "VATC0280 — Cadastro Chamados (Alternativo)"
+description: "Tela alternativa de cadastro de chamados de assistencia com workflow focado em vistorias tecnicas."
+---
+
+# VATC0280 — Cadastro Chamados (Alternativo)
+
+> Tela alternativa de cadastro de chamados de assistencia tecnica com workflow especializado em vistorias tecnicas e laudos periciais.
+
+## Objetivo
+
+Oferecer uma interface alternativa para cadastro de chamados de assistencia tecnica, com foco em processos que exigem **vistoria tecnica** e emissao de laudos. Diferentemente da tela principal [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201), esta tela e otimizada para o fluxo de vistoria, incluindo agendamento de visita, checklist de inspecao, registro fotografico, emissao de laudo tecnico e gestao de pecas de reposicao identificadas durante a vistoria. E especialmente util para seguradoras, garantia estendida e pericia tecnica.
+
+## Pre-requisitos
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201) — Cadastro principal de chamados, com o qual esta tela compartilha dados.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Produtos objeto dos chamados.
+- [Cadastro de Tecnicos](/cadastros/vfun0100) — Tecnicos vistoriadores.
+- [VMAN0202 (Apontamento OS Manutencao)](/manutencao/vman0202) — Caso o chamado gere uma OS de manutencao apos a vistoria.
+
+## Passo a passo
+
+1. Acesse a tela VATC0280 pelo menu Assistencia > Cadastro Chamados (Alternativo).
+2. Clique em **Novo** para abrir um novo chamado de vistoria.
+3. Informe o **Cliente** e o **Produto** objeto da vistoria, similar ao cadastro principal.
+4. Selecione o **Tipo de Vistoria**: Garantia, Sinistro, Garantia Estendida, Pericia Tecnica, Preventiva.
+5. Preencha a **Solicitacao do Cliente** descrevendo o motivo da vistoria.
+6. **Agende a Vistoria** preenchendo data, horario e tecnico vistoriador designado.
+7. No dia da vistoria, o tecnico acessa o chamado e preenche o **Checklist de Inspecao** com os itens verificados e seus status.
+8. Registre **Fotos da Vistoria** utilizando a funcionalidade de upload de imagens com legenda.
+9. Emita o **Laudo Tecnico** descrevendo o diagnostico, a causa do problema e a conclusao (procede/não procede a garantia).
+10. Se a vistoria identificar pecas a serem substituidas, preencha a **Lista de Pecas** com codigos, quantidades e justificativas.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero do Chamado | numero (auto) | Sim | — | Gerado automaticamente |
+| Cliente | select | Sim | Lista de clientes | Cliente solicitante |
+| Produto | select | Sim | Lista de itens | Produto alvo da vistoria |
+| Tipo de Vistoria | select | Sim | Garantia / Sinistro / Garantia Estendida / Pericia Tecnica / Preventiva | Natureza da vistoria |
+| Solicitacao do Cliente | texto | Sim | — | Motivo detalhado da solicitacao |
+| Data Agendamento | data | Sim | — | Data programada da vistoria |
+| Horario Agendamento | hora | Sim | — | Horario programado |
+| Tecnico Vistoriador | select | Sim | Lista de tecnicos | Responsavel pela vistoria |
+| Status | select | Nao | Agendada / Em Andamento / Laudo Emitido / Concluida / Cancelada | Situacao da vistoria |
+| Checklist de Inspecao | tabela | Nao | — | Itens verificados com status OK/NOK/NA |
+| Fotos da Vistoria | arquivo | Nao | — | Imagens com legendas |
+| Laudo Tecnico | texto | Nao | — | Diagnostico e conclusao do vistoriador |
+| Conclusao | select | Nao | Procede Garantia / Não Procede / Procede Parcialmente | Resultado da vistoria |
+| Pecas Identificadas | tabela | Nao | — | Pecas que precisam ser trocadas |
+
+## Observacoes importantes
+
+- O **workflow de vistoria** e mais formal que o cadastro padrao, sendo adequado para processos que exigem documentacao rigorosa e podem ter implicacoes juridicas (disputas de garantia, sinistros de seguro).
+- O **Checklist de Inspecao** e customizavel por tipo de produto, carregando automaticamente os itens de verificacao pre-definidos para cada categoria de equipamento.
+- As **Fotos da Vistoria** sao armazenadas no sistema e ficam vinculadas permanentemente ao chamado, servindo como evidencia documental.
+- O **Laudo Tecnico** pode ser impresso ou exportado em PDF com a identificacao visual da empresa, incluindo fotos e checklist.
+- Quando a conclusao e **"Procede Garantia"**, o sistema pode gerar automaticamente uma ordem de servico de manutencao ou uma autorizacao de troca de produto.
+- Chamados de **Pericia Tecnica** possuem um nivel adicional de seguranca — apenas tecnicos com certificacao de perito podem emiti-los e altera-los.
+
+## Telas relacionadas
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201): Cadastro principal de chamados de assistencia.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402): Consulta aos chamados cadastrados.
+- [VATC0380 (Relatorio Chamados)](/assistencia/vatc0380): Relatorio gerencial que inclui chamados de vistoria.
+- [VATC0480 (Consulta Chamados)](/assistencia/vatc0480): Consulta alternativa de chamados.
+- [VMAN0202 (Apontamento OS Manutencao)](/manutencao/vman0202): OS de manutencao geradas a partir da vistoria.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Produtos objeto de vistoria.

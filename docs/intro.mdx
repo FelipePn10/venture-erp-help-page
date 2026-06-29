@@ -1,47 +1,133 @@
 ---
 sidebar_position: 1
+sidebar_label: "Visao Geral"
+title: "HELP - Telas do ERP Venture"
+description: "Documentacao completa de todas as telas do sistema ERP Venture Desktop."
+slug: /indice
 ---
 
-# Tutorial Intro
+# HELP - Telas do ERP Venture
 
-Let's discover **Docusaurus in less than 5 minutes**.
+> Documentacao completa de todas as telas do sistema ERP Venture Desktop.
+> Total de telas documentadas: **110**
+> Estilo: Processos de negocio com fluxos, pre-requisitos e passo a passo.
+> Ultima atualizacao: Junho 2026
 
-## Getting Started
+---
 
-Get started by **creating a new site**.
+## Indice de Processos
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+| Processo | Telas |
+|----------|-------|
+| [Processo Financeiro, Contabil e Cadastros](#processo-financeiro-contabil-e-cadastros) | 18 |
+| [Processo Industrial e Producao](#processo-industrial-e-producao) | 54 |
+| [Processo Comercial, Vendas e PDV](#processo-comercial-vendas-e-pdv) | 18 |
+| [Processo Fiscal](#processo-fiscal) | 20 |
 
-### What you'll need
+---
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Processo Financeiro, Contabil e Cadastros
 
-## Generate a new site
+Os modulos **Financeiro**, **Contabilidade** e **Cadastros** formam a espinha dorsal administrativa do ERP Venture. Juntos, gerenciam todo o ciclo financeiro — desde o cadastro das entidades fundamentais ate a execucao de pagamentos, recebimentos, apuracao de impostos e emissao de relatorios gerenciais.
 
-Generate a new Docusaurus site using the **classic template**.
+| Modulo | Telas |
+|--------|-------|
+| [Financeiro](financeiro/vfin0100) | 9 |
+| [Contabilidade](contabilidade/vctb0102) | 3 |
+| [Cadastros](cadastros/vcal0100) | 6 |
 
-The classic template will automatically be added to your project after you run the command:
+### Fluxo Financeiro Completo
 
-```bash
-npm init docusaurus@latest my-website classic
+```
+Cadastros Base → VEMP0100 → VFIN0100 → VFIN0110 → VFIN0120 → VFIN0130
+                                          ↓
+                    VFIS0210 (NF Entrada) → VFIN0200 (Pagar) → VFIN0300 (Fluxo Caixa)
+                    VFIS0200 (NF Saida)   → VFIN0210 (Receber) → VFIN0500 (Relatorios)
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+---
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+## Processo Industrial e Producao
 
-## Start your site
+O produto nasce na **Engenharia** (VENT0200), onde recebe codigo, estrutura e roteiro. Planejado via **MRP/MPS** (VPLA0102), dispara ordens de compra em **Suprimentos** (VPDC0200). Ao chegar, passa por **Inspecao** (VINS0200) e e estocado (VENT0800). Vendido (VPDV0200) e expedido (VEXP0100), fecha o ciclo.
 
-Run the development server:
+| Modulo | Telas |
+|--------|-------|
+| [Engenharia](engenharia/veng0204) | 17 |
+| [Planejamento](planejamento/vpla0102) | 3 |
+| [Previsao de Vendas](previsao/vpre0101) | 5 |
+| [Manutencao](manutencao/vman0202) | 2 |
+| [Suprimento](suprimento/vavr0200) | 7 |
+| [Importacao](importacao/vimp0101) | 3 |
+| [Inspecao](inspecao/vavf0101) | 11 |
+| [Assistencia Tecnica](assistencia/vass0201) | 5 |
+| [Garantia](garantia/vgar0211) | 1 |
 
-```bash
-cd my-website
-npm run start
+### Fluxo Macro do Produto
+
+```
+ENGENHARIA → PLANEJAMENTO → SUPRIMENTO → INSPECAO → ESTOQUE → COMERCIAL → EXPEDICAO
+VENT0200  → VPLA0102    → VPDC0200  → VINS0200 → VENT0800 → VPDV0200 → VEXP0100
+  Item       Demanda        Pedido      Roteiro    Saldo      Pedido     Carga
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+---
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+## Processo Comercial, Vendas e PDV
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+O modulo **Comercial** e o coracao do ERP Venture — todo o fluxo operacional se origina de um pedido de venda. A partir da venda, dispara processos de expedicao, faturamento e contas a receber.
+
+| Modulo | Telas |
+|--------|-------|
+| [Comercial](comercial/vent0100) | 3 |
+| [Cliente](cliente/vcli0117) | 6 |
+| [PDV / Pedidos](pdv/vpdv0108) | 6 |
+| [Almoxarifado](almoxarifado/vent0800) | 2 |
+| [Custos / Precificacao](custos/vcst0202) | 1 |
+
+### Fluxo Comercial
+
+```
+Cadastros Apoio → Cadastro Cliente → Politicas Comerciais
+                                              ↓
+                                  Pedido de Venda (VPDV0200)
+                                              ↓
+                        Acompanhamento / Reprogramacoes / Comissoes
+                                              ↓
+                                  Expedicao (VEXP0100)
+                                              ↓
+                                Faturamento → Contas a Receber
+```
+
+---
+
+## Processo Fiscal
+
+O processo fiscal cobre o ciclo completo dos documentos fiscais — configuracao do emitente, tabelas tributarias, emissao de NF-e, apuracao de impostos e geracao de declaracoes.
+
+| Modulo | Telas |
+|--------|-------|
+| [Fiscal](fiscal/vfis0100) | 20 |
+
+### Camadas do Processo Fiscal
+
+1. **Configuracao Fiscal** (VFIS0100) — Fundacao do modulo
+2. **Tabelas Tributarias** (VFIS0110) — Aliquotas por NCM e UF
+3. **Classificacoes e Parametros** (VFIS0300-VFIS0360) — Especializacao tributaria
+4. **Emissao de Documentos** (VFIS0200, VFIS0210, VFIS0220, VNFS0100) — NFe, CTe, NFSe
+5. **Apuracao e Ajustes** (VFIS0340, VFIS0500-VFIS0560) — Fechamento fiscal
+
+---
+
+## Como usar esta documentacao
+
+Cada tela do ERP Venture e documentada com:
+
+- **Objetivo** — proposito e contexto da tela no processo de negocio
+- **Pre-requisitos** — cadastros e configuracoes necessarios antes de usar a tela
+- **Passo a passo** — instrucoes numeradas para executar a operacao principal
+- **Campos** — tabela detalhada com nome, tipo, obrigatoriedade, opcoes e descricao
+- **Observacoes importantes** — dicas, restricoes e informacoes criticas
+- **Telas relacionadas** — dependencias com explicacao de como se conectam
+
+Navegue pelo menu lateral para acessar a documentacao de cada modulo e tela.

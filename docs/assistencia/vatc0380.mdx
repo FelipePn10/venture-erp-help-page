@@ -1,0 +1,76 @@
+---
+sidebar_position: 4
+title: "VATC0380 — Relatorio Chamados"
+description: "Relatorio gerencial de chamados de assistencia tecnica com 16 filtros de selecao."
+---
+
+# VATC0380 — Relatorio Chamados
+
+> Relatorio gerencial de chamados de assistencia tecnica com 16 filtros de selecao, permitindo analises detalhadas e exportacao de dados.
+
+## Objetivo
+
+Fornecer uma ferramenta de relatorio gerencial sobre os chamados de assistencia tecnica, com 16 criterios de filtro que permitem selecionar precisamente o escopo da analise. O relatorio e voltado para a gestao da area de assistencia tecnica, oferecendo metricas como tempo medio de atendimento, taxa de resolucao no primeiro atendimento, chamados reabertos, custo medio por chamado e distribuicao por tipo, produto e regiao. A saida pode ser exportada em Excel e PDF.
+
+## Pre-requisitos
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201) — Chamados que compoem a base do relatorio.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280) — Chamados de vistoria tambem incluidos no relatorio.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402) — Filtros complementares que podem ser usados como referencia.
+
+## Passo a passo
+
+1. Acesse a tela VATC0380 pelo menu Assistencia > Relatorio Chamados.
+2. Configure os **16 filtros** conforme a analise desejada:
+   - **Filtros de periodo**: data de abertura, data de conclusao.
+   - **Filtros de entidade**: cliente, produto, numero de serie.
+   - **Filtros de classificacao**: tipo de chamado, status, cobertura de garantia.
+   - **Filtros de equipe**: tecnico, regiao, filial.
+   - **Filtros financeiros**: faixa de valor, chamados com/sem custo para o cliente.
+   - **Filtros de SLA**: dentro do prazo, fora do prazo, pendentes ha mais de X dias.
+   - **Filtro de origem**: chamados abertos pelo cliente, pela loja, pelo site, pelo app.
+3. Selecione o **Tipo de Relatorio**: Resumido (metricas principais), Detalhado (todos os campos), Grafico ou Ambos.
+4. Escolha o **Agrupamento**: por periodo, por tipo, por produto, por tecnico, por regiao ou sem agrupamento.
+5. Clique em **Gerar Relatorio** para processar os dados.
+6. O relatorio exibe as metricas no topo e a tabela de dados abaixo, com totalizadores por agrupamento.
+7. Para relatorios com graficos, os **graficos de barra e pizza** ilustram a distribuicao dos chamados conforme o agrupamento escolhido.
+8. Utilize o botao **Exportar PDF** para gerar um relatorio formatado para impressao ou apresentacao.
+9. Utilize o botao **Exportar Excel** para analises avancadas em planilha eletronica.
+
+## Campos de Filtro
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| 1. Data Abertura — Inicio | data | Sim | — | Periodo inicial |
+| 2. Data Abertura — Fim | data | Sim | — | Periodo final |
+| 3. Data Conclusao — Inicio | data | Nao | — | Filtrar por data de conclusao |
+| 4. Data Conclusao — Fim | data | Nao | — | Filtrar por data de conclusao |
+| 5. Cliente | multi-select | Nao | Lista de clientes | Filtrar por cliente |
+| 6. Produto | multi-select | Nao | Lista de itens | Filtrar por produto |
+| 7. Numero de Serie | texto | Nao | — | Busca por numero de serie |
+| 8. Tipo de Chamado | multi-select | Nao | 6 tipos | Filtrar por tipo |
+| 9. Status | multi-select | Nao | Todos os status | Filtrar por situacao |
+| 10. Cobertura de Garantia | select | Nao | Dentro / Fora / Ambas | Filtrar por cobertura |
+| 11. Tecnico | multi-select | Nao | Lista de tecnicos | Filtrar por responsavel |
+| 12. Regiao | multi-select | Nao | Lista de UFs | Filtrar por estado |
+| 13. Filial | multi-select | Nao | Lista de filiais | Filtrar por unidade |
+| 14. Faixa de Valor | intervalo | Nao | — | Minimo e maximo |
+| 15. Status SLA | select | Nao | Dentro do Prazo / Fora do Prazo / Todos | Filtrar por cumprimento de SLA |
+| 16. Origem do Chamado | multi-select | Nao | Cliente / Loja / Site / App / Telefone | Canal de abertura |
+
+## Observacoes importantes
+
+- Os **16 filtros** oferecem uma granularidade muito fina para analise. E recomendavel comecar com poucos filtros e ir refinando conforme necessario.
+- O filtro **Status SLA** e um dos mais importantes para gestao: ele compara a data de conclusao com a data prevista de atendimento, identificando chamados que estouraram o prazo.
+- O **Agrupamento por Produto** e util para identificar quais itens geram mais chamados de assistencia, direcionando acoes de melhoria de qualidade.
+- O **Agrupamento por Tecnico** permite avaliar a produtividade individual, mas deve ser usado com criterio, considerando que a complexidade dos chamados pode variar.
+- Relatorios do tipo **Grafico** sao ideais para apresentacoes gerenciais, enquanto o tipo **Detalhado** atende necessidades de auditoria e analise profunda.
+- O **Exportar Excel** inclui todos os dados brutos e permite cruzar informacoes com outras bases (vendas, producao) para analises multivariaveis.
+
+## Telas relacionadas
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201): Chamados que alimentam o relatorio.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280): Chamados de vistoria incluidos no relatorio.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402): Consulta que oferece filtros similares para navegacao online.
+- [VATC0480 (Consulta Chamados)](/assistencia/vatc0480): Consulta alternativa com filtros client-side.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Produtos analisados no relatorio.

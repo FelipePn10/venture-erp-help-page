@@ -1,0 +1,65 @@
+---
+sidebar_position: 14
+title: "VITE0116 — Atributos PDM"
+description: "Cadastro de atributos PDM com funcionalidade de Copiar/Colar entre modificadores."
+---
+
+# VITE0116 — Atributos PDM
+
+> Cadastro dos atributos (valores) de cada modificador PDM, com funcionalidades avancadas de Copiar e Colar entre modificadores diferentes.
+
+## Objetivo
+
+Permitir o cadastro dos atributos PDM, que representam os valores possiveis para cada modificador. Por exemplo, para o modificador "Cor", os atributos seriam "Azul", "Vermelho", "Preto", etc. A tela oferece uma funcionalidade exclusiva de **Copiar/Colar** atributos entre modificadores diferentes, extremamente util quando dois modificadores compartilham os mesmos valores (ex: "Cor Externa" e "Cor Interna" podem ter os mesmos atributos de cor). Alem disso, a tela permite definir propriedades especificas de cada atributo, como impacto na estrutura, custo adicional e disponibilidade.
+
+## Pre-requisitos
+
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Os modificadores para os quais os atributos serao cadastrados devem existir.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Contexto dos grupos PDM onde os atributos serao utilizados.
+
+## Passo a passo
+
+1. Acesse a tela VITE0116 pelo menu Engenharia > Atributos PDM.
+2. Selecione o **Modificador** para o qual deseja cadastrar ou visualizar atributos.
+3. Para cadastrar um novo atributo, clique em **Novo** e preencha o codigo e a descricao do atributo.
+4. Defina a **Ordem** do atributo dentro do modificador para controlar a posicao em listas de selecao.
+5. Se o atributo gerar um **Item Especifico** na BOM, informe o codigo do item no campo correspondente.
+6. Se houver **Custo Adicional**, informe o valor no campo apropriado.
+7. Para **Copiar atributos** de outro modificador, clique em **Copiar**, selecione o modificador de origem e confirme.
+8. Para **Colar atributos** copiados, clique em **Colar** apos selecionar o modificador de destino.
+9. Utilize os toggles de **Ativo** e **Disponivel** para controlar quais atributos aparecem no configurador.
+10. Clique em **Salvar** para persistir os atributos cadastrados.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Modificador | select | Sim | Lista de modificadores | Modificador PDM ao qual o atributo pertence |
+| Codigo do Atributo | texto | Sim | — | Identificador unico do atributo |
+| Descricao | texto | Sim | — | Nome descritivo do atributo (ex: "Azul Royal") |
+| Ordem | numero | Nao | — | Posicao do atributo na lista de selecao |
+| Item Especifico | select | Nao | Lista de itens | Item gerado na BOM quando este atributo e selecionado |
+| Custo Adicional | numero | Nao | — | Acrescimo de custo quando o atributo e escolhido |
+| Ativo | toggle | Sim | — | Status do atributo no sistema |
+| Disponivel | toggle | Nao | — | Disponibilidade do atributo no configurador |
+| Atributo Padrao | toggle | Nao | — | Define este atributo como opcao padrao do modificador |
+| Cor (Swatch) | cor | Nao | — | Representacao visual de cor para atributos de cor |
+| Imagem | arquivo | Nao | — | Imagem ilustrativa do atributo para o configurador visual |
+
+## Observacoes importantes
+
+- A funcionalidade de **Copiar/Colar** atributos entre modificadores e um grande diferencial de produtividade. Ao cadastrar "Cor Externa" e "Cor Interna", basta cadastrar os atributos em um modificador e copia-los para o outro.
+- O campo **Item Especifico** e utilizado quando a escolha de um atributo demanda um componente diferente na estrutura BOM. Por exemplo, escolher "Vidro Temperado" (vs. "Vidro Comum") insere automaticamente o item de vidro temperado na estrutura.
+- O **Custo Adicional** e somado ao custo base do produto, permitindo precificacao diferenciada conforme as escolhas do cliente.
+- A **Cor (Swatch)** e a **Imagem** enriquecem a experiencia do configurador visual, exibindo uma amostra de cor ou foto do atributo no momento da selecao.
+- Atributos marcados como **Nao Disponivel** permanecem cadastrados mas nao aparecem no configurador, util para gerenciar atributos sazonais ou em fim de linha.
+- O **Atributo Padrao** e o que aparece pre-selecionado no configurador. Deve ser o mais comum ou o de menor custo para nao induzir o cliente a uma escolha mais cara inadvertidamente.
+
+## Telas relacionadas
+
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores aos quais os atributos pertencem.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM que utilizam os atributos na configuracao.
+- [VITE0114 (Grupos PDM)](/engenharia/vite0114): Visualizacao consolidada dos grupos, modificadores e atributos.
+- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras que utilizam atributos como condicoes.
+- [VENG0204 (Regras Variaveis Equivalentes)](/engenharia/veng0204): Equivalencia entre atributos de diferentes modificadores.
+- [VITE0313 (Geracao Mascara Itens Configurados)](/engenharia/vite0313): Geracao de codigos baseada nos atributos PDM.

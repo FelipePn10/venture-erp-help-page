@@ -1,0 +1,92 @@
+---
+sidebar_position: 2
+title: "VEXP0100 — Expedição / Romaneio"
+description: "Controle do fluxo de expedição com workflow de 4 etapas — Aberto, Separado, Conferido e Expedido — e rastreabilidade de quantidades por estágio."
+---
+
+# VEXP0100 — Expedição / Romaneio
+
+> Tela de gestão do processo de expedição, estruturada em um workflow de 4 etapas sequenciais — Aberto, Separado, Conferido e Expedido — com rastreabilidade completa das quantidades pedida, separada e conferida para cada item do romaneio.
+
+## Objetivo
+
+Controlar e rastrear o fluxo completo de expedição de mercadorias, desde a criação do romaneio até a saída efetiva dos itens do almoxarifado. O workflow em 4 etapas garante que cada romaneio passe por estágios bem definidos e controlados, com possibilidade de rastrear exatamente quantos itens foram pedidos, quantos foram efetivamente separados pela equipe de almoxarifado e quantos foram conferidos e liberados para expedição. Esta estrutura assegura a integridade do processo logístico, reduzindo erros de separação e garantindo que apenas itens conferidos sejam expedidos aos clientes.
+
+## Pré-requisitos
+
+- Ter pedidos de venda liberados em [VPDV0200](/pdv/vpdv0200) para gerar romaneios de expedição.
+- Ter almoxarifados cadastrados em [VENT0800](/almoxarifado/vent0800) de onde os itens serão separados.
+- Ter itens cadastrados em [VENT0200](/engenharia/vent0200) com saldo de estoque disponível no almoxarifado de origem.
+- Possuir permissão de acesso ao módulo Almoxarifado.
+
+## Passo a Passo
+
+### Etapa 1 — Aberto (Criação do Romaneio)
+
+1. Acesse o menu **Almoxarifado > Expedição / Romaneio**.
+2. Clique em **Novo** para criar um novo romaneio.
+3. O **Número do Romaneio** é gerado automaticamente pelo sistema.
+4. Informe a **Data** do romaneio.
+5. Selecione o **Almoxarifado** de origem de onde os itens serão separados.
+6. Clique em **Adicionar Itens** para incluir os produtos que farão parte deste romaneio.
+7. Na tabela de itens, informe o código do **Item** e a **Quantidade Pedida** (quantidade solicitada pelo pedido de venda).
+8. Repita o passo 7 para cada item do romaneio.
+9. Clique em **Salvar**. O romaneio é criado com status **Aberto**.
+
+### Etapa 2 — Separado (Separação dos Itens)
+
+10. Com o romaneio em status Aberto, clique em **Iniciar Separação**.
+11. A equipe de almoxarifado localiza fisicamente os itens nas localizações cadastradas em [VENT0800](/almoxarifado/vent0800).
+12. Para cada item, preencha o campo **Quantidade Separada** com o número de unidades efetivamente encontradas e separadas.
+13. Caso a quantidade separada seja inferior à quantidade pedida (ruptura de estoque), registre a diferença. O sistema manterá o registro do saldo pendente.
+14. Após todos os itens terem suas quantidades separadas registradas, clique em **Confirmar Separação**.
+15. O status do romaneio avança para **Separado**.
+
+### Etapa 3 — Conferido (Conferência dos Itens)
+
+16. Com o romaneio em status Separado, clique em **Iniciar Conferência**.
+17. A equipe de conferência verifica fisicamente os itens separados, comparando com as quantidades registradas.
+18. Para cada item, preencha o campo **Quantidade Conferida** com o número de unidades efetivamente verificadas.
+19. Se houver divergência entre a quantidade separada e a conferida, registre a diferença e o motivo no campo de observação.
+20. Após conferir todos os itens, clique em **Confirmar Conferência**.
+21. O status do romaneio avança para **Conferido**.
+
+### Etapa 4 — Expedido (Expedição Final)
+
+22. Com o romaneio em status Conferido, clique em **Expedir**.
+23. Confirme a operação. O sistema atualizará automaticamente o saldo de estoque dos itens expedidos.
+24. O status do romaneio avança para **Expedido**, encerrando o fluxo.
+25. O romaneio expedido fica disponível para consulta e integração com o módulo Fiscal para emissão da Nota Fiscal de Saída.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Romaneio (Nº) | Texto (automático) | Sim | — | Número do romaneio gerado automaticamente |
+| Data | Data | Sim | — | Data de criação do romaneio |
+| Almoxarifado | Seleção | Sim | Almoxarifados cadastrados | Almoxarifado de origem dos itens |
+| Status | Status (workflow) | Sim | Aberto / Separado / Conferido / Expedido | Etapa atual do romaneio no fluxo de expedição |
+| Item (Código) | Texto | Sim (na tabela) | Itens cadastrados | Código do item a ser expedido |
+| Descrição do Item | Texto (automático) | Não | — | Descrição carregada automaticamente |
+| Quantidade Pedida | Numérico | Sim (na tabela) | — | Quantidade solicitada pelo pedido de venda |
+| Quantidade Separada | Numérico | Não (preenchido na etapa 2) | — | Quantidade efetivamente separada pela equipe |
+| Quantidade Conferida | Numérico | Não (preenchido na etapa 3) | — | Quantidade efetivamente conferida |
+| Diferença | Numérico (calculado) | — | — | Qtd. Pedida - Qtd. Conferida |
+| Observação | Texto | Não | — | Observações sobre o romaneio ou divergências |
+
+## Observações
+
+- O workflow é sequencial e unidirecional: não é possível retroceder um romaneio de "Expedido" para "Conferido". Cada etapa, uma vez confirmada, avança o status sem possibilidade de retorno, garantindo a integridade do processo.
+- As quantidades separada e conferida podem ser inferiores à quantidade pedida. Nesses casos, o sistema gera um saldo pendente que pode ser tratado em um novo romaneio complementar ou via ajuste de estoque.
+- A baixa de estoque ocorre apenas na etapa final (Expedido), garantindo que os itens ainda estejam disponíveis no sistema até que sejam efetivamente expedidos.
+- Cada romaneio está vinculado a um almoxarifado específico. Não é possível incluir itens de almoxarifados diferentes em um mesmo romaneio — para isso, crie romaneios separados.
+- O histórico completo de cada romaneio é preservado, incluindo as datas e horários de cada transição de status e os usuários responsáveis por cada etapa, fornecendo rastreabilidade total para auditoria.
+
+## Telas Relacionadas
+
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Pedidos de venda que geram os romaneios de expedição após sua liberação.
+- **[VENT0800 — Cadastro de Almoxarifado](/almoxarifado/vent0800):** Almoxarifado de origem dos itens a serem separados e expedidos.
+- **[VENT0200 — Cadastro de Itens](/engenharia/vent0200):** Itens que compõem o romaneio de expedição.
+- **[VPLC0200 — Montagem de Carga](/planejamento/vplc0200):** Consolidação de múltiplos romaneios em cargas de transporte.
+- **[VNFS0100 — Emissão de Nota Fiscal de Saída](/fiscal/vnfs0100):** Emissão da nota fiscal vinculada ao romaneio expedido.
+- **[VPDV0253 — Console de Acompanhamento](/pdv/vpdv0253):** Console que pode exibir o status de expedição dos pedidos de venda.

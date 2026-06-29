@@ -1,0 +1,49 @@
+---
+sidebar_position: 3
+title: "VFIN0120 — Plano de Contas"
+description: "Manter o plano de contas contabil da empresa."
+---
+
+# VFIN0120 — Plano de Contas
+
+> Manter o plano de contas contabil da empresa com notacao hierarquica.
+
+**Codigo fonte:** `src/components/screens/financeiro/Vfin0120Page.tsx`
+
+## Objetivo
+
+Manter o plano de contas contabil da empresa. Utiliza notacao hierarquica com pontos para representar a estrutura de arvore contabil. Serve como classificacao contabil para os titulos financeiros e como base para o relatorio DRE (R05).
+
+## Pre-requisitos
+
+- Conhecimento basico de estrutura contabil (grupos, subgrupos, contas analiticas).
+- Recomenda-se definir a estrutura hierarquica antes de iniciar o cadastro.
+
+## Passo a passo
+
+1. Acesse **Financeiro > Plano de Contas** (VFIN0120).
+2. Para nivel 1 (grupo): **+ Nova Conta**, informe Codigo simples (ex: `1`, `2`, `3`), Descricao, Tipo e Natureza. Deixe Codigo Pai em branco.
+3. Para niveis inferiores: informe Codigo com ponto (ex: `3.1`, `3.1.01`), preencha Codigo Pai com a conta superior.
+4. Clique em **Salvar**.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Codigo | texto | Sim | — | Codigo hierarquico com notacao de ponto (ex: `3.1.01`) |
+| Descricao | texto | Sim | — | Nome descritivo da conta |
+| Codigo Pai | texto | Nao | — | Codigo da conta superior na hierarquia |
+| Tipo | selecao | Sim | RECEITA / DESPESA / ATIVO / PASSIVO / PATRIMONIO | Classificacao contabil |
+| Natureza | selecao | Sim | CREDITO / DEBITO | Natureza do saldo |
+
+## Observacoes importantes
+
+- O nivel e calculado automaticamente pela quantidade de segmentos no codigo.
+- O plano de contas e a base para o relatorio R05 (DRE) no VFIN0500.
+- Alteracoes apos inicio da operacao devem ser feitas com cautela.
+
+## Telas relacionadas
+
+- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Permite vincular titulos a contas contabeis.
+- **[VFIN0500 (Relatorios)](/financeiro/vfin0500):** O relatorio R05 (DRE) utiliza a estrutura do plano de contas.
+- **[VCTB0200 (Contabilidade SPED ECD)](/contabilidade/vctb0200):** Estrutura similar no modulo contabil.

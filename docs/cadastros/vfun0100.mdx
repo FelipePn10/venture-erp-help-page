@@ -1,0 +1,58 @@
+---
+sidebar_position: 4
+title: "VFUN0100 — Cadastro Funcionario"
+description: "Cadastro de funcionarios com flags para orcamento e assistencia tecnica."
+---
+
+# VFUN0100 — Cadastro Funcionario
+
+> Cadastro de funcionarios com controle de situacao e flags para orcamento e assistencia tecnica.
+
+**Codigo fonte:** `src/components/screens/cadastros/Vfun0100Page.tsx`
+
+## Objetivo
+
+Cadastrar e manter o registro de funcionarios da empresa. Alem dos dados basicos (nome, cargo, situacao), a tela possui flags especificas que habilitam o funcionario para modulos especificos: "Participa Orcamento" e "Assistente Tecnico". Estas flags sao utilizadas como filtros nos modulos de assistencia tecnica e chamados.
+
+## Pre-requisitos
+
+- Nenhum. Esta tela e autonoma.
+
+## Passo a passo
+
+1. Acesse **Cadastros > Funcionario** (VFUN0100).
+2. Clique em **+ Novo**.
+3. O campo **Codigo** e gerado automaticamente — nao precisa ser preenchido.
+4. Informe o **Nome** completo do funcionario.
+5. Preencha **Funcao / Cargo** (opcional).
+6. Selecione a **Situacao**: ATIVO ou INATIVO.
+7. Ative as flags conforme necessario:
+   - **Participa Orcamento** — Habilita o funcionario para compor orcamentos.
+   - **Assistente Tecnico** — Habilita como tecnico executor de chamados e assistencias.
+8. Clique em **Salvar**.
+9. Para editar, selecione o funcionario na tabela, clique em **Editar** e altere os dados.
+10. Para inativar, clique em **Desativar**.
+11. Use **Exportar** para gerar planilha.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Codigo | numero (desabilitado) | Sim | — | Gerado automaticamente |
+| Nome | texto | Sim | — | Nome do funcionario |
+| Funcao / Cargo | texto | Nao | — | Cargo |
+| Situacao | selecao | Sim | ATIVO / INATIVO | Status |
+| Participa Orcamento | toggle | Nao | — | Habilita para orcamento |
+| Assistente Tecnico | toggle | Nao | — | Habilita para assistencia |
+
+## Observacoes importantes
+
+- O codigo e sequencial e gerado automaticamente pelo sistema — nao e editavel.
+- A flag "Assistente Tecnico" e o principal filtro para selecao de tecnicos nos modulos de assistencia.
+- A flag "Participa Orcamento" permite que o funcionario seja selecionado em composicoes de orcamento.
+- Funcionarios inativos nao aparecem nas listas de selecao dos modulos.
+
+## Telas relacionadas
+
+- **[VASS0201 (Orcamento)](/assistencia/vass0201):** Funcionarios com flag "Participa Orcamento".
+- **[VATC0280 (Chamados)](/assistencia/vatc0280):** Tecnico executor de chamados (flag "Assistente Tecnico").

@@ -1,0 +1,78 @@
+---
+sidebar_position: 3
+title: "VINS0200 — Roteiro Inspecao"
+description: "Cadastro de roteiros de inspecao com cabecalho, sequencias e modal de especie/tipo."
+---
+
+# VINS0200 — Roteiro Inspecao
+
+> Cadastro de roteiros de inspecao de qualidade com cabecalho descritivo, sequencias de ensaios e modal para selecao de especie/tipo.
+
+## Objetivo
+
+Permitir a definicao de roteiros de inspecao de qualidade que determinam quais ensaios e verificacoes devem ser realizados em um item ou grupo de itens. O roteiro e composto por um **cabecalho** (dados gerais: item, tipo de roteiro, frequencia), **sequencias** (cada ensaio ou verificacao a ser executado, com seu metodo, criterio de aceitacao e amostragem) e um **modal de especie/tipo** que permite classificar e agrupar os ensaios por categoria. Os roteiros sao utilizados pelas ordens de inspecao para guiar os inspetores durante a execucao.
+
+## Pre-requisitos
+
+- [VINS0211 (Tipos Roteiro Inspecao)](/inspecao/vins0211) — Tipos de roteiro de inspecao para classificacao no cabecalho.
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105) — Tipos de ocorrencia que podem ser geradas a partir dos ensaios.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que terao roteiros de inspecao associados.
+
+## Passo a passo
+
+1. Acesse a tela VINS0200 pelo menu Inspecao > Roteiro Inspecao.
+2. Clique em **Novo** para criar um novo roteiro de inspecao.
+3. No **Cabecalho**, informe o codigo do roteiro, a descricao e selecione o tipo de roteiro e o item ou grupo de itens associado.
+4. Defina a **Frequencia de Inspecao**: A cada Recebimento, Periodica (dias), Por Lote ou Amostragem.
+5. Configure o **Plano de Amostragem** conforme norma aplicavel (ex: AQL 2.5, Nivel II, ISO 2859-1).
+6. Na secao **Sequencias**, adicione cada ensaio ou verificacao a ser executado durante a inspecao.
+7. Para cada sequencia, preencha: ordem, descricao do ensaio, metodo, instrumento de medicao, criterio de aceitacao e tolerancia.
+8. Utilize o **Modal de Especie/Tipo** para classificar cada sequencia em uma categoria (Dimensional, Visual, Funcional, Eletrico, Quimico, Documental, etc.).
+9. Vincule **Tipos de Ocorrencia** a cada sequencia, para que falhas detectadas gerem automaticamente ocorrencias do tipo adequado.
+10. Clique em **Salvar** para armazenar o roteiro de inspecao completo com todas as sequencias.
+
+## Campos
+
+### Cabecalho
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo do Roteiro | texto | Sim | — | Identificador unico do roteiro |
+| Descricao | texto | Sim | — | Nome descritivo do roteiro |
+| Tipo de Roteiro | select | Sim | Lista de tipos | Classificacao conforme VINS0211 |
+| Item / Grupo de Itens | select | Sim | Lista | Item ou familia associada ao roteiro |
+| Frequencia de Inspecao | select | Sim | A Cada Recebimento / Periodica / Por Lote / Amostragem | Periodicidade da inspecao |
+| Plano de Amostragem | select | Nao | ISO 2859-1 / NBR 5426 / Manual | Norma de amostragem aplicavel |
+| Tamanho do Lote | numero | Nao | — | Tamanho padrao para definicao da amostra |
+| Ativo | toggle | Sim | — | Status do roteiro |
+
+### Sequencias
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Sequencia | numero | Sim | — | Ordem de execucao do ensaio |
+| Descricao do Ensaio | texto | Sim | — | Ex: "Medicao de Largura", "Teste de Estanqueidade" |
+| Metodo | texto | Sim | — | Metodo ou norma de referencia do ensaio |
+| Instrumento | texto | Nao | — | Instrumento de medicao utilizado |
+| Criterio de Aceitacao | texto | Sim | — | Condicao para aprovacao (ex: "Largura entre 100 e 102 mm") |
+| Tolerancia | texto | Nao | — | Limites de tolerancia (ex: "+/- 0.5 mm") |
+| Especie/Tipo | select | Sim | Modal com categorias | Classificacao do ensaio |
+| Amostragem (qtd) | numero | Nao | — | Tamanho da amostra para este ensaio |
+| Tipo de Ocorrencia Vinculada | select | Nao | Lista de tipos | Ocorrencia gerada em caso de falha |
+
+## Observacoes importantes
+
+- O **Modal de Especie/Tipo** organiza os ensaios em categorias visuais, facilitando a leitura do roteiro e permitindo que inspetores identifiquem rapidamente os tipos de verificacao.
+- A **Frequencia de Inspecao** define automaticamente quando as ordens de inspecao serao geradas: a cada recebimento gera uma OS para cada nota fiscal de entrada; periodica gera em intervalos fixos.
+- O **Plano de Amostragem** integrado com normas como ISO 2859-1 permite que o sistema calcule automaticamente o tamanho da amostra com base no tamanho do lote e no nivel de inspecao.
+- A vinculacao de **Tipos de Ocorrencia** as sequencias permite que, ao marcar uma falha em um ensaio, o sistema crie automaticamente a ocorrencia do tipo adequado, agilizando o registro.
+- Roteiros inativos nao geram novas ordens de inspecao, mas ordens ja em andamento com este roteiro continuam validas.
+- E possivel **copiar** um roteiro existente como base para um novo, agilizando o cadastro de roteiros similares.
+
+## Telas relacionadas
+
+- [VINS0211 (Tipos Roteiro Inspecao)](/inspecao/vins0211): Tipos de roteiro referenciados no cabecalho.
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105): Tipos de ocorrencia vinculados as sequencias.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201): Ordens de inspecao que utilizam os roteiros.
+- [VINS0206 (Exclusao Ordens Inspecao)](/inspecao/vins0206): Exclusao de ordens de inspecao geradas a partir dos roteiros.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens associados aos roteiros.

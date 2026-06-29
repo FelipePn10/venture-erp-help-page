@@ -1,0 +1,138 @@
+---
+sidebar_position: 20
+title: "VNFS0100 — NFSe"
+description: "Emissao de Nota Fiscal de Servico Eletronica com RPS, cadastro de tomador, servico e calculo automatico de ISS."
+---
+
+# VNFS0100 — NFSe
+
+> Tela de emissao e gestao da Nota Fiscal de Servico Eletronica (NFSe). Gerencia RPS (Recibo Provisorio de Servico), tomador, servicos prestados e calculo automatico de ISS conforme legislacao municipal.
+
+**Codigo fonte:** `src/modules/fiscal/nfse/vnfs0100.vue`
+
+## Objetivo
+
+A VNFS0100 e a tela dedicada a emissao de Notas Fiscais de Servico Eletronicas (NFSe). Diferente da NFe (modelo 55), que e regulada pela SEFAZ estadual, a NFSe e regulada por cada municipio brasileiro, o que resulta em diferentes padroes, provedores e regras de emissao. O ERP integra-se com provedores como ISS Fortaleza, NFSe Nacional (ABRASF), GINFES, NFSe Paulistana, NFSe BH, entre outros. A tela gerencia o ciclo completo: RPS (Recibo Provisorio de Servico), cadastro do tomador, detalhamento do servico (codigo de servico, aliquota ISS), retencoes (IR, PIS, COFINS, CSLL, INSS), calculo automatico do ISS, transmissao ao provedor municipal e geracao do PDF da NFSe.
+
+## Pre-requisitos
+
+- **VFIS0100 (Configuracao Fiscal):** Aba NFSe configurada com o provedor correto (ISS Fortaleza, NFSe Nacional, etc.), token/homologacao, cidade e aliquotas padrao de ISS.
+- **VCAD0100 (Cadastro de Clientes/Tomadores):** Tomadores do servico cadastrados com CNPJ/CPF, endereco, municipio e indicador de retencao de ISS.
+- **VCAD0300 (Cadastro de Servicos):** Servicos cadastrados com codigo de servico municipal, codigo CNAE, aliquota ISS padrao e tributacao federal (PIS, COFINS, IR, CSLL, INSS).
+- **Conhecimento da legislacao municipal:** Cada municipio tem suas proprias aliquotas de ISS, regras de retencao e codigos de servico (geralmente baseados na LC 116/2003).
+
+## Passo a passo
+
+1. Acesse **Fiscal > Notas Fiscais > NFSe (VNFS0100)**.
+2. A grade principal lista todas as NFSe emitidas. Filtre por periodo, tomador, status e numero.
+3. Clique em **Nova NFSe** para iniciar a emissao.
+4. O sistema exibe a secao **RPS (Recibo Provisorio de Servico)**. O RPS e um numero sequencial que identifica a prestacao antes da autorizacao. Informe o tipo de RPS e o numero (geralmente sequencial automatico).
+5. No quadro **Tomador**, selecione o cliente/tomador do servico. O sistema carregara CNPJ/CPF, endereco e municipio. Para tomadores fora do municipio do prestador, o sistema aplicara a regra de local de recolhimento do ISS (local da prestacao vs. local do estabelecimento).
+6. No quadro **Servicos**, adicione os itens de servico prestado:
+   - **Servico:** selecione o servico da base.
+   - **Codigo de Servico:** codigo municipal do servico (conforme LC 116/2003 e legislacao municipal).
+   - **Quantidade e Valor Unitario.**
+   - **Aliquota ISS:** percentual de ISS (varia por municipio e tipo de servico, geralmente de 2% a 5%).
+   - **Base Calculo ISS:** valor sobre o qual o ISS sera calculado.
+   - **Valor ISS:** calculado automaticamente (Base Calculo x Aliquota).
+   - **Retencao ISS?** Indica se o tomador e responsavel pela retencao do ISS na fonte (tomador orgao publico ou empresa de outro municipio).
+7. Na secao **Retencoes Federais**, informe (se aplicavel):
+   - **IR (Imposto de Renda):** aliquota de retencao (1,5% ou 4,8% conforme servico).
+   - **PIS:** retencao de 0,65%.
+   - **COFINS:** retencao de 3%.
+   - **CSLL:** retencao de 1%.
+   - **INSS:** retencao de 11% (com teto).
+   - **Valor Liquido:** calculado automaticamente (Valor Total - Retencoes).
+8. Na secao **Informacoes Adicionais**, inclua observacoes sobre o servico prestado, periodo de prestacao e outras informacoes exigidas pelo municipio.
+9. Clique em **Salvar Rascunho**. O RPS fica registrado e pode ser transmitido posteriormente.
+10. Clique em **Transmitir NFSe**. O sistema enviara o RPS ao provedor municipal configurado. O provedor retornara a NFSe autorizada (com numero, codigo de verificacao e chave de acesso) ou rejeitada (com o motivo).
+11. Apos a autorizacao, o sistema:
+    - Atribui o numero definitivo da NFSe (substituindo o RPS).
+    - Gera o PDF da NFSe com codigo de barras (se aplicavel).
+    - Registra o valor do ISS para apuracao futura.
+    - Disponibiliza a NFSe no portal do provedor para consulta pelo tomador.
+12. Para **Cancelar** uma NFSe: selecione a nota autorizada, clique em Cancelar e informe o motivo. O cancelamento e enviado ao provedor municipal. O prazo e as regras de cancelamento variam por municipio.
+
+## Campos
+
+### RPS e Cabecalho
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Tipo RPS | Select | Sim | Manual / Automatico | Tipo do Recibo Provisorio de Servico. |
+| Numero RPS | Numero (9) | Sim/Auto | — | Numero sequencial do RPS. |
+| Data Emissao | Data | Sim | — | Data de emissao da NFSe. |
+| Data Competencia | Data | Sim | — | Mes/ano de competencia da prestacao. |
+| Status | Select | Auto | Rascunho / RPS Emitido / NFSe Autorizada / Cancelada | Situacao da NFSe. |
+
+### Tomador
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Tomador | Select | Sim | VCAD0100 | Cliente tomador do servico. |
+| CNPJ/CPF | Texto (14) | Sim | — | Documento do tomador. |
+| Inscricao Municipal | Texto (20) | Condicional | — | IM do tomador (se contribuinte de ISS). |
+| Municipio | Select | Sim | — | Municipio do tomador (codigo IBGE). |
+| Endereco | Texto (200) | Sim | — | Endereco completo do tomador. |
+| Email | Texto (100) | Nao | — | Email para envio da NFSe ao tomador. |
+
+### Servicos (grid)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Servico | Select | Sim | VCAD0300 | Item de servico prestado. |
+| Codigo Servico | Texto (10) | Sim | — | Codigo de servico municipal (LC 116/2003). |
+| Descricao Servico | Texto (200) | Auto | — | Descricao do servico prestado. |
+| Quantidade | Decimal (15,4) | Sim | — | Quantidade de servico prestado. |
+| Valor Unitario | Decimal (15,4) | Sim | — | Valor unitario do servico. |
+| Valor Total | Decimal (15,2) | Auto | — | Quantidade x Valor Unitario. |
+| Aliquota ISS | Decimal (5,2) | Sim | — | Aliquota de ISS (2% a 5% conforme municipio). |
+| Base Calculo ISS | Decimal (15,2) | Sim | — | Base de calculo do ISS. |
+| Valor ISS | Decimal (15,2) | Auto | — | BC ISS x Aliquota ISS. |
+| Retencao ISS | Checkbox | Nao | — | Indica se o ISS sera retido pelo tomador. |
+
+### Retencoes Federais
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Aliquota IR | Decimal (5,2) | Nao | 1,5 / 4,8 | Aliquota de retencao de IR. |
+| Valor IR | Decimal (15,2) | Auto | — | Valor retido de IR. |
+| Valor PIS Retido | Decimal (15,2) | Auto | — | PIS retido (0,65%). |
+| Valor COFINS Retido | Decimal (15,2) | Auto | — | COFINS retida (3%). |
+| Valor CSLL Retido | Decimal (15,2) | Auto | — | CSLL retida (1%). |
+| Valor INSS Retido | Decimal (15,2) | Auto | — | INSS retido (11%). |
+| Valor Liquido | Decimal (15,2) | Auto | — | Valor Total - Total Retencoes. |
+
+### Totais
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Valor Total Servicos | Decimal (15,2) | Auto | — | Soma dos valores totais dos itens. |
+| Valor Total ISS | Decimal (15,2) | Auto | — | Soma dos valores de ISS. |
+| Total Retencoes | Decimal (15,2) | Auto | — | Soma das retencoes federais. |
+| Valor Liquido NFSe | Decimal (15,2) | Auto | — | Valor Total Servicos - Total Retencoes. |
+
+### NFSe Autorizada
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Numero NFSe | Texto (15) | Auto | — | Numero definitivo da NFSe. |
+| Codigo Verificacao | Texto (20) | Auto | — | Codigo de verificacao/autenticidade. |
+| Chave Acesso | Texto (44) | Auto | — | Chave de acesso da NFSe. |
+| Data Autorizacao | Data/Hora | Auto | — | Data e hora da autorizacao pelo provedor. |
+| Link PDF | Texto (500) | Auto | — | Link para download do PDF da NFSe. |
+
+## Observacoes importantes
+
+- **Provedores Municipais:** O ERP integra-se com varios provedores de NFSe. A configuracao correta do provedor na VFIS0100 (aba NFSe) e crucial. Provedores comuns incluem: ISS Fortaleza, NFSe Nacional (ABRASF), GINFES (SP), NFSe BH, NFSe Curitiba, NFSe Rio de Janeiro, entre outros. Cada provedor tem seu proprio padrao de comunicacao.
+- **Local do ISS:** A LC 116/2003 estabelece que o ISS e devido no municipio do estabelecimento do prestador (regra geral), mas ha excecoes (construcao civil, limpeza, vigilancia, etc. — ISS devido no local da prestacao). O sistema aplica a regra geral. Para excecoes, verifique a configuracao municipal.
+- **Retencao de ISS:** O tomador deve reter o ISS na fonte quando: (a) o prestador nao e estabelecido no municipio da prestacao e o ISS e devido no local, ou (b) o tomador e orgao publico (que sempre retem). Marque o checkbox "Retencao ISS" para que o sistema nao calcule o ISS (o tomador fara o recolhimento).
+- **Retencoes Federais (IN 459/2004):** Servicos prestados por pessoa juridica a outra pessoa juridica estao sujeitos a retencoes federais (IR, PIS, COFINS, CSLL) quando o valor do servico for superior a R$ 215,05 (em 2024). O INSS e retido sobre servicos de cessao de mao-de-obra ou empreitada. O sistema calcula automaticamente as retencoes, mas e responsabilidade do usuario verificar as aliquotas e limites.
+- **RPS e Cancelamento:** O RPS e um documento provisorio. A NFSe so e valida apos a autorizacao pelo provedor municipal. O prazo para cancelamento varia por municipio (geralmente 24 horas a 30 dias). Alguns municipios nao permitem cancelamento de NFSe — apenas substituicao por nota complementar.
+
+## Telas relacionadas
+
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Aba NFSe com configuracao do provedor, token e aliquotas padrao.
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Emissao de NFe (produtos) — operacao distinta da NFSe (servicos).
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** CFOPs de servico (5.933, 6.933, etc.) para notas conjugadas.
+- **[VFIS0340 (Apuracao Simples Nacional)](/fiscal/vfis0340):** Apuracao que inclui o ISS para empresas do Simples.

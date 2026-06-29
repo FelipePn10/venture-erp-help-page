@@ -1,0 +1,64 @@
+---
+sidebar_position: 6
+title: "VCLI0202 — Percentuais de Frete"
+description: "Cadastro de percentuais de frete por cliente com faixas de valor inicial e final, transportadora e modalidade CIF/FOB."
+---
+
+# VCLI0202 — Percentuais de Frete
+
+> Tela de cadastro de percentuais de frete diferenciados por cliente, permitindo a definição de faixas de valor (inicial e final), vinculação a transportadoras específicas e escolha da modalidade CIF ou FOB para cálculo automático nos pedidos de venda.
+
+## Objetivo
+
+Permitir a configuração de percentuais de frete customizados por cliente, substituindo ou complementando as políticas gerais de frete definidas em [VPDV0111](/pdv/vpdv0111). Através de faixas de valor — onde cada faixa é delimitada por um valor inicial e um valor final do pedido — o sistema aplica automaticamente o percentual de frete correspondente no momento do fechamento do pedido. A tela também permite vincular transportadoras específicas e definir a modalidade do frete (CIF ou FOB), proporcionando flexibilidade para negociações comerciais customizadas.
+
+## Pré-requisitos
+
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Ter transportadoras cadastradas no sistema.
+- Conhecer as condições comerciais negociadas com cada cliente para definir percentuais e faixas de valor adequadas.
+- Possuir permissão de acesso ao módulo Cliente.
+
+## Passo a Passo
+
+1. Acesse o menu **Cliente > Percentuais de Frete**.
+2. Para adicionar uma nova configuração de frete, clique em **Novo**.
+3. Selecione o **Cliente** para o qual a configuração se aplica.
+4. Opcionalmente, selecione uma **Transportadora** específica. Se deixar em branco, o percentual será aplicado independentemente da transportadora utilizada no pedido.
+5. Defina a **Faixa de Valor**:
+   - Informe o **Valor Inicial** e o **Valor Final** da faixa. Pedidos cujo valor total esteja dentro deste intervalo utilizarão o percentual configurado.
+6. Informe o **Percentual de Frete** que será aplicado sobre o valor da mercadoria.
+7. Selecione o **Tipo de Frete**: CIF (frete incluso no preço, responsabilidade do remetente) ou FOB (frete por conta do destinatário).
+8. Opcionalmente, defina um **Valor Mínimo de Frete** — um piso que será cobrado mesmo que o percentual calculado resulte em valor inferior.
+9. Clique em **Salvar** para persistir a configuração.
+10. Para gerenciar configurações existentes, utilize os botões **Editar** e **Remover**.
+11. Utilize o campo de busca na tabela para localizar rapidamente configurações por cliente ou transportadora.
+12. Clique em **Exportar** para gerar relatório com todas as configurações de frete.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Cliente | Texto/Seleção | Sim | — | Cliente ao qual a configuração de frete se aplica |
+| Transportadora | Seleção | Não | Transportadoras cadastradas | Transportadora vinculada à regra de frete |
+| Valor Inicial | Monetário | Sim | — | Valor mínimo da faixa do pedido para aplicar o percentual |
+| Valor Final | Monetário | Sim | — | Valor máximo da faixa do pedido para aplicar o percentual |
+| Percentual de Frete (%) | Numérico | Sim | — | Percentual aplicado sobre o valor da mercadoria |
+| Tipo de Frete | Seleção | Sim | CIF / FOB | Modalidade do frete (CIF = responsabilidade do remetente, FOB = responsabilidade do destinatário) |
+| Valor Mínimo de Frete | Monetário | Não | — | Valor mínimo de frete a ser cobrado, independentemente do percentual calculado |
+| Ativo | Toggle | Não | Ligado / Desligado | Status da configuração |
+
+## Observações
+
+- As faixas de valor para um mesmo cliente não devem se sobrepor. Se houver sobreposição, o sistema aplicará a primeira regra encontrada na ordem de cadastro. Recomenda-se revisar periodicamente as faixas para evitar inconsistências.
+- O percentual de frete configurado aqui tem precedência sobre as políticas gerais de frete definidas em [VPDV0111](/pdv/vpdv0111) quando ambas se aplicam ao mesmo cliente e faixa de valor.
+- O **Valor Mínimo de Frete** é útil para garantir a cobertura de custos logísticos mínimos em pedidos de baixo valor, onde o percentual resultaria em um frete irrisório.
+- A modalidade CIF/FOB impacta a responsabilidade sobre a mercadoria: em operações CIF, o frete é de responsabilidade do remetente (embutido no preço); em FOB, o frete é de responsabilidade do destinatário (cobrado separadamente).
+- Configurações inativas não são consideradas no cálculo automático de frete dos pedidos, mas permanecem armazenadas para histórico e possível reativação.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Tela de cadastro do cliente para o qual os percentuais de frete são configurados.
+- **[VPDV0111 — Política Comercial de Fretes](/pdv/vpdv0111):** Tela de políticas gerais de frete que são complementadas ou substituídas pelas configurações específicas desta tela.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde o frete é calculado automaticamente com base nas configurações de percentual e faixas de valor.
+- **[VPLC0200 — Montagem de Carga](/planejamento/vplc0200):** Tela de planejamento logístico que utiliza as configurações de frete na consolidação de cargas.

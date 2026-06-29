@@ -1,0 +1,64 @@
+---
+sidebar_position: 1
+title: "VMAN0202 — Apontamento OS Manutencao"
+description: "Registro de apontamentos de mao de obra e materiais em ordens de servico de manutencao."
+---
+
+# VMAN0202 — Apontamento OS Manutencao
+
+> Tela de apontamento de horas e materiais em ordens de servico de manutencao, registrando a execucao real das atividades.
+
+## Objetivo
+
+Permitir o registro detalhado dos apontamentos de mao de obra (horas trabalhadas) e materiais utilizados na execucao das ordens de servico de manutencao. Cada apontamento registra o tecnico responsavel, as horas gastas em cada atividade, os materiais consumidos e as observacoes tecnicas relevantes. Estes registros alimentam o historico de manutencao dos equipamentos, o calculo de custos de manutencao e a medicao de produtividade da equipe tecnica.
+
+## Pre-requisitos
+
+- [VMAN0401 (Consulta OS)](/manutencao/vman0401) — Ordens de servico devem estar abertas e liberadas para apontamento.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Materiais e pecas de reposicao devem estar cadastrados.
+- [Cadastro de Tecnicos](/cadastros/vfun0100) — Tecnicos responsaveis pelos apontamentos devem estar cadastrados no sistema.
+
+## Passo a passo
+
+1. Acesse a tela VMAN0202 pelo menu Manutencao > Apontamento OS Manutencao.
+2. Informe o **Numero da OS** que deseja apontar ou utilize a busca para localizar ordens abertas.
+3. O sistema carrega os dados da OS: equipamento, tipo de manutencao, atividades previstas.
+4. Para cada **Atividade** da OS, registre as horas gastas no campo **Horas Apontadas**.
+5. Informe o **Tecnico** que executou cada atividade.
+6. Registre os **Materiais** consumidos: codigo do item, quantidade e justificativa de uso.
+7. Preencha as **Observacoes Tecnicas** com informacoes relevantes sobre a execucao (dificuldades encontradas, solucoes aplicadas, recomendacoes).
+8. Se a atividade foi concluida, marque o toggle **Atividade Concluida**.
+9. Anexe **fotos ou documentos** relevantes utilizando o botao de upload.
+10. Clique em **Salvar Apontamento** para registrar as horas e materiais na OS.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero da OS | numero | Sim | — | Ordem de servico a ser apontada |
+| Atividade | texto | Sim | — | Descricao da atividade sendo apontada |
+| Horas Apontadas | numero | Sim | — | Quantidade de horas gastas na atividade |
+| Tecnico | select | Sim | Lista de tecnicos | Tecnico responsavel pela execucao |
+| Data do Apontamento | data | Sim | — | Data em que a atividade foi executada |
+| Hora Inicio | hora | Nao | — | Horario de inicio da atividade |
+| Hora Fim | hora | Nao | — | Horario de termino da atividade |
+| Materiais Consumidos | tabela | Nao | — | Itens e quantidades utilizadas na manutencao |
+| Atividade Concluida | toggle | Nao | — | Indica se a atividade foi finalizada |
+| Observacoes Tecnicas | texto | Nao | — | Informacoes relevantes sobre a execucao |
+| Anexos | arquivo | Nao | — | Fotos, PDFs ou documentos complementares |
+
+## Observacoes importantes
+
+- O **apontamento de horas** e a base para o calculo de custo de mao de obra da manutencao. Horas nao apontadas resultam em custos subestimados.
+- O **consumo de materiais** da baixa automatica no estoque quando o apontamento e salvo. Certifique-se de que os itens informados estao disponiveis em estoque.
+- Apontamentos podem ser **parciais** — e possivel apontar horas em uma atividade sem conclui-la, permitindo o registro continuo ao longo de varios dias.
+- As **Observacoes Tecnicas** sao essenciais para o historico de manutencao do equipamento. Registre sempre informacoes que possam auxiliar em manutencoes futuras.
+- Anexos (fotos do defeito, do reparo, relatorios tecnicos) enriquecem o historico e podem ser consultados posteriormente pela equipe tecnica.
+- Uma vez que todas as atividades da OS estejam concluidas, o sistema atualiza o status da OS para **Finalizada** automaticamente.
+
+## Telas relacionadas
+
+- [VMAN0401 (Consulta OS)](/manutencao/vman0401): Consulta as ordens de servico que recebem os apontamentos.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Materiais e pecas consumidos nos apontamentos.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Equipamentos objeto das ordens de servico de manutencao.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo para apropriacao dos custos de manutencao.

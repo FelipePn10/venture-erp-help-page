@@ -1,0 +1,75 @@
+---
+sidebar_position: 1
+title: "VGAR0211 — Gerar Pedido Devolucao"
+description: "Ferramenta de geracao de pedidos de devolucao de mercadorias a partir de chamados de garantia."
+---
+
+# VGAR0211 — Gerar Pedido Devolucao
+
+> Ferramenta que gera automaticamente pedidos de devolucao de mercadorias com base em chamados de garantia aprovados.
+
+## Objetivo
+
+Permitir a geracao automatica de pedidos de devolucao de mercadorias a partir de chamados de garantia que tiveram sua conclusao como "Procede Garantia" ou "Procede Troca". A ferramenta integra os modulos de assistencia tecnica e garantia com o modulo comercial/fiscal, criando automaticamente o documento de devolucao, a nota fiscal de entrada e os ajustes de estoque necessarios para receber o produto devolvido pelo cliente. Este processo automatizado elimina retrabalho e reduz o tempo entre a aprovacao da garantia e a efetivacao da troca.
+
+## Pre-requisitos
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201) — Chamados de garantia que originam a devolucao.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280) — Chamados de vistoria com laudo que comprovam a necessidade de devolucao.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Produtos objeto da devolucao.
+- [Cadastro de Clientes](/cliente/vcli0500) — Clientes que devolverao os produtos.
+- Modulo Fiscal — Emissao de Nota Fiscal de Entrada para documentar a devolucao.
+
+## Passo a passo
+
+1. Acesse a tela VGAR0211 pelo menu Garantia > Gerar Pedido Devolucao.
+2. A tela exibe a lista de **chamados de garantia aprovados** que ainda nao tiveram pedido de devolucao gerado.
+3. Utilize os filtros de **Cliente**, **Produto** e **Periodo** para localizar os chamados desejados.
+4. Selecione os chamados marcando o **checkbox** ao lado de cada um ou utilize o **Selecionar Todos**.
+5. Revise as informacoes de cada chamado selecionado: numero do chamado, cliente, produto, numero de serie, motivo.
+6. Defina o **Tipo de Devolucao**: Troca (envia um novo produto), Credito (gera credito ao cliente) ou Reparo (devolucao para conserto e posterior reenvio).
+7. Informe a **Data Prevista de Devolucao** acordada com o cliente.
+8. Selecione a **Transportadora** (se a coleta for por conta da empresa) ou marque **Entrega pelo Cliente**.
+9. Clique em **Gerar Pedidos** para criar os pedidos de devolucao. O sistema gera automaticamente:
+   - Pedido de Devolucao no modulo comercial.
+   - Nota Fiscal de Entrada no modulo fiscal (se aplicavel).
+   - Atualizacao do status do chamado de garantia.
+   - Reserva de estoque do produto de troca (se Tipo for Troca).
+10. Acompanhe o **Status da Geracao** na grid de resultados: Sucesso, Erro (com motivo) ou Pendente.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Chamados Disponiveis | tabela | — | — | Lista de chamados de garantia aprovados aguardando devolucao |
+| Selecionar | checkbox | Sim | — | Marcar chamados para geracao |
+| Numero do Chamado | numero | Nao | — | Chamado de origem |
+| Cliente | texto | Nao | — | Cliente do chamado |
+| Produto | texto | Nao | — | Produto a ser devolvido |
+| Numero de Serie | texto | Nao | — | Serie do produto |
+| Motivo da Garantia | texto | Nao | — | Motivo extraido do laudo tecnico |
+| Tipo de Devolucao | select | Sim | Troca / Credito / Reparo | Destino da devolucao |
+| Data Prevista de Devolucao | data | Sim | — | Data acordada para devolucao |
+| Transportadora | select | Nao | Lista de transportadoras | Se a coleta for por conta da empresa |
+| Entrega pelo Cliente | toggle | Nao | — | Se o cliente entregara diretamente |
+| Status da Geracao | texto | Nao | Sucesso / Erro / Pendente | Resultado da geracao |
+| Motivo do Erro | texto | Condicional | — | Explicacao em caso de falha na geracao |
+
+## Observacoes importantes
+
+- A geracao do pedido de devolucao e um processo **em lote**: e possivel selecionar dezenas de chamados e gerar todos os pedidos em uma unica operacao.
+- O sistema valida automaticamente se o chamado realmente **procede garantia** e se possui todos os dados necessarios (numero de serie, laudo tecnico) antes de permitir a geracao.
+- Para devolucoes do tipo **Troca**, o sistema verifica a disponibilidade em estoque do produto de troca e, se houver saldo insuficiente, emite um alerta e gera uma solicitacao de producao ou compra.
+- A **Nota Fiscal de Entrada** e gerada automaticamente seguindo a legislacao fiscal vigente, com CFOP adequado para devolucao em garantia.
+- Em caso de **Erro** na geracao, o sistema informa o motivo especifico (ex: "Cliente sem endereco de coleta", "Produto sem saldo para troca", "Serie nao confere com NF de venda") para que o usuario possa corrigir.
+- Todo o processo fica registrado no **log de auditoria**, vinculando o pedido de devolucao ao chamado de garantia original e ao usuario que executou a operacao.
+
+## Telas relacionadas
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201): Chamados de garantia que originam as devolucoes.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280): Chamados de vistoria com laudos de garantia.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402): Consulta aos chamados de garantia.
+- [VATC0480 (Consulta Chamados)](/assistencia/vatc0480): Consulta aos chamados com filtros client-side.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Produtos envolvidos nas devolucoes.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Transportadoras para coleta dos produtos.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Caso a troca gere necessidade de compra de produto.

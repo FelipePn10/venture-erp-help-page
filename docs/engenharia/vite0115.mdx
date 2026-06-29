@@ -1,0 +1,62 @@
+---
+sidebar_position: 13
+title: "VITE0115 — Modificadores PDM"
+description: "Cadastro dos modificadores PDM que definem as dimensoes de variacao dos produtos."
+---
+
+# VITE0115 — Modificadores PDM
+
+> Cadastro dos modificadores PDM que representam as dimensoes de configuracao dos produtos, como cor, tamanho, material e outras variaveis.
+
+## Objetivo
+
+Permitir o cadastro e manutencao dos modificadores PDM, que sao as dimensoes pelas quais um produto pode variar. Cada modificador representa uma caracteristica configuravel do produto (ex: Cor, Tamanho, Material, Acabamento) e agrupa os possiveis atributos (ex: para Cor — Azul, Vermelho, Preto). Os modificadores sao a espinha dorsal do sistema de configuracao de produtos, determinando quais escolhas o usuario podera fazer ao configurar um item e como essas escolhas impactam a estrutura e o roteiro do produto final.
+
+## Pre-requisitos
+
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupos PDM aos quais os modificadores serao vinculados.
+- [VITE0114 (Grupos PDM)](/engenharia/vite0114) — Visualizacao dos grupos PDM para identificar onde o modificador sera utilizado.
+
+## Passo a passo
+
+1. Acesse a tela VITE0115 pelo menu Engenharia > Modificadores PDM.
+2. Clique em **Novo** para cadastrar um novo modificador.
+3. Preencha o **Codigo** do modificador com um identificador curto e significativo (ex: "COR", "TAM", "MAT").
+4. Informe a **Descricao** completa do modificador (ex: "Cor do Produto", "Tamanho", "Material de Fabricacao").
+5. Defina o **Tipo de Modificador**: Selecao Unica (escolhe um atributo), Selecao Multipla (escolhe varios) ou Quantitativo (valor numerico, como comprimento).
+6. Se for do tipo **Selecao**, clique em **Atributos** para acessar a tela de [VITE0116 (Atributos PDM)](/engenharia/vite0116) e cadastrar os valores possiveis.
+7. Defina a **Ordem de Exibicao** do modificador, que influencia a sequencia em que aparece no configurador de produtos.
+8. Marque o toggle **Obrigatorio** se o cliente for obrigado a selecionar um valor para este modificador.
+9. Clique em **Salvar** para persistir o modificador.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo | texto | Sim | — | Identificador unico do modificador |
+| Descricao | texto | Sim | — | Nome descritivo do modificador |
+| Tipo de Modificador | select | Sim | Selecao Unica / Selecao Multipla / Quantitativo | Tipo de interacao do modificador |
+| Ordem de Exibicao | numero | Nao | — | Posicao do modificador na sequencia do configurador |
+| Obrigatorio | toggle | Nao | — | Se a escolha de um valor e obrigatoria |
+| Ativo | toggle | Sim | — | Status do modificador no sistema |
+| Valor Padrao | select | Nao | Lista de atributos | Atributo selecionado por padrao |
+| Impacta Estrutura | toggle | Nao | — | Se a escolha altera a BOM do produto |
+| Impacta Roteiro | toggle | Nao | — | Se a escolha altera o roteiro de fabricacao |
+
+## Observacoes importantes
+
+- Modificadores do tipo **Selecao Unica** permitem que o usuario escolha exatamente um atributo (ex: uma cor). Ja **Selecao Multipla** permite escolher varios atributos simultaneamente (ex: acessorios opcionais).
+- O tipo **Quantitativo** permite que o usuario informe um valor numerico em vez de selecionar de uma lista (ex: comprimento em cm, largura em mm).
+- Os toggles **Impacta Estrutura** e **Impacta Roteiro** sao cruciais para o MRP. Quando marcados, o sistema sabe que diferentes escolhas neste modificador exigem diferentes componentes ou operacoes de fabricacao.
+- O **Valor Padrao** e o atributo que aparece pre-selecionado no configurador, agilizando a configuracao para o cenario mais comum.
+- Modificadores inativos nao aparecem no configurador, mas seus dados historicos sao preservados para itens ja gerados.
+- A **Ordem de Exibicao** deve ser planejada considerando a experiencia do usuario, colocando primeiro os modificadores mais importantes ou que impactam escolhas subsequentes.
+
+## Telas relacionadas
+
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos (valores) associados a cada modificador.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM onde os modificadores sao vinculados.
+- [VITE0114 (Grupos PDM)](/engenharia/vite0114): Visualizacao consolidada dos grupos e seus modificadores.
+- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras que utilizam os modificadores como condicoes.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens configurados gerados a partir dos modificadores.
+- [VENG0204 (Regras Variaveis Equivalentes)](/engenharia/veng0204): Equivalencia entre atributos de modificadores diferentes.

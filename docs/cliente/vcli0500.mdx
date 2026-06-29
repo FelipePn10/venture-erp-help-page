@@ -1,0 +1,70 @@
+---
+sidebar_position: 1
+title: "VCLI0500 — Cadastro de Cliente"
+description: "Cadastro completo de clientes organizado em 3 abas — Dados, Endereços e Contatos — com validação automática de CNPJ/CPF."
+---
+
+# VCLI0500 — Cadastro de Cliente
+
+> Tela principal de cadastro de clientes do ERP, organizada em três abas — Dados, Endereços e Contatos — com validação em tempo real de CNPJ e CPF, carregamento dinâmico de tabelas de apoio e controle de status de bloqueio.
+
+## Objetivo
+
+Centralizar todas as informações cadastrais dos clientes da empresa em um único formulário estruturado. A tela permite o registro completo de dados de identificação (razão social, documento, inscrições), endereços múltiplos com tipos específicos (cobrança, entrega, faturamento) e contatos com telefones, e-mails e cargos. A validação automática de CNPJ e CPF garante a integridade dos dados fiscais e comerciais.
+
+## Pré-requisitos
+
+- Ter as tabelas de apoio cadastradas: regiões, segmentos de mercado e tipos de cliente em [VCLI0510](/cliente/vcli0510).
+- Ter condições de pagamento e tabelas de venda configuradas em [VCLI0520](/cliente/vcli0520).
+- Ter transportadoras cadastradas no sistema.
+- Possuir permissão de acesso ao módulo Cliente.
+
+## Passo a Passo
+
+1. Acesse o menu **Cliente > Cadastro de Cliente**.
+2. Clique em **Novo** para iniciar o cadastro de um novo cliente.
+3. Na aba **Dados**, o campo **Código** é gerado automaticamente pelo sistema — não necessita preenchimento.
+4. Preencha a **Razão Social / Nome** do cliente (campo obrigatório) e, opcionalmente, o **Nome Fantasia**.
+5. Selecione o **Tipo de Documento** (CNPJ ou CPF) e informe o número do documento. O sistema validará automaticamente o dígito verificador.
+6. Preencha as **Inscrições Estadual e Municipal**, quando aplicáveis.
+7. Selecione as classificações comerciais: **Região**, **Segmento de Mercado** e **Tipo de Cliente**.
+8. Defina os parâmetros comerciais: **Condição de Pagamento**, **Tabela de Venda** e **Transportadora** padrão.
+9. Informe o **Limite de Crédito** e defina o status de **Bloqueio** conforme política comercial.
+10. Na aba **Endereços**, clique em **Adicionar Endereço** e informe o tipo (Cobrança, Entrega, Faturamento), CEP, logradouro, número, bairro, cidade e UF.
+11. Na aba **Contatos**, clique em **Adicionar Contato** e informe nome, telefone, e-mail e cargo do contato.
+12. Clique em **Salvar** para persistir o cadastro completo.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Código | Numérico (automático) | Sim | — | Gerado automaticamente pelo sistema |
+| Razão Social / Nome | Texto | Sim | — | Nome completo ou razão social do cliente |
+| Nome Fantasia | Texto | Não | — | Nome fantasia do cliente |
+| Tipo Documento | Seleção | Sim | CNPJ / CPF | Tipo de documento fiscal do cliente |
+| Documento | Texto (com validação) | Sim | — | Número do CNPJ ou CPF com validação automática |
+| Inscrição Estadual | Texto | Não | — | Inscrição Estadual do cliente |
+| Inscrição Municipal | Texto | Não | — | Inscrição Municipal do cliente |
+| Região | Seleção | Não | Regiões de VCLI0510 | Região geográfica do cliente |
+| Segmento de Mercado | Seleção | Não | Segmentos de VCLI0510 | Segmento de mercado do cliente |
+| Tipo Cliente | Seleção | Não | Tipos de VCLI0510 | Classificação do tipo de cliente |
+| Condição de Pagamento | Seleção | Não | Condições de VCLI0520 | Condição de pagamento padrão |
+| Tabela de Venda | Seleção | Não | Tabelas de VCLI0520 | Tabela de preços vinculada |
+| Transportadora | Seleção | Não | Transportadoras cadastradas | Transportadora padrão do cliente |
+| Limite de Crédito | Monetário | Não | — | Teto de crédito financeiro do cliente |
+| Bloqueado | Toggle | Não | Ligado / Desligado | Status de bloqueio comercial do cliente |
+
+## Observações
+
+- A validação de CNPJ/CPF ocorre em tempo real no momento da digitação. O sistema exibirá mensagem de erro caso o dígito verificador seja inválido.
+- É possível cadastrar múltiplos endereços para um mesmo cliente, cada um com um tipo específico: Cobrança (para envio de boletos e faturas), Entrega (para logística e transportadoras) e Faturamento (para emissão de notas fiscais).
+- O campo **Limite de Crédito** é utilizado pelo módulo Financeiro e pelo PDV para bloquear automaticamente pedidos que excedam o valor aprovado.
+- O toggle **Bloqueado**, quando ativado, impede a criação de novos pedidos para o cliente em [VPDV0200](/pdv/vpdv0200), sinalizando restrição comercial.
+
+## Telas Relacionadas
+
+- **[VCLI0510 — Apoio Básico de Cliente](/cliente/vcli0510):** Tela de apoio onde são cadastradas as regiões, segmentos e tipos de cliente referenciados nos selects.
+- **[VCLI0520 — Apoio Comercial de Cliente](/cliente/vcli0520):** Tela onde são configuradas as condições de pagamento, tabelas de venda e parâmetros comerciais utilizados neste cadastro.
+- **[VUTL0555 — UFs e Cidades](/contabilidade/vutl0555):** Cadastro de unidades federativas e cidades utilizadas nos endereços do cliente.
+- **[VLOC0100 — Cadastro de Países](/cadastros/vloc0100):** Cadastro de países referenciados nos endereços dos clientes.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde o cliente cadastrado é selecionado para a criação de pedidos de venda.

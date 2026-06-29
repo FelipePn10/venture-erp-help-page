@@ -1,0 +1,144 @@
+---
+sidebar_position: 3
+title: "VPDV0200 — Cadastro de Pedido de Venda"
+description: "Tela principal de pedidos de venda organizada em 3 abas — Dados Gerais (28 campos), Itens e Totais — com suporte a múltiplos status e origens."
+---
+
+# VPDV0200 — Cadastro de Pedido de Venda
+
+> Tela central do módulo PDV, responsável pela criação e edição de pedidos de venda. Organizada em três abas — Dados Gerais (28 campos abrangendo identificação, datas, cliente, parâmetros comerciais e fiscais), Itens (tabela de produtos com quantidades e valores) e Totais (consolidação financeira do pedido) — suportando múltiplos status de fluxo e origens de entrada.
+
+## Objetivo
+
+Servir como a interface principal para todo o ciclo de vida do pedido de venda no ERP. A tela concentra todas as etapas de criação de um pedido: seleção do cliente, definição de parâmetros comerciais e fiscais, inclusão de itens com preços e descontos, e consolidação dos totais com impostos e frete. O pedido interage com praticamente todos os módulos do sistema (Comercial, Cliente, Fiscal, Almoxarifado, Financeiro, Custos), sendo o ponto de convergência entre a área comercial e os demais setores da empresa.
+
+## Pré-requisitos
+
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Ter itens cadastrados em [VENT0200](/engenharia/vent0200).
+- Ter tabelas de venda configuradas em [VCLI0520](/cliente/vcli0520).
+- Ter políticas de desconto ([VPDV0108](/pdv/vpdv0108)) e frete ([VPDV0111](/pdv/vpdv0111)) configuradas, se desejar aplicação automática.
+- Ter parâmetros fiscais do cliente configurados em [VCLI0530](/cliente/vcli0530).
+- Possuir permissão de acesso ao módulo PDV.
+
+## Passo a Passo
+
+### Aba Dados Gerais
+
+1. Acesse o menu **PDV > Cadastro de Pedido de Venda**.
+2. Clique em **Novo** para iniciar um novo pedido. O sistema gera automaticamente o número do pedido e preenche a data de emissão.
+3. Selecione o **Status** inicial do pedido: Rascunho, Pedido VentureWeb, Em Análise, Pedido ERP ou Orçamento.
+4. Escolha a **Origem** do pedido: Normal, Assistência, Cópia, Precificação, Negociação, Importado, Reserva ou Inter-Fábrica.
+5. Informe ou revise as **Datas**: Data de Emissão, Data de Digitação, Data de Entrega e Data de Venda.
+6. No campo **Cliente**, digite o código ou nome do cliente. Os dados do cliente (nome, documento, limites) são carregados automaticamente.
+7. Configure os **Parâmetros Comerciais**: Representante, Plano, Divisão de Venda, Canal de Venda e Comissão (%).
+8. Selecione a **Condição de Pagamento**, **Tabela de Venda** e **Tipo de Frete**.
+9. Configure os **Parâmetros Fiscais**: Tipo de Imposto e Tipo de NF. Estes campos herdam a configuração do cliente, mas podem ser alterados.
+10. Preencha campos adicionais conforme a necessidade: Contato, Transportadora, Dados Adicionais, Observações e Informações de Faturamento.
+
+### Aba Itens
+
+11. Acesse a aba **Itens**.
+12. Clique em **Adicionar Item**.
+13. Informe o código do **Item**. O sistema carrega automaticamente a descrição e o preço da tabela de venda vinculada ao pedido.
+14. Informe a **Quantidade** desejada.
+15. Ajuste o **Valor Unitário** se necessário, respeitando as tolerâncias de desconto e acréscimo configuradas na tabela de venda.
+16. O **Valor Total** da linha é calculado automaticamente (Quantidade x Valor Unitário).
+17. Repita os passos 12 a 16 para cada item do pedido.
+18. Utilize os botões **Editar Item** e **Remover Item** para ajustar a composição do pedido.
+
+### Aba Totais
+
+19. Acesse a aba **Totais** para visualizar a consolidação financeira.
+20. Confira os valores calculados: Valor das Mercadorias, Descontos, IPI, ICMS, PIS, COFINS, Frete, Seguro, Despesas Acessórias e Total Líquido.
+21. Aplique descontos adicionais sobre o total ou ajustes de frete, se necessário e permitido pelas políticas configuradas.
+22. Verifique os totais de impostos conforme as configurações fiscais do cliente.
+23. Retorne à aba Dados Gerais e clique em **Salvar** para persistir o pedido completo.
+
+## Campos
+
+### Aba Dados Gerais (28 campos)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| Status | Seleção | Sim | Situação do pedido: Rascunho / Pedido VentureWeb / Em Análise / Pedido ERP / Orçamento |
+| Pedido (Nº) | Texto (automático) | Sim | Número gerado automaticamente |
+| Origem | Seleção | Sim | Origem: Normal / Assistência / Cópia / Precificação / Negociação / Importado / Reserva / Inter-Fábrica |
+| Data Emissão | Data | Sim | Data de emissão do pedido |
+| Data Digitação | Data | Sim | Data de digitação no sistema |
+| Data Entrega | Data | Sim | Data prevista de entrega |
+| Data Venda | Data | Sim | Data da venda |
+| Cliente (Código) | Texto | Sim | Código do cliente |
+| Nome Cliente | Texto (automático) | Sim | Nome carregado automaticamente |
+| Representante | Seleção | Não | Representante comercial vinculado |
+| Plano | Seleção | Não | Plano de vendas |
+| Divisão de Venda | Seleção | Não | Divisão de vendas vinculada (VVND0100) |
+| Canal de Venda | Seleção | Não | Canal de venda |
+| Comissão (%) | Numérico | Não | Percentual de comissão do representante |
+| Condição de Pagamento | Seleção | Não | Condição de pagamento |
+| Tabela de Venda | Seleção | Não | Tabela de preços aplicada |
+| Tipo de Frete | Seleção | Não | Modalidade do frete |
+| Tipo de Imposto | Seleção | Não | Configuração fiscal de impostos |
+| Tipo de NF | Seleção | Não | Tipo de nota fiscal de saída |
+| Transportadora | Seleção | Não | Transportadora da entrega |
+| Contato | Seleção | Não | Contato do cliente no pedido |
+| Dados Adicionais | Texto longo | Não | Informações complementares |
+| Observação | Texto longo | Não | Observações internas |
+| Endereço de Entrega | Seleção | Não | Endereço de entrega do cliente |
+| Endereço de Cobrança | Seleção | Não | Endereço de cobrança do cliente |
+| Endereço de Faturamento | Seleção | Não | Endereço de faturamento do cliente |
+| Moeda | Seleção | Não | Moeda do pedido |
+| Bloqueado | Toggle | Não | Status de bloqueio do pedido |
+
+### Aba Itens
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| Sequência | Numérico | Sim | Número sequencial da linha do item |
+| Item (Código) | Texto | Sim | Código do item |
+| Descrição | Texto (automático) | Não | Descrição carregada automaticamente |
+| Quantidade | Numérico | Sim | Quantidade do item |
+| Valor Unitário | Monetário | Sim | Preço unitário do item |
+| Valor Total | Monetário (automático) | Sim | Quantidade x Valor Unitário |
+| Desconto (%) | Numérico | Não | Percentual de desconto na linha |
+| IPI (%) | Numérico | Não | Alíquota de IPI do item |
+| ICMS (%) | Numérico | Não | Alíquota de ICMS do item |
+
+### Aba Totais
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| Valor Mercadorias | Monetário (automático) | Soma dos valores totais dos itens |
+| Descontos | Monetário (automático) | Soma dos descontos aplicados |
+| Base IPI | Monetário (automático) | Base de cálculo do IPI |
+| Valor IPI | Monetário (automático) | Valor total de IPI |
+| Base ICMS | Monetário (automático) | Base de cálculo do ICMS |
+| Valor ICMS | Monetário (automático) | Valor total de ICMS |
+| Base PIS/COFINS | Monetário (automático) | Base de cálculo de PIS e COFINS |
+| Valor PIS | Monetário (automático) | Valor total de PIS |
+| Valor COFINS | Monetário (automático) | Valor total de COFINS |
+| Frete | Monetário (automático) | Valor do frete calculado |
+| Seguro | Monetário | Valor do seguro |
+| Despesas Acessórias | Monetário | Outras despesas |
+| Total Líquido | Monetário (automático) | Valor total líquido do pedido |
+
+## Observações
+
+- O número do pedido é gerado automaticamente pelo sistema e segue a sequência configurada no cadastro da empresa. Não é possível editá-lo manualmente.
+- As tolerâncias de desconto e acréscimo são validadas em tempo real com base na tabela de venda selecionada. Se o vendedor ultrapassar os limites, o sistema pode bloquear a operação ou exigir aprovação de supervisor.
+- O status do pedido evolui conforme o fluxo operacional: Rascunho → Em Análise → Liberado → Faturado. Cada transição pode ser controlada por permissões específicas de usuário.
+- A aba Totais é recalculada automaticamente a cada alteração nos itens ou parâmetros. Não é possível editar diretamente os valores totais — eles são sempre derivados dos dados das outras abas.
+- Pedidos com status "Orçamento" não geram movimentações financeiras, fiscais ou de estoque. São utilizados apenas para consulta e podem ser convertidos em pedidos posteriormente.
+- O campo Origem "Cópia" permite duplicar um pedido existente como base para um novo, agilizando pedidos recorrentes.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cliente selecionado no pedido de venda.
+- **[VPDV0108 — Política Comercial de Descontos](/pdv/vpdv0108):** Descontos aplicados automaticamente no pedido.
+- **[VPDV0111 — Política Comercial de Fretes](/pdv/vpdv0111):** Cálculo automático de frete no pedido.
+- **[VCLI0520 — Apoio Comercial de Cliente](/cliente/vcli0520):** Condições de pagamento e tabelas de venda utilizadas no pedido.
+- **[VCLI0530 — Apoio Fiscal de Cliente](/cliente/vcli0530):** Parâmetros fiscais que determinam os impostos calculados nos totais.
+- **[VEXP0100 — Expedição / Romaneio](/almoxarifado/vexp0100):** Para onde o pedido é enviado após liberação para separação e expedição.
+- **[VENT0100 — Consulta de Pedido de Venda](/comercial/vent0100):** Tela de consulta onde os pedidos criados aqui podem ser visualizados.
+- **[VPDV0253 — Console de Acompanhamento](/pdv/vpdv0253):** Console de monitoramento em tempo real dos pedidos.
+- **[VVRE0200 — Console de Vendas Recorrentes](/pdv/vvre0200):** Geração de pedidos recorrentes que são criados nesta mesma tela.

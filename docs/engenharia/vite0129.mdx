@@ -1,0 +1,71 @@
+---
+sidebar_position: 16
+title: "VITE0129 — Replicacao Parametros"
+description: "Ferramenta de replicacao de parametros entre itens com 8 checkboxes de selecao."
+---
+
+# VITE0129 — Replicacao Parametros
+
+> Ferramenta de replicacao em massa de parametros entre itens, com 8 checkboxes que permitem selecionar exatamente quais dados serao copiados.
+
+## Objetivo
+
+Permitir a replicacao seletiva de parametros entre itens de forma agil e controlada. A tela oferece 8 checkboxes que correspondem a diferentes grupos de dados do cadastro de itens (Capa, Estoque, Engenharia, Planejamento, Comercial, Contabil, Suprimentos e Roteiro), permitindo que o usuario escolha exatamente quais conjuntos de parametros serao copiados de um item origem para um ou mais itens destino. Esta ferramenta e essencial para manter a consistencia entre itens similares e agilizar o cadastro de novos itens baseados em modelos existentes.
+
+## Pre-requisitos
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens origem e destino devem estar cadastrados.
+- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202) — Necessario apenas se o checkbox Roteiro estiver selecionado.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210) — Necessario se a replicacao incluir estrutura de produtos.
+
+## Passo a passo
+
+1. Acesse a tela VITE0129 pelo menu Engenharia > Replicacao Parametros.
+2. No campo **Item Origem**, informe o codigo do item que servira como modelo para a replicacao.
+3. No campo **Item Destino**, informe um ou mais codigos de itens que receberao os parametros. Use virgula ou ponto-e-virgula para separar multiplos itens.
+4. Selecione os checkboxes correspondentes aos conjuntos de parametros que deseja replicar:
+   - **Checkbox 1 — Capa**: replica situacao, saude, grupo PDM e flags.
+   - **Checkbox 2 — Estoque**: replica unidade de medida, armazem, controles de estoque.
+   - **Checkbox 3 — Engenharia**: replica tipo de item, tipo de estrutura, dados fisicos.
+   - **Checkbox 4 — Planejamento**: replica tipo de planejamento, parametros de lote, lead time.
+   - **Checkbox 5 — Comercial**: replica tipo de venda, garantia, precos.
+   - **Checkbox 6 — Contabil**: replica NCM, CEST, aliquotas.
+   - **Checkbox 7 — Suprimentos**: replica fornecedores, checklist, parametros de compra.
+   - **Checkbox 8 — Roteiro**: replica o roteiro de fabricacao completo.
+5. Clique em **Simular** para visualizar quais campos serao alterados em cada item destino, sem efetivar a replicacao.
+6. Revise a grade de pre-visualizacao. Campos que serao alterados aparecem destacados em amarelo.
+7. Clique em **Replicar** para executar a copia dos parametros selecionados.
+8. O sistema exibe um resumo da operacao com a quantidade de itens atualizados e campos alterados.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Item Origem | numero | Sim | — | Item modelo de onde os parametros serao copiados |
+| Item Destino | texto (multiplo) | Sim | — | Um ou mais itens que receberao os parametros |
+| Checkbox 1 — Capa | toggle | Nao | — | Replica dados basicos do item |
+| Checkbox 2 — Estoque | toggle | Nao | — | Replica parametros de estoque |
+| Checkbox 3 — Engenharia | toggle | Nao | — | Replica dados de engenharia |
+| Checkbox 4 — Planejamento | toggle | Nao | — | Replica parametros de planejamento |
+| Checkbox 5 — Comercial | toggle | Nao | — | Replica dados comerciais |
+| Checkbox 6 — Contabil | toggle | Nao | — | Replica dados contabeis/fiscais |
+| Checkbox 7 — Suprimentos | toggle | Nao | — | Replica dados de suprimentos |
+| Checkbox 8 — Roteiro | toggle | Nao | — | Replica o roteiro de fabricacao |
+| Sobrescrever Dados Existentes | toggle | Nao | — | Se marcado, sobrescreve dados ja preenchidos no destino |
+
+## Observacoes importantes
+
+- A opcao **Sobrescrever Dados Existentes** controla se parametros ja preenchidos nos itens destino serao substituidos. Com o toggle desmarcado, apenas campos vazios no destino sao preenchidos.
+- A funcionalidade de **Simular** e uma rede de seguranca essencial. Sempre simule antes de replicar para verificar o impacto da operacao.
+- A replicacao de **Roteiro** (Checkbox 8) copia o roteiro de fabricacao inteiro, incluindo todas as operacoes e formulas de tempo. E a opcao com maior impacto e deve ser usada com cautela.
+- E possivel informar uma **faixa de itens** como destino (ex: "1000-1050"), e o sistema replicara para todos os itens dentro dessa faixa.
+- A replicacao e executada em lote e pode levar alguns segundos em casos de muitos itens destino. Aguarde a mensagem de conclusao.
+- Mantenha um backup ou registro das alteracoes, especialmente ao usar a opcao de sobrescrever dados existentes.
+
+## Telas relacionadas
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro de itens origem e destino da replicacao.
+- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202): Roteiro replicado quando o checkbox 8 esta selecionado.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM que pode ser impactada pela replicacao de engenharia.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM influenciados pela replicacao de dados da capa.
+- [VENT0115 (Roteiro Padrao)](/engenharia/vent0115): Alternativa a replicacao: usar roteiros padrao como template.

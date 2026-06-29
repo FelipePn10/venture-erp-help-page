@@ -1,0 +1,58 @@
+---
+sidebar_position: 3
+title: "VEXR0100 — Reprogramação de Entrega"
+description: "Registrar e consultar reprogramações de data de entrega de pedidos com histórico de alterações e motivos."
+---
+
+# VEXR0100 — Reprogramação de Entrega
+
+> Tela dedicada ao registro e consulta de reprogramações de data de entrega de pedidos de venda, permitindo documentar a data original, a nova data, o motivo da alteração e mantendo um histórico completo de todas as modificações.
+
+## Objetivo
+
+Fornecer rastreabilidade completa sobre alterações de data de entrega dos pedidos de venda. Quando fatores como atraso de produção, problemas logísticos ou solicitações do cliente exigem a mudança da data de entrega original, esta tela registra formalmente a reprogramação, garantindo que a área comercial, o cliente e a logística tenham visibilidade sobre o histórico de alterações e os motivos que as justificam.
+
+## Pré-requisitos
+
+- Ter pedidos de venda cadastrados no sistema via [VPDV0200](/pdv/vpdv0200).
+- O pedido a ser reprogramado deve possuir uma data de entrega original preenchida.
+- Possuir permissão de acesso ao módulo Comercial.
+- Conhecer os motivos de reprogramação padronizados pela empresa para selecionar a opção adequada.
+
+## Passo a Passo
+
+1. Acesse o menu **Comercial > Reprogramação de Entrega**.
+2. Clique em **Nova Reprogramação** para abrir o formulário de registro.
+3. Informe o número do **Pedido** que terá a entrega reprogramada. A data original do pedido será carregada automaticamente.
+4. Confira a **Data Original** exibida (campo somente leitura) para garantir que está alterando o pedido correto.
+5. Preencha a **Nova Data** de entrega desejada.
+6. Selecione o **Motivo** da reprogramação entre as opções disponíveis: Atraso na Produção, Problemas Logísticos, Solicitação do Cliente, Pendência com Fornecedor ou Outros.
+7. Caso necessário, preencha o campo **Observação** com detalhes adicionais sobre a reprogramação.
+8. Clique em **Salvar** para registrar a reprogramação.
+9. Para consultar reprogramações já realizadas, preencha os filtros na parte superior e clique em **Pesquisar**.
+10. O histórico de reprogramações será exibido na tabela com data original, nova data, motivo e status de cada registro.
+11. Utilize o botão **Exportar** para gerar relatório com as reprogramações filtradas.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Pedido | Texto | Sim | — | Número do pedido de venda a ser reprogramado |
+| Data Original | Data (somente leitura) | Sim | — | Data de entrega original do pedido, carregada automaticamente |
+| Nova Data | Data | Sim | — | Nova data de entrega proposta |
+| Motivo | Seleção | Sim | Atraso na Produção / Problemas Logísticos / Solicitação do Cliente / Pendência com Fornecedor / Outros | Justificativa da reprogramação |
+| Observação | Texto longo | Não | — | Detalhes adicionais sobre o motivo da alteração |
+| Status | Status (tabela) | — | Pendente / Efetivado / Cancelado | Situação da reprogramação |
+
+## Observações
+
+- Cada reprogramação fica vinculada ao pedido original pelo seu número, permitindo rastrear todo o histórico de alterações de um mesmo pedido.
+- A reprogramação não altera a data de entrega original no pedido — esta permanece registrada para fins de auditoria. A nova data é armazenada separadamente.
+- O campo **Motivo** é de preenchimento obrigatório e deve refletir fielmente a causa da alteração, pois é utilizado em relatórios gerenciais de performance logística.
+- Reprogramações sucessivas para o mesmo pedido são permitidas, criando um histórico cronológico completo de alterações.
+
+## Telas Relacionadas
+
+- **[VENT0100 — Consulta de Pedido de Venda](/comercial/vent0100):** Tela onde os pedidos passíveis de reprogramação podem ser consultados e identificados.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela de origem dos pedidos, onde a data de entrega original é definida no momento do cadastro.
+- **[VPDV0253 — Console de Acompanhamento de Pedidos](/pdv/vpdv0253):** Console que exibe o status atual dos pedidos e pode sinalizar aqueles com entregas reprogramadas.

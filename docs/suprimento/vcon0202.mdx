@@ -1,0 +1,62 @@
+---
+sidebar_position: 4
+title: "VCON0202 — Cancelamento Itens Contrato"
+description: "Ferramenta de cancelamento parcial ou total de itens de contratos de fornecimento."
+---
+
+# VCON0202 — Cancelamento Itens Contrato
+
+> Ferramenta especializada para o cancelamento de itens especificos dentro de contratos de fornecimento, com controle de impacto e documentacao.
+
+## Objetivo
+
+Permitir o cancelamento parcial ou total de itens em contratos de fornecimento vigentes, de forma controlada e documentada. A tela oferece uma interface focada exclusivamente no cancelamento, garantindo que apenas itens sem pedidos de compra vinculados ou com saldo disponivel possam ser cancelados. Cada cancelamento e registrado com justificativa e usuario responsavel, mantendo a trilha de auditoria e atualizando automaticamente o saldo contratual afetado.
+
+## Pre-requisitos
+
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200) — Contratos dos quais os itens serao cancelados devem estar vigentes.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200) — Verificacao de pedidos ja emitidos contra os itens a cancelar.
+
+## Passo a passo
+
+1. Acesse a tela VCON0202 pelo menu Suprimento > Cancelamento Itens Contrato.
+2. Informe o **Numero do Contrato** do qual deseja cancelar itens.
+3. O sistema carrega todos os itens do contrato com seus saldos (quantidade e valor).
+4. Para cada item que deseja cancelar, marque o **checkbox de selecao** na grid.
+5. Informe a **Quantidade a Cancelar** para cada item selecionado (pode ser parcial ou total).
+6. Preencha o campo **Justificativa** para cada cancelamento, explicando o motivo.
+7. Selecione o **Motivo do Cancelamento** na lista padronizada (ex: "Fim de Linha", "Troca de Fornecedor", "Reducao de Demanda").
+8. O sistema exibe o **Impacto Financeiro** total do cancelamento (soma dos itens cancelados x preco).
+9. Anexe documentos de suporte se necessario (comunicacao com fornecedor, aprovacao interna).
+10. Clique em **Confirmar Cancelamento** para efetivar a operacao. O sistema atualiza automaticamente o saldo do contrato.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero do Contrato | numero | Sim | — | Contrato de origem dos itens a cancelar |
+| Itens do Contrato | tabela | Nao | — | Grid com todos os itens e seus saldos |
+| Selecionar | checkbox | Nao | — | Marcar itens a serem cancelados |
+| Quantidade a Cancelar | numero | Sim (se selecionado) | — | Quantidade a cancelar (parcial ou total) |
+| Justificativa | texto | Sim | — | Motivo detalhado do cancelamento |
+| Motivo do Cancelamento | select | Sim | Lista de motivos | Classificacao padronizada do motivo |
+| Impacto Financeiro | numero | Nao | — | Valor total sendo cancelado |
+| Documento de Suporte | arquivo | Nao | — | Evidencias ou aprovacoes anexas |
+| Usuario Responsavel | texto | Nao | — | Preenchido automaticamente com o usuario logado |
+
+## Observacoes importantes
+
+- **Itens com pedidos de compra ja emitidos** nao podem ser cancelados. E necessario primeiro cancelar ou estornar os pedidos de compra vinculados.
+- O cancelamento **parcial** e permitido: e possivel cancelar apenas uma parte da quantidade contratada, mantendo o saldo remanescente ativo.
+- A **Justificativa** e de preenchimento obrigatorio e fica registrada no historico do contrato para fins de auditoria e gestao de fornecedores.
+- O **Impacto Financeiro** calculado automaticamente auxilia na tomada de decisao, mostrando o montante que deixara de ser comprometido com o fornecedor.
+- Cancelamentos sao **irreversiveis** — uma vez confirmados, os itens cancelados nao podem ser reativados. E necessario criar um novo aditivo contratual se necessario.
+- O fornecedor **nao e notificado automaticamente** pelo sistema. A comunicacao formal com o fornecedor deve ser feita pelos canais oficiais da empresa.
+
+## Telas relacionadas
+
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos que contem os itens a serem cancelados.
+- [VCON0400 (Consulta Contratos)](/suprimento/vcon0400): Consulta para verificar contratos e saldos apos cancelamentos.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra que bloqueiam o cancelamento de itens.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores impactados pelos cancelamentos.
+- [VCON0100 (Tipos de Contratos)](/suprimento/vcon0100): Tipos de contrato que podem influenciar regras de cancelamento.

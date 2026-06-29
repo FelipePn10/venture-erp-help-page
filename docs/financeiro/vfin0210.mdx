@@ -1,0 +1,76 @@
+---
+sidebar_position: 6
+title: "VFIN0210 — Contas a Receber"
+description: "Lancar, baixar e cancelar contas a receber."
+---
+
+# VFIN0210 — Contas a Receber
+
+> Lancar, baixar e cancelar contas a receber; dashboard de aging.
+
+**Codigo fonte:** `src/components/screens/financeiro/Vfin0210Page.tsx`
+
+## Objetivo
+
+Gerenciar o ciclo de vida dos titulos a receber. Diferente de Contas a Pagar, nao ha fluxo de aprovacao — titulos entram diretamente no status "pendente" e podem ser baixados ou cancelados. Os status possiveis sao: pendente, pago, parcial e cancelado. O modo listagem exibe dashboard de aging com faixas de vencimento e tabela de titulos. O painel de baixa suporta recebimento parcial.
+
+## Pre-requisitos
+
+- Ter contas bancarias cadastradas em **VFIN0100 (Contas Bancarias)** para registrar recebimentos.
+- Clientes devem estar cadastrados para vinculacao ao titulo.
+
+## Passo a passo
+
+1. Acesse **Financeiro > Contas a Receber** (VFIN0210).
+2. O modo listagem exibe o dashboard de aging no topo e a tabela de titulos.
+3. Para criar um novo titulo, clique em **+ Nova Conta**.
+4. Preencha: Numero do Documento, Cliente, Emissao, Vencimento, Valor Bruto, Desconto, Parcelas e Observacao.
+5. Clique em **Salvar**. O titulo entra com status "pendente".
+6. Para receber, clique em **Baixar** na linha do titulo:
+   - Selecione a **Conta Bancaria** (de VFIN0100).
+   - Informe o **Valor Recebido** e a **Data de Recebimento**.
+   - Clique em **Confirmar Baixa**.
+7. Para cancelar, clique em **Cancelar**.
+8. Para exportar, use o botao **Exportar**.
+
+## Campos
+
+### Criacao de Titulo
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Nº Documento | texto | Sim | — | Numero do documento (ex: "NF-1001") |
+| Cliente (ID) | numero | Nao | — | ID do cliente devedor |
+| NF Saida (ID) | numero | Nao | — | ID da nota fiscal de saida vinculada |
+| Forma Pagamento | texto | Nao | — | Meio de recebimento (default "boleto") |
+| Valor Bruto | numero | Sim | — | Valor total do titulo |
+| Emissao | data | Sim | — | Data de emissao (default hoje) |
+| Vencimento | data | Sim | — | Data de vencimento (default hoje) |
+| Desconto | numero | Nao | — | Desconto concedido |
+| Parc. nº | numero | Nao | — | Numero da parcela |
+| Parc. tot. | numero | Nao | — | Total de parcelas |
+| Observacao | texto | Nao | — | Texto livre |
+
+### Baixa
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Conta Bancaria | selecao | Sim | Contas de VFIN0100 | Conta do recebimento |
+| Valor Recebido | numero | Sim | — | Valor a receber |
+| Data Recebimento | data | Sim | — | Data do recebimento (default hoje) |
+| Observacao | texto | Nao | — | Observacao da baixa |
+
+## Observacoes importantes
+
+- Nao ha fluxo de aprovacao — titulos a receber ja entram disponiveis para baixa.
+- Recebimento parcial e suportado: o valor recebido pode ser menor que o valor do titulo.
+- O dashboard de aging e atualizado conforme os filtros aplicados.
+- O cancelamento e irreversivel.
+- Os status sao exibidos com pills coloridas: verde = pago, ambar = pendente, vermelho = cancelado.
+
+## Telas relacionadas
+
+- **[VFIN0100 (Contas Bancarias)](/financeiro/vfin0100):** Contas utilizadas no recebimento.
+- **[VFIN0300 (Fluxo de Caixa)](/financeiro/vfin0300):** Alimenta o fluxo com os recebimentos.
+- **[VFIN0500 (Relatorios)](/financeiro/vfin0500):** Relatorios R09 (Aging Receber Detalhado) e R12 (Extrato por Cliente).
+- **[VFIS0200 (NF-e de Saida)](/fiscal/vfis0200):** Emissao de NF-e pode gerar titulos a receber automaticamente.

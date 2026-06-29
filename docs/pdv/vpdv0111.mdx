@@ -1,0 +1,92 @@
+---
+sidebar_position: 2
+title: "VPDV0111 — Política Comercial de Fretes"
+description: "Cadastro de políticas de frete com chips multiselect (máximo 6 selecionáveis) e modal com 8 blocos de configuração para cálculo automático nos pedidos."
+---
+
+# VPDV0111 — Política Comercial de Fretes
+
+> Tela de cadastro das políticas comerciais de frete que determinam automaticamente o valor do frete nos pedidos de venda, com chips multiselect para seleção de até 6 parâmetros combináveis e um modal de configuração avançada organizado em 8 blocos distintos.
+
+## Objetivo
+
+Permitir a criação de políticas de frete flexíveis e combináveis que calculam automaticamente o valor do frete nos pedidos de venda. A interface utiliza chips multiselect (limitados a 6 seleções simultâneas) para que o usuário combine diferentes critérios de aplicação — como transportadora, faixa de CEP, faixa de valor, faixa de peso e tipo de frete. O modal de configuração é organizado em 8 blocos que cobrem todos os aspectos da política: identificação, abrangência geográfica, parâmetros de carga, regras de valor, transportadora, vigência, condições especiais e simulação. Esta estrutura modular garante que todas as dimensões do cálculo de frete sejam cobertas de forma organizada e intuitiva.
+
+## Pré-requisitos
+
+- Ter transportadoras cadastradas no sistema.
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Conhecer as tabelas de frete praticadas pelas transportadoras para configurar valores e faixas corretamente.
+- Possuir permissão de acesso ao módulo PDV.
+
+## Passo a Passo
+
+1. Acesse o menu **PDV > Política Comercial de Fretes**.
+2. Clique em **Novo** para criar uma nova política de frete.
+3. Na seção de **Identificação** (Bloco 1), informe o **Código** e a **Descrição** da política.
+4. Nos **Chips Multiselect**, selecione até 6 parâmetros de aplicação: Transportadora, Faixa de CEP, Faixa de Valor, Faixa de Peso, Tipo de Frete e Cliente/Grupo. Os chips selecionados determinam quais blocos de configuração estarão ativos no modal.
+5. Abra o modal de configuração e preencha os 8 blocos:
+
+   **Bloco 1 — Identificação:** Confirme código, descrição e status Ativo.
+
+   **Bloco 2 — Abrangência Geográfica:** Informe CEP Início e CEP Fim da faixa de abrangência. Deixe em branco para política nacional.
+
+   **Bloco 3 — Parâmetros de Carga:** Defina Peso Mínimo (kg), Peso Máximo (kg) e, opcionalmente, cubagem (m³).
+
+   **Bloco 4 — Regras de Valor:** Configure Valor Mínimo do Pedido, Valor Máximo do Pedido, Percentual de Frete (%) e Valor Fixo de Frete. O sistema aplica o percentual sobre o valor da mercadoria; caso o resultado seja inferior ao Valor Fixo, este prevalece.
+
+   **Bloco 5 — Transportadora:** Selecione a transportadora vinculada à política. O campo aceita múltiplas transportadoras se o chip correspondente estiver ativo.
+
+   **Bloco 6 — Vigência:** Informe Data Início e Data Fim para políticas temporárias. Deixe em branco para políticas permanentes.
+
+   **Bloco 7 — Condições Especiais:** Defina Tipo de Frete (CIF/FOB), Valor Mínimo de Frete (piso) e se a política se aplica a fretes de devolução.
+
+   **Bloco 8 — Simulação:** Utilize os campos de simulação para testar a política com dados de exemplo (CEP, valor, peso) e verificar o frete calculado antes de ativar.
+
+6. Após preencher todos os blocos aplicáveis, clique em **Salvar** para persistir a política.
+7. Para testar uma política existente, utilize a função **Calcular Simulação**.
+8. Utilize os botões **Editar**, **Clonar** e **Remover** para gerenciar políticas.
+9. Clique em **Exportar** para gerar relatório com todas as políticas cadastradas.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Bloco | Descrição |
+|-------|------|-------------|-------|-----------|
+| Código | Texto | Sim | 1 — Identificação | Código único da política de frete |
+| Descrição | Texto | Sim | 1 — Identificação | Nome descritivo da política |
+| Chips Multiselect | Multi-Seleção | Sim | Tela principal | Até 6 parâmetros: Transportadora / CEP / Valor / Peso / Tipo Frete / Cliente |
+| CEP Início | Texto | Não | 2 — Abrangência | CEP inicial da faixa de cobertura |
+| CEP Fim | Texto | Não | 2 — Abrangência | CEP final da faixa de cobertura |
+| Peso Mínimo (kg) | Numérico | Não | 3 — Parâmetros | Peso mínimo da carga para aplicação |
+| Peso Máximo (kg) | Numérico | Não | 3 — Parâmetros | Peso máximo da carga para aplicação |
+| Cubagem (m³) | Numérico | Não | 3 — Parâmetros | Volume máximo da carga para aplicação |
+| Valor Mínimo Pedido | Monetário | Não | 4 — Regras | Valor mínimo do pedido para aplicar a política |
+| Valor Máximo Pedido | Monetário | Não | 4 — Regras | Valor máximo do pedido para aplicar a política |
+| Percentual Frete (%) | Numérico | Não | 4 — Regras | Percentual sobre o valor da mercadoria |
+| Valor Fixo Frete | Monetário | Não | 4 — Regras | Valor fixo de frete |
+| Transportadora | Seleção | Sim | 5 — Transportadora | Transportadora vinculada à política |
+| Data Início | Data | Não | 6 — Vigência | Data de início da vigência |
+| Data Fim | Data | Não | 6 — Vigência | Data de término da vigência |
+| Tipo Frete | Seleção | Sim | 7 — Condições | CIF / FOB |
+| Valor Mínimo Frete | Monetário | Não | 7 — Condições | Piso de valor de frete |
+| Frete Devolução | Toggle | Não | 7 — Condições | Aplica-se a fretes de devolução |
+| Simulação CEP | Texto | Não | 8 — Simulação | CEP para teste de simulação |
+| Simulação Valor | Monetário | Não | 8 — Simulação | Valor do pedido para simulação |
+| Simulação Peso | Numérico | Não | 8 — Simulação | Peso para simulação |
+| Ativo | Toggle | Sim | 1 — Identificação | Status de ativação da política |
+
+## Observações
+
+- O limite de 6 chips multiselect simultâneos garante que as políticas permaneçam gerenciáveis. Selecionar todos os parâmetros de uma vez pode resultar em políticas excessivamente restritivas que raramente se aplicam.
+- O Bloco 8 (Simulação) é uma ferramenta poderosa para validar políticas antes da ativação. Utilize-a sempre que criar ou modificar políticas para garantir que os valores calculados estão corretos.
+- Quando múltiplas políticas de frete se aplicam a um mesmo pedido, a política mais específica prevalece sobre as mais genéricas (ex.: uma política com CEP específico prevalece sobre uma política nacional).
+- O Valor Mínimo de Frete (Bloco 7) funciona como um piso — mesmo que o percentual calculado resulte em R$ 5,00, se o piso for R$ 15,00, este será o valor cobrado.
+- Políticas de frete interagem com os percentuais de frete por cliente definidos em [VCLI0202](/cliente/vcli0202). As políticas específicas por cliente têm precedência sobre as políticas gerais.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cliente referenciado nas políticas de frete quando o chip Cliente está ativo.
+- **[VCLI0202 — Percentuais de Frete](/cliente/vcli0202):** Percentuais específicos por cliente que têm precedência sobre as políticas gerais de frete.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as políticas de frete são aplicadas automaticamente no cálculo do pedido.
+- **[VPDV0108 — Política Comercial de Descontos](/pdv/vpdv0108):** Políticas de desconto que podem interagir com o cálculo de frete no valor total do pedido.
+- **[VPLC0200 — Montagem de Carga](/planejamento/vplc0200):** Tela de planejamento logístico que utiliza as políticas de frete na consolidação de cargas.

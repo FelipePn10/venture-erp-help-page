@@ -1,0 +1,80 @@
+---
+sidebar_position: 9
+title: "VFIN0500 — Relatorios Financeiros"
+description: "Relatorios R01–R19: livros fiscais, DRE, aging, curva ABC."
+---
+
+# VFIN0500 — Relatorios Financeiros
+
+> Central de relatorios R01–R19: livros fiscais, DRE, aging, curva ABC e produtos.
+
+**Codigo fonte:** `src/components/screens/financeiro/Vfin0500Page.tsx`
+
+## Objetivo
+
+Consolidar 19 relatorios financeiros e fiscais em uma unica interface unificada. A tela utiliza um sistema inteligente de parametros dinamicos: cada relatorio declara seu tipo (range, none, entity, item) que determina quais controles de filtro sao exibidos. O resultado pode ser exibido em formato "single" (tabela chave-valor) ou tabular (colunas dinamicas).
+
+## Pre-requisitos
+
+- Dados financeiros e fiscais registrados no sistema conforme o relatorio desejado.
+- Para relatorios com periodo: ter movimentacoes no intervalo informado.
+- Para relatorios por entidade: ter o ID do fornecedor ou cliente.
+- Para R05 (DRE): plano de contas (VFIN0120) configurado.
+
+## Passo a passo
+
+1. Acesse **Financeiro > Relatorios** (VFIN0500).
+2. Selecione o **Relatorio** desejado na lista suspensa (R01 a R19).
+3. Os campos de filtro aparecem dinamicamente conforme o tipo de relatorio:
+   - **Periodo:** informe Data Inicio e Data Fim.
+   - **Entidade:** informe o ID do fornecedor ou cliente.
+   - **Item:** informe o codigo do item.
+   - **Sem filtro:** nenhum parametro adicional necessario.
+4. Clique em **Gerar**.
+5. O resultado e exibido em tabela. Para relatorios "single", o formato e chave-valor. Para tabulares, colunas dinamicas.
+6. Use **Exportar** para gerar planilha do resultado.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Relatorio | selecao | Sim | R01 a R19 | Selecao do relatorio |
+| Periodo Inicio | data | Condicional | — | Para relatorios com periodo |
+| Periodo Fim | data | Condicional | — | Para relatorios com periodo |
+| ID Fornecedor / Cliente / Item | texto | Condicional | — | Para relatorios por entidade/item |
+
+## Relatorios Disponiveis
+
+| Codigo | Nome | Tipo de Filtro |
+|--------|------|----------------|
+| R01 | Livro de Entradas | Periodo |
+| R02 | Livro de Saidas | Periodo |
+| R03 | Impostos das Saidas | Periodo |
+| R04 | Impostos das Entradas | Periodo |
+| R05 | DRE | Periodo |
+| R09 | Aging Receber Detalhado | Sem filtro |
+| R10 | Aging Pagar Detalhado | Sem filtro |
+| R11 | Extrato por Fornecedor | Entidade (ID Fornecedor) |
+| R12 | Extrato por Cliente | Entidade (ID Cliente) |
+| R13 | Produtos Vendidos | Periodo |
+| R14 | Produtos Produzidos | Periodo |
+| R15 | Historico de Custos | Periodo |
+| R16 | Ficha Tecnica com Custo | Item (Codigo do Item) |
+| R17 | Curva ABC de Clientes | Periodo |
+| R18 | Curva ABC de Produtos | Periodo |
+| R19 | Compras no Periodo | Periodo |
+
+## Observacoes importantes
+
+- O tipo de filtro e gerenciado dinamicamente pelo sistema; campos irrelevantes para o relatorio selecionado sao ocultados automaticamente.
+- O R05 (DRE) depende da estrutura do plano de contas (VFIN0120) para consolidacao correta.
+- Relatorios de aging (R09, R10) nao necessitam de filtro de periodo — exibem a situacao atual dos titulos.
+- O formato de saida (single vs tabular) e definido pelo tipo de dados que o relatorio retorna.
+
+## Telas relacionadas
+
+- **[VFIN0120 (Plano de Contas)](/financeiro/vfin0120):** Estrutura base para o relatorio R05 (DRE).
+- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Dados fonte para R10 e R11.
+- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Dados fonte para R09 e R12.
+- **[VFIS0200 (NF-e de Saida)](/fiscal/vfis0200):** Dados fonte para R02 e R03.
+- **[VFIS0210 (NF-e de Entrada)](/fiscal/vfis0210):** Dados fonte para R01 e R04.

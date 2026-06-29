@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+title: "VCLA0100 — Classificacao Itens"
+description: "Classificacoes hierarquicas de itens com mascaras."
+---
+
+# VCLA0100 — Classificacao Itens
+
+> Cadastro hierarquico de classificacoes de itens com mascaras formatadas.
+
+**Codigo fonte:** `src/components/screens/cadastros/Vcla0100Page.tsx`
+
+## Objetivo
+
+Gerenciar a classificacao hierarquica de itens em dois niveis: mascaras de classificacao (template) e classificacoes dentro de cada mascara. As mascaras definem o formato (ex: `99.99.99`) e as classificacoes preenchem a hierarquia. Utilizado pelo cadastro de itens (VENT0200) e por regras de restricao de venda (VCLI0117) para categorizar produtos.
+
+## Pre-requisitos
+
+- Nenhum. Esta tela e autonoma.
+- Recomenda-se planejar a estrutura de mascaras e classificacoes antes do cadastro em massa.
+
+## Passo a passo
+
+1. Acesse **Cadastros > Classificacao Itens** (VCLA0100).
+2. Primeiro, crie uma mascara:
+   - Clique em **Adicionar** na secao de mascaras.
+   - Informe **Descricao** (ex: "Classificacao Fiscal") e **Formato** (ex: `99.99.99`).
+   - Clique em **Salvar**.
+3. Com a mascara criada, selecione-a para visualizar suas classificacoes.
+4. Para adicionar uma classificacao:
+   - Clique em **Adicionar** na secao de classificacoes.
+   - Informe **Codigo**, **Descricao** e opcionalmente **Codigo Pai**.
+   - Clique em **Salvar**.
+5. Use **Recarregar** para atualizar os dados e **Exportar** para gerar planilha.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Mascara — Descricao | texto | Sim | — | Nome da mascara |
+| Mascara — Formato | texto | Sim | — | Formato (ex: "99.99.99") |
+| Classificacao — Codigo | texto | Sim | — | Codigo da classificacao |
+| Classificacao — Descricao | texto | Sim | — | Nome da classificacao |
+| Classificacao — Codigo Pai | texto | Nao | — | Vinculo hierarquico |
+
+## Observacoes importantes
+
+- A mascara define o padrao de formato; `9` representa um digito numerico, outros caracteres sao literais.
+- A hierarquia de classificacoes e determinada pelo campo Codigo Pai.
+- Classificacoes sao amplamente utilizadas em regras fiscais e comerciais — alteracoes devem ser planejadas.
+- E possivel ter multiplas mascaras para diferentes finalidades (fiscal, comercial, estoque, etc.).
+
+## Telas relacionadas
+
+- **[VENT0200 (Cadastro de Itens)](/engenharia/vent0200):** Classificacoes usadas no cadastro de itens.
+- **[VCLI0117 (Regras de Restricao de Venda)](/cliente/vcli0117):** Classificacoes usadas em regras de restricao de venda.

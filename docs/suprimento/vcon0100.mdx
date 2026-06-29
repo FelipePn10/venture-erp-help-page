@@ -1,0 +1,66 @@
+---
+sidebar_position: 2
+title: "VCON0100 — Tipos de Contratos"
+description: "Cadastro dos tipos de contratos de fornecimento utilizados no modulo de suprimentos."
+---
+
+# VCON0100 — Tipos de Contratos
+
+> Cadastro dos tipos de contratos que classificam os acordos comerciais com fornecedores, definindo caracteristicas e comportamentos padrao.
+
+## Objetivo
+
+Permitir a definicao dos tipos de contratos de fornecimento que serao utilizados no modulo de suprimentos. Cada tipo de contrato estabelece um conjunto de regras e comportamentos padrao, como: permitir aditivos, controlar saldo, exigir aprovacao para liberacao, gerar pedidos automaticamente, entre outros. A classificacao por tipos facilita a gestao de contratos e permite que a empresa defina politicas diferentes para cada categoria (ex: contrato de materia-prima, contrato de servico, contrato de manutencao, contrato de frete).
+
+## Pre-requisitos
+
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200) — Contratos que utilizarao os tipos aqui definidos.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedores que serao partes nos contratos.
+
+## Passo a passo
+
+1. Acesse a tela VCON0100 pelo menu Suprimento > Tipos de Contratos.
+2. Clique em **Novo** para cadastrar um novo tipo de contrato.
+3. Preencha o **Codigo** do tipo de contrato (ex: "MP" para Materia-Prima, "SERV" para Servicos).
+4. Informe a **Descricao** detalhada do tipo de contrato.
+5. Configure os **toggles de comportamento** que definem as regras aplicaveis a este tipo:
+   - **Permite Aditivos**: Possibilita alteracoes contratuais via aditivos.
+   - **Controla Saldo**: Exige que o valor total dos pedidos emitidos nao ultrapasse o valor do contrato.
+   - **Exige Aprovacao**: Requer aprovacao de um gestor para liberacao do contrato.
+   - **Geracao Automatica de Pedidos**: Permite que o sistema gere pedidos automaticamente conforme cronograma do contrato.
+   - **Permite Entrega Parcial**: Autoriza entregas fracionadas dos itens contratados.
+6. Defina o **Fluxo de Aprovacao** padrao, se o toggle de aprovacao estiver ativo.
+7. Configure **Validade Maxima** padrao em meses para contratos deste tipo.
+8. Clique em **Salvar** para armazenar o tipo de contrato.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo | texto | Sim | — | Identificador unico do tipo de contrato |
+| Descricao | texto | Sim | — | Nome descritivo do tipo de contrato |
+| Permite Aditivos | toggle | Nao | — | Habilita a funcionalidade de aditivos contratuais |
+| Controla Saldo | toggle | Nao | — | Bloqueia pedidos que excedam o valor contratado |
+| Exige Aprovacao | toggle | Nao | — | Contratos deste tipo requerem aprovacao formal |
+| Geracao Automatica de Pedidos | toggle | Nao | — | Permite geracao automatica de pedidos de compra |
+| Permite Entrega Parcial | toggle | Nao | — | Autoriza entregas parciais dos itens do contrato |
+| Validade Maxima (meses) | numero | Nao | — | Duracao maxima permitida para contratos deste tipo |
+| Fluxo de Aprovacao | select | Condicional | Lista de fluxos | Workflow de aprovacao (obrigatorio se toggle ativo) |
+| Ativo | toggle | Sim | — | Status do tipo de contrato |
+
+## Observacoes importantes
+
+- O toggle **Controla Saldo** e essencial para garantir que os valores contratados nao sejam ultrapassados sem autorizacao formal via aditivo contratual.
+- A **Validade Maxima** e uma trava de seguranca: ao tentar salvar um contrato com duracao superior ao permitido pelo tipo, o sistema emite um alerta e bloqueia a operacao.
+- Tipos de contrato com **Geracao Automatica de Pedidos** sao utilizados tipicamente para fornecimentos continuos, onde o sistema cria pedidos automaticamente conforme a periodicidade definida no contrato.
+- O **Fluxo de Aprovacao** define quantos niveis hierarquicos devem aprovar o contrato e em qual sequencia, garantindo governanca sobre compromissos financeiros.
+- Alteracoes nos tipos de contrato **nao afetam** contratos ja existentes, que mantem as configuracoes vigentes no momento de sua criacao.
+- E recomendavel ter tipos de contrato distintos para naturezas diferentes (produtos vs. servicos vs. fretes), pois as regras de gestao sao intrinsecamente diferentes.
+
+## Telas relacionadas
+
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos que utilizam os tipos aqui definidos.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores partes nos contratos.
+- [VCON0202 (Cancelamento Itens Contrato)](/suprimento/vcon0202): Cancelamento de itens que respeita as regras do tipo de contrato.
+- [VCON0400 (Consulta Contratos)](/suprimento/vcon0400): Consulta que permite filtrar por tipo de contrato.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra gerados a partir dos contratos.

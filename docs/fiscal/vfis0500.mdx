@@ -1,0 +1,54 @@
+---
+sidebar_position: 13
+title: "VFIS0500 — Motivos Transferencia DAPI"
+description: "Cadastro dos motivos de transferencia de creditos utilizados na Declaracao de Apuracao do ICMS (DAPI)."
+---
+
+# VFIS0500 — Motivos Transferencia DAPI
+
+> Tela de cadastro dos motivos legais de transferencia de creditos de ICMS entre estabelecimentos, utilizados na elaboracao da DAPI (Declaracao de Apuracao de ICMS) conforme legislacao estadual.
+
+**Codigo fonte:** `src/modules/fiscal/dapi-transfer-reasons/vfis0500.vue`
+
+## Objetivo
+
+A VFIS0500 gerencia os motivos de transferencia de creditos de ICMS entre estabelecimentos da mesma empresa ou entre empresas distintas, conforme permitido pela legislacao de cada estado. A DAPI (Declaracao de Apuracao de ICMS) — tambem conhecida como GIA/ICMS em alguns estados — exige que toda transferencia de credito seja fundamentada com um motivo legal especifico. Esta tela cadastra os codigos e descricoes desses motivos, que serao referenciados nos lancamentos de transferencia de credito (VFIS0540) e exportados para o arquivo da DAPI.
+
+## Pre-requisitos
+
+- **Conhecimento da legislacao estadual:** Os motivos de transferencia variam por estado. Consulte a legislacao do seu estado (RICMS e Decretos) para identificar os motivos validos.
+- **VFIS0540 (Lancamentos Resumo ICMS):** Os motivos cadastrados aqui serao utilizados na VFIS0540 para registrar transferencias de credito.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Tabelas > Motivos Transferencia DAPI (VFIS0500)**.
+2. A grade principal lista todos os motivos de transferencia ja cadastrados, agrupados por estado.
+3. Para **criar um novo motivo**, clique em **Novo**.
+4. Selecione a **UF** (estado) a qual o motivo se aplica. Cada estado pode ter seus proprios motivos de transferencia.
+5. Informe o **Codigo do Motivo** conforme a legislacao estadual (ex: "01", "02", "TRANSF_CRED", etc.).
+6. Preencha a **Descricao** do motivo (ex: "Transferencia de credito acumulado entre estabelecimentos do mesmo titular", "Transferencia de saldo credor por cisao/fusao/incorporacao", "Transferencia de credito decorrente de exportacao").
+7. Marque o checkbox **Ativo** para que o motivo apareca nas listas de selecao.
+8. Repita o processo para cada UF onde a empresa opera.
+9. Clique em **Salvar**.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| UF | Select | Sim | UFs brasileiras | Estado ao qual o motivo se aplica. |
+| Codigo | Texto (20) | Sim | — | Codigo do motivo conforme legislacao estadual. |
+| Descricao | Texto (200) | Sim | — | Descricao do motivo de transferencia de credito. |
+| Ativo | Checkbox | Sim | Sim / Nao | Indica se o motivo esta ativo para uso. |
+
+## Observacoes importantes
+
+- **Variacao por estado:** Cada estado possui sua propria tabela de motivos de transferencia de credito. Por exemplo, Sao Paulo utiliza uma tabela especifica na GIA/SP, enquanto Minas Gerais utiliza outra na DAPI/MG. Cadastre os motivos para cada UF onde a empresa possui inscricao estadual.
+- **Fundamentacao legal:** As transferencias de credito devem ter amparo na legislacao. Alguns motivos comuns incluem: transferencia entre estabelecimentos do mesmo titular (art. 58 do RICMS), cisao/fusao/incorporacao (art. 59), e creditos acumulados de exportacao (Lei Kandir — LC 87/96).
+- **Exportacao DAPI:** Ao exportar a DAPI (arquivo digital da apuracao), o sistema inclui o codigo do motivo de transferencia conforme cadastrado. Certifique-se de que os codigos correspondem exatamente aos exigidos pela SEFAZ do estado para evitar rejeicao do arquivo.
+
+## Telas relacionadas
+
+- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao do ICMS onde as transferencias de credito sao consolidadas.
+- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos fiscais que incluem as transferencias de credito entre estabelecimentos.
+- **[VFIS0550 (Restituicao ICMS ST)](/fiscal/vfis0550):** Restituicao de ICMS-ST, que pode envolver transferencia de credito.
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao da empresa emitente com IE por estado.

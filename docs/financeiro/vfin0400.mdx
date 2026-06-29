@@ -1,0 +1,53 @@
+---
+sidebar_position: 8
+title: "VFIN0400 — Apuracao de Impostos"
+description: "Apurar ICMS/IPI/PIS/COFINS por competencia."
+---
+
+# VFIN0400 — Apuracao de Impostos
+
+> Apurar ICMS/IPI/PIS/COFINS por competencia mensal.
+
+**Codigo fonte:** `src/components/screens/financeiro/Vfin0400Page.tsx`
+
+## Objetivo
+
+Processar e exibir a apuracao de impostos indiretos (ICMS, IPI, PIS, COFINS) por competencia mensal. A tela opera de forma assincrona: "Apurar" executa o calculo baseado nos dados fiscais do periodo; "Consultar" recupera uma apuracao previamente processada. O resultado e exibido em uma tabela com quatro linhas (ICMS, IPI, PIS, COFINS), cada uma mostrando valor das Saidas (debito), valor das Entradas (credito) e Saldo a Recolher (saidas - entradas).
+
+## Pre-requisitos
+
+- Notas fiscais de saida (VFIS0200) e de entrada (VFIS0210) processadas no periodo de apuracao.
+- Configuracao fiscal (VFIS0100) com aliquotas e regime tributario definidos.
+
+## Passo a passo
+
+1. Acesse **Financeiro > Apuracao de Impostos** (VFIN0400).
+2. Informe a **Competencia** no formato YYYY-MM (ex: `2026-06`). O default e o mes atual.
+3. Clique em **Apurar** para processar os calculos com base nos dados fiscais do periodo.
+4. Aguarde o processamento. A tabela exibira quatro linhas:
+   - **ICMS** — Saidas (debito), Entradas (credito), Saldo a Recolher
+   - **IPI** — Saidas, Entradas, Saldo
+   - **PIS** — Saidas, Entradas, Saldo
+   - **COFINS** — Saidas, Entradas, Saldo
+5. Para visualizar uma apuracao ja processada anteriormente, informe a competencia e clique em **Consultar**.
+6. Use **Exportar** para gerar planilha com os dados da apuracao.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Competencia | texto | Sim | — | Periodo de apuracao no formato YYYY-MM (default mes atual) |
+
+## Observacoes importantes
+
+- Os debitos vem das notas fiscais de saida (VFIS0200); os creditos das notas de entrada (VFIS0210).
+- O Saldo a Recolher = total de saidas - total de entradas.
+- A apuracao e calculada por competencia mensal. Certifique-se de que todas as notas do periodo estao processadas antes de apurar.
+- O processamento e assincrono; aguarde a conclusao antes de consultar os resultados.
+
+## Telas relacionadas
+
+- **[VFIS0200 (NF-e de Saida)](/fiscal/vfis0200):** Gera debitos de impostos.
+- **[VFIS0210 (NF-e de Entrada)](/fiscal/vfis0210):** Gera creditos de impostos.
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Aliquotas e regime tributario.
+- **[VFIS0340 (Apuracao Simples Nacional)](/fiscal/vfis0340):** Similar para regime Simples Nacional.

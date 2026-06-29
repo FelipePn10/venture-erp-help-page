@@ -1,0 +1,71 @@
+---
+sidebar_position: 4
+title: "VENT0202 — Roteiro de Fabricacao"
+description: "Definicao das operacoes de fabricacao por item com formulas de tempo e centros de trabalho."
+---
+
+# VENT0202 — Roteiro de Fabricacao
+
+> Definicao das operacoes e sequencias de fabricacao para cada item produzido, incluindo formulas de calculo de tempo e associacao a centros de trabalho.
+
+## Objetivo
+
+Permitir a definicao detalhada do roteiro de fabricacao de cada item produzido, especificando a sequencia de operacoes, os centros de trabalho onde cada operacao sera executada e as formulas de calculo de tempo. O roteiro de fabricacao e peca fundamental para o planejamento da producao (MRP), calculo de capacidade dos centros de trabalho, apontamento de producao e custeio dos produtos fabricados. Cada operacao pode ter tempos calculados por formulas que consideram variaveis como quantidade produzida e caracteristicas do item.
+
+## Pre-requisitos
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — O item deve estar cadastrado e configurado como tipo Fabricado.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Tipos de maquina e centros de trabalho devem estar cadastrados.
+- [VENT0115 (Roteiro Padrao)](/engenharia/vent0115) — Opcionalmente, um roteiro padrao pode ser utilizado como template.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para apropriacao dos tempos de fabricacao.
+
+## Passo a passo
+
+1. Acesse a tela VENT0202 pelo menu Engenharia > Roteiro de Fabricacao.
+2. Informe o **Codigo do Item** no campo de busca e pressione Enter para carregar o roteiro existente ou iniciar um novo.
+3. Se desejar utilizar um template, selecione o **Roteiro Padrao** no campo apropriado e clique em **Copiar Roteiro Padrao** para importar as operacoes pre-definidas.
+4. Para cada operacao, preencha a **Sequencia** (ordem de execucao), **Descricao da Operacao** e **Centro de Trabalho** onde sera executada.
+5. Configure as **Formulas de Tempo** para cada operacao: Tempo de Setup (preparacao), Tempo de Execucao (producao) e Tempo de Finalizacao. As formulas podem usar variaveis como `QTD` (quantidade) e constantes.
+6. Defina o **Tipo de Mao de Obra** associado a operacao e a **Quantidade de Operadores** necessarios.
+7. Informe a **Taxa de Ocupacao** do centro de trabalho para esta operacao, indicando quantas unidades sao processadas simultaneamente.
+8. Se a operacao for terceirizada, marque o flag **Operacao Terceirizada** e selecione o fornecedor responsavel.
+9. Configure o **Roteiro Alternativo** se necessario, que serve como roteiro secundario utilizado em situacoes especificas (sobrecarga, manutencao).
+10. Clique em **Salvar** para persistir o roteiro de fabricacao completo com todas as suas operacoes.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo do Item | numero | Sim | — | Item ao qual o roteiro esta associado |
+| Roteiro Padrao | select | Nao | Lista de roteiros padrao | Template de operacoes pre-definidas |
+| Sequencia | numero | Sim | — | Ordem de execucao da operacao no roteiro |
+| Descricao da Operacao | texto | Sim | — | Nome descritivo da operacao |
+| Centro de Trabalho | select | Sim | Lista de centros de trabalho | Local onde a operacao sera executada |
+| Formula Tempo Setup | texto | Nao | Expressao matematica | Formula para calculo do tempo de preparacao |
+| Formula Tempo Execucao | texto | Sim | Expressao matematica | Formula para calculo do tempo de execucao |
+| Formula Tempo Finalizacao | texto | Nao | Expressao matematica | Formula para calculo do tempo de finalizacao |
+| Tipo de Mao de Obra | select | Nao | Lista de tipos de MO | Tipo de mao de obra requerida na operacao |
+| Quantidade de Operadores | numero | Nao | — | Numero de operadores necessarios |
+| Taxa de Ocupacao | numero | Nao | — | Unidades processadas simultaneamente |
+| Operacao Terceirizada | toggle | Nao | — | Indica se a operacao e executada por terceiros |
+| Fornecedor Terceirizado | select | Condicional | Lista de fornecedores | Fornecedor responsavel pela operacao terceirizada |
+| Roteiro Alternativo | toggle | Nao | — | Indica que esta e uma operacao do roteiro alternativo |
+| Tempo de Espera (min) | numero | Nao | — | Tempo de espera entre esta operacao e a proxima |
+
+## Observacoes importantes
+
+- As **Formulas de Tempo** utilizam a variavel `QTD` para representar a quantidade a ser produzida. Por exemplo, `QTD * 5` significa 5 minutos por unidade produzida.
+- O **Tempo de Setup** e calculado uma vez por ordem de producao, independentemente da quantidade, enquanto o **Tempo de Execucao** e proporcional a quantidade.
+- A **Taxa de Ocupacao** e essencial para o calculo de capacidade. Se uma maquina processa 4 unidades por vez, a taxa e 4, e os tempos serao divididos por esse fator.
+- Roteiros **Alternativos** sao utilizados automaticamente pelo MRP quando o centro de trabalho do roteiro principal atinge sua capacidade maxima.
+- Ao alterar um roteiro de fabricacao, ordens de producao ja liberadas nao sao afetadas — continue utilizando o roteiro da data de liberacao.
+- E possivel copiar o roteiro de um item para outro utilizando a funcionalidade de **Roteiro Padrao** como intermediario.
+
+## Telas relacionadas
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro do item associado ao roteiro de fabricacao.
+- [VENT0115 (Roteiro Padrao)](/engenharia/vent0115): Templates de roteiros reutilizaveis para copia.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Tipos de maquina e centros de trabalho referenciados nas operacoes.
+- [VENT0363 (Relatorio Tempo CT)](/engenharia/vent0363): Relatorio de tempos e custos por centro de trabalho.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM associada ao item do roteiro.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo para apropriacao dos tempos.

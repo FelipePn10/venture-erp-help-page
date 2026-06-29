@@ -1,0 +1,64 @@
+---
+sidebar_position: 1
+title: "VENT0100 — Consulta de Pedido de Venda"
+description: "Consultar todos os pedidos de venda com filtros avançados e indicadores visuais de status."
+---
+
+# VENT0100 — Consulta de Pedido de Venda
+
+> Tela de consulta read-only que centraliza a visualização de todos os pedidos de venda do sistema, com filtros por período, cliente e status, exibindo pills coloridas para identificação rápida da situação de cada pedido.
+
+## Objetivo
+
+Permitir que os usuários do setor comercial consultem, filtrem e monitorem todos os pedidos de venda cadastrados no ERP. A tela oferece uma visão consolidada do pipeline comercial, facilitando a identificação de pedidos em cada etapa do fluxo — desde rascunho até faturamento. É uma tela puramente consultiva, sem operações de criação ou edição.
+
+## Pré-requisitos
+
+- Ter ao menos um pedido de venda cadastrado via [VPDV0200](/pdv/vpdv0200).
+- Possuir permissão de acesso ao módulo Comercial configurada no perfil do usuário.
+- Clientes e itens devem estar previamente cadastrados no sistema para que os pedidos possuam dados completos.
+
+## Passo a Passo
+
+1. Acesse o menu **Comercial > Consulta de Pedido de Venda**.
+2. Preencha os filtros desejados na seção superior da tela: número do pedido, código ou nome do cliente, período de datas (início e fim) e status do pedido.
+3. Clique no botão **Pesquisar** para executar a consulta com os filtros informados.
+4. Analise os resultados na tabela, observando as pills coloridas que indicam o status:
+   - **Verde**: Liberado ou Faturado.
+   - **Âmbar**: Em Análise.
+   - **Cinza**: Rascunho.
+   - **Vermelho**: Cancelado.
+5. Para visualizar os detalhes de um pedido específico, clique sobre a linha correspondente na tabela.
+6. Utilize o botão **Exportar Relatório** para gerar uma planilha com os dados filtrados.
+7. Para limpar todos os filtros e iniciar uma nova consulta, clique em **Limpar**.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Pedido | Texto | Não | — | Número do pedido de venda para filtrar |
+| Cliente | Texto | Não | — | Código ou razão social/nome do cliente |
+| Período Início | Data | Não | — | Data inicial do período de consulta |
+| Período Fim | Data | Não | — | Data final do período de consulta |
+| Status | Seleção | Não | Todos / Rascunho / Em Análise / Liberado / Faturado / Cancelado | Filtrar pedidos por situação |
+| Nº Pedido | Texto (tabela) | — | — | Número do pedido exibido na listagem |
+| Cliente | Texto (tabela) | — | — | Nome do cliente exibido na listagem |
+| Data Emissão | Data (tabela) | — | — | Data de emissão do pedido |
+| Data Entrega | Data (tabela) | — | — | Data prevista de entrega do pedido |
+| Valor Total | Monetário (tabela) | — | — | Valor total do pedido |
+| Status | Pill colorida (tabela) | — | Verde / Âmbar / Cinza / Vermelho | Indicador visual de status |
+| Origem | Texto (tabela) | — | Normal / Assistência / Cópia / Importado etc. | Origem do pedido |
+
+## Observações
+
+- A consulta é somente leitura — para criar ou editar pedidos, utilize a tela [VPDV0200](/pdv/vpdv0200).
+- Os filtros de período consideram a data de emissão do pedido, não a data de entrega.
+- O botão **Exportar Relatório** gera um arquivo nos formatos disponíveis (XLSX, CSV) com os dados exatamente como aparecem na tabela.
+- Pills de status seguem o padrão visual do sistema: verde para fluxos concluídos, âmbar para etapas intermediárias, cinza para estágios iniciais e vermelho para situações de exceção.
+
+## Telas Relacionadas
+
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela de origem dos pedidos consultados. Utilize-a para criar novos pedidos ou editar existentes.
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cadastro dos clientes referenciados nos pedidos. Consulte-a para verificar dados cadastrais de um cliente.
+- **[VEXR0100 — Reprogramação de Entrega](/comercial/vexr0100):** Tela para registrar alterações na data de entrega dos pedidos visualizados na consulta.
+- **[VPDV0253 — Console de Acompanhamento de Pedidos](/pdv/vpdv0253):** Console complementar com visão de cards e semáforo de prazos para monitoramento em tempo real.

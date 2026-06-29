@@ -1,0 +1,73 @@
+---
+sidebar_position: 1
+title: "VASS0201 — Cadastro Chamado Assistencia"
+description: "Cadastro de chamados de assistencia tecnica com 6 tipos e workflow de atendimento."
+---
+
+# VASS0201 — Cadastro Chamado Assistencia
+
+> Cadastro de chamados de assistencia tecnica com 6 tipos de chamado e workflow completo de atendimento.
+
+## Objetivo
+
+Permitir o registro e gestao de chamados de assistencia tecnica, desde a abertura ate o encerramento, passando por todo o workflow de atendimento. A tela suporta 6 tipos de chamado: **Garantia** (dentro do periodo de garantia do produto), **Orcamento** (fora de garantia, com necessidade de orcamento), **Revisao** (manutencao preventiva), **Recall** (chamado de recolhimento), **Cortesia** (atendimento gratuito fora da garantia) e **Interno** (chamados de colaboradores). Cada tipo segue um fluxo de trabalho especifico, com regras proprias de aprovacao e execucao.
+
+## Pre-requisitos
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Produtos objeto dos chamados devem estar cadastrados.
+- [Cadastro de Clientes](/cliente/vcli0500) — Clientes que abrem os chamados devem estar cadastrados.
+- [Cadastro de Tecnicos](/cadastros/vfun0100) — Tecnicos responsaveis pelo atendimento.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402) — Consulta para acompanhamento dos chamados.
+
+## Passo a passo
+
+1. Acesse a tela VASS0201 pelo menu Assistencia > Cadastro Chamado Assistencia.
+2. Clique em **Novo** para abrir um novo chamado de assistencia tecnica.
+3. Selecione o **Tipo de Chamado** entre as 6 opcoes: Garantia, Orcamento, Revisao, Recall, Cortesia ou Interno.
+4. Informe o **Cliente** que esta solicitando assistencia e o **Produto/Item** alvo do chamado.
+5. Preencha a **Descricao do Problema** com detalhes sobre a falha ou servico solicitado.
+6. Informe o **Numero de Serie** e a **Nota Fiscal de Venda** para validar garantia e procedencia.
+7. O sistema verifica automaticamente a **Cobertura de Garantia** com base na data de venda e no prazo de garantia do produto.
+8. Se o tipo for **Orcamento**, o sistema habilita a secao de orcamento com valores de mao de obra, pecas e deslocamento.
+9. Encaminhe o chamado para o **Tecnico Responsavel** e defina a **Data Prevista** para atendimento.
+10. Clique em **Salvar** para registrar o chamado. O sistema inicia o workflow conforme o tipo selecionado.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero do Chamado | numero (auto) | Sim | — | Gerado automaticamente pelo sistema |
+| Tipo de Chamado | select | Sim | Garantia / Orcamento / Revisao / Recall / Cortesia / Interno | Classificacao do chamado |
+| Cliente | select | Sim | Lista de clientes | Cliente solicitante |
+| Produto / Item | select | Sim | Lista de itens | Produto objeto do chamado |
+| Numero de Serie | texto | Condicional | — | Serie do produto (obrigatorio para garantia) |
+| Nota Fiscal de Venda | numero | Condicional | — | NF de venda (obrigatorio para garantia) |
+| Data da Venda | data | Condicional | — | Data da venda para calculo de garantia |
+| Descricao do Problema | texto | Sim | — | Detalhamento da falha ou servico solicitado |
+| Status | select | Nao | Aberto / Em Analise / Aguardando Pecas / Aguardando Aprovacao / Em Atendimento / Concluido / Cancelado | Situacao do chamado |
+| Tecnico Responsavel | select | Nao | Lista de tecnicos | Profissional designado |
+| Data Prevista de Atendimento | data | Nao | — | Data programada para atendimento |
+| Data de Conclusao | data | Nao | — | Data efetiva de encerramento do chamado |
+| Valor Mao de Obra | numero | Condicional | — | Para chamados do tipo Orcamento |
+| Valor Pecas | numero | Condicional | — | Para chamados do tipo Orcamento |
+| Valor Deslocamento | numero | Condicional | — | Taxa de visita tecnica |
+| Valor Total | numero | Nao | — | Calculado automaticamente |
+| Cobertura de Garantia | texto | Nao | — | Exibido automaticamente: "Dentro da Garantia" ou "Fora da Garantia" |
+
+## Observacoes importantes
+
+- Os **6 tipos de chamado** cobrem todo o espectro de atendimento de assistencia tecnica. Escolher o tipo correto e fundamental para que o workflow e as regras de negocio sejam aplicados adequadamente.
+- Para chamados do tipo **Garantia**, a validacao de cobertura e automatica: o sistema compara a data de venda com a data atual e o prazo de garantia do produto cadastrado em [VENT0200 (Cadastro de Itens)](/engenharia/vent0200).
+- Chamados do tipo **Recall** sao tratados com prioridade maxima e geram notificacoes automaticas para todos os clientes que adquiriram o lote afetado.
+- O **status** do chamado evolui conforme o workflow. A transicao entre status pode ser manual ou automatica, dependendo do tipo de chamado e da configuracao.
+- Chamados do tipo **Orcamento** exigem aprovacao do cliente antes da execucao do servico. O sistema envia automaticamente o orcamento por e-mail e aguarda a confirmacao.
+- A **conclusao** do chamado registra todas as informacoes no historico do produto e do cliente, alimentando a base de conhecimento para futuras analises de qualidade e confiabilidade.
+
+## Telas relacionadas
+
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402): Consulta aos chamados de assistencia cadastrados.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Produtos com dados de garantia utilizados na validacao.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280): Tela alternativa de cadastro com workflow de vistoria.
+- [VATC0380 (Relatorio Chamados)](/assistencia/vatc0380): Relatorio gerencial de chamados.
+- [VATC0480 (Consulta Chamados)](/assistencia/vatc0480): Consulta alternativa de chamados com filtros client-side.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Produtos/equipamentos que podem ser objeto de assistencia.

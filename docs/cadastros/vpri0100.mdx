@@ -1,0 +1,51 @@
+---
+sidebar_position: 6
+title: "VPRI0100 — Prioridade Ordens"
+description: "Niveis de prioridade para ordens de producao."
+---
+
+# VPRI0100 — Prioridade Ordens
+
+> Cadastro de niveis de prioridade para ordens de producao, com intervalos numericos.
+
+**Codigo fonte:** `src/components/screens/cadastros/Vpri0100Page.tsx`
+
+## Objetivo
+
+Definir niveis de prioridade para o sequenciamento de ordens de producao no modulo APS (Advanced Planning and Scheduling). Cada prioridade possui um nome, descricao opcional e um intervalo numerico (inicio e fim) que determina a ordenacao. O sequenciamento da producao respeita esta ordenacao, garantindo que ordens com maior prioridade sejam processadas primeiro.
+
+## Pre-requisitos
+
+- Nenhum. Esta tela e autonoma.
+- Conhecimento dos criterios de priorizacao da producao para definir intervalos adequados.
+
+## Passo a passo
+
+1. Acesse **Cadastros > Prioridade Ordens** (VPRI0100).
+2. Clique em **Adicionar**.
+3. Preencha o campo **Prioridade** com o nome do nivel (ex: "Urgente", "Alta", "Media", "Baixa").
+4. Opcionalmente, preencha a **Descricao** com detalhes sobre quando usar esta prioridade.
+5. Informe o **Inicio Intervalo** (valor minimo) e **Fim Intervalo** (valor maximo, deve ser >= inicio).
+6. Clique em **Salvar**.
+7. Use **Recarregar** para atualizar os dados e **Exportar** para gerar planilha.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Prioridade | texto | Sim | — | Nome (ex: "Urgente", "Alta") |
+| Descricao | texto | Nao | — | Detalhamento do nivel de prioridade |
+| Inicio Intervalo | numero | Nao | — | Valor minimo do intervalo |
+| Fim Intervalo | numero | Nao | — | Valor maximo (>= inicio) |
+
+## Observacoes importantes
+
+- O intervalo numerico determina a ordem de sequenciamento no APS: valores menores geralmente indicam maior prioridade.
+- O campo **Fim Intervalo** deve ser maior ou igual ao **Inicio Intervalo**.
+- As prioridades definidas aqui impactam diretamente a ordem de execucao das ordens de producao no chao de fabrica.
+- Recomenda-se definir poucos niveis bem distintos para evitar ambiguidade no sequenciamento.
+
+## Telas relacionadas
+
+- **VPRO0100 (Ordens de Producao):** Prioridades usadas no sequenciamento de OPs.
+- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102):** Prioridades consideradas no planejamento de demandas.

@@ -1,0 +1,86 @@
+---
+sidebar_position: 11
+title: "VAVF0204 — Envio IQF Fornecedores"
+description: "Painel de visualizacao do IQF dos fornecedores com bar chart colorido e envio de relatorios."
+---
+
+# VAVF0204 — Envio IQF Fornecedores
+
+> Painel de visualizacao e envio do IQF (Indice de Qualidade do Fornecedor) com grafico de barras colorido e funcionalidade de disparo de relatorios.
+
+## Objetivo
+
+Fornecer um painel visual para acompanhamento do IQF dos fornecedores, exibindo a nota de cada fornecedor em um **bar chart colorido** que facilita a comparacao e identificacao de tendencias. Alem da visualizacao, a tela permite o **envio periodico** do relatorio de IQF para os fornecedores por e-mail, promovendo transparencia e incentivando a melhoria continua. O painel e a principal ferramenta de gestao a vista da qualidade de fornecedores, utilizada por compradores, qualidade e gestores.
+
+## Pre-requisitos
+
+- [VAVF0101 (Parametros Avaliacao Fornecedores)](/inspecao/vavf0101) — Parametros que definem como o IQF e calculado.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedores que terao IQF calculado e exibido.
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106) — Ocorrencias que alimentam o calculo da dimensao qualidade.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201) — Ordens de inspecao que alimentam o calculo do IQF.
+
+## Passo a passo
+
+1. Acesse a tela VAVF0204 pelo menu Inspecao > Envio IQF Fornecedores.
+2. O painel exibe o **Bar Chart** principal com todos os fornecedores avaliados no periodo, ordenados pela nota IQF.
+3. Cada barra e colorida conforme a classificacao: **Verde** (A), **Azul** (B), **Amarelo** (C), **Vermelho** (D).
+4. Utilize os **filtros** para refinar a visualizacao: periodo, grupo de fornecedores, dimensao especifica (Qualidade, Comercial, Logistica).
+5. Passe o mouse sobre uma barra para ver o **detalhamento**: nota de cada dimensao, quantidade de ocorrencias, pedidos avaliados.
+6. Clique em um fornecedor para abrir o **relatorio detalhado** com a evolucao historica do IQF e o breakdown dos criterios.
+7. Para **enviar o IQF** para um fornecedor, selecione-o na lista e clique em **Enviar Relatorio**.
+8. Configure o e-mail do destinatario, o texto da mensagem e o periodo de referencia do relatorio.
+9. E possivel **agendar envios automaticos** periodicos (mensal, trimestral) para todos os fornecedores ou grupos especificos.
+10. O **Comparativo** permite selecionar ate 5 fornecedores e visualizar suas barras lado a lado.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Periodo — Inicio | data | Sim | — | Periodo inicial da analise |
+| Periodo — Fim | data | Sim | — | Periodo final da analise |
+| Grupo de Fornecedores | select | Nao | Lista de grupos | Filtrar por grupo |
+| Dimensao | select | Nao | Todas / Qualidade / Comercial / Logistica | Filtrar por dimensao especifica |
+| Classificacao | multi-select | Nao | A / B / C / D | Filtrar por faixa de classificacao |
+| Fornecedor | multi-select | Nao | Lista de fornecedores | Selecionar fornecedores especificos |
+
+### Dados Exibidos no Bar Chart
+
+| Dado | Descricao |
+|------|-----------|
+| IQF Total | Nota consolidada (0-100) |
+| Nota Qualidade | Nota da dimensao qualidade |
+| Nota Comercial | Nota da dimensao comercial |
+| Nota Logistica | Nota da dimensao logistica |
+| Classificacao | A (maior ou igual 90), B (70 a 89), C (50 a 69), D (abaixo de 50) |
+| Tendencia | Subindo, Estavel, Caindo (comparado ao periodo anterior) |
+| Qtd Ocorrencias | Numero de ocorrencias no periodo |
+| Qtd Pedidos Avaliados | Numero de pedidos que geraram dados para o calculo |
+
+### Envio de Relatorio
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Fornecedor Destino | select | Sim | Lista de fornecedores | Fornecedor que recebera o relatorio |
+| E-mail Destino | texto | Sim | — | E-mail do contato no fornecedor |
+| Mensagem | texto | Nao | — | Texto personalizado da mensagem |
+| Periodo do Relatorio | data | Sim | — | Periodo de referencia do IQF enviado |
+| Enviar Copia Interna | toggle | Nao | — | Envia copia para o comprador responsavel |
+| Agendamento | config | Nao | — | Configuracao de envio automatico periodico |
+
+## Observacoes importantes
+
+- O **Bar Chart colorido** e a assinatura visual desta tela. As cores permitem identificar instantaneamente fornecedores problematicos (vermelho) e fornecedores de excelencia (verde).
+- O **envio periodico automatico** do IQF aos fornecedores e uma pratica recomendada de gestao da qualidade, promovendo transparencia e engajamento dos fornecedores na melhoria continua.
+- A **Tendencia** (subindo, estavel, caindo) e calculada comparando a nota atual com a media das 3 ultimas avaliacoes, indicando se o fornecedor esta melhorando ou piorando.
+- Fornecedores com **tendencia de queda** por 3 periodos consecutivos geram um alerta proativo para o time de qualidade e compras.
+- O **Comparativo** lado a lado e util para reunioes de sourcing, permitindo avaliar fornecedores concorrentes e embasar decisoes de compra.
+- O historico de envios fica registrado, permitindo auditoria de quais fornecedores receberam o IQF e em quais periodos.
+
+## Telas relacionadas
+
+- [VAVF0101 (Parametros Avaliacao Fornecedores)](/inspecao/vavf0101): Parametros que definem o calculo do IQF.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores cujo IQF e exibido.
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Ocorrencias que impactam a nota de qualidade.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201): Ordens de inspecao que alimentam o IQF.
+- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Inspecoes de recebimento que alimentam o IQF.
+- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Dados comerciais e logisticos complementares.

@@ -1,0 +1,76 @@
+---
+sidebar_position: 5
+title: "VLOC0100 — Localizacao Paises/UFs"
+description: "Cadastro base de paises e UFs."
+---
+
+# VLOC0100 — Localizacao Paises/UFs
+
+> Cadastro base de paises e UFs com codigos internacionais.
+
+**Codigo fonte:** `src/components/screens/cadastros/Vloc0100Page.tsx`
+
+## Objetivo
+
+Manter a base de paises e Unidades Federativas (UFs) utilizada como referencia por todos os modulos do sistema. A tela e dividida em duas abas: Paises e UFs. Serve como fundacao para todas as regras de endereco e localizacao no ERP, alimentando cadastros de clientes, fornecedores, empresas e o modulo fiscal.
+
+## Pre-requisitos
+
+- Nenhum. Esta tela e autonoma e serve como base para outros cadastros.
+- E uma das primeiras telas a ser configurada no sistema.
+
+## Passo a passo
+
+### Aba Paises
+
+1. Acesse **Cadastros > Localizacao Paises/UFs** (VLOC0100).
+2. Na aba **Paises**, clique em **Adicionar**.
+3. Preencha a **Sigla** (max 3 caracteres, uppercase, ex: `BRA`, `USA`).
+4. Preencha o **Nome** do pais (ex: "Brasil").
+5. Opcionalmente, informe codigos internacionais: **DDI**, **BACEN**, **SISCOMEX**.
+6. Clique em **Salvar**.
+
+### Aba UFs
+
+1. Va para a aba **UFs**.
+2. Clique em **Adicionar**.
+3. Preencha a **Sigla** da UF (max 2 caracteres, uppercase, ex: `SP`, `RJ`).
+4. Preencha o **Nome** da UF (ex: "Sao Paulo").
+5. Informe o **Pais ID** vinculado.
+6. Opcionalmente, informe o **Cod. IBGE** da UF.
+7. Clique em **Salvar**.
+8. Use **Recarregar** para atualizar os dados e **Exportar** para gerar planilha.
+
+## Campos
+
+### Paises
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Sigla | texto (max 3, uppercase) | Sim | — | Sigla do pais |
+| Nome | texto | Sim | — | Nome do pais |
+| DDI / BACEN / SISCOMEX | texto | Nao | — | Codigos internacionais |
+
+### UFs
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Sigla | texto (max 2, uppercase) | Sim | — | Sigla da UF |
+| Nome | texto | Sim | — | Nome da UF |
+| Pais ID | numero | Sim | — | Pais vinculado |
+| Cod. IBGE | texto | Nao | — | Codigo IBGE da UF |
+
+## Observacoes importantes
+
+- Esta tabela e a base fundamental de localizacao — deve ser configurada antes de qualquer outro cadastro que utilize endereco.
+- A sigla de pais segue o padrao ISO de 3 letras (ex: BRA, USA, ARG).
+- A sigla de UF segue o padrao brasileiro de 2 letras (ex: SP, RJ, MG).
+- As UFs devem estar vinculadas a um pais valido cadastrado na aba Paises.
+- O DDI e utilizado para formatacao de telefones internacionais.
+
+## Telas relacionadas
+
+- **[VUTL0555 (Cadastro UFs e Cidades)](/contabilidade/vutl0555):** Base de paises e UFs para cadastro de cidades.
+- **[VCLI0500 (Cadastro de Cliente)](/cliente/vcli0500):** Paises/UFs nos enderecos de clientes.
+- **[VAVR0200 (Cadastro de Fornecedor)](/suprimento/vavr0200):** Paises/UFs nos enderecos de fornecedores.
+- **[VEMP0100 (Cadastro Empresa)](/cadastros/vemp0100):** Paises/UFs no cadastro de empresa.

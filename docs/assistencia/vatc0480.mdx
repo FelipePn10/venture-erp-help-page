@@ -1,0 +1,78 @@
+---
+sidebar_position: 5
+title: "VATC0480 — Consulta Chamados"
+description: "Tela de consulta de chamados com 12 filtros e processamento client-side para agilidade."
+---
+
+# VATC0480 — Consulta Chamados
+
+> Tela de consulta de chamados de assistencia tecnica com 12 filtros e processamento client-side que oferece resposta instantanea as buscas.
+
+## Objetivo
+
+Fornecer uma interface de consulta agil aos chamados de assistencia tecnica, utilizando processamento **client-side** (no navegador do usuario) para oferecer resposta instantanea as buscas. Diferentemente das consultas tradicionais que fazem requisicoes ao servidor a cada mudanca de filtro, esta tela carrega um conjunto de dados e aplica os filtros localmente, resultando em tempo de resposta praticamente nulo. E ideal para usuarios que precisam navegar rapidamente entre diferentes filtros e cenarios de busca.
+
+## Pre-requisitos
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201) — Chamados que compoem a base de dados.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280) — Chamados de vistoria tambem consultados.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402) — Consulta tradicional para buscas que exigem maior volume de dados.
+
+## Passo a passo
+
+1. Acesse a tela VATC0480 pelo menu Assistencia > Consulta Chamados.
+2. Ao abrir, a tela carrega os chamados do periodo padrao (tipicamente ultimos 30 dias) no navegador.
+3. A barra de **Busca Rapida** no topo aceita numero do chamado, nome do cliente ou numero de serie e filtra instantaneamente a cada tecla digitada.
+4. Utilize os **12 filtros** na barra lateral para refinar os resultados:
+   - **Filtro 1 — Tipo de Chamado**: 6 checkboxes (Garantia, Orcamento, Revisao, Recall, Cortesia, Interno).
+   - **Filtro 2 — Status**: checkboxes para cada status.
+   - **Filtro 3 — Tecnico**: dropdown com busca textual.
+   - **Filtro 4 — Produto**: dropdown com busca textual.
+   - **Filtro 5 — Cliente**: campo de texto com autocomplete.
+   - **Filtro 6 — Regiao**: dropdown de UFs.
+   - **Filtro 7 — Cobertura de Garantia**: toggle Dentro/Fora.
+   - **Filtro 8 — Data de Abertura**: seletor de periodo.
+   - **Filtro 9 — Data de Conclusao**: seletor de periodo.
+   - **Filtro 10 — Valor**: controle deslizante (slider) de faixa de valor.
+   - **Filtro 11 — Numero de Serie**: campo de texto.
+   - **Filtro 12 — Atrasados**: toggle para filtrar apenas chamados com SLA vencido.
+5. Todos os filtros sao aplicados **instantaneamente** (client-side), sem recarregar a pagina.
+6. A grid de resultados atualiza em tempo real conforme os filtros sao alterados.
+7. O **contador de resultados** mostra quantos chamados estao sendo exibidos do total carregado.
+8. Para aumentar a base de dados, utilize o seletor de **Periodo de Carga** para trazer mais meses ao navegador.
+9. Clique em um chamado para abrir o **modal de detalhamento rapido** com as principais informacoes.
+10. Utilize o botao **Exportar Grid** para gerar Excel apenas com os registros filtrados no momento.
+
+## Campos de Filtro
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| 1. Tipo de Chamado | checkboxes | Nao | 6 tipos | Selecao multipla via checkboxes |
+| 2. Status | checkboxes | Nao | Todos os status | Selecao multipla via checkboxes |
+| 3. Tecnico | dropdown | Nao | Lista de tecnicos | Busca textual com filtro |
+| 4. Produto | dropdown | Nao | Lista de itens | Busca textual com filtro |
+| 5. Cliente | texto | Nao | — | Autocomplete enquanto digita |
+| 6. Regiao | dropdown | Nao | Lista de UFs | Selecao unica |
+| 7. Cobertura de Garantia | toggle | Nao | Dentro / Fora / Todos | Toggle de 3 estados |
+| 8. Data Abertura | periodo | Nao | — | Seletor de data inicial e final |
+| 9. Data Conclusao | periodo | Nao | — | Seletor de data inicial e final |
+| 10. Valor | slider | Nao | Min-Max | Controle deslizante de faixa |
+| 11. Numero de Serie | texto | Nao | — | Busca textual |
+| 12. Atrasados (SLA Vencido) | toggle | Nao | — | Filtra apenas chamados com prazo expirado |
+
+## Observacoes importantes
+
+- O processamento **client-side** e o grande diferencial desta tela. Como os dados ja estao no navegador, a aplicacao dos filtros e instantanea, proporcionando uma experiencia fluida de analise exploratoria.
+- A **limite da base client-side** e tipicamente configurado para 3 a 6 meses de dados, equilibrando performance e abrangencia. Para periodos maiores, utilize a tela [VASS0402 (Consulta Assistencia)](/assistencia/vass0402).
+- A **Busca Rapida** e extremamente eficiente para localizar um chamado especifico pelo numero, nome do cliente ou numero de serie, com resultados em tempo real a cada tecla.
+- O **controle deslizante de valor** (slider) e intuitivo para definir faixas de preco, substituindo a digitacao manual de valores minimo e maximo.
+- O modal de **detalhamento rapido** exibe as informacoes principais sem recarregar a pagina, mantendo o contexto da consulta.
+- Para recarregar a base com dados mais recentes (ex: incluir chamados do dia), utilize o botao **Atualizar Dados** que busca incrementalmente no servidor apenas os novos registros.
+
+## Telas relacionadas
+
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201): Chamados que compoem a base de dados.
+- [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280): Chamados de vistoria incluidos na base.
+- [VASS0402 (Consulta Assistencia)](/assistencia/vass0402): Consulta tradicional server-side para periodos maiores.
+- [VATC0380 (Relatorio Chamados)](/assistencia/vatc0380): Relatorio gerencial complementar.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Produtos objetos dos chamados.

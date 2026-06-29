@@ -1,0 +1,68 @@
+---
+sidebar_position: 2
+title: "VENT0210 — Estrutura de Produtos (BOM)"
+description: "Estrutura em arvore hierarquica com breadcrumb e grid de componentes para BOM."
+---
+
+# VENT0210 — Estrutura de Produtos (BOM)
+
+> Estrutura em arvore (Bill of Materials) com navegacao hierarquica por breadcrumb, grid de componentes e painel de detalhes para cada nivel da estrutura.
+
+## Objetivo
+
+Permitir a construcao e manutencao da estrutura de produtos (BOM) de forma hierarquica, representando a composicao de cada item fabricado em termos de seus componentes, quantidades e posicoes. A arvore hierarquica com breadcrumb permite navegar entre os niveis da estrutura de forma intuitiva, visualizando componentes, subcomponentes e materias-primas em cada nivel. O grid de componentes exibe posicao, codigo, descricao, quantidade, percentual de perda e saude de cada item, enquanto o painel de detalhes mostra informacoes completas do item selecionado.
+
+## Pre-requisitos
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Todos os itens pai e filhos devem estar previamente cadastrados.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupos PDM para organizacao das estruturas configuradas.
+- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202) — Roteiros de fabricacao que serao associados aos itens da estrutura.
+- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118) — Regras para itens configuraveis na estrutura.
+
+## Passo a passo
+
+1. Acesse a tela VENT0210 pelo menu Engenharia > Estrutura de Produtos.
+2. No campo **Codigo Raiz**, informe o codigo do item pai cuja estrutura deseja visualizar ou editar. Pressione Enter ou clique em **Carregar**.
+3. A arvore hierarquica exibira o item raiz no primeiro nivel. Clique no icone de expansao para visualizar os componentes diretos.
+4. Para adicionar um novo componente, clique em **Incluir Item**. Preencha o codigo do componente, posicao, quantidade e percentual de perda.
+5. Utilize o **breadcrumb** no topo da arvore para navegar rapidamente entre os niveis hierarquicos da estrutura. Cada nivel clicavel no breadcrumb carrega os componentes daquele nivel.
+6. Selecione um componente no grid para visualizar seus detalhes no painel lateral, incluindo tipo, unidade de medida e dados de planejamento.
+7. Para itens configuraveis, utilize o botao **Configurador** para aplicar regras PDM a estrutura, definindo componentes obrigatorios, opcionais ou alternativos.
+8. O botao **Alternativos** permite definir itens substitutos para componentes, que serao considerados pelo MRP em caso de indisponibilidade do componente principal.
+9. Para remover um componente, selecione-o no grid e clique em **Remover**. Confirme a exclusao.
+10. Clique em **Salvar** para persistir as alteracoes realizadas na estrutura.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo Raiz | numero | Sim | — | Codigo do item pai/raiz da estrutura |
+| Codigo Filho | numero | Sim | — | Codigo do componente que compoe o item pai |
+| Posicao | numero | Sim | — | Ordem sequencial do componente na estrutura |
+| Quantidade | numero | Sim | — | Quantidade do componente por unidade do item pai |
+| Percentual de Perda | numero | Nao | 0 a 100 | Percentual de perda previsto na utilizacao do componente |
+| Saude (Health) | select | Nao | ATIVO / INATIVO / FANTASMA | Status do componente na estrutura |
+| Tipo de Estrutura | texto | Nao | — | Classificacao herdada do cadastro de itens |
+| Unidade de Medida | texto | Nao | — | Unidade de medida herdada do cadastro de itens |
+| Inicio de Validade | data | Nao | — | Data de inicio da vigencia do componente na estrutura |
+| Fim de Validade | data | Nao | — | Data de termino da vigencia do componente na estrutura |
+| Lead Time Offset | numero | Nao | — | Dias de antecipacao/atraso em relacao ao inicio da producao do pai |
+| Componente Opcional | toggle | Nao | — | Define se o componente e opcional na estrutura |
+| Componente Alternativo | toggle | Nao | — | Indica que o item e uma alternativa a outro componente |
+
+## Observacoes importantes
+
+- A navegacao por **breadcrumb** e a forma mais agil de percorrer estruturas profundas com muitos niveis. Cada segmento do breadcrumb e clicavel e carrega instantaneamente aquele nivel.
+- Componentes marcados como **FANTASMA** na saude indicam que o item nao e produzido separadamente, sendo incorporado diretamente na montagem do item pai durante a explosao da estrutura.
+- O **Percentual de Perda** e considerado pelo MRP no calculo de necessidade liquida, adicionando uma margem sobre a quantidade necessaria do componente.
+- O **Lead Time Offset** permite definir que um componente deve ser obtido X dias antes ou depois do inicio da producao do item pai, util para componentes com longos prazos de entrega.
+- A exclusao de um componente da estrutura nao remove o item do cadastro — apenas desvincula o relacionamento hierarquico na BOM.
+- Itens **Configurados** possuem regras especiais que podem ser visualizadas e editadas atraves do botao **Configurador**, acessando a tela de [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118).
+
+## Telas relacionadas
+
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro base de todos os itens que compoem a estrutura.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM que organizam estruturas configuradas.
+- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202): Roteiros de fabricacao associados aos itens da estrutura.
+- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras para itens configuraveis na estrutura BOM.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores aplicaveis a itens configurados.

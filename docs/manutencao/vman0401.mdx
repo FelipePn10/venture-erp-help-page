@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+title: "VMAN0401 — Consulta OS"
+description: "Tela de consulta as ordens de servico de manutencao com filtros avancados e visualizacao detalhada."
+---
+
+# VMAN0401 — Consulta OS
+
+> Tela de consulta abrangente as ordens de servico de manutencao, permitindo localizar, filtrar e analisar o historico completo.
+
+## Objetivo
+
+Fornecer uma interface robusta de consulta as ordens de servico de manutencao, com filtros avancados que permitem localizar OS por equipamento, periodo, tipo de manutencao, status, tecnico responsavel e outros criterios. A tela oferece visualizacao detalhada de cada OS, incluindo cabecalho, atividades, apontamentos, materiais consumidos e custos. E a principal ferramenta de gestao a vista da manutencao, permitindo acompanhar o backlog, analisar tempos de atendimento e identificar equipamentos com maior incidencia de falhas.
+
+## Pre-requisitos
+
+- [VMAN0202 (Apontamento OS Manutencao)](/manutencao/vman0202) — Apontamentos que alimentam os dados visualizados na consulta.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Equipamentos cadastrados como itens do tipo maquina/equipamento.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Tipos de maquina para classificacao dos equipamentos.
+
+## Passo a passo
+
+1. Acesse a tela VMAN0401 pelo menu Manutencao > Consulta OS.
+2. Utilize os **filtros** no topo da tela para refinar a busca: numero da OS, equipamento, periodo, tipo de manutencao, status, tecnico.
+3. Clique em **Pesquisar** para carregar as OS que atendem aos criterios.
+4. A grid exibe as OS encontradas com colunas: Numero, Equipamento, Tipo, Status, Data Abertura, Data Fechamento, Tecnico Responsavel.
+5. Clique em uma OS para abrir o **detalhamento completo**: cabecalho, atividades previstas x realizadas, apontamentos, materiais.
+6. Na aba **Apontamentos**, visualize as horas gastas por tecnico e por atividade.
+7. Na aba **Materiais**, veja todos os itens consumidos e seus custos.
+8. Na aba **Custos**, analise o custo total da OS (mao de obra + materiais + servicos terceiros).
+9. Utilize o botao **Exportar** para gerar relatorios em Excel ou PDF.
+10. O **Dashboard Resumo** exibe indicadores graficos: OS abertas por tipo, tempo medio de atendimento, equipamentos com mais falhas.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero da OS | numero | Nao | — | Filtrar por numero especifico da OS |
+| Equipamento | select | Nao | Lista de equipamentos | Filtrar por equipamento |
+| Tipo de Manutencao | select | Nao | Preventiva / Corretiva / Preditiva / Programada | Filtrar por tipo |
+| Status | select | Nao | Aberta / Em Execucao / Pendente Material / Finalizada / Cancelada | Filtrar por situacao |
+| Periodo — Data Abertura | data | Nao | — | Filtrar por data de abertura |
+| Periodo — Data Fechamento | data | Nao | — | Filtrar por data de fechamento |
+| Tecnico | select | Nao | Lista de tecnicos | Filtrar por tecnico responsavel |
+| Prioridade | select | Nao | Baixa / Media / Alta / Critica | Filtrar por prioridade |
+| Centro de Custo | select | Nao | Lista de CC | Filtrar por centro de custo |
+
+## Observacoes importantes
+
+- A consulta oferece **filtros combinados** — e possivel, por exemplo, buscar todas as OS corretivas de alta prioridade abertas nos ultimos 30 dias para um equipamento especifico.
+- O detalhamento da OS e dividido em **abas** (Cabecalho, Atividades, Apontamentos, Materiais, Custos) para facilitar a navegacao e o foco em cada aspecto.
+- O **Dashboard Resumo** e atualizado em tempo real conforme os filtros sao aplicados, permitindo analises gerenciais rapidas.
+- O **Tempo Medio de Atendimento** (TMA) e um KPI essencial para avaliar a eficiencia da equipe de manutencao. TMA alto pode indicar necessidade de mais tecnicos ou treinamento.
+- Equipamentos com alta recorrencia de OS corretivas sao candidatos a analise de causa raiz e possivel substituicao ou reforma.
+- A exportacao em **Excel** inclui todas as colunas visiveis e permite manipulacao adicional dos dados em planilha eletronica.
+
+## Telas relacionadas
+
+- [VMAN0202 (Apontamento OS Manutencao)](/manutencao/vman0202): Apontamentos de horas e materiais que alimentam os dados da consulta.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Equipamentos cadastrados como itens.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Classificacao dos equipamentos por tipo de maquina.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo das OS de manutencao.
+- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201): Modulo de assistencia tecnica que pode gerar OS de manutencao.

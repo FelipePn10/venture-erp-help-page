@@ -1,0 +1,61 @@
+---
+sidebar_position: 11
+title: "VITE0313 — Geracao Mascara Itens Configurados"
+description: "Ferramenta de geracao automatica de codigos de itens configurados baseada na mascara PDM."
+---
+
+# VITE0313 — Geracao Mascara Itens Configurados
+
+> Ferramenta que gera automaticamente os codigos dos itens configurados com base na mascara definida no grupo PDM e nos modificadores selecionados.
+
+## Objetivo
+
+Automatizar a geracao de codigos para itens configurados a partir da mascara definida no grupo PDM. Esta ferramenta interpreta a mascara de codificacao (que pode incluir segmentos fixos e variaveis) e gera codigos unicos para cada combinacao possivel de modificadores e atributos. O processo garante que todos os itens configurados tenham codigos padronizados e rastreaveis, eliminando erros de digitacao manual e garantindo a unicidade dos codigos gerados.
+
+## Pre-requisitos
+
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupo PDM com mascara de codificacao definida.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores vinculados ao grupo PDM.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116) — Atributos PDM com seus respectivos valores cadastrados.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens base e genericos que servirao como origem para geracao.
+
+## Passo a passo
+
+1. Acesse a tela VITE0313 pelo menu Engenharia > Geracao Mascara Itens Configurados.
+2. Selecione o **Grupo PDM** cujos itens configurados terao os codigos gerados.
+3. O sistema exibe a **Mascara** definida no grupo PDM, mostrando como o codigo sera estruturado.
+4. Selecione os **Modificadores** que devem ser considerados na geracao. E possivel gerar para todos ou apenas para um subconjunto.
+5. Escolha o **Modo de Geracao**: Gerar Codigos Faltantes (apenas para combinacoes sem codigo) ou Regenerar Todos (substitui todos os codigos).
+6. Clique em **Simular** para visualizar os codigos que serao gerados antes de efetivar a operacao.
+7. Revise a lista de codigos gerados. Destaques coloridos indicam codigos duplicados ou que nao seguem a mascara.
+8. Clique em **Gerar** para efetivar a criacao dos codigos e grava-los no cadastro de itens.
+9. Verifique na tela de [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) se os novos itens foram criados corretamente com os codigos gerados.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Grupo PDM | select | Sim | Lista de grupos PDM | Grupo PDM de origem para geracao dos codigos |
+| Mascara | texto | Nao | — | Mascara de codificacao exibida do grupo PDM |
+| Modificadores | multi-select | Sim | Lista de modificadores | Modificadores considerados na geracao |
+| Modo de Geracao | select | Sim | Gerar Faltantes / Regenerar Todos | Estrategia de geracao de codigos |
+| Item Base | select | Nao | Lista de itens | Item base para heranca de dados |
+| Pre-visualizacao | tabela | Nao | — | Grid com codigos simulados antes da geracao |
+| Status da Geracao | texto | Nao | — | Resultado do processamento apos a geracao |
+
+## Observacoes importantes
+
+- A opcao **Gerar Codigos Faltantes** e mais segura para uso em producao, pois afeta apenas combinacoes de modificadores que ainda nao possuem item gerado.
+- A opcao **Regenerar Todos** substitui todos os codigos existentes e deve ser usada com extrema cautela, preferencialmente em ambiente de testes primeiro.
+- O botao **Simular** e obrigatorio como boa pratica antes da geracao definitiva. Ele mostra exatamente quais codigos serao criados e permite identificar problemas na mascara.
+- Codigos duplicados destacados em vermelho na simulacao indicam que a mascara nao esta gerando codigos unicos, sendo necessario revisar a mascara ou os atributos antes de gerar.
+- A geracao de itens configurados tambem cria automaticamente a **Estrutura BOM** e o **Roteiro de Fabricacao** baseados no item base do grupo PDM, se a opcao estiver habilitada.
+
+## Telas relacionadas
+
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupo PDM com a mascara de codificacao.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM que compoem a mascara.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos cujos valores compoem os codigos gerados.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Destino dos itens configurados criados pela geracao.
+- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras aplicadas pos-geracao dos itens configurados.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM gerada para os itens configurados.

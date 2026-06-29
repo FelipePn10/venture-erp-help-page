@@ -1,0 +1,100 @@
+---
+sidebar_position: 2
+title: "VFIS0110 — Tabelas Tributarias"
+description: "Cadastro das tabelas auxiliares NCM, ICMS Interno e ICMS Interestadual utilizadas pelo motor de calculo fiscal."
+---
+
+# VFIS0110 — Tabelas Tributarias
+
+> Tela auxiliar que centraliza as tres principais tabelas de referencia do motor tributario: NCM (Nomenclatura Comum do Mercosul), ICMS Interno e ICMS Interestadual. Essas tabelas alimentam automaticamente o calculo dos impostos nos documentos fiscais.
+
+**Codigo fonte:** `src/modules/fiscal/tributary-tables/vfis0110.vue`
+
+## Objetivo
+
+A VFIS0110 organiza em abas as tabelas tributarias que servem de base para o motor de calculo fiscal. A aba **NCM** cadastra os codigos de classificacao de mercadorias com suas aliquotas federais (IPI, PIS, COFINS) e de comercio exterior (II — Imposto de Importacao). A aba **ICMS Interno** define as aliquotas de ICMS para operacoes dentro do estado do emitente, segmentadas por NCM, faixa de valor e tipo de produto. A aba **ICMS Interestadual** define as aliquotas para operacoes entre estados diferentes, incluindo o DIFAL (Diferencial de Aliquotas). Cada tabela e carregada pelo motor de calculo no momento da geracao do documento fiscal, aplicando a combinacao de regras mais especifica encontrada.
+
+## Pre-requisitos
+
+- **VFIS0100 (Configuracao Fiscal):** A configuracao fiscal da empresa emitente deve estar concluida, pois as aliquotas padrao definidas la servem de fallback quando nao ha regra especifica nas tabelas tributarias.
+- **VFIS0350 (Classificacoes Fiscais):** Opcional mas recomendado. O cadastro de NCM com CEST e Ex Tarifario enriquece as tabelas e evita rejeicoes na SEFAZ.
+- **Conhecimento da legislacao vigente:** As aliquotas de ICMS interno, interestadual, PIS, COFINS e IPI variam por produto, estado e periodicamente por alteracao legislativa. Mantenha as tabelas sempre atualizadas.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Tabelas > Tabelas Tributarias (VFIS0110)**.
+2. A tela abre na aba **NCM**. Utilize o campo de busca para localizar um NCM existente ou clique em **Novo** para cadastrar um codigo.
+3. Para cada NCM, preencha o codigo (8 digitos), descricao, aliquota de IPI, aliquota de PIS (modalidade e percentual), aliquota de COFINS (modalidade e percentual) e aliquota de II (Imposto de Importacao).
+4. A modalidade de PIS e COFINS pode ser `Cumulativo` (regime anterior, aliquotas menores) ou `Nao Cumulativo` (regime atual, aliquotas maiores). O sistema selecionara automaticamente conforme o regime tributario da empresa.
+5. Va para a aba **ICMS Interno**. Aqui sao configuradas as aliquotas para operacoes dentro da UF do emitente. Clique em **Novo** para criar uma regra.
+6. Defina a UF de origem (a UF do emitente), o NCM (ou deixe em branco para aplicar a todos), o tipo de operacao (Normal, ST, Diferimento, etc.) e as aliquotas de ICMS, FCP (Fundo de Combate a Pobreza), ICMS-ST e reducao de base de calculo.
+7. E possivel definir **faixas de valor** para aplicar aliquotas progressivas ou regressivas. Preencha os campos `Valor Minimo` e `Valor Maximo` para delimitar a faixa.
+8. Na aba **ICMS Interestadual**, configure as aliquotas para operacoes entre estados diferentes. Selecione a UF de origem, UF de destino, NCM, tipo de operacao e as aliquotas de ICMS, FCP, DIFAL e ICMS-ST.
+9. O DIFAL (Diferencial de Aliquotas) e calculado automaticamente pelo sistema como a diferenca entre a aliquota interna do destino e a aliquota interestadual. A regra aqui define se o DIFAL e aplicavel e qual o percentual de partilha (EC 87/15).
+10. Utilize o botao **Importar** para carregar tabelas pre-definidas de NCM (disponiveis no site do IBPT ou da Receita Federal) ou de aliquotas ICMS (disponiveis no CONFAZ).
+11. Clique em **Salvar** apos cada aba preenchida. O sistema validara conflitos de regras (duas regras identicas para a mesma combinacao UF+NCM+Tipo) e alertara sobre sobreposicoes.
+12. Apos salvar, utilize o **Simulador** (icone de calculadora) para testar o motor de calculo com cenarios reais: informe UF, NCM, valor e tipo de operacao para verificar quais aliquotas serao aplicadas.
+
+## Campos
+
+### Aba NCM
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Codigo NCM | Texto (8) | Sim | — | Codigo de 8 digitos da Nomenclatura Comum do Mercosul. |
+| Descricao | Texto (200) | Sim | — | Descricao oficial do NCM. |
+| Aliquota IPI | Decimal (5,2) | Nao | — | Percentual de IPI aplicavel ao NCM. |
+| Modalidade PIS | Select | Nao | Cumulativo / Nao Cumulativo | Regime de tributacao do PIS para este NCM. |
+| Aliquota PIS | Decimal (5,2) | Nao | — | Percentual de PIS (0,65% cumulativo ou 1,65% nao cumulativo). |
+| Modalidade COFINS | Select | Nao | Cumulativo / Nao Cumulativo | Regime de tributacao da COFINS para este NCM. |
+| Aliquota COFINS | Decimal (5,2) | Nao | — | Percentual de COFINS (3% cumulativo ou 7,6% nao cumulativo). |
+| Aliquota II | Decimal (5,2) | Nao | — | Percentual do Imposto de Importacao para este NCM. |
+| CEST | Texto (7) | Nao | — | Codigo Especificador da Substituicao Tributaria. |
+| Ex Tarifario | Texto (3) | Nao | — | Excecao tarifaria do Mercosul. |
+
+### Aba ICMS Interno
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| UF Origem | Select | Sim | UFs brasileiras | UF do emitente para a qual a regra se aplica. |
+| NCM | Select | Nao | NCMs cadastrados | NCM especifico. Em branco = aplica-se a todos. |
+| Tipo Operacao | Select | Sim | Baixados da VFIS0360 | Tipo de operacao fiscal vinculado a regra. |
+| Aliquota ICMS | Decimal (5,2) | Sim | — | Percentual de ICMS para operacoes internas. |
+| FCP | Decimal (5,2) | Nao | — | Fundo de Combate a Pobreza. |
+| Aliquota ICMS-ST | Decimal (5,2) | Nao | — | ICMS ST para produtos sujeitos a Substituicao Tributaria. |
+| Reducao BC | Decimal (5,2) | Nao | — | Percentual de reducao da Base de Calculo. |
+| MVA | Decimal (5,2) | Nao | — | Margem de Valor Agregado para ST. |
+| Valor Minimo | Decimal (15,2) | Nao | — | Valor minimo da faixa. |
+| Valor Maximo | Decimal (15,2) | Nao | — | Valor maximo da faixa. |
+
+### Aba ICMS Interestadual
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| UF Origem | Select | Sim | UFs brasileiras | Estado de origem da operacao. |
+| UF Destino | Select | Sim | UFs brasileiras | Estado de destino da operacao. |
+| NCM | Select | Nao | NCMs cadastrados | NCM especifico. Em branco = aplica-se a todos. |
+| Tipo Operacao | Select | Sim | Baixados da VFIS0360 | Tipo de operacao fiscal vinculado a regra. |
+| Aliquota ICMS | Decimal (5,2) | Sim | — | Percentual de ICMS para a operacao interestadual (7%, 12% ou 4%). |
+| FCP | Decimal (5,2) | Nao | — | Fundo de Combate a Pobreza. |
+| DIFAL Aplicavel | Checkbox | Nao | — | Indica se o Diferencial de Aliquotas se aplica (EC 87/15). |
+| Percentual Partilha | Decimal (5,2) | Nao | — | Percentual de partilha do DIFAL entre origem e destino. |
+| Aliquota ICMS-ST | Decimal (5,2) | Nao | — | ICMS ST para operacoes interestaduais. |
+| Antecipacao Tributaria | Checkbox | Nao | — | Habilita antecipacao tributaria sem ST. |
+
+## Observacoes importantes
+
+- **NCM vs. CEST:** O CEST (Codigo Especificador da Substituicao Tributaria) e obrigatorio desde 2016 para produtos sujeitos a ST. A ausencia do CEST no XML da NFe gera rejeicao 847 na SEFAZ. Cadastre o CEST na VFIS0350 e vincule ao NCM nesta tabela.
+- **Conflito de regras:** O motor de calculo aplica a regra mais especifica. Se houver duas regras para a mesma combinacao UF+NCM+Tipo, o sistema prioriza a regra com NCM preenchido (mais especifica) sobre a regra com NCM em branco (generica). Em caso de empate, a mais recente prevalece.
+- **Atualizacao legislativa:** As aliquotas de ICMS interestadual foram alteradas pela EC 87/15 (partilha do DIFAL). Verifique se as aliquotas cadastradas estao de acordo com a legislacao vigente no periodo da operacao.
+- **Importacao em massa:** Utilize o botao Importar para carregar tabelas oficiais em formato CSV ou Excel. O sistema valida a estrutura do arquivo antes da importacao e gera um log com os registros importados e eventuais erros.
+
+## Telas relacionadas
+
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao base da empresa emitente, com aliquotas padrao.
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Documento fiscal de saida que consome as aliquotas destas tabelas.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Documento fiscal de entrada que utiliza as aliquotas para calculo de credito.
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Codigos Fiscais de Operacao que direcionam o tipo de tributacao.
+- **[VFIS0320 (Parametros ICMS/IPI)](/fiscal/vfis0320):** Parametrizacao avancada por UF+NCM+Tipo Operacao.
+- **[VFIS0330 (Reducao/Substituicao ICMS)](/fiscal/vfis0330):** Regras de reducao de base, substituicao e diferimento do ICMS.
+- **[VFIS0350 (Classificacoes Fiscais)](/fiscal/vfis0350):** Cadastro completo de NCM com CEST, Ex Tarifario e atributos.

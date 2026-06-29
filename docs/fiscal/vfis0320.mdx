@@ -1,0 +1,111 @@
+---
+sidebar_position: 8
+title: "VFIS0320 — Parametros ICMS/IPI"
+description: "Parametrizacao avancada de ICMS e IPI por UF combinada com NCM e Tipo de Operacao, definindo aliquotas, reducoes, ST e creditos."
+---
+
+# VFIS0320 — Parametros ICMS/IPI
+
+> Tela de parametrizacao avancada dos impostos ICMS e IPI. Permite definir regras fiscais combinando UF (origem e destino), NCM e Tipo de Operacao, controlando aliquotas, reducoes de base de calculo, Substituicao Tributaria, creditos e enquadramento legal.
+
+**Codigo fonte:** `src/modules/fiscal/icms-ipi-params/vfis0320.vue`
+
+## Objetivo
+
+A VFIS0320 e a camada mais granular da parametrizacao fiscal do ERP. Enquanto a VFIS0110 define aliquotas genericas por UF+NCM e a VFIS0330 gerencia regras especificas de reducao/ST/diferimento, a VFIS0320 atua como um motor de combinacao entre UF (origem + destino), NCM e Tipo de Operacao, permitindo definir exatamente qual aliquota de ICMS, qual regra de ST, qual reducao de base de calculo, qual aliquota de IPI, qual dispositivo legal e qual modalidade de credito se aplicam a cada cenario fiscal. Esta tela e consultada pelo motor de calculo a cada emissao de documento fiscal, que busca a regra mais especifica para a operacao em questao.
+
+## Pre-requisitos
+
+- **VFIS0100 (Configuracao Fiscal):** Configuracao base do emitente.
+- **VFIS0110 (Tabelas Tributarias):** Tabelas base de NCM e aliquotas.
+- **VFIS0300 (CFOPs):** CFOPs cadastrados e classificados por natureza.
+- **VFIS0310 (Dispositivos Legais):** Dispositivos legais para associar a cada parametro.
+- **VFIS0350 (Classificacoes Fiscais):** NCMs com CEST e Ex Tarifario.
+- **VFIS0360 (Tipos Operacao Entrada):** Tipos de operacao que serao usados como chave de busca.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Parametros > Parametros ICMS/IPI (VFIS0320)**.
+2. A grade principal exibe todos os parametros cadastrados. Utilize os filtros de UF Origem, UF Destino, NCM e Tipo de Operacao para localizar regras especificas.
+3. Clique em **Novo** para criar um novo parametro.
+4. Defina a **UF de Origem** (obrigatorio) — o estado do emitente.
+5. Defina a **UF de Destino** (opcional) — deixe em branco para aplicar a todas as UFs de destino. Preencher com uma UF especifica torna a regra mais especifica e prioritaria.
+6. Selecione o **NCM** (opcional) — deixe em branco para aplicar a todos os NCMs. Preencher com um NCM especifico torna a regra prioritaria para aquele produto.
+7. Selecione o **Tipo de Operacao** (opcional) — vinculado a VFIS0360. Permite ativar parametros diferentes para operacoes diferentes (ex: venda x bonificacao).
+8. Na secao **ICMS**, configure:
+   - **CST de ICMS:** 00 (tributado), 10 (com ST), 20 (reducao BC), 30 (isento), 40 (imune/nao tributado), 50 (diferido), 60 (ST cobrada anteriormente), 70 (reducao BC + ST), 90 (outros).
+   - **CSOSN:** Para empresas do Simples Nacional (101, 102, 103, 201, 202, 203, 300, 400, 500, 900).
+   - **Aliquota ICMS:** Percentual de ICMS aplicavel.
+   - **Aliquota FCP:** Fundo de Combate a Pobreza.
+   - **Reducao Base Calculo:** Percentual de reducao da base de calculo do ICMS (ex: 41,67% para cesta basica).
+   - **Aliquota ICMS-ST:** Aliquota para Substituicao Tributaria.
+   - **MVA (Margem de Valor Agregado):** Percentual de MVA para ST.
+   - **Dispositivo Legal ICMS:** Vinculado a VFIS0310 (ex: Convenio 100/97).
+9. Na secao **IPI**, configure:
+   - **CST de IPI:** 00 (tributado), 01 (aliquota zero), 02 (isento), 03 (nao tributado), 04 (imune), 05 (suspenso), 49 (outras entradas), 50 (suspenso), 51 (diferido), 55 (suspenso), 99 (outras saidas).
+   - **Aliquota IPI:** Percentual de IPI.
+   - **Dispositivo Legal IPI:** Vinculado a VFIS0310.
+10. Na secao **Credito**, defina:
+    - **Percentual de Credito ICMS:** Para operacoes com credito presumido ou restrito (ex: credito de 7% para atacadistas).
+    - **Percentual de Credito IPI:** Percentual de IPI que gera credito fiscal.
+11. Clique em **Salvar**. O sistema validara se ja existe um parametro identico (mesma combinacao UF+NCM+Tipo) e alertara sobre conflito.
+12. Utilize o **Simulador** (icone de calculadora na toolbar) para testar o parametro: informe UF, NCM, tipo de operacao e valor para ver o resultado do calculo.
+
+## Campos
+
+### Chaves de Busca
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| UF Origem | Select | Sim | UFs brasileiras | UF do emitente. |
+| UF Destino | Select | Nao | UFs brasileiras | UF do destinatario. Em branco = todas as UFs. |
+| NCM | Select | Nao | VFIS0350 | NCM do produto. Em branco = todos os NCMs. |
+| Tipo Operacao | Select | Nao | VFIS0360 | Tipo de operacao. Em branco = todos os tipos. |
+
+### ICMS
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| CST ICMS | Select | Sim | 00, 10, 20, 30, 40, 41, 50, 51, 60, 70, 90 | Codigo de Situacao Tributaria do ICMS. |
+| CSOSN | Select | Nao | 101, 102, 103, 201, 202, 203, 300, 400, 500, 900 | Codigo de Situacao da Operacao do Simples Nacional. |
+| Aliquota ICMS | Decimal (5,2) | Condicional | — | Percentual de ICMS. |
+| Aliquota FCP | Decimal (5,2) | Nao | — | Fundo de Combate a Pobreza. |
+| Reducao BC | Decimal (5,2) | Nao | — | Percentual de reducao da base de calculo. |
+| Aliquota ICMS-ST | Decimal (5,2) | Nao | — | Percentual de ICMS-ST. |
+| MVA | Decimal (5,2) | Nao | — | Margem de Valor Agregado para ST. |
+| MVA Ajustada | Decimal (5,2) | Nao | — | MVA ajustada para operacao interestadual. |
+| Aliquota DIFAL | Decimal (5,2) | Nao | — | Aliquota de DIFAL. |
+| Percentual Partilha | Decimal (5,2) | Nao | — | Percentual de partilha do DIFAL origem/destino. |
+| Dispositivo Legal ICMS | Select | Nao | VFIS0310 | Enquadramento legal do ICMS. |
+
+### IPI
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| CST IPI | Select | Nao | 00 a 99 | Codigo de Situacao Tributaria do IPI. |
+| Aliquota IPI | Decimal (5,2) | Condicional | — | Percentual de IPI. |
+| Dispositivo Legal IPI | Select | Nao | VFIS0310 | Enquadramento legal do IPI. |
+
+### Credito
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Percentual Credito ICMS | Decimal (5,2) | Nao | — | Percentual de credito de ICMS (ex: 7%, 12%, 20%). |
+| Percentual Credito IPI | Decimal (5,2) | Nao | — | Percentual de credito de IPI. |
+
+## Observacoes importantes
+
+- **Hierarquia de regras:** O motor de calculo segue a seguinte prioridade ao buscar parametros: 1) UF Origem + UF Destino + NCM + Tipo Operacao (regra mais especifica); 2) UF Origem + UF Destino + NCM; 3) UF Origem + NCM; 4) UF Origem + UF Destino; 5) UF Origem; 6) Aliquotas padrao da VFIS0100. Cadastre regras da mais especifica para a mais generica.
+- **CST vs. CSOSN:** Utilize CST para empresas do regime normal (Lucro Presumido/Real) e CSOSN para empresas do Simples Nacional. Nao preencha ambos no mesmo parametro — o sistema utilizara um ou outro conforme o regime da empresa.
+- **MVA Ajustada:** Em operacoes interestaduais com ST, a MVA deve ser ajustada conforme a formula do Protocolo ICMS. O sistema pode calcular a MVA ajustada automaticamente se as aliquotas interestadual e interna do destino estiverem configuradas corretamente.
+- **Percentual de Credito ICMS:** Para empresas atacadistas, alguns estados limitam o credito de ICMS a 7% nas compras interestaduais (Convenio ICMS 42/92). Utilize este campo para configurar creditos restritos.
+
+## Telas relacionadas
+
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Aliquotas padrao (fallback quando nao ha parametro especifico).
+- **[VFIS0110 (Tabelas Tributarias)](/fiscal/vfis0110):** Tabelas de aliquotas base por UF+NCM.
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** NFe que consome estes parametros no calculo dos itens.
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** CFOPs que influenciam a selecao do parametro.
+- **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Dispositivos legais referenciados nos parametros.
+- **[VFIS0330 (Reducao/Substituicao/Diferimento)](/fiscal/vfis0330):** Regras especificas de reducao, ST e diferimento.
+- **[VFIS0360 (Tipos Operacao Entrada)](/fiscal/vfis0360):** Tipos de operacao usados como chave de busca.

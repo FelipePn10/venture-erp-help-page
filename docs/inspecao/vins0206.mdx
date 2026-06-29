@@ -1,0 +1,74 @@
+---
+sidebar_position: 5
+title: "VINS0206 — Exclusao Ordens Inspecao"
+description: "Ferramenta de exclusao de ordens de inspecao com 2 abas: exclusao individual e exclusao em lote."
+---
+
+# VINS0206 — Exclusao Ordens Inspecao
+
+> Ferramenta de exclusao de ordens de inspecao com 2 abas: Exclusao Individual (por numero de ordem) e Exclusao em Lote (por filtros como periodo, item ou status).
+
+## Objetivo
+
+Permitir a exclusao controlada de ordens de inspecao que nao serao executadas, seja individualmente (por numero especifico) ou em lote (por criterios como periodo, item, fornecedor ou status). A ferramenta e organizada em 2 abas: **Exclusao Individual** para casos pontuais e **Exclusao em Lote** para limpeza de ordens obsoletas, ordens duplicadas ou ordens geradas incorretamente. A exclusao e sempre documentada com justificativa e usuario responsavel, mantendo a trilha de auditoria.
+
+## Pre-requisitos
+
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201) — Ordens de inspecao que serao objeto de exclusao.
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200) — Roteiros associados as ordens a serem excluidas.
+
+## Passo a passo
+
+1. Acesse a tela VINS0206 pelo menu Inspecao > Exclusao Ordens Inspecao.
+2. Na **Aba 1 — Exclusao Individual**, informe o **Numero da Ordem** que deseja excluir.
+3. O sistema carrega os dados da ordem (item, status, data de criacao) para confirmacao visual.
+4. Verifique se a ordem atende aos criterios de exclusao: apenas ordens com status Pendente ou Cancelada podem ser excluidas.
+5. Preencha a **Justificativa** da exclusao (campo obrigatorio).
+6. Clique em **Excluir** para remover a ordem do sistema.
+7. Na **Aba 2 — Exclusao em Lote**, utilize os **filtros** para selecionar um conjunto de ordens: periodo de criacao, item, fornecedor, roteiro, status.
+8. Clique em **Pesquisar** para visualizar as ordens que serao excluidas.
+9. Revise a lista com atencao. Ordens com status "Em Execucao" ou "Concluida" aparecem marcadas e nao serao excluidas.
+10. Preencha a justificativa e clique em **Excluir Selecionados** para remover todas as ordens elegiveis do lote.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+
+### Aba 1 — Exclusao Individual
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero da Ordem | numero | Sim | — | Ordem especifica a ser excluida |
+| Justificativa | texto | Sim | — | Motivo da exclusao |
+| Dados da Ordem (grid) | texto | Nao | — | Exibicao dos dados para confirmacao visual |
+
+### Aba 2 — Exclusao em Lote
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Data Criacao — Inicio | data | Sim | — | Data inicial do periodo |
+| Data Criacao — Fim | data | Sim | — | Data final do periodo |
+| Item | select | Nao | Lista de itens | Filtrar por item |
+| Fornecedor | select | Nao | Lista de fornecedores | Filtrar por fornecedor |
+| Roteiro | select | Nao | Lista de roteiros | Filtrar por roteiro |
+| Status | multi-select | Nao | Pendente / Cancelada | Status das ordens a excluir |
+| Justificativa | texto | Sim | — | Motivo da exclusao em lote |
+| Ordens Encontradas | numero | Nao | — | Total de ordens no filtro |
+| Ordens Elegiveis | numero | Nao | — | Quantas podem ser excluidas |
+
+## Observacoes importantes
+
+- Apenas ordens com status **Pendente** ou **Cancelada** podem ser excluidas. Ordens em execucao ou concluidas sao protegidas para preservar o historico de inspecao.
+- A **Exclusao em Lote** e uma operacao de alto impacto. Sempre revise a lista de ordens elegiveis antes de confirmar a exclusao.
+- A **justificativa** e obrigatoria e fica registrada no log de auditoria do sistema, incluindo usuario, data/hora e motivo.
+- Ordens com **ocorrencias vinculadas** nao podem ser excluidas — as ocorrencias devem ser resolvidas ou canceladas primeiro.
+- A exclusao e **irreversivel**. Uma vez confirmada, a ordem e seus dados sao removidos permanentemente do sistema.
+- Recomenda-se realizar exclusoes em lote em periodos de baixa atividade do sistema e sempre comunicar a equipe de qualidade previamente.
+
+## Telas relacionadas
+
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201): Tela principal de gestao das ordens de inspecao.
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200): Roteiros associados as ordens excluidas.
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Ocorrencias vinculadas que bloqueiam a exclusao.
+- [VINS0400 (Consulta Ocorrencias/Ordens)](/inspecao/vins0400): Consulta para verificar ordens remanescentes.

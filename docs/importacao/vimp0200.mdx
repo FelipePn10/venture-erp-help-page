@@ -1,0 +1,71 @@
+---
+sidebar_position: 3
+title: "VIMP0200 — Console Processos Importacao"
+description: "Console central de gestao dos processos de importacao com visao integrada de todo o ciclo."
+---
+
+# VIMP0200 — Console Processos Importacao
+
+> Console central de gestao de processos de importacao, integrando em uma unica tela todas as etapas do ciclo: compra, embarque, nacionalizacao e recebimento.
+
+## Objetivo
+
+Fornecer um console centralizado para a gestao de todos os processos de importacao da empresa. A tela integra informacoes que normalmente estariam dispersas em diferentes modulos (compras, logistica, fiscal, recebimento) em uma interface unica. O console permite acompanhar cada processo desde a negociacao com o fornecedor internacional ate o recebimento fisico no estoque, passando pelo embarque, transito internacional, desembaraco aduaneiro e transporte interno. E a ferramenta principal do analista de importacao para gerenciar seu pipeline de trabalho.
+
+## Pre-requisitos
+
+- [VIMP0101 (Status Logistico da Carga)](/importacao/vimp0101) — Cargas associadas aos processos de importacao.
+- [VIMP0102 (Tipos Conhecimentos Transporte)](/importacao/vimp0102) — Tipos de documentos de transporte utilizados.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedores internacionais e agentes logisticos.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200) — Pedidos de compra internacionais que originam o processo.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens importados.
+
+## Passo a passo
+
+1. Acesse a tela VIMP0200 pelo menu Importacao > Console Processos Importacao.
+2. O console exibe um **Dashboard Panoramico** com contadores: Processos Ativos, em Trafego, em Desembaraco, Atrasados.
+3. Abaixo do dashboard, a **Grid de Processos** exibe cada processo de importacao com suas informacoes principais.
+4. Utilize os **filtros** (fornecedor, status, modal, periodo) para localizar processos especificos.
+5. Para criar um novo processo, clique em **Novo Processo** e vincule o pedido de compra internacional.
+6. Em cada processo, as **abas laterais** permitem navegar entre as etapas: Dados Gerais, Documentos, Logistica, Financeiro, Fiscal, Recebimento.
+7. Na aba **Documentos**, gerencie todos os documentos do processo: Invoice, Packing List, BL/AWB, DI, LI, Comprovantes.
+8. Na aba **Logistica**, acompanhe o status da carga em tempo real com os marcos logisticos.
+9. Na aba **Fiscal**, gerencie a nacionalizacao: parametrizacao, calculo de tributos, emissao de Nota Fiscal de Entrada.
+10. Na aba **Recebimento**, registre o recebimento fisico, conferencia e inspecao de qualidade dos itens importados.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero do Processo | numero (auto) | Sim | — | Identificador unico do processo |
+| Pedido de Compra | numero | Sim | — | Pedido de compra internacional vinculado |
+| Fornecedor | texto | Nao | — | Carregado do pedido de compra |
+| Modal de Transporte | select | Sim | Maritimo / Aereo / Rodoviario | Meio de transporte internacional |
+| Status Atual | select | Nao | 10 estagios | Embarque, Trafego, Chegada, Desembaraco, Liberado, etc. |
+| Data Prevista de Chegada | data | Nao | — | ETA informado pelo fornecedor |
+| Data Real de Chegada | data | Nao | — | Data efetiva de chegada no porto/aeroporto |
+| Valor Total (FOB) | numero | Nao | — | Valor dos bens na origem |
+| Valor Total (CIF) | numero | Nao | — | FOB + Frete + Seguro |
+| Tributos Estimados | numero | Nao | — | II, IPI, PIS, COFINS, ICMS estimados |
+| DI (Declaracao de Importacao) | texto | Nao | — | Numero da DI registrada na Receita Federal |
+| LI (Licenca de Importacao) | texto | Nao | — | Numero da LI quando aplicavel |
+| Nota Fiscal de Entrada | numero | Nao | — | NF-e emitida no recebimento |
+| Data de Recebimento | data | Nao | — | Data do recebimento fisico no estoque |
+
+## Observacoes importantes
+
+- O **Dashboard Panoramico** oferece uma visao executiva imediata: quantos processos estao em cada etapa, quais estao atrasados e quantos foram concluidos no periodo.
+- A navegacao por **abas laterais** mantem o contexto do processo selecionado, permitindo alternar rapidamente entre aspectos logisticos, fiscais e de recebimento sem perder a referencia.
+- O **Status Atual** possui 10 estagios pre-definidos que cobrem todo o ciclo de importacao. O avanco entre estagios pode ser manual ou automatico, conforme configuracao.
+- O calculo de **Tributos Estimados** e uma projecao inicial baseada na NCM e aliquotas. O calculo definitivo ocorre no momento da nacionalizacao, na aba Fiscal.
+- O processo de importacao so pode ser **finalizado** apos o recebimento fisico e a conferencia de todos os itens, garantindo que quantidades e valores estejam corretos.
+- A aba **Documentos** centraliza toda a documentacao do processo, servindo como repositorio unico para auditoria fiscal e compliance.
+
+## Telas relacionadas
+
+- [VIMP0101 (Status Logistico da Carga)](/importacao/vimp0101): Acompanhamento logistico das cargas dos processos.
+- [VIMP0102 (Tipos Conhecimentos Transporte)](/importacao/vimp0102): Tipos de documentos utilizados nos processos.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra internacionais vinculados.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores e transportadores internacionais.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens importados nos processos.
+- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Inspecoes realizadas no recebimento dos itens importados.

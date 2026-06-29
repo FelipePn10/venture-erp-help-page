@@ -1,0 +1,97 @@
+---
+sidebar_position: 11
+title: "VFIS0350 — Classificacoes Fiscais"
+description: "Cadastro completo de NCM, CEST, Ex Tarifario com sub-entidades para Idiomas e Atributos de Exportacao."
+---
+
+# VFIS0350 — Classificacoes Fiscais
+
+> Tela de cadastro e gestao das classificacoes fiscais de produtos: NCM (Nomenclatura Comum do Mercosul), CEST (Codigo Especificador da Substituicao Tributaria), Ex Tarifario e sub-entidades para idiomas e atributos de exportacao.
+
+**Codigo fonte:** `src/modules/fiscal/fiscal-classifications/vfis0350.vue`
+
+## Objetivo
+
+A VFIS0350 centraliza o cadastro completo das classificacoes fiscais de produtos utilizadas em todas as operacoes do ERP. O **NCM** (codigo de 8 digitos) e a classificacao padrao para mercadorias no Mercosul e e obrigatorio em toda NFe (campo `NCM` do item). O **CEST** (7 digitos) e obrigatorio para produtos sujeitos a Substituicao Tributaria. O **Ex Tarifario** (atualmente de 3 ou 4 digitos) identifica excecoes tarifarias. Alem dessas classificacoes principais, a tela possui sub-entidades: **Idiomas** (traducao da descricao do NCM para outros idiomas, util para comercio exterior) e **Atributos de Exportacao** (Drawback, Recof, Recof-Sped e outros regimes especiais de exportacao), atendendo requisitos fiscais e aduaneiros.
+
+## Pre-requisitos
+
+- **Conhecimento da TIPI (Tabela de Incidencia do IPI):** A TIPI, publicada pela Receita Federal, relaciona cada NCM com sua aliquota de IPI, Ex Tarifario e demais informacoes fiscais.
+- **Conhecimento da tabela CEST (CONFAZ):** A tabela CEST e publicada pelo CONFAZ e relaciona NCM com codigo CEST e descricao do segmento.
+- **Permissao fiscal administrativa:** Acesso restrito a usuarios com perfil fiscal.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Tabelas > Classificacoes Fiscais (VFIS0350)**.
+2. A tela principal e uma grade com todos os NCMs cadastrados. Utilize a busca por codigo ou descricao para localizar um NCM especifico.
+3. Para **cadastrar um novo NCM**, clique em **Novo**. Informe:
+   - **Codigo NCM:** 8 digitos (ex: 0201.30.00 — Carnes de bovino frescas).
+   - **Descricao:** Descricao oficial conforme TIPI.
+   - **Aliquota II (Imposto de Importacao):** Percentual para operacoes de importacao.
+   - **Aliquota IPI:** Percentual conforme TIPI (pode ser zero, isento ou nao tributado).
+   - **Aliquota PIS/Cofins Importacao:** Percentuais especificos para importacao.
+4. Na sub-entidade **CEST**, vincule o NCM ao codigo CEST (quando o produto estiver sujeito a ST). Informe o codigo CEST de 7 digitos e a descricao do segmento (ex: "0100100 — Refrigerantes"). Um NCM pode ter varios CESTs associados (diferentes segmentos de ST).
+5. Na sub-entidade **Ex Tarifario**, cadastre as excecoes tarifarias. Informe o codigo Ex (3 ou 4 digitos) e a descricao da excecao. Um NCM pode ter varios Ex Tarifarios. O Ex Tarifario altera a aliquota de IPI e II, e deve ser informado no XML da NFe (campo `EXTIPI`).
+6. Na sub-entidade **Idiomas**, cadastre traducoes da descricao do NCM para outros idiomas (ingles, espanhol, etc.). Isto e util para documentos de exportacao (Nota Fiscal de Exportacao, Declaracao de Exportacao, Invoice Comercial).
+7. Na sub-entidade **Atributos de Exportacao**, marque os regimes aduaneiros especiais aplicaveis a este NCM: Drawback (Isencao/Suspensao/Restituicao), Recof, Recof-Sped, Repetro, Entreposto Aduaneiro, etc.
+8. Clique em **Salvar**. O sistema validara se o NCM ja existe e se os codigos CEST e Ex sao validos.
+
+## Campos
+
+### NCM (Principal)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Codigo NCM | Texto (8) | Sim | — | Codigo de 8 digitos conforme TIPI. |
+| Descricao | Texto (200) | Sim | — | Descricao oficial do NCM. |
+| Aliquota II | Decimal (5,2) | Nao | — | Aliquota de Imposto de Importacao. |
+| Aliquota IPI | Decimal (5,2) | Nao | — | Aliquota de IPI conforme TIPI. |
+| Aliquota PIS Importacao | Decimal (5,2) | Nao | — | PIS sobre importacao. |
+| Aliquota COFINS Importacao | Decimal (5,2) | Nao | — | COFINS sobre importacao. |
+| Ativo | Checkbox | Sim | Sim / Nao | Indica se o NCM esta ativo para uso. |
+
+### CEST (Sub-entidade)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Codigo CEST | Texto (7) | Sim | — | Codigo de 7 digitos do CEST. |
+| Descricao CEST | Texto (200) | Sim | — | Descricao do segmento de ST. |
+| Ativo | Checkbox | Sim | Sim / Nao | Indica se o CEST esta ativo. |
+
+### Ex Tarifario (Sub-entidade)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Codigo Ex | Texto (4) | Sim | — | Codigo da excecao tarifaria. |
+| Descricao Ex | Texto (200) | Sim | — | Descricao da excecao. |
+| Aliquota IPI Ex | Decimal (5,2) | Nao | — | Aliquota de IPI especifica desta excecao. |
+
+### Idiomas (Sub-entidade)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Idioma | Select | Sim | PT, EN, ES, etc. | Idioma da traducao. |
+| Descricao Traduzida | Texto (200) | Sim | — | Descricao do NCM traduzida. |
+
+### Atributos de Exportacao (Sub-entidade)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Regime | Select | Sim | Drawback / Recof / Recof-Sped / Repetro / Entreposto / Outros | Regime aduaneiro especial. |
+| Descricao | Texto (100) | Sim | — | Descricao do regime. |
+| Ativo | Checkbox | Sim | Sim / Nao | Indica se o atributo esta ativo. |
+
+## Observacoes importantes
+
+- **NCM e rejeicao SEFAZ:** A SEFAZ valida o NCM informado na NFe contra a tabela TIPI oficial. NCMs inexistentes ou com codigo invalido geram rejeicao (codigo 778). Mantenha a tabela de NCMs sempre atualizada.
+- **CEST e ST:** Para produtos sujeitos a ST, o CEST e obrigatorio no XML da NFe (campo `CEST`). A ausencia gera rejeicao 847. O CEST deve ser cadastrado na VFIS0350 e vinculado ao produto.
+- **Ex Tarifario:** O Ex Tarifario deve ser informado no XML da NFe (campo `EXTIPI`). A omissao, quando aplicavel, gera rejeicao na SEFAZ. Produtos com Ex Tarifario tem aliquota de IPI diferente da aliquota padrao do NCM.
+- **Idiomas e Exportacao:** As traducoes e atributos de exportacao sao utilizados na geracao de documentos de comercio exterior (NFe de Exportacao, Exporta Facil, Drawback). Mantenha-os atualizados se a empresa opera com exportacao.
+
+## Telas relacionadas
+
+- **[VFIS0110 (Tabelas Tributarias)](/fiscal/vfis0110):** Tabelas de aliquotas que referenciam NCMs e CESTs.
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** NFe onde o NCM, CEST e Ex Tarifario sao informados nos itens.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza NCM e CEST para creditos.
+- **[VFIS0320 (Parametros ICMS/IPI)](/fiscal/vfis0320):** Parametros que usam NCM como chave de busca.
+- **[VFIS0330 (Reducao/ST/Diferimento)](/fiscal/vfis0330):** Regras de ST que utilizam CEST e NCM.

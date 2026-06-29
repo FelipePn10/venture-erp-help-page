@@ -1,0 +1,82 @@
+---
+sidebar_position: 2
+title: "VCTB0200 — Contabilidade SPED ECD"
+description: "Gestao completa do plano de contas e lancamentos contabeis."
+---
+
+# VCTB0200 — Contabilidade SPED ECD
+
+> Gestao completa do plano de contas contabil, lancamentos e balancete para o SPED ECD.
+
+**Codigo fonte:** `src/components/screens/contabilidade/Vctb0200Page.tsx`
+
+## Objetivo
+
+Centralizar a gestao contabil completa da empresa. O plano de contas e hierarquico com notacao de ponto. Os lancamentos seguem o principio de partidas dobradas (debito e credito). A estrutura atende aos requisitos do SPED ECD (Escrituracao Contabil Digital), permitindo gerar o balancete e exportar os dados no formato exigido pelo fisco.
+
+## Pre-requisitos
+
+- Conhecimento de contabilidade (plano de contas, partidas dobradas, natureza das contas).
+- Empresa cadastrada em **VEMP0100 (Cadastro Empresa)**.
+- Recomenda-se definir a estrutura hierarquica do plano de contas antes de iniciar os lancamentos.
+
+## Passo a passo
+
+### Plano de Contas
+
+1. Acesse **Contabilidade > SPED ECD** (VCTB0200).
+2. Na secao **Plano de Contas**, clique em **+ Nova Conta**.
+3. Para nivel superior (grupo): informe **Codigo** simples (ex: `1`, `2`), **Descricao**, **Tipo** e **Natureza**. Deixe **Codigo Pai** em branco.
+4. Para subcontas: informe **Codigo** com ponto (ex: `1.1`, `1.1.01`), preencha **Codigo Pai** com a conta superior.
+5. Clique em **Salvar**.
+
+### Lancamentos Contabeis
+
+1. Na secao **Lancamentos**, clique em **+ Novo Lancamento**.
+2. Informe o **Periodo** contabil e a **Data** do lancamento.
+3. Selecione a **Conta Debito** e a **Conta Credito** (partidas dobradas).
+4. Informe o **Valor** do lancamento.
+5. Preencha o **Historico** com a descricao do fato contabil.
+6. Clique em **Salvar**.
+
+### Balancete
+
+1. Na secao **Balancete**, selecione o periodo desejado.
+2. O sistema consolida os saldos de todas as contas, exibindo debitos, creditos e saldo final.
+
+## Campos
+
+### Plano de Contas
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Codigo | texto hierarquico | Sim | — | Codigo com notacao de ponto (ex: `1.1.01`) |
+| Descricao | texto | Sim | — | Nome da conta |
+| Codigo Pai | texto | Nao | — | Conta superior na hierarquia |
+| Tipo | selecao | Sim | RECEITA / DESPESA / ATIVO / PASSIVO / PATRIMONIO | Classificacao |
+| Natureza | selecao | Sim | CREDITO / DEBITO | Natureza do saldo |
+
+### Lancamentos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Periodo | data | Sim | — | Periodo contabil |
+| Conta Debito | texto | Sim | — | Conta a debitar |
+| Conta Credito | texto | Sim | — | Conta a creditar |
+| Valor | numero | Sim | — | Valor do lancamento |
+| Historico | texto | Sim | — | Descricao do lancamento |
+| Data | data | Sim | — | Data do lancamento |
+
+## Observacoes importantes
+
+- O plano de contas utiliza notacao hierarquica: o nivel e calculado automaticamente pela quantidade de segmentos no codigo.
+- Todos os lancamentos devem seguir o principio de partidas dobradas (total de debitos = total de creditos).
+- O balancete e a base para geracao dos arquivos do SPED ECD.
+- Alteracoes no plano de contas apos inicio dos lancamentos devem ser feitas com cautela para nao quebrar a integridade contabil.
+
+## Telas relacionadas
+
+- **[VFIN0120 (Plano de Contas)](/financeiro/vfin0120):** Estrutura de plano de contas similar no modulo financeiro.
+- **[VFIN0500 (Relatorios)](/financeiro/vfin0500):** Relatorios contabeis consolidados (DRE).
+- **[VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102):** Centros de custo vinculados as contas contabeis.
+- **[VEMP0100 (Cadastro Empresa)](/cadastros/vemp0100):** Empresa para a qual a contabilidade e mantida.

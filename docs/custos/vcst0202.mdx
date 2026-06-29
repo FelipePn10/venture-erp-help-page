@@ -1,0 +1,111 @@
+---
+sidebar_position: 1
+title: "VCST0202 — Precificação de Produtos"
+description: "Cadastro de precificações organizado em 4 abas — Precificações, Revisões, Itens (com margem automática) e Dados Gerais — para gestão de preços de venda."
+---
+
+# VCST0202 — Precificação de Produtos
+
+> Tela completa de gestão de precificações, organizada em 4 abas — Precificações (cadastro principal), Revisões (controle de versões e histórico), Itens (tabela de produtos com cálculo automático de margem) e Dados Gerais (parâmetros comerciais vinculados) — permitindo o gerenciamento estratégico dos preços de venda de todos os itens da empresa.
+
+## Objetivo
+
+Centralizar a definição e o controle dos preços de venda dos itens comercializados pela empresa. A tela permite criar precificações (conjuntos de preços vinculados a tabelas de venda), gerenciar revisões (versões com datas de validade, permitindo evolução histórica dos preços), incluir itens com cálculo automático de margem (Margem = (Preço de Venda - Custo) / Preço de Venda × 100) e configurar parâmetros comerciais como cliente-alvo, condição de pagamento e tipo de frete. A estrutura modular em 4 abas proporciona uma visão completa e organizada do ciclo de vida dos preços, desde sua definição até sua aplicação nos pedidos de venda.
+
+## Pré-requisitos
+
+- Ter tabelas de venda cadastradas em [VCLI0520](/cliente/vcli0520).
+- Ter itens cadastrados com custo definido em [VENT0200](/engenharia/vent0200).
+- Ter empresas cadastradas para vinculação à precificação.
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500), se a precificação for direcionada a um cliente específico.
+- Possuir permissão de acesso ao módulo Custos.
+
+## Passo a Passo
+
+### Aba Precificações
+
+1. Acesse o menu **Custos > Precificação de Produtos**.
+2. Na aba **Precificações**, clique em **Novo** para criar uma nova precificação.
+3. Informe o **Código** da precificação e uma **Descrição** clara (ex.: "Tabela Verão 2026", "Precificação Atacado SP").
+4. Selecione a **Empresa** à qual a precificação se aplica.
+5. Defina o **Status** inicial (normalmente "Aberta" para permitir edições).
+6. Clique em **Salvar** para criar a precificação base.
+
+### Aba Revisões
+
+7. Acesse a aba **Revisões**.
+8. Clique em **Nova Revisão** para criar a primeira revisão vinculada à precificação.
+9. Informe um **Código** e uma **Descrição** para a revisão (ex.: "Rev. 01 — Preços Iniciais").
+10. Defina as datas de **Cadastro** e **Validade** da revisão.
+11. Mantenha a **Situação** como "Aberta" para permitir a inclusão de itens.
+12. Clique em **Salvar**.
+
+### Aba Itens
+
+13. Acesse a aba **Itens**.
+14. Clique em **Selecionar Itens** para abrir a busca de itens e selecionar aqueles que farão parte da precificação.
+15. Para cada item adicionado, o sistema exibe: Linha, Código, Descrição, Máscara (classificação), Quantidade e os campos de valor.
+16. Preencha o **Preço de Venda** desejado para cada item.
+17. Informe o **Custo** do item (carregado automaticamente do cadastro do item, mas editável para cenários específicos).
+18. O sistema calcula automaticamente a **Margem (%)** com base na fórmula: (Preço de Venda - Custo) / Preço de Venda × 100.
+19. Ajuste os preços de venda conforme necessário, observando a margem resultante e as políticas de tolerância definidas na tabela de venda vinculada.
+20. Repita os passos 13 a 19 para todos os itens da precificação.
+
+### Aba Dados Gerais
+
+21. Acesse a aba **Dados Gerais**.
+22. Selecione o **Cliente** alvo, se a precificação for específica para um cliente.
+23. Vincule a **Tabela de Venda** correspondente.
+24. Defina o **Tipo de Frete** e a **Condição de Pagamento** padrão associados à precificação.
+25. Configure parâmetros adicionais como **Tipo de Imposto** e **Tipo de NF**, se aplicável.
+
+### Finalização
+
+26. Retorne à aba **Revisões** e, após concluir a inclusão de itens, clique em **Fechar Revisão**. A situação muda para "Fechada", congelando os preços daquela revisão.
+27. Para criar uma nova versão de preços, repita os passos 7 a 26 criando uma nova revisão.
+28. Utilize os botões **Exportar** em cada aba para gerar relatórios específicos.
+29. Para aplicar os preços nos pedidos de venda, certifique-se de que a tabela de venda vinculada à precificação está associada ao cliente em [VCLI0500](/cliente/vcli0500) ou diretamente no pedido em [VPDV0200](/pdv/vpdv0200).
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Aba | Descrição |
+|-------|------|-------------|-----|-----------|
+| Código | Texto | Sim | Precificações | Código identificador da precificação |
+| Descrição | Texto | Sim | Precificações | Nome descritivo da precificação |
+| Empresa | Seleção | Sim | Precificações | Empresa à qual a precificação pertence |
+| Status | Seleção | Sim | Precificações | Situação: Aberta / Fechada |
+| Revisão — Código | Texto | Sim | Revisões | Código da revisão |
+| Revisão — Descrição | Texto | Sim | Revisões | Descrição da revisão |
+| Revisão — Data Cadastro | Data | Sim | Revisões | Data de criação da revisão |
+| Revisão — Data Validade | Data | Não | Revisões | Data limite de validade da revisão |
+| Revisão — Situação | Seleção | Sim | Revisões | Aberta / Fechada |
+| Item — Linha | Numérico | Sim | Itens | Número sequencial do item na precificação |
+| Item — Código | Texto | Sim | Itens | Código do item |
+| Item — Descrição | Texto (automático) | Não | Itens | Descrição carregada do cadastro do item |
+| Item — Máscara | Texto (automático) | Não | Itens | Classificação do item (máscara) |
+| Item — Quantidade | Numérico | Não | Itens | Quantidade de referência para o preço |
+| Item — Preço de Venda | Monetário | Sim | Itens | Preço de venda definido para o item |
+| Item — Custo | Monetário | Sim | Itens | Custo do item |
+| Item — Margem (%) | Numérico (calculado) | — | Itens | Margem calculada automaticamente |
+| Cliente | Seleção | Não | Dados Gerais | Cliente alvo da precificação |
+| Tabela de Venda | Seleção | Não | Dados Gerais | Tabela de venda vinculada |
+| Tipo de Frete | Seleção | Não | Dados Gerais | CIF / FOB |
+| Condição de Pagamento | Seleção | Não | Dados Gerais | Condição de pagamento padrão |
+| Tipo de Imposto | Seleção | Não | Dados Gerais | Configuração fiscal de impostos |
+
+## Observações
+
+- O cálculo de margem é automático e em tempo real. A fórmula utilizada é: **Margem (%) = ((Preço de Venda - Custo) / Preço de Venda) × 100**. Alterações no preço de venda ou no custo refletem imediatamente na margem exibida.
+- As revisões funcionam como um controle de versão dos preços. Uma revisão "Fechada" não pode mais ser alterada, garantindo a integridade dos preços que já foram praticados. Para modificar preços, é necessário criar uma nova revisão.
+- É possível ter múltiplas revisões abertas simultaneamente para a mesma precificação, embora a prática recomendada seja trabalhar com uma revisão por vez para evitar conflitos de versão.
+- A seleção de itens na aba Itens suporta seleção múltipla, permitindo adicionar dezenas ou centenas de itens de uma só vez através dos filtros de busca (por classificação, código, descrição, etc.).
+- Os preços definidos na precificação são aplicados nos pedidos de venda através do vínculo com a tabela de venda. A tabela de venda selecionada no pedido determina qual precificação (e qual revisão ativa) será utilizada como referência de preços.
+- Para precificações com cliente específico (aba Dados Gerais), os preços têm precedência sobre tabelas de venda genéricas quando o pedido é criado para aquele cliente.
+
+## Telas Relacionadas
+
+- **[VENT0200 — Cadastro de Itens](/engenharia/vent0200):** Origem dos itens incluídos na precificação, de onde o custo é carregado automaticamente.
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cliente alvo da precificação, quando a aba Dados Gerais especifica um cliente.
+- **[VCLI0520 — Apoio Comercial de Cliente](/cliente/vcli0520):** Tabelas de venda e condições de pagamento utilizadas no vínculo da precificação.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde os preços definidos na precificação são efetivamente aplicados nos pedidos de venda.
+- **[VCLA0100 — Classificação de Itens](/cadastros/vcla0100):** Classificações de itens que aparecem como máscara na aba Itens.

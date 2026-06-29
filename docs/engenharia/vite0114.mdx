@@ -1,0 +1,62 @@
+---
+sidebar_position: 12
+title: "VITE0114 — Grupos PDM"
+description: "Visualizacao consolidada dos grupos PDM no tema azul com navegacao hierarquica."
+---
+
+# VITE0114 — Grupos PDM (Tema Azul)
+
+> Interface de visualizacao e navegacao dos grupos PDM no tema azul, oferecendo uma experiencia consolidada para gerenciamento da hierarquia de configuracao.
+
+## Objetivo
+
+Fornecer uma visao consolidada e amigavel de todos os grupos PDM cadastrados no sistema, utilizando o tema visual azul caracteristico do modulo de engenharia. Esta tela serve como painel central para navegacao na hierarquia PDM, permitindo que o usuario visualize grupos, modificadores vinculados e atributos em uma unica interface integrada. A partir desta tela, e possivel navegar rapidamente para as telas de detalhe de modificadores, atributos e regras, funcionando como um hub de configuracao PDM.
+
+## Pre-requisitos
+
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupos PDM devem estar previamente cadastrados.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores vinculados aos grupos PDM.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116) — Atributos associados aos modificadores de cada grupo.
+
+## Passo a passo
+
+1. Acesse a tela VITE0114 pelo menu Engenharia > Grupos PDM.
+2. A tela exibe todos os grupos PDM cadastrados em formato de tabela com tema azul.
+3. Utilize a **Busca** para localizar um grupo especifico por codigo ou descricao.
+4. Clique em um grupo para **expandir** e visualizar os modificadores PDM vinculados a ele.
+5. Clique em um modificador expandido para visualizar os **atributos** associados.
+6. Utilize o botao **Novo Grupo** para criar um novo grupo PDM, sendo redirecionado para a tela [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204).
+7. Utilize o botao **Editar** para modificar um grupo existente.
+8. O menu de contexto (clique direito) em um grupo oferece atalhos para Modificadores, Atributos e Regras do grupo selecionado.
+9. Utilize o botao **Exportar** para gerar uma planilha com a hierarquia PDM completa.
+10. O indicador visual de **Status** (bolinha verde/vermelha) mostra se o grupo possui configuracao completa ou pendente.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Busca | texto | Nao | — | Campo de filtro por codigo ou descricao do grupo |
+| Codigo do Grupo | texto | Nao | — | Identificador do grupo PDM |
+| Descricao | texto | Nao | — | Nome descritivo do grupo PDM |
+| Modificadores Vinculados | numero | Nao | — | Quantidade de modificadores associados ao grupo |
+| Itens Gerados | numero | Nao | — | Quantidade de itens configurados gerados a partir do grupo |
+| Status | indicador | Nao | Completo / Pendente | Indicador visual da completude da configuracao |
+| Mascara | texto | Nao | — | Mascara de codificacao definida para o grupo |
+
+## Observacoes importantes
+
+- O **tema azul** identifica visualmente que o usuario esta no contexto do modulo de configuracao PDM (Product Data Management).
+- O indicador de **Status Pendente** (bolinha vermelha) sugere que o grupo PDM ainda nao possui todos os elementos necessarios (modificadores, atributos ou regras) para geracao de itens configurados.
+- A navegacao hierarquica (Grupo > Modificador > Atributo) na propria tela evita que o usuario precise abrir multiplas telas para visualizar a configuracao completa.
+- O menu de contexto oferece **atalhos rapidos** que agilizam o fluxo de trabalho, especialmente util para consultores e analistas de engenharia.
+- A exportacao da hierarquia completa e util para documentacao e auditoria da configuracao de produtos.
+- Grupos com muitos itens gerados podem ter sua expansao mais lenta. Utilize a busca para localizar grupos especificos.
+
+## Telas relacionadas
+
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Tela de cadastro detalhado do grupo PDM.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores vinculados aos grupos PDM.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos associados aos modificadores de cada grupo.
+- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras aplicaveis aos itens do grupo PDM.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens gerados a partir dos grupos PDM.
+- [VITE0313 (Geracao Mascara Itens Configurados)](/engenharia/vite0313): Geracao de codigos para itens do grupo PDM.

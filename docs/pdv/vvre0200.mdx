@@ -1,0 +1,80 @@
+---
+sidebar_position: 5
+title: "VVRE0200 — Console de Vendas Recorrentes"
+description: "Console de gestão de contratos de vendas recorrentes com upgrade/downgrade, ações em lote e geração automática de pedidos por periodicidade."
+---
+
+# VVRE0200 — Console de Vendas Recorrentes
+
+> Console especializado na gestão de contratos de vendas recorrentes (assinaturas e fornecimento contínuo), com funcionalidades de upgrade e downgrade de planos, ações em lote para renovação, suspensão e cancelamento, e geração automática de pedidos de venda conforme a periodicidade configurada.
+
+## Objetivo
+
+Gerenciar o ciclo de vida completo dos contratos de vendas recorrentes da empresa. O console oferece uma visão consolidada de todos os contratos ativos, suspensos e cancelados, com cálculo automático da próxima data de faturamento baseado na periodicidade e na última execução. As funcionalidades de upgrade e downgrade permitem alterar o plano ou valor de um contrato em andamento sem perder o histórico. As ações em lote viabilizam operações massivas como renovação de múltiplos contratos, suspensão temporária de um grupo de clientes ou cancelamento de contratos vencidos. A cada ciclo de faturamento, o console gera automaticamente um pedido de venda em [VPDV0200](/pdv/vpdv0200) para a recorrência, integrando-se com o fluxo normal de pedidos, expedição e faturamento.
+
+## Pré-requisitos
+
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Ter os itens ou serviços objetos dos contratos recorrentes cadastrados em [VENT0200](/engenharia/vent0200).
+- Possuir permissão de acesso ao módulo PDV.
+- Conhecer as políticas comerciais de cobrança recorrente e os planos oferecidos pela empresa.
+
+## Passo a Passo
+
+1. Acesse o menu **PDV > Console de Vendas Recorrentes**.
+2. Para criar um novo contrato, clique em **Novo Contrato**.
+3. Informe o **Número do Contrato** (manual ou automático, conforme configuração).
+4. Selecione o **Cliente** titular do contrato.
+5. Escolha o **Item/Serviço** que será fornecido recorrentemente.
+6. Defina a **Periodicidade** do faturamento: Semanal, Quinzenal, Mensal, Bimestral, Trimestral, Semestral ou Anual.
+7. Informe o **Valor da Recorrência** — valor que será cobrado a cada ciclo.
+8. Defina a **Data de Início** do contrato e, opcionalmente, a **Data de Fim** para contratos com prazo determinado.
+9. O sistema calculará automaticamente a data do **Próximo Faturamento** com base na periodicidade e na data da última execução.
+10. Ative o toggle **Renovação Automática** para que o contrato se renove indefinidamente. Desative para contratos com término programado.
+11. Defina o **Status** inicial como Ativo.
+12. Clique em **Salvar** para criar o contrato.
+13. Para realizar **Upgrade** de um contrato: selecione o contrato na listagem, clique em **Upgrade**, escolha o novo plano/valor e informe a data de vigência da alteração. O sistema manterá o histórico do plano anterior.
+14. Para **Downgrade**: mesmo fluxo do upgrade, porém reduzindo o plano ou valor. Observe possíveis regras contratuais de carência ou fidelidade.
+15. Para **Ações em Lote**: selecione múltiplos contratos utilizando os checkboxes, depois escolha a ação desejada:
+    - **Renovar**: Estende os contratos selecionados por mais um ciclo.
+    - **Suspender**: Pausa temporariamente os contratos. Eles não gerarão novos pedidos enquanto suspensos.
+    - **Cancelar**: Encerra definitivamente os contratos selecionados.
+    - **Gerar Pedido**: Força a geração imediata do pedido de venda para a próxima recorrência, independentemente da data programada.
+16. Para visualizar o histórico de um contrato, selecione-o e clique em **Histórico** para ver todos os pedidos gerados, upgrades, downgrades e alterações de status.
+17. Utilize os filtros de período, cliente e status para localizar contratos específicos.
+18. Clique em **Exportar** para gerar relatório com os contratos filtrados.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Contrato | Texto | Sim | — | Número ou código do contrato de venda recorrente |
+| Cliente | Texto/Seleção | Sim | Clientes cadastrados | Cliente titular do contrato |
+| Item / Serviço | Texto/Seleção | Sim | Itens cadastrados | Item ou serviço objeto da recorrência |
+| Periodicidade | Seleção | Sim | Semanal / Quinzenal / Mensal / Bimestral / Trimestral / Semestral / Anual | Frequência de faturamento |
+| Valor Recorrência | Monetário | Sim | — | Valor cobrado a cada ciclo |
+| Data Início | Data | Sim | — | Data de início do contrato |
+| Data Fim | Data | Não | — | Data de término (opcional, para contratos com prazo) |
+| Próximo Faturamento | Data (calculado) | Não | — | Data calculada automaticamente para o próximo faturamento |
+| Última Execução | Data (calculado) | Não | — | Data da última geração de pedido |
+| Status | Seleção | Sim | Ativo / Suspenso / Cancelado / Encerrado | Situação atual do contrato |
+| Renovação Automática | Toggle | Não | Ligado / Desligado | Se ativo, o contrato renova-se automaticamente ao final de cada ciclo |
+| Plano Atual | Texto | Não | — | Descrição do plano vigente (para referência em upgrade/downgrade) |
+| Observação | Texto longo | Não | — | Observações sobre o contrato |
+
+## Observações
+
+- O campo **Próximo Faturamento** é recalculado automaticamente sempre que um pedido de recorrência é gerado, somando o intervalo da periodicidade à data da última execução.
+- Operações de **Upgrade** e **Downgrade** geram registros no histórico do contrato, preservando os valores e planos anteriores para auditoria e análise de evolução de receita.
+- Contratos com **Renovação Automática** desativada e sem **Data de Fim** definida gerarão pedidos indefinidamente até que sejam manualmente suspensos ou cancelados.
+- As **Ações em Lote** são particularmente úteis para reajustes anuais de valor — é possível selecionar todos os contratos de um determinado plano e aplicar um upgrade em massa.
+- O pedido de venda gerado automaticamente pelo console é criado com status "Pedido VentureWeb" e origem "Recorrente", permitindo sua identificação e rastreabilidade no fluxo de pedidos normal.
+- Contratos suspensos não geram novos pedidos, mas o cliente permanece cadastrado e o contrato pode ser reativado a qualquer momento sem perda de histórico.
+
+## Telas Relacionadas
+
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde os pedidos de cada recorrência são gerados automaticamente pelo console.
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cliente titular dos contratos de venda recorrente.
+- **[VFIN0500 — Contas a Receber](/financeiro/vfin0500):** As faturas geradas pelos pedidos recorrentes alimentam o contas a receber do módulo Financeiro.
+- **[VENT0100 — Consulta de Pedido de Venda](/comercial/vent0100):** Tela onde os pedidos gerados pelo console podem ser consultados e monitorados.
+- **[VFIN0200 — Baixa de Títulos](/financeiro/vfin0200):** Tela de baixa dos títulos gerados a partir dos pedidos recorrentes.

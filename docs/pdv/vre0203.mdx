@@ -1,0 +1,80 @@
+---
+sidebar_position: 6
+title: "VRE0203 — Consulta de Comissões Futuras"
+description: "Relatório de projeção de comissões a pagar com 3 níveis hierárquicos (representante, gerente, diretor) e colunas dinâmicas baseadas em pedidos não faturados."
+---
+
+# VRE0203 — Consulta de Comissões Futuras
+
+> Relatório analítico que projeta as comissões a pagar com base nos pedidos de venda ainda não faturados, organizado em 3 níveis hierárquicos — Representante, Gerente e Diretor — com colunas dinâmicas que se adaptam aos parâmetros de filtro selecionados.
+
+## Objetivo
+
+Fornecer uma projeção precisa e estratificada das comissões futuras a serem pagas à força de vendas. O relatório calcula o valor de comissão com base no percentual definido em cada pedido de venda ainda não faturado, permitindo à gestão comercial antecipar despesas com comissões e planejar o fluxo de caixa. A estrutura em 3 níveis hierárquicos permite visualizar as comissões consolidadas por Diretor, detalhadas por Gerente e individualizadas por Representante, com drill-down entre os níveis. As colunas são dinâmicas e se ajustam conforme os filtros selecionados — por exemplo, ao filtrar por período mensal, as colunas exibem totais por semana; ao filtrar por trimestre, exibem totais por mês.
+
+## Pré-requisitos
+
+- Ter pedidos de venda cadastrados em [VPDV0200](/pdv/vpdv0200) com representante e percentual de comissão preenchidos.
+- Ter a hierarquia de vendas configurada (Representantes vinculados a Gerentes, Gerentes vinculados a Diretores).
+- Os pedidos considerados no relatório devem estar em status ainda não faturado (Rascunho, Em Análise ou Liberado).
+- Possuir permissão de acesso ao módulo PDV e às informações de comissão.
+
+## Passo a Passo
+
+1. Acesse o menu **PDV > Consulta de Comissões Futuras**.
+2. Na seção de **Filtros**, selecione o nível hierárquico desejado para a visualização inicial:
+   - **Nível 1 — Diretor**: Visão consolidada por diretoria.
+   - **Nível 2 — Gerente**: Visão detalhada por gerente, com possibilidade de drill-down para representantes.
+   - **Nível 3 — Representante**: Visão individualizada por representante.
+3. Selecione o **Representante**, **Gerente** ou **Diretor** específico, ou deixe em branco para visualizar todos.
+4. Defina o **Período do Pedido** (data de emissão) utilizando o seletor de intervalo de datas.
+5. Opcionalmente, informe uma **Previsão de Pagamento** — data estimada em que as comissões serão efetivamente pagas.
+6. Selecione quais **Status de Pedido** devem ser considerados no cálculo.
+7. Clique em **Pesquisar** para carregar os dados.
+8. Analise o relatório com as colunas dinâmicas:
+   - A primeira coluna exibe o nome do Representante, Gerente ou Diretor, conforme o nível selecionado.
+   - As colunas seguintes exibem os totais de comissão agrupados por período (semanas, meses ou trimestres, conforme o filtro de período).
+   - A última coluna exibe o **Total Acumulado** de comissões no período.
+9. Para fazer drill-down, clique sobre um nome de Gerente para expandir e visualizar os representantes subordinados, ou sobre um Diretor para visualizar os gerentes.
+10. Para retornar ao nível anterior, utilize a navegação de breadcrumb no topo do relatório.
+11. Utilize o botão **Simular Pagamento** para projetar o impacto financeiro do pagamento das comissões na data de previsão informada.
+12. Clique em **Exportar** para gerar o relatório em formato de planilha, preservando a estrutura de níveis e colunas dinâmicas.
+
+## Campos (Filtros)
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Nível Hierárquico | Seleção | Sim | Diretor / Gerente / Representante | Nível de visualização inicial do relatório |
+| Representante | Seleção | Não | Representantes cadastrados | Filtrar por um representante específico |
+| Gerente | Seleção | Não | Gerentes cadastrados | Filtrar por um gerente específico |
+| Diretor | Seleção | Não | Diretores cadastrados | Filtrar por um diretor específico |
+| Período Início | Data | Não | — | Data inicial de emissão dos pedidos |
+| Período Fim | Data | Não | — | Data final de emissão dos pedidos |
+| Previsão Pagamento | Data | Não | — | Data estimada para pagamento das comissões |
+| Status Pedido | Multi-Seleção | Não | Rascunho / Em Análise / Liberado | Status dos pedidos a considerar |
+
+## Campos (Colunas Dinâmicas do Relatório)
+
+| Campo | Descrição |
+|-------|-----------|
+| Nome | Nome do representante, gerente ou diretor (conforme nível selecionado) |
+| Período 1, 2, 3... | Totais de comissão por subperíodo (semanas, meses ou trimestres) — colunas dinâmicas conforme o período total selecionado |
+| Total Acumulado | Soma de todas as comissões do período |
+| Qtd. Pedidos | Quantidade de pedidos que geraram as comissões |
+| Ticket Médio | Valor médio dos pedidos no período |
+| % Comissão Média | Percentual médio de comissão aplicado |
+
+## Observações
+
+- As colunas dinâmicas se adaptam automaticamente ao período selecionado: se o período total for de 1 mês, as colunas exibem semanas; se for de 3 meses, exibem meses; se for de 1 ano, exibem trimestres. Isso garante que o relatório sempre tenha uma granularidade adequada.
+- O drill-down entre níveis hierárquicos preserva o contexto de filtros, permitindo que o gestor navegue da visão macro (diretoria) até o detalhe individual (representante) sem perder os parâmetros da consulta.
+- A **Previsão de Pagamento** é um campo informativo que não afeta o cálculo das comissões, mas é utilizado pela função **Simular Pagamento** para projetar o impacto no fluxo de caixa.
+- As comissões são calculadas sobre o valor das mercadorias (sem impostos e sem frete) multiplicado pelo percentual de comissão definido em cada pedido. O percentual de comissão pode variar entre pedidos do mesmo representante.
+- Pedidos cancelados não são considerados no cálculo, mesmo que tenham sido faturados anteriormente. O status do pedido no momento da consulta determina sua inclusão ou exclusão do relatório.
+
+## Telas Relacionadas
+
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Origem dos pedidos cujas comissões são projetadas. O percentual de comissão é definido nesta tela.
+- **[VFIN0500 — Contas a Receber](/financeiro/vfin0500):** Módulo onde as comissões efetivamente pagas são registradas, permitindo comparar projeção versus realizado.
+- **[VENT0100 — Consulta de Pedido de Venda](/comercial/vent0100):** Tela complementar para verificar os detalhes dos pedidos que compõem a projeção de comissões.
+- **[VFIN0400 — Relatório de Comissões](/financeiro/vfin0400):** Relatório financeiro de comissões já pagas, para comparação com as projeções futuras deste relatório.

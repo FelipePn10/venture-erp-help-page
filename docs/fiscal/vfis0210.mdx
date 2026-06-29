@@ -1,0 +1,129 @@
+---
+sidebar_position: 4
+title: "VFIS0210 — NFe de Entrada"
+description: "Registro de Notas Fiscais de Entrada (compras) em tres modos: digitacao manual, chave de acesso de 44 digitos ou upload de XML."
+---
+
+# VFIS0210 — NFe de Entrada
+
+> Tela dedicada ao registro de Notas Fiscais Eletronicas de Entrada (compras, devolucoes de clientes, remessas para industrializacao). Disponibiliza tres modos de entrada de dados e, ao aprovar a nota, gera automaticamente a conta a pagar no modulo financeiro.
+
+**Codigo fonte:** `src/modules/fiscal/input-nfe/vfis0210.vue`
+
+## Objetivo
+
+A VFIS0210 permite registrar NFe de entrada no ERP — documentos fiscais emitidos por fornecedores contra a empresa. O sistema oferece tres modos de entrada: **digitacao manual** (para notas de fornecedores nao eletronicos ou quando o XML nao esta disponivel), **consulta pela chave de 44 digitos** (busca automatica o XML na SEFAZ via API Focus NFe e preenche todos os campos) e **upload de arquivo XML** (importa o XML baixado do portal da SEFAZ ou recebido do fornecedor). Apos o registro e conferencia, a aprovacao da nota gera automaticamente uma conta a pagar no modulo financeiro (VFOR0130), vinculando a obrigacao de pagamento ao documento fiscal de origem.
+
+## Pre-requisitos
+
+- **VFIS0100 (Configuracao Fiscal):** Token Focus NFe configurado para consulta de XML pela chave de acesso.
+- **VCAD0200 (Cadastro de Fornecedores):** Fornecedores cadastrados com CNPJ, IE e dados de endereco.
+- **VCAD0100 (Cadastro de Produtos):** Produtos cadastrados com NCM e dados fiscais para conferencia automatica.
+- **VFIS0300 (CFOPs):** CFOPs de entrada cadastrados (1.xxx, 2.xxx, 3.xxx).
+- **VFOR0130 (Contas a Pagar):** Modulo financeiro ativo para geracao automatica do titulo a pagar.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Notas Fiscais > NFe de Entrada (VFIS0210)**.
+2. A grade principal exibe todas as NFe de entrada registradas. Utilize os filtros de periodo, fornecedor, status e numero para localizar documentos.
+3. Clique em **Nova NFe de Entrada**. O sistema exibira um dialogo com tres opcoes de modo de entrada:
+
+   **Modo 1 — Digitacao Manual:**
+   4. Selecione o **Fornecedor** (emitente da NFe). O sistema carregara os dados cadastrais do fornecedor (CNPJ, IE, endereco).
+   5. Informe os dados do **Documento Fiscal**: modelo (55=NFe, 1=NF, 2=NF de Venda a Consumidor, 4=NF de Produtor), serie, numero e data de emissao.
+   6. Preencha os **Dados da Nota**: CFOP, natureza da operacao, data de entrada efetiva e chave de acesso (se disponivel).
+   7. Informe os **Totais da Nota**: base de calculo ICMS, valor ICMS, ICMS-ST, frete, seguro, descontos, IPI, PIS, COFINS e valor total da nota.
+   8. Adicione os **Itens** um a um: produto, quantidade, valor unitario, NCM, CFOP do item e valores de impostos. O sistema permitira rateio manual dos valores de frete, seguro e descontos entre os itens.
+   9. Clique em **Salvar Rascunho**.
+
+   **Modo 2 — Chave de 44 Digitos:**
+   4. Informe a **Chave de Acesso** completa (44 digitos) da NFe. O sistema formatara automaticamente e validara o digito verificador.
+   5. Clique em **Consultar SEFAZ**. O sistema utilizara a API Focus NFe para baixar o XML completo da NFe na base da SEFAZ.
+   6. O sistema extraira automaticamente: emitente (fornecedor), destinatario, itens, impostos, totais, transporte, cobranca e informacoes adicionais.
+   7. Revise os dados importados. O sistema destacara itens cujo NCM ou produto nao foram encontrados na base local para que voce faca a vinculacao.
+   8. Ajuste eventuais divergencias e clique em **Salvar**.
+
+   **Modo 3 — Upload XML:**
+   4. Clique em **Upload XML** e selecione o arquivo `.xml` da NFe no seu computador.
+   5. O sistema validara o schema XSD da NFe, extraira todos os dados e preenchera o formulario automaticamente.
+   6. Associe o fornecedor do XML a um cadastro da base (se ja existir) ou crie um novo fornecedor no ato.
+   7. Confira os dados e clique em **Salvar**.
+
+12. Apos salvar o rascunho, revise todas as informacoes na tela de detalhe. Confira especialmente os valores de impostos (ICMS, IPI, PIS, COFINS) para assegurar que os creditos fiscais serao calculados corretamente.
+13. Clique em **Aprovar**. A aprovacao dispara dois processos automaticos:
+    - **Geracao da Conta a Pagar:** Um titulo a pagar e criado automaticamente no modulo financeiro (VFOR0130) com vencimento baseado na data de emissao + prazo do fornecedor, valor igual ao total da nota e referencia ao numero e serie da NFe.
+    - **Registro de Creditos Fiscais:** Os valores de ICMS, IPI, PIS e COFINS destacados na nota sao registrados para posterior apropriacao na apuracao fiscal (VFIS0530, VFIS0540).
+14. O status da nota mudara para **Aprovada**. A partir deste momento, a nota entra no fluxo fiscal e financeiro e so pode ser alterada por usuarios com permissao especial.
+
+15. Para **Cancelar** uma aprovacao (em caso de erro), clique em **Estornar**. O sistema cancelara a conta a pagar vinculada e revertera os creditos fiscais registrados.
+
+## Campos
+
+### Cabecalho
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Modo Entrada | Select | Sim | Manual / Chave 44 / Upload XML | Define como a nota sera registrada. |
+| Fornecedor | Select | Sim | VCAD0200 | Fornecedor emitente da NFe. |
+| Modelo | Select | Sim | 55 / 1 / 2 / 4 | Modelo do documento fiscal. |
+| Serie | Numero (3) | Sim | — | Serie do documento. |
+| Numero | Numero (9) | Sim | — | Numero da nota fiscal. |
+| Data Emissao | Data | Sim | — | Data de emissao da NFe. |
+| Data Entrada | Data | Sim | — | Data de entrada efetiva no estabelecimento. |
+| Chave Acesso | Texto (44) | Condicional | — | Chave de acesso de 44 digitos. Obrigatoria para NFe (modelo 55). |
+| CFOP | Texto (4) | Sim | VFIS0300 | CFOP da operacao de entrada. |
+| Natureza Operacao | Texto (60) | Sim | — | Descricao da natureza da operacao. |
+
+### Totais
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Base Calculo ICMS | Decimal (15,2) | Condicional | — | BC do ICMS total da nota. |
+| Valor ICMS | Decimal (15,2) | Condicional | — | Valor do ICMS destacado na nota. |
+| Base Calculo ICMS-ST | Decimal (15,2) | Nao | — | BC do ICMS-ST. |
+| Valor ICMS-ST | Decimal (15,2) | Nao | — | Valor do ICMS-ST. |
+| Valor IPI | Decimal (15,2) | Nao | — | Valor do IPI. |
+| Valor PIS | Decimal (15,2) | Nao | — | Valor do PIS. |
+| Valor COFINS | Decimal (15,2) | Nao | — | Valor da COFINS. |
+| Valor Frete | Decimal (15,2) | Nao | — | Valor do frete. |
+| Valor Seguro | Decimal (15,2) | Nao | — | Valor do seguro. |
+| Descontos | Decimal (15,2) | Nao | — | Valor de descontos. |
+| Outras Despesas | Decimal (15,2) | Nao | — | Outras despesas acessorias. |
+| Valor Total | Decimal (15,2) | Sim | — | Valor total da nota. |
+
+### Itens
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Produto | Select | Sim | VCAD0100 | Produto da nota. |
+| Quantidade | Decimal (15,4) | Sim | — | Quantidade do item. |
+| Valor Unitario | Decimal (15,4) | Sim | — | Valor unitario do item. |
+| Valor Total | Decimal (15,2) | Auto | — | Quantidade x Valor Unitario. |
+| NCM | Texto (8) | Sim | VFIS0350 | NCM do produto. |
+| CFOP | Texto (4) | Sim | VFIS0300 | CFOP do item. |
+| BC ICMS | Decimal (15,2) | Condicional | — | Base de calculo do ICMS do item. |
+| Aliquota ICMS | Decimal (5,2) | Condicional | — | Aliquota de ICMS. |
+| Valor ICMS | Decimal (15,2) | Condicional | — | Valor do ICMS do item. |
+| Aliquota IPI | Decimal (5,2) | Nao | — | Aliquota de IPI. |
+| Valor IPI | Decimal (15,2) | Nao | — | Valor do IPI. |
+| Aliquota PIS | Decimal (5,2) | Nao | — | Aliquota de PIS. |
+| Valor PIS | Decimal (15,2) | Nao | — | Valor do PIS. |
+| Aliquota COFINS | Decimal (5,2) | Nao | — | Aliquota de COFINS. |
+| Valor COFINS | Decimal (15,2) | Nao | — | Valor da COFINS. |
+
+## Observacoes importantes
+
+- **Chave de Acesso:** A consulta pela chave de 44 digitos so funciona para NFe (modelo 55) que estejam autorizadas na SEFAZ. Notas canceladas, inutilizadas ou de modelos antigos (1, 1A, 2, 4) nao podem ser consultadas por este metodo.
+- **Upload XML:** O sistema aceita XML no padrao NFe (leiaute 4.00). Certifique-se de que o arquivo nao esta corrompido e que o schema XSD e valido. XMLs de NFCe (modelo 65) tambem sao aceitos.
+- **Vinculacao de Produtos:** No modo Chave 44 ou Upload XML, o sistema tenta casar os itens da nota com produtos da base pelo codigo EAN/GTIN ou pelo NCM + descricao. Itens nao encontrados sao marcados em amarelo e exigem vinculacao manual antes da aprovacao.
+- **Geracao da Conta a Pagar:** A conta a pagar e gerada com o valor total da nota. Para notas com itens de diferentes centros de custo, utilize a funcionalidade de rateio antes de aprovar para distribuir o valor entre contas contabeis distintas.
+- **Creditos Fiscais:** A aprovacao da NFe de entrada registra automaticamente os creditos de ICMS, IPI, PIS e COFINS no livro fiscal. Esses creditos serao utilizados na apuracao periodica (VFIS0530) para abater o imposto a pagar.
+
+## Telas relacionadas
+
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao base do emitente, necessaria para consulta de XML via API.
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Tela de emissao de NFe de saida (vendas).
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Codigos Fiscais de Operacao com CFOPs de entrada.
+- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao onde os creditos de ICMS serao apropriados.
+- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos fiscais gerados a partir das notas de entrada aprovadas.
+- **[VFOR0130 (Contas a Pagar)](/financeiro/vfin0130):** Modulo financeiro onde as contas a pagar sao geradas automaticamente.

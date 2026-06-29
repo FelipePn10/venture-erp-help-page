@@ -1,0 +1,84 @@
+---
+sidebar_position: 4
+title: "VCLI0530 — Apoio Fiscal de Cliente"
+description: "Configuração de parâmetros fiscais do cliente em 2 abas — Tipo de NF de Saída com 27 campos e Tipo de Imposto com 22 flags de base de cálculo."
+---
+
+# VCLI0530 — Apoio Fiscal de Cliente
+
+> Tela de configuração dos parâmetros fiscais do cliente, organizada em duas abas — Tipo de Nota Fiscal de Saída (27 campos de configuração) e Tipo de Imposto (22 flags de base de cálculo) — que determinam as regras tributárias aplicadas na emissão de documentos fiscais.
+
+## Objetivo
+
+Centralizar e gerenciar todos os parâmetros fiscais que regem a emissão de notas fiscais e o cálculo de impostos para cada cliente. A aba de Tipo de NF de Saída permite configurar detalhadamente as características da nota fiscal emitida (modelo, série, finalidade, indicadores, regimes e códigos fiscais). A aba de Tipo de Imposto define, por meio de 22 flags de base de cálculo, quais impostos incidem sobre as operações do cliente e como suas bases são calculadas, impactando diretamente os totais dos documentos fiscais gerados pelo módulo Fiscal.
+
+## Pré-requisitos
+
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Possuir conhecimento técnico sobre a legislação tributária aplicável a cada cliente (regime tributário, tipo de contribuinte, operações interestaduais, etc.).
+- Ter o módulo Fiscal configurado com as naturezas de operação e demais parâmetros fiscais.
+- Possuir permissão de acesso ao módulo Cliente e ao módulo Fiscal.
+
+## Passo a Passo
+
+### Aba Tipo de NF de Saída
+
+1. Acesse a aba **Tipo de NF de Saída**.
+2. Selecione o **Cliente** para o qual deseja configurar os parâmetros fiscais.
+3. Escolha o **Modelo de NF** (NF-e, NFC-e, NFS-e, CT-e, etc.).
+4. Informe a **Série** da nota fiscal e o **Número Sequencial** inicial.
+5. Selecione a **Finalidade de Emissão**: Normal, Complementar, Ajuste ou Devolução.
+6. Configure os indicadores fiscais: **Indicador de Presença** (Presencial, Internet, Teleatendimento, etc.), **Indicador de IE do Destinatário** (Contribuinte, Isento, Não Contribuinte) e **Indicador de Consumidor Final**.
+7. Defina o **Tipo de Atendimento** e o **Tipo de Frete** padrão.
+8. Selecione os códigos fiscais: **CFOP Padrão**, **Natureza de Operação**, **Código de Regime Tributário**, **Código de Situação Tributária**.
+9. Configure os campos de controle: **Ambiente de Emissão** (Produção/Homologação), **Formato de Impressão**, **Tipo de Emissão**, **Código de Segurança**, **Chave de Acesso**, **Protocolo de Autorização**.
+10. Defina as datas de validade e controle de contingência, se aplicável.
+11. Clique em **Salvar** para persistir a configuração.
+
+### Aba Tipo de Imposto
+
+12. Acesse a aba **Tipo de Imposto**.
+13. Selecione o **Cliente** para configuração.
+14. Ative ou desative as flags de incidência para cada imposto: **ICMS**, **IPI**, **PIS**, **COFINS**, **CSLL**, **IRPJ**, **ISS**, **II**, **IE**, **Difal**, **FECP**, **ICMS ST**, **PIS ST**, **COFINS ST**, entre outros.
+15. Para cada imposto ativo, configure as respectivas flags de base de cálculo: **Base ICMS Própria**, **Base ICMS ST**, **Base IPI**, **Base PIS**, **Base COFINS**, **Base ISS**, **Redução Base ICMS**, **Redução Base IPI**, **Redução Base PIS/COFINS**, **Base Cálculo Difal**, **Base FECP**, **Inclusão na Base**, **Exclusão da Base**, **Destaque na NF**, **Retenção na Fonte**, **Aproveitamento de Crédito**, **Suspensão**, **Diferimento**, **Isenção**, **Não Incidência**, **Substituição Tributária**, **Monofásico**.
+16. Informe as **Alíquotas** padrão para cada imposto configurado.
+17. Defina os **CSTs** (Códigos de Situação Tributária) correspondentes a cada cenário.
+18. Clique em **Salvar** para persistir a configuração fiscal.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Aba | Descrição |
+|-------|------|-------------|-----|-----------|
+| Cliente | Seleção | Sim | Ambas | Cliente ao qual a configuração se aplica |
+| Modelo NF | Seleção | Sim | Tipo NF Saída | NF-e / NFC-e / NFS-e / CT-e |
+| Série NF | Texto | Sim | Tipo NF Saída | Série da nota fiscal |
+| Finalidade Emissão | Seleção | Sim | Tipo NF Saída | Normal / Complementar / Ajuste / Devolução |
+| Indicador de Presença | Seleção | Sim | Tipo NF Saída | Presencial / Internet / Teleatendimento / Outros |
+| IE Destinatário | Seleção | Sim | Tipo NF Saída | Contribuinte / Isento / Não Contribuinte |
+| Consumidor Final | Toggle | Sim | Tipo NF Saída | Define se o cliente é consumidor final |
+| CFOP Padrão | Seleção | Sim | Tipo NF Saída | Código Fiscal de Operações e Prestações |
+| Natureza de Operação | Seleção | Sim | Tipo NF Saída | Natureza da operação fiscal |
+| Regime Tributário | Seleção | Sim | Tipo NF Saída | Simples Nacional / Lucro Real / Lucro Presumido |
+| Ambiente Emissão | Seleção | Sim | Tipo NF Saída | Produção / Homologação |
+| Flags 22 Impostos | Toggle (22x) | Não | Tipo Imposto | Flags de ativação e base de cálculo para cada imposto |
+| Alíquota ICMS | Numérico | Não | Tipo Imposto | Alíquota padrão de ICMS |
+| Alíquota IPI | Numérico | Não | Tipo Imposto | Alíquota padrão de IPI |
+| Alíquota PIS/COFINS | Numérico | Não | Tipo Imposto | Alíquotas de PIS e COFINS |
+| CST ICMS | Seleção | Não | Tipo Imposto | Código de Situação Tributária do ICMS |
+| CST IPI | Seleção | Não | Tipo Imposto | Código de Situação Tributária do IPI |
+| CST PIS/COFINS | Seleção | Não | Tipo Imposto | Código de Situação Tributária do PIS/COFINS |
+
+## Observações
+
+- As configurações fiscais definidas nesta tela são aplicadas automaticamente na emissão de notas fiscais pelo módulo Fiscal, garantindo a correta tributação de cada operação.
+- As 22 flags de base de cálculo determinam precisamente como cada imposto incide sobre o valor da operação — é fundamental que um profissional da área fiscal revise estas configurações antes da primeira emissão de NF para o cliente.
+- Alterações nesta tela não retroagem sobre notas fiscais já emitidas. Cada documento fiscal mantém o retrato fiscal do momento de sua emissão.
+- O ambiente de emissão (Produção/Homologação) deve ser configurado com atenção: em Produção, as notas são transmitidas oficialmente à SEFAZ; em Homologação, são apenas testes.
+- Recomenda-se documentar todas as alterações realizadas nesta tela, pois impactam diretamente o faturamento e a apuração de impostos da empresa.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Tela de cadastro do cliente que herda as configurações fiscais definidas aqui.
+- **[VFIS0100 — Configuração Fiscal](/fiscal/vfis0100):** Tela central de configuração fiscal que interage com as definições de tipo de imposto do cliente.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as configurações fiscais são aplicadas no cálculo dos impostos do pedido.
+- **[VNFS0100 — Emissão de Nota Fiscal de Saída](/fiscal/vnfs0100):** Tela de emissão de NF que utiliza diretamente as configurações de tipo de NF de saída definidas aqui.

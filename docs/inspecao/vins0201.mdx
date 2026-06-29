@@ -1,0 +1,77 @@
+---
+sidebar_position: 4
+title: "VINS0201 — Manutencao Ordens Inspecao"
+description: "Manutencao de ordens de inspecao com acoes inline e atualizacao em tempo real."
+---
+
+# VINS0201 — Manutencao Ordens Inspecao
+
+> Tela de manutencao das ordens de inspecao de qualidade com acoes inline na grid, permitindo executar, pausar, concluir ou cancelar ordens diretamente.
+
+## Objetivo
+
+Permitir a gestao operacional das ordens de inspecao de qualidade, oferecendo **acoes inline** na propria grid de resultados (sem necessidade de abrir modais ou telas auxiliares) para as principais operacoes: iniciar execucao, pausar, registrar resultado, concluir ou cancelar. A tela e projetada para alta produtividade dos inspetores de qualidade, que precisam gerenciar multiplas ordens simultaneamente durante o fluxo de recebimento e producao.
+
+## Pre-requisitos
+
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200) — Roteiros de inspecao que geram as ordens de inspecao.
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106) — Ocorrencias que podem ser registradas durante a execucao das ordens.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens objeto das ordens de inspecao.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200) — Pedidos de compra que geram ordens de inspecao no recebimento.
+
+## Passo a passo
+
+1. Acesse a tela VINS0201 pelo menu Inspecao > Manutencao Ordens Inspecao.
+2. A grid exibe todas as ordens de inspecao pendentes, em execucao e concluidas recentemente.
+3. Utilize os **filtros** para localizar ordens: status, item, fornecedor, periodo, roteiro, inspetor.
+4. Para **iniciar uma inspecao**, clique no botao inline **Iniciar** na linha da ordem.
+5. O status da ordem muda para "Em Execucao" e o roteiro de inspecao e exibido na grade de sequencias.
+6. Execute cada **sequencia** do roteiro, registrando os resultados (Aprovado/Reprovado) e medicoes.
+7. Se um ensaio for reprovado, utilize a acao inline **Registrar Ocorrencia** para criar uma ocorrencia vinculada.
+8. Para **pausar** uma inspecao (ex: aguardando laudo externo), clique em **Pausar**. A ordem pode ser retomada posteriormente.
+9. Ao finalizar todos os ensaios, clique em **Concluir**. O sistema calcula automaticamente o resultado final da ordem.
+10. Para ordens que nao precisam ser executadas, utilize a acao inline **Cancelar** com justificativa.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero da Ordem | numero (auto) | Sim | — | Identificador unico da ordem de inspecao |
+| Item | texto | Nao | — | Item sendo inspecionado |
+| Fornecedor | texto | Nao | — | Fornecedor do item (se inspecao de recebimento) |
+| Roteiro de Inspecao | texto | Nao | — | Roteiro associado a ordem |
+| Status | select | Nao | Pendente / Em Execucao / Pausada / Concluida / Cancelada | Status atual da ordem |
+| Resultado Final | select | Nao | Aprovado / Reprovado / Aprovado com Ressalva | Resultado consolidado |
+| Data de Criacao | data | Nao | — | Data de geracao da ordem |
+| Data de Conclusao | data | Nao | — | Data de finalizacao da inspecao |
+| Inspetor Responsavel | select | Nao | Lista de inspetores | Pessoa executando a inspecao |
+| Sequencias Executadas | numero | Nao | — | Contador de ensaios realizados / total |
+
+## Acoes Inline
+
+| Acao | Descricao |
+|------|-----------|
+| Iniciar | Inicia a execucao da ordem de inspecao |
+| Pausar | Suspende temporariamente a inspecao |
+| Retomar | Volta a executar uma inspecao pausada |
+| Concluir | Finaliza a inspecao com resultado consolidado |
+| Cancelar | Cancela a ordem com justificativa obrigatoria |
+| Registrar Ocorrencia | Abre atalho para registro de ocorrencia vinculada |
+| Imprimir | Gera relatorio da ordem de inspecao |
+
+## Observacoes importantes
+
+- As **acoes inline** eliminam a necessidade de abrir e fechar modais constantemente, aumentando significativamente a produtividade do inspetor que trabalha com dezenas de ordens por dia.
+- Ordens com status **Pausada** sao excluidas das metricas de SLA ate serem retomadas, evitando distorcer os indicadores de tempo de inspecao.
+- O **Resultado Aprovado com Ressalva** e utilizado quando o item passa na inspecao, mas com ocorrencias menores que foram abonadas condicionalmente.
+- A **conclusao** de uma ordem dispara automaticamente a atualizacao do status do item no estoque (liberado ou bloqueado) e a atualizacao do IQF do fornecedor.
+- Ordens **canceladas** devem ter justificativa obrigatoria, registrada no historico para fins de auditoria.
+- O contador de **Sequencias Executadas** oferece uma visao rapida do progresso de cada inspecao na grid principal.
+
+## Telas relacionadas
+
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200): Roteiros de inspecao associados as ordens.
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Ocorrencias registradas durante a execucao.
+- [VINS0206 (Exclusao Ordens Inspecao)](/inspecao/vins0206): Exclusao em lote de ordens de inspecao.
+- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Consulta focada em inspecoes de recebimento.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF atualizado com os resultados das ordens.

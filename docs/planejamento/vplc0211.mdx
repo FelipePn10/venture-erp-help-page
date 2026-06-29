@@ -1,0 +1,67 @@
+---
+sidebar_position: 3
+title: "VPLC0211 — Orientacoes Entrega"
+description: "Cadastro de orientacoes de entrega com recurso de auto-preenchimento de CEP."
+---
+
+# VPLC0211 — Orientacoes Entrega
+
+> Cadastro de orientacoes de entrega com recurso de auto-preenchimento de endereco via CEP, facilitando a logistica de expedicao.
+
+## Objetivo
+
+Permitir o cadastro e manutencao das orientacoes de entrega associadas aos pedidos de venda, definindo rotas, enderecos de entrega e instrucoes logisticas. A tela oferece um recurso de **auto-preenchimento de endereco a partir do CEP**, que consulta uma base de CEPs e preenche automaticamente logradouro, bairro, cidade e estado, reduzindo erros de digitacao e agilizando o processo. As orientacoes de entrega sao utilizadas pela tela de montagem de carga para agrupar pedidos com rotas compativeis.
+
+## Pre-requisitos
+
+- [VPLC0200 (Montagem de Carga)](/planejamento/vplc0200) — Montagem de carga que consome as orientacoes de entrega.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Transportadoras disponiveis para as rotas.
+- [Cadastro de Clientes](/cliente/vcli0500) — Clientes com enderecos de entrega cadastrados.
+
+## Passo a passo
+
+1. Acesse a tela VPLC0211 pelo menu Planejamento > Orientacoes Entrega.
+2. Clique em **Nova** para criar uma nova orientacao de entrega.
+3. Selecione o **Pedido de Venda** ao qual a orientacao sera vinculada.
+4. Informe o **CEP** de entrega. O sistema consultara automaticamente a base de CEPs e preenchera os campos de endereco.
+5. Verifique os dados preenchidos automaticamente: **Logradouro**, **Bairro**, **Cidade**, **Estado**. Corrija manualmente se necessario.
+6. Complete o endereco com o **Numero** e **Complemento**.
+7. Selecione a **Rota de Entrega** que define o trajeto logistico.
+8. Escolha a **Transportadora** responsavel pela entrega.
+9. Informe instrucoes adicionais no campo **Observacao** (ex: "Entregar no almoxarifado B", "Agendar horario com antecedencia").
+10. Clique em **Salvar** para registrar a orientacao de entrega.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Pedido de Venda | numero | Sim | — | Pedido de venda vinculado a orientacao |
+| CEP | texto | Sim | — | CEP de entrega (8 digitos) |
+| Logradouro | texto | Nao | — | Preenchido automaticamente via CEP |
+| Bairro | texto | Nao | — | Preenchido automaticamente via CEP |
+| Cidade | texto | Nao | — | Preenchido automaticamente via CEP |
+| Estado | select | Nao | Lista de UFs | Preenchido automaticamente via CEP |
+| Numero | texto | Sim | — | Numero do endereco de entrega |
+| Complemento | texto | Nao | — | Complemento do endereco |
+| Rota de Entrega | select | Sim | Lista de rotas | Rota logistica de entrega |
+| Transportadora | select | Sim | Lista de transportadoras | Transportadora responsavel |
+| Data Prevista de Entrega | data | Nao | — | Data estimada de entrega |
+| Janela de Entrega | select | Nao | Manha / Tarde / Noite / Comercial | Periodo preferencial de entrega |
+| Observacao | texto | Nao | — | Instrucoes especiais de entrega |
+| Status da Entrega | select | Nao | Pendente / Em Rota / Entregue / Cancelada | Situacao da entrega |
+
+## Observacoes importantes
+
+- O **auto-preenchimento por CEP** e uma funcionalidade que reduz significativamente erros de endereco. O sistema consulta a base de CEPs e preenche os campos de endereco automaticamente em menos de 1 segundo.
+- Caso o CEP nao seja encontrado na base, os campos permanecerao vazios e o usuario devera preenche-los manualmente. CEPs nao encontrados sao registrados para atualizacao futura da base.
+- A **Rota de Entrega** e utilizada pela tela de [VPLC0200 (Montagem de Carga)](/planejamento/vplc0200) para agrupar pedidos que seguem o mesmo trajeto logistico, otimizando a consolidacao de cargas.
+- A **Janela de Entrega** e uma informacao importante para o planejamento logistico, especialmente em centros urbanos com restricoes de horario para circulacao de veiculos de carga.
+- E possivel alterar as orientacoes de entrega mesmo apos o pedido estar liberado, desde que a carga ainda nao tenha sido fechada na montagem de carga.
+- Orientacoes com status **Cancelada** sao desconsideradas pela montagem de carga, mas permanecem registradas para auditoria.
+
+## Telas relacionadas
+
+- [VPLC0200 (Montagem de Carga)](/planejamento/vplc0200): Tela que consome as orientacoes de entrega para agrupar cargas.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Cadastro de transportadoras utilizadas nas rotas.
+- [VIMP0101 (Status Logistico da Carga)](/importacao/vimp0101): Acompanhamento do ciclo logistico das cargas.
+- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Demandas que originam as ordens de producao.

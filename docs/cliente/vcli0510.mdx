@@ -1,0 +1,64 @@
+---
+sidebar_position: 2
+title: "VCLI0510 — Apoio Básico de Cliente"
+description: "Cadastro de tabelas de apoio básico do cliente organizado em 6 abas — Região, Segmento, Tipo Contato, Tipo Cliente, Portador e Grupo de Portadores."
+---
+
+# VCLI0510 — Apoio Básico de Cliente
+
+> Tela de cadastro das tabelas de apoio básico do módulo Cliente, organizada em seis abas que centralizam as classificações fundamentais utilizadas no cadastro de clientes e em todo o fluxo comercial do ERP.
+
+## Objetivo
+
+Fornecer uma interface unificada para o cadastro e manutenção das seis tabelas de apoio básico que alimentam os selects e classificações do cadastro de clientes. As abas permitem gerenciar, de forma independente, os cadastros de Região, Segmento de Mercado, Tipo de Contato, Tipo de Cliente, Portador e Grupo de Portadores, garantindo a padronização das classificações utilizadas em todo o sistema comercial e fiscal.
+
+## Pré-requisitos
+
+- Possuir permissão de acesso ao módulo Cliente.
+- Compreender a hierarquia e a finalidade de cada uma das classificações de apoio para definir valores consistentes com a política comercial da empresa.
+- Nenhuma dependência externa é exigida, pois as tabelas de apoio são a base da pirâmide cadastral do módulo.
+
+## Passo a Passo
+
+1. Acesse o menu **Cliente > Apoio Básico**.
+2. Selecione a aba correspondente à tabela que deseja gerenciar:
+   - **Região** — Áreas geográficas para segmentação territorial.
+   - **Segmento** — Segmentos de mercado para classificação setorial.
+   - **Tipo Contato** — Categorias de contatos (Comercial, Financeiro, Técnico, etc.).
+   - **Tipo Cliente** — Classificações como Atacado, Varejo, Consumidor Final, etc.
+   - **Portador** — Cadastro de portadores (bancos, carteiras) para cobrança.
+   - **Grupo Portadores** — Agrupamentos de portadores para políticas de cobrança.
+3. Em cada aba, clique em **Novo** para adicionar um registro à tabela selecionada.
+4. Preencha o **Código** e a **Descrição** do novo registro.
+5. Preencha os campos adicionais específicos de cada aba (detalhados na seção de Campos).
+6. Clique em **Salvar** para persistir o novo registro.
+7. Para editar um registro existente, selecione-o na listagem e clique em **Editar**.
+8. Utilize o botão **Exportar** em cada aba para gerar relatórios específicos daquela tabela.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Aba | Descrição |
+|-------|------|-------------|-----|-----------|
+| Código | Texto | Sim | Todas | Código identificador único do registro |
+| Descrição | Texto | Sim | Todas | Nome ou descrição do registro |
+| Ativo | Toggle | Não | Todas | Status do registro — inativos não aparecem nos selects |
+| Código IBGE | Texto | Não | Região | Código IBGE da região, quando aplicável |
+| Grupo Segmento | Seleção | Não | Segmento | Agrupamento hierárquico do segmento |
+| Máscara Contato | Texto | Não | Tipo Contato | Formato esperado para o contato (telefone, e-mail) |
+| Obrigatoriedade | Toggle | Não | Tipo Contato | Define se o contato é obrigatório no cadastro do cliente |
+| Código Banco | Texto | Não | Portador | Código do banco vinculado ao portador |
+| Carteira | Texto | Não | Portador | Carteira de cobrança associada ao portador |
+| Portadores Vinculados | Multi-Seleção | Não | Grupo Portadores | Portadores que compõem o grupo |
+
+## Observações
+
+- Cada aba funciona como um mini-cadastro independente, com sua própria tabela de listagem, busca e exportação. A navegação entre abas não perde o contexto da aba ativa.
+- Os registros cadastrados em cada aba tornam-se imediatamente disponíveis nos selects das telas de cadastro de cliente ([VCLI0500](/cliente/vcli0500)) e de pedidos ([VPDV0200](/pdv/vpdv0200)).
+- A desativação de um registro (toggle Ativo desligado) oculta o registro dos selects, mas não afeta clientes que já o utilizam.
+- A aba **Portador** e **Grupo Portadores** são utilizadas pelo módulo Financeiro para configuração de cobranças bancárias e boletos.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Tela principal que consome as classificações de Região, Segmento e Tipo Cliente cadastradas nesta tela de apoio.
+- **[VCLI0520 — Apoio Comercial de Cliente](/cliente/vcli0520):** Tela complementar que utiliza os dados básicos para configurar parâmetros comerciais do cliente.
+- **[VFIN0100 — Cadastro de Contas a Pagar/Receber](/financeiro/vfin0100):** Módulo Financeiro que utiliza os portadores e grupos de portadores configurados aqui.

@@ -1,0 +1,76 @@
+---
+sidebar_position: 3
+title: "VCLI0520 — Apoio Comercial de Cliente"
+description: "Configuração de parâmetros comerciais do cliente em 2 abas — Condição de Pagamento com Parcelas e Tabela de Vendas com formação de preço, tolerâncias e incoterms."
+---
+
+# VCLI0520 — Apoio Comercial de Cliente
+
+> Tela de configuração dos parâmetros comerciais do cliente, organizada em duas abas — Condição de Pagamento e Tabela de Vendas — que definem as regras de negociação, precificação e prazos aplicados nos pedidos de venda.
+
+## Objetivo
+
+Permitir a configuração detalhada dos parâmetros comerciais que regem a relação entre a empresa e cada cliente. A primeira aba gerencia as condições de pagamento e suas respectivas parcelas, definindo prazos, percentuais e vencimentos. A segunda aba administra as tabelas de vendas, incluindo regras de formação de preço, percentuais de tolerância (desconto máximo e acréscimo máximo), incoterms e demais condições comerciais que impactam diretamente a precificação e negociação nos pedidos.
+
+## Pré-requisitos
+
+- Ter as tabelas de apoio básico cadastradas em [VCLI0510](/cliente/vcli0510).
+- Possuir os itens cadastrados em [VENT0200](/engenharia/vent0200) para vinculação às tabelas de venda.
+- Conhecer a política comercial da empresa para configurar corretamente tolerâncias, prazos e condições.
+- Possuir permissão de acesso ao módulo Cliente.
+
+## Passo a Passo
+
+### Aba Condição de Pagamento
+
+1. Acesse a aba **Condição de Pagamento**.
+2. Clique em **Novo** para criar uma nova condição de pagamento.
+3. Informe um **Código** e uma **Descrição** para a condição (ex.: "30/60/90", "À Vista").
+4. Defina o **Tipo** da condição: À Vista, À Prazo ou Misto.
+5. Na tabela de **Parcelas**, adicione cada parcela informando: número da parcela, percentual do valor total e dias para vencimento.
+6. Verifique se a soma dos percentuais das parcelas totaliza 100%. O sistema pode emitir um alerta caso não totalize.
+7. Clique em **Salvar** para persistir a condição de pagamento.
+
+### Aba Tabela de Vendas
+
+8. Acesse a aba **Tabela de Vendas**.
+9. Clique em **Novo** para criar uma nova tabela de venda.
+10. Informe **Código** e **Descrição** da tabela.
+11. Selecione a **Empresa** à qual a tabela se aplica.
+12. Defina o **Tipo de Formação de Preço**: Mark-up sobre Custo, Margem sobre Venda, Preço Fixo ou Percentual de Desconto sobre uma tabela base.
+13. Informe os percentuais de **Tolerância de Desconto Máximo (%)** e **Tolerância de Acréscimo Máximo (%)** — limites que o vendedor pode aplicar sem aprovação adicional.
+14. Selecione o **Incoterm** aplicável (CIF, FOB, etc.) e defina as condições de frete associadas.
+15. Para vincular preços específicos a itens nesta tabela, utilize a tabela de itens da tela [VCST0202 — Precificação de Produtos](/custos/vcst0202).
+16. Clique em **Salvar** para persistir a tabela de vendas.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Aba | Descrição |
+|-------|------|-------------|-----|-----------|
+| Código | Texto | Sim | Ambas | Código identificador da condição ou tabela |
+| Descrição | Texto | Sim | Ambas | Nome descritivo da condição ou tabela |
+| Tipo | Seleção | Sim | Cond. Pagamento | À Vista / À Prazo / Misto |
+| Parcela — Nº | Numérico | Sim | Cond. Pagamento | Número sequencial da parcela |
+| Parcela — Percentual (%) | Numérico | Sim | Cond. Pagamento | Percentual do valor total na parcela |
+| Parcela — Dias | Numérico | Sim | Cond. Pagamento | Dias para vencimento da parcela |
+| Empresa | Seleção | Sim | Tabela de Vendas | Empresa vinculada à tabela |
+| Tipo de Formação de Preço | Seleção | Sim | Tabela de Vendas | Mark-up sobre Custo / Margem sobre Venda / Preço Fixo / % Desconto |
+| Tolerância Desconto Máx. (%) | Numérico | Não | Tabela de Vendas | Percentual máximo de desconto permitido sem aprovação |
+| Tolerância Acréscimo Máx. (%) | Numérico | Não | Tabela de Vendas | Percentual máximo de acréscimo permitido sem aprovação |
+| Incoterm | Seleção | Não | Tabela de Vendas | CIF / FOB / CFR / CIP / DAP / DDP / EXW / FAS / FCA |
+| Condição de Frete | Seleção | Não | Tabela de Vendas | Condição de frete padrão vinculada ao incoterm |
+| Ativo | Toggle | Não | Ambas | Status do registro |
+
+## Observações
+
+- As tolerâncias de desconto e acréscimo definidas na tabela de vendas são validadas em tempo real durante a criação de pedidos em [VPDV0200](/pdv/vpdv0200). Se o vendedor tentar aplicar um percentual superior ao configurado, o sistema pode bloquear a operação ou exigir aprovação de um supervisor.
+- O incoterm selecionado impacta diretamente o cálculo de frete e a responsabilidade sobre a mercadoria durante o transporte. Certifique-se de configurá-lo de acordo com os contratos comerciais vigentes.
+- A condição de pagamento vinculada ao cliente em [VCLI0500](/cliente/vcli0500) é sugerida automaticamente ao criar um pedido, mas pode ser alterada caso a caso.
+- Tabelas de vendas inativas não aparecem como opção de seleção no cadastro de clientes ou pedidos, mas os registros já vinculados permanecem inalterados.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Tela onde as condições de pagamento e tabelas de venda são vinculadas ao cadastro do cliente.
+- **[VCLI0510 — Apoio Básico de Cliente](/cliente/vcli0510):** Tela de apoio que fornece as classificações utilizadas nos parâmetros comerciais.
+- **[VCST0202 — Precificação de Produtos](/custos/vcst0202):** Tela onde são definidos os preços dos itens para cada tabela de venda.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as condições de pagamento e tabelas de venda são aplicadas nos pedidos.

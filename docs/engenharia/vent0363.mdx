@@ -1,0 +1,58 @@
+---
+sidebar_position: 6
+title: "VENT0363 — Relatorio Tempo CT"
+description: "Relatorio de tempos e custos por centro de trabalho com analise de capacidade."
+---
+
+# VENT0363 — Relatorio Tempo CT
+
+> Relatorio analitico que consolida tempos de fabricacao e custos por centro de trabalho, permitindo analise de capacidade produtiva.
+
+## Objetivo
+
+Fornecer uma visao consolidada dos tempos de fabricacao e custos associados a cada centro de trabalho, a partir dos roteiros de fabricacao cadastrados. O relatorio permite analisar a carga de trabalho por centro, identificar gargalos produtivos, comparar tempos entre diferentes itens que compartilham o mesmo centro de trabalho e avaliar o custo de processamento. E uma ferramenta essencial para o planejamento de capacidade e para decisoes de investimento em maquinas e equipamentos.
+
+## Pre-requisitos
+
+- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202) — Roteiros de fabricacao com operacoes e formulas de tempo devidamente cadastrados.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Centros de trabalho com taxas horarias definidas.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com roteiros associados e dados de planejamento configurados.
+
+## Passo a passo
+
+1. Acesse a tela VENT0363 pelo menu Engenharia > Relatorio Tempo CT.
+2. Selecione o **Centro de Trabalho** desejado ou deixe em branco para gerar o relatorio de todos os centros.
+3. Defina o **Periodo** de analise preenchendo as datas de inicio e fim.
+4. Escolha o **Tipo de Tempo** a ser exibido: Tempo de Setup, Tempo de Execucao, Tempo Total ou Todos.
+5. Clique em **Gerar Relatorio** para processar os dados dos roteiros.
+6. O relatorio exibe para cada item/operacao os tempos calculados e o custo total (tempo x taxa horaria do centro de trabalho).
+7. Utilize os filtros de agrupamento para consolidar por **Centro de Trabalho**, **Item** ou **Tipo de Operacao**.
+8. Analise a coluna de **% de Ocupacao** para identificar centros de trabalho proximos da capacidade maxima.
+9. Exporte o relatorio em Excel ou PDF utilizando os botoes de exportacao disponiveis.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Centro de Trabalho | select | Nao | Lista de centros | Centro de trabalho a ser analisado |
+| Data Inicio | data | Nao | — | Data inicial do periodo de analise |
+| Data Fim | data | Nao | — | Data final do periodo de analise |
+| Tipo de Tempo | select | Nao | Setup / Execucao / Total / Todos | Tipo de tempo a ser exibido |
+| Item | numero | Nao | — | Filtrar por um item especifico |
+| Agrupamento | select | Nao | Centro de Trabalho / Item / Operacao | Nivel de agrupamento do relatorio |
+| Taxa Horaria | numero | Nao | — | Taxa horaria do centro de trabalho (editavel) |
+
+## Observacoes importantes
+
+- O custo total de cada operacao e calculado multiplicando o tempo total pela **Taxa Horaria** do centro de trabalho. Certifique-se de que as taxas estao atualizadas.
+- Centros de trabalho com **% de Ocupacao** acima de 85% no periodo indicam possivel gargalo e necessidade de acao (horas extras, terceirizacao ou investimento).
+- O relatorio considera as **formulas de tempo** com a variavel `QTD` preenchida com o tamanho do lote padrao do item. Para simulacoes com diferentes tamanhos de lote, utilize parametros avancados.
+- Tempos de operacoes de itens inativos ou com roteiros desatualizados podem distorcer a analise. Mantenha os roteiros sempre atualizados.
+- A exportacao para Excel inclui as formulas e permite manipulacao adicional dos dados em planilha eletronica.
+
+## Telas relacionadas
+
+- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202): Roteiros de fabricacao que alimentam o relatorio de tempos.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Cadastro de centros de trabalho com taxas horarias.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro de itens com dados de planejamento.
+- [VENT0115 (Roteiro Padrao)](/engenharia/vent0115): Roteiros padrao utilizados como base para roteiros de itens.

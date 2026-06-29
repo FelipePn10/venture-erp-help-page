@@ -1,0 +1,70 @@
+---
+sidebar_position: 5
+title: "VCLI0117 — Permissões e Restrições de Venda"
+description: "Cadastro de regras de permissão e restrição de venda com tipo de regra, escopo por cliente ou classificação e vigência programada."
+---
+
+# VCLI0117 — Permissões e Restrições de Venda
+
+> Tela de cadastro de regras que controlam permissões e restrições de venda, permitindo criar políticas granulares por tipo de regra (Permissão ou Restrição), com escopo configurável por cliente individual ou classificação de itens e vigência delimitada por datas.
+
+## Objetivo
+
+Controlar de forma precisa quais itens podem ou não ser vendidos para cada cliente, utilizando regras parametrizáveis. As regras do tipo **Permissão** liberam explicitamente a venda de determinados itens ou classificações para um cliente, enquanto as regras do tipo **Restrição** bloqueiam a venda. O escopo pode ser definido por cliente individual ou por classificação de itens, permitindo aplicar a regra a um grupo inteiro de produtos. A vigência das regras é controlada por datas de início e fim, possibilitando bloqueios ou liberações temporárias programadas.
+
+## Pré-requisitos
+
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Ter as classificações de itens cadastradas em [VCLA0100](/cadastros/vcla0100).
+- Ter itens cadastrados em [VENT0200](/engenharia/vent0200).
+- Conhecer as políticas comerciais e restrições aplicáveis a cada cliente ou segmento.
+- Possuir permissão de acesso ao módulo Cliente.
+
+## Passo a Passo
+
+1. Acesse o menu **Cliente > Permissões e Restrições de Venda**.
+2. Clique em **Adicionar Regra** para criar uma nova regra.
+3. Selecione o **Tipo de Regra**:
+   - **Permissão** — Autoriza explicitamente a venda dos itens ou classificações especificados.
+   - **Restrição** — Bloqueia a venda dos itens ou classificações especificados.
+4. Defina o **Escopo da Regra**:
+   - **Escopo por Cliente**: Selecione o cliente específico no campo **Cliente**.
+   - **Escopo por Classificação**: Selecione a classificação de itens desejada em **Classificação**. Neste caso, a regra se aplica a todos os clientes que possuam aquela classificação.
+   - **Escopo por Grupo de Clientes**: Alternativamente, selecione um grupo de clientes para aplicar a regra em lote.
+5. Caso o escopo seja por item, informe o código do **Item** específico no campo correspondente.
+6. Preencha as datas de **Início de Vigência** e **Fim de Vigência** para delimitar o período em que a regra estará ativa. Deixe em branco para regras permanentes.
+7. Registre o **Motivo** da regra no campo de texto longo, documentando a justificativa comercial ou fiscal para a permissão ou restrição.
+8. Clique em **Salvar** para persistir a regra.
+9. Para consultar regras existentes, utilize os filtros de pesquisa (Tipo de Regra, Cliente, Classificação, Item) e clique em **Pesquisar**.
+10. Para remover uma regra que não é mais necessária, selecione-a na listagem e clique em **Remover**.
+11. Utilize o botão **Exportar** para gerar relatório com as regras filtradas.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Tipo de Regra | Seleção | Sim | Permissão / Restrição | Define se a regra autoriza ou bloqueia vendas |
+| Escopo | Seleção | Sim | Cliente / Grupo Cliente / Item / Classificação | Abrangência de aplicação da regra |
+| Cliente | Texto (condicional) | Sim (se escopo=Cliente) | — | Cliente específico ao qual a regra se aplica |
+| Grupo Cliente | Seleção (condicional) | Sim (se escopo=Grupo) | Grupos cadastrados | Grupo de clientes alvo da regra |
+| Item | Texto (condicional) | Sim (se escopo=Item) | — | Código do item ao qual a regra se aplica |
+| Classificação | Seleção (condicional) | Sim (se escopo=Classificação) | Classificações de VCLA0100 | Classificação de itens alvo da regra |
+| Data Início Vigência | Data | Não | — | Data de início da validade da regra |
+| Data Fim Vigência | Data | Não | — | Data de término da validade da regra |
+| Motivo | Texto longo | Não | — | Justificativa para a permissão ou restrição |
+| Status | Status | Não | Ativa / Inativa / Expirada | Situação atual da regra |
+
+## Observações
+
+- As regras são validadas em tempo real durante a criação de pedidos em [VPDV0200](/pdv/vpdv0200). Se um item estiver restrito para o cliente, o sistema bloqueará sua inclusão no pedido e exibirá o motivo cadastrado.
+- Regras sem data de fim de vigência são consideradas permanentes e permanecem ativas até que sejam removidas manualmente.
+- O campo **Motivo** é fundamental para auditoria e compliance. Recomenda-se sempre documentar a razão da regra, especialmente em casos de bloqueios fiscais ou comerciais.
+- A prioridade entre regras concorrentes segue a hierarquia: restrições prevalecem sobre permissões. Se um mesmo item possui uma regra de permissão e outra de restrição para o mesmo cliente, a restrição será aplicada.
+- Regras com escopo por classificação afetam todos os itens que pertencem àquela classificação, mesmo os cadastrados posteriormente.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cliente alvo das regras de permissão e restrição.
+- **[VCLA0100 — Classificação de Itens](/cadastros/vcla0100):** Classificações utilizadas no escopo das regras.
+- **[VENT0200 — Cadastro de Itens](/engenharia/vent0200):** Itens referenciados nas regras de restrição ou permissão.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as regras são validadas durante a inclusão de itens no pedido.

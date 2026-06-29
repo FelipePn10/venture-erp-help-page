@@ -1,30 +1,266 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* You can override the default Infima variables here. */
+/* ============================================
+   VentureERP Help - Light & Dark Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+  --ifm-font-size-base: 15px;
+  --ifm-line-height-base: 1.7;
+  --ifm-code-font-size: 92%;
+  --ifm-heading-font-weight: 600;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ============================================
+   LIGHT THEME
+   ============================================ */
+[data-theme='light'] {
+  --ifm-color-primary: #059669;
+  --ifm-color-primary-dark: #047857;
+  --ifm-color-primary-darker: #065f46;
+  --ifm-color-primary-darkest: #064e3b;
+  --ifm-color-primary-light: #10b981;
+  --ifm-color-primary-lighter: #34d399;
+  --ifm-color-primary-lightest: #6ee7b7;
+
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #fafafa;
+
+  --ifm-navbar-background-color: #0a0a0a;
+  --ifm-footer-background-color: #0a0a0a;
+
+  --ifm-dropdown-background-color: #ffffff;
+  --ifm-card-background-color: #ffffff;
+
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-font-color-secondary: #555555;
+  --ifm-heading-color: #111111;
+
+  --ifm-link-color: #059669;
+  --ifm-link-hover-color: #047857;
+
+  --ifm-navbar-link-color: #cccccc;
+  --ifm-navbar-link-hover-color: #10b981;
+  --ifm-navbar-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+  --ifm-menu-color: #444444;
+  --ifm-menu-color-active: #059669;
+  --ifm-menu-color-background-active: rgba(5, 150, 105, 0.08);
+  --ifm-menu-color-background-hover: rgba(5, 150, 105, 0.04);
+
+  --ifm-toc-link-color: #666666;
+  --ifm-toc-link-color-active: #059669;
+
+  --ifm-table-border-color: #e5e5e5;
+  --ifm-table-head-background: #f0fdf4;
+  --ifm-table-head-color: #059669;
+  --ifm-table-stripe-background: #fafafa;
+
+  --ifm-color-emphasis-200: #e5e5e5;
+  --ifm-color-emphasis-300: #d4d4d4;
+
+  --ifm-code-background: #f5f5f5;
+  --docusaurus-highlighted-code-line-bg: rgba(5, 150, 105, 0.08);
+
+  --ifm-footer-link-color: #a0a0a0;
+  --ifm-footer-link-hover-color: #10b981;
+  --ifm-footer-title-color: #10b981;
+  --ifm-footer-color: #a0a0a0;
+}
+
+/* ============================================
+   DARK THEME (default)
+   ============================================ */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #10b981;
+  --ifm-color-primary-dark: #059669;
+  --ifm-color-primary-darker: #047857;
+  --ifm-color-primary-darkest: #065f46;
+  --ifm-color-primary-light: #34d399;
+  --ifm-color-primary-lighter: #6ee7b7;
+  --ifm-color-primary-lightest: #a7f3d0;
+
+  --ifm-background-color: #0a0a0a;
+  --ifm-background-surface-color: #0f0f0f;
+
+  --ifm-navbar-background-color: #0a0a0a;
+  --ifm-footer-background-color: #0a0a0a;
+
+  --ifm-dropdown-background-color: #141414;
+  --ifm-card-background-color: #0f0f0f;
+
+  --ifm-font-color-base: #e0e0e0;
+  --ifm-font-color-secondary: #a0a0a0;
+  --ifm-heading-color: #ffffff;
+
+  --ifm-link-color: #34d399;
+  --ifm-link-hover-color: #6ee7b7;
+
+  --ifm-navbar-link-color: #a0a0a0;
+  --ifm-navbar-link-hover-color: #10b981;
+  --ifm-navbar-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+  --ifm-menu-color: #a0a0a0;
+  --ifm-menu-color-active: #10b981;
+  --ifm-menu-color-background-active: rgba(16, 185, 129, 0.08);
+  --ifm-menu-color-background-hover: rgba(16, 185, 129, 0.05);
+
+  --ifm-toc-link-color: #808080;
+  --ifm-toc-link-color-active: #10b981;
+
+  --ifm-table-border-color: #1f1f1f;
+  --ifm-table-head-background: #141414;
+  --ifm-table-head-color: #10b981;
+  --ifm-table-stripe-background: #0d0d0d;
+
+  --ifm-color-emphasis-200: #1f1f1f;
+  --ifm-color-emphasis-300: #2a2a2a;
+
+  --ifm-code-background: #141414;
+  --docusaurus-highlighted-code-line-bg: rgba(16, 185, 129, 0.1);
+
+  --ifm-footer-link-color: #808080;
+  --ifm-footer-link-hover-color: #10b981;
+  --ifm-footer-title-color: #10b981;
+  --ifm-footer-color: #808080;
+}
+
+/* ---- Navbar title always green ---- */
+.navbar__title {
+  color: #10b981 !important;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Global ---- */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.menu__link--active {
+  font-weight: 600;
+}
+
+.menu__list-item-collapsible:hover {
+  background: transparent !important;
+}
+
+/* ---- Table styling ---- */
+table {
+  display: table;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+table thead tr {
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+table th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--ifm-table-head-color);
+}
+
+table td,
+table th {
+  padding: 0.6rem 0.75rem;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* ---- Headings ---- */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 4rem;
+}
+
+.markdown h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.markdown h3 {
+  margin-top: 2rem;
+}
+
+[data-theme='dark'] .markdown h3 {
+  color: #34d399;
+}
+
+[data-theme='light'] .markdown h3 {
+  color: #059669;
+}
+
+.markdown h4 {
+  font-weight: 500;
+}
+
+/* ---- Blockquote ---- */
+.markdown blockquote {
+  border-left: 3px solid var(--ifm-color-primary);
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 0 6px 6px 0;
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem 0;
+  color: var(--ifm-font-color-secondary);
+  font-style: italic;
+}
+
+/* ---- Code blocks ---- */
+pre {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+}
+
+/* ---- Footer ---- */
+.footer {
+  border-top: 1px solid #1a1a1a;
+  background-color: #0a0a0a !important;
+}
+
+.footer__title {
+  color: #10b981 !important;
+}
+
+.footer__link-item {
+  color: #808080 !important;
+}
+
+.footer__link-item:hover {
+  color: #10b981 !important;
+}
+
+.footer__bottom {
+  color: #606060 !important;
+}
+
+[data-theme='light'] .footer {
+  border-top: 1px solid #1a1a1a;
+  background-color: #0a0a0a !important;
 }

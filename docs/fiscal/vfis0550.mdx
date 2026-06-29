@@ -1,0 +1,94 @@
+---
+sidebar_position: 18
+title: "VFIS0550 — Restituicao ICMS ST"
+description: "Gestao do processo de restituicao e ressarcimento de ICMS-ST pago antecipadamente, com calculo e geracao de documentos fiscais."
+---
+
+# VFIS0550 — Restituicao ICMS ST
+
+> Tela de gestao do processo de restituicao e ressarcimento de ICMS-ST (Substituicao Tributaria). Realiza o calculo do valor a restituir com base nas notas de saida com ST, gera os documentos fiscais de ressarcimento e registra os creditos na apuracao.
+
+**Codigo fonte:** `src/modules/fiscal/icms-st-restitution/vfis0550.vue`
+
+## Objetivo
+
+A VFIS0550 gerencia o processo de restituicao e ressarcimento do ICMS Substituicao Tributaria (ICMS-ST). Quando uma empresa realiza vendas interestaduais de produtos sujeitos a ST, o ICMS-ST ja foi recolhido antecipadamente pelo fornecedor (substituto tributario). Ao revender a mercadoria para outro estado, a empresa (substituida) tem direito a restituicao do ICMS-ST ja pago, pois o imposto sera devido no destino, nao na origem. Esta tela realiza o calculo automatico do valor a restituir com base nas NFe de saida com ST, gera a Nota Fiscal de Ressarcimento (modelo 55 ou 65) e registra o credito na apuracao do ICMS (VFIS0530) para abatimento do imposto a pagar.
+
+## Pre-requisitos
+
+- **VFIS0100 (Configuracao Fiscal):** Configuracao do emitente ativa.
+- **VFIS0200 (NFe de Saida):** NFe de saida de produtos sujeitos a ST emitidas no periodo, com o flag ST ativo e CST 10, 30, 60 ou 70.
+- **VFIS0330 (Reducao/ST/Diferimento):** Regras de ST configuradas para os produtos.
+- **Legislacao estadual sobre ressarcimento de ST:** Cada estado possui regras proprias para ressarcimento de ST. Consulte a legislacao do seu estado (RICMS e Portarias da SEFAZ).
+
+## Passo a passo
+
+1. Acesse **Fiscal > Apuracao > Restituicao ICMS ST (VFIS0550)**.
+2. Selecione a **Empresa**, o **Local** e o **Periodo** (mes/ano) da apuracao da restituicao.
+3. Clique em **Buscar Notas com ST**. O sistema localizara todas as NFe de saida do periodo que contenham itens com CST de ICMS-ST (10, 30, 60 ou 70) e cujo destinatario esteja em UF diferente do emitente.
+4. Para cada nota encontrada, o sistema calculara o **Valor a Restituir** com base em:
+   - Valor do ICMS-ST pago na compra (informado no cadastro do produto ou na NFe de entrada).
+   - Valor do ICMS-ST proporcional a quantidade vendida.
+   - Aliquota interestadual de ICMS entre a UF de origem e destino (se a venda for interestadual, o ST pode ser restituido).
+   - Eventuais limites e reducoes previstos na legislacao estadual.
+5. A grade exibira todas as notas elegiveis para restituicao com os seguintes dados: numero da NFe, destinatario, UF destino, valor total da nota, valor de ST na nota e valor a restituir calculado.
+6. Selecione as notas que deseja incluir no pedido de restituicao (checkbox de selecao individual ou "Selecionar Todas").
+7. Clique em **Calcular Restituicao**. O sistema totalizara o valor a restituir e gerara um **Pedido de Ressarcimento**.
+8. Revise o pedido. Se necessario, ajuste manualmente os valores de restituicao por nota.
+9. Clique em **Gerar Nota de Ressarcimento**. O sistema criara uma NFe (modelo 55) de saida com CFOP especifico de ressarcimento de ST (ex: 5.601, 5.602), tendo como destinatario o fornecedor original (substituto) ou, em alguns estados, a propria SEFAZ.
+10. Transmita a Nota de Ressarcimento na VFIS0200 normalmente (clicando em Transmitir).
+11. Apos a autorizacao da Nota de Ressarcimento, o sistema registrara automaticamente um lancamento de credito na VFIS0540 (Lancamentos Resumo ICMS) e na VFIS0530 (Linhas Apuracao), reduzindo o ICMS a pagar no periodo.
+
+## Campos
+
+### Filtros e Cabecalho
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Empresa | Select | Sim | VEMP0100 | Empresa. |
+| Local | Select | Sim | VLOC0100 | Estabelecimento. |
+| Periodo | Mes/Ano | Sim | — | Periodo de apuracao da restituicao. |
+| Valor Total Restituir | Decimal (15,2) | Auto | — | Soma dos valores a restituir de todas as notas selecionadas. |
+
+### Notas Elegiveis (grid)
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Selecionar | Checkbox | Sim | — | Marca a nota para inclusao no pedido de restituicao. |
+| Numero NFe | Texto (9) | Auto | — | Numero da NFe de saida. |
+| Serie | Texto (3) | Auto | — | Serie da NFe. |
+| UF Destino | Texto (2) | Auto | — | UF do destinatario. |
+| Valor Total NFe | Decimal (15,2) | Auto | — | Valor total da NFe. |
+| Valor ST na Nota | Decimal (15,2) | Auto | — | Valor de ICMS-ST destacado na nota. |
+| Percentual Restituicao | Decimal (5,2) | Auto | — | Percentual de restituicao calculado. |
+| Valor a Restituir | Decimal (15,2) | Auto | — | Valor calculado a restituir. |
+| Valor Ajustado | Decimal (15,2) | Manual | — | Valor manualmente ajustado (se necessario). |
+
+### Pedido de Ressarcimento
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| CFOP Ressarcimento | Select | Sim | VFIS0300 | CFOP especifico de ressarcimento de ST (5.601, 5.602, etc.). |
+| Destinatario Ressarcimento | Select | Sim | VCAD0200 | Fornecedor substituto ou SEFAZ. |
+| Numero Nota Ressarcimento | Texto (9) | Auto | — | Numero da NFe de ressarcimento gerada. |
+| Chave Nota Ressarcimento | Texto (44) | Auto | — | Chave de acesso da NFe de ressarcimento. |
+| Valor Ressarcido | Decimal (15,2) | Auto | — | Valor total restituido. |
+| Status | Select | Auto | Pendente / Calculado / Nota Gerada / Ressarcido | Status do pedido de ressarcimento. |
+
+## Observacoes importantes
+
+- **Variacao por estado:** As regras de restituicao de ICMS-ST variam significativamente entre os estados. Alguns estados exigem que o pedido de ressarcimento seja protocolado na SEFAZ antes da emissao da nota. Outros exigem que a nota de ressarcimento seja emitida contra o fornecedor substituto. Verifique a legislacao do seu estado.
+- **Percentual de restituicao:** O percentual de restituicao nem sempre e 100%. Alguns estados limitam a restituicao ao percentual do ICMS interestadual (7% ou 12%) em relacao ao ICMS-ST total. O sistema utiliza as regras configuradas nos parametros fiscais para calcular o percentual correto.
+- **Nota de Ressarcimento:** A nota de ressarcimento e uma NFe comum (modelo 55), porem com CFOP especifico (5.601, 5.602, 5.603). Ela deve ser transmitida normalmente e autorizada pela SEFAZ. Sem a autorizacao, o credito nao pode ser apropriado.
+- **Prazo prescricional:** O direito a restituicao de ICMS-ST prescreve em 5 anos (CTN, art. 168). Mantenha um historico de todas as notas de saida com ST para eventual fiscalizacao.
+
+## Telas relacionadas
+
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Notas de saida com ST que geram direito a restituicao.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Notas de entrada com ST onde o imposto foi pago antecipadamente.
+- **[VFIS0320 (Parametros ICMS/IPI)](/fiscal/vfis0320):** Parametros que definem aliquota de ST.
+- **[VFIS0330 (Reducao/ST/Diferimento)](/fiscal/vfis0330):** Regras de ST para os produtos.
+- **[VFIS0500 (Motivos Transferencia DAPI)](/fiscal/vfis0500):** Motivos para transferencia de credito de ST.
+- **[VFIS0520 (Codigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Codigos de ajuste 5.3 especificos para ST.
+- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao onde o credito de restituicao e apropriado.
+- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamento de credito gerado pela restituicao.

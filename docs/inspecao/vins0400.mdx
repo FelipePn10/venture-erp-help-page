@@ -1,0 +1,84 @@
+---
+sidebar_position: 8
+title: "VINS0400 — Consulta Ocorrencias/Ordens"
+description: "Tela de consulta consolidada com 2 abas independentes: Ocorrencias e Ordens de Inspecao."
+---
+
+# VINS0400 — Consulta Ocorrencias/Ordens
+
+> Tela de consulta consolidada com 2 abas independentes que permitem pesquisar e analisar tanto ocorrencias de qualidade quanto ordens de inspecao.
+
+## Objetivo
+
+Fornecer uma interface unificada de consulta ao modulo de inspecao, organizada em 2 abas independentes: **Aba Ocorrencias** (busca e analise de todas as ocorrencias de qualidade registradas) e **Aba Ordens de Inspecao** (busca e analise de todas as ordens de inspecao, independentemente do tipo). Cada aba possui seus proprios filtros e grids, funcionando de forma totalmente independente. A tela atende tanto ao uso operacional (localizar um registro especifico) quanto ao uso gerencial (analises e metricas de qualidade).
+
+## Pre-requisitos
+
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106) — Ocorrencias que alimentam a Aba Ocorrencias.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201) — Ordens que alimentam a Aba Ordens de Inspecao.
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105) — Tipos de ocorrencia utilizados nos filtros.
+- [VINS0211 (Tipos Roteiro Inspecao)](/inspecao/vins0211) — Tipos de roteiro utilizados nos filtros.
+
+## Passo a passo
+
+1. Acesse a tela VINS0400 pelo menu Inspecao > Consulta Ocorrencias/Ordens.
+2. A tela abre na **Aba Ocorrencias** por padrao. Navegue entre as abas clicando nas guias no topo.
+3. **Na Aba Ocorrencias**:
+   - Utilize os filtros: tipo de ocorrencia, item, fornecedor, status, gravidade, periodo.
+   - Clique em **Pesquisar** para carregar as ocorrencias.
+   - A grid exibe numero, tipo, item, gravidade, status e data.
+   - Clique em uma ocorrencia para abrir o detalhamento completo.
+   - Utilize o botao **Grafico de Tendencias** para visualizar a evolucao das ocorrencias ao longo do tempo.
+4. **Na Aba Ordens de Inspecao**:
+   - Utilize os filtros: roteiro, tipo de roteiro, item, fornecedor, status, resultado, periodo.
+   - Clique em **Pesquisar** para carregar as ordens.
+   - A grid exibe as ordens com suas principais informacoes.
+   - Clique em uma ordem para visualizar o roteiro executado e os resultados dos ensaios.
+   - O botao **Indicadores** exibe metricas como taxa de aprovacao, tempo medio de inspecao e reprovacao por fornecedor.
+5. Em ambas as abas, utilize os botoes de **Exportar** para gerar relatorios em Excel ou PDF.
+6. As configuracoes de filtro sao **persistidas por aba** — ao alternar entre abas, os filtros da aba anterior sao mantidos.
+
+## Campos
+
+### Aba Ocorrencias — Filtros
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Tipo de Ocorrencia | multi-select | Nao | Lista de tipos | Filtrar por tipo de ocorrencia |
+| Item | select | Nao | Lista de itens | Filtrar por item |
+| Fornecedor | select | Nao | Lista de fornecedores | Filtrar por fornecedor |
+| Status | multi-select | Nao | Todos os status | Filtrar por situacao |
+| Gravidade | multi-select | Nao | Baixa / Media / Alta / Critica | Filtrar por severidade |
+| Periodo — Inicio | data | Nao | — | Data inicial |
+| Periodo — Fim | data | Nao | — | Data final |
+
+### Aba Ordens de Inspecao — Filtros
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Roteiro | select | Nao | Lista de roteiros | Filtrar por roteiro especifico |
+| Tipo de Roteiro | multi-select | Nao | Lista de tipos | Filtrar por natureza da inspecao |
+| Item | select | Nao | Lista de itens | Filtrar por item |
+| Fornecedor | select | Nao | Lista de fornecedores | Filtrar por fornecedor |
+| Status | multi-select | Nao | Todos os status | Filtrar por situacao |
+| Resultado | multi-select | Nao | Aprovado / Reprovado / Aprovado com Ressalva | Filtrar por resultado |
+| Periodo — Inicio | data | Nao | — | Data inicial |
+| Periodo — Fim | data | Nao | — | Data final |
+
+## Observacoes importantes
+
+- As **2 abas independentes** permitem que o usuario mantenha duas pesquisas simultaneas: por exemplo, analisar ocorrencias de um fornecedor na Aba 1 enquanto verifica as ordens de inspecao do mesmo fornecedor na Aba 2.
+- Os filtros sao **persistidos por aba**: ao navegar entre as abas, cada uma mantem seus filtros e resultados, evitando retrabalho.
+- O **Grafico de Tendencias** na Aba Ocorrencias plota a quantidade de ocorrencias ao longo do tempo, permitindo identificar picos e tendencias sazonais de problemas de qualidade.
+- Os **Indicadores** na Aba Ordens oferecem uma visao gerencial rapida: taxa de aprovacao, TMI (Tempo Medio de Inspecao), fornecedores com maior indice de reprovacao.
+- A exportacao em **Excel** e independente por aba: e possivel exportar apenas as ocorrencias, apenas as ordens ou ambos separadamente.
+- A consulta respeita a **seguranca de perfil** — usuarios podem ter acesso a apenas uma das abas ou a ambas, conforme configuracao de permissoes.
+
+## Telas relacionadas
+
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Registro e gestao das ocorrencias consultadas.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201): Gestao das ordens de inspecao consultadas.
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105): Tipos de ocorrencia referenciados nos filtros.
+- [VINS0211 (Tipos Roteiro Inspecao)](/inspecao/vins0211): Tipos de roteiro referenciados nos filtros.
+- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Consulta focada apenas em recebimento.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF que consome dados das ocorrencias e ordens.

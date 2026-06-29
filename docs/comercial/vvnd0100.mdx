@@ -1,0 +1,52 @@
+---
+sidebar_position: 2
+title: "VVND0100 — Divisão de Vendas"
+description: "Cadastro de divisões de vendas vinculadas a regiões e pedidos para análises comerciais segmentadas."
+---
+
+# VVND0100 — Divisão de Vendas
+
+> Tela de cadastro das divisões de vendas da empresa, permitindo a criação de estruturas organizacionais vinculadas a regiões geográficas e aos pedidos de venda, essencial para análises de performance por equipe, unidade ou território.
+
+## Objetivo
+
+Gerenciar as divisões de vendas que representam equipes comerciais, regionais ou unidades de negócio dentro da estrutura organizacional da empresa. Cada divisão cadastrada pode ser vinculada a uma região geográfica (proveniente do apoio básico de cliente) e associada a pedidos de venda, permitindo relatórios gerenciais segmentados por divisão, análise de metas e avaliação de desempenho das equipes.
+
+## Pré-requisitos
+
+- Ter as regiões de venda cadastradas na tela de apoio básico [VCLI0510](/cliente/vcli0510).
+- Possuir permissão de acesso ao módulo Comercial.
+- Conhecer a estrutura organizacional da área comercial para definir corretamente as divisões.
+
+## Passo a Passo
+
+1. Acesse o menu **Comercial > Divisão de Vendas**.
+2. Para criar uma nova divisão, clique no botão **Novo**.
+3. Informe um código único para a divisão e uma descrição clara que identifique a equipe, região ou unidade de negócio.
+4. Selecione a **Região** correspondente no campo de seleção. As opções são carregadas a partir das regiões cadastradas em [VCLI0510](/cliente/vcli0510).
+5. Defina se a divisão está **Ativa** utilizando o toggle. Divisões inativas não aparecerão como opção nos pedidos de venda.
+6. Clique em **Salvar** para persistir a nova divisão.
+7. Para editar uma divisão existente, selecione-a na tabela de listagem e clique em **Editar**.
+8. Utilize o botão **Exportar** para gerar um relatório com todas as divisões cadastradas.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Código | Texto | Sim | — | Código identificador único da divisão de vendas |
+| Descrição | Texto | Sim | — | Nome ou descrição da divisão (ex.: "Equipe Sul", "Unidade SP") |
+| Região | Seleção | Não | Regiões cadastradas em VCLI0510 | Região geográfica vinculada à divisão |
+| Ativo | Toggle | Não | Ligado / Desligado | Status da divisão — inativas não aparecem nos pedidos |
+
+## Observações
+
+- A divisão de vendas é um campo opcional nos pedidos de venda ([VPDV0200](/pdv/vpdv0200)), mas sua utilização é recomendada para viabilizar relatórios gerenciais segmentados.
+- Ao desativar uma divisão, os pedidos já vinculados a ela não são afetados — apenas novos pedidos deixarão de exibi-la como opção.
+- Uma mesma região pode ser vinculada a múltiplas divisões, permitindo subdivisões dentro de um mesmo território.
+- O vínculo com região é opcional; divisões podem representar estruturas puramente organizacionais sem amarração geográfica.
+
+## Telas Relacionadas
+
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** As divisões cadastradas aqui aparecem como opção de seleção no campo Divisão de Venda dos pedidos.
+- **[VCLI0510 — Apoio Básico de Cliente](/cliente/vcli0510):** Tela onde são cadastradas as regiões utilizadas no vínculo da divisão de vendas.
+- **[VENT0100 — Consulta de Pedido de Venda](/comercial/vent0100):** Tela de consulta onde é possível filtrar pedidos por divisão de vendas em relatórios avançados.

@@ -1,0 +1,59 @@
+---
+sidebar_position: 6
+title: "VINS0211 — Tipos Roteiro Inspecao"
+description: "Cadastro dos tipos de roteiro de inspecao que classificam as diferentes naturezas de inspecao."
+---
+
+# VINS0211 — Tipos Roteiro Inspecao
+
+> Cadastro dos tipos de roteiro de inspecao que categorizam as inspecoes conforme sua natureza e finalidade no processo produtivo.
+
+## Objetivo
+
+Permitir a classificacao dos roteiros de inspecao em tipos que refletem a natureza e finalidade da inspecao no processo produtivo. Os tipos definem o contexto de aplicacao do roteiro: Inspecao de Recebimento (materias-primas e componentes comprados), Inspecao de Processo (durante a fabricacao), Inspecao Final (produto acabado), Auditoria de Qualidade, Inspecao de Expedicao, entre outros. Esta classificacao e utilizada para organizacao, geracao de metricas e definicao de regras de negocio especificas para cada tipo.
+
+## Pre-requisitos
+
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200) — Roteiros de inspecao que utilizarao os tipos aqui definidos.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201) — Ordens de inspecao geradas com base nos tipos de roteiro.
+
+## Passo a passo
+
+1. Acesse a tela VINS0211 pelo menu Inspecao > Tipos Roteiro Inspecao.
+2. Clique em **Novo** para cadastrar um novo tipo de roteiro de inspecao.
+3. Preencha o **Codigo** e a **Descricao** do tipo (ex: "REC" — Recebimento, "PROC" — Processo, "FINAL" — Inspecao Final).
+4. Selecione a **Natureza da Inspecao**: Recebimento, Processo, Final, Auditoria, Expedicao ou Outros.
+5. Defina a **Gravidade Padrao** para ocorrencias geradas neste tipo de roteiro.
+6. Configure o toggle **Exige Certificado de Qualidade** se o fornecedor deve apresentar certificado junto com o material.
+7. Configura o toggle **Geracao Automatica de Ordens** se as ordens devem ser criadas automaticamente conforme gatilhos (ex: a cada nota fiscal de entrada).
+8. Configure o toggle **Permite Amostragem Reduzida** se, para fornecedores com bom historico, a amostragem pode ser reduzida.
+9. Clique em **Salvar** para armazenar o tipo de roteiro.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo | texto | Sim | — | Identificador unico do tipo de roteiro |
+| Descricao | texto | Sim | — | Nome descritivo do tipo |
+| Natureza da Inspecao | select | Sim | Recebimento / Processo / Final / Auditoria / Expedicao / Outros | Contexto de aplicacao |
+| Gravidade Padrao | select | Sim | Baixa / Media / Alta / Critica | Severidade padrao para ocorrencias |
+| Exige Certificado de Qualidade | toggle | Nao | — | Fornecedor deve anexar certificado |
+| Geracao Automatica de Ordens | toggle | Nao | — | Ordens de inspecao geradas automaticamente |
+| Permite Amostragem Reduzida | toggle | Nao | — | Reduz amostragem para fornecedores com bom IQF |
+| Ativo | toggle | Sim | — | Status do tipo de roteiro |
+
+## Observacoes importantes
+
+- A **Natureza da Inspecao** e o principal atributo de classificacao. Ele define em qual etapa do processo produtivo a inspecao sera executada e impacta os gatilhos de geracao automatica de ordens.
+- O toggle **Geracao Automatica de Ordens** e tipicamente ativado para Inspecao de Recebimento, onde a cada nota fiscal de entrada de um item com roteiro associado, uma ordem de inspecao e criada automaticamente.
+- O toggle **Permite Amostragem Reduzida** implementa o conceito de "skip lot" ou "reduced inspection": fornecedores com historico de qualidade consistentemente bom podem ter menos itens inspecionados.
+- O toggle **Exige Certificado de Qualidade** bloqueia o recebimento de materiais que nao estejam acompanhados do certificado de qualidade do fornecedor.
+- Tipos de roteiro inativos nao geram novas ordens automaticamente, mas ordens ja criadas com este tipo continuam seu fluxo normalmente.
+- A classificacao por tipos permite gerar **metricas de qualidade** segmentadas: taxa de aprovacao no recebimento, taxa de defeitos no processo, taxa de conformidade final.
+
+## Telas relacionadas
+
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200): Roteiros de inspecao que utilizam esta classificacao.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201): Ordens de inspecao geradas com base nos tipos.
+- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Consulta focada em inspecoes do tipo Recebimento.
+- [VINS0400 (Consulta Ocorrencias/Ordens)](/inspecao/vins0400): Consulta consolidada de ordens de todos os tipos.

@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+title: "VENT0800 — Cadastro de Almoxarifado"
+description: "Cadastro de almoxarifados com 8 localizações, abas Clientes e Fornecedores vinculados e controle de tipo e status."
+---
+
+# VENT0800 — Cadastro de Almoxarifado
+
+> Tela de cadastro dos almoxarifados do ERP, permitindo registrar até 8 localizações por almoxarifado, com abas dedicadas para vinculação de Clientes e Fornecedores autorizados, classificação por tipo (Próprio, Terceiros ou Virtual) e controle de ativação.
+
+## Objetivo
+
+Gerenciar a estrutura física e lógica de armazenagem da empresa. Cada almoxarifado cadastrado representa um local onde itens podem ser armazenados, separados e expedidos. A tela permite o cadastro de até 8 localizações distintas por almoxarifado (rua, prateleira, nível, etc.), a vinculação de clientes e fornecedores autorizados a operar em cada almoxarifado (por meio das abas específicas) e a classificação do tipo de almoxarifado — Próprio (instalações da empresa), Terceiros (armazéns de parceiros logísticos) ou Virtual (estoques lógicos para controle sem localização física). O almoxarifado é referenciado nos pedidos de venda, compra, expedição e em todo o fluxo logístico do ERP.
+
+## Pré-requisitos
+
+- Ter empresas cadastradas no sistema para vincular ao almoxarifado.
+- Ter clientes e fornecedores cadastrados para vinculação nas abas específicas.
+- Conhecer a estrutura física dos armazéns para preencher corretamente as localizações.
+- Possuir permissão de acesso ao módulo Almoxarifado.
+
+## Passo a Passo
+
+1. Acesse o menu **Almoxarifado > Cadastro de Almoxarifado**.
+2. Clique em **Novo** para criar um novo almoxarifado.
+3. Informe um **Código** único identificador do almoxarifado.
+4. Preencha a **Descrição** com o nome completo do almoxarifado (ex.: "CD São Paulo — Galpão A").
+5. Selecione a **Empresa** a qual o almoxarifado pertence.
+6. Escolha o **Tipo**: Próprio (instalações da empresa), Terceiros (armazém de parceiro logístico) ou Virtual (estoque lógico, sem localização física).
+7. Preencha o **Endereço** completo do almoxarifado: CEP, logradouro, número, complemento, bairro, cidade e UF.
+8. Configure as **Localizações** (até 8):
+   - Cada localização define uma posição dentro do almoxarifado no formato Rua, Prateleira, Nível e Vão.
+   - Exemplo: Rua A, Prateleira 3, Nível 2, Vão 1.
+   - As localizações são utilizadas no momento da separação de itens em [VEXP0100](/almoxarifado/vexp0100).
+9. Acesse a aba **Clientes** para vincular clientes autorizados a utilizar este almoxarifado. Clique em **Adicionar Cliente** e selecione o cliente desejado.
+10. Acesse a aba **Fornecedores** para vincular fornecedores autorizados a entregar neste almoxarifado. Clique em **Adicionar Fornecedor** e selecione o fornecedor.
+11. Defina o toggle **Ativo** como ligado para que o almoxarifado esteja operacional.
+12. Clique em **Salvar** para persistir o cadastro.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Código | Texto | Sim | — | Código identificador único do almoxarifado |
+| Descrição | Texto | Sim | — | Nome completo do almoxarifado |
+| Empresa | Seleção | Sim | Empresas cadastradas | Empresa proprietária ou gestora do almoxarifado |
+| Tipo | Seleção | Sim | Próprio / Terceiros / Virtual | Classificação do almoxarifado |
+| CEP | Texto | Não | — | CEP do almoxarifado |
+| Logradouro | Texto | Não | — | Endereço (rua, avenida) |
+| Número | Texto | Não | — | Número do endereço |
+| Complemento | Texto | Não | — | Complemento (sala, galpão) |
+| Bairro | Texto | Não | — | Bairro |
+| Cidade | Seleção | Não | Cidades cadastradas | Cidade |
+| UF | Seleção | Não | Unidades Federativas | Unidade Federativa |
+| Localização 1-8 — Rua | Texto | Não | — | Identificador da rua no almoxarifado |
+| Localização 1-8 — Prateleira | Texto | Não | — | Número ou código da prateleira |
+| Localização 1-8 — Nível | Texto | Não | — | Nível ou andar da prateleira |
+| Localização 1-8 — Vão | Texto | Não | — | Vão ou posição na prateleira |
+| Clientes Vinculados (aba) | Multi-Seleção | Não | Clientes cadastrados | Clientes autorizados a operar neste almoxarifado |
+| Fornecedores Vinculados (aba) | Multi-Seleção | Não | Fornecedores cadastrados | Fornecedores autorizados a entregar neste almoxarifado |
+| Ativo | Toggle | Não | Ligado / Desligado | Status operacional do almoxarifado |
+
+## Observações
+
+- Almoxarifados do tipo **Virtual** não possuem endereço físico e são utilizados para controle de estoques lógicos, como consignação, mostruários ou estoques em trânsito.
+- As 8 localizações disponíveis por almoxarifado são independentes e podem ser utilizadas para mapear zonas distintas do armazém (área de recebimento, área de picking, área de expedição, etc.).
+- As abas **Clientes** e **Fornecedores** permitem restringir quais clientes podem ter seus pedidos separados naquele almoxarifado e quais fornecedores podem entregar mercadorias nele. Essa funcionalidade é essencial para operações logísticas com múltiplos CDs e contratos específicos.
+- Almoxarifados inativos não aparecerão como opção nos pedidos de venda, compra ou nas telas de expedição, mas seus dados e histórico permanecem preservados.
+- O tipo **Terceiros** é utilizado para armazéns de operadores logísticos parceiros, onde a empresa mantém estoque mas a operação é terceirizada.
+
+## Telas Relacionadas
+
+- **[VENT0200 — Cadastro de Itens](/engenharia/vent0200):** Itens que podem ser armazenados e movimentados no almoxarifado.
+- **[VEXP0100 — Expedição / Romaneio](/almoxarifado/vexp0100):** Fluxo de expedição que utiliza o almoxarifado como origem dos itens a serem separados e conferidos.
+- **[VPDC0200 — Pedido de Compra](/suprimento/vpdc0200):** Pedidos de compra cujos itens são destinados a almoxarifados específicos.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Pedidos de venda que podem especificar o almoxarifado de origem dos itens para separação.
+- **[VPLC0200 — Montagem de Carga](/planejamento/vplc0200):** Planejamento de cargas que utiliza os almoxarifados como ponto de origem da consolidação.

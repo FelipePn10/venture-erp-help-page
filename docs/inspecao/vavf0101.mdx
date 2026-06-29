@@ -1,0 +1,97 @@
+---
+sidebar_position: 9
+title: "VAVF0101 — Parametros Avaliacao Fornecedores"
+description: "Configuracao dos parametros de avaliacao de fornecedores com 3 sub-tabelas de criterios."
+---
+
+# VAVF0101 — Parametros Avaliacao Fornecedores
+
+> Painel de configuracao dos parametros que regem a avaliacao de fornecedores, com 3 sub-tabelas: Qualidade, Comercial e Logistica.
+
+## Objetivo
+
+Permitir a definicao e ponderacao dos criterios utilizados na avaliacao periodica de fornecedores. A tela e organizada em 3 sub-tabelas que correspondem as dimensoes de avaliacao: **Qualidade** (desempenho nas inspecoes, ocorrencias, certificacoes), **Comercial** (precos, prazos de pagamento, flexibilidade negocial) e **Logistica** (pontualidade de entrega, conformidade de volumes, documentacao). Cada sub-tabela permite definir os criterios, seus pesos e a forma de calculo, resultando em uma nota consolidada que alimenta o IQF (Indice de Qualidade do Fornecedor).
+
+## Pre-requisitos
+
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedores que serao avaliados com base nestes parametros.
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105) — Tipos de ocorrencia que impactam a dimensao Qualidade.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204) — Tela que exibe o IQF calculado com base nestes parametros.
+
+## Passo a passo
+
+1. Acesse a tela VAVF0101 pelo menu Inspecao > Parametros Avaliacao Fornecedores.
+2. A tela exibe as **3 sub-tabelas** lado a lado ou em abas: Qualidade, Comercial e Logistica.
+3. Para cada sub-tabela, defina os **Criterios de Avaliacao** que serao considerados.
+4. Atribua um **Peso** (percentual) a cada criterio. A soma dos pesos dentro de cada sub-tabela deve totalizar 100%.
+5. Defina a **Formula de Calculo** para cada criterio (ex: media de notas, ultima nota, tendencia).
+6. Configure a **Periodicidade da Avaliacao**: Mensal, Trimestral, Semestral ou Anual.
+7. Defina as **Faixas de Classificacao**: A (otimo), B (bom), C (regular), D (ruim) — com os intervalos de nota.
+8. Configure o **Peso de Cada Dimensao** no calculo final (ex: Qualidade 50%, Comercial 25%, Logistica 25%).
+9. Clique em **Salvar** para armazenar a configuracao de parametros.
+10. Utilize o botao **Simular** para testar a avaliacao com dados de um fornecedor real antes de colocar em producao.
+
+## Campos
+
+### Estrutura Geral
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo do Parametro | texto | Sim | — | Identificador unico do conjunto de parametros |
+| Descricao | texto | Sim | — | Nome descritivo da configuracao |
+| Periodicidade | select | Sim | Mensal / Trimestral / Semestral / Anual | Frequencia da avaliacao |
+| Peso Dimensao — Qualidade (%) | numero | Sim | 0-100 | Peso da dimensao qualidade na nota final |
+| Peso Dimensao — Comercial (%) | numero | Sim | 0-100 | Peso da dimensao comercial na nota final |
+| Peso Dimensao — Logistica (%) | numero | Sim | 0-100 | Peso da dimensao logistica na nota final |
+
+### Sub-Tabela 1 — Qualidade
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Criterio | texto | Sim | — | Nome do criterio de qualidade |
+| Peso no IQF (%) | numero | Sim | — | Peso do criterio dentro da dimensao |
+| Formula | select | Sim | Media / Ultima Nota / Tendencia / Personalizada | Metodo de calculo |
+| Fonte de Dados | select | Sim | Inspecoes / Ocorrencias / Certificacoes | Origem dos dados |
+
+### Sub-Tabela 2 — Comercial
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Criterio | texto | Sim | — | Nome do criterio comercial |
+| Peso no IQF (%) | numero | Sim | — | Peso do criterio dentro da dimensao |
+| Formula | select | Sim | Media / Ultima Nota / Tendencia / Personalizada | Metodo de calculo |
+| Fonte de Dados | select | Sim | Pedidos / Contratos / Manual | Origem dos dados |
+
+### Sub-Tabela 3 — Logistica
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Criterio | texto | Sim | — | Nome do criterio logistico |
+| Peso no IQF (%) | numero | Sim | — | Peso do criterio dentro da dimensao |
+| Formula | select | Sim | Media / Ultima Nota / Tendencia / Personalizada | Metodo de calculo |
+| Fonte de Dados | select | Sim | Entregas / Documentacao / Manual | Origem dos dados |
+
+### Faixas de Classificacao
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Nota Minima A | numero | Nao | — | Nota minima para classificacao A (ex: 90) |
+| Nota Minima B | numero | Nao | — | Nota minima para classificacao B (ex: 70) |
+| Nota Minima C | numero | Nao | — | Nota minima para classificacao C (ex: 50) |
+
+## Observacoes importantes
+
+- A **soma dos pesos** das 3 dimensoes deve totalizar 100%. O sistema valida esta condicao e impede salvar se houver divergencia.
+- A **Formula Personalizada** permite escrever uma expressao SQL ou funcao customizada para calculos complexos, exigindo conhecimento tecnico avancado.
+- O botao **Simular** e uma ferramenta poderosa para calibrar os parametros. Ele aplica os criterios configurados sobre dados historicos de um fornecedor e mostra o resultado que seria obtido.
+- As **Faixas de Classificacao** determinam a cor e o tratamento do fornecedor: A (verde, recomendado), B (azul, aceitavel), C (amarelo, requer atencao), D (vermelho, restrito).
+- Fornecedores classificados como **D** por periodos consecutivos podem ser automaticamente bloqueados para novos pedidos de compra, conforme parametrizacao.
+- A alteracao dos parametros de avaliacao **nao retroage** — avaliacoes ja realizadas mantem os criterios e pesos vigentes a epoca do calculo.
+
+## Telas relacionadas
+
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores avaliados com base nestes parametros.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): Visualizacao do IQF calculado.
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105): Ocorrencias que alimentam a dimensao qualidade.
+- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Inspecoes que alimentam os dados de qualidade.
+- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Dados comerciais e logisticos dos fornecedores.

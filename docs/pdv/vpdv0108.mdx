@@ -1,0 +1,81 @@
+---
+sidebar_position: 1
+title: "VPDV0108 — Política Comercial de Descontos"
+description: "Cadastro de políticas de desconto com prioridade, sequenciamento e modais de Linhas e Geração Automática para aplicação nos pedidos de venda."
+---
+
+# VPDV0108 — Política Comercial de Descontos
+
+> Tela de cadastro das políticas comerciais de desconto que regem a aplicação automática de descontos nos pedidos de venda, com definição de prioridade entre políticas, sequenciamento de aplicação e dois modais especializados — Linhas (para regras por faixa de quantidade ou valor) e Geração Automática (para criação em lote de políticas).
+
+## Objetivo
+
+Permitir a criação e gestão de políticas de desconto que são aplicadas automaticamente durante a montagem de pedidos de venda no PDV. As políticas podem ser configuradas com diferentes escopos de abrangência (cliente, grupo, item, classificação ou geral), tipos de desconto (percentual ou valor fixo) e podem conter regras detalhadas por faixa de quantidade ou valor através do modal de Linhas. O sistema gerencia a prioridade entre políticas concorrentes e a sequência de aplicação, garantindo que os descontos corretos sejam calculados sem conflitos. O modal de Geração Automática permite criar múltiplas políticas em lote com base em parâmetros predefinidos.
+
+## Pré-requisitos
+
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Ter itens cadastrados em [VENT0200](/engenharia/vent0200).
+- Ter classificações de itens cadastradas em [VCLA0100](/cadastros/vcla0100).
+- Conhecer a política comercial de descontos da empresa para configurar prioridades e sequenciamento corretos.
+- Possuir permissão de acesso ao módulo PDV.
+
+## Passo a Passo
+
+1. Acesse o menu **PDV > Política Comercial de Descontos**.
+2. Para criar uma nova política, clique em **Novo**.
+3. Informe um **Código** único e uma **Descrição** clara para a política.
+4. Selecione o **Tipo de Desconto**: Percentual (desconto de X% sobre o valor do item) ou Valor Fixo (desconto de R$ X por unidade ou por pedido).
+5. Informe o **Valor do Desconto** (percentual ou monetário, conforme o tipo selecionado).
+6. Defina o **Escopo** da política:
+   - **Cliente**: Aplica-se a um cliente específico.
+   - **Grupo Cliente**: Aplica-se a todos os clientes de um grupo.
+   - **Item**: Aplica-se a um item específico.
+   - **Classificação Item**: Aplica-se a todos os itens de uma classificação.
+   - **Geral**: Aplica-se a todos os clientes e itens (sujeito às demais regras).
+7. Preencha os campos condicionais conforme o escopo selecionado (Cliente, Grupo, Item ou Classificação).
+8. Defina os **Gatilhos** de aplicação: **Quantidade Mínima** e/ou **Valor Mínimo** do pedido ou item para a política ser ativada.
+9. Configure a **Prioridade** da política — políticas com prioridade mais alta são avaliadas primeiro.
+10. Defina a **Sequência** de aplicação — a ordem em que políticas de mesma prioridade são aplicadas.
+11. Informe as datas de **Início** e **Fim** de vigência, se a política for temporária.
+12. Para adicionar regras por faixa, clique em **Linhas** para abrir o modal e cadastre as faixas de quantidade ou valor com percentuais específicos.
+13. Para gerar políticas em lote, utilize o modal **Geração Automática** definindo parâmetros base que serão replicados.
+14. Defina o toggle **Ativo** como ligado para que a política entre em vigor.
+15. Clique em **Salvar** para persistir a política.
+
+## Campos
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Código | Texto | Sim | — | Código identificador único da política |
+| Descrição | Texto | Sim | — | Nome descritivo da política de desconto |
+| Tipo Desconto | Seleção | Sim | Percentual / Valor Fixo | Modalidade do desconto |
+| Valor Desconto | Numérico | Sim | — | Percentual ou valor monetário do desconto |
+| Escopo | Seleção | Sim | Cliente / Grupo Cliente / Item / Classificação Item / Geral | Abrangência da política |
+| Cliente | Seleção | Condicional | Clientes cadastrados | Cliente alvo (se escopo = Cliente) |
+| Grupo Cliente | Seleção | Condicional | Grupos cadastrados | Grupo alvo (se escopo = Grupo Cliente) |
+| Item | Texto | Condicional | Itens cadastrados | Item alvo (se escopo = Item) |
+| Classificação | Seleção | Condicional | Classificações de VCLA0100 | Classificação alvo (se escopo = Classificação) |
+| Quantidade Mínima | Numérico | Não | — | Gatilho de quantidade mínima para ativação |
+| Valor Mínimo | Monetário | Não | — | Gatilho de valor mínimo do pedido para ativação |
+| Prioridade | Numérico | Sim | — | Ordem de prioridade na avaliação de políticas concorrentes |
+| Sequência | Numérico | Sim | — | Ordem sequencial de aplicação |
+| Data Início | Data | Não | — | Data de início da vigência |
+| Data Fim | Data | Não | — | Data de término da vigência |
+| Ativo | Toggle | Sim | Ligado / Desligado | Status de ativação da política |
+
+## Observações
+
+- A **Prioridade** define qual política é avaliada primeiro. Políticas com número menor de prioridade (ex.: 1) são avaliadas antes de políticas com prioridade maior (ex.: 10).
+- A **Sequência** determina a ordem de aplicação entre políticas de mesma prioridade. É útil para encadear descontos progressivos.
+- O modal **Linhas** permite criar regras escalonadas — por exemplo, 5% de desconto para pedidos acima de R$ 1.000, 10% para pedidos acima de R$ 5.000. Cada linha define uma faixa com percentual próprio.
+- O modal **Geração Automática** é especialmente útil para campanhas sazonais, permitindo criar dezenas de políticas simultaneamente com base em uma lista de clientes, itens ou classificações.
+- Políticas com escopo **Geral** devem ser usadas com cautela, pois afetam todos os pedidos do sistema. Recomenda-se sempre definir ao menos um gatilho (quantidade ou valor mínimo) para evitar aplicação indiscriminada.
+
+## Telas Relacionadas
+
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Clientes alvo das políticas de desconto.
+- **[VCLA0100 — Classificação de Itens](/cadastros/vcla0100):** Classificações utilizadas no escopo das políticas.
+- **[VENT0200 — Cadastro de Itens](/engenharia/vent0200):** Itens referenciados nas políticas de desconto.
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as políticas de desconto são aplicadas automaticamente na montagem do pedido.
+- **[VPDV0111 — Política Comercial de Fretes](/pdv/vpdv0111):** Tela complementar para políticas de frete que podem interagir com as políticas de desconto.

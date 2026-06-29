@@ -1,0 +1,71 @@
+---
+sidebar_position: 4
+title: "VPDV0253 — Console de Acompanhamento de Pedidos"
+description: "Console de monitoramento em tempo real com cards de posição, semáforo de prazos e drill-down para detalhamento dos pedidos de venda."
+---
+
+# VPDV0253 — Console de Acompanhamento de Pedidos
+
+> Console visual para monitoramento em tempo real do status e progresso dos pedidos de venda, exibindo cards de posição com indicadores de etapa, semáforo colorido para controle de prazos de entrega e funcionalidade de drill-down para acessar o detalhamento completo de cada pedido.
+
+## Objetivo
+
+Fornecer uma visão gerencial consolidada e em tempo real de todos os pedidos de venda em andamento. Diferente da consulta tradicional ([VENT0100](/comercial/vent0100)), o console apresenta os pedidos organizados em cards visuais de posição, onde cada card representa um pedido e exibe informações críticas como número, cliente, valor, status atual e, principalmente, o semáforo de prazo — um indicador visual que sinaliza se o pedido está dentro do prazo de entrega (verde), próximo do vencimento (âmbar) ou já vencido (vermelho). O drill-down permite que, a partir do console, o usuário acesse diretamente o cadastro completo do pedido em [VPDV0200](/pdv/vpdv0200) para análise detalhada ou tomada de ação.
+
+## Pré-requisitos
+
+- Ter pedidos de venda cadastrados em [VPDV0200](/pdv/vpdv0200) com status e datas de entrega preenchidos.
+- Ter clientes cadastrados em [VCLI0500](/cliente/vcli0500).
+- Possuir permissão de acesso ao módulo PDV e, idealmente, permissão de visualização de todos os pedidos (ou dos pedidos de sua equipe/divisão).
+
+## Passo a Passo
+
+1. Acesse o menu **PDV > Console de Acompanhamento de Pedidos**.
+2. Na seção de **Filtros**, defina o período desejado utilizando o seletor de intervalo de datas.
+3. Selecione um ou mais **Status** para filtrar — é possível selecionar múltiplos status simultaneamente para uma visão abrangente.
+4. Opcionalmente, refine a consulta por **Cliente** (código ou nome) e/ou **Representante**.
+5. Clique em **Pesquisar** para carregar os cards de pedidos.
+6. Analise os **Cards de Posição**:
+   - Cada card exibe o número do pedido, nome do cliente, valor, data de entrega e status.
+   - O **Semáforo de Prazo** indica: **Verde** (entrega dentro do prazo), **Âmbar** (entrega prevista para os próximos 2 dias úteis ou data já ultrapassada em até 1 dia), **Vermelho** (entrega vencida há mais de 1 dia).
+7. Para visualizar os detalhes de um pedido, clique sobre o card correspondente — o sistema abrirá a tela [VPDV0200](/pdv/vpdv0200) no modo de visualização/edição (drill-down).
+8. Para atualizar o status de múltiplos pedidos simultaneamente, selecione os cards desejados (via checkboxes ou clique com Ctrl) e utilize a ação **Atualizar Status em Lote**.
+9. Utilize o botão **Exportar** para gerar um relatório com os dados dos pedidos filtrados.
+
+## Campos (Filtros)
+
+| Campo | Tipo | Obrigatório | Opções | Descrição |
+|-------|------|-------------|--------|-----------|
+| Período Início | Data | Não | — | Data inicial do período de consulta |
+| Período Fim | Data | Não | — | Data final do período de consulta |
+| Status | Multi-Seleção | Não | Rascunho / Em Análise / Liberado / Faturado / Cancelado | Filtrar por um ou mais status |
+| Cliente | Texto | Não | — | Código ou nome do cliente |
+| Representante | Seleção | Não | Representantes cadastrados | Filtrar por representante comercial |
+
+## Campos (Card de Posição)
+
+| Campo | Descrição |
+|-------|-----------|
+| Nº Pedido | Número do pedido de venda |
+| Cliente | Nome do cliente |
+| Valor Total | Valor total do pedido |
+| Data Entrega | Data prevista de entrega |
+| Status | Status atual do pedido |
+| Semáforo Prazo | Indicador visual: Verde (no prazo) / Âmbar (atenção) / Vermelho (vencido) |
+| Origem | Origem do pedido (Normal, Importado, etc.) |
+
+## Observações
+
+- O semáforo de prazo é calculado comparando a data de entrega do pedido com a data atual do sistema. A lógica de transição entre verde, âmbar e vermelho pode ser parametrizada conforme as políticas da empresa.
+- A seleção múltipla de status nos filtros permite, por exemplo, visualizar simultaneamente pedidos "Em Análise" e "Liberados", facilitando a gestão do pipeline completo.
+- O drill-down para [VPDV0200](/pdv/vpdv0200) abre a tela de cadastro no mesmo pedido, permitindo edições rápidas como alteração de status, ajuste de itens ou reprogramação de entrega através de [VEXR0100](/comercial/vexr0100).
+- A atualização de status em lote é uma ferramenta poderosa para gerentes comerciais, permitindo, por exemplo, liberar dezenas de pedidos de uma vez após uma aprovação em bloco.
+- O console é atualizado em tempo real — novos pedidos ou alterações de status feitas por outros usuários são refletidas automaticamente após a próxima pesquisa ou atualização da tela.
+
+## Telas Relacionadas
+
+- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela de origem dos pedidos monitorados no console e destino do drill-down para detalhamento.
+- **[VENT0100 — Consulta de Pedido de Venda](/comercial/vent0100):** Tela de consulta tabular complementar ao console, com foco em listagem e exportação.
+- **[VEXR0100 — Reprogramação de Entrega](/comercial/vexr0100):** Tela para reprogramar datas de entrega de pedidos identificados como vencidos (semáforo vermelho).
+- **[VEXP0100 — Expedição / Romaneio](/almoxarifado/vexp0100):** Status de expedição dos pedidos liberados que aparecem no console.
+- **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Clientes referenciados nos cards de pedidos do console.

@@ -1,0 +1,73 @@
+---
+sidebar_position: 1
+title: "VINS0105 — Tipos de Ocorrencias"
+description: "Cadastro de tipos de ocorrencias de inspecao com 4 layouts e 7 toggles de configuracao."
+---
+
+# VINS0105 — Tipos de Ocorrencias
+
+> Cadastro dos tipos de ocorrencias de inspecao de qualidade, com 4 layouts de apresentacao e 7 toggles de configuracao de comportamento.
+
+## Objetivo
+
+Permitir a definicao e configuracao dos tipos de ocorrencias que podem ser registrados durante as inspecoes de qualidade. Cada tipo de ocorrencia define a gravidade, o layout de apresentacao (entre 4 opcoes), o comportamento no processo (7 toggles de configuracao) e a acao resultante. As ocorrencias sao a base do modulo de inspecao, determinando como os problemas de qualidade sao classificados, registrados e encaminhados para tratamento.
+
+## Pre-requisitos
+
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106) — Ocorrencias que utilizarao os tipos aqui definidos.
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200) — Roteiros de inspecao que referenciam os tipos de ocorrencia.
+- [VAVF0105 (Tipos Abono Divergencias)](/inspecao/vavf0105) — Tipos de abono que podem ser associados as ocorrencias.
+
+## Passo a passo
+
+1. Acesse a tela VINS0105 pelo menu Inspecao > Tipos de Ocorrencias.
+2. A tela exibe os tipos de ocorrencias em um dos **4 layouts** disponiveis: Grade, Lista, Cards ou Arvore.
+3. Clique em **Novo** para cadastrar um novo tipo de ocorrencia.
+4. Preencha o **Codigo** e a **Descricao** do tipo (ex: "DEF-VISUAL" — Defeito Visual, "DIM-FORA" — Dimensao Fora de Especificacao).
+5. Selecione o **Layout de Apresentacao** preferido para visualizacao das ocorrencias deste tipo.
+6. Configure os **7 toggles** de comportamento:
+   - **Toggle 1 — Gera Bloqueio**: O item fica bloqueado no estoque ate a resolucao da ocorrencia.
+   - **Toggle 2 — Exige Abono**: Requer registro de abono para liberacao da ocorrencia.
+   - **Toggle 3 — Impacta IQF**: Afeta o Indice de Qualidade do Fornecedor.
+   - **Toggle 4 — Exige Acao Corretiva**: Requer que o fornecedor apresente um plano de acao corretiva.
+   - **Toggle 5 — Envia Notificacao**: Dispara notificacao automatica ao fornecedor ou areas internas.
+   - **Toggle 6 — Permite Anexos**: Habilita upload de evidencias (fotos, laudos).
+   - **Toggle 7 — Classifica como Critica**: Ocorrencias deste tipo sao tratadas com prioridade maxima.
+7. Defina a **Gravidade Padrao**: Baixa, Media, Alta ou Critica.
+8. Associe um **Fluxo de Tratamento** padrao, se aplicavel.
+9. Clique em **Salvar** para registrar o tipo de ocorrencia.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo | texto | Sim | — | Identificador unico do tipo de ocorrencia |
+| Descricao | texto | Sim | — | Nome descritivo do tipo |
+| Layout de Apresentacao | select | Sim | Grade / Lista / Cards / Arvore | Forma de exibicao das ocorrencias na tela |
+| Gravidade Padrao | select | Sim | Baixa / Media / Alta / Critica | Nivel de severidade padrao |
+| Toggle 1 — Gera Bloqueio | toggle | Nao | — | Bloqueia item no estoque |
+| Toggle 2 — Exige Abono | toggle | Nao | — | Requer abono para liberacao |
+| Toggle 3 — Impacta IQF | toggle | Nao | — | Afeta o Indice de Qualidade do Fornecedor |
+| Toggle 4 — Exige Acao Corretiva | toggle | Nao | — | Requer plano de acao do fornecedor |
+| Toggle 5 — Envia Notificacao | toggle | Nao | — | Dispara notificacoes automaticas |
+| Toggle 6 — Permite Anexos | toggle | Nao | — | Habilita upload de evidencias |
+| Toggle 7 — Classifica como Critica | toggle | Nao | — | Tratamento prioritario |
+| Fluxo de Tratamento | select | Nao | Lista de fluxos | Workflow padrao para tratamento |
+| Ativo | toggle | Sim | — | Status do tipo de ocorrencia |
+
+## Observacoes importantes
+
+- Os **4 layouts** (Grade, Lista, Cards, Arvore) oferecem diferentes formas de visualizacao dos tipos de ocorrencia. O usuario pode alternar entre eles conforme a preferencia ou necessidade de analise.
+- O **Toggle 2 (Exige Abono)** habilita o workflow de abono de divergencias, vinculando a ocorrencia a tela de [VAVF0105 (Tipos Abono Divergencias)](/inspecao/vavf0105).
+- O **Toggle 3 (Impacta IQF)** e essencial para a gestao de fornecedores, pois alimenta automaticamente o calculo do IQF em [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204).
+- A combinacao de toggles define o comportamento final da ocorrencia. Por exemplo, uma ocorrencia com Toggle 1 + Toggle 4 + Toggle 5 gera bloqueio, exige acao corretiva do fornecedor e notifica automaticamente.
+- O **Toggle 7 (Classifica como Critica)** eleva a prioridade da ocorrencia, que aparecera destacada em todas as telas de consulta e gestao.
+- A definicao correta dos toggles em cada tipo de ocorrencia e fundamental para a automacao do processo de qualidade. Revise periodicamente com a area de qualidade.
+
+## Telas relacionadas
+
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Registro de ocorrencias utilizando os tipos aqui definidos.
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200): Roteiros de inspecao que referenciam tipos de ocorrencia.
+- [VAVF0105 (Tipos Abono Divergencias)](/inspecao/vavf0105): Tipos de abono associados as ocorrencias.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF impactado pelas ocorrencias (Toggle 3).
+- [VINS0400 (Consulta Ocorrencias/Ordens)](/inspecao/vins0400): Consulta as ocorrencias registradas.

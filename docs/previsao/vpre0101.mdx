@@ -1,0 +1,60 @@
+---
+sidebar_position: 1
+title: "VPRE0101 — Tabela Apropriacao"
+description: "Definicao de percentuais de apropriacao para rateio de previsoes de venda."
+---
+
+# VPRE0101 — Tabela Apropriacao
+
+> Configuracao de percentuais de apropriacao que distribuem as previsoes de venda entre diferentes centros de custo ou produtos.
+
+## Objetivo
+
+Permitir a definicao e manutencao das tabelas de apropriacao, que determinam como as previsoes de venda serao distribuidas (rateadas) entre diferentes centros de custo, linhas de produto ou unidades de negocio. Cada tabela define percentuais cuja soma deve totalizar exatamente 100%, garantindo que toda a previsao seja integralmente apropriada. Estas tabelas sao utilizadas pelo modulo de previsao de vendas para ratear automaticamente os valores previstos, simplificando o processo de planejamento orcamentario.
+
+## Pre-requisitos
+
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para os quais os percentuais serao definidos.
+- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201) — Previsoes de venda que utilizarao as tabelas de apropriacao.
+
+## Passo a passo
+
+1. Acesse a tela VPRE0101 pelo menu Previsao > Tabela Apropriacao.
+2. Clique em **Novo** para criar uma nova tabela de apropriacao.
+3. Preencha o **Codigo** e a **Descricao** da tabela (ex: "RATEIO-PADRAO" — Rateio Padrao por Linha de Produto).
+4. Para cada linha da tabela, informe o **Centro de Custo** ou **Produto** de destino.
+5. Informe o **Percentual** de apropriacao para cada linha.
+6. O sistema exibe em tempo real a **Soma Total** dos percentuais, que deve totalizar exatamente 100%. Um indicador visual (verde/vermelho) mostra se a soma esta correta.
+7. Ajuste os percentuais ate que a soma atinja 100%.
+8. Defina a **Vigencia Inicial** e **Vigencia Final** da tabela, se aplicavel.
+9. Clique em **Salvar** para armazenar a tabela de apropriacao.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Codigo | texto | Sim | — | Identificador unico da tabela de apropriacao |
+| Descricao | texto | Sim | — | Nome descritivo da tabela |
+| Linha — Centro de Custo | select | Sim | Lista de centros de custo | Destino da apropriacao |
+| Linha — Produto | select | Nao | Lista de produtos | Alternativa ao centro de custo: produto destino |
+| Linha — Percentual (%) | numero | Sim | 0 a 100 | Percentual de rateio para esta linha |
+| Soma Total | numero | Nao | — | Soma calculada em tempo real (deve ser 100%) |
+| Vigencia Inicial | data | Nao | — | Data de inicio da vigencia da tabela |
+| Vigencia Final | data | Nao | — | Data de termino da vigencia da tabela |
+| Ativo | toggle | Sim | — | Status da tabela de apropriacao |
+
+## Observacoes importantes
+
+- A **Soma Total** deve ser exatamente **100%**. O sistema impede salvar uma tabela cuja soma dos percentuais seja diferente de 100%.
+- O indicador visual **verde** confirma que a soma esta correta (100%), enquanto o **vermelho** alerta para divergencia, exibindo a diferenca (para mais ou para menos).
+- E possivel criar **multiplas tabelas** com diferentes criterios de rateio e associa-las a diferentes previsoes de venda, permitindo flexibilidade no planejamento.
+- Tabelas com **Vigencia** definida sao automaticamente desativadas apos a data final, evitando o uso de tabelas desatualizadas em novos periodos.
+- A alteracao de percentuais em uma tabela ja em uso **nao retroage** — previsoes ja apropriadas com percentuais anteriores mantem seus valores originais.
+- E recomendavel manter um numero reduzido de linhas por tabela (maximo 10-15) para facilitar a manutencao e auditoria.
+
+## Telas relacionadas
+
+- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201): Previsoes de venda que utilizam as tabelas de apropriacao para rateio.
+- [VPRE0251 (Geracao Previsao)](/previsao/vpre0251): Geracao de previsoes que podem utilizar tabelas de apropriacao.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo destino da apropriacao.
+- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Comparativo que reflete a apropriacao definida nas tabelas.

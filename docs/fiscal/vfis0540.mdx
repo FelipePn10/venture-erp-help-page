@@ -1,0 +1,100 @@
+---
+sidebar_position: 17
+title: "VFIS0540 — Lancamentos Resumo ICMS"
+description: "Lancamentos fiscais detalhados de ICMS com sub-entidades Notas e C197, consolidando operacoes para apuracao e SPED Fiscal."
+---
+
+# VFIS0540 — Lancamentos Resumo ICMS
+
+> Tela de lancamentos fiscais de ICMS que registra cada operacao tributavel em nivel de detalhe, com sub-entidades para Notas (documentos vinculados) e C197 (itens de documento SPED), alimentando a apuracao (VFIS0530) e o SPED Fiscal.
+
+**Codigo fonte:** `src/modules/fiscal/icms-entries/vfis0540.vue`
+
+## Objetivo
+
+A VFIS0540 e o livro fiscal digital do ICMS. Ela registra cada lancamento fiscal — seja um debito de ICMS proveniente de uma NFe de saida, um credito de uma NFe de entrada, um estorno ou um ajuste — em nivel granular. Cada lancamento pertence a uma **Natureza** (Debito, Credito, Estorno, Ajuste) e pode ter duas sub-entidades vinculadas: **Notas** (os documentos fiscais que originaram o lancamento, como NFe, CTe, NFSe) e **C197** (itens detalhados do SPED Fiscal, correspondendo ao registro C197 da EFD-ICMS/IPI, que detalha a composicao de cada CFOP). A consolidacao destes lancamentos alimenta a VFIS0530 (Linhas Apuracao ICMS) e a exportacao do SPED Fiscal.
+
+## Pre-requisitos
+
+- **VFIS0200 (NFe de Saida):** Notas de saida autorizadas no periodo.
+- **VFIS0210 (NFe de Entrada):** Notas de entrada aprovadas no periodo.
+- **VFIS0510/VFIS0520:** Codigos de ajuste para lancamentos de ajuste.
+- **VFIS0530 (Linhas Apuracao):** Tela de apuracao que consome estes lancamentos.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Lancamentos > Lancamentos Resumo ICMS (VFIS0540)**.
+2. A tela principal e uma grade de lancamentos filtrados por **Periodo**, **Tipo** (Debito, Credito, Estorno, Ajuste), **CFOP** e **Natureza**.
+3. Para **criar um novo lancamento manual**, clique em **Novo Lancamento**.
+4. Informe os dados do cabecalho:
+   - **Tipo:** Debito, Credito, Estorno ou Ajuste.
+   - **CFOP:** codigo fiscal da operacao.
+   - **Valor:** valor do ICMS.
+   - **Base Calculo:** base de calculo do ICMS.
+   - **Aliquota:** aliquota aplicada.
+   - **Natureza:** descricao da operacao.
+5. Na sub-entidade **Notas**, vincule os documentos fiscais que originam o lancamento. Para cada documento, informe:
+   - **Tipo Documento:** NFe, CTe, NFSe, NF (modelo 1 ou 2).
+   - **Serie e Numero:** serie e numero do documento.
+   - **Chave de Acesso:** 44 digitos (para NFe e CTe).
+   - **Valor Rateado:** parcela do valor do ICMS atribuida a este documento (para lancamentos que consolidam varias notas).
+6. Na sub-entidade **C197**, detalhe a composicao do lancamento conforme o leiaute do registro C197 do SPED Fiscal:
+   - **Codigo Ajuste:** codigo de ajuste, se aplicavel (VFIS0510/VFIS0520).
+   - **Valor Item:** valor do ICMS do item.
+   - **Codigo da Conta Contabil:** conta contabil correspondente.
+7. Repita o passo 6 para cada combinacao de CFOP + Codigo Ajuste + Conta Contabil que compoe o lancamento.
+8. Clique em **Salvar**. O sistema validara a consistencia entre o valor do lancamento e a soma dos valores dos itens C197.
+9. Para lancamentos **automaticos**, o sistema gera os registros na VFIS0540 no momento da aprovacao de NFe de saida, NFe de entrada, CTe ou ao executar o processamento automatico de notas de ajuste (VFIS0560).
+
+## Campos
+
+### Cabecalho do Lancamento
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Periodo | Mes/Ano | Sim | — | Mes e ano de competencia do lancamento. |
+| Tipo | Select | Sim | Debito / Credito / Estorno / Ajuste | Tipo do lancamento fiscal. |
+| CFOP | Select | Sim | VFIS0300 | CFOP da operacao. |
+| Valor | Decimal (15,2) | Sim | — | Valor do ICMS lancado. |
+| Base Calculo | Decimal (15,2) | Condicional | — | Base de calculo do ICMS. |
+| Aliquota | Decimal (5,2) | Condicional | — | Aliquota aplicada. |
+| Natureza | Texto (100) | Sim | — | Natureza da operacao. |
+| Origem | Select | Sim | Automatico / Manual | Indica se o lancamento foi gerado automaticamente ou manualmente. |
+
+### Sub-entidade: Notas
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Tipo Documento | Select | Sim | NFe / CTe / NFSe / NF | Tipo do documento fiscal vinculado. |
+| Serie | Numero (3) | Sim | — | Serie do documento. |
+| Numero | Numero (9) | Sim | — | Numero do documento. |
+| Chave Acesso | Texto (44) | Condicional | — | Chave de acesso de 44 digitos (NFe, CTe). |
+| Valor Rateado | Decimal (15,2) | Sim | — | Valor do ICMS atribuido a este documento. |
+
+### Sub-entidade: C197
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Codigo Ajuste | Select | Condicional | VFIS0510 / VFIS0520 | Codigo de ajuste SPED (para lancamentos de ajuste). |
+| Valor Item | Decimal (15,2) | Sim | — | Valor do ICMS deste item. |
+| Conta Contabil | Texto (50) | Sim | — | Codigo da conta contabil correspondente. |
+| Descricao Complementar | Texto (200) | Nao | — | Descricao complementar do item. |
+
+## Observacoes importantes
+
+- **C197 — Registro do SPED Fiscal:** O registro C197 detalha a composicao das entradas de ICMS por CFOP e codigo de ajuste. A soma dos valores dos itens C197 de um lancamento deve ser igual ao valor total do lancamento. Divergencias geram erro na validacao do PVA.
+- **Lancamentos Automaticos:** Lancamentos gerados automaticamente pelo sistema (na aprovacao de NFe, CTe, etc.) ficam com status "Automatico" e nao podem ser editados manualmente. Para corrigir um lancamento automatico, estorne-o e crie um novo lancamento manual.
+- **Conciliação com VFIS0530:** A soma dos valores dos lancamentos do periodo na VFIS0540, agrupados por tipo (Debito, Credito), deve bater com os totais da apuracao na VFIS0530. Utilize a funcionalidade de **Conciliacao** para verificar divergencias.
+- **Varios documentos por lancamento:** Um unico lancamento pode consolidar varios documentos fiscais (ex: um lancamento de credito que agrupa 50 NFe de entrada do mesmo CFOP). Neste caso, cada documento e detalhado na sub-entidade "Notas" com seu valor rateado.
+
+## Telas relacionadas
+
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Notas que geram lancamentos de debito.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Notas que geram lancamentos de credito.
+- **[VFIS0220 (CTe)](/fiscal/vfis0220):** CTes que geram lancamentos de credito sobre frete.
+- **[VFIS0500 (Motivos Transferencia DAPI)](/fiscal/vfis0500):** Motivos de transferencia de credito.
+- **[VFIS0510 (Codigos Ajuste 5.1.1)](/fiscal/vfis0510):** Codigos de ajuste utilizados nos lancamentos C197.
+- **[VFIS0520 (Codigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais codigos de ajuste.
+- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao que consolida estes lancamentos.
+- **[VFIS0550 (Restituicao ICMS ST)](/fiscal/vfis0550):** Restituicao que gera lancamentos de credito.
+- **[VFIS0560 (Notas Especiais Ajuste)](/fiscal/vfis0560):** Notas que geram lancamentos automaticos.

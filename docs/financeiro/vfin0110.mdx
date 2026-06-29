@@ -1,0 +1,49 @@
+---
+sidebar_position: 2
+title: "VFIN0110 — Condicoes de Pagamento"
+description: "Cadastrar as condicoes de pagamento utilizadas no ERP."
+---
+
+# VFIN0110 — Condicoes de Pagamento
+
+> Cadastrar as condicoes de pagamento utilizadas em todo o sistema ERP.
+
+**Codigo fonte:** `src/components/screens/financeiro/Vfin0110Page.tsx`
+
+## Objetivo
+
+Cadastrar as condicoes de pagamento utilizadas em todo o sistema ERP. Estas condicoes definem as regras de parcelamento — quantas parcelas e em quantos dias cada uma vence a partir da data base.
+
+## Pre-requisitos
+
+- Nenhum. Esta tela e autonoma.
+
+## Passo a passo
+
+1. Acesse **Financeiro > Condicoes de Pagamento** (VFIN0110).
+2. Clique em **+ Nova Condicao**.
+3. No campo **Nome**, informe um identificador descritivo (ex: `30/60/90`, `28/56`, `A Vista`).
+4. No campo **Parcelas**, informe os dias de vencimento separados por virgula. Exemplos:
+   - `0` = pagamento a vista
+   - `30,60,90` = tres parcelas: 30, 60 e 90 dias
+5. Clique em **Salvar**.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+|-------|------|-------------|--------|--------|
+| Nome | texto | Sim | — | Nome identificador (ex: "30/60/90", "A Vista") |
+| Parcelas | texto | Sim | — | Dias de vencimento separados por virgula. `0` = a vista. |
+
+## Observacoes importantes
+
+- Espacos em branco no campo Parcelas sao removidos automaticamente ao salvar.
+- O valor `0` tem significado especial: indica pagamento unico a vista.
+- Condicoes de pagamento nao podem ser excluidas se ja estiverem referenciadas em titulos ou pedidos.
+
+## Telas relacionadas
+
+- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Referencia condicoes de pagamento para calcular datas de vencimento.
+- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Referencia condicoes de pagamento para titulos a receber.
+- **[VCLI0520 (Apoio Cliente Comercial)](/cliente/vcli0520):** Possui cadastro proprio de condicoes de pagamento para clientes.
+- **[VPDV0200 (Cadastro de Pedido de Venda)](/pdv/vpdv0200):** Utiliza condicoes de pagamento no fechamento de pedidos.

@@ -1,0 +1,65 @@
+---
+sidebar_position: 3
+title: "VPRE0201 — Cadastro Previsao Vendas"
+description: "Cadastro de previsoes de venda com visualizacao mensal e semanal."
+---
+
+# VPRE0201 — Cadastro Previsao Vendas
+
+> Cadastro de previsoes de venda com alternancia entre visoes mensal e semanal, permitindo planejamento detalhado da demanda futura.
+
+## Objetivo
+
+Permitir o cadastro e manutencao das previsoes de venda que alimentam o planejamento de producao e suprimentos. A tela oferece duas visoes complementares: **Mensal** (para planejamento de medio e longo prazo, tipicamente 12 a 18 meses) e **Semanal** (para planejamento de curto prazo, tipicamente 4 a 13 semanas). As previsoes podem ser inseridas manualmente ou importadas de arquivos externos, e servem como principal entrada para o processo de S&OP e MRP.
+
+## Pre-requisitos
+
+- [VPRE0101 (Tabela Apropriacao)](/previsao/vpre0101) — Tabelas de apropriacao para rateio das previsoes.
+- [VPRE0102 (Bloqueio Previsao)](/previsao/vpre0102) — Configuracao de semanas bloqueadas para edicao.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que serao objeto das previsoes de venda.
+
+## Passo a passo
+
+1. Acesse a tela VPRE0201 pelo menu Previsao > Cadastro Previsao Vendas.
+2. Selecione o **Ano** de referencia para a previsao.
+3. Escolha a **Visao Mensal** ou **Visao Semanal** no seletor de visualizacao.
+4. Selecione o **Item** ou **Familia de Produtos** para o qual deseja cadastrar a previsao.
+5. Na **Visao Mensal**, preencha a quantidade prevista para cada mes do ano. O sistema exibe o total anual automaticamente.
+6. Na **Visao Semanal**, preencha a quantidade prevista para cada semana. A visao semanal permite maior granularidade para itens com alta rotatividade.
+7. Utilize o botao **Ratear** para distribuir um total anual entre os meses ou semanas, utilizando uma tabela de sazonalidade ou percentuais manuais.
+8. Selecione a **Tabela de Apropriacao** para rateio automatico entre centros de custo.
+9. Para **Importar** previsoes, utilize o botao **Importar Planilha** e selecione o arquivo Excel com os dados.
+10. Clique em **Salvar** para armazenar a previsao.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Ano | select | Sim | Lista de anos | Ano de referencia da previsao |
+| Visao | select | Sim | Mensal / Semanal | Granularidade da previsao |
+| Item | select | Nao | Lista de itens | Item especifico da previsao |
+| Familia de Produtos | select | Nao | Lista de familias | Familia de produtos da previsao |
+| Datas (meses/semanas) | cabecalho | — | Gerado automaticamente | Periodos da previsao conforme ano e visao |
+| Quantidade Prevista | numero | Sim | — | Quantidade prevista para cada periodo |
+| Total Anual | numero | Nao | — | Calculado automaticamente: soma de todos os periodos |
+| Tabela de Apropriacao | select | Nao | Lista de tabelas | Tabela para rateio entre centros de custo |
+| Tabela de Sazonalidade | select | Nao | Lista de tabelas | Tabela para distribuicao sazonal automática |
+| Status | select | Nao | Em Edicao / Consolidado / Congelado | Status da previsao |
+
+## Observacoes importantes
+
+- A **Visao Semanal** e automaticamente derivada da visao mensal quando nao preenchida manualmente, utilizando rateio proporcional pelos dias uteis de cada semana.
+- O **Ratear** com tabela de sazonalidade e util para itens com padrao sazonal conhecido (ex: sorvetes vendem mais no verao), aplicando percentuais historicos automaticamente.
+- Previsoes com status **Consolidado** podem ser alteradas apenas por usuarios com permissao especifica. Status **Congelado** bloqueia totalmente as alteracoes.
+- A **Importacao de Planilha** suporta formatos pre-definidos. Baixe o modelo de planilha na tela antes de preparar os dados para garantir compatibilidade.
+- As previsoes sao a principal entrada para o **MRP**. Previsoes imprecisas geram distorcoes em toda a cadeia: excesso de estoque ou ruptura de producao.
+- E recomendavel realizar ciclos regulares de revisao das previsoes, tipicamente mensais, comparando o previsto com o realizado e ajustando as projecoes.
+
+## Telas relacionadas
+
+- [VPRE0101 (Tabela Apropriacao)](/previsao/vpre0101): Tabelas de rateio utilizadas na apropriacao das previsoes.
+- [VPRE0102 (Bloqueio Previsao)](/previsao/vpre0102): Controle de semanas bloqueadas para edicao.
+- [VPRE0251 (Geracao Previsao)](/previsao/vpre0251): Geracao automatica de previsoes baseada em historico.
+- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Comparativo entre previsao e vendas realizadas.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens objeto das previsoes de venda.
+- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Demandas de producao derivadas das previsoes.

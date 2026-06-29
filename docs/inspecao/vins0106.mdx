@@ -1,0 +1,71 @@
+---
+sidebar_position: 2
+title: "VINS0106 — Ocorrencias"
+description: "Registro e gestao de ocorrencias de inspecao com funcionalidade de abono condicional."
+---
+
+# VINS0106 — Ocorrencias
+
+> Tela de registro e gestao de ocorrencias de inspecao de qualidade, com funcionalidade de abono condicional para resolucao de divergencias.
+
+## Objetivo
+
+Permitir o registro, acompanhamento e resolucao das ocorrencias de qualidade identificadas durante as inspecoes. A tela centraliza todas as ocorrencias, independentemente da origem (inspecao de recebimento, inspecao de processo, inspecao final, auditoria), e oferece a funcionalidade de **abono condicional**: quando uma ocorrencia com toggle "Exige Abono" e registrada, o sistema automaticamente inicia o workflow de abono, solicitando aprovacao para aceitacao da divergencia. O abono condicional permite que produtos com nao-conformidades aceitaveis sejam liberados mediante justificativa e aprovacao formal.
+
+## Pre-requisitos
+
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105) — Tipos de ocorrencia que definem as regras e comportamentos.
+- [VAVF0105 (Tipos Abono Divergencias)](/inspecao/vavf0105) — Tipos de abono disponiveis para resolucao condicional.
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200) — Roteiros de inspecao que originam as ocorrencias.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201) — Ordens de inspecao que geram as ocorrencias.
+
+## Passo a passo
+
+1. Acesse a tela VINS0106 pelo menu Inspecao > Ocorrencias.
+2. Para registrar uma nova ocorrencia, clique em **Nova** e selecione a **Ordem de Inspecao** de origem.
+3. Selecione o **Tipo de Ocorrencia** que melhor classifica o problema encontrado.
+4. Informe a **Quantidade** afetada e o **Item** relacionado.
+5. Descreva detalhadamente a **Nao-Conformidade** no campo de texto.
+6. Anexe **Evidencias** (fotos, videos, laudos) utilizando o botao de upload.
+7. Se o tipo de ocorrencia exige abono, o sistema exibe automaticamente o **Painel de Abono Condicional**.
+8. No painel de abono, selecione o **Tipo de Abono**, justifique a aceitacao e submeta para aprovacao.
+9. Acompanhe o **Status do Abono** no fluxo de aprovacao configurado.
+10. Apos aprovacao do abono (ou resolucao da ocorrencia), o item pode ser liberado do bloqueio no estoque.
+
+## Campos
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|-------|------|-------------|--------|-----------|
+| Numero da Ocorrencia | numero (auto) | Sim | — | Gerado automaticamente pelo sistema |
+| Ordem de Inspecao | numero | Sim | — | Ordem de inspecao de origem |
+| Tipo de Ocorrencia | select | Sim | Lista de tipos | Classificacao da ocorrencia |
+| Item | select | Sim | Lista de itens | Item com nao-conformidade |
+| Quantidade Afetada | numero | Sim | — | Quantidade de itens com problema |
+| Lote/Serie | texto | Nao | — | Identificacao do lote ou numero de serie afetado |
+| Descricao da Nao-Conformidade | texto | Sim | — | Detalhamento do problema encontrado |
+| Gravidade | select | Sim | Baixa / Media / Alta / Critica | Severidade da ocorrencia |
+| Status | select | Nao | Aberta / Em Analise / Aguardando Abono / Abono Aprovado / Abono Rejeitado / Resolvida / Cancelada | Situacao da ocorrencia |
+| Tipo de Abono | select | Condicional | Lista de tipos de abono | Exibido se tipo de ocorrencia exige abono |
+| Justificativa do Abono | texto | Condicional | — | Explicacao para aceitacao da divergencia |
+| Aprovador do Abono | select | Condicional | Lista de aprovadores | Responsavel por aprovar o abono |
+| Evidencias (Anexos) | arquivo | Nao | — | Fotos, videos, documentos comprobatorios |
+| Acao Corretiva Solicitada | toggle | Nao | — | Se ativo, fornecedor deve apresentar plano de acao |
+| Data Limite para Resolucao | data | Nao | — | Prazo maximo para tratamento da ocorrencia |
+
+## Observacoes importantes
+
+- O **Abono Condicional** e um recurso que permite aceitar formalmente uma nao-conformidade quando ela nao compromete a funcionalidade do produto. A aprovacao segue o fluxo definido no tipo de ocorrencia.
+- A **Gravidade** determina a urgencia do tratamento. Ocorrencias criticas sao automaticamente escaladas para os gestores da area de qualidade.
+- Quando o toggle **Exige Acao Corretiva** esta ativo no tipo de ocorrencia, o sistema envia automaticamente uma notificacao ao fornecedor com prazo para apresentacao do plano de acao.
+- **Evidencias anexadas** (fotos, videos) sao fundamentais para a analise da ocorrencia. Sempre registre evidencias no momento da inspecao.
+- Ocorrencias com status **Resolvida** alimentam o historico de qualidade do item e do fornecedor, impactando o IQF conforme configuracao.
+- Itens bloqueados no estoque por ocorrencias so sao liberados apos a resolucao ou aprovacao formal do abono condicional.
+
+## Telas relacionadas
+
+- [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105): Tipos de ocorrencia que definem regras e comportamentos.
+- [VAVF0105 (Tipos Abono Divergencias)](/inspecao/vavf0105): Tipos de abono disponiveis para resolucao condicional.
+- [VINS0200 (Roteiro Inspecao)](/inspecao/vins0200): Roteiros de inspecao que originam as ocorrencias.
+- [VINS0201 (Manutencao Ordens Inspecao)](/inspecao/vins0201): Ordens de inspecao que geram ocorrencias.
+- [VINS0400 (Consulta Ocorrencias/Ordens)](/inspecao/vins0400): Consulta consolidada de ocorrencias.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF do fornecedor impactado pelas ocorrencias.

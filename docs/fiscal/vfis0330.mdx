@@ -1,0 +1,107 @@
+---
+sidebar_position: 9
+title: "VFIS0330 — Reducao/Substituicao/Diferimento ICMS"
+description: "Motor hierarquico de regras fiscais avancadas com simulador integrado para testar cenarios antes da emissao."
+---
+
+# VFIS0330 — Reducao/Substituicao/Diferimento ICMS
+
+> Motor hierarquico que gerencia as tres principais excecoes fiscais do ICMS: Reducao de Base de Calculo, Substituicao Tributaria (ST) e Diferimento. Inclui um simulador que permite testar as regras com cenarios reais antes da emissao de documentos.
+
+**Codigo fonte:** `src/modules/fiscal/icms-reduction-st-deferral/vfis0330.vue`
+
+## Objetivo
+
+A VFIS0330 e o componente mais avancado do motor fiscal do ERP. Ela implementa um sistema hierarquico de regras para Reducao de Base de Calculo do ICMS (ex: cesta basica, medicamentos, veiculos), Substituicao Tributaria (ICMS-ST, onde o imposto e recolhido antecipadamente pelo fabricante ou importador) e Diferimento (postergacao do recolhimento do ICMS para etapa posterior da cadeia). O motor hierarquico permite que uma regra mais especifica sobrescreva uma regra generica, e o **Simulador** integrado permite testar qualquer combinacao de UF, NCM, tipo de operacao e valor para visualizar exatamente quais regras serao aplicadas e qual o resultado do calculo, sem precisar emitir uma nota fiscal real.
+
+## Pre-requisitos
+
+- **VFIS0100 (Configuracao Fiscal):** Configuracao base do emitente.
+- **VFIS0110 (Tabelas Tributarias):** Tabelas de aliquotas ICMS.
+- **VFIS0300 (CFOPs):** CFOPs para classificacao das operacoes.
+- **VFIS0310 (Dispositivos Legais):** Dispositivos legais para associar a cada regra.
+- **VFIS0350 (Classificacoes Fiscais):** NCMs completos.
+- **VFIS0360 (Tipos Operacao Entrada):** Tipos de operacao.
+
+## Passo a passo
+
+1. Acesse **Fiscal > Parametros > Reducao/ST/Diferimento (VFIS0330)**.
+2. A tela principal exibe tres abas: **Reducao BC**, **Substituicao Tributaria** e **Diferimento**.
+3. Na aba **Reducao BC**, clique em **Nova Regra** para criar uma regra de reducao de base de calculo.
+4. Defina as **chaves de busca**: UF Origem, UF Destino (opcional), NCM (opcional) e Tipo de Operacao (opcional). O motor aplica a regra quando todos os campos preenchidos coincidem com a operacao.
+5. Informe o **Percentual de Reducao** (ex: 41,67% para cestas basicas, 61,11% para medicamentos, 30% para veiculos).
+6. Selecione o **Dispositivo Legal** correspondente (VFIS0310) — por exemplo, o Convenio ICMS que autoriza a reducao.
+7. Defina a **prioridade** da regra (1 a 99). Regras com prioridade menor (mais baixa) sao avaliadas primeiro e, se aplicaveis, impedem a avaliacao de regras de prioridade maior (menos especificas).
+8. Repita o processo na aba **Substituicao Tributaria** para regras de ICMS-ST. Alem das chaves de busca, configure:
+   - **MVA (Margem de Valor Agregado):** Percentual a ser adicionado ao valor do produto para compor a base de calculo da ST.
+   - **MVA Ajustada:** MVA corrigida para operacoes interestaduais.
+   - **Aliquota ICMS-ST Interna:** Aliquota de ICMS-ST para operacoes dentro do estado.
+   - **Aliquota ICMS-ST Interestadual:** Aliquota para operacoes entre estados.
+   - **Produto sujeito a ST por:** `NCM`, `CEST` ou `Protocolo ICMS`.
+9. Na aba **Diferimento**, crie regras para postergar o recolhimento do ICMS. Informe:
+   - **Percentual de Diferimento:** Parcela do ICMS que sera diferida (ex: 50% para operacoes com milho, 100% para operacoes com cafe cru).
+   - **Etapa de Recolhimento:** Em qual etapa da cadeia o ICMS sera recolhido (ex: saida do produtor, industrializacao, venda ao consumidor final).
+10. Apos cadastrar as regras, utilize o **Simulador**. Clique no icone de calculadora na toolbar.
+11. No simulador, informe: **UF de Origem**, **UF de Destino**, **NCM**, **Tipo de Operacao**, **Valor do Produto** e **Regime Tributario**.
+12. Clique em **Simular**. O sistema exibira, em ordem de prioridade, todas as regras que seriam aplicadas a este cenario e o resultado final do calculo: base de calculo original, reducao aplicada, base de calculo reduzida, aliquota ICMS, valor ICMS proprio, MVA, BC ST, aliquota ST, valor ICMS-ST e valores de PIS/COFINS/IPI.
+
+## Campos
+
+### Reducao de Base de Calculo
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Prioridade | Numero (3) | Sim | 1-99 | Ordem de avaliacao (menor = mais prioritario). |
+| UF Origem | Select | Sim | UFs brasileiras | UF do emitente. |
+| UF Destino | Select | Nao | UFs brasileiras | UF especifica. Em branco = todas. |
+| NCM | Select | Nao | VFIS0350 | NCM especifico. Em branco = todos. |
+| Tipo Operacao | Select | Nao | VFIS0360 | Tipo especifico. Em branco = todos. |
+| Percentual Reducao | Decimal (5,2) | Sim | — | Percentual de reducao da BC (ex: 41,67). |
+| Dispositivo Legal | Select | Sim | VFIS0310 | Fundamento legal da reducao. |
+| Ativo | Checkbox | Sim | Sim/Nao | Indica se a regra esta ativa. |
+
+### Substituicao Tributaria
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Prioridade | Numero (3) | Sim | 1-99 | Ordem de avaliacao da regra. |
+| UF Origem | Select | Sim | UFs brasileiras | UF do emitente. |
+| UF Destino | Select | Nao | UFs brasileiras | UF especifica. Em branco = todas. |
+| NCM | Select | Nao | VFIS0350 | NCM especifico. Em branco = todos. |
+| CEST | Texto (7) | Nao | — | CEST do produto sujeito a ST. |
+| Tipo ST | Select | Sim | NCM / CEST / Protocolo ICMS | Tipo de vinculacao da regra de ST. |
+| MVA | Decimal (5,2) | Sim | — | Margem de Valor Agregado para ST. |
+| MVA Ajustada | Decimal (5,2) | Nao | — | MVA ajustada para interestadual. |
+| Aliquota ICMS-ST Interna | Decimal (5,2) | Sim | — | Aliquota ST para operacoes internas. |
+| Aliquota ICMS-ST Interestadual | Decimal (5,2) | Nao | — | Aliquota ST para operacoes interestaduais. |
+| Dispositivo Legal | Select | Sim | VFIS0310 | Fundamento legal da ST. |
+
+### Diferimento
+
+| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+|---|---|---|---|---|
+| Prioridade | Numero (3) | Sim | 1-99 | Ordem de avaliacao da regra. |
+| UF Origem | Select | Sim | UFs brasileiras | UF do emitente. |
+| UF Destino | Select | Nao | UFs brasileiras | UF especifica. Em branco = todas. |
+| NCM | Select | Nao | VFIS0350 | NCM especifico. Em branco = todos. |
+| Percentual Diferimento | Decimal (5,2) | Sim | — | Parcela do ICMS diferida (ex: 50, 100). |
+| Etapa Recolhimento | Texto (100) | Sim | — | Descricao da etapa onde o ICMS sera recolhido. |
+| Dispositivo Legal | Select | Sim | VFIS0310 | Fundamento legal do diferimento. |
+
+## Observacoes importantes
+
+- **Hierarquia do motor:** O motor avalia as regras em ordem de prioridade (1 primeiro, 99 por ultimo). Ao encontrar uma regra cujas chaves correspondem a operacao (UF, NCM, Tipo), o motor a aplica e **para a avaliacao**. Isso significa que regras mais especificas devem ter prioridade menor (mais altas na hierarquia) do que regras genericas. Exemplo: uma regra de reducao para NCM especifico "0201.30.00" deve ter prioridade 10, enquanto a regra generica "todos os NCMs" deve ter prioridade 50.
+- **Simulador:** O simulador e uma ferramenta de validacao, nao de emissao. Ele mostra exatamente quais regras seriam aplicadas, mas nao gera nenhum documento fiscal. Utilize-o sempre que criar ou alterar regras para verificar o impacto nos calculos.
+- **Conflito com Parametros VFIS0320:** A VFIS0330 (Reducao/ST/Diferimento) atua em complemento a VFIS0320 (Parametros ICMS/IPI). A VFIS0330 define SE uma reducao, ST ou diferimento se aplicam, enquanto a VFIS0320 define COMO o calculo e feito (aliquotas, CSTs, creditos). Se houver conflito, a VFIS0330 prevalece.
+- **Atualizacao Legislativa:** Regras de ST mudam frequentemente (novos Protocolos e Convenios ICMS). Revise periodicamente as regras de ST para garantir que estao alinhadas com a legislacao vigente.
+
+## Telas relacionadas
+
+- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao base do emitente.
+- **[VFIS0110 (Tabelas Tributarias)](/fiscal/vfis0110):** Tabelas de aliquotas ICMS base.
+- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** NFe que utiliza estas regras no calculo dos itens.
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** CFOPs que influenciam a aplicacao das regras.
+- **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Dispositivos legais que fundamentam cada regra.
+- **[VFIS0320 (Parametros ICMS/IPI)](/fiscal/vfis0320):** Parametros complementares que definem aliquotas e CSTs.
+- **[VFIS0350 (Classificacoes Fiscais)](/fiscal/vfis0350):** NCM com CEST para regras de ST.
+- **[VFIS0360 (Tipos Operacao Entrada)](/fiscal/vfis0360):** Tipos de operacao usados como chave de busca.
