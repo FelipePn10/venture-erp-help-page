@@ -1,0 +1,48 @@
+{
+  "index_name": "venture-help",
+  "start_urls": [
+    "https://help.venturerp.com"
+  ],
+  "sitemap_urls": [
+    "https://help.venturerp.com/sitemap.xml"
+  ],
+  "selectors": {
+    "lvl0": {
+      "selector": ".menu__link--active",
+      "global": true,
+      "default_value": "Documentacao"
+    },
+    "lvl1": "header h1",
+    "lvl2": "article h2",
+    "lvl3": "article h3",
+    "lvl4": "article h4",
+    "lvl5": "article h5",
+    "text": "article p, article li, article td"
+  },
+  "selectors_exclude": [
+    ".hash-link",
+    ".theme-doc-toc-desktop",
+    ".pagination-nav"
+  ],
+  "custom_settings": {
+    "separatorsToIndex": "_",
+    "attributesForFaceting": [
+      "language",
+      "version",
+      "type",
+      "docusaurus_tag"
+    ],
+    "attributesToRetrieve": [
+      "hierarchy",
+      "content",
+      "anchor",
+      "url",
+      "url_without_anchor",
+      "type"
+    ]
+  },
+  "sitemap_alternate_links": true,
+  "stop_urls": [],
+  "js_render": true,
+  "js_wait": 2
+}

@@ -263,3 +263,70 @@ pre {
 .footer__copyright {
   color: var(--ifm-footer-color) !important;
 }
+
+/* ---- Algolia DocSearch ---- */
+[data-theme='dark'] .DocSearch {
+  --docsearch-text-color: #e0e0e0;
+  --docsearch-muted-color: #a0a0a0;
+  --docsearch-container-background: rgba(0, 0, 0, 0.8);
+  --docsearch-modal-background: #141414;
+  --docsearch-searchbox-background: #0a0a0a;
+  --docsearch-searchbox-focus-background: #0a0a0a;
+  --docsearch-hit-color: #e0e0e0;
+  --docsearch-hit-active-color: #0a0a0a;
+  --docsearch-hit-background: #1a1a1a;
+  --docsearch-footer-background: #141414;
+  --docsearch-footer-shadow: none;
+  --docsearch-modal-shadow: 0 4px 24px rgba(0,0,0,0.6);
+  --docsearch-key-gradient: linear-gradient(-225deg, #1a1a1a, #2a2a2a);
+  --docsearch-key-shadow: none;
+  --docsearch-highlight-color: #10b981;
+  --docsearch-logo-color: #10b981;
+}
+
+[data-theme='dark'] .DocSearch-Hit[aria-selected=true] a {
+  background-color: #10b981;
+}
+
+[data-theme='dark'] .DocSearch-Hit-source {
+  color: #10b981;
+  background: #0f0f0f;
+}
+
+[data-theme='dark'] .DocSearch-SearchBar {
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.DocSearch-Button {
+  border-radius: 6px;
+}
+
+.DocSearch-Button-Placeholder {
+  font-size: 0.875rem;
+}
+
+.DocSearch-Button-Keys {
+  min-width: auto;
+}
+
+[data-theme='dark'] .DocSearch-Button {
+  background: #0f0f0f;
+  border: 1px solid #1f1f1f;
+  color: #a0a0a0;
+}
+
+[data-theme='dark'] .DocSearch-Button:hover {
+  border-color: #10b981;
+  box-shadow: none;
+}
+
+[data-theme='light'] .DocSearch-Button {
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  color: #555555;
+}
+
+[data-theme='light'] .DocSearch-Button:hover {
+  border-color: #059669;
+  box-shadow: none;
+}

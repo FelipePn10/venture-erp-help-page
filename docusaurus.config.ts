@@ -42,6 +42,13 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/og-image.png',
+    algolia: {
+      appId: 'YOUR_APP_ID',
+      apiKey: 'YOUR_SEARCH_API_KEY',
+      indexName: 'venture-help',
+      contextualSearch: true,
+      searchPagePath: 'search',
+    },
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,
