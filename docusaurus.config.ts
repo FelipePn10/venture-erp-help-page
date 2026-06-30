@@ -43,11 +43,10 @@ const config: Config = {
   themeConfig: {
     image: 'img/og-image.png',
     algolia: {
-      appId: 'YOUR_APP_ID',
-      apiKey: 'YOUR_SEARCH_API_KEY',
-      indexName: 'venture-help',
+      appId: 'UGQA22ALT4',
+      apiKey: '5fbb424f14cd4bebb23ed474b44b0d6a',
+      indexName: 'Venture ERP Documentação',
       contextualSearch: true,
-      searchPagePath: 'search',
     },
     colorMode: {
       defaultMode: 'dark',
