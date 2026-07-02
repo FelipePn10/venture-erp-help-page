@@ -1,0 +1,56 @@
+---
+sidebar_position: 3
+title: "VVND0200 — Pedido de Venda"
+description: "Gerir o pedido de venda ponta a ponta e disparar demanda e reserva de estoque."
+---
+
+# VVND0200 — Pedido de Venda
+
+> Gerir o pedido de venda ponta a ponta: cabeçalho, itens e o ciclo **Rascunho (R) → Confirmado (P) → Faturado (F)**, com bloqueio e cancelamento. É o ponto de partida da demanda de produção e de compras.
+
+## Objetivo
+
+Gerir o pedido de venda ponta a ponta: cabeçalho (cliente, empresa, moeda, condição de pagamento), itens (item, quantidade, depósito, preço) e o ciclo de status **Rascunho → Confirmado → Faturado**, além de bloqueio e cancelamento.
+
+## Pré-requisitos
+
+- **Cliente** cadastrado (VCLI0500) e dentro do limite de crédito.
+- **Itens** cadastrados (VENT0200) e com saldo/ATP para reserva (VEST0100).
+- **Condição de pagamento** (VFIN0110).
+
+## Passo a passo
+
+1. Acesse **VVND0200 — Pedido de Venda**.
+2. Em **Novo pedido**, informe Empresa, Cliente, Moeda, Condição de pagamento e clique em **Criar pedido** (nasce como **Rascunho / R**).
+3. Abra o pedido e adicione **itens** (item, depósito, quantidade, preço, desconto). Os totais são calculados pelo sistema.
+4. Clique em **Confirmar (→P)**. Isso dispara **três automações**:
+   - **Checagem de crédito** — se o cliente estourar o limite (ou estiver bloqueado), o pedido fica **bloqueado**, sem gerar demanda nem reserva.
+   - **Reserva de estoque (ATP)** — cada linha reserva o disponível no depósito.
+   - **Demanda independente** — gera, por item, a necessidade que alimenta o MRP.
+5. Se ficar bloqueado, use **Desbloquear** (após liberar o crédito).
+6. O pedido é marcado como **Faturado (F)** automaticamente quando a NF-e de saída é autorizada.
+
+## Campos principais
+
+| Campo | Obrigatório | Função |
+|-------|-------------|--------|
+| Empresa | Sim | Estabelecimento emissor |
+| Cliente | Sim | Destinatário do pedido |
+| Moeda | Não | Padrão BRL |
+| Condição de pagamento | Não | Parcelamento |
+| Item / Qtd / Preço | Sim (por item) | Linha do pedido |
+| Depósito | Não | Origem da reserva de estoque |
+
+## Observações importantes
+
+- **Filtros**: liste pedidos por cliente ou por status.
+- Um pedido bloqueado não gera demanda nem reserva — resolva o crédito primeiro.
+- **Cancelar** encerra o pedido e libera as reservas.
+
+## Telas relacionadas
+
+- **[VEXR0100 (Reprogramação de Entrega)](/comercial/vexr0100):** remarca datas de entrega do pedido.
+- **[VVND0100 (Divisão de Vendas)](/comercial/vvnd0100):** organização comercial associável ao pedido.
+- **[VEST0100 (Estoque)](/pcp/vest0100):** origem do ATP reservado.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** atende a demanda gerada.
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** consome a demanda do pedido confirmado.

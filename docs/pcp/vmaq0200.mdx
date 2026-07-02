@@ -1,0 +1,45 @@
+---
+sidebar_position: 4
+title: "VMAQ0200 — Máquinas, Tempos e Cálculo"
+description: "Cadastrar máquinas, tempos por item × máquina e calcular o tempo de produção com detecção de gargalo."
+---
+
+# VMAQ0200 — Máquinas, Tempos e Cálculo
+
+> Cadastrar as máquinas (capacidade, unidade, período, eficiência), os tempos por item × máquina e **calcular o tempo de produção** de uma quantidade — inclusive detectando **gargalo**.
+
+## Objetivo
+
+Cadastrar as **máquinas**, os **tempos por item × máquina** (ciclo, quantidade base, setup, prioridade) e **calcular o tempo de produção** de uma quantidade, detectando gargalos. Também registra a **agenda** da máquina (consumida pelo CRP/APS).
+
+## Pré-requisitos
+
+- **Tipos de máquina** cadastrados (VMAQ0101).
+
+## Passo a passo
+
+1. Acesse **VMAQ0200**. As máquinas e tipos são carregados automaticamente.
+2. Em **Nova máquina**, informe Código, Nome, Tipo, Capacidade, **Unidade de capacidade** (Peças, Chapas, Kg, T, M, M², M³, Litros, Un), **Período** (Por Minuto, Por Hora, Por Dia) e **Eficiência** (0–1). Clique em **Criar máquina**.
+3. Em **Tempo por item × máquina**, informe Item, Máquina, **Tempo de ciclo**, unidade de tempo, **Quantidade base**, **Setup** e **Prioridade** (1 = máquina preferida). Esse cadastro é o **coração do cálculo**.
+4. Em **Cálculo de tempo de produção**, informe Item, Máquina e Quantidade e clique em **Calcular tempo**. O sistema retorna: ciclos (arredondados para cima), setup, tempo de produção, total em minutos/horas e se a máquina está em **gargalo**.
+5. Em **Agenda da máquina**, registre disponibilidade/paradas por data.
+
+## Como o cálculo funciona
+
+1. Resolve o tempo pela **variante (máscara)** do item; sem variante, usa o padrão.
+2. Normaliza o período para minutos (1 dia = 480 min / 8h).
+3. Verifica **compatibilidade de unidade** item × máquina (converte kg↔t, mm↔m, etc.).
+4. `ciclos = teto(quantidade ÷ quantidade base)`.
+5. `tempo total = ciclos × tempo de ciclo + setup` (setup uma vez).
+6. Compara a vazão exigida com a **capacidade efetiva** (capacidade × eficiência) → sinaliza **gargalo**.
+
+## Observações importantes
+
+- **Unidades e períodos** usam os valores em português do sistema (Chapas, Peças; Dia, Hora, Minuto) — selecione pela lista para evitar erro.
+- A **prioridade** decide qual máquina é escolhida quando o item pode ser feito em mais de uma (1 = preferida).
+
+## Telas relacionadas
+
+- **[VMAQ0101 (Tipos de Máquina)](/engenharia/vmaq0101):** cada máquina pertence a um tipo.
+- **[VPRO0100 (Roteiro)](/pcp/vpro0100):** usa o tempo/ciclo e setup de cada operação.
+- **[VPRO0200 (CRP)](/pcp/vpro0200)** e **[VPRO0210 (APS)](/pcp/vpro0210):** consomem a capacidade e a agenda.

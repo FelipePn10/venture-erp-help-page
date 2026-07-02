@@ -1,65 +1,65 @@
 ---
 sidebar_position: 14
-title: "VFIS0510 — Codigos Ajuste ICMS 5.1.1"
-description: "Cadastro dos codigos de ajuste do ICMS para o bloco 5.1.1 da apuracao estadual, conforme leiaute SEFAZ."
+title: "VFIS0510 — Códigos Ajuste ICMS 5.1.1"
+description: "Cadastro dos códigos de ajuste do ICMS para o bloco 5.1.1 da apuração estadual, conforme leiaute SEFAZ."
 ---
 
-# VFIS0510 — Codigos Ajuste ICMS 5.1.1
+# VFIS0510 — Códigos Ajuste ICMS 5.1.1
 
-> Tela de cadastro dos codigos de ajuste de ICMS para a secao 5.1.1 da apuracao (Ajustes de Documentos Fiscais Próprios), conforme leiaute padrao SEFAZ para EFD-ICMS/IPI (SPED Fiscal).
+> Tela de cadastro dos códigos de ajuste de ICMS para a seção 5.1.1 da apuração (Ajustes de Documentos Fiscais Próprios), conforme leiaute padrão SEFAZ para EFD-ICMS/IPI (SPED Fiscal).
 
-**Codigo fonte:** `src/modules/fiscal/icms-adjust-codes/vfis0510.vue`
+**Código fonte:** `src/modules/fiscal/icms-adjust-codes/vfis0510.vue`
 
 ## Objetivo
 
-A VFIS0510 cadastra os codigos de ajuste de ICMS utilizados na secao 5.1.1 da apuracao fiscal estadual — Ajustes de Documentos Fiscais Proprios. Estes codigos, definidos pela SEFAZ de cada estado, permitem adicionar ou deduzir valores de ICMS na apuracao que nao constam diretamente nos documentos fiscais. Por exemplo: creditos presumidos, creditos extemporaneos, estornos de debito, complementos de ICMS, ajustes de DIFAL e outros. Os codigos sao utilizados na VFIS0540 (Lancamentos Resumo ICMS) e exportados para o SPED Fiscal (EFD-ICMS/IPI) no bloco E110/E111.
+A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da apuração fiscal estadual — Ajustes de Documentos Fiscais Proprios. Estes códigos, definidos pela SEFAZ de cada estado, permitem adicionar ou deduzir valores de ICMS na apuração que não constam diretamente nos documentos fiscais. Por exemplo: creditos presumidos, creditos extemporaneos, estornos de débito, complementos de ICMS, ajustes de DIFAL e outros. Os códigos são utilizados na VFIS0540 (Lancamentos Resumo ICMS) e exportados para o SPED Fiscal (EFD-ICMS/IPI) no bloco E110/E111.
 
 ## Pre-requisitos
 
-- **Conhecimento da tabela de codigos de ajuste da SEFAZ do estado:** Cada estado publica sua propria tabela de codigos de ajuste. Consulte o site da SEFAZ correspondente.
-- **VFIS0540 (Lancamentos Resumo ICMS):** Tela onde os codigos de ajuste serao efetivamente utilizados.
+- **Conhecimento da tabela de códigos de ajuste da SEFAZ do estado:** Cada estado publica sua própria tabela de códigos de ajuste. Consulte o site da SEFAZ correspondente.
+- **VFIS0540 (Lancamentos Resumo ICMS):** Tela onde os códigos de ajuste serão efetivamente utilizados.
 
 ## Passo a passo
 
-1. Acesse **Fiscal > Tabelas > Codigos Ajuste 5.1.1 (VFIS0510)**.
-2. A grade principal lista todos os codigos de ajuste cadastrados. Filtre por UF para ver os codigos de um estado especifico.
-3. Para **criar um novo codigo de ajuste**, clique em **Novo**.
-4. Selecione a **UF** (estado) a qual o codigo se aplica.
-5. Informe o **Codigo de Ajuste** conforme a tabela da SEFAZ (ex: "SP000001", "MG000002"). O formato geralmente e: 2 letras da UF + 6 digitos numericos.
-6. Preencha a **Descricao** do ajuste (ex: "Credito presumido para estabelecimento industrial", "Estorno de debito de ICMS por saida interestadual", "Complemento de ICMS — DIFAL").
+1. Acesse **Fiscal > Tabelas > Códigos Ajuste 5.1.1 (VFIS0510)**.
+2. A grade principal lista todos os códigos de ajuste cadastrados. Filtre por UF para ver os códigos de um estado específico.
+3. Para **criar um novo código de ajuste**, clique em **Novo**.
+4. Selecione a **UF** (estado) a qual o código se aplica.
+5. Informe o **Código de Ajuste** conforme a tabela da SEFAZ (ex: "SP000001", "MG000002"). O formato geralmente e: 2 letras da UF + 6 digitos numéricos.
+6. Preencha a **Descrição** do ajuste (ex: "Crédito presumido para estabelecimento industrial", "Estorno de débito de ICMS por saída interestadual", "Complemento de ICMS — DIFAL").
 7. Classifique o **Tipo de Ajuste**:
-   - **Debito (Ajuste de Debito):** Aumenta o ICMS a pagar. Ex: complemento de aliquota, estorno de credito.
-   - **Credito (Ajuste de Credito):** Diminui o ICMS a pagar. Ex: credito presumido, credito extemporaneo.
+   - **Débito (Ajuste de Débito):** Aumenta o ICMS a pagar. Ex: complemento de alíquota, estorno de crédito.
+   - **Crédito (Ajuste de Crédito):** Diminui o ICMS a pagar. Ex: crédito presumido, crédito extemporaneo.
 8. Informe a **Natureza do Ajuste**:
-   - **Ajuste de Documento Fiscal:** Vinculado a uma nota fiscal especifica.
-   - **Ajuste Generico:** Nao vinculado a um documento especifico (ex: credito presumido mensal).
-9. Defina se o ajuste e **Automatico** (calculado pelo sistema com base em regras) ou **Manual** (lancado pelo usuario).
+   - **Ajuste de Documento Fiscal:** Vinculado a uma nota fiscal específica.
+   - **Ajuste Genérico:** Não vinculado a um documento específico (ex: crédito presumido mensal).
+9. Defina se o ajuste e **Automático** (calculado pelo sistema com base em regras) ou **Manual** (lancado pelo usuário).
 10. Clique em **Salvar**.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| UF | Select | Sim | UFs brasileiras | Estado ao qual o codigo de ajuste se aplica. |
-| Codigo Ajuste | Texto (20) | Sim | — | Codigo conforme tabela SEFAZ (ex: "SP000001"). |
-| Descricao | Texto (200) | Sim | — | Descricao do ajuste. |
-| Tipo Ajuste | Select | Sim | Debito / Credito | Indica se o ajuste aumenta (debito) ou diminui (credito) o ICMS a pagar. |
-| Natureza Ajuste | Select | Sim | Documento Fiscal / Generico | Indica se o ajuste e vinculado a um documento fiscal ou e generico. |
-| Tipo Lancamento | Select | Sim | Automatico / Manual | Indica se o ajuste e gerado automaticamente ou manualmente. |
-| Dispositivo Legal | Select | Nao | VFIS0310 | Fundamento legal do ajuste (opcional). |
-| Ativo | Checkbox | Sim | Sim / Nao | Indica se o codigo esta ativo. |
+| UF | Select | Sim | UFs brasileiras | Estado ao qual o código de ajuste se aplica. |
+| Código Ajuste | Texto (20) | Sim | — | Código conforme tabela SEFAZ (ex: "SP000001"). |
+| Descrição | Texto (200) | Sim | — | Descrição do ajuste. |
+| Tipo Ajuste | Select | Sim | Débito / Crédito | Indica se o ajuste aumenta (débito) ou diminui (crédito) o ICMS a pagar. |
+| Natureza Ajuste | Select | Sim | Documento Fiscal / Genérico | Indica se o ajuste e vinculado a um documento fiscal ou e genérico. |
+| Tipo Lancamento | Select | Sim | Automático / Manual | Indica se o ajuste e gerado automaticamente ou manualmente. |
+| Dispositivo Legal | Select | Não | VFIS0310 | Fundamento legal do ajuste (opcional). |
+| Ativo | Checkbox | Sim | Sim / Não | Indica se o código esta ativo. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **Codigos por estado:** Codigos de ajuste variam por UF. O mesmo ajuste pode ter codigos diferentes em estados diferentes. Cadastre os codigos para cada UF onde a empresa possui IE.
-- **Registro E110/E111 do SPED Fiscal:** Os codigos de ajuste 5.1.1 sao exportados nos registros E110 (resumo da apuracao) e E111 (detalhe dos ajustes) do SPED Fiscal. Codigos incorretos geram rejeicao na validacao do PVA (Programa Validador e Assinador).
-- **Ajustes Automaticos:** Ajustes marcados como "Automatico" sao gerados pelo sistema com base em regras pre-definidas. Exemplo: credito presumido calculado mensalmente com base no faturamento. Ajustes manuais sao lancados pelo usuario na VFIS0540.
-- **Conciliação com SPED:** Antes de gerar o SPED Fiscal, verifique se todos os codigos de ajuste utilizados na apuracao estao cadastrados na VFIS0510. Codigos ausentes geram erros na exportacao.
+- **Códigos por estado:** Códigos de ajuste variam por UF. O mesmo ajuste pode ter códigos diferentes em estados diferentes. Cadastre os códigos para cada UF onde a empresa possui IE.
+- **Registro E110/E111 do SPED Fiscal:** Os códigos de ajuste 5.1.1 são exportados nos registros E110 (resumo da apuração) e E111 (detalhe dos ajustes) do SPED Fiscal. Códigos incorretos geram rejeição na validação do PVA (Programa Validador e Assinador).
+- **Ajustes Automaticos:** Ajustes marcados como "Automático" são gerados pelo sistema com base em regras pre-definidas. Exemplo: crédito presumido calculado mensalmente com base no faturamento. Ajustes manuais são lancados pelo usuário na VFIS0540.
+- **Conciliação com SPED:** Antes de gerar o SPED Fiscal, verifique se todos os códigos de ajuste utilizados na apuração estao cadastrados na VFIS0510. Códigos ausentes geram erros na exportação.
 
 ## Telas relacionadas
 
-- **[VFIS0520 (Codigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais codigos de ajuste para os outros blocos da apuracao.
-- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao do ICMS onde os ajustes sao consolidados.
-- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos fiscais que utilizam os codigos de ajuste.
+- **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais códigos de ajuste para os outros blocos da apuração.
+- **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração do ICMS onde os ajustes são consolidados.
+- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos fiscais que utilizam os códigos de ajuste.
 - **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Fundamento legal de cada ajuste.
-- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao base da empresa.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base da empresa.

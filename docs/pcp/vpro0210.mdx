@@ -1,0 +1,29 @@
+---
+sidebar_position: 7
+title: "VPRO0210 — APS (Sequenciamento / Gantt)"
+description: "Sequenciar as ordens em capacidade finita e produzir o Gantt, priorizando por data de entrega (EDD)."
+---
+
+# VPRO0210 — APS (Sequenciamento / Gantt)
+
+> Responde: **"quando exatamente cada operação começa e termina?"** Distribui as ordens no tempo em **capacidade finita** (um trabalho por vez por centro) e produz o **Gantt**. Prioriza por **EDD (Earliest Due Date)**.
+
+## Objetivo
+
+Sequenciar as ordens abertas respeitando a capacidade finita de cada centro e gerar o Gantt (início/fim de cada operação). Enquanto o CRP diz *se* há capacidade, o APS diz *quando* cada operação acontece.
+
+## Passo a passo
+
+1. Clique em **Sequenciar** para gerar o sequenciamento de todas as ordens abertas.
+2. Consulte o **Gantt por ordem** (informe o número da OF) ou **por centro de trabalho** (informe o centro e o período).
+3. Analise os horários (início/fim) e a ocupação de cada centro.
+
+## Observações importantes
+
+- **Máquinas manuais** recebem uma operação por vez, como qualquer outra (o operador termina antes de começar a próxima).
+- Se uma operação não couber no dia, vai para o próximo dia útil (fins de semana são pulados). `duração = setup + tempo planejado`.
+
+## Telas relacionadas
+
+- **[VPRO0200 (CRP)](/pcp/vpro0200):** aponta a sobrecarga que o APS tenta acomodar.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** as operações sequenciadas são executadas.

@@ -1,0 +1,25 @@
+---
+sidebar_position: 7
+title: "VSUP0300 — Solicitação de Compra"
+description: "Registrar solicitações de compra e gerar pedidos agrupados por fornecedor."
+---
+
+# VSUP0300 — Solicitação de Compra
+
+> Registrar **solicitações de compra** (cabeçalho + itens) e **gerar pedidos de compra** a partir delas, agrupando por fornecedor. O status evolui **Aberto → Parcial → Atendido**.
+
+## Objetivo
+
+Formalizar o pedido interno de compra e transformá-lo em pedidos de compra por fornecedor. O **saldo** do item = quantidade − atendida − cancelada.
+
+## Passo a passo
+
+1. Crie a solicitação (empresa, solicitante) com um ou mais **itens** (quantidade, UM, preço sugerido).
+2. Abra a solicitação e adicione itens, se necessário.
+3. Em **Gerar pedidos**, informe a **quantidade a atender** e (opcional) o **fornecedor** de cada item — sem fornecedor, usa o **preferencial** (VSUP0130). O sistema agrupa por fornecedor e gera um pedido por grupo, registrando o atendimento de volta na solicitação.
+
+## Telas relacionadas
+
+- **[VSUP0130 (Fornecedor Preferencial)](/compras/vsup0130):** resolve o fornecedor de cada item.
+- **[VSUP0200 (Pedido de Compra)](/compras/vsup0200):** destino da geração.
+- **[VSUP0400 (Cotação de Compra)](/compras/vsup0400):** alternativa com comparação de preços.

@@ -1,0 +1,28 @@
+---
+sidebar_position: 3
+title: "VSUP0110 — Conversão de UM por Item"
+description: "Cadastrar fatores de conversão entre unidades de medida de um item para o pedido de compra."
+---
+
+# VSUP0110 — Conversão de UM por Item
+
+> Cadastrar **fatores de conversão** entre unidades de medida de um item (ex.: `1 CX = 12 UN`), usado quando a UM de compra difere da UM de estoque.
+
+## Objetivo
+
+Permitir que o Pedido de Compra calcule UM interna, quantidade interna e preço interno quando a unidade de compra é diferente da unidade de estoque.
+
+## Passo a passo
+
+1. Informe o **item** e clique em **Carregar** para ver as conversões existentes.
+2. Cadastre uma conversão: **De** (UM origem), **Para** (UM destino) e o **fator**.
+3. Use o bloco **Converter** para testar: informe De/Para/Quantidade e veja o resultado (o sistema tenta a conversão direta; se ausente, usa a inversa `1/fator`).
+
+## Observações importantes
+
+- Sem cadastro de conversão para a UM da pasta Estoque, o Pedido de Compra orienta a abrir esta tela.
+
+## Telas relacionadas
+
+- **[VSUP0200 (Pedido de Compra)](/compras/vsup0200):** usa a conversão para calcular a UM interna.
+- **[VITM0100 (Item & Prontidão)](/pcp/vitm0100):** aponta a falta de conversão no checklist.

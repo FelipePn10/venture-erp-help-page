@@ -1,0 +1,46 @@
+---
+sidebar_position: 8
+title: "VPRO0900 — Ordem de Produção (OF)"
+description: "Gerir a ordem de produção no chão de fábrica: apontamentos, consumo, conclusão e apuração de custo real."
+---
+
+# VPRO0900 — Ordem de Produção (OF)
+
+> Gerir a OF no chão de fábrica: ciclo **Aberta → Em produção → Concluída → Encerrada** (ou Cancelada), com apontamentos, consumo de insumos (OUT), conclusão (IN com lote), apuração de custo real e retorno de sucata.
+
+## Objetivo
+
+Executar a ordem de produção do início ao fim, movimentando o estoque, apurando o custo real e mantendo a rastreabilidade de lote.
+
+## Pré-requisitos
+
+- **Item** com **roteiro** (VPRO0100) e **estrutura** (VENT0210).
+- **Insumos** com saldo em estoque (VEST0100).
+
+## Passo a passo
+
+1. Em **Nova ordem**, informe Item, **Quantidade planejada**, máquina, centro de custo e prioridade. Clique em **Criar OF** (nasce **Aberta**).
+2. Clique em **Iniciar (→ Em produção)**.
+3. **Explodir roteiro** (opcional) traz as operações da OF.
+4. **Consumir insumo**: informe Item e Quantidade → gera **OUT** no estoque e alimenta o custo real.
+5. **Apontar**: informe quantidade produzida/refugada. Com **backflush**, os componentes da BOM são baixados automaticamente.
+6. **Concluir (→ Concluída)**: informe o depósito do acabado e o **lote** → gera o **IN** do acabado e habilita a **genealogia**.
+7. **Apurar custo** e **Encerrar** a OF (o fechamento também apura o custo real automaticamente).
+8. **Retornar sucata**: registra subproduto valorizado (IN) para reaproveitamento.
+
+## Automações de estoque
+
+- **Consumo → OUT** do insumo (atualiza saldo e custo médio).
+- **Conclusão → IN** do acabado (com lote, se informado).
+- **Fechar → apura o custo real** (material + conversão + overhead) e a **variância** vs padrão.
+
+## Observações importantes
+
+- O **material real** vem do custo médio do estoque; a **conversão** vem das horas apontadas × custo/hora do centro (VCUS0100).
+- A apuração é **idempotente** — reexecutar recalcula a linha única da OF.
+
+## Telas relacionadas
+
+- **[VEST0100 (Estoque)](/pcp/vest0100):** recebe os movimentos OUT/IN e o lote.
+- **[VCUS0100 (Custos)](/pcp/vcus0100):** fornece o custo/hora dos centros para a apuração.
+- **[VPRO0300 (Custo Padrão)](/pcp/vpro0300):** base de comparação para a variância.

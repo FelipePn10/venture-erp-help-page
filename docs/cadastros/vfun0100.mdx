@@ -1,18 +1,18 @@
 ---
 sidebar_position: 4
-title: "VFUN0100 — Cadastro Funcionario"
-description: "Cadastro de funcionarios com flags para orcamento e assistencia tecnica."
+title: "VFUN0100 — Cadastro Funcionário"
+description: "Cadastro de funcionários com flags para orçamento e assistência técnica."
 ---
 
-# VFUN0100 — Cadastro Funcionario
+# VFUN0100 — Cadastro Funcionário
 
-> Cadastro de funcionarios com controle de situacao e flags para orcamento e assistencia tecnica.
+> Cadastro de funcionários com controle de situação e flags para orçamento e assistência técnica.
 
-**Codigo fonte:** `src/components/screens/cadastros/Vfun0100Page.tsx`
+**Código fonte:** `src/components/screens/cadastros/Vfun0100Page.tsx`
 
 ## Objetivo
 
-Cadastrar e manter o registro de funcionarios da empresa. Alem dos dados basicos (nome, cargo, situacao), a tela possui flags especificas que habilitam o funcionario para modulos especificos: "Participa Orcamento" e "Assistente Tecnico". Estas flags sao utilizadas como filtros nos modulos de assistencia tecnica e chamados.
+Cadastrar e manter o registro de funcionários da empresa. Além dos dados básicos (nome, cargo, situação), a tela possui flags específicas que habilitam o funcionário para módulos específicos: "Participa Orçamento" e "Assistente Técnico". Estas flags são utilizadas como filtros nos módulos de assistência técnica e chamados.
 
 ## Pre-requisitos
 
@@ -20,39 +20,39 @@ Cadastrar e manter o registro de funcionarios da empresa. Alem dos dados basicos
 
 ## Passo a passo
 
-1. Acesse **Cadastros > Funcionario** (VFUN0100).
+1. Acesse **Cadastros > Funcionário** (VFUN0100).
 2. Clique em **+ Novo**.
-3. O campo **Codigo** e gerado automaticamente — nao precisa ser preenchido.
-4. Informe o **Nome** completo do funcionario.
-5. Preencha **Funcao / Cargo** (opcional).
-6. Selecione a **Situacao**: ATIVO ou INATIVO.
-7. Ative as flags conforme necessario:
-   - **Participa Orcamento** — Habilita o funcionario para compor orcamentos.
-   - **Assistente Tecnico** — Habilita como tecnico executor de chamados e assistencias.
+3. O campo **Código** e gerado automaticamente — não precisa ser preenchido.
+4. Informe o **Nome** completo do funcionário.
+5. Preencha **Função / Cargo** (opcional).
+6. Selecione a **Situação**: ATIVO ou INATIVO.
+7. Ative as flags conforme necessário:
+   - **Participa Orçamento** — Habilita o funcionário para compor orcamentos.
+   - **Assistente Técnico** — Habilita como técnico executor de chamados e assistencias.
 8. Clique em **Salvar**.
-9. Para editar, selecione o funcionario na tabela, clique em **Editar** e altere os dados.
+9. Para editar, selecione o funcionário na tabela, clique em **Editar** e altere os dados.
 10. Para inativar, clique em **Desativar**.
 11. Use **Exportar** para gerar planilha.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Codigo | numero (desabilitado) | Sim | — | Gerado automaticamente |
-| Nome | texto | Sim | — | Nome do funcionario |
-| Funcao / Cargo | texto | Nao | — | Cargo |
-| Situacao | selecao | Sim | ATIVO / INATIVO | Status |
-| Participa Orcamento | toggle | Nao | — | Habilita para orcamento |
-| Assistente Tecnico | toggle | Nao | — | Habilita para assistencia |
+| Código | número (desabilitado) | Sim | — | Gerado automaticamente |
+| Nome | texto | Sim | — | Nome do funcionário |
+| Função / Cargo | texto | Não | — | Cargo |
+| Situação | seleção | Sim | ATIVO / INATIVO | Status |
+| Participa Orçamento | toggle | Não | — | Habilita para orçamento |
+| Assistente Técnico | toggle | Não | — | Habilita para assistência |
 
-## Observacoes importantes
+## Observações importantes
 
-- O codigo e sequencial e gerado automaticamente pelo sistema — nao e editavel.
-- A flag "Assistente Tecnico" e o principal filtro para selecao de tecnicos nos modulos de assistencia.
-- A flag "Participa Orcamento" permite que o funcionario seja selecionado em composicoes de orcamento.
-- Funcionarios inativos nao aparecem nas listas de selecao dos modulos.
+- O código e sequencial e gerado automaticamente pelo sistema — não e editável.
+- A flag "Assistente Técnico" e o principal filtro para seleção de técnicos nos módulos de assistência.
+- A flag "Participa Orçamento" permite que o funcionário seja selecionado em composições de orçamento.
+- Funcionários inativos não aparecem nas listas de seleção dos módulos.
 
 ## Telas relacionadas
 
-- **[VASS0201 (Orcamento)](/assistencia/vass0201):** Funcionarios com flag "Participa Orcamento".
-- **[VATC0280 (Chamados)](/assistencia/vatc0280):** Tecnico executor de chamados (flag "Assistente Tecnico").
+- **[VASS0201 (Orçamento)](/assistencia/vass0201):** Funcionários com flag "Participa Orçamento".
+- **[VATC0280 (Chamados)](/assistencia/vatc0280):** Técnico executor de chamados (flag "Assistente Técnico").

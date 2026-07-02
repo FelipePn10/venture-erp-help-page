@@ -6,25 +6,25 @@ description: "Cadastro de centros de custo da empresa."
 
 # VCTB0102 — Cadastro Centro Custo
 
-> Cadastro de centros de custo da empresa, classificaveis como Produtivo, Administrativo, Comercial ou Auxiliar.
+> Cadastro de centros de custo da empresa, classificáveis como Produtivo, Administrativo, Comercial ou Auxiliar.
 
-**Codigo fonte:** `src/components/screens/contabilidade/Vctb0102Page.tsx`
+**Código fonte:** `src/components/screens/contabilidade/Vctb0102Page.tsx`
 
 ## Objetivo
 
-Cadastrar e manter os centros de custo da empresa no modulo contabil. Cada centro de custo e vinculado a uma empresa e classificado conforme seu tipo operacional. Utilizado para apropriacao de despesas e rateio de custos em todo o sistema, servindo como cadastro complementar ao VFIN0130 do modulo financeiro.
+Cadastrar e manter os centros de custo da empresa no módulo contábil. Cada centro de custo e vinculado a uma empresa e classificado conforme seu tipo operacional. Utilizado para apropriação de despesas e rateio de custos em todo o sistema, servindo como cadastro complementar ao VFIN0130 do módulo financeiro.
 
 ## Pre-requisitos
 
-- Empresa cadastrada em **VEMP0100 (Cadastro Empresa)** para vinculacao.
-- Conhecimento da estrutura de centros de custo da organizacao para classificacao correta.
+- Empresa cadastrada em **VEMP0100 (Cadastro Empresa)** para vinculação.
+- Conhecimento da estrutura de centros de custo da organização para classificação correta.
 
 ## Passo a passo
 
 1. Acesse **Contabilidade > Cadastro Centro Custo** (VCTB0102).
 2. Clique em **+ Novo**.
-3. Preencha o campo **Codigo** com um identificador unico (ex: `CC-001`).
-4. Preencha o campo **Descricao** com o nome do centro de custo.
+3. Preencha o campo **Código** com um identificador único (ex: `CC-001`).
+4. Preencha o campo **Descrição** com o nome do centro de custo.
 5. Informe o **Empresa ID** para vincular o centro a uma empresa.
 6. Selecione o **Tipo**: PRODUTIVO, ADMINISTRATIVO, COMERCIAL ou AUXILIAR.
 7. Defina se o centro esta **Ativo**.
@@ -34,24 +34,24 @@ Cadastrar e manter os centros de custo da empresa no modulo contabil. Cada centr
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Codigo | texto | Sim | — | Codigo identificador |
-| Descricao | texto | Sim | — | Nome descritivo |
-| Empresa ID | numero | Sim | — | Empresa vinculada |
-| Tipo | selecao | Sim | PRODUTIVO / ADMINISTRATIVO / COMERCIAL / AUXILIAR | Classificacao |
-| Ativo | toggle | Nao | — | Status do centro de custo |
+| Código | texto | Sim | — | Código identificador |
+| Descrição | texto | Sim | — | Nome descritivo |
+| Empresa ID | número | Sim | — | Empresa vinculada |
+| Tipo | seleção | Sim | PRODUTIVO / ADMINISTRATIVO / COMERCIAL / AUXILIAR | Classificação |
+| Ativo | toggle | Não | — | Status do centro de custo |
 
-## Observacoes importantes
+## Observações importantes
 
-- A classificacao por tipo e essencial para a correta apuracao de custos.
+- A classificação por tipo e essencial para a correta apuração de custos.
 - Centros AUXILIARES geralmente tem seus custos rateados entre os centros PRODUTIVOS.
-- A desativacao (Ativo = false) impede o uso do centro em novos lancamentos, mas preserva o historico.
-- Este cadastro e complementar ao VFIN0130 (Centros de Custo) do modulo financeiro.
+- A desativação (Ativo = false) impede o uso do centro em novos lancamentos, mas preserva o histórico.
+- Este cadastro e complementar ao VFIN0130 (Centros de Custo) do módulo financeiro.
 
 ## Telas relacionadas
 
 - **[VEMP0100 (Cadastro Empresa)](/cadastros/vemp0100):** Empresa a qual o centro de custo pertence.
-- **[VFIN0130 (Centros de Custo)](/financeiro/vfin0130):** Cadastro de centros de custo no modulo financeiro.
+- **[VFIN0130 (Centros de Custo)](/financeiro/vfin0130):** Cadastro de centros de custo no módulo financeiro.
 - **[VCTB0200 (Contabilidade SPED ECD)](/contabilidade/vctb0200):** Centro de custo referenciado na contabilidade SPED.
-- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102):** Demandas referenciam centro de custo para apropriacao.
+- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102):** Demandas referenciam centro de custo para apropriação.

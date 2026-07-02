@@ -1,0 +1,27 @@
+---
+sidebar_position: 12
+title: "VPRO0600 — Previsão Estatística"
+description: "Calcular a previsão de demanda a partir do histórico, escolhendo o modelo de melhor ajuste."
+---
+
+# VPRO0600 — Previsão Estatística
+
+> Calcular a **previsão de demanda futura** a partir de uma série histórica, escolhendo automaticamente o **modelo de melhor ajuste** (menor MAPE): Holt-Winters, Suavização Exponencial, Média Móvel (k=3) ou Média Móvel (k=6).
+
+## Objetivo
+
+Projetar a demanda futura de um item com base no histórico, selecionando o modelo estatístico mais preciso.
+
+## Passo a passo
+
+1. Informe o **item** e a **quantidade de períodos à frente**.
+2. Preencha o **histórico** (período e quantidade).
+3. Calcule. O sistema retorna o **modelo usado**, o **MAPE** (erro %) e a previsão por período.
+
+## Observações importantes
+
+- A previsão é calculada em tempo real e **não é persistida** automaticamente. Para armazenar, use os blocos de previsão de vendas (Planejamento).
+
+## Telas relacionadas
+
+- **[VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201):** cadastro e geração de previsões de venda.

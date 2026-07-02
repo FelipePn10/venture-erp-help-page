@@ -1,59 +1,59 @@
 ---
 sidebar_position: 8
-title: "VPME0102ITE — Calendario Promessa por Item"
-description: "Configuracao de calendario de entrega personalizado por item com 5 estados de cor."
+title: "VPME0102ITE — Calendário Promessa por Item"
+description: "Configuração de calendário de entrega personalizado por item com 5 estados de cor."
 ---
 
-# VPME0102ITE — Calendario Promessa por Item
+# VPME0102ITE — Calendário Promessa por Item
 
-> Painel visual com calendario por item onde cada dia e colorido conforme um dos 5 estados de promessa, permitindo configuracao granular de prazos.
+> Painel visual com calendário por item onde cada dia e colorido conforme um dos 5 estados de promessa, permitindo configuração granular de prazos.
 
 ## Objetivo
 
-Permitir a configuracao de calendarios de promessa de entrega personalizados para cada item, onde cada dia do ano pode ser classificado em um dos 5 estados visuais. Este nivel de granularidade permite que a empresa defina dias especificos de entrega, bloqueios por ferias coletivas, periodos de manutencao programada ou dias com capacidade reduzida. A diferenciacao por cores (verde, amarelo, laranja, vermelho, cinza) oferece uma leitura visual imediata da disponibilidade de entregas para cada periodo.
+Permitir a configuração de calendários de promessa de entrega personalizados para cada item, onde cada dia do ano pode ser classificado em um dos 5 estados visuais. Este nível de granularidade permite que a empresa defina dias específicos de entrega, bloqueios por ferias coletivas, periodos de manutenção programada ou dias com capacidade reduzida. A diferenciação por cores (verde, amarelo, laranja, vermelho, cinza) oferece uma leitura visual imediata da disponibilidade de entregas para cada período.
 
 ## Pre-requisitos
 
-- [VPME0102 (Parametros Promessa de Entrega)](/engenharia/vpme0102) — O toggle "Usar Calendario por Item" deve estar ativo nos parametros gerais.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Os itens para os quais o calendario sera configurado devem estar cadastrados.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108) — Calendario base para os dias uteis de referencia.
+- [VPME0102 (Parâmetros Promessa de Entrega)](/engenharia/vpme0102) — O toggle "Usar Calendário por Item" deve estar ativo nos parâmetros gerais.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Os itens para os quais o calendário sera configurado devem estar cadastrados.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108) — Calendário base para os dias úteis de referência.
 
 ## Passo a passo
 
-1. Acesse a tela VPME0102ITE pelo menu Engenharia > Calendario Promessa por Item.
-2. Selecione o **Item** para o qual deseja configurar o calendario personalizado.
-3. O calendario anual sera exibido com cada dia colorido conforme o estado atual de promessa.
-4. Para alterar o estado de um dia ou conjunto de dias, selecione o periodo no calendario e escolha o novo estado na legenda de cores.
-5. **Verde** — Entrega Normal: o item pode ser prometido para entrega nesta data sem restricoes.
-6. **Amarelo** — Capacidade Reduzida: entrega possivel porem com limitacao de quantidade.
-7. **Laranja** — Sob Consulta: a promessa para esta data requer aprovacao do PCP.
-8. **Vermelho** — Bloqueado: nao e permitido prometer entrega nesta data para este item.
-9. **Cinza** — Nao Util: finais de semana e feriados, automaticamente derivados do calendario industrial.
-10. Clique em **Salvar** para persistir as alteracoes no calendario do item.
+1. Acesse a tela VPME0102ITE pelo menu Engenharia > Calendário Promessa por Item.
+2. Selecione o **Item** para o qual deseja configurar o calendário personalizado.
+3. O calendário anual sera exibido com cada dia colorido conforme o estado atual de promessa.
+4. Para alterar o estado de um dia ou conjunto de dias, selecione o período no calendário e escolha o novo estado na legenda de cores.
+5. **Verde** — Entrega Normal: o item pode ser prometido para entrega nesta data sem restrições.
+6. **Amarelo** — Capacidade Reduzida: entrega possível porém com limitação de quantidade.
+7. **Laranja** — Sob Consulta: a promessa para esta data requer aprovação do PCP.
+8. **Vermelho** — Bloqueado: não e permitido prometer entrega nesta data para este item.
+9. **Cinza** — Não Útil: finais de semana e feriados, automaticamente derivados do calendário industrial.
+10. Clique em **Salvar** para persistir as alterações no calendário do item.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Item | select | Sim | Lista de itens | Item para configuracao do calendario |
-| Ano | select | Sim | Lista de anos | Ano de referencia do calendario |
-| Mes | navegacao | Sim | — | Navegacao mensal dentro do ano selecionado |
-| Dia | calendario | Nao | 5 estados de cor | Cada dia com seu estado de promessa |
-| Quantidade Maxima (Amarelo) | numero | Condicional | — | Quantidade maxima de entrega em dias de capacidade reduzida |
-| Justificativa (Laranja/Vermelho) | texto | Condicional | — | Motivo da restricao de promessa para o periodo |
+| Item | select | Sim | Lista de itens | Item para configuração do calendário |
+| Ano | select | Sim | Lista de anos | Ano de referência do calendário |
+| Mês | navegação | Sim | — | Navegação mensal dentro do ano selecionado |
+| Dia | calendário | Não | 5 estados de cor | Cada dia com seu estado de promessa |
+| Quantidade Maxima (Amarelo) | número | Condicional | — | Quantidade maxima de entrega em dias de capacidade reduzida |
+| Justificativa (Laranja/Vermelho) | texto | Condicional | — | Motivo da restrição de promessa para o período |
 
-## Observacoes importantes
+## Observações importantes
 
-- O estado **Cinza** e automatico e reflete os dias nao uteis do calendario industrial. Nao e possivel alterar manualmente dias cinzas para outro estado.
-- Periodos em **Vermelho** sao respeitados pelo sistema de vendas, que nao permitira promessas de entrega nestas datas para o item configurado.
-- A **Quantidade Maxima** configurada para dias amarelos e comparada com o saldo disponivel para promessa. Se a quantidade solicitada exceder o limite, o sistema sugere dividir a entrega em multiplas datas.
-- Dias em **Laranja** geram uma requisicao automatica de aprovacao para o PCP antes que a promessa seja confirmada ao cliente.
-- E recomendavel revisar os calendarios por item no inicio de cada ano, considerando ferias coletivas, paradas programadas de manutencao e sazonalidade da producao.
-- Alteracoes no calendario afetam apenas calculos futuros de promessa. Pedidos ja confirmados mantem suas datas originais.
+- O estado **Cinza** e automático e reflete os dias não úteis do calendário industrial. Não e possível alterar manualmente dias cinzas para outro estado.
+- Periodos em **Vermelho** são respeitados pelo sistema de vendas, que não permitira promessas de entrega nestas datas para o item configurado.
+- A **Quantidade Maxima** configurada para dias amarelos e comparada com o saldo disponível para promessa. Se a quantidade solicitada exceder o limite, o sistema sugere dividir a entrega em múltiplas datas.
+- Dias em **Laranja** geram uma requisição automática de aprovação para o PCP antes que a promessa seja confirmada ao cliente.
+- E recomendável revisar os calendários por item no início de cada ano, considerando ferias coletivas, paradas programadas de manutenção e sazonalidade da produção.
+- Alterações no calendário afetam apenas calculos futuros de promessa. Pedidos já confirmados mantém suas datas originais.
 
 ## Telas relacionadas
 
-- [VPME0102 (Parametros Promessa de Entrega)](/engenharia/vpme0102): Parametros gerais que habilitam o uso de calendario por item.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108): Calendario industrial base para dias uteis.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro dos itens com calendario personalizado.
-- [VENT0363 (Relatorio Tempo CT)](/engenharia/vent0363): Analise de capacidade que pode embasar decisoes de bloqueio no calendario.
+- [VPME0102 (Parâmetros Promessa de Entrega)](/engenharia/vpme0102): Parâmetros gerais que habilitam o uso de calendário por item.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108): Calendário industrial base para dias úteis.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro dos itens com calendário personalizado.
+- [VENT0363 (Relatório Tempo CT)](/engenharia/vent0363): Análise de capacidade que pode embasar decisões de bloqueio no calendário.

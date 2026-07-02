@@ -1,0 +1,31 @@
+---
+sidebar_position: 13
+title: "VPRO0700 — Alertas de Exceções MRP"
+description: "Consolidar e notificar as exceções do MRP por webhook e/ou e-mail."
+---
+
+# VPRO0700 — Alertas de Exceções MRP
+
+> Consolidar e **notificar** (por **webhook** e/ou **e-mail**) as exceções geradas após o MRP rodar, para o PCP agir.
+
+## Objetivo
+
+Reunir e distribuir as exceções do planejamento: ordens atrasadas, compras vencidas, excesso de estoque, ordem aberta sem demanda e sobrecarga de capacidade.
+
+## Passo a passo
+
+1. Informe o **código do plano** MRP.
+2. (Opcional) informe a **URL de webhook** e/ou os **e-mails** de destino.
+3. Clique em **Notificar**. O sistema retorna o total de exceções e a lista por tipo.
+
+## Tipos de exceção
+
+`LATE_ORDER` (ordem vencida), `OVERDUE_PURCHASE` (compra vencida), `EXCESS_STOCK` (estoque acima do máximo), `OPEN_ORDER_NO_DEMAND` (ordem sem demanda), `CAPACITY_OVERLOAD` (centro sobrecarregado).
+
+## Observações importantes
+
+- Os dois canais funcionam juntos. Se o SMTP não estiver configurado, o e-mail é ignorado silenciosamente, sem afetar o webhook.
+
+## Telas relacionadas
+
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** origem das exceções notificadas.

@@ -1,16 +1,16 @@
 ---
 sidebar_position: 5
 title: "VCON0400 — Consulta Contratos"
-description: "Tela de consulta avancada de contratos com 13 filtros para localizacao precisa."
+description: "Tela de consulta avançada de contratos com 13 filtros para localização precisa."
 ---
 
 # VCON0400 — Consulta Contratos
 
-> Tela de consulta avancada de contratos de fornecimento com 13 criterios de filtro, permitindo buscas precisas e analises gerenciais.
+> Tela de consulta avançada de contratos de fornecimento com 13 critérios de filtro, permitindo buscas precisas e análises gerenciais.
 
 ## Objetivo
 
-Fornecer uma interface poderosa de consulta e analise dos contratos de fornecimento, equipada com 13 filtros diferentes que permitem localizar contratos por praticamente qualquer criterio relevante: fornecedor, tipo, status, periodo de vigencia, valor, item contratado, comprador, entre outros. A tela atende tanto a necessidade operacional (localizar rapidamente um contrato especifico) quanto a necessidade gerencial (analisar a carteira de contratos por diferentes dimensoes).
+Fornecer uma interface poderosa de consulta e análise dos contratos de fornecimento, equipada com 13 filtros diferentes que permitem localizar contratos por praticamente qualquer criterio relevante: fornecedor, tipo, status, período de vigência, valor, item contratado, comprador, entre outros. A tela atende tanto a necessidade operacional (localizar rapidamente um contrato específico) quanto a necessidade gerencial (analisar a carteira de contratos por diferentes dimensões).
 
 ## Pre-requisitos
 
@@ -21,57 +21,57 @@ Fornecer uma interface poderosa de consulta e analise dos contratos de fornecime
 ## Passo a passo
 
 1. Acesse a tela VCON0400 pelo menu Suprimento > Consulta Contratos.
-2. No painel de filtros, utilize qualquer combinacao dos 13 criterios disponiveis:
-   - **Filtro 1 — Numero do Contrato**: busca exata pelo identificador.
+2. No painel de filtros, utilize qualquer combinação dos 13 critérios disponíveis:
+   - **Filtro 1 — Número do Contrato**: busca exata pelo identificador.
    - **Filtro 2 — Fornecedor**: selecione um ou mais fornecedores.
    - **Filtro 3 — Tipo de Contrato**: filtre por categoria.
-   - **Filtro 4 — Status**: Em Edicao, Vigente, Encerrado, Cancelado.
-   - **Filtro 5 — Periodo de Vigencia**: contratos com vigencia dentro de um intervalo de datas.
-   - **Filtro 6 — Item**: contratos que contenham um item especifico.
+   - **Filtro 4 — Status**: Em Edição, Vigente, Encerrado, Cancelado.
+   - **Filtro 5 — Período de Vigência**: contratos com vigência dentro de um intervalo de datas.
+   - **Filtro 6 — Item**: contratos que contenham um item específico.
    - **Filtro 7 — Comprador**: contratos sob responsabilidade de um comprador.
-   - **Filtro 8 — Centro de Custo**: apropriacao contabil.
-   - **Filtro 9 — Valor Minimo/Maximo**: faixa de valor contratual.
-   - **Filtro 10 — Proximos do Vencimento**: contratos a vencer em X dias.
-   - **Filtro 11 — Saldo Disponivel**: contratos com saldo acima/abaixo de um valor.
-   - **Filtro 12 — Aprovacao Pendente**: contratos aguardando aprovacao.
+   - **Filtro 8 — Centro de Custo**: apropriação contábil.
+   - **Filtro 9 — Valor Mínimo/Máximo**: faixa de valor contratual.
+   - **Filtro 10 — Próximos do Vencimento**: contratos a vencer em X dias.
+   - **Filtro 11 — Saldo Disponível**: contratos com saldo acima/abaixo de um valor.
+   - **Filtro 12 — Aprovação Pendente**: contratos aguardando aprovação.
    - **Filtro 13 — Documento Pendente**: contratos sem documento anexo.
 3. Clique em **Pesquisar** para carregar os contratos que atendem aos filtros.
-4. A grid de resultados exibe as principais informacoes de cada contrato.
+4. A grid de resultados exibe as principais informações de cada contrato.
 5. Clique em um contrato para abrir o **detalhamento** completo.
-6. Utilize os botoes de **Exportar** para gerar relatorios em Excel, PDF ou CSV.
-7. O botao **Salvar Filtro** permite gravar combinacoes de filtros frequentes como consultas salvas.
-8. O **Dashboard Resumo** exibe graficos com a distribuicao dos contratos por status, tipo e fornecedor.
+6. Utilize os botões de **Exportar** para gerar relatórios em Excel, PDF ou CSV.
+7. O botão **Salvar Filtro** permite gravar combinações de filtros frequentes como consultas salvas.
+8. O **Dashboard Resumo** exibe gráficos com a distribuição dos contratos por status, tipo e fornecedor.
 
 ## Campos de Filtro
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Numero do Contrato | numero | Nao | — | Busca por numero exato |
-| Fornecedor | multi-select | Nao | Lista de fornecedores | Filtro por um ou mais fornecedores |
-| Tipo de Contrato | multi-select | Nao | Lista de tipos | Filtro por categoria |
-| Status | multi-select | Nao | Todos os status | Filtro por situacao |
-| Data Vigencia — Inicio | data | Nao | — | Contratos com vigencia a partir de |
-| Data Vigencia — Fim | data | Nao | — | Contratos com vigencia ate |
-| Item | select | Nao | Lista de itens | Contratos que contenham o item |
-| Comprador | select | Nao | Lista de compradores | Filtro por responsavel |
-| Centro de Custo | select | Nao | Lista de CC | Filtro por CC de aprovacao |
-| Valor Minimo | numero | Nao | — | Valor minimo do contrato |
-| Valor Maximo | numero | Nao | — | Valor maximo do contrato |
-| Vence em (dias) | numero | Nao | — | Contratos proximos do vencimento |
-| Aprovacao Pendente | toggle | Nao | — | Apenas contratos aguardando aprovacao |
+| Número do Contrato | número | Não | — | Busca por número exato |
+| Fornecedor | multi-select | Não | Lista de fornecedores | Filtro por um ou mais fornecedores |
+| Tipo de Contrato | multi-select | Não | Lista de tipos | Filtro por categoria |
+| Status | multi-select | Não | Todos os status | Filtro por situação |
+| Data Vigência — Início | data | Não | — | Contratos com vigência a partir de |
+| Data Vigência — Fim | data | Não | — | Contratos com vigência até |
+| Item | select | Não | Lista de itens | Contratos que contenham o item |
+| Comprador | select | Não | Lista de compradores | Filtro por responsável |
+| Centro de Custo | select | Não | Lista de CC | Filtro por CC de aprovação |
+| Valor Mínimo | número | Não | — | Valor mínimo do contrato |
+| Valor Máximo | número | Não | — | Valor máximo do contrato |
+| Vence em (dias) | número | Não | — | Contratos próximos do vencimento |
+| Aprovação Pendente | toggle | Não | — | Apenas contratos aguardando aprovação |
 
-## Observacoes importantes
+## Observações importantes
 
 - Os **13 filtros** podem ser combinados livremente. Quanto mais filtros preenchidos, mais restritiva e a busca. Para consultas amplas, preencha apenas os filtros essenciais.
-- A funcionalidade **Salvar Filtro** e extremamente util para usuarios que realizam as mesmas consultas periodicamente, como o acompanhamento semanal de contratos proximos do vencimento.
-- O filtro **Proximos do Vencimento** e um dos mais utilizados pela gestao, permitindo antecipar renovacoes e evitar descontinuidade de fornecimento.
-- O **Dashboard Resumo** atualiza dinamicamente conforme os filtros aplicados, oferecendo uma visao gerencial imediata do subconjunto de contratos selecionado.
-- A exportacao em **Excel** inclui nao apenas os dados da grid principal, mas tambem os saldos e itens de cada contrato em abas separadas.
-- A consulta respeita a **seguranca de perfil** — usuarios podem visualizar apenas contratos de suas areas ou centros de custo autorizados.
+- A funcionalidade **Salvar Filtro** e extremamente útil para usuários que realizam as mesmas consultas periodicamente, como o acompanhamento semanal de contratos próximos do vencimento.
+- O filtro **Próximos do Vencimento** e um dos mais utilizados pela gestão, permitindo antecipar renovações e evitar descontinuidade de fornecimento.
+- O **Dashboard Resumo** atualiza dinamicamente conforme os filtros aplicados, oferecendo uma visão gerencial imediata do subconjunto de contratos selecionado.
+- A exportação em **Excel** inclui não apenas os dados da grid principal, mas também os saldos e itens de cada contrato em abas separadas.
+- A consulta respeita a **segurança de perfil** — usuários podem visualizar apenas contratos de suas áreas ou centros de custo autorizados.
 
 ## Telas relacionadas
 
-- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Cadastro e edicao dos contratos consultados.
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Cadastro e edição dos contratos consultados.
 - [VCON0100 (Tipos de Contratos)](/suprimento/vcon0100): Tipos de contrato utilizados nos filtros.
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores partes nos contratos.
 - [VCON0202 (Cancelamento Itens Contrato)](/suprimento/vcon0202): Cancelamento de itens que afeta os saldos visualizados.

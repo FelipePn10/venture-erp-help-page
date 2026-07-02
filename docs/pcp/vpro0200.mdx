@@ -1,0 +1,31 @@
+---
+sidebar_position: 6
+title: "VPRO0200 — CRP (Capacity Requirements Planning)"
+description: "Verificar se a fábrica tem horas suficientes por centro de trabalho e apontar sobrecargas."
+---
+
+# VPRO0200 — CRP (Capacity Requirements Planning)
+
+> Responde: **"a fábrica tem horas suficientes para executar as ordens planejadas?"** Soma as horas exigidas por centro/dia e compara com a capacidade disponível. **Não rearranja** as ordens — só aponta a sobrecarga.
+
+## Objetivo
+
+Comparar a carga (horas necessárias) com a capacidade disponível por centro de trabalho por dia, descontando manutenção preventiva, e sinalizar onde há sobrecarga.
+
+## Passo a passo
+
+1. Informe o **código do plano** (MRP) e clique em **Calcular CRP**.
+2. Veja o resumo: total de registros e quantos centros estão sobrecarregados.
+3. Filtre por **Todos** ou apenas **Sobrecarga** para ver a `carga %` por centro × dia.
+4. Consulte a capacidade de um **centro específico** em um período.
+
+## Como interpretar
+
+- `carga (%) = horas necessárias ÷ horas disponíveis × 100`. Acima de 100% = sobrecarga.
+- **Capacidade nominal** = nº de máquinas ativas do centro × 8h/dia − manutenção do dia.
+- O PCP decide: **adiar** ordens, autorizar **hora extra** ou **terceirizar**.
+
+## Telas relacionadas
+
+- **[VPRO0500 (Manutenção Preventiva)](/pcp/vpro0500):** desconta horas de parada da capacidade.
+- **[VPRO0210 (APS)](/pcp/vpro0210):** usa a mesma base de capacidade para sequenciar.

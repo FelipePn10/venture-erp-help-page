@@ -1,61 +1,61 @@
 ---
 sidebar_position: 7
-title: "VPME0102 — Parametros Promessa de Entrega"
-description: "Configuracao de toggles e parametros para calculo da promessa de entrega ao cliente."
+title: "VPME0102 — Parâmetros Promessa de Entrega"
+description: "Configuração de toggles e parâmetros para cálculo da promessa de entrega ao cliente."
 ---
 
-# VPME0102 — Parametros Promessa de Entrega
+# VPME0102 — Parâmetros Promessa de Entrega
 
-> Painel de configuracao com toggles que controlam o comportamento do calculo de promessa de entrega ao cliente no processo de vendas.
+> Painel de configuração com toggles que controlam o comportamento do cálculo de promessa de entrega ao cliente no processo de vendas.
 
 ## Objetivo
 
-Permitir a configuracao global dos parametros que regem o calculo da promessa de entrega ao cliente. Esta tela centraliza todos os toggles que definem como o sistema deve calcular a data prometida de entrega com base no lead time dos itens, disponibilidade de estoque, capacidade produtiva e calendarios. A configuracao correta destes parametros e crucial para que o time comercial possa informar prazos realistas aos clientes, equilibrando expectativa de venda com capacidade real de entrega.
+Permitir a configuração global dos parâmetros que regem o cálculo da promessa de entrega ao cliente. Esta tela centraliza todos os toggles que definem como o sistema deve calcular a data prometida de entrega com base no lead time dos itens, disponibilidade de estoque, capacidade produtiva e calendários. A configuração correta destes parâmetros e crucial para que o time comercial possa informar prazos realistas aos clientes, equilibrando expectativa de venda com capacidade real de entrega.
 
 ## Pre-requisitos
 
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108) — Calendarios que serao utilizados no calculo de dias uteis.
-- [VPME0102ITE (Calendario Promessa por Item)](/engenharia/vpme0102ite) — Configuracao de calendario personalizado por item.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com lead time e parametros de planejamento configurados.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108) — Calendários que serão utilizados no cálculo de dias úteis.
+- [VPME0102ITE (Calendário Promessa por Item)](/engenharia/vpme0102ite) — Configuração de calendário personalizado por item.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com lead time e parâmetros de planejamento configurados.
 
 ## Passo a passo
 
-1. Acesse a tela VPME0102 pelo menu Engenharia > Parametros Promessa de Entrega.
-2. Analise cada toggle disponivel no painel e seu impacto no calculo da promessa.
-3. Ative o toggle **Considerar Estoque Disponivel** para que o sistema desconte o saldo em estoque ao calcular o prazo.
+1. Acesse a tela VPME0102 pelo menu Engenharia > Parâmetros Promessa de Entrega.
+2. Análise cada toggle disponível no painel e seu impacto no cálculo da promessa.
+3. Ative o toggle **Considerar Estoque Disponível** para que o sistema desconte o saldo em estoque ao calcular o prazo.
 4. Ative o toggle **Considerar Capacidade Produtiva** para que a carga atual dos centros de trabalho seja levada em conta.
-5. Configure o **Calendario Padrao** a ser utilizado para contagem de dias uteis no calculo do prazo.
-6. Defina a **Margem de Seguranca (dias)** que sera adicionada ao prazo calculado como buffer de protecao.
-7. Ative o toggle **Usar Calendario por Item** se deseja que cada item utilize seu proprio calendario personalizado.
-8. Configure o **Horario de Corte** para recebimento de pedidos no dia, definindo a partir de qual horario o pedido e considerado para o dia seguinte.
-9. Clique em **Salvar** para aplicar as configuracoes. O sistema passara a utilizar os novos parametros nos proximos calculos de promessa.
+5. Configure o **Calendário Padrão** a ser utilizado para contagem de dias úteis no cálculo do prazo.
+6. Defina a **Margem de Segurança (dias)** que sera adicionada ao prazo calculado como buffer de proteção.
+7. Ative o toggle **Usar Calendário por Item** se deseja que cada item utilize seu próprio calendário personalizado.
+8. Configure o **Horário de Corte** para recebimento de pedidos no dia, definindo a partir de qual horário o pedido e considerado para o dia seguinte.
+9. Clique em **Salvar** para aplicar as configurações. O sistema passara a utilizar os novos parâmetros nos próximos calculos de promessa.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Considerar Estoque Disponivel | toggle | Nao | — | Desconta saldo de estoque ao calcular o prazo |
-| Considerar Capacidade Produtiva | toggle | Nao | — | Verifica carga dos centros de trabalho |
-| Calendario Padrao | select | Sim | Lista de calendarios | Calendario usado na contagem de dias uteis |
-| Margem de Seguranca (dias) | numero | Nao | — | Dias adicionais como buffer de protecao |
-| Usar Calendario por Item | toggle | Nao | — | Habilita calendario personalizado por item |
-| Horario de Corte | hora | Nao | — | Horario limite para pedidos no mesmo dia |
-| Dias Uteis para Entrega | numero | Nao | — | Prazo maximo padrao em dias uteis |
-| Bloquear Venda sem Promessa | toggle | Nao | — | Impede vendas quando nao e possivel calcular promessa |
-| Considerar Lead Time Fornecedor | toggle | Nao | — | Inclui prazo de compra de materias-primas no calculo |
+| Considerar Estoque Disponível | toggle | Não | — | Desconta saldo de estoque ao calcular o prazo |
+| Considerar Capacidade Produtiva | toggle | Não | — | Verifica carga dos centros de trabalho |
+| Calendário Padrão | select | Sim | Lista de calendários | Calendário usado na contagem de dias úteis |
+| Margem de Segurança (dias) | número | Não | — | Dias adicionais como buffer de proteção |
+| Usar Calendário por Item | toggle | Não | — | Habilita calendário personalizado por item |
+| Horário de Corte | hora | Não | — | Horário limite para pedidos no mesmo dia |
+| Dias Úteis para Entrega | número | Não | — | Prazo máximo padrão em dias úteis |
+| Bloquear Venda sem Promessa | toggle | Não | — | Impede vendas quando não e possível calcular promessa |
+| Considerar Lead Time Fornecedor | toggle | Não | — | Inclui prazo de compra de materias-primas no cálculo |
 
-## Observacoes importantes
+## Observações importantes
 
-- A **Margem de Seguranca** e um valor em dias corridos adicionado ao final do calculo, garantindo folga para imprevistos no processo produtivo e logistico.
-- O **Horario de Corte** define que pedidos recebidos apos esse horario sao tratados como se tivessem sido recebidos no proximo dia util, afetando a contagem de prazo.
-- Quando o toggle **Bloquear Venda sem Promessa** esta ativo, o sistema impede que o vendedor finalize uma venda para a qual nao consegue calcular uma promessa de entrega valida.
-- O toggle **Usar Calendario por Item** requer que o calendario personalizado tenha sido configurado previamente na tela [VPME0102ITE (Calendario Promessa por Item)](/engenharia/vpme0102ite).
-- Alteracoes nos parametros de promessa afetam apenas novos calculos. Pedidos ja registrados mantem a promessa original calculada no momento da venda.
+- A **Margem de Segurança** e um valor em dias corridos adicionado ao final do cálculo, garantindo folga para imprevistos no processo produtivo e logístico.
+- O **Horário de Corte** define que pedidos recebidos após esse horário são tratados como se tivessem sido recebidos no próximo dia útil, afetando a contagem de prazo.
+- Quando o toggle **Bloquear Venda sem Promessa** esta ativo, o sistema impede que o vendedor finalize uma venda para a qual não consegue calcular uma promessa de entrega valida.
+- O toggle **Usar Calendário por Item** requer que o calendário personalizado tenha sido configurado previamente na tela [VPME0102ITE (Calendário Promessa por Item)](/engenharia/vpme0102ite).
+- Alterações nos parâmetros de promessa afetam apenas novos calculos. Pedidos já registrados mantém a promessa original calculada no momento da venda.
 
 ## Telas relacionadas
 
-- [VPME0102ITE (Calendario Promessa por Item)](/engenharia/vpme0102ite): Configuracao de calendario personalizado por item.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108): Calendarios utilizados na contagem de dias uteis.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens com lead time e parametros de planejamento.
-- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202): Roteiros que definem os tempos de fabricacao considerados no calculo.
-- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Centros de trabalho considerados no calculo de capacidade produtiva.
+- [VPME0102ITE (Calendário Promessa por Item)](/engenharia/vpme0102ite): Configuração de calendário personalizado por item.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108): Calendários utilizados na contagem de dias úteis.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens com lead time e parâmetros de planejamento.
+- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202): Roteiros que definem os tempos de fabricação considerados no cálculo.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Centros de trabalho considerados no cálculo de capacidade produtiva.

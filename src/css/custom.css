@@ -2,24 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================
-   VentureERP Help - Light & Dark Theme
-   ============================================ */
+/* ============================================================
+   VentureERP Help — Design System
+   Elegante · Profissional · Moderno
+   ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
-  --ifm-font-size-base: 15px;
-  --ifm-line-height-base: 1.7;
-  --ifm-code-font-size: 92%;
-  --ifm-heading-font-weight: 600;
+  --ifm-font-size-base: 15.5px;
+  --ifm-line-height-base: 1.72;
+  --ifm-code-font-size: 90%;
+  --ifm-heading-font-weight: 650;
+  --ifm-heading-line-height: 1.25;
+  --ifm-global-radius: 10px;
+
+  --ifm-navbar-height: 3.75rem;
+  --ifm-container-width-xl: 1180px;
+
+  /* Brand ramp (shared) */
+  --venture-500: #10b981;
+  --venture-600: #059669;
+  --venture-400: #34d399;
+  --venture-300: #6ee7b7;
 }
 
-/* ============================================
+/* ============================================================
    LIGHT THEME
-   ============================================ */
+   ============================================================ */
 [data-theme='light'] {
   --ifm-color-primary: #059669;
   --ifm-color-primary-dark: #047857;
@@ -30,53 +42,60 @@
   --ifm-color-primary-lightest: #6ee7b7;
 
   --ifm-background-color: #ffffff;
-  --ifm-background-surface-color: #fafafa;
+  --ifm-background-surface-color: #f8fafc;
 
-  --ifm-navbar-background-color: #ffffff;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.82);
   --ifm-footer-background-color: #ffffff;
 
   --ifm-dropdown-background-color: #ffffff;
   --ifm-card-background-color: #ffffff;
 
-  --ifm-font-color-base: #1a1a1a;
-  --ifm-font-color-secondary: #555555;
-  --ifm-heading-color: #111111;
+  --ifm-font-color-base: #1a2027;
+  --ifm-font-color-secondary: #55606b;
+  --ifm-heading-color: #0f172a;
 
   --ifm-link-color: #059669;
   --ifm-link-hover-color: #047857;
 
-  --ifm-navbar-link-color: #555555;
+  --ifm-navbar-link-color: #55606b;
   --ifm-navbar-link-hover-color: #059669;
-  --ifm-navbar-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --ifm-navbar-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
 
-  --ifm-menu-color: #444444;
+  --ifm-menu-color: #3f4954;
   --ifm-menu-color-active: #059669;
-  --ifm-menu-color-background-active: rgba(5, 150, 105, 0.08);
-  --ifm-menu-color-background-hover: rgba(5, 150, 105, 0.04);
+  --ifm-menu-color-background-active: rgba(5, 150, 105, 0.09);
+  --ifm-menu-color-background-hover: rgba(5, 150, 105, 0.045);
 
-  --ifm-toc-link-color: #666666;
+  --ifm-toc-link-color: #6b7580;
   --ifm-toc-link-color-active: #059669;
+  --ifm-toc-border-color: #e8ecf1;
 
-  --ifm-table-border-color: #e5e5e5;
+  --ifm-table-border-color: #e8ecf1;
   --ifm-table-head-background: #f0fdf4;
-  --ifm-table-head-color: #059669;
-  --ifm-table-stripe-background: #fafafa;
+  --ifm-table-head-color: #047857;
+  --ifm-table-stripe-background: #fafbfc;
 
-  --ifm-color-emphasis-200: #e5e5e5;
-  --ifm-color-emphasis-300: #d4d4d4;
+  --ifm-color-emphasis-100: #f3f5f7;
+  --ifm-color-emphasis-200: #e8ecf1;
+  --ifm-color-emphasis-300: #d4dae1;
 
-  --ifm-code-background: #f5f5f5;
-  --docusaurus-highlighted-code-line-bg: rgba(5, 150, 105, 0.08);
+  --ifm-code-background: #f2f5f7;
+  --docusaurus-highlighted-code-line-bg: rgba(5, 150, 105, 0.09);
 
-  --ifm-footer-link-color: #555555;
+  --ifm-footer-link-color: #55606b;
   --ifm-footer-link-hover-color: #059669;
-  --ifm-footer-title-color: #059669;
-  --ifm-footer-color: #555555;
+  --ifm-footer-title-color: #047857;
+  --ifm-footer-color: #55606b;
+
+  --venture-hero-bg: radial-gradient(120% 120% at 50% -10%, #ecfdf5 0%, #ffffff 55%);
+  --venture-surface: #ffffff;
+  --venture-surface-border: #e8ecf1;
+  --venture-surface-hover: #f6fdf9;
 }
 
-/* ============================================
+/* ============================================================
    DARK THEME (default)
-   ============================================ */
+   ============================================================ */
 [data-theme='dark'] {
   --ifm-color-primary: #10b981;
   --ifm-color-primary-dark: #059669;
@@ -86,77 +105,174 @@
   --ifm-color-primary-lighter: #6ee7b7;
   --ifm-color-primary-lightest: #a7f3d0;
 
-  --ifm-background-color: #0a0a0a;
-  --ifm-background-surface-color: #0f0f0f;
+  --ifm-background-color: #08090b;
+  --ifm-background-surface-color: #0e1013;
 
-  --ifm-navbar-background-color: #0a0a0a;
-  --ifm-footer-background-color: #0a0a0a;
+  --ifm-navbar-background-color: rgba(8, 9, 11, 0.78);
+  --ifm-footer-background-color: #08090b;
 
-  --ifm-dropdown-background-color: #141414;
-  --ifm-card-background-color: #0f0f0f;
+  --ifm-dropdown-background-color: #121417;
+  --ifm-card-background-color: #0e1013;
 
-  --ifm-font-color-base: #e0e0e0;
-  --ifm-font-color-secondary: #a0a0a0;
-  --ifm-heading-color: #ffffff;
+  --ifm-font-color-base: #d9dee4;
+  --ifm-font-color-secondary: #98a2ad;
+  --ifm-heading-color: #f5f7fa;
 
   --ifm-link-color: #34d399;
   --ifm-link-hover-color: #6ee7b7;
 
-  --ifm-navbar-link-color: #a0a0a0;
+  --ifm-navbar-link-color: #98a2ad;
   --ifm-navbar-link-hover-color: #10b981;
-  --ifm-navbar-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --ifm-navbar-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
 
-  --ifm-menu-color: #a0a0a0;
-  --ifm-menu-color-active: #10b981;
-  --ifm-menu-color-background-active: rgba(16, 185, 129, 0.08);
-  --ifm-menu-color-background-hover: rgba(16, 185, 129, 0.05);
+  --ifm-menu-color: #98a2ad;
+  --ifm-menu-color-active: #34d399;
+  --ifm-menu-color-background-active: rgba(16, 185, 129, 0.1);
+  --ifm-menu-color-background-hover: rgba(16, 185, 129, 0.06);
 
-  --ifm-toc-link-color: #808080;
-  --ifm-toc-link-color-active: #10b981;
+  --ifm-toc-link-color: #7c8794;
+  --ifm-toc-link-color-active: #34d399;
+  --ifm-toc-border-color: #1c2026;
 
-  --ifm-table-border-color: #1f1f1f;
-  --ifm-table-head-background: #141414;
-  --ifm-table-head-color: #10b981;
-  --ifm-table-stripe-background: #0d0d0d;
+  --ifm-table-border-color: #1c2026;
+  --ifm-table-head-background: #101418;
+  --ifm-table-head-color: #34d399;
+  --ifm-table-stripe-background: #0c0e11;
 
-  --ifm-color-emphasis-200: #1f1f1f;
-  --ifm-color-emphasis-300: #2a2a2a;
+  --ifm-color-emphasis-100: #101216;
+  --ifm-color-emphasis-200: #1c2026;
+  --ifm-color-emphasis-300: #2a2f37;
 
-  --ifm-code-background: #141414;
-  --docusaurus-highlighted-code-line-bg: rgba(16, 185, 129, 0.1);
+  --ifm-code-background: #121417;
+  --docusaurus-highlighted-code-line-bg: rgba(16, 185, 129, 0.12);
 
-  --ifm-footer-link-color: #808080;
-  --ifm-footer-link-hover-color: #10b981;
-  --ifm-footer-title-color: #10b981;
-  --ifm-footer-color: #808080;
+  --ifm-footer-link-color: #7c8794;
+  --ifm-footer-link-hover-color: #34d399;
+  --ifm-footer-title-color: #34d399;
+  --ifm-footer-color: #7c8794;
+
+  --venture-hero-bg: radial-gradient(120% 120% at 50% -10%, #0c2a1d 0%, #08090b 55%);
+  --venture-surface: #0e1013;
+  --venture-surface-border: #1c2026;
+  --venture-surface-hover: #12161a;
 }
 
-/* ---- Navbar title always green ---- */
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
 .navbar__title {
-  color: #10b981 !important;
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
+  color: var(--venture-500) !important;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
 }
 
-/* ---- Global ---- */
+.navbar__brand:hover .navbar__title {
+  color: var(--venture-400) !important;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
 .theme-doc-sidebar-container {
   border-right: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.menu {
+  padding: 0.75rem !important;
+  font-size: 0.9rem;
+}
+
+.menu__link {
+  border-radius: 8px;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .menu__link--active {
   font-weight: 600;
 }
 
-.menu__list-item-collapsible:hover {
-  background: transparent !important;
+.menu__list-item-collapsible {
+  border-radius: 8px;
 }
 
-/* ---- Table styling ---- */
+.menu__list-item-collapsible:hover {
+  background: var(--ifm-menu-color-background-hover) !important;
+}
+
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__link {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--ifm-font-color-secondary);
+}
+
+/* ============================================================
+   TYPOGRAPHY / HEADINGS
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 5rem;
+  letter-spacing: -0.01em;
+}
+
+.markdown h1:first-child {
+  font-size: 2.1rem;
+  font-weight: 800;
+}
+
+.markdown h2 {
+  margin-top: 2.75rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 1.4rem;
+}
+
+.markdown h3 {
+  margin-top: 2rem;
+  font-size: 1.15rem;
+}
+
+[data-theme='dark'] .markdown h3 { color: var(--venture-400); }
+[data-theme='light'] .markdown h3 { color: var(--venture-600); }
+
+.markdown h4 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+.markdown blockquote {
+  border-left: 3px solid var(--ifm-color-primary);
+  background: rgba(16, 185, 129, 0.06);
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1.1rem;
+  margin: 0 0 1.25rem 0;
+  color: var(--ifm-font-color-secondary);
+  font-style: normal;
+}
+
+.markdown blockquote > :last-child { margin-bottom: 0; }
+
+/* ============================================================
+   TABLES
+   ============================================================ */
 table {
   display: table;
   width: 100%;
-  font-size: 0.875rem;
+  font-size: 0.86rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--ifm-table-border-color);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 table thead tr {
@@ -165,167 +281,162 @@ table thead tr {
 
 table th {
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.05em;
+  font-weight: 700;
   color: var(--ifm-table-head-color);
+  background: var(--ifm-table-head-background);
 }
 
 table td,
 table th {
-  padding: 0.6rem 0.75rem;
+  padding: 0.62rem 0.85rem;
+  border: none;
+  border-bottom: 1px solid var(--ifm-table-border-color);
 }
 
-/* ---- Scrollbar ---- */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+table tbody tr:last-child td { border-bottom: none; }
 
-::-webkit-scrollbar-track {
-  background: var(--ifm-background-color);
-}
+table tbody tr { transition: background 0.12s ease; }
+table tbody tr:hover { background: var(--ifm-menu-color-background-hover); }
 
-::-webkit-scrollbar-thumb {
-  background: var(--ifm-color-emphasis-300);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ifm-color-emphasis-200);
-}
-
-/* ---- Headings ---- */
-h1, h2, h3, h4, h5, h6 {
-  scroll-margin-top: 4rem;
-}
-
-.markdown h2 {
-  margin-top: 2.5rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.markdown h3 {
-  margin-top: 2rem;
-}
-
-[data-theme='dark'] .markdown h3 {
-  color: #34d399;
-}
-
-[data-theme='light'] .markdown h3 {
-  color: #059669;
-}
-
-.markdown h4 {
-  font-weight: 500;
-}
-
-/* ---- Blockquote ---- */
-.markdown blockquote {
-  border-left: 3px solid var(--ifm-color-primary);
-  background: rgba(16, 185, 129, 0.05);
-  border-radius: 0 6px 6px 0;
-  padding: 0.5rem 1rem;
-  margin: 0 0 1rem 0;
-  color: var(--ifm-font-color-secondary);
-  font-style: italic;
-}
-
-/* ---- Code blocks ---- */
+/* ============================================================
+   CODE
+   ============================================================ */
 pre {
   border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-/* ---- Footer ---- */
+code {
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  padding: 0.12rem 0.36rem;
+}
+
+.markdown a code { color: inherit; }
+
+/* ============================================================
+   ADMONITIONS
+   ============================================================ */
+.theme-admonition {
+  border-radius: 10px;
+  border-width: 0;
+  border-left-width: 3px;
+}
+
+/* ============================================================
+   ANCHOR / PAGINATION CARDS
+   ============================================================ */
+.pagination-nav__link {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-menu-color-background-hover);
+}
+
+.pagination-nav__sublabel { color: var(--ifm-color-primary); }
+
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
+.table-of-contents {
+  font-size: 0.82rem;
+}
+
+.table-of-contents__link--active {
+  font-weight: 600;
+}
+
+/* ============================================================
+   BREADCRUMBS
+   ============================================================ */
+.breadcrumbs__link {
+  border-radius: 6px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .footer {
   border-top: 1px solid var(--ifm-color-emphasis-200);
   background-color: var(--ifm-footer-background-color) !important;
+  padding: 3rem 0 2rem;
 }
 
 .footer__title {
   color: var(--ifm-footer-title-color) !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
 }
 
-.footer__link-item {
-  color: var(--ifm-footer-link-color) !important;
-}
+.footer__link-item { color: var(--ifm-footer-link-color) !important; }
+.footer__link-item:hover { color: var(--ifm-color-primary) !important; }
+.footer__bottom { color: var(--ifm-footer-color) !important; }
+.footer__copyright { color: var(--ifm-footer-color) !important; font-size: 0.82rem; }
 
-.footer__link-item:hover {
-  color: var(--ifm-color-primary) !important;
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 5px;
+  border: 2px solid var(--ifm-background-color);
 }
+::-webkit-scrollbar-thumb:hover { background: var(--ifm-color-primary); }
 
-.footer__bottom {
-  color: var(--ifm-footer-color) !important;
-}
+/* ============================================================
+   ALGOLIA DOCSEARCH
+   ============================================================ */
+.DocSearch-Button { border-radius: 8px; }
+.DocSearch-Button-Placeholder { font-size: 0.85rem; }
+.DocSearch-Button-Keys { min-width: auto; }
 
-.footer__copyright {
-  color: var(--ifm-footer-color) !important;
-}
-
-/* ---- Algolia DocSearch ---- */
 [data-theme='dark'] .DocSearch {
-  --docsearch-text-color: #e0e0e0;
-  --docsearch-muted-color: #a0a0a0;
-  --docsearch-container-background: rgba(0, 0, 0, 0.8);
-  --docsearch-modal-background: #141414;
-  --docsearch-searchbox-background: #0a0a0a;
-  --docsearch-searchbox-focus-background: #0a0a0a;
-  --docsearch-hit-color: #e0e0e0;
-  --docsearch-hit-active-color: #0a0a0a;
-  --docsearch-hit-background: #1a1a1a;
-  --docsearch-footer-background: #141414;
+  --docsearch-text-color: #d9dee4;
+  --docsearch-muted-color: #98a2ad;
+  --docsearch-container-background: rgba(0, 0, 0, 0.72);
+  --docsearch-modal-background: #101418;
+  --docsearch-searchbox-background: #08090b;
+  --docsearch-searchbox-focus-background: #08090b;
+  --docsearch-hit-color: #d9dee4;
+  --docsearch-hit-active-color: #08090b;
+  --docsearch-hit-background: #16191d;
+  --docsearch-footer-background: #101418;
   --docsearch-footer-shadow: none;
-  --docsearch-modal-shadow: 0 4px 24px rgba(0,0,0,0.6);
-  --docsearch-key-gradient: linear-gradient(-225deg, #1a1a1a, #2a2a2a);
+  --docsearch-modal-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --docsearch-key-gradient: linear-gradient(-225deg, #16191d, #2a2f37);
   --docsearch-key-shadow: none;
   --docsearch-highlight-color: #10b981;
   --docsearch-logo-color: #10b981;
 }
 
-[data-theme='dark'] .DocSearch-Hit[aria-selected=true] a {
-  background-color: #10b981;
-}
-
-[data-theme='dark'] .DocSearch-Hit-source {
-  color: #10b981;
-  background: #0f0f0f;
-}
-
-[data-theme='dark'] .DocSearch-SearchBar {
-  border-bottom: 1px solid #1f1f1f;
-}
-
-.DocSearch-Button {
-  border-radius: 6px;
-}
-
-.DocSearch-Button-Placeholder {
-  font-size: 0.875rem;
-}
-
-.DocSearch-Button-Keys {
-  min-width: auto;
-}
+[data-theme='dark'] .DocSearch-Hit[aria-selected='true'] a { background-color: #10b981; }
+[data-theme='dark'] .DocSearch-Hit-source { color: #34d399; background: #0e1013; }
+[data-theme='dark'] .DocSearch-SearchBar { border-bottom: 1px solid #1c2026; }
 
 [data-theme='dark'] .DocSearch-Button {
-  background: #0f0f0f;
-  border: 1px solid #1f1f1f;
-  color: #a0a0a0;
+  background: #0e1013;
+  border: 1px solid #1c2026;
+  color: #98a2ad;
 }
-
 [data-theme='dark'] .DocSearch-Button:hover {
   border-color: #10b981;
   box-shadow: none;
 }
 
 [data-theme='light'] .DocSearch-Button {
-  background: #f5f5f5;
-  border: 1px solid #e5e5e5;
-  color: #555555;
+  background: #f2f5f7;
+  border: 1px solid #e8ecf1;
+  color: #55606b;
 }
-
 [data-theme='light'] .DocSearch-Button:hover {
   border-color: #059669;
   box-shadow: none;

@@ -1,94 +1,94 @@
 ---
 sidebar_position: 12
-title: "VFIS0360 — Tipos Operacao Entrada"
-description: "Cadastro de tipos de operacao fiscal com validacao por UF e agrupamento por estado, orientando o calculo tributario."
+title: "VFIS0360 — Tipos Operação Entrada"
+description: "Cadastro de tipos de operação fiscal com validação por UF e agrupamento por estado, orientando o cálculo tributário."
 ---
 
-# VFIS0360 — Tipos Operacao Entrada
+# VFIS0360 — Tipos Operação Entrada
 
-> Tela de cadastro dos tipos de operacao fiscal. Cada tipo define a natureza da operacao e pode conter validacoes por UF e agrupamento de estados, orientando o motor de calculo a selecionar os parametros corretos.
+> Tela de cadastro dos tipos de operação fiscal. Cada tipo define a natureza da operação e pode conter validações por UF e agrupamento de estados, orientando o motor de cálculo a selecionar os parâmetros corretos.
 
-**Codigo fonte:** `src/modules/fiscal/operation-types/vfis0360.vue`
+**Código fonte:** `src/modules/fiscal/operation-types/vfis0360.vue`
 
 ## Objetivo
 
-A VFIS0360 permite criar e gerenciar **tipos de operacao fiscal** que categorizam cada transacao no ERP. Diferente do CFOP (que e um codigo oficial definido pelo CONFAZ), o Tipo de Operacao e uma abstracao interna do sistema que agrupa operacoes similares e serve como uma das chaves de busca do motor de calculo fiscal (junto com UF e NCM). Cada tipo de operacao pode ter validacoes por **UF** (determinando em quais estados a operacao e permitida) e por **Grupo de Estado** (agrupando estados com regras fiscais similares para simplificar a parametrizacao). Alem disso, o tipo de operacao define se gera imposto (ICMS, IPI, etc.) ou se e uma operacao sem tributacao (bonificacao, remessa para demonstracao, etc.).
+A VFIS0360 permite criar e gerenciar **tipos de operação fiscal** que categorizam cada transação no ERP. Diferente do CFOP (que e um código oficial definido pelo CONFAZ), o Tipo de Operação e uma abstração interna do sistema que agrupa operações similares e serve como uma das chaves de busca do motor de cálculo fiscal (junto com UF e NCM). Cada tipo de operação pode ter validações por **UF** (determinando em quais estados a operação e permitida) e por **Grupo de Estado** (agrupando estados com regras fiscais similares para simplificar a parametrização). Além disso, o tipo de operação define se gera imposto (ICMS, IPI, etc.) ou se e uma operação sem tributação (bonificação, remessa para demonstração, etc.).
 
 ## Pre-requisitos
 
-- **VFIS0300 (CFOPs):** Os CFOPs que serao associados aos tipos de operacao devem estar previamente cadastrados.
-- **Conhecimento das regras fiscais estaduais:** Para configurar validacoes por UF, e necessario conhecer as regras de cada estado (ex: para quais UFs um determinado tipo de operacao e valido).
+- **VFIS0300 (CFOPs):** Os CFOPs que serão associados aos tipos de operação devem estar previamente cadastrados.
+- **Conhecimento das regras fiscais estaduais:** Para configurar validações por UF, e necessário conhecer as regras de cada estado (ex: para quais UFs um determinado tipo de operação e valido).
 
 ## Passo a passo
 
-1. Acesse **Fiscal > Tabelas > Tipos Operacao (VFIS0360)**.
-2. A grade principal exibe todos os tipos de operacao cadastrados, com seu codigo, descricao e status.
-3. Para **criar um novo tipo de operacao**, clique em **Novo**.
-4. Informe um **Codigo** unico (ex: "VENDA_INT", "VENDA_EXT", "BONIFICACAO", "REMESSA_IND"). Este codigo e utilizado internamente e em parametrizacoes.
-5. Preencha a **Descricao** (ex: "Venda Interna", "Venda Interestadual", "Bonificacao", "Remessa para Industrializacao").
-6. Selecione a **Natureza da Operacao**: `Venda`, `Compra`, `Devolucao`, `Remessa`, `Retorno`, `Transferencia`, `Bonificacao`, `Doacao`, etc. Esta natureza e utilizada pelo motor fiscal para determinar o comportamento padrao.
-7. No quadro **Validacao por UF**, defina para quais estados esta operacao e valida. Opcoes:
-   - **Todas as UFs:** A operacao e permitida em qualquer estado.
-   - **UFs Especificas:** Selecione manualmente as UFs onde a operacao e permitida (ex: uma operacao de venda com incentivo fiscal so e valida no estado do Amazonas).
+1. Acesse **Fiscal > Tabelas > Tipos Operação (VFIS0360)**.
+2. A grade principal exibe todos os tipos de operação cadastrados, com seu código, descrição e status.
+3. Para **criar um novo tipo de operação**, clique em **Novo**.
+4. Informe um **Código** único (ex: "VENDA_INT", "VENDA_EXT", "BONIFICAÇÃO", "REMESSA_IND"). Este código e utilizado internamente e em parametrizações.
+5. Preencha a **Descrição** (ex: "Venda Interna", "Venda Interestadual", "Bonificação", "Remessa para Industrialização").
+6. Selecione a **Natureza da Operação**: `Venda`, `Compra`, `Devolucao`, `Remessa`, `Retorno`, `Transferencia`, `Bonificacao`, `Doacao`, etc. Esta natureza e utilizada pelo motor fiscal para determinar o comportamento padrão.
+7. No quadro **Validação por UF**, defina para quais estados esta operação e valida. Opções:
+   - **Todas as UFs:** A operação e permitida em qualquer estado.
+   - **UFs Específicas:** Selecione manualmente as UFs onde a operação e permitida (ex: uma operação de venda com incentivo fiscal so e valida no estado do Amazonas).
    - **Grupos de Estado:** Selecione grupos pre-definidos (ex: "SUDESTE", "SUL", "NORTE", "NORDESTE", "CENTRO-OESTE").
-8. Na aba **CFOPs Vinculados**, associe os CFOPs que se enquadram neste tipo de operacao. Exemplo: o tipo "VENDA_INT" pode estar vinculado aos CFOPs 5.101, 5.102, 5.103, etc.
-9. Na aba **Regras Fiscais**, defina as regras de tributacao:
-   - **Gera ICMS?** Sim/Nao. Se nao, a operacao nao tera ICMS calculado (ex: bonificacao, remessa para demonstracao).
-   - **Gera IPI?** Sim/Nao. Se sim, o sistema calculara IPI para produtos industrializados.
-   - **Gera PIS/COFINS?** Sim/Nao.
-   - **Gera ICMS-ST?** Sim/Nao. Se sim, o sistema aplicara as regras de ST.
-   - **Gera DIFAL?** Sim/Nao. Se sim, calculara o Diferencial de Aliquotas.
-   - **Permite Credito ICMS?** Sim/Nao. Controla se a operacao gera direito a credito de ICMS.
-10. Clique em **Salvar**. O sistema validara se o codigo ja existe e se ha conflitos com outros tipos de operacao.
+8. Na aba **CFOPs Vinculados**, associe os CFOPs que se enquadram neste tipo de operação. Exemplo: o tipo "VENDA_INT" pode estar vinculado aos CFOPs 5.101, 5.102, 5.103, etc.
+9. Na aba **Regras Fiscais**, defina as regras de tributação:
+   - **Gera ICMS?** Sim/Não. Se não, a operação não tera ICMS calculado (ex: bonificação, remessa para demonstração).
+   - **Gera IPI?** Sim/Não. Se sim, o sistema calculara IPI para produtos industrializados.
+   - **Gera PIS/COFINS?** Sim/Não.
+   - **Gera ICMS-ST?** Sim/Não. Se sim, o sistema aplicara as regras de ST.
+   - **Gera DIFAL?** Sim/Não. Se sim, calculara o Diferencial de Alíquotas.
+   - **Permite Crédito ICMS?** Sim/Não. Controla se a operação gera direito a crédito de ICMS.
+10. Clique em **Salvar**. O sistema validara se o código já existe e se ha conflitos com outros tipos de operação.
 
 ## Campos
 
-### Cabecalho
+### Cabeçalho
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Codigo | Texto (20) | Sim | — | Codigo unico do tipo de operacao. |
-| Descricao | Texto (100) | Sim | — | Descricao do tipo de operacao. |
-| Natureza | Select | Sim | Venda / Compra / Devolucao / Remessa / Retorno / Transferencia / Bonificacao / Doacao / Outros | Natureza fiscal da operacao. |
-| Ativo | Checkbox | Sim | Sim / Nao | Indica se o tipo de operacao esta ativo. |
+| Código | Texto (20) | Sim | — | Código único do tipo de operação. |
+| Descrição | Texto (100) | Sim | — | Descrição do tipo de operação. |
+| Natureza | Select | Sim | Venda / Compra / Devolução / Remessa / Retorno / Transferência / Bonificação / Doação / Outros | Natureza fiscal da operação. |
+| Ativo | Checkbox | Sim | Sim / Não | Indica se o tipo de operação esta ativo. |
 
-### Validacao por UF (grid)
+### Validação por UF (grid)
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| UF | Select | Sim | UFs brasileiras | UF onde a operacao e valida. |
-| Grupo Estado | Select | Nao | SUDESTE / SUL / NORTE / NORDESTE / CENTRO-OESTE | Grupo de estados para selecao rapida. |
+| UF | Select | Sim | UFs brasileiras | UF onde a operação e valida. |
+| Grupo Estado | Select | Não | SUDESTE / SUL / NORTE / NORDESTE / CENTRO-OESTE | Grupo de estados para seleção rápida. |
 
 ### CFOPs Vinculados (grid)
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| CFOP | Select | Sim | VFIS0300 | CFOP vinculado a este tipo de operacao. |
+| CFOP | Select | Sim | VFIS0300 | CFOP vinculado a este tipo de operação. |
 
 ### Regras Fiscais
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Gera ICMS | Checkbox | Sim | Sim / Nao | Indica se a operacao gera ICMS. |
-| Gera IPI | Checkbox | Sim | Sim / Nao | Indica se a operacao gera IPI. |
-| Gera PIS/COFINS | Checkbox | Sim | Sim / Nao | Indica se a operacao gera PIS e COFINS. |
-| Gera ICMS-ST | Checkbox | Sim | Sim / Nao | Indica se a operacao esta sujeita a ST. |
-| Gera DIFAL | Checkbox | Sim | Sim / Nao | Indica se a operacao gera DIFAL. |
-| Permite Credito ICMS | Checkbox | Sim | Sim / Nao | Indica se a operacao gera credito de ICMS. |
-| Permite Credito IPI | Checkbox | Sim | Sim / Nao | Indica se a operacao gera credito de IPI. |
+| Gera ICMS | Checkbox | Sim | Sim / Não | Indica se a operação gera ICMS. |
+| Gera IPI | Checkbox | Sim | Sim / Não | Indica se a operação gera IPI. |
+| Gera PIS/COFINS | Checkbox | Sim | Sim / Não | Indica se a operação gera PIS e COFINS. |
+| Gera ICMS-ST | Checkbox | Sim | Sim / Não | Indica se a operação esta sujeita a ST. |
+| Gera DIFAL | Checkbox | Sim | Sim / Não | Indica se a operação gera DIFAL. |
+| Permite Crédito ICMS | Checkbox | Sim | Sim / Não | Indica se a operação gera crédito de ICMS. |
+| Permite Crédito IPI | Checkbox | Sim | Sim / Não | Indica se a operação gera crédito de IPI. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **Tipo de Operacao vs. CFOP:** O Tipo de Operacao e uma abstracao interna do ERP e agrupa varios CFOPs. Ele serve como chave de busca no motor de calculo. Por exemplo, o tipo "VENDA_INT" agrupa os CFOPs 5.101, 5.102, 5.103 e outros de venda interna. Ao parametrizar na VFIS0320, voce usa o Tipo de Operacao como chave, e a regra se aplica a todos os CFOPs daquele tipo.
-- **Validacao por UF:** Ao configurar que um tipo de operacao e valido apenas para UFs especificas, o sistema bloqueara a emissao de documentos para UFs nao permitidas. Isso e util para controlar operacoes com incentivos fiscais regionais ou restricoes legais.
-- **Grupos de Estado:** Agrupar estados simplifica a parametrizacao. Em vez de configurar a mesma regra para cada UF individualmente, voce configura para o grupo. Exemplo: estados do SUL (PR, SC, RS) frequentemente tem aliquotas e regras similares.
-- **Regras Fiscais (Flags):** Os flags "Gera ICMS", "Gera ST", etc. sao sugestoes padrao. O motor de calculo pode sobrescreve-los com base nas regras especificas da VFIS0320 e VFIS0330.
+- **Tipo de Operação vs. CFOP:** O Tipo de Operação e uma abstração interna do ERP e agrupa varios CFOPs. Ele serve como chave de busca no motor de cálculo. Por exemplo, o tipo "VENDA_INT" agrupa os CFOPs 5.101, 5.102, 5.103 e outros de venda interna. Ao parametrizar na VFIS0320, você usa o Tipo de Operação como chave, e a regra se aplica a todos os CFOPs daquele tipo.
+- **Validação por UF:** Ao configurar que um tipo de operação e valido apenas para UFs específicas, o sistema bloqueara a emissão de documentos para UFs não permitidas. Isso e útil para controlar operações com incentivos fiscais regionais ou restrições legais.
+- **Grupos de Estado:** Agrupar estados simplifica a parametrização. Em vez de configurar a mesma regra para cada UF individualmente, você configura para o grupo. Exemplo: estados do SUL (PR, SC, RS) frequentemente tem alíquotas e regras similares.
+- **Regras Fiscais (Flags):** Os flags "Gera ICMS", "Gera ST", etc. são sugestoes padrão. O motor de cálculo pode sobrescreve-los com base nas regras específicas da VFIS0320 e VFIS0330.
 
 ## Telas relacionadas
 
-- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao base da empresa emitente.
-- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** NFe onde o tipo de operacao e selecionado no cabecalho e nos itens.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza o tipo de operacao.
-- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** CFOPs vinculados a cada tipo de operacao.
-- **[VFIS0320 (Parametros ICMS/IPI)](/fiscal/vfis0320):** Parametros que usam o tipo de operacao como chave de busca.
-- **[VFIS0330 (Reducao/ST/Diferimento)](/fiscal/vfis0330):** Regras que referenciam o tipo de operacao.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base da empresa emitente.
+- **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** NFe onde o tipo de operação e selecionado no cabeçalho e nos itens.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza o tipo de operação.
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** CFOPs vinculados a cada tipo de operação.
+- **[VFIS0320 (Parâmetros ICMS/IPI)](/fiscal/vfis0320):** Parâmetros que usam o tipo de operação como chave de busca.
+- **[VFIS0330 (Redução/ST/Diferimento)](/fiscal/vfis0330):** Regras que referenciam o tipo de operação.

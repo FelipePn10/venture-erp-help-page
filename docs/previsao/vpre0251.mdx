@@ -1,65 +1,65 @@
 ---
 sidebar_position: 4
-title: "VPRE0251 — Geracao Previsao"
-description: "Ferramenta de geracao automatica de previsoes baseada em historico de vendas e indices de projecao."
+title: "VPRE0251 — Geração Previsão"
+description: "Ferramenta de geração automática de previsões baseada em histórico de vendas e indices de projeção."
 ---
 
-# VPRE0251 — Geracao Previsao
+# VPRE0251 — Geração Previsão
 
-> Ferramenta de geracao automatica de previsoes de venda que combina historico de vendas com indices de projecao configurados pelo usuario.
+> Ferramenta de geração automática de previsões de venda que combina histórico de vendas com indices de projeção configurados pelo usuário.
 
 ## Objetivo
 
-Permitir a geracao automatica de previsoes de venda a partir do historico de vendas real, aplicando indices de projecao (crescimento, sazonalidade, tendencia) para estimar a demanda futura. A ferramenta le o historico de vendas de um periodo base e projeta os valores para um periodo futuro, aplicando fatores de ajuste configurados pelo usuario. Este processo agiliza significativamente a criacao de previsoes para itens com comportamento de venda estavel, reduzindo o esforco manual e aumentando a precisao das estimativas.
+Permitir a geração automática de previsões de venda a partir do histórico de vendas real, aplicando indices de projeção (crescimento, sazonalidade, tendência) para estimar a demanda futura. A ferramenta le o histórico de vendas de um período base e projeta os valores para um período futuro, aplicando fatores de ajuste configurados pelo usuário. Este processo agiliza significativamente a criação de previsões para itens com comportamento de venda estável, reduzindo o esforco manual e aumentando a precisão das estimativas.
 
 ## Pre-requisitos
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201) — Destino das previsoes geradas automaticamente.
-- [VPRE0101 (Tabela Apropriacao)](/previsao/vpre0101) — Tabelas de apropriacao para rateio das previsoes geradas.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com historico de vendas disponivel no sistema.
-- Modulo de Vendas — Historico de vendas realizadas necessario como base para projecao.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201) — Destino das previsões geradas automaticamente.
+- [VPRE0101 (Tabela Apropriação)](/previsao/vpre0101) — Tabelas de apropriação para rateio das previsões geradas.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com histórico de vendas disponível no sistema.
+- Módulo de Vendas — Histórico de vendas realizadas necessário como base para projeção.
 
 ## Passo a passo
 
-1. Acesse a tela VPRE0251 pelo menu Previsao > Geracao Previsao.
-2. Selecione o **Ano Destino** para o qual as previsoes serao geradas.
-3. Defina o **Periodo Base** (ano e meses) que servira como referencia historica.
-4. Escolha o **Tipo de Projecao**: Simples (replica historico), com Indice de Crescimento ou com Indice de Sazonalidade.
-5. Configure o **Indice de Projecao** como um percentual (ex: 110% para crescimento de 10%, 95% para retracao de 5%).
-6. Selecione os **Itens** ou **Familias de Produtos** que terao previsoes geradas. E possivel selecionar todos ou um subconjunto.
-7. Marque o toggle **Considerar Tendencia** para aplicar medias moveis ou regressao linear sobre o historico.
-8. Clique em **Simular** para visualizar as previsoes geradas antes de efetivar.
-9. Revise os valores projetados. Itens com variacao muito alta em relacao ao historico sao destacados para atencao.
-10. Clique em **Gerar** para criar as previsoes na tela de [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201).
+1. Acesse a tela VPRE0251 pelo menu Previsão > Geração Previsão.
+2. Selecione o **Ano Destino** para o qual as previsões serão geradas.
+3. Defina o **Período Base** (ano e meses) que servira como referência histórica.
+4. Escolha o **Tipo de Projeção**: Simples (replica histórico), com Indice de Crescimento ou com Indice de Sazonalidade.
+5. Configure o **Indice de Projeção** como um percentual (ex: 110% para crescimento de 10%, 95% para retração de 5%).
+6. Selecione os **Itens** ou **Familias de Produtos** que terao previsões geradas. E possível selecionar todos ou um subconjunto.
+7. Marque o toggle **Considerar Tendência** para aplicar médias móveis ou regressão linear sobre o histórico.
+8. Clique em **Simular** para visualizar as previsões geradas antes de efetivar.
+9. Revise os valores projetados. Itens com variação muito alta em relação ao histórico são destacados para atenção.
+10. Clique em **Gerar** para criar as previsões na tela de [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201).
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Ano Destino | select | Sim | Lista de anos | Ano para o qual as previsoes serao geradas |
-| Periodo Base — Ano | select | Sim | Lista de anos | Ano do historico de referencia |
-| Periodo Base — Meses | multi-select | Nao | 1 a 12 | Meses do historico considerados |
-| Tipo de Projecao | select | Sim | Simples / Indice Crescimento / Indice Sazonalidade | Metodo de projecao |
-| Indice de Projecao (%) | numero | Sim | — | Percentual de ajuste sobre o historico |
-| Considerar Tendencia | toggle | Nao | — | Aplica metodo estatistico de tendencia |
-| Periodos da Media Movel | numero | Condicional | 2 / 3 / 4 / 6 | Numero de periodos para media movel |
-| Itens / Familias | multi-select | Sim | Lista de itens/familias | Abrangencia da geracao |
-| Gerar para Semanas Bloqueadas | toggle | Nao | — | Forca geracao mesmo em semanas com bloqueio |
-| Substituir Previsoes Existentes | toggle | Nao | — | Sobrescreve previsoes ja cadastradas |
+| Ano Destino | select | Sim | Lista de anos | Ano para o qual as previsões serão geradas |
+| Período Base — Ano | select | Sim | Lista de anos | Ano do histórico de referência |
+| Período Base — Meses | multi-select | Não | 1 a 12 | Meses do histórico considerados |
+| Tipo de Projeção | select | Sim | Simples / Indice Crescimento / Indice Sazonalidade | Metodo de projeção |
+| Indice de Projeção (%) | número | Sim | — | Percentual de ajuste sobre o histórico |
+| Considerar Tendência | toggle | Não | — | Aplica metodo estatístico de tendência |
+| Periodos da Média Móvel | número | Condicional | 2 / 3 / 4 / 6 | Número de periodos para média móvel |
+| Itens / Familias | multi-select | Sim | Lista de itens/familias | Abrangência da geração |
+| Gerar para Semanas Bloqueadas | toggle | Não | — | Força geração mesmo em semanas com bloqueio |
+| Substituir Previsões Existentes | toggle | Não | — | Sobrescreve previsões já cadastradas |
 
-## Observacoes importantes
+## Observações importantes
 
-- O botao **Simular** e essencial antes da geracao definitiva. Ele mostra exatamente os valores que serao gerados e destaca itens com variacoes anomalas (acima de 50% de crescimento ou queda).
-- O **Indice de Sazonalidade** e util para itens com comportamento sazonal conhecido. Ele aplica percentuais diferentes para cada mes, refletindo a sazonalidade historica do periodo base.
-- A opcao **Considerar Tendencia** utiliza regressao linear simples sobre os dados historicos para projetar crescimento ou declinio continuo, complementando os indices estaticos.
-- O toggle **Substituir Previsoes Existentes** deve ser usado com cautela. Desmarcado, apenas itens sem previsao recebem valores gerados.
-- Periodos de **media movel** maiores (4 a 6) suavizam variacoes, enquanto periodos menores (2 a 3) respondem mais rapidamente a mudancas de tendencia.
-- A geracao respeita o **bloqueio de semanas** configurado em [VPRE0102 (Bloqueio Previsao)](/previsao/vpre0102), a menos que o toggle "Gerar para Semanas Bloqueadas" esteja ativado.
+- O botão **Simular** e essencial antes da geração definitiva. Ele mostra exatamente os valores que serão gerados e destaca itens com variações anomalas (acima de 50% de crescimento ou queda).
+- O **Indice de Sazonalidade** e útil para itens com comportamento sazonal conhecido. Ele aplica percentuais diferentes para cada mês, refletindo a sazonalidade histórica do período base.
+- A opção **Considerar Tendência** utiliza regressão linear simples sobre os dados historicos para projetar crescimento ou declinio contínuo, complementando os indices estáticos.
+- O toggle **Substituir Previsões Existentes** deve ser usado com cautela. Desmarcado, apenas itens sem previsão recebem valores gerados.
+- Periodos de **média móvel** maiores (4 a 6) suavizam variações, enquanto periodos menores (2 a 3) respondem mais rapidamente a mudancas de tendência.
+- A geração respeita o **bloqueio de semanas** configurado em [VPRE0102 (Bloqueio Previsão)](/previsao/vpre0102), a menos que o toggle "Gerar para Semanas Bloqueadas" esteja ativado.
 
 ## Telas relacionadas
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201): Destino das previsoes geradas.
-- [VPRE0101 (Tabela Apropriacao)](/previsao/vpre0101): Tabelas de rateio associadas as previsoes.
-- [VPRE0102 (Bloqueio Previsao)](/previsao/vpre0102): Controle de semanas bloqueadas.
-- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Comparativo que permite avaliar a precisao das previsoes geradas.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens com historico de vendas utilizado como base.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201): Destino das previsões geradas.
+- [VPRE0101 (Tabela Apropriação)](/previsao/vpre0101): Tabelas de rateio associadas as previsões.
+- [VPRE0102 (Bloqueio Previsão)](/previsao/vpre0102): Controle de semanas bloqueadas.
+- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Comparativo que permite avaliar a precisão das previsões geradas.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens com histórico de vendas utilizado como base.

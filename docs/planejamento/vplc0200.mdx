@@ -1,63 +1,63 @@
 ---
 sidebar_position: 2
 title: "VPLC0200 — Montagem de Carga"
-description: "Tabela hierarquica para montagem e consolidacao de cargas de expedicao."
+description: "Tabela hierárquica para montagem e consolidação de cargas de expedição."
 ---
 
 # VPLC0200 — Montagem de Carga
 
-> Tabela hierarquica interativa para montagem de cargas, permitindo agrupar pedidos de venda em carregamentos de forma visual e estruturada.
+> Tabela hierárquica interativa para montagem de cargas, permitindo agrupar pedidos de venda em carregamentos de forma visual e estruturada.
 
 ## Objetivo
 
-Permitir a montagem e consolidacao de cargas de expedicao de forma visual, utilizando uma tabela hierarquica onde os pedidos de venda sao agrupados em carregamentos (cargas). A estrutura hierarquica permite visualizar em um unico local: a carga, os pedidos que a compoem, os volumes de cada pedido e o status de cada elemento. A tela oferece funcionalidades de arrastar e soltar para mover pedidos entre cargas, alem de validacoes automaticas de peso, volume e capacidade do veiculo.
+Permitir a montagem e consolidação de cargas de expedição de forma visual, utilizando uma tabela hierárquica onde os pedidos de venda são agrupados em carregamentos (cargas). A estrutura hierárquica permite visualizar em um único local: a carga, os pedidos que a compõem, os volumes de cada pedido e o status de cada elemento. A tela oferece funcionalidades de arrastar e soltar para mover pedidos entre cargas, além de validações automaticas de peso, volume e capacidade do veículo.
 
 ## Pre-requisitos
 
-- [VPLC0211 (Orientacoes Entrega)](/planejamento/vplc0211) — Orientacoes de rota e CEP para os pedidos.
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Transportadoras cadastradas para associacao as cargas.
-- [Pedidos de Venda](/comercial/vent0100) — Pedidos de venda liberados e disponiveis para expedicao.
+- [VPLC0211 (Orientações Entrega)](/planejamento/vplc0211) — Orientações de rota e CEP para os pedidos.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Transportadoras cadastradas para associação as cargas.
+- [Pedidos de Venda](/comercial/vent0100) — Pedidos de venda liberados e disponíveis para expedição.
 
 ## Passo a passo
 
 1. Acesse a tela VPLC0200 pelo menu Planejamento > Montagem de Carga.
-2. A tela exibe a **tabela hierarquica** com as cargas ja montadas. Cada linha expandivel mostra os pedidos contidos na carga.
-3. Para criar uma nova carga, clique em **Nova Carga** e preencha os dados do cabecalho: transportadora, veiculo, data prevista de saida.
-4. Para adicionar pedidos a uma carga, selecione a carga na tabela e clique em **Incluir Pedidos**. Uma janela de busca exibe os pedidos disponiveis para expedicao.
-5. Selecione os pedidos desejados e confirme. O sistema valida peso, volume e CEP contra a capacidade do veiculo.
+2. A tela exibe a **tabela hierárquica** com as cargas já montadas. Cada linha expandível mostra os pedidos contidos na carga.
+3. Para criar uma nova carga, clique em **Nova Carga** e preencha os dados do cabeçalho: transportadora, veículo, data prevista de saída.
+4. Para adicionar pedidos a uma carga, selecione a carga na tabela e clique em **Incluir Pedidos**. Uma janela de busca exibe os pedidos disponíveis para expedição.
+5. Selecione os pedidos desejados e confirme. O sistema valida peso, volume e CEP contra a capacidade do veículo.
 6. Para **mover um pedido** entre cargas, utilize o recurso de arrastar e soltar: clique no pedido e arraste para a carga destino.
-7. Expanda um pedido para visualizar os **volumes** que o compoem, com seus respectivos pesos e dimensoes.
-8. Utilize os filtros de **Data**, **Transportadora** e **Regiao** para localizar cargas especificas.
+7. Expanda um pedido para visualizar os **volumes** que o compõem, com seus respectivos pesos e dimensões.
+8. Utilize os filtros de **Data**, **Transportadora** e **Região** para localizar cargas específicas.
 9. Clique em **Fechar Carga** para finalizar a montagem e emitir os documentos de transporte.
 10. Clique em **Salvar** a qualquer momento para preservar o estado atual da montagem.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Numero da Carga | numero (auto) | Sim | — | Identificador automatico da carga |
-| Transportadora | select | Sim | Lista de transportadoras | Transportadora responsavel pela carga |
-| Veiculo | texto | Nao | — | Placa ou identificacao do veiculo |
-| Data Prevista Saida | data | Sim | — | Data prevista para saida da carga |
-| Motorista | texto | Nao | — | Nome do motorista responsavel |
-| Pedidos | tabela hierarquica | Sim | — | Pedidos de venda incluidos na carga |
-| Peso Total | numero | Nao | — | Peso total calculado da carga |
-| Volume Total | numero | Nao | — | Volume total calculado da carga |
-| Capacidade Utilizada (%) | numero | Nao | — | Percentual de ocupacao do veiculo |
-| Status da Carga | select | Nao | Aberta / Fechada / Em Transito / Entregue | Situacao atual da carga |
+| Número da Carga | número (auto) | Sim | — | Identificador automático da carga |
+| Transportadora | select | Sim | Lista de transportadoras | Transportadora responsável pela carga |
+| Veículo | texto | Não | — | Placa ou identificação do veículo |
+| Data Prevista Saída | data | Sim | — | Data prevista para saída da carga |
+| Motorista | texto | Não | — | Nome do motorista responsável |
+| Pedidos | tabela hierárquica | Sim | — | Pedidos de venda incluídos na carga |
+| Peso Total | número | Não | — | Peso total calculado da carga |
+| Volume Total | número | Não | — | Volume total calculado da carga |
+| Capacidade Utilizada (%) | número | Não | — | Percentual de ocupação do veículo |
+| Status da Carga | select | Não | Aberta / Fechada / Em Trânsito / Entregue | Situação atual da carga |
 
-## Observacoes importantes
+## Observações importantes
 
-- A **tabela hierarquica** permite expandir e recolher niveis (Carga > Pedido > Volumes), facilitando a visualizacao tanto macro quanto detalhada da consolidacao.
-- A funcionalidade de **arrastar e soltar** (drag and drop) agiliza a reorganizacao de pedidos entre cargas, especialmente util quando ocorrem alteracoes de ultima hora na expedicao.
-- O sistema valida automaticamente a **capacidade do veiculo** (peso e volume) ao incluir pedidos. Se a capacidade for excedida, um alerta e exibido, mas o usuario pode optar por prosseguir.
-- Cargas com status **Fechada** nao permitem mais alteracoes nos pedidos. Para reabrir, e necessario ter permissao especifica e uma justificativa.
-- O **CEP** dos pedidos e utilizado para agrupar automaticamente pedidos com rotas compativeis, otimizando a logistica de entrega.
-- E possivel gerar o **Romaneio de Carga** e o **Conhecimento de Transporte** diretamente desta tela apos o fechamento da carga.
+- A **tabela hierárquica** permite expandir e recolher níveis (Carga > Pedido > Volumes), facilitando a visualização tanto macro quanto detalhada da consolidação.
+- A funcionalidade de **arrastar e soltar** (drag and drop) agiliza a reorganização de pedidos entre cargas, especialmente útil quando ocorrem alterações de última hora na expedição.
+- O sistema valida automaticamente a **capacidade do veículo** (peso e volume) ao incluir pedidos. Se a capacidade for excedida, um alerta e exibido, mas o usuário pode optar por prosseguir.
+- Cargas com status **Fechada** não permitem mais alterações nos pedidos. Para reabrir, e necessário ter permissão específica e uma justificativa.
+- O **CEP** dos pedidos e utilizado para agrupar automaticamente pedidos com rotas compatíveis, otimizando a logística de entrega.
+- E possível gerar o **Romaneio de Carga** e o **Conhecimento de Transporte** diretamente desta tela após o fechamento da carga.
 
 ## Telas relacionadas
 
-- [VPLC0211 (Orientacoes Entrega)](/planejamento/vplc0211): Orientacoes de entrega com CEP e rota para os pedidos.
+- [VPLC0211 (Orientações Entrega)](/planejamento/vplc0211): Orientações de entrega com CEP e rota para os pedidos.
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Cadastro de transportadoras utilizadas nas cargas.
-- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Demandas que originam as ordens de producao cujos itens serao expedidos.
-- [VIMP0101 (Status Logistico da Carga)](/importacao/vimp0101): Acompanhamento do status logistico das cargas.
+- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Demandas que originam as ordens de produção cujos itens serão expedidos.
+- [VIMP0101 (Status Logístico da Carga)](/importacao/vimp0101): Acompanhamento do status logístico das cargas.

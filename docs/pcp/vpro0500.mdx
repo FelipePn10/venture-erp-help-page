@@ -1,0 +1,23 @@
+---
+sidebar_position: 11
+title: "VPRO0500 — Manutenção Preventiva"
+description: "Gerenciar planos de manutenção periódica e as ordens geradas, descontando horas da capacidade."
+---
+
+# VPRO0500 — Manutenção Preventiva
+
+> Gerenciar **planos de manutenção** periódica de máquinas/centros e as **ordens** geradas. As horas de parada são **descontadas da capacidade** pelo CRP.
+
+## Objetivo
+
+Evitar planejar produção em horários de máquina parada, mantendo planos e ordens de manutenção preventiva.
+
+## Passo a passo
+
+1. Crie um **plano**: máquina, centro de trabalho, **frequência** (Diária / Semanal / Mensal / Personalizada), intervalo em dias e horas estimadas de parada.
+2. **Gerar ordens** (por horizonte de dias) cria ordens **Planejadas** de forma idempotente (não duplica plano + data).
+3. Avance a ordem: **Planejada → Em execução** (registra início) **→ Concluída** (registra horas reais e término).
+
+## Telas relacionadas
+
+- **[VPRO0200 (CRP)](/pcp/vpro0200):** consome as horas de parada como indisponibilidade.

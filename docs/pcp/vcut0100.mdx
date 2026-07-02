@@ -1,0 +1,53 @@
+---
+sidebar_position: 15
+title: "VCUT0100 — Plano de Corte"
+description: "Otimizar o aproveitamento de matéria-prima (nesting) e gerar retalhos rastreáveis ao firmar."
+---
+
+# VCUT0100 — Plano de Corte
+
+> Otimizar o **aproveitamento de matéria-prima** encaixando (*nesting*) as peças no estoque disponível, minimizando sobra e sucata. Suporta corte **linear 1D**, **2D guilhotinado** e **true-shape**. Ao **firmar**, baixa o estoque, gera **retalhos reaproveitáveis rastreáveis** e a trilha de consumo.
+
+## Objetivo
+
+Planejar o corte de matéria-prima com máximo aproveitamento, gerando o mapa de corte (SVG/DXF/PDF), retalhos rastreáveis e a baixa de estoque.
+
+## Pré-requisitos
+
+- **Item de matéria-prima** cadastrado (VENT0200) com estoque (VEST0100).
+- **Almoxarifado** (VENT0800) — obrigatório informar o **depósito** para poder firmar.
+
+## Passo a passo
+
+1. Acesse **VCUT0100** e clique em **Listar** (carrega planos e padrões da empresa).
+2. Em **Novo plano**, informe a **matéria-prima**, o **tipo de corte** (1D/2D/true-shape), **kerf** (espessura da serra), **refile** (aparo da cabeça), **sobra mínima**, a **UoM de estoque** e o **depósito**. Clique em **Criar plano** (nasce **Rascunho**).
+3. **Demanda / peças**: adicione as peças a cortar — comprimento (1D) ou largura × altura (2D) e quantidade.
+4. **Estoque disponível**: adicione as peças de estoque; marque **retalho** quando for sobra reaproveitada (ou marque **semear retalhos** para o sistema puxar do inventário).
+5. Clique em **Otimizar**. O sistema calcula os **padrões de corte**, o **aproveitamento** (%), a **sucata** e lista peças **sem encaixe**.
+6. Revise os padrões (posição de cada peça).
+7. Clique em **Firmar (baixa)** para consumir o estoque (gera retalhos e trilha de consumo). O plano passa a **Firmado**.
+8. **Programa** mostra a sequência de cortes; **Agendar** leva o corte à agenda da máquina; **SVG/DXF/PDF** baixam o mapa.
+
+## Conceitos
+
+| Termo | Significado |
+|-------|-------------|
+| **Kerf** | Material perdido na espessura da serra entre dois cortes. |
+| **Refile (trim)** | Aparo removido da cabeça da barra/chapa antes do primeiro corte. |
+| **Retalho** | Sobra ≥ sobra mínima — volta ao estoque como material reaproveitável, com rastreabilidade. |
+| **Aproveitamento** | Demanda ÷ estoque consumido. |
+| **Sucata** | Perda real (exclui o retalho reaproveitável) — vira custo. |
+| **Status** | Rascunho → Otimizado → Firmado → Em execução → Concluído. |
+
+## Observações importantes
+
+- **Materiais diferentes são planos diferentes** — cada plano corta um único item de matéria-prima.
+- **Firmar exige depósito** no plano (ou depósito padrão nos parâmetros da empresa).
+- **Modo de consumo**: **Automático (FIFO)** baixa da corrida mais antiga; **Manual** usa o lote atribuído.
+- Peças maiores que qualquer estoque ficam **sem encaixe** (aviso ao operador).
+
+## Telas relacionadas
+
+- **[VEST0100 (Estoque)](/pcp/vest0100):** origem do estoque e destino dos retalhos.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** a baixa do corte pode referenciar a OP.
+- **[VMAQ0200 (Máquinas)](/pcp/vmaq0200):** a agenda do corte entra no calendário da máquina.

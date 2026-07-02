@@ -1,16 +1,16 @@
 ---
 sidebar_position: 6
 title: "VPDC0200 — Pedido de Compra"
-description: "Emissao e gestao de pedidos de compra com 4 abas: cabecalho, itens, rateio e anexos."
+description: "Emissão e gestão de pedidos de compra com 4 abas: cabeçalho, itens, rateio e anexos."
 ---
 
 # VPDC0200 — Pedido de Compra
 
-> Tela de emissao e gestao de pedidos de compra com 4 abas: Cabecalho, Itens, Rateio e Anexos.
+> Tela de emissão e gestão de pedidos de compra com 4 abas: Cabeçalho, Itens, Rateio e Anexos.
 
 ## Objetivo
 
-Permitir a emissao, edicao e acompanhamento de pedidos de compra junto aos fornecedores. A tela e organizada em 4 abas logicas: **Cabecalho** (dados gerais do pedido, fornecedor, condicoes), **Itens** (produtos/servicos solicitados, quantidades, precos), **Rateio** (distribuicao dos custos entre centros de custo ou projetos) e **Anexos** (documentos complementares como cotacoes, especificacoes tecnicas). O pedido de compra e o documento central do processo de suprimentos, formalizando a intencao de compra e servindo como base para recebimento e pagamento.
+Permitir a emissão, edição e acompanhamento de pedidos de compra junto aos fornecedores. A tela e organizada em 4 abas lógicas: **Cabeçalho** (dados gerais do pedido, fornecedor, condições), **Itens** (produtos/serviços solicitados, quantidades, preços), **Rateio** (distribuição dos custos entre centros de custo ou projetos) e **Anexos** (documentos complementares como cotações, especificações técnicas). O pedido de compra e o documento central do processo de suprimentos, formalizando a intenção de compra e servindo como base para recebimento e pagamento.
 
 ## Pre-requisitos
 
@@ -23,71 +23,71 @@ Permitir a emissao, edicao e acompanhamento de pedidos de compra junto aos forne
 
 1. Acesse a tela VPDC0200 pelo menu Suprimento > Pedido de Compra.
 2. Clique em **Novo** para criar um novo pedido.
-3. Na aba **Cabecalho**, selecione o fornecedor, a condicao de pagamento, o tipo de frete e a data de entrega desejada.
+3. Na aba **Cabeçalho**, selecione o fornecedor, a condição de pagamento, o tipo de frete e a data de entrega desejada.
 4. Opcionalmente, vincule o pedido a um **Contrato de Fornecimento** para controle de saldo contratual.
-5. Na aba **Itens**, inclua os produtos ou servicos a serem comprados: codigo do item, quantidade, preco unitario.
-6. Para cada item, o sistema exibe o **preco do contrato** (se vinculado) como sugestao, que pode ser ajustado conforme negociacao.
+5. Na aba **Itens**, inclua os produtos ou serviços a serem comprados: código do item, quantidade, preço unitário.
+6. Para cada item, o sistema exibe o **preço do contrato** (se vinculado) como sugestao, que pode ser ajustado conforme negociação.
 7. Na aba **Rateio**, distribua o valor total do pedido entre os centros de custo ou projetos que absorverao o gasto.
-8. Na aba **Anexos**, faca upload de documentos de suporte: cotacoes, especificacoes tecnicas, aprovacoes.
-9. Submeta o pedido para **Aprovacao**, se a politica da empresa exigir, utilizando o fluxo configurado.
-10. Apos aprovacao, o pedido fica disponivel para **Envio ao Fornecedor** e acompanhamento do status de entrega.
+8. Na aba **Anexos**, faca upload de documentos de suporte: cotações, especificações técnicas, aprovações.
+9. Submeta o pedido para **Aprovação**, se a política da empresa exigir, utilizando o fluxo configurado.
+10. Após aprovação, o pedido fica disponível para **Envio ao Fornecedor** e acompanhamento do status de entrega.
 
 ## Campos
 
-### Aba Cabecalho
+### Aba Cabeçalho
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Numero do Pedido | numero (auto) | Sim | — | Gerado automaticamente |
+| Número do Pedido | número (auto) | Sim | — | Gerado automaticamente |
 | Fornecedor | select | Sim | Lista de fornecedores | Fornecedor do pedido |
-| Condicao de Pagamento | select | Sim | Lista de condicoes | Prazo e forma de pagamento |
+| Condição de Pagamento | select | Sim | Lista de condições | Prazo e forma de pagamento |
 | Tipo de Frete | select | Sim | CIF / FOB | Responsabilidade pelo frete |
-| Transportadora | select | Nao | Lista de transportadoras | Se frete CIF |
+| Transportadora | select | Não | Lista de transportadoras | Se frete CIF |
 | Data de Entrega | data | Sim | — | Data desejada de entrega |
-| Contrato | select | Nao | Lista de contratos | Contrato de fornecimento vinculado |
-| Status | select | Nao | Em Edicao / Pendente Aprovacao / Aprovado / Enviado / Parcialmente Recebido / Finalizado / Cancelado | Situacao do pedido |
+| Contrato | select | Não | Lista de contratos | Contrato de fornecimento vinculado |
+| Status | select | Não | Em Edição / Pendente Aprovação / Aprovado / Enviado / Parcialmente Recebido / Finalizado / Cancelado | Situação do pedido |
 
 ### Aba Itens
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo do Item | select | Sim | Lista de itens | Item a ser comprado |
-| Descricao | texto | Nao | — | Carregada automaticamente |
-| Quantidade | numero | Sim | — | Quantidade solicitada |
-| Preco Unitario | numero | Sim | — | Preco negociado por unidade |
-| Valor Total do Item | numero | Nao | — | Calculado: quantidade x preco unitario |
-| Data de Entrega do Item | data | Nao | — | Data especifica para o item |
+| Código do Item | select | Sim | Lista de itens | Item a ser comprado |
+| Descrição | texto | Não | — | Carregada automaticamente |
+| Quantidade | número | Sim | — | Quantidade solicitada |
+| Preço Unitário | número | Sim | — | Preço negociado por unidade |
+| Valor Total do Item | número | Não | — | Calculado: quantidade x preço unitário |
+| Data de Entrega do Item | data | Não | — | Data específica para o item |
 
 ### Aba Rateio
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
 | Centro de Custo | select | Sim | Lista de CC | Centro de custo de destino |
-| Projeto | select | Nao | Lista de projetos | Projeto associado |
-| Percentual de Rateio | numero | Sim | 0-100 | Percentual do valor para esta linha |
-| Valor Rateado | numero | Nao | — | Calculado: valor total x percentual |
+| Projeto | select | Não | Lista de projetos | Projeto associado |
+| Percentual de Rateio | número | Sim | 0-100 | Percentual do valor para esta linha |
+| Valor Rateado | número | Não | — | Calculado: valor total x percentual |
 
 ### Aba Anexos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Arquivo | upload | Nao | — | Documento complementar |
-| Descricao do Anexo | texto | Nao | — | Identificacao do documento anexado |
+| Arquivo | upload | Não | — | Documento complementar |
+| Descrição do Anexo | texto | Não | — | Identificação do documento anexado |
 
-## Observacoes importantes
+## Observações importantes
 
-- O **Rateio** entre centros de custo e obrigatorio para pedidos que serao aprovados contabilmente. A soma dos percentuais de rateio deve ser 100%.
-- O pedido vinculado a um **contrato** atualiza automaticamente o saldo contratual, reduzindo a quantidade e valor disponiveis.
-- O campo **Preco Unitario** e de livre digitacao, mas quando o pedido e vinculado a um contrato, o sistema sugere o preco contratual e alerta se o valor informado for divergente.
-- Pedidos com status **Enviado** podem ser alterados apenas com a criacao de uma **revisao**, mantendo o historico de versoes.
+- O **Rateio** entre centros de custo e obrigatório para pedidos que serão aprovados contabilmente. A soma dos percentuais de rateio deve ser 100%.
+- O pedido vinculado a um **contrato** atualiza automaticamente o saldo contratual, reduzindo a quantidade e valor disponíveis.
+- O campo **Preço Unitário** e de livre digitação, mas quando o pedido e vinculado a um contrato, o sistema sugere o preço contratual e alerta se o valor informado for divergente.
+- Pedidos com status **Enviado** podem ser alterados apenas com a criação de uma **revisão**, mantendo o histórico de versões.
 - O **recebimento parcial** atualiza o status do pedido e as quantidades pendentes automaticamente.
-- A aba **Anexos** e importante para armazenar evidencias do processo de compra (tres cotacoes, aprovacao do gestor), especialmente em processos auditaveis.
+- A aba **Anexos** e importante para armazenar evidências do processo de compra (três cotações, aprovação do gestor), especialmente em processos auditáveis.
 
 ## Telas relacionadas
 
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores para os quais os pedidos sao emitidos.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores para os quais os pedidos são emitidos.
 - [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos que respaldam os pedidos de compra.
-- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Analise de itens adquiridos por fornecedor.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens incluidos nos pedidos de compra.
+- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Análise de itens adquiridos por fornecedor.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens incluídos nos pedidos de compra.
 - [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo do rateio.
-- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Inspecoes realizadas no recebimento dos pedidos.
+- [VINS0313 (Consulta Inspeções Recebimento)](/inspecao/vins0313): Inspeções realizadas no recebimento dos pedidos.

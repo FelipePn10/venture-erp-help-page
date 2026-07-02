@@ -1,57 +1,57 @@
 ---
 sidebar_position: 7
 title: "VFIN0300 — Fluxo de Caixa e Saldos"
-description: "Extrato realizado, projecao de caixa e saldos das contas."
+description: "Extrato realizado, projeção de caixa e saldos das contas."
 ---
 
 # VFIN0300 — Fluxo de Caixa e Saldos
 
-> Extrato realizado, projecao de caixa e saldos das contas bancarias.
+> Extrato realizado, projeção de caixa e saldos das contas bancárias.
 
-**Codigo fonte:** `src/components/screens/financeiro/Vfin0300Page.tsx`
+**Código fonte:** `src/components/screens/financeiro/Vfin0300Page.tsx`
 
 ## Objetivo
 
-Oferecer uma visao consolidada da posicao financeira da empresa atraves de tres perspectivas organizadas em abas. A aba **Realizado** exibe o fluxo de caixa efetivo com metricas de Entradas, Saidas e Saldo do periodo. A aba **Projetado** mostra o fluxo futuro a partir de uma data de inicio. A aba **Saldos das Contas** exibe o saldo atualizado de cada conta bancaria cadastrada na VFIN0100.
+Oferecer uma visão consolidada da posição financeira da empresa através de três perspectivas organizadas em abas. A aba **Realizado** exibe o fluxo de caixa efetivo com métricas de Entradas, Saídas e Saldo do período. A aba **Projetado** mostra o fluxo futuro a partir de uma data de início. A aba **Saldos das Contas** exibe o saldo atualizado de cada conta bancaria cadastrada na VFIN0100.
 
 ## Pre-requisitos
 
-- Contas bancarias cadastradas em **VFIN0100 (Contas Bancarias)** para a aba Saldos das Contas.
-- Movimentacoes financeiras registradas em **VFIN0200 (Contas a Pagar)** e **VFIN0210 (Contas a Receber)** para alimentar o fluxo realizado.
+- Contas bancárias cadastradas em **VFIN0100 (Contas Bancárias)** para a aba Saldos das Contas.
+- Movimentações financeiras registradas em **VFIN0200 (Contas a Pagar)** e **VFIN0210 (Contas a Receber)** para alimentar o fluxo realizado.
 
 ## Passo a passo
 
 1. Acesse **Financeiro > Fluxo de Caixa e Saldos** (VFIN0300).
-2. Selecione uma das tres abas: **Realizado**, **Projetado** ou **Saldos das Contas**.
+2. Selecione uma das três abas: **Realizado**, **Projetado** ou **Saldos das Contas**.
 3. Para **Realizado**:
-   - Informe **Data Inicio** e **Data Fim**.
+   - Informe **Data Início** e **Data Fim**.
    - Clique em **Consultar**.
-   - O topo exibe metricas: Entradas (verde), Saidas (vermelho) e Saldo do periodo.
-   - A tabela abaixo lista as movimentacoes do periodo.
+   - O topo exibe métricas: Entradas (verde), Saídas (vermelho) e Saldo do período.
+   - A tabela abaixo lista as movimentações do período.
 4. Para **Projetado**:
-   - Informe **Data Inicio**.
+   - Informe **Data Início**.
    - Clique em **Consultar**.
-   - O sistema projeta recebimentos e pagamentos futuros com base nos titulos em aberto.
+   - O sistema projeta recebimentos e pagamentos futuros com base nos títulos em aberto.
 5. Para **Saldos das Contas**:
-   - A tabela exibe o saldo atual de cada conta bancaria, considerando saldo inicial + movimentacoes realizadas.
+   - A tabela exibe o saldo atual de cada conta bancaria, considerando saldo inicial + movimentações realizadas.
 6. Use **Exportar** para gerar uma planilha dos dados exibidos.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Inicio | data | Nao | — | Data inicial (abas Realizado e Projetado) |
-| Fim | data | Nao | — | Data final (apenas aba Realizado) |
+| Início | data | Não | — | Data inicial (abas Realizado e Projetado) |
+| Fim | data | Não | — | Data final (apenas aba Realizado) |
 
-## Observacoes importantes
+## Observações importantes
 
-- A aba **Realizado** mostra apenas movimentacoes ja baixadas (pagamentos e recebimentos efetivos).
-- A aba **Projetado** considera titulos pendentes e aprovados com vencimento futuro.
-- A aba **Saldos das Contas** e atualizada em tempo real conforme baixas sao realizadas.
+- A aba **Realizado** mostra apenas movimentações já baixadas (pagamentos e recebimentos efetivos).
+- A aba **Projetado** considera títulos pendentes e aprovados com vencimento futuro.
+- A aba **Saldos das Contas** e atualizada em tempo real conforme baixas são realizadas.
 - O saldo inicial das contas e definido no cadastro da VFIN0100.
 
 ## Telas relacionadas
 
-- **[VFIN0100 (Contas Bancarias)](/financeiro/vfin0100):** Saldos exibidos na aba "Saldos das Contas".
+- **[VFIN0100 (Contas Bancárias)](/financeiro/vfin0100):** Saldos exibidos na aba "Saldos das Contas".
 - **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Alimenta o fluxo de caixa com pagamentos realizados.
 - **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Alimenta o fluxo de caixa com recebimentos realizados.

@@ -1,63 +1,63 @@
 ---
 sidebar_position: 10
-title: "VENG0204 — Regras Variaveis Equivalentes"
-description: "Configuracao de regras para variaveis equivalentes entre itens substitutos na engenharia."
+title: "VENG0204 — Regras Variáveis Equivalentes"
+description: "Configuração de regras para variáveis equivalentes entre itens substitutos na engenharia."
 ---
 
-# VENG0204 — Regras Variaveis Equivalentes
+# VENG0204 — Regras Variáveis Equivalentes
 
-> Painel de configuracao de regras que definem equivalencia entre variaveis de itens substitutos, garantindo interoperabilidade na BOM.
+> Painel de configuração de regras que definem equivalência entre variáveis de itens substitutos, garantindo interoperabilidade na BOM.
 
 ## Objetivo
 
-Permitir a definicao de regras de equivalencia entre variaveis de itens configurados, possibilitando que itens com caracteristicas diferentes sejam considerados equivalentes em determinadas condicoes. Essas regras sao fundamentais para o funcionamento do MRP quando itens originais da estrutura nao estao disponiveis e o sistema precisa buscar alternativas viaveis. As regras definem quais combinacoes de atributos PDM sao compativeis entre si, garantindo que as substituicoes mantenham a integridade funcional do produto final.
+Permitir a definição de regras de equivalência entre variáveis de itens configurados, possibilitando que itens com características diferentes sejam considerados equivalentes em determinadas condições. Essas regras são fundamentais para o funcionamento do MRP quando itens originais da estrutura não estao disponíveis e o sistema precisa buscar alternativas viáveis. As regras definem quais combinações de atributos PDM são compatíveis entre si, garantindo que as substituições mantenham a integridade funcional do produto final.
 
 ## Pre-requisitos
 
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores PDM que geram as variaveis a serem comparadas.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores PDM que geram as variáveis a serem comparadas.
 - [VITE0116 (Atributos PDM)](/engenharia/vite0116) — Atributos PDM associados aos modificadores.
-- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210) — Estrutura BOM que utilizara as regras de equivalencia para itens alternativos.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens configurados que terao regras de equivalencia aplicadas.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210) — Estrutura BOM que utilizara as regras de equivalência para itens alternativos.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens configurados que terao regras de equivalência aplicadas.
 
 ## Passo a passo
 
-1. Acesse a tela VENG0204 pelo menu Engenharia > Regras Variaveis Equivalentes.
-2. Clique em **Novo** para criar uma nova regra de equivalencia.
-3. Selecione o **Modificador PDM** de origem e o modificador de destino que terao equivalencia.
+1. Acesse a tela VENG0204 pelo menu Engenharia > Regras Variáveis Equivalentes.
+2. Clique em **Novo** para criar uma nova regra de equivalência.
+3. Selecione o **Modificador PDM** de origem e o modificador de destino que terao equivalência.
 4. Defina o **Atributo de Origem** e o **Atributo de Destino** dentro de cada modificador.
-5. Configure a **Condicao de Equivalencia**: Igualdade, Compatibilidade Total, Compatibilidade Parcial ou Equivalencia Condicional.
-6. Se aplicavel, preencha o campo **Condicao Adicional** com a expressao logica que valida a equivalencia.
-7. Defina a **Prioridade** da regra — em caso de multiplas equivalencias possiveis, a regra com maior prioridade e aplicada primeiro.
+5. Configure a **Condição de Equivalência**: Igualdade, Compatibilidade Total, Compatibilidade Parcial ou Equivalência Condicional.
+6. Se aplicável, preencha o campo **Condição Adicional** com a expressão lógica que valida a equivalência.
+7. Defina a **Prioridade** da regra — em caso de múltiplas equivalências possíveis, a regra com maior prioridade e aplicada primeiro.
 8. Ative ou desative a regra utilizando o toggle **Ativo**.
-9. Clique em **Salvar** para armazenar a regra de equivalencia.
+9. Clique em **Salvar** para armazenar a regra de equivalência.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Modificador Origem | select | Sim | Lista de modificadores | Modificador PDM de origem da equivalencia |
-| Modificador Destino | select | Sim | Lista de modificadores | Modificador PDM de destino da equivalencia |
+| Modificador Origem | select | Sim | Lista de modificadores | Modificador PDM de origem da equivalência |
+| Modificador Destino | select | Sim | Lista de modificadores | Modificador PDM de destino da equivalência |
 | Atributo Origem | select | Sim | Lista de atributos | Atributo do modificador de origem |
 | Atributo Destino | select | Sim | Lista de atributos | Atributo do modificador de destino |
-| Condicao de Equivalencia | select | Sim | Igualdade / Compatibilidade Total / Parcial / Condicional | Tipo de equivalencia entre os atributos |
-| Condicao Adicional | texto | Nao | Expressao logica | Regra complementar para equivalencia condicional |
-| Prioridade | numero | Sim | — | Ordem de aplicacao em caso de multiplas equivalencias |
-| Ativo | toggle | Sim | — | Status da regra de equivalencia |
-| Descricao da Regra | texto | Nao | — | Descricao explicativa da regra |
+| Condição de Equivalência | select | Sim | Igualdade / Compatibilidade Total / Parcial / Condicional | Tipo de equivalência entre os atributos |
+| Condição Adicional | texto | Não | Expressão lógica | Regra complementar para equivalência condicional |
+| Prioridade | número | Sim | — | Ordem de aplicação em caso de múltiplas equivalências |
+| Ativo | toggle | Sim | — | Status da regra de equivalência |
+| Descrição da Regra | texto | Não | — | Descrição explicativa da regra |
 
-## Observacoes importantes
+## Observações importantes
 
-- As regras de equivalencia sao utilizadas pelo **MRP** durante a explosao da necessidade de materiais. Quando um item configurado especifico nao esta disponivel, o sistema busca itens equivalentes com base nestas regras.
-- A **Compatibilidade Total** indica que os atributos sao completamente intercambiaveis, enquanto a **Compatibilidade Parcial** exige que apenas alguns atributos especificos coincidam.
-- A **Prioridade** e essencial quando existem regras sobrepostas. Regras com prioridade mais alta (numero menor) sao verificadas primeiro.
-- Regras inativas sao ignoradas pelo MRP, mas continuam salvas no sistema para reativacao futura.
-- A **Condicao Adicional** permite logica avancada, como equivalencia apenas para determinadas quantidades ou situacoes de estoque.
-- Teste as regras de equivalencia em ambiente de homologacao antes de ativa-las em producao, pois substituicoes incorretas podem gerar produtos fora da especificacao.
+- As regras de equivalência são utilizadas pelo **MRP** durante a explosão da necessidade de materiais. Quando um item configurado específico não esta disponível, o sistema busca itens equivalentes com base nestas regras.
+- A **Compatibilidade Total** indica que os atributos são completamente intercambiáveis, enquanto a **Compatibilidade Parcial** exige que apenas alguns atributos específicos coincidam.
+- A **Prioridade** e essencial quando existem regras sobrepostas. Regras com prioridade mais alta (número menor) são verificadas primeiro.
+- Regras inativas são ignoradas pelo MRP, mas continuam salvas no sistema para reativação futura.
+- A **Condição Adicional** permite lógica avançada, como equivalência apenas para determinadas quantidades ou situações de estoque.
+- Teste as regras de equivalência em ambiente de homologação antes de ativa-las em produção, pois substituições incorretas podem gerar produtos fora da especificação.
 
 ## Telas relacionadas
 
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM que fornecem as variaveis para equivalencia.
-- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos PDM comparados nas regras de equivalencia.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM que fornecem as variáveis para equivalência.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos PDM comparados nas regras de equivalência.
 - [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM que utiliza as regras para itens alternativos.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens configurados que participam das regras de equivalencia.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens configurados que participam das regras de equivalência.
 - [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras complementares para itens configurados.

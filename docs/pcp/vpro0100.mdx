@@ -1,0 +1,32 @@
+---
+sidebar_position: 5
+title: "VPRO0100 — Roteiro de Fabricação"
+description: "Descrever como um item é produzido: operações, sequência, centros, tempos e dependências, com lead time via CPM."
+---
+
+# VPRO0100 — Roteiro de Fabricação
+
+> Descrever **como** um item é produzido: quais operações, em que sequência, em quais centros de trabalho, com quais tempos e dependências. Calcula o **lead time via CPM** (caminho crítico).
+
+## Objetivo
+
+Descrever a rota produtiva do item. O roteiro é criado manualmente pelo PCP/engenharia; o MRP, CRP e APS apenas o *leem*. Calcula o lead time pelo caminho crítico (CPM).
+
+## Passo a passo
+
+1. **Crie operações genéricas** (biblioteca reutilizável): Nome, **Origem** (Interna = gera OF; Externa/Terceiros = gera OS) e tempo padrão.
+2. **Crie o roteiro do item**: informe o Item, descrição, alternativa e marque **Padrão** (o roteiro que o MRP/CRP usam — apenas um por item).
+3. **Adicione operações ao roteiro** com sequência (10, 20, 30…), centro de trabalho e tempo.
+4. **Defina as dependências** (predecessor → sucessor) com **overlap (%)** — quanto o sucessor pode sobrepor o predecessor. `0` = espera terminar 100%.
+5. Clique em **Lead time (CPM)** para ver o tempo total e o caminho crítico.
+
+## Observações importantes
+
+- **Origem** define o tipo de ordem que o MRP gera: Interna → **Ordem de Fabricação**; Externa/Terceiros → **Ordem de Serviço**.
+- **Máquinas manuais nunca têm overlap válido** — o sistema o ignora e trata como 0, evitando lead time subestimado.
+- A última operação (que não é predecessora de ninguém) é automaticamente a final.
+
+## Telas relacionadas
+
+- **[VMAQ0200 (Máquinas e Tempos)](/pcp/vmaq0200):** fornece setup e ciclo de cada operação.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** a OF explode o roteiro nas operações.

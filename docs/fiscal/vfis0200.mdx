@@ -1,116 +1,116 @@
 ---
 sidebar_position: 3
-title: "VFIS0200 — NFe de Saida"
-description: "Gerenciamento do ciclo completo da Nota Fiscal Eletronica de Saida: rascunho, autorizacao, cancelamento e CC-e."
+title: "VFIS0200 — NFe de Saída"
+description: "Gerenciamento do ciclo completo da Nota Fiscal Eletrônica de Saída: rascunho, autorização, cancelamento e CC-e."
 ---
 
-# VFIS0200 — NFe de Saida
+# VFIS0200 — NFe de Saída
 
-> Tela principal de emissao e gestao da Nota Fiscal Eletronica de Saida (NFe e NFCe). Gerencia o ciclo de vida completo do documento: criacao de rascunhos, transmissao para a SEFAZ, autorizacao, cancelamento, inutilizacao e emissao de Carta de Correcao Eletronica (CC-e).
+> Tela principal de emissão e gestão da Nota Fiscal Eletrônica de Saída (NFe e NFCe). Gerencia o ciclo de vida completo do documento: criação de rascunhos, transmissão para a SEFAZ, autorização, cancelamento, inutilização e emissão de Carta de Correção Eletrônica (CC-e).
 
-**Codigo fonte:** `src/modules/fiscal/output-nfe/vfis0200.vue`
+**Código fonte:** `src/modules/fiscal/output-nfe/vfis0200.vue`
 
 ## Objetivo
 
-A VFIS0200 e o centro operacional das notas fiscais de saida do ERP. Ela permite criar NFe e NFCe a partir de pedidos de venda ou manualmente, calcular automaticamente todos os impostos (ICMS, IPI, PIS, COFINS, ST, DIFAL, FCP) com base nas tabelas tributarias, transmitir o XML para a SEFAZ via API Focus NFe, acompanhar o retorno (autorizacao, rejeicao ou denegacao), gerar o DANFE em PDF, cancelar notas autorizadas e emitir Cartas de Correcao para ajustes pontuais. A tela oferece uma visao em grade de todas as notas emitidas com filtros por periodo, status, cliente e tipo de operacao, e um fluxo de trabalho que guia o usuario desde o rascunho ate a conclusao.
+A VFIS0200 e o centro operacional das notas fiscais de saída do ERP. Ela permite criar NFe e NFCe a partir de pedidos de venda ou manualmente, calcular automaticamente todos os impostos (ICMS, IPI, PIS, COFINS, ST, DIFAL, FCP) com base nas tabelas tributárias, transmitir o XML para a SEFAZ via API Focus NFe, acompanhar o retorno (autorização, rejeição ou denegação), gerar o DANFE em PDF, cancelar notas autorizadas e emitir Cartas de Correção para ajustes pontuais. A tela oferece uma visão em grade de todas as notas emitidas com filtros por período, status, cliente e tipo de operação, e um fluxo de trabalho que guia o usuário desde o rascunho até a conclusão.
 
 ## Pre-requisitos
 
-- **VFIS0100 (Configuracao Fiscal):** Token Focus NFe, certificado digital e ambiente (homologacao/producao) configurados e validos.
-- **VFIS0110 (Tabelas Tributarias):** Tabelas de NCM e aliquotas ICMS interno/interestadual preenchidas para calculo automatico dos impostos.
-- **VFIS0300 (CFOPs):** CFOPs cadastrados para cada tipo de operacao (venda, devolucao, remessa, retorno, etc.).
-- **VCLI0500 (Cadastro de Clientes):** Cliente destinatario com CNPJ/CPF, IE, endereco completo e indicador de consumidor final.
+- **VFIS0100 (Configuração Fiscal):** Token Focus NFe, certificado digital e ambiente (homologação/produção) configurados e validos.
+- **VFIS0110 (Tabelas Tributárias):** Tabelas de NCM e alíquotas ICMS interno/interestadual preenchidas para cálculo automático dos impostos.
+- **VFIS0300 (CFOPs):** CFOPs cadastrados para cada tipo de operação (venda, devolução, remessa, retorno, etc.).
+- **VCLI0500 (Cadastro de Clientes):** Cliente destinatário com CNPJ/CPF, IE, endereço completo e indicador de consumidor final.
 - **VCAD0100 (Cadastro de Produtos):** Produtos com NCM, CEST, unidade, EAN e demais dados fiscais.
-- **VFIS0360 (Tipos Operacao Entrada):** Tipos de operacao configurados para orientar o calculo fiscal.
+- **VFIS0360 (Tipos Operação Entrada):** Tipos de operação configurados para orientar o cálculo fiscal.
 
 ## Passo a passo
 
-1. Acesse **Fiscal > Notas Fiscais > NFe de Saida (VFIS0200)**.
-2. A grade principal lista todas as notas fiscais de saida ja emitidas. Utilize os filtros superiores (periodo, status, cliente, numero, chave) para localizar documentos especificos. Clique em **Nova NFe** para iniciar uma emissao.
+1. Acesse **Fiscal > Notas Fiscais > NFe de Saída (VFIS0200)**.
+2. A grade principal lista todas as notas fiscais de saída já emitidas. Utilize os filtros superiores (período, status, cliente, número, chave) para localizar documentos específicos. Clique em **Nova NFe** para iniciar uma emissão.
 3. Selecione o **Tipo de Documento**: NFe (modelo 55) ou NFCe (modelo 65). Para NFCe, o sistema automaticamente define o consumidor final e simplifica o layout.
-4. Preencha os **Dados do Cabecalho**: data de emissao, data de saida, natureza da operacao (espelha a descricao do CFOP), tipo de operacao e CFOP. O sistema sugerira o CFOP com base na UF do destinatario e tipo de operacao.
-5. Informe o **Destinatario**: selecione um cliente da base ou digite os dados manualmente. Para NFCe, marque o indicador de consumidor final e, opcionalmente, informe CPF.
-6. Adicione os **Itens da Nota** — produtos, servicos ou ambos. Para cada item, informe: produto, quantidade, valor unitario, NCM, CEST, CFOP do item e tipo de calculo. O sistema calculara automaticamente: base de calculo, ICMS, ICMS-ST, IPI, PIS, COFINS, DIFAL, FCP e total do item.
-7. Verifique os **Totais da Nota** na aba correspondente: base de calculo de ICMS, valor do ICMS, ICMS-ST, base de calculo de ICMS-ST, PIS, COFINS, IPI, valor do frete, seguro, descontos e valor total da nota.
-8. Acesse a aba **Transporte** para informar a modalidade do frete (0=emitente, 1=destinatario, 2=terceiros, 3=proprio remetente, 4=proprio destinatario, 9=sem frete), transportadora, placa do veiculo, quantidade, especie, marca, numeracao e peso dos volumes.
-9. Na aba **Cobranca**, informe dados de fatura(s), duplicata(s) e pagamento (a prazo ou a vista).
-10. Na aba **Informacoes Adicionais**, inclua observacoes fiscais (campo `infAdFisco`) e informacoes ao consumidor (campo `infCpl`).
-11. Clique em **Gerar XML**. O sistema montara o XML no padrao NFe 4.00, realizara as validacoes de schema e exibira eventuais erros de preenchimento. Corrija todos os erros antes de prosseguir.
+4. Preencha os **Dados do Cabeçalho**: data de emissão, data de saída, natureza da operação (espelha a descrição do CFOP), tipo de operação e CFOP. O sistema sugerira o CFOP com base na UF do destinatário e tipo de operação.
+5. Informe o **Destinatário**: selecione um cliente da base ou digite os dados manualmente. Para NFCe, marque o indicador de consumidor final e, opcionalmente, informe CPF.
+6. Adicione os **Itens da Nota** — produtos, serviços ou ambos. Para cada item, informe: produto, quantidade, valor unitário, NCM, CEST, CFOP do item e tipo de cálculo. O sistema calculara automaticamente: base de cálculo, ICMS, ICMS-ST, IPI, PIS, COFINS, DIFAL, FCP e total do item.
+7. Verifique os **Totais da Nota** na aba correspondente: base de cálculo de ICMS, valor do ICMS, ICMS-ST, base de cálculo de ICMS-ST, PIS, COFINS, IPI, valor do frete, seguro, descontos e valor total da nota.
+8. Acesse a aba **Transporte** para informar a modalidade do frete (0=emitente, 1=destinatário, 2=terceiros, 3=próprio remetente, 4=próprio destinatário, 9=sem frete), transportadora, placa do veículo, quantidade, especie, marca, numeração e peso dos volumes.
+9. Na aba **Cobrança**, informe dados de fatura(s), duplicata(s) e pagamento (a prazo ou a vista).
+10. Na aba **Informações Adicionais**, inclua observações fiscais (campo `infAdFisco`) e informações ao consumidor (campo `infCpl`).
+11. Clique em **Gerar XML**. O sistema montara o XML no padrão NFe 4.00, realizara as validações de schema e exibira eventuais erros de preenchimento. Corrija todos os erros antes de prosseguir.
 12. Clique em **Transmitir**. O XML sera assinado digitalmente com o certificado A1 e enviado a SEFAZ via API Focus NFe. O status mudara para `Aguardando Retorno`. Acompanhe o progresso no painel de status.
-13. Ao receber o retorno, o sistema atualizara o status: **Autorizada** (protocolo SEFAZ disponivel, DANFE gerado automaticamente), **Rejeitada** (corrija o motivo e retransmita) ou **Denegada** (irregularidade no cadastro do emitente ou destinatario).
-14. Para **Cancelar** uma nota autorizada: selecione a nota, clique em Cancelar, informe o motivo (minimo 15 caracteres) e confirme. O evento de cancelamento sera transmitido a SEFAZ. O prazo para cancelamento e de 24 horas (regra geral) a 7 dias (combustiveis, pereciveis).
-15. Para emitir uma **Carta de Correcao (CC-e)**: selecione a nota autorizada, clique em CC-e, descreva a correcao (minimo 15 caracteres) e transmita. A CC-e pode ser emitida em ate 30 dias apos a autorizacao e nao pode alterar valores ou dados do destinatario.
+13. Ao receber o retorno, o sistema atualizara o status: **Autorizada** (protocolo SEFAZ disponível, DANFE gerado automaticamente), **Rejeitada** (corrija o motivo e retransmita) ou **Denegada** (irregularidade no cadastro do emitente ou destinatário).
+14. Para **Cancelar** uma nota autorizada: selecione a nota, clique em Cancelar, informe o motivo (mínimo 15 caracteres) e confirme. O evento de cancelamento sera transmitido a SEFAZ. O prazo para cancelamento e de 24 horas (regra geral) a 7 dias (combustíveis, perecíveis).
+15. Para emitir uma **Carta de Correção (CC-e)**: selecione a nota autorizada, clique em CC-e, descreva a correção (mínimo 15 caracteres) e transmita. A CC-e pode ser emitida em até 30 dias após a autorização e não pode alterar valores ou dados do destinatário.
 
 ## Campos
 
-### Cabecalho
+### Cabeçalho
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
 | Modelo | Select | Sim | 55 (NFe) / 65 (NFCe) | Modelo do documento fiscal. |
-| Serie | Numero (3) | Sim | — | Serie do documento. |
-| Numero | Numero (9) | Auto | — | Numero sequencial. Gerado automaticamente no momento da transmissao. |
-| Data Emissao | Data | Sim | — | Data de emissao da NFe. |
-| Data Saida | Data/Hora | Sim | — | Data e hora de saida da mercadoria. |
-| Natureza Operacao | Texto (60) | Sim | — | Descricao da natureza da operacao (espelha CFOP). |
-| Tipo Operacao | Select | Sim | VFIS0360 | Tipo de operacao que orienta o calculo fiscal. |
-| CFOP | Texto (4) | Sim | VFIS0300 | Codigo Fiscal de Operacao. |
-| Finalidade | Select | Sim | Normal / Complementar / Ajuste / Devolucao | Finalidade de emissao da NFe. |
-| Tipo Emissao | Select | Sim | Normal / Contingencia | Tipo de emissao (normal ou contingencia). |
-| Indicador Consumidor Final | Select | Sim | Sim / Nao | Indica se o destinatario e consumidor final. |
-| Indicador Presenca | Select | Sim | Presencial / Internet / Teleatendimento / NFCe / Domicilio / Outros | Indicador de presenca do comprador. |
+| Série | Número (3) | Sim | — | Série do documento. |
+| Número | Número (9) | Auto | — | Número sequencial. Gerado automaticamente no momento da transmissão. |
+| Data Emissão | Data | Sim | — | Data de emissão da NFe. |
+| Data Saída | Data/Hora | Sim | — | Data e hora de saída da mercadoria. |
+| Natureza Operação | Texto (60) | Sim | — | Descrição da natureza da operação (espelha CFOP). |
+| Tipo Operação | Select | Sim | VFIS0360 | Tipo de operação que orienta o cálculo fiscal. |
+| CFOP | Texto (4) | Sim | VFIS0300 | Código Fiscal de Operação. |
+| Finalidade | Select | Sim | Normal / Complementar / Ajuste / Devolução | Finalidade de emissão da NFe. |
+| Tipo Emissão | Select | Sim | Normal / Contingência | Tipo de emissão (normal ou contingência). |
+| Indicador Consumidor Final | Select | Sim | Sim / Não | Indica se o destinatário e consumidor final. |
+| Indicador Presença | Select | Sim | Presencial / Internet / Teleatendimento / NFCe / Domicilio / Outros | Indicador de presença do comprador. |
 
-### Destinatario
+### Destinatário
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Cliente | Select | Sim | VCLI0500 | Cliente destinatario. |
-| CNPJ/CPF | Texto (14) | Sim | — | Documento do destinatario. |
-| IE | Texto (20) | Condicional | — | Inscricao Estadual. Obrigatoria para contribuintes. |
-| Indicador IE | Select | Sim | Contribuinte / Isento / Nao Contribuinte | Indicador da situacao fiscal do destinatario. |
-| Endereco | Texto (200) | Sim | — | Endereco completo do destinatario. |
-| Municipio IBGE | Texto (7) | Sim | — | Codigo IBGE do municipio do destinatario. |
+| Cliente | Select | Sim | VCLI0500 | Cliente destinatário. |
+| CNPJ/CPF | Texto (14) | Sim | — | Documento do destinatário. |
+| IE | Texto (20) | Condicional | — | Inscrição Estadual. Obrigatória para contribuintes. |
+| Indicador IE | Select | Sim | Contribuinte / Isento / Não Contribuinte | Indicador da situação fiscal do destinatário. |
+| Endereço | Texto (200) | Sim | — | Endereço completo do destinatário. |
+| Municipio IBGE | Texto (7) | Sim | — | Código IBGE do municipio do destinatário. |
 
 ### Itens
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Produto | Select | Sim | VCAD0100 | Produto ou servico da nota. |
+| Produto | Select | Sim | VCAD0100 | Produto ou serviço da nota. |
 | Quantidade | Decimal (15,4) | Sim | — | Quantidade do item. |
-| Valor Unitario | Decimal (15,4) | Sim | — | Valor unitario do item. |
-| Valor Total | Decimal (15,2) | Auto | — | Quantidade x Valor Unitario. Calculado automaticamente. |
+| Valor Unitário | Decimal (15,4) | Sim | — | Valor unitário do item. |
+| Valor Total | Decimal (15,2) | Auto | — | Quantidade x Valor Unitário. Calculado automaticamente. |
 | NCM | Texto (8) | Sim | VFIS0350 | NCM do produto. |
-| CEST | Texto (7) | Condicional | VFIS0350 | CEST. Obrigatorio se produto sujeito a ST. |
-| CFOP | Texto (4) | Sim | VFIS0300 | CFOP especifico do item. |
+| CEST | Texto (7) | Condicional | VFIS0350 | CEST. Obrigatório se produto sujeito a ST. |
+| CFOP | Texto (4) | Sim | VFIS0300 | CFOP específico do item. |
 | Unidade | Texto (6) | Sim | — | Unidade comercial (UN, KG, L, M, etc.). |
-| EAN | Texto (14) | Nao | — | Codigo de barras do produto. |
-| Tipo Calculo ICMS | Select | Sim | Normal / ST / Isento / Diferido / Outros | Regra de calculo do ICMS para este item. |
-| BC ICMS | Decimal (15,2) | Auto | — | Base de calculo do ICMS. |
-| Aliquota ICMS | Decimal (5,2) | Auto | — | Aliquota de ICMS aplicada. |
+| EAN | Texto (14) | Não | — | Código de barras do produto. |
+| Tipo Cálculo ICMS | Select | Sim | Normal / ST / Isento / Diferido / Outros | Regra de cálculo do ICMS para este item. |
+| BC ICMS | Decimal (15,2) | Auto | — | Base de cálculo do ICMS. |
+| Alíquota ICMS | Decimal (5,2) | Auto | — | Alíquota de ICMS aplicada. |
 | Valor ICMS | Decimal (15,2) | Auto | — | Valor do ICMS calculado. |
-| BC ICMS-ST | Decimal (15,2) | Condicional | — | Base de calculo do ICMS-ST. |
+| BC ICMS-ST | Decimal (15,2) | Condicional | — | Base de cálculo do ICMS-ST. |
 | Valor ICMS-ST | Decimal (15,2) | Condicional | — | Valor do ICMS-ST. |
-| Aliquota IPI | Decimal (5,2) | Nao | — | Aliquota de IPI. |
-| Valor IPI | Decimal (15,2) | Nao | — | Valor do IPI. |
-| Aliquota PIS | Decimal (5,2) | Nao | — | Aliquota de PIS. |
-| Valor PIS | Decimal (15,2) | Nao | — | Valor do PIS. |
-| Aliquota COFINS | Decimal (5,2) | Nao | — | Aliquota de COFINS. |
-| Valor COFINS | Decimal (15,2) | Nao | — | Valor da COFINS. |
+| Alíquota IPI | Decimal (5,2) | Não | — | Alíquota de IPI. |
+| Valor IPI | Decimal (15,2) | Não | — | Valor do IPI. |
+| Alíquota PIS | Decimal (5,2) | Não | — | Alíquota de PIS. |
+| Valor PIS | Decimal (15,2) | Não | — | Valor do PIS. |
+| Alíquota COFINS | Decimal (5,2) | Não | — | Alíquota de COFINS. |
+| Valor COFINS | Decimal (15,2) | Não | — | Valor da COFINS. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **Status da NFe:** Uma NFe passa pelos seguintes status no ciclo de vida: `Rascunho` > `Validada` > `Aguardando Retorno` > `Autorizada` ou `Rejeitada` ou `Denegada` > `Cancelada`. Cada transicao e registrada no log de eventos do documento.
-- **Contingencia:** Se a SEFAZ estiver indisponivel, o sistema permite a emissao em contingencia (FS-DA, SVC-AN, SVC-RS ou DPEC). Apos o restabelecimento da SEFAZ, as notas em contingencia devem ser transmitidas em ate 7 dias.
-- **Cancelamento:** Apos o cancelamento, o numero da nota nao pode ser reutilizado. Utilize o botao **Inutilizar** para pular numeros que foram gerados por engano antes da transmissao.
-- **CC-e:** A Carta de Correcao nao pode alterar: valores fiscais, dados do destinatario (CNPJ, razao social), datas e CFOP. Ela serve apenas para correcoes textuais como endereco de entrega, observacoes, etc.
-- **DANFE:** O DANFE e gerado automaticamente apos a autorizacao. O PDF fica armazenado no sistema e pode ser reenviado por e-mail a qualquer momento.
+- **Status da NFe:** Uma NFe passa pelos seguintes status no ciclo de vida: `Rascunho` > `Validada` > `Aguardando Retorno` > `Autorizada` ou `Rejeitada` ou `Denegada` > `Cancelada`. Cada transição e registrada no log de eventos do documento.
+- **Contingência:** Se a SEFAZ estiver indisponível, o sistema permite a emissão em contingência (FS-DA, SVC-AN, SVC-RS ou DPEC). Após o restabelecimento da SEFAZ, as notas em contingência devem ser transmitidas em até 7 dias.
+- **Cancelamento:** Após o cancelamento, o número da nota não pode ser reutilizado. Utilize o botão **Inutilizar** para pular numeros que foram gerados por engano antes da transmissão.
+- **CC-e:** A Carta de Correção não pode alterar: valores fiscais, dados do destinatário (CNPJ, razão social), datas e CFOP. Ela serve apenas para correções textuais como endereço de entrega, observações, etc.
+- **DANFE:** O DANFE e gerado automaticamente após a autorização. O PDF fica armazenado no sistema e pode ser reenviado por e-mail a qualquer momento.
 
 ## Telas relacionadas
 
-- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao do emitente, certificado e token Focus NFe.
-- **[VFIS0110 (Tabelas Tributarias)](/fiscal/vfis0110):** Aliquotas de NCM, ICMS interno e interestadual.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração do emitente, certificado e token Focus NFe.
+- **[VFIS0110 (Tabelas Tributárias)](/fiscal/vfis0110):** Alíquotas de NCM, ICMS interno e interestadual.
 - **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Registro de NFe de compras (entrada).
-- **[VFIS0220 (CTe)](/fiscal/vfis0220):** Emissao de Conhecimento de Transporte Eletronico.
-- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Codigos Fiscais de Operacao.
-- **[VFIS0360 (Tipos Operacao Entrada)](/fiscal/vfis0360):** Tipos de operacao que orientam o calculo fiscal.
-- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Emissao de Nota Fiscal de Servico Eletronica.
+- **[VFIS0220 (CTe)](/fiscal/vfis0220):** Emissão de Conhecimento de Transporte Eletrônico.
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Códigos Fiscais de Operação.
+- **[VFIS0360 (Tipos Operação Entrada)](/fiscal/vfis0360):** Tipos de operação que orientam o cálculo fiscal.
+- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Emissão de Nota Fiscal de Serviço Eletrônica.

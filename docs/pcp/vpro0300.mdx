@@ -1,0 +1,30 @@
+---
+sidebar_position: 9
+title: "VPRO0300 — Custo Padrão"
+description: "Calcular o custo de fabricação planejado (materiais + operações + overhead) com rollup multinível."
+---
+
+# VPRO0300 — Custo Padrão
+
+> Calcular o **custo de fabricação planejado** de um item — materiais (BOM) + operações (roteiro × custo/hora) + overhead — com **rollup multinível**. É a referência que a Ordem de Produção usa para medir variâncias.
+
+## Objetivo
+
+Compor o custo padrão do item, resolvendo primeiro os intermediários (rollup) antes do produto final.
+
+## Passo a passo
+
+1. Informe o **item** e clique em **Calcular** (executa o rollup).
+2. Veja os componentes: **Material**, **Operação**, **Overhead** e **Total**.
+3. Use **Consultar** para recuperar o custo padrão já salvo de um item.
+
+## Fórmula
+
+```
+custo = Σ material(BOM) + Σ (tempo_operação × custo/hora_centro) + overhead
+```
+
+## Telas relacionadas
+
+- **[VCUS0100 (Custos)](/pcp/vcus0100):** cadastra custo/hora dos centros e custo de compra (entradas do cálculo). O rollup também está disponível ali.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** compara o custo real com este padrão.

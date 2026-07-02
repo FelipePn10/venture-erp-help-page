@@ -1,73 +1,73 @@
 ---
 sidebar_position: 10
-title: "VFIS0340 — Apuracao Simples Nacional"
-description: "Calculo automatico do imposto unificado devido pelas empresas optantes do Simples Nacional, com suporte aos Anexos I ao VI."
+title: "VFIS0340 — Apuração Simples Nacional"
+description: "Cálculo automático do imposto unificado devido pelas empresas optantes do Simples Nacional, com suporte aos Anexos I ao VI."
 ---
 
-# VFIS0340 — Apuracao Simples Nacional
+# VFIS0340 — Apuração Simples Nacional
 
-> Tela de apuracao do Simples Nacional. Realiza o calculo automatico do imposto unificado mensal com base no faturamento bruto, aplicando as aliquotas progressivas dos Anexos I a VI conforme a atividade da empresa.
+> Tela de apuração do Simples Nacional. Realiza o cálculo automático do imposto unificado mensal com base no faturamento bruto, aplicando as alíquotas progressivas dos Anexos I a VI conforme a atividade da empresa.
 
-**Codigo fonte:** `src/modules/fiscal/simples-nacional/vfis0340.vue`
+**Código fonte:** `src/modules/fiscal/simples-nacional/vfis0340.vue`
 
 ## Objetivo
 
-A VFIS0340 automatiza a apuracao do Simples Nacional — o regime tributario unificado que substitui IRPJ, CSLL, PIS, COFINS, IPI, ICMS, ISS e, em alguns casos, a contribuicao patronal (CPP). A tela consolida o faturamento bruto do periodo (mes), aplica as aliquotas progressivas conforme o anexo correto (I — Comercio, II — Industria, III — Servicos, IV — Servicos de construcao, V — Servicos intelectuais, VI — Servicos de transporte), considera a receita bruta acumulada nos ultimos 12 meses para determinar a faixa de aliquota e gera o DAS (Documento de Arrecadacao do Simples Nacional) com os valores detalhados por tributo. A apuracao e realizada por empresa e por estabelecimento.
+A VFIS0340 automatiza a apuração do Simples Nacional — o regime tributário unificado que substitui IRPJ, CSLL, PIS, COFINS, IPI, ICMS, ISS e, em alguns casos, a contribuição patronal (CPP). A tela consolida o faturamento bruto do período (mês), aplica as alíquotas progressivas conforme o anexo correto (I — Comércio, II — Indústria, III — Serviços, IV — Serviços de construção, V — Serviços intelectuais, VI — Serviços de transporte), considera a receita bruta acumulada nos ultimos 12 meses para determinar a faixa de alíquota e gera o DAS (Documento de Arrecadação do Simples Nacional) com os valores detalhados por tributo. A apuração e realizada por empresa e por estabelecimento.
 
 ## Pre-requisitos
 
-- **VFIS0100 (Configuracao Fiscal):** Regime tributario definido como "Simples Nacional" e CNAE principal cadastrado (o CNAE determina qual Anexo sera aplicado).
-- **VFIS0200 (NFe de Saida):** Todas as NFe de saida do periodo devem estar autorizadas e com seus valores corretos.
-- **VFIS0210 (NFe de Entrada):** Notas de entrada do periodo processadas para efeito de exclusao de ICMS/ISS da base (em alguns casos, ICMS e ISS podem ser destacados e nao inclusos no Simples).
-- **VNFS0100 (NFSe):** Notas fiscais de servico emitidas no periodo, pois o ISS compoe o Simples Nacional para empresas de servico.
-- **Vinculo CNAE x Anexo:** O sistema deve ter a tabela de CNAEs vinculada aos Anexos do Simples Nacional (I a VI) para determinar corretamente o anexo aplicavel.
+- **VFIS0100 (Configuração Fiscal):** Regime tributário definido como "Simples Nacional" e CNAE principal cadastrado (o CNAE determina qual Anexo sera aplicado).
+- **VFIS0200 (NFe de Saída):** Todas as NFe de saída do período devem estar autorizadas e com seus valores corretos.
+- **VFIS0210 (NFe de Entrada):** Notas de entrada do período processadas para efeito de exclusão de ICMS/ISS da base (em alguns casos, ICMS e ISS podem ser destacados e não inclusos no Simples).
+- **VNFS0100 (NFSe):** Notas fiscais de serviço emitidas no período, pois o ISS compoe o Simples Nacional para empresas de serviço.
+- **Vínculo CNAE x Anexo:** O sistema deve ter a tabela de CNAEs vinculada aos Anexos do Simples Nacional (I a VI) para determinar corretamente o anexo aplicável.
 
 ## Passo a passo
 
-1. Acesse **Fiscal > Apuracao > Simples Nacional (VFIS0340)**.
-2. Selecione a **Empresa**, o **Local** e o **Periodo de Apuracao** (ano e mes). O sistema verificara se ja existe uma apuracao salva para o periodo.
-3. Clique em **Iniciar Apuracao**. O sistema processara automaticamente o **faturamento bruto do mes**:
-   - Soma dos valores totais de **todas as NFe de saida autorizadas** no periodo.
-   - Soma dos valores totais de **todas as NFSe autorizadas** no periodo.
-   - Deduz **devolucoes de venda** e **cancelamentos** realizados no periodo.
-4. O sistema consulta a **Receita Bruta Acumulada (RBA)** dos ultimos 12 meses (RBA12) para determinar a **faixa de aliquota** na tabela progressiva do Simples Nacional. Essa informacao pode ser preenchida manualmente ou importada de sistemas contabeis.
-5. Com base no CNAE principal da empresa, o sistema identifica o **Anexo** correto (I a VI) e aplica a **tabela progressiva** correspondente. Cada anexo tem ate 6 faixas de receita bruta, com aliquotas nominais crescentes (de 4% a 33%, variando por anexo) e aliquota efetiva calculada pela formula: `(RBT12 * Aliq - PD) / RBT12`, onde PD e a Parcela a Deduzir.
-6. O sistema exibe o **Resumo da Apuracao** com:
+1. Acesse **Fiscal > Apuração > Simples Nacional (VFIS0340)**.
+2. Selecione a **Empresa**, o **Local** e o **Período de Apuração** (ano e mês). O sistema verificara se já existe uma apuração salva para o período.
+3. Clique em **Iniciar Apuração**. O sistema processara automaticamente o **faturamento bruto do mês**:
+   - Soma dos valores totais de **todas as NFe de saída autorizadas** no período.
+   - Soma dos valores totais de **todas as NFSe autorizadas** no período.
+   - Deduz **devoluções de venda** e **cancelamentos** realizados no período.
+4. O sistema consulta a **Receita Bruta Acumulada (RBA)** dos ultimos 12 meses (RBA12) para determinar a **faixa de alíquota** na tabela progressiva do Simples Nacional. Essa informação pode ser preenchida manualmente ou importada de sistemas contábeis.
+5. Com base no CNAE principal da empresa, o sistema identifica o **Anexo** correto (I a VI) e aplica a **tabela progressiva** correspondente. Cada anexo tem até 6 faixas de receita bruta, com alíquotas nominais crescentes (de 4% a 33%, variando por anexo) e alíquota efetiva calculada pela fórmula: `(RBT12 * Aliq - PD) / RBT12`, onde PD e a Parcela a Deduzir.
+6. O sistema exibe o **Resumo da Apuração** com:
    - **RBA12:** Receita Bruta Acumulada nos ultimos 12 meses.
-   - **Receita Bruta do Mes:** Faturamento do periodo de apuracao.
-   - **Anexo aplicavel:** I, II, III, IV, V ou VI.
-   - **Faixa:** Numero da faixa de aliquota (1 a 6).
-   - **Aliquota Nominal:** Percentual da faixa.
+   - **Receita Bruta do Mês:** Faturamento do período de apuração.
+   - **Anexo aplicável:** I, II, III, IV, V ou VI.
+   - **Faixa:** Número da faixa de alíquota (1 a 6).
+   - **Alíquota Nominal:** Percentual da faixa.
    - **Parcela a Deduzir:** Valor em reais.
-   - **Aliquota Efetiva:** Aliquota calculada que sera aplicada ao faturamento do mes.
-7. Clique em **Calcular**. O sistema distribuira o valor total do imposto entre os tributos que compoem o Simples Nacional: IRPJ, CSLL, PIS, COFINS, IPI, ICMS, ISS e CPP (os percentuais de distribuicao variam por anexo e faixa).
-8. A grade **Distribuicao por Tributo** exibe o valor devido de cada tributo e o percentual correspondente.
-9. Verifique os valores calculados. Se necessario, ajuste manualmente a RBA12 ou exclua notas do faturamento base (notas com tributacao separada, como ICMS-ST, devem ser excluidas da base do Simples).
-10. Clique em **Salvar Apuracao**. O sistema armazena a apuracao, os valores por tributo e a RBA12 utilizada.
-11. Clique em **Gerar DAS**. O sistema gera o Documento de Arrecadacao do Simples Nacional com o codigo de barras e as informacoes para pagamento. O DAS pode ser exportado em PDF ou impresso diretamente.
+   - **Alíquota Efetiva:** Alíquota calculada que sera aplicada ao faturamento do mês.
+7. Clique em **Calcular**. O sistema distribuira o valor total do imposto entre os tributos que compõem o Simples Nacional: IRPJ, CSLL, PIS, COFINS, IPI, ICMS, ISS e CPP (os percentuais de distribuição variam por anexo e faixa).
+8. A grade **Distribuição por Tributo** exibe o valor devido de cada tributo e o percentual correspondente.
+9. Verifique os valores calculados. Se necessário, ajuste manualmente a RBA12 ou exclua notas do faturamento base (notas com tributação separada, como ICMS-ST, devem ser excluidas da base do Simples).
+10. Clique em **Salvar Apuração**. O sistema armazena a apuração, os valores por tributo e a RBA12 utilizada.
+11. Clique em **Gerar DAS**. O sistema gera o Documento de Arrecadação do Simples Nacional com o código de barras e as informações para pagamento. O DAS pode ser exportado em PDF ou impresso diretamente.
 
 ## Campos
 
-### Filtros e Cabecalho
+### Filtros e Cabeçalho
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
 | Empresa | Select | Sim | VEMP0100 | Empresa optante do Simples Nacional. |
 | Local | Select | Sim | VLOC0100 | Estabelecimento. |
-| Ano | Numero (4) | Sim | — | Ano da apuracao. |
-| Mes | Select | Sim | 01 a 12 | Mes de competencia da apuracao. |
+| Ano | Número (4) | Sim | — | Ano da apuração. |
+| Mês | Select | Sim | 01 a 12 | Mês de competência da apuração. |
 | RBA12 | Decimal (15,2) | Sim | — | Receita Bruta Acumulada nos 12 meses anteriores. |
 | Anexo | Select | Sim | I, II, III, IV, V, VI | Anexo do Simples Nacional conforme CNAE. |
 
-### Apuracao (grid de valores)
+### Apuração (grid de valores)
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Receita Bruta do Mes | Decimal (15,2) | Auto | — | Faturamento total do mes (NFe + NFSe - devolucoes). |
-| Faixa | Numero (1) | Auto | 1-6 | Faixa de aliquota conforme RBA12. |
-| Aliquota Nominal | Decimal (5,2) | Auto | — | Aliquota da faixa (tabela LC 123/06). |
+| Receita Bruta do Mês | Decimal (15,2) | Auto | — | Faturamento total do mês (NFe + NFSe - devoluções). |
+| Faixa | Número (1) | Auto | 1-6 | Faixa de alíquota conforme RBA12. |
+| Alíquota Nominal | Decimal (5,2) | Auto | — | Alíquota da faixa (tabela LC 123/06). |
 | Parcela a Deduzir | Decimal (15,2) | Auto | — | Valor fixo a deduzir conforme faixa e anexo. |
-| Aliquota Efetiva | Decimal (5,2) | Auto | — | Aliquota efetiva = (RBT12 * Aliq - PD) / RBT12. |
+| Alíquota Efetiva | Decimal (5,2) | Auto | — | Alíquota efetiva = (RBT12 * Aliq - PD) / RBT12. |
 | Imposto Total | Decimal (15,2) | Auto | — | Valor total do Simples Nacional devido. |
 | IRPJ | Decimal (15,2) | Auto | — | Parcela do IRPJ no imposto total. |
 | CSLL | Decimal (15,2) | Auto | — | Parcela da CSLL. |
@@ -76,21 +76,21 @@ A VFIS0340 automatiza a apuracao do Simples Nacional — o regime tributario uni
 | IPI | Decimal (15,2) | Auto | — | Parcela do IPI. |
 | ICMS | Decimal (15,2) | Auto | — | Parcela do ICMS. |
 | ISS | Decimal (15,2) | Auto | — | Parcela do ISS. |
-| CPP | Decimal (15,2) | Auto | — | Parcela da Contribuicao Patronal. |
+| CPP | Decimal (15,2) | Auto | — | Parcela da Contribuição Patronal. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **RBA12 correta:** A RBA12 e o principal fator que determina a aliquota efetiva. Se a RBA12 estiver incorreta, toda a apuracao ficara errada. O sistema importa automaticamente a RBA12 das apuracoes anteriores armazenadas, mas e responsabilidade do usuario verificar e corrigir se necessario.
-- **Exclusoes da base:** ICMS-ST, IPI (para empresas nao equiparadas a industrial), substituicao tributaria e algumas receitas especificas podem ser excluidas da base de calculo do Simples. Utilize os checkboxes de exclusao antes de calcular.
-- **Anexo III vs. V:** O Anexo III (servicos) aplica-se a maioria das empresas de servico, mas o Anexo V aplica-se a servicos intelectuais (advocacia, auditoria, consultoria, etc.). A distincao e feita pelo CNAE. O Fator "r" (razao entre folha de salarios e receita bruta) pode deslocar a empresa do Anexo V para o III, se >= 28%.
+- **RBA12 correta:** A RBA12 e o principal fator que determina a alíquota efetiva. Se a RBA12 estiver incorreta, toda a apuração ficara errada. O sistema importa automaticamente a RBA12 das apurações anteriores armazenadas, mas e responsabilidade do usuário verificar e corrigir se necessário.
+- **Exclusões da base:** ICMS-ST, IPI (para empresas não equiparadas a industrial), substituição tributária e algumas receitas específicas podem ser excluidas da base de cálculo do Simples. Utilize os checkboxes de exclusão antes de calcular.
+- **Anexo III vs. V:** O Anexo III (serviços) aplica-se a maioria das empresas de serviço, mas o Anexo V aplica-se a serviços intelectuais (advocacia, auditoria, consultoria, etc.). A distinção e feita pelo CNAE. O Fator "r" (razão entre folha de salários e receita bruta) pode deslocar a empresa do Anexo V para o III, se >= 28%.
 - **Sublimite estadual e municipal:** Empresas com receita bruta anual acima do sublimite (geralmente R$ 3.600.000,00) perdem o direito de recolher ICMS e ISS no Simples Nacional e devem recolhe-los separadamente. O sistema alerta quando a RBA12 se aproxima ou ultrapassa o sublimite.
-- **Geracao do DAS:** Apos gerar o DAS, a apuracao fica bloqueada para alteracoes. Se for necessario corrigir, utilize o botao **Retificar Apuracao**, que libera a edicao e registra o historico de retificacoes.
+- **Geração do DAS:** Após gerar o DAS, a apuração fica bloqueada para alterações. Se for necessário corrigir, utilize o botão **Retificar Apuração**, que libera a edição e registra o histórico de retificações.
 
 ## Telas relacionadas
 
-- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao do regime tributario como Simples Nacional.
-- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Notas fiscais de saida que compoem o faturamento do mes.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Notas de entrada que podem conter exclusoes da base.
-- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao de ICMS separada para casos de exclusao do Simples.
-- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Notas de servico que compoem o faturamento.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração do regime tributário como Simples Nacional.
+- **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Notas fiscais de saída que compõem o faturamento do mês.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Notas de entrada que podem conter exclusões da base.
+- **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração de ICMS separada para casos de exclusão do Simples.
+- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Notas de serviço que compõem o faturamento.
 - **[VEMP0100 (Cadastro de Empresas)](/cadastros/vemp0100):** Empresa com CNAE vinculado ao anexo correto.

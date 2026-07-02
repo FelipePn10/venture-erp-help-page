@@ -1,16 +1,16 @@
 ---
 sidebar_position: 10
-title: "VAVF0105 — Tipos Abono Divergencias"
-description: "Cadastro dos tipos de abono utilizados para aceitacao condicional de divergencias de qualidade."
+title: "VAVF0105 — Tipos Abono Divergências"
+description: "Cadastro dos tipos de abono utilizados para aceitação condicional de divergências de qualidade."
 ---
 
-# VAVF0105 — Tipos Abono Divergencias
+# VAVF0105 — Tipos Abono Divergências
 
-> Cadastro dos tipos de abono que formalizam a aceitacao condicional de divergencias encontradas durante as inspecoes de qualidade.
+> Cadastro dos tipos de abono que formalizam a aceitação condicional de divergências encontradas durante as inspeções de qualidade.
 
 ## Objetivo
 
-Permitir a definicao dos tipos de abono de divergencias que serao utilizados no processo de aceitacao condicional de nao-conformidades. Cada tipo de abono estabelece as condicoes sob as quais uma divergencia pode ser aceita, o fluxo de aprovacao necessario e as implicacoes (ex: desconto no preco, devolucao parcial, retrabalho pelo fornecedor). Os abonos sao a formalizacao de que, mesmo com uma nao-conformidade, o material pode ser utilizado, seja por urgencia, por impacto minimo na qualidade ou por acordo comercial.
+Permitir a definição dos tipos de abono de divergências que serão utilizados no processo de aceitação condicional de não-conformidades. Cada tipo de abono estabelece as condições sob as quais uma divergência pode ser aceita, o fluxo de aprovação necessário e as implicações (ex: desconto no preço, devolução parcial, retrabalho pelo fornecedor). Os abonos são a formalização de que, mesmo com uma não-conformidade, o material pode ser utilizado, seja por urgência, por impacto mínimo na qualidade ou por acordo comercial.
 
 ## Pre-requisitos
 
@@ -20,46 +20,46 @@ Permitir a definicao dos tipos de abono de divergencias que serao utilizados no 
 
 ## Passo a passo
 
-1. Acesse a tela VAVF0105 pelo menu Inspecao > Tipos Abono Divergencias.
+1. Acesse a tela VAVF0105 pelo menu Inspeção > Tipos Abono Divergências.
 2. Clique em **Novo** para cadastrar um novo tipo de abono.
-3. Preencha o **Codigo** e a **Descricao** do tipo de abono (ex: "AB-DESC" — Abono com Desconto, "AB-DEV-PARC" — Abono com Devolucao Parcial).
-4. Selecione o **Tipo de Resolucao**: Desconto Comercial, Devolucao Parcial, Retrabalho pelo Fornecedor, Aceitacao sem Restricao, Refugo.
-5. Defina as **Consequencias Financeiras** do abono: se gera desconto automatico, devolucao de valor ou ajuste contratual.
-6. Configure o **Fluxo de Aprovacao**: niveis hierarquicos que devem aprovar o abono e seus limites de alcada.
-7. Defina **Limites de Alcada** por valor: ate qual montante cada nivel pode aprovar.
-8. Marque o toggle **Requer Evidencia do Fornecedor** se o fornecedor deve encaminhar documentos comprobatorios.
-9. Configure o **Prazo Maximo para Resolucao** (dias) para abonos deste tipo.
+3. Preencha o **Código** e a **Descrição** do tipo de abono (ex: "AB-DESC" — Abono com Desconto, "AB-DEV-PARC" — Abono com Devolução Parcial).
+4. Selecione o **Tipo de Resolução**: Desconto Comercial, Devolução Parcial, Retrabalho pelo Fornecedor, Aceitação sem Restrição, Refugo.
+5. Defina as **Consequências Financeiras** do abono: se gera desconto automático, devolução de valor ou ajuste contratual.
+6. Configure o **Fluxo de Aprovação**: níveis hierárquicos que devem aprovar o abono e seus limites de alcada.
+7. Defina **Limites de Alcada** por valor: até qual montante cada nível pode aprovar.
+8. Marque o toggle **Requer Evidência do Fornecedor** se o fornecedor deve encaminhar documentos comprobatórios.
+9. Configure o **Prazo Máximo para Resolução** (dias) para abonos deste tipo.
 10. Clique em **Salvar** para armazenar o tipo de abono.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo | texto | Sim | — | Identificador unico do tipo de abono |
-| Descricao | texto | Sim | — | Nome descritivo do tipo de abono |
-| Tipo de Resolucao | select | Sim | Desconto Comercial / Devolucao Parcial / Retrabalho Fornecedor / Aceitacao sem Restricao / Refugo | Destino da nao-conformidade |
-| Consequencia Financeira | select | Nao | Gera Desconto / Gera Credito / Nao Financeira | Impacto financeiro do abono |
-| Fluxo de Aprovacao | select | Sim | Lista de fluxos | Workflow de aprovacao do abono |
-| Limite Alcada — Nivel 1 (R$) | numero | Nao | — | Valor maximo de aprovacao do primeiro nivel |
-| Limite Alcada — Nivel 2 (R$) | numero | Nao | — | Valor maximo de aprovacao do segundo nivel |
-| Limite Alcada — Nivel 3 (R$) | numero | Nao | — | Valor maximo de aprovacao do terceiro nivel |
-| Requer Evidencia do Fornecedor | toggle | Nao | — | Fornecedor deve anexar documentos |
-| Prazo Maximo para Resolucao (dias) | numero | Sim | — | Tempo maximo para conclusao do abono |
+| Código | texto | Sim | — | Identificador único do tipo de abono |
+| Descrição | texto | Sim | — | Nome descritivo do tipo de abono |
+| Tipo de Resolução | select | Sim | Desconto Comercial / Devolução Parcial / Retrabalho Fornecedor / Aceitação sem Restrição / Refugo | Destino da não-conformidade |
+| Consequência Financeira | select | Não | Gera Desconto / Gera Crédito / Não Financeira | Impacto financeiro do abono |
+| Fluxo de Aprovação | select | Sim | Lista de fluxos | Workflow de aprovação do abono |
+| Limite Alcada — Nível 1 (R$) | número | Não | — | Valor máximo de aprovação do primeiro nível |
+| Limite Alcada — Nível 2 (R$) | número | Não | — | Valor máximo de aprovação do segundo nível |
+| Limite Alcada — Nível 3 (R$) | número | Não | — | Valor máximo de aprovação do terceiro nível |
+| Requer Evidência do Fornecedor | toggle | Não | — | Fornecedor deve anexar documentos |
+| Prazo Máximo para Resolução (dias) | número | Sim | — | Tempo máximo para conclusão do abono |
 | Ativo | toggle | Sim | — | Status do tipo de abono |
 
-## Observacoes importantes
+## Observações importantes
 
-- O **Fluxo de Aprovacao** e o coracao do controle de abonos. Abaono sem aprovacao adequada pode gerar passivos de qualidade e financeiros.
-- As **Alcadas** garantem que abonos de maior valor sejam aprovados por niveis hierarquicos superiores, respeitando a governanca corporativa.
-- O **Tipo de Resolucao "Refugo"** nao e propriamente um abono, mas uma forma de registrar que o material foi recusado e deve ser descartado ou devolvido integralmente.
-- O toggle **Requer Evidencia do Fornecedor** e utilizado quando o fornecedor contesta a nao-conformidade e precisa apresentar contra-prova (ex: laudos de seu proprio laboratorio).
-- O **Prazo Maximo para Resolucao** aciona alertas automaticos: ao atingir 50% e 80% do prazo, notificacoes sao enviadas ao aprovador e ao responsavel.
-- Tipos de abono **inativos** nao ficam disponiveis para selecao em novas ocorrencias, mas abonos ja em andamento com este tipo continuam seu fluxo normal.
+- O **Fluxo de Aprovação** e o coração do controle de abonos. Abaono sem aprovação adequada pode gerar passivos de qualidade e financeiros.
+- As **Alcadas** garantem que abonos de maior valor sejam aprovados por níveis hierárquicos superiores, respeitando a governanca corporativa.
+- O **Tipo de Resolução "Refugo"** não e propriamente um abono, mas uma forma de registrar que o material foi recusado e deve ser descartado ou devolvido integralmente.
+- O toggle **Requer Evidência do Fornecedor** e utilizado quando o fornecedor contesta a não-conformidade e precisa apresentar contra-prova (ex: laudos de seu próprio laboratório).
+- O **Prazo Máximo para Resolução** aciona alertas automaticos: ao atingir 50% e 80% do prazo, notificações são enviadas ao aprovador e ao responsável.
+- Tipos de abono **inativos** não ficam disponíveis para seleção em novas ocorrencias, mas abonos já em andamento com este tipo continuam seu fluxo normal.
 
 ## Telas relacionadas
 
 - [VINS0106 (Ocorrencias)](/inspecao/vins0106): Ocorrencias que geram a necessidade de abono.
 - [VINS0105 (Tipos de Ocorrencias)](/inspecao/vins0105): Tipos de ocorrencia que disparam o workflow de abono.
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores partes nos abonos.
-- [VAVF0101 (Parametros Avaliacao Fornecedores)](/inspecao/vavf0101): Abonos que impactam a avaliacao de fornecedores.
+- [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101): Abonos que impactam a avaliação de fornecedores.
 - [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF que reflete os abonos registrados.

@@ -1,89 +1,89 @@
 ---
 sidebar_position: 1
-title: "VFIS0100 — Configuracao Fiscal"
-description: "Cadastro da identidade fiscal do emitente, token Focus NFe e aliquotas padrao do sistema."
+title: "VFIS0100 — Configuração Fiscal"
+description: "Cadastro da identidade fiscal do emitente, token Focus NFe e alíquotas padrão do sistema."
 ---
 
-# VFIS0100 — Configuracao Fiscal
+# VFIS0100 — Configuração Fiscal
 
-> Tela mestra do modulo Fiscal. Centraliza a identidade fiscal da empresa emitente, as credenciais de comunicacao com a SEFAZ via API Focus NFe e os parametros tributarios padrao que serao herdados por todas as operacoes fiscais do ERP.
+> Tela mestra do módulo Fiscal. Centraliza a identidade fiscal da empresa emitente, as credenciais de comunicação com a SEFAZ via API Focus NFe e os parâmetros tributários padrão que serão herdados por todas as operações fiscais do ERP.
 
-**Codigo fonte:** `src/modules/fiscal/configuration/vfis0100.vue`
+**Código fonte:** `src/modules/fiscal/configuration/vfis0100.vue`
 
 ## Objetivo
 
-A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da empresa emitente no sistema. Aqui sao definidos os dados cadastrais que aparecerao nos XMLs de NFe, NFCe, CTe e NFSe: razao social, CNPJ, inscricao estadual, regime tributario, CNAE principal, endereco do estabelecimento e informacoes de contato. Alem disso, esta tela armazena o token de autenticacao da API Focus NFe — o barramento fiscal que conecta o ERP a SEFAZ de cada estado — e as aliquotas padrao de ICMS, PIS, COFINS, IPI, ISS e IRPJ que serao sugeridas automaticamente durante o preenchimento de documentos fiscais.
+A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da empresa emitente no sistema. Aqui são definidos os dados cadastrais que aparecerão nos XMLs de NFe, NFCe, CTe e NFSe: razão social, CNPJ, inscrição estadual, regime tributário, CNAE principal, endereço do estabelecimento e informações de contato. Além disso, esta tela armazena o token de autenticação da API Focus NFe — o barramento fiscal que conecta o ERP a SEFAZ de cada estado — e as alíquotas padrão de ICMS, PIS, COFINS, IPI, ISS e IRPJ que serão sugeridas automaticamente durante o preenchimento de documentos fiscais.
 
 ## Pre-requisitos
 
-- **VEMP0100 (Cadastro de Empresas):** A empresa deve estar previamente cadastrada no modulo de Gestao Empresarial, pois a VFIS0100 vincula o registro fiscal a uma entidade empresarial ja existente.
-- **VLOC0100 (Cadastro de Locais):** O local de emissao (estabelecimento) deve estar cadastrado, com endereco completo, CEP, municipio e codigo IBGE corretos, pois esses dados compoem o XML fiscal.
-- **Token Focus NFe:** E necessario contratar o servico Focus NFe e obter o token de autenticacao no painel do provedor (https://focusnfe.com.br). Sem este token, a emissao de NFe, NFCe e CTe nao funcionara.
-- **Usuario com permissao:** Acesso restrito a perfis administrativos/fiscais definidos no modulo de seguranca.
+- **VEMP0100 (Cadastro de Empresas):** A empresa deve estar previamente cadastrada no módulo de Gestão Empresarial, pois a VFIS0100 vincula o registro fiscal a uma entidade empresarial já existente.
+- **VLOC0100 (Cadastro de Locais):** O local de emissão (estabelecimento) deve estar cadastrado, com endereço completo, CEP, municipio e código IBGE corretos, pois esses dados compõem o XML fiscal.
+- **Token Focus NFe:** E necessário contratar o serviço Focus NFe e obter o token de autenticação no painel do provedor (https://focusnfe.com.br). Sem este token, a emissão de NFe, NFCe e CTe não funcionara.
+- **Usuário com permissão:** Acesso restrito a perfis administrativos/fiscais definidos no módulo de segurança.
 
 ## Passo a passo
 
-1. Acesse o menu **Fiscal > Configuracoes > Configuracao Fiscal (VFIS0100)**.
-2. Selecione a empresa e o local desejados nos combos superiores. O sistema carregara os dados ja cadastrados ou exibira um formulario em branco para novo registro.
-3. Preencha os **Dados do Emitente**: razao social, nome fantasia, CNPJ, inscricao estadual, inscricao municipal, regime tributario (Simples Nacional, Lucro Presumido ou Lucro Real), CNAE principal e CNAE secundario.
-4. Informe o **Endereco do Estabelecimento**: logradouro, numero, complemento, bairro, CEP, municipio (com codigo IBGE), UF e telefone de contato. Esses dados sao exportados para o XML da NFe no grupo `<emit>/<enderEmit>`.
-5. Na secao **Token Focus NFe**, cole o token de autenticacao obtido no painel do provedor. Marque o checkbox `Ambiente de homologacao` se estiver em fase de testes. O campo `URL Base` e preenchido automaticamente conforme o ambiente selecionado.
-6. Na secao **Aliquotas Padrao**, defina os percentuais de ICMS interestadual e interno, PIS, COFINS, IPI, ISS e IRPJ. Esses valores serao sugeridos automaticamente nos documentos fiscais, mas podem ser alterados pontualmente.
-7. Configure o **E-mail de Envio**: endereco de e-mail, servidor SMTP, porta, SSL/TLS e credenciais para envio automatico dos XMLs e DANFEs aos destinatarios.
+1. Acesse o menu **Fiscal > Configurações > Configuração Fiscal (VFIS0100)**.
+2. Selecione a empresa e o local desejados nos combos superiores. O sistema carregara os dados já cadastrados ou exibira um formulário em branco para novo registro.
+3. Preencha os **Dados do Emitente**: razão social, nome fantasia, CNPJ, inscrição estadual, inscrição municipal, regime tributário (Simples Nacional, Lucro Presumido ou Lucro Real), CNAE principal e CNAE secundário.
+4. Informe o **Endereço do Estabelecimento**: logradouro, número, complemento, bairro, CEP, municipio (com código IBGE), UF e telefone de contato. Esses dados são exportados para o XML da NFe no grupo `<emit>/<enderEmit>`.
+5. Na seção **Token Focus NFe**, cole o token de autenticação obtido no painel do provedor. Marque o checkbox `Ambiente de homologacao` se estiver em fase de testes. O campo `URL Base` e preenchido automaticamente conforme o ambiente selecionado.
+6. Na seção **Alíquotas Padrão**, defina os percentuais de ICMS interestadual e interno, PIS, COFINS, IPI, ISS e IRPJ. Esses valores serão sugeridos automaticamente nos documentos fiscais, mas podem ser alterados pontualmente.
+7. Configure o **E-mail de Envio**: endereço de e-mail, servidor SMTP, porta, SSL/TLS e credenciais para envio automático dos XMLs e DANFEs aos destinatários.
 8. Na aba **Certificado Digital**, faca o upload do arquivo `.pfx` (A1) e informe a senha. O certificado e armazenado criptografado e utilizado para assinatura digital dos XMLs.
-9. Configure a **Serie e Numeracao** padrao das NFe e NFCe. Defina a serie atual e o proximo numero sequencial a ser utilizado.
-10. Selecione o **Tipo de Emissao** padrao: Normal, Contingencia FS-DA, SVC-AN, SVC-RS ou DPEC.
-11. Na aba **NFSe**, configure os dados especificos para emissao de Nota Fiscal de Servico: cidade, provedor (ISS Fortaleza, NFSe Nacional, etc.), token e aliquotas de ISS.
-12. Clique em **Salvar**. O sistema validara o CNPJ, a consistencia do token Focus NFe (testando uma chamada simples a API) e a integridade do certificado digital.
-13. Apos salvar, utilize o botao **Testar Conexao** para verificar se o token Focus NFe esta ativo e se o certificado digital e valido. Em caso de erro, verifique as mensagens no log e corrija os dados.
+9. Configure a **Série e Numeração** padrão das NFe e NFCe. Defina a série atual e o próximo número sequencial a ser utilizado.
+10. Selecione o **Tipo de Emissão** padrão: Normal, Contingência FS-DA, SVC-AN, SVC-RS ou DPEC.
+11. Na aba **NFSe**, configure os dados específicos para emissão de Nota Fiscal de Serviço: cidade, provedor (ISS Fortaleza, NFSe Nacional, etc.), token e alíquotas de ISS.
+12. Clique em **Salvar**. O sistema validara o CNPJ, a consistência do token Focus NFe (testando uma chamada simples a API) e a integridade do certificado digital.
+13. Após salvar, utilize o botão **Testar Conexao** para verificar se o token Focus NFe esta ativo e se o certificado digital e valido. Em caso de erro, verifique as mensagens no log e corrija os dados.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Empresa | Select | Sim | Empresas da VEMP0100 | Entidade empresarial vinculada a configuracao fiscal. |
+| Empresa | Select | Sim | Empresas da VEMP0100 | Entidade empresarial vinculada a configuração fiscal. |
 | Local | Select | Sim | Locais da VLOC0100 | Estabelecimento emissor dos documentos fiscais. |
-| Razao Social | Texto (150) | Sim | — | Razao social do emitente. Exportado para o grupo `<emit>` do XML. |
+| Razão Social | Texto (150) | Sim | — | Razão social do emitente. Exportado para o grupo `<emit>` do XML. |
 | Nome Fantasia | Texto (100) | Sim | — | Nome fantasia do emitente. |
 | CNPJ | Texto (14) | Sim | — | CNPJ raiz do emitente (apenas numeros). |
-| Inscricao Estadual | Texto (20) | Sim* | — | IE do emitente. Obrigatorio exceto para MEI e produtor rural. |
-| Inscricao Municipal | Texto (20) | Nao | — | IM do emitente. Necessaria para emissao de NFSe. |
-| Regime Tributario | Select | Sim | Simples Nacional / Lucro Presumido / Lucro Real | Regime de apuracao do emitente. |
-| CNAE Principal | Texto (7) | Sim | — | Codigo CNAE fiscal principal da empresa. |
-| CNAE Secundario | Texto (7) | Nao | — | Codigo CNAE fiscal secundario. |
-| Logradouro | Texto (100) | Sim | — | Endereco do estabelecimento. |
-| Numero | Texto (10) | Sim | — | Numero do endereco. |
+| Inscrição Estadual | Texto (20) | Sim* | — | IE do emitente. Obrigatório exceto para MEI e produtor rural. |
+| Inscrição Municipal | Texto (20) | Não | — | IM do emitente. Necessária para emissão de NFSe. |
+| Regime Tributário | Select | Sim | Simples Nacional / Lucro Presumido / Lucro Real | Regime de apuração do emitente. |
+| CNAE Principal | Texto (7) | Sim | — | Código CNAE fiscal principal da empresa. |
+| CNAE Secundário | Texto (7) | Não | — | Código CNAE fiscal secundário. |
+| Logradouro | Texto (100) | Sim | — | Endereço do estabelecimento. |
+| Número | Texto (10) | Sim | — | Número do endereço. |
 | Bairro | Texto (60) | Sim | — | Bairro do estabelecimento. |
 | CEP | Texto (8) | Sim | — | CEP do estabelecimento (apenas numeros). |
-| Municipio | Select | Sim | — | Municipio com codigo IBGE (7 digitos). |
-| Token Focus NFe | Texto (200) | Sim | — | Token de autenticacao da API Focus NFe. |
-| Ambiente | Select | Sim | Homologacao / Producao | Define se as NFe serao emitidas em homologacao ou producao. |
-| Aliquota ICMS Interna | Decimal (5,2) | Nao | — | Percentual padrao de ICMS para operacoes internas. |
-| Aliquota ICMS Interestadual | Decimal (5,2) | Nao | — | Percentual padrao de ICMS para operacoes interestaduais. |
-| Aliquota PIS | Decimal (5,2) | Nao | — | Percentual padrao de PIS. |
-| Aliquota COFINS | Decimal (5,2) | Nao | — | Percentual padrao de COFINS. |
-| Aliquota IPI | Decimal (5,2) | Nao | — | Percentual padrao de IPI. |
-| Aliquota ISS | Decimal (5,2) | Nao | — | Percentual padrao de ISS. |
+| Municipio | Select | Sim | — | Municipio com código IBGE (7 digitos). |
+| Token Focus NFe | Texto (200) | Sim | — | Token de autenticação da API Focus NFe. |
+| Ambiente | Select | Sim | Homologação / Produção | Define se as NFe serão emitidas em homologação ou produção. |
+| Alíquota ICMS Interna | Decimal (5,2) | Não | — | Percentual padrão de ICMS para operações internas. |
+| Alíquota ICMS Interestadual | Decimal (5,2) | Não | — | Percentual padrão de ICMS para operações interestaduais. |
+| Alíquota PIS | Decimal (5,2) | Não | — | Percentual padrão de PIS. |
+| Alíquota COFINS | Decimal (5,2) | Não | — | Percentual padrão de COFINS. |
+| Alíquota IPI | Decimal (5,2) | Não | — | Percentual padrão de IPI. |
+| Alíquota ISS | Decimal (5,2) | Não | — | Percentual padrão de ISS. |
 | Certificado Digital | Upload (.pfx) | Sim | — | Arquivo do certificado A1 para assinatura digital dos XMLs. |
 | Senha Certificado | Password | Sim | — | Senha do certificado digital A1. |
-| Serie NFe | Numero (3) | Sim | — | Serie padrao para NFe (geralmente 1). |
-| Prox. Numero NFe | Numero (9) | Sim | — | Proximo numero sequencial a ser utilizado na NFe. |
+| Série NFe | Número (3) | Sim | — | Série padrão para NFe (geralmente 1). |
+| Prox. Número NFe | Número (9) | Sim | — | Próximo número sequencial a ser utilizado na NFe. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **CNPJ:** O CNPJ informado deve ser exatamente o mesmo do certificado digital. Divergencias causam rejeicao na SEFAZ com o codigo 242 (CNPJ do emitente difere do CNPJ do certificado).
-- **Token Focus NFe:** Nunca compartilhe o token. Ele concede acesso a todas as operacoes fiscais da sua empresa no provedor. Em caso de comprometimento, revogue o token imediatamente no painel da Focus NFe e gere um novo.
-- **Aliquotas Padrao:** As aliquotas definidas aqui sao sugestoes iniciais. Cada operacao fiscal (CFOP) pode ter aliquotas especificas configuradas na VFIS0320 (Parametros ICMS/IPI), que sobrescrevem os valores padrao durante o calculo do imposto.
-- **Certificado Digital:** O ERP suporta certificado do tipo A1 (arquivo .pfx). O certificado A3 (token fisico ou smart card) requer configuracao adicional no sistema operacional. Mantenha o certificado sempre atualizado — certificados vencidos impedem a emissao de NFe.
-- **Ambiente de Homologacao:** Utilize o ambiente de homologacao durante a fase de testes e implantacao. As NFe emitidas neste ambiente nao tem validade juridica e sao automaticamente recusadas pela SEFAZ para fins comerciais. Antes de ir para producao, verifique se todas as validacoes da SEFAZ estao passando.
+- **CNPJ:** O CNPJ informado deve ser exatamente o mesmo do certificado digital. Divergências causam rejeição na SEFAZ com o código 242 (CNPJ do emitente difere do CNPJ do certificado).
+- **Token Focus NFe:** Nunca compartilhe o token. Ele concede acesso a todas as operações fiscais da sua empresa no provedor. Em caso de comprometimento, revogue o token imediatamente no painel da Focus NFe e gere um novo.
+- **Alíquotas Padrão:** As alíquotas definidas aqui são sugestoes iniciais. Cada operação fiscal (CFOP) pode ter alíquotas específicas configuradas na VFIS0320 (Parâmetros ICMS/IPI), que sobrescrevem os valores padrão durante o cálculo do imposto.
+- **Certificado Digital:** O ERP suporta certificado do tipo A1 (arquivo .pfx). O certificado A3 (token físico ou smart card) requer configuração adicional no sistema operacional. Mantenha o certificado sempre atualizado — certificados vencidos impedem a emissão de NFe.
+- **Ambiente de Homologação:** Utilize o ambiente de homologação durante a fase de testes e implantação. As NFe emitidas neste ambiente não tem validade jurídica e são automaticamente recusadas pela SEFAZ para fins comerciais. Antes de ir para produção, verifique se todas as validações da SEFAZ estao passando.
 
 ## Telas relacionadas
 
-- **[VFIS0110 (Tabelas Tributarias)](/fiscal/vfis0110):** Cadastro das tabelas de NCM, ICMS interno e interestadual que complementam a configuracao fiscal base.
-- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Emissao e gerenciamento do ciclo completo da NFe de saida.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Registro de NFe de entrada (compras) por digitacao manual, chave de 44 digitos ou upload de XML.
-- **[VFIS0220 (CTe)](/fiscal/vfis0220):** Emissao de Conhecimento de Transporte Eletronico.
-- **[VFIS0340 (Apuracao Simples Nacional)](/fiscal/vfis0340):** Calculo automatico do imposto unificado para empresas do Simples Nacional.
-- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Emissao de Nota Fiscal de Servico Eletronica.
+- **[VFIS0110 (Tabelas Tributárias)](/fiscal/vfis0110):** Cadastro das tabelas de NCM, ICMS interno e interestadual que complementam a configuração fiscal base.
+- **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Emissão e gerenciamento do ciclo completo da NFe de saída.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Registro de NFe de entrada (compras) por digitação manual, chave de 44 digitos ou upload de XML.
+- **[VFIS0220 (CTe)](/fiscal/vfis0220):** Emissão de Conhecimento de Transporte Eletrônico.
+- **[VFIS0340 (Apuração Simples Nacional)](/fiscal/vfis0340):** Cálculo automático do imposto unificado para empresas do Simples Nacional.
+- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Emissão de Nota Fiscal de Serviço Eletrônica.
 - **[VCLI0500 (Cadastro de Clientes)](/cliente/vcli0500):** Cadastro de clientes com dados fiscais (IE, IM, SUFRAMA).
-- **[VEMP0100 (Cadastro de Empresas)](/cadastros/vemp0100):** Cadastro da entidade empresarial vinculada a esta configuracao.
+- **[VEMP0100 (Cadastro de Empresas)](/cadastros/vemp0100):** Cadastro da entidade empresarial vinculada a esta configuração.

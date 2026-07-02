@@ -1,0 +1,31 @@
+---
+sidebar_position: 16
+title: "VCUS0100 — Custos (Centro, Compra, Alocação e Overhead)"
+description: "Manter as entradas do custo padrão e o rateio de indiretos, com recálculo do rollup."
+---
+
+# VCUS0100 — Custos (Centro, Compra, Alocação e Overhead)
+
+> Manter as **entradas do custo padrão** e o **rateio de indiretos**: custo/hora por centro, custo de compra por item, bases de alocação e alocações de overhead. Permite recalcular o **rollup** do custo padrão.
+
+## Objetivo
+
+Concentrar os dados que alimentam a fórmula do custo padrão (VPRO0300) e a apuração real da OF (VPRO0900).
+
+## Passo a passo
+
+1. **Custo/hora por centro de trabalho**: informe o centro e o valor/hora e salve. Usado na apuração da mão-de-obra real da OF.
+2. **Custo de compra por item**: informe o item e o custo (entra no material do custo padrão de itens comprados).
+3. **Base de alocação**: cadastre o critério de rateio (código, descrição, período).
+4. **Alocação de overhead**: distribui os indiretos usando a base escolhida (centro de custo, base, taxa %).
+5. **Rollup**: informe um item e recalcule o custo padrão (Material / Operação / Total).
+
+## Observações importantes
+
+- Os custos de centro e de compra alimentam diretamente a **fórmula do custo padrão** (VPRO0300) e a **apuração real** da OF (VPRO0900).
+
+## Telas relacionadas
+
+- **[VPRO0300 (Custo Padrão)](/pcp/vpro0300):** consome custo/hora e custo de compra.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** apura o custo real com base nestes valores.
+- **[VCTB0102 (Centro de Custo)](/contabilidade/vctb0102):** centros de custo vinculados.

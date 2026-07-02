@@ -1,63 +1,63 @@
 ---
 sidebar_position: 5
-title: "VENT0115 — Roteiro Padrao"
-description: "Templates de roteiros de fabricacao reutilizaveis para copia em itens."
+title: "VENT0115 — Roteiro Padrão"
+description: "Templates de roteiros de fabricação reutilizáveis para cópia em itens."
 ---
 
-# VENT0115 — Roteiro Padrao
+# VENT0115 — Roteiro Padrão
 
-> Templates de roteiros de fabricacao pre-definidos que podem ser reutilizados como base para criacao de roteiros de itens similares.
+> Templates de roteiros de fabricação pre-definidos que podem ser reutilizados como base para criação de roteiros de itens similares.
 
 ## Objetivo
 
-Permitir o cadastro de roteiros de fabricacao padrao que servem como templates para a criacao de roteiros especificos de itens. Roteiros padrao sao especialmente uteis em ambientes onde muitos itens compartilham a mesma sequencia de operacoes, variando apenas em parametros especificos como tempos ou centros de trabalho. Ao utilizar um roteiro padrao como base, o usuario evita retrabalho na digitacao das operacoes e garante consistencia entre roteiros de itens similares.
+Permitir o cadastro de roteiros de fabricação padrão que servem como templates para a criação de roteiros específicos de itens. Roteiros padrão são especialmente úteis em ambientes onde muitos itens compartilham a mesma sequência de operações, variando apenas em parâmetros específicos como tempos ou centros de trabalho. Ao utilizar um roteiro padrão como base, o usuário evita retrabalho na digitação das operações e garante consistência entre roteiros de itens similares.
 
 ## Pre-requisitos
 
-- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Tipos de maquina para associacao as operacoes do roteiro padrao.
-- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202) — Roteiros de fabricacao que utilizarao o roteiro padrao como template.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Tipos de maquina para associação as operações do roteiro padrão.
+- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202) — Roteiros de fabricação que utilizarão o roteiro padrão como template.
 
 ## Passo a passo
 
-1. Acesse a tela VENT0115 pelo menu Engenharia > Roteiro Padrao.
-2. Clique em **Novo** para iniciar o cadastro de um novo roteiro padrao.
-3. Preencha o **Codigo do Roteiro** e a **Descricao** que identifiquem claramente o tipo de processo (ex: "RT-MONTAGEM" para roteiro de montagem padrao).
-4. Para cada operacao do roteiro padrao, preencha a sequencia, descricao e centro de trabalho.
-5. Defina as **Formulas de Tempo** genericas, utilizando variaveis como `QTD` para quantidade, que serao ajustadas posteriormente no roteiro especifico.
-6. Configure o **Tipo de Mao de Obra** e a **Quantidade de Operadores** padrao para cada operacao.
-7. Se aplicavel, defina a **Taxa de Ocupacao** padrao esperada para cada centro de trabalho.
-8. Ordene as operacoes pela **Sequencia** correta de execucao utilizando os botoes de reordenacao se necessario.
-9. Clique em **Salvar** para armazenar o template de roteiro padrao.
+1. Acesse a tela VENT0115 pelo menu Engenharia > Roteiro Padrão.
+2. Clique em **Novo** para iniciar o cadastro de um novo roteiro padrão.
+3. Preencha o **Código do Roteiro** e a **Descrição** que identifiquem claramente o tipo de processo (ex: "RT-MONTAGEM" para roteiro de montagem padrão).
+4. Para cada operação do roteiro padrão, preencha a sequência, descrição e centro de trabalho.
+5. Defina as **Formulas de Tempo** genéricas, utilizando variáveis como `QTD` para quantidade, que serão ajustadas posteriormente no roteiro específico.
+6. Configure o **Tipo de Mao de Obra** e a **Quantidade de Operadores** padrão para cada operação.
+7. Se aplicável, defina a **Taxa de Ocupação** padrão esperada para cada centro de trabalho.
+8. Ordene as operações pela **Sequência** correta de execução utilizando os botões de reordenação se necessário.
+9. Clique em **Salvar** para armazenar o template de roteiro padrão.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo do Roteiro | texto | Sim | — | Identificador unico do roteiro padrao |
-| Descricao | texto | Sim | — | Nome descritivo do roteiro padrao |
-| Situacao | select | Sim | Ativo / Inativo | Status do roteiro padrao |
-| Sequencia | numero | Sim | — | Ordem da operacao no roteiro padrao |
-| Descricao da Operacao | texto | Sim | — | Descricao detalhada da operacao no template |
-| Centro de Trabalho | select | Sim | Lista de centros | Centro de trabalho sugerido para a operacao |
-| Formula Tempo Setup | texto | Nao | Expressao matematica | Formula padrao para tempo de preparacao |
-| Formula Tempo Execucao | texto | Sim | Expressao matematica | Formula padrao para tempo de execucao |
-| Formula Tempo Finalizacao | texto | Nao | Expressao matematica | Formula padrao para tempo de finalizacao |
-| Tipo de Mao de Obra | select | Nao | Lista de tipos de MO | Tipo de mao de obra sugerido |
-| Quantidade de Operadores | numero | Nao | — | Numero padrao de operadores |
-| Taxa de Ocupacao | numero | Nao | — | Taxa de ocupacao sugerida |
+| Código do Roteiro | texto | Sim | — | Identificador único do roteiro padrão |
+| Descrição | texto | Sim | — | Nome descritivo do roteiro padrão |
+| Situação | select | Sim | Ativo / Inativo | Status do roteiro padrão |
+| Sequência | número | Sim | — | Ordem da operação no roteiro padrão |
+| Descrição da Operação | texto | Sim | — | Descrição detalhada da operação no template |
+| Centro de Trabalho | select | Sim | Lista de centros | Centro de trabalho sugerido para a operação |
+| Fórmula Tempo Setup | texto | Não | Expressão matemática | Fórmula padrão para tempo de preparação |
+| Fórmula Tempo Execução | texto | Sim | Expressão matemática | Fórmula padrão para tempo de execução |
+| Fórmula Tempo Finalização | texto | Não | Expressão matemática | Fórmula padrão para tempo de finalização |
+| Tipo de Mao de Obra | select | Não | Lista de tipos de MO | Tipo de mao de obra sugerido |
+| Quantidade de Operadores | número | Não | — | Número padrão de operadores |
+| Taxa de Ocupação | número | Não | — | Taxa de ocupação sugerida |
 
-## Observacoes importantes
+## Observações importantes
 
-- Roteiros padrao sao apenas **templates** e nao estao diretamente vinculados a nenhum item. Eles servem exclusivamente como base para copia na tela de [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202).
-- As formulas de tempo devem ser escritas de forma generica, utilizando `QTD` como variavel de quantidade, permitindo que sejam ajustadas no momento da copia para o item especifico.
-- E recomendavel criar roteiros padrao para cada **familia de produtos** com processos produtivos similares, reduzindo o tempo de cadastro de novos itens.
-- A alteracao de um roteiro padrao **nao afeta** automaticamente os roteiros ja copiados para itens. Para propagar mudancas, e necessario recopiar o roteiro padrao.
-- Mantenha uma nomenclatura padronizada para os codigos de roteiros padrao, facilitando a localizacao e identificacao por outros usuarios da engenharia.
-- Roteiros padrao inativos nao aparecem na lista de selecao durante a copia na tela de roteiro de fabricacao.
+- Roteiros padrão são apenas **templates** e não estao diretamente vinculados a nenhum item. Eles servem exclusivamente como base para cópia na tela de [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202).
+- As formulas de tempo devem ser escritas de forma genérica, utilizando `QTD` como variável de quantidade, permitindo que sejam ajustadas no momento da cópia para o item específico.
+- E recomendável criar roteiros padrão para cada **familia de produtos** com processos produtivos similares, reduzindo o tempo de cadastro de novos itens.
+- A alteração de um roteiro padrão **não afeta** automaticamente os roteiros já copiados para itens. Para propagar mudancas, e necessário recopiar o roteiro padrão.
+- Mantenha uma nomenclatura padronizada para os códigos de roteiros padrão, facilitando a localização e identificação por outros usuários da engenharia.
+- Roteiros padrão inativos não aparecem na lista de seleção durante a cópia na tela de roteiro de fabricação.
 
 ## Telas relacionadas
 
-- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202): Tela onde o roteiro padrao e utilizado como template para copia.
-- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Centros de trabalho referenciados nas operacoes do roteiro padrao.
-- [VENT0363 (Relatorio Tempo CT)](/engenharia/vent0363): Relatorio que consolida tempos dos roteiros de fabricacao.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens que utilizarao os roteiros padrao como base.
+- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202): Tela onde o roteiro padrão e utilizado como template para cópia.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Centros de trabalho referenciados nas operações do roteiro padrão.
+- [VENT0363 (Relatório Tempo CT)](/engenharia/vent0363): Relatório que consolida tempos dos roteiros de fabricação.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens que utilizarão os roteiros padrão como base.

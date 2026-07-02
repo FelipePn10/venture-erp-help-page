@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: "VENT0200 — Cadastro de Itens"
-description: "Cadastro completo de itens com 7 abas: Capa, Estoque, Engenharia, Planejamento, Comercial, Contabil e Suprimentos."
+description: "Cadastro completo de itens com 7 abas: Capa, Estoque, Engenharia, Planejamento, Comercial, Contábil e Suprimentos."
 ---
 
 # VENT0200 — Cadastro de Itens
@@ -10,135 +10,135 @@ description: "Cadastro completo de itens com 7 abas: Capa, Estoque, Engenharia, 
 
 ## Objetivo
 
-Permitir o cadastro completo de itens no sistema ERP, abrangendo desde dados basicos (codigo, descricao, situacao) ate parametros avancados de engenharia, planejamento, comercial, contabil e suprimentos. Cada aba agrupa logicamente os campos conforme a area de negocio responsavel, garantindo que todas as areas da empresa tenham as informacoes necessarias sobre cada item em um unico ponto de manutencao. A tela e o ponto de partida para toda a cadeia produtiva, sendo referenciada por dezenas de outros modulos.
+Permitir o cadastro completo de itens no sistema ERP, abrangendo desde dados básicos (código, descrição, situação) até parâmetros avançados de engenharia, planejamento, comercial, contábil e suprimentos. Cada aba agrupa logicamente os campos conforme a área de negócio responsável, garantindo que todas as áreas da empresa tenham as informações necessarias sobre cada item em um único ponto de manutenção. A tela e o ponto de partida para toda a cadeia produtiva, sendo referenciada por dezenas de outros módulos.
 
 ## Pre-requisitos
 
-- [VITE0114 (Grupos PDM)](/engenharia/vite0114) — Grupos PDM devem estar cadastrados para associacao na aba Capa.
-- [VFIS0350 (Classificacoes Fiscais)](/fiscal/vfis0350) — NCM e CEST precisam estar cadastrados para preenchimento na aba Contabil.
-- [VENT0800 (Cadastro Almoxarifado)](/almoxarifado/vent0800) — Armazens devem existir para associacao nas abas Estoque e Suprimentos.
-- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Tipos de maquina para referencia em roteiros de fabricacao.
+- [VITE0114 (Grupos PDM)](/engenharia/vite0114) — Grupos PDM devem estar cadastrados para associação na aba Capa.
+- [VFIS0350 (Classificações Fiscais)](/fiscal/vfis0350) — NCM e CEST precisam estar cadastrados para preenchimento na aba Contábil.
+- [VENT0800 (Cadastro Almoxarifado)](/almoxarifado/vent0800) — Armazéns devem existir para associação nas abas Estoque e Suprimentos.
+- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Tipos de maquina para referência em roteiros de fabricação.
 
 ## Passo a passo
 
 1. Acesse a tela VENT0200 pelo menu Engenharia > Cadastro de Itens.
-2. Clique em **Novo** para iniciar um cadastro ou utilize a busca por codigo/descricao para localizar um item existente.
-3. Na aba **Capa**, preencha o codigo do item e a descricao. O codigo pode ser gerado automaticamente conforme parametrizacao. Defina a situacao (Ativo/Inativo/Bloqueado) e o grupo PDM.
-4. Na aba **Estoque**, configure a unidade de medida principal, armazem padrao, estoque minimo e flags como Baixa Automatica e Contagem Ciclica.
-5. Na aba **Engenharia**, defina o tipo do item (Fabricado, Comprado, Terceirizado, Servico), o tipo de estrutura (Simples, Fantasma, Conjunto, Subconjunto) e informacoes fisicas como peso bruto, peso liquido e volume cubico.
-6. Na aba **Planejamento**, configure o tipo de planejamento (MRP, MPS, Kanban, Min-Max), tamanho do lote, lote minimo, lote multiplo, estoque de seguranca e lead time em dias.
-7. Na aba **Comercial**, preencha dados de venda como tipo de venda, multiplos de venda, garantia em meses e precos base.
-8. Na aba **Contabil**, informe NCM, CEST, aliquotas de impostos e demais classificacoes fiscais do item.
-9. Na aba **Suprimentos**, configure checklists de recebimento, dados de safra, fornecedores preferenciais e parametros de compra.
-10. Clique em **Salvar** para persistir todas as alteracoes. O sistema valida os dados de todas as abas simultaneamente.
+2. Clique em **Novo** para iniciar um cadastro ou utilize a busca por código/descrição para localizar um item existente.
+3. Na aba **Capa**, preencha o código do item e a descrição. O código pode ser gerado automaticamente conforme parametrização. Defina a situação (Ativo/Inativo/Bloqueado) e o grupo PDM.
+4. Na aba **Estoque**, configure a unidade de medida principal, armazém padrão, estoque mínimo e flags como Baixa Automática e Contagem Cíclica.
+5. Na aba **Engenharia**, defina o tipo do item (Fabricado, Comprado, Terceirizado, Serviço), o tipo de estrutura (Simples, Fantasma, Conjunto, Subconjunto) e informações físicas como peso bruto, peso líquido e volume cúbico.
+6. Na aba **Planejamento**, configure o tipo de planejamento (MRP, MPS, Kanban, Min-Max), tamanho do lote, lote mínimo, lote multiplo, estoque de segurança e lead time em dias.
+7. Na aba **Comercial**, preencha dados de venda como tipo de venda, múltiplos de venda, garantia em meses e preços base.
+8. Na aba **Contábil**, informe NCM, CEST, alíquotas de impostos e demais classificações fiscais do item.
+9. Na aba **Suprimentos**, configure checklists de recebimento, dados de safra, fornecedores preferenciais e parâmetros de compra.
+10. Clique em **Salvar** para persistir todas as alterações. O sistema valida os dados de todas as abas simultaneamente.
 
 ## Campos
 
 ### Aba Capa
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo | texto | Sim | — | Codigo unico identificador do item no sistema |
-| Descricao | texto | Sim | — | Nome descritivo completo do item |
-| Descricao Reduzida | texto | Nao | — | Descricao curta para relatorios e etiquetas |
-| Situacao | select | Sim | Ativo / Inativo / Bloqueado | Status atual do item no sistema |
-| Grupo PDM | select | Nao | Lista de grupos PDM | Grupo PDM ao qual o item pertence |
-| Saude (Health) | select | Nao | Normal / Critico / Obsoleto | Classificacao de saude do item |
-| Generico | toggle | Nao | — | Indica se o item e um item generico |
-| Configurado | toggle | Nao | — | Indica se o item possui configuracao PDM |
-| Item Base | toggle | Nao | — | Indica se e um item base para configuracao |
-| Processo | toggle | Nao | — | Indica se o item representa um processo produtivo |
-| Referencia | texto | Nao | — | Codigo de referencia externa do item |
+| Código | texto | Sim | — | Código único identificador do item no sistema |
+| Descrição | texto | Sim | — | Nome descritivo completo do item |
+| Descrição Reduzida | texto | Não | — | Descrição curta para relatórios e etiquetas |
+| Situação | select | Sim | Ativo / Inativo / Bloqueado | Status atual do item no sistema |
+| Grupo PDM | select | Não | Lista de grupos PDM | Grupo PDM ao qual o item pertence |
+| Saude (Health) | select | Não | Normal / Crítico / Obsoleto | Classificação de saude do item |
+| Genérico | toggle | Não | — | Indica se o item e um item genérico |
+| Configurado | toggle | Não | — | Indica se o item possui configuração PDM |
+| Item Base | toggle | Não | — | Indica se e um item base para configuração |
+| Processo | toggle | Não | — | Indica se o item representa um processo produtivo |
+| Referência | texto | Não | — | Código de referência externa do item |
 
 ### Aba Estoque
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
 | Unidade de Medida | select | Sim | UN / KG / M / M2 / M3 / L / CX / PC / GL / PAR | Unidade de medida principal do item |
-| Armazem Padrao | select | Nao | Lista de armazens | Armazem onde o item sera alocado por padrao |
-| Baixa Automatica | toggle | Nao | — | Baixa automatica do estoque ao faturar |
-| Contagem Ciclica | toggle | Nao | — | Habilita contagem ciclica periodica para o item |
-| Estoque Minimo | numero | Nao | — | Quantidade minima que dispara alerta de reposicao |
-| Estoque Maximo | numero | Nao | — | Quantidade maxima permitida em estoque |
-| Ponto de Ressuprimento | numero | Nao | — | Nivel de estoque que dispara necessidade de compra |
-| Enderecamento | texto | Nao | — | Localizacao fisica do item no armazem |
+| Armazém Padrão | select | Não | Lista de armazéns | Armazém onde o item sera alocado por padrão |
+| Baixa Automática | toggle | Não | — | Baixa automática do estoque ao faturar |
+| Contagem Cíclica | toggle | Não | — | Habilita contagem cíclica periódica para o item |
+| Estoque Mínimo | número | Não | — | Quantidade mínima que dispara alerta de reposição |
+| Estoque Máximo | número | Não | — | Quantidade maxima permitida em estoque |
+| Ponto de Ressuprimento | número | Não | — | Nível de estoque que dispara necessidade de compra |
+| Enderecamento | texto | Não | — | Localização física do item no armazém |
 
 ### Aba Engenharia
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Tipo | select | Sim | Fabricado / Comprado / Terceirizado / Servico | Origem de obtencao do item |
-| Tipo de Estrutura | select | Nao | Simples / Fantasma / Conjunto / Subconjunto | Classificacao da estrutura BOM |
-| Peso Bruto | numero | Nao | — | Peso bruto do item em KG |
-| Peso Liquido | numero | Nao | — | Peso liquido do item em KG |
-| Volume Cubico | numero | Nao | — | Volume cubico do item em M3 |
-| Roteiro Padrao | select | Nao | Lista de roteiros padrao | Roteiro padrao associado ao item |
-| Revisao | texto | Nao | — | Numero da revisao atual da engenharia |
-| Data Revisao | data | Nao | — | Data da ultima revisao de engenharia |
+| Tipo | select | Sim | Fabricado / Comprado / Terceirizado / Serviço | Origem de obtenção do item |
+| Tipo de Estrutura | select | Não | Simples / Fantasma / Conjunto / Subconjunto | Classificação da estrutura BOM |
+| Peso Bruto | número | Não | — | Peso bruto do item em KG |
+| Peso Líquido | número | Não | — | Peso líquido do item em KG |
+| Volume Cúbico | número | Não | — | Volume cúbico do item em M3 |
+| Roteiro Padrão | select | Não | Lista de roteiros padrão | Roteiro padrão associado ao item |
+| Revisão | texto | Não | — | Número da revisão atual da engenharia |
+| Data Revisão | data | Não | — | Data da última revisão de engenharia |
 
 ### Aba Planejamento
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Tipo de Planejamento | select | Sim | MRP / MPS / Kanban / Min-Max / Reposicao | Logica de planejamento do item |
-| Tamanho do Lote | numero | Nao | — | Tamanho padrao do lote de producao |
-| Lote Minimo | numero | Nao | — | Quantidade minima de producao por ordem |
-| Lote Multiplo | numero | Nao | — | Multiplo para arredondamento de lotes |
-| Estoque de Seguranca | numero | Nao | — | Quantidade de seguranca para absorver variacoes |
-| Lead Time (dias) | numero | Nao | — | Tempo total de obtencao do item em dias |
-| Ponto de Ressuprimento | numero | Nao | — | Nivel de estoque que dispara nova ordem |
-| Tempo de Reposicao | numero | Nao | — | Tempo de reposicao em dias |
+| Tipo de Planejamento | select | Sim | MRP / MPS / Kanban / Min-Max / Reposição | Lógica de planejamento do item |
+| Tamanho do Lote | número | Não | — | Tamanho padrão do lote de produção |
+| Lote Mínimo | número | Não | — | Quantidade mínima de produção por ordem |
+| Lote Multiplo | número | Não | — | Multiplo para arredondamento de lotes |
+| Estoque de Segurança | número | Não | — | Quantidade de segurança para absorver variações |
+| Lead Time (dias) | número | Não | — | Tempo total de obtenção do item em dias |
+| Ponto de Ressuprimento | número | Não | — | Nível de estoque que dispara nova ordem |
+| Tempo de Reposição | número | Não | — | Tempo de reposição em dias |
 
 ### Aba Comercial
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Tipo de Venda | select | Nao | Normal / Promocao / Liquidacao / Sob Encomenda | Tipo de venda do item |
-| Multiplo de Venda | numero | Nao | — | Quantidade minima multipla para venda |
-| Garantia (meses) | numero | Nao | — | Periodo de garantia oferecido em meses |
-| Preco de Custo | numero | Nao | — | Custo unitario medio do item |
-| Preco de Venda | numero | Nao | — | Preco de venda base do item |
-| Markup (%) | numero | Nao | — | Percentual de markup sobre o custo |
-| Comissao (%) | numero | Nao | — | Percentual de comissao sobre venda |
+| Tipo de Venda | select | Não | Normal / Promoção / Liquidação / Sob Encomenda | Tipo de venda do item |
+| Multiplo de Venda | número | Não | — | Quantidade mínima múltipla para venda |
+| Garantia (meses) | número | Não | — | Período de garantia oferecido em meses |
+| Preço de Custo | número | Não | — | Custo unitário médio do item |
+| Preço de Venda | número | Não | — | Preço de venda base do item |
+| Markup (%) | número | Não | — | Percentual de markup sobre o custo |
+| Comissão (%) | número | Não | — | Percentual de comissão sobre venda |
 
-### Aba Contabil
+### Aba Contábil
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| NCM | select | Nao | Lista de NCM | Nomenclatura Comum do Mercosul |
-| CEST | texto | Nao | — | Codigo Especificador da Substituicao Tributaria |
-| Custo Contabil | numero | Nao | — | Custo para avaliacao contabil do estoque |
-| Conta Contabil | select | Nao | Plano de contas | Conta contabil associada ao item |
-| Tipo de Item (Sped) | select | Nao | 00 a 10 | Tipo de item conforme Sped Fiscal |
-| Genero (Sped) | select | Nao | Lista de generos | Genero do item conforme Sped Fiscal |
+| NCM | select | Não | Lista de NCM | Nomenclatura Comum do Mercosul |
+| CEST | texto | Não | — | Código Especificador da Substituição Tributária |
+| Custo Contábil | número | Não | — | Custo para avaliação contábil do estoque |
+| Conta Contábil | select | Não | Plano de contas | Conta contábil associada ao item |
+| Tipo de Item (Sped) | select | Não | 00 a 10 | Tipo de item conforme Sped Fiscal |
+| Genero (Sped) | select | Não | Lista de generos | Genero do item conforme Sped Fiscal |
 
 ### Aba Suprimentos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Fornecedor Preferencial | select | Nao | Lista de fornecedores | Fornecedor preferencial para compra |
-| Checklist Recebimento | select | Nao | Lista de checklists | Checklist aplicado no recebimento do item |
-| Safra | texto | Nao | — | Identificacao de safra ou lote agricola |
-| Origem | select | Nao | Nacional / Importado | Origem do item para fins fiscais |
-| Prazo de Entrega | numero | Nao | — | Prazo medio de entrega do fornecedor em dias |
-| Inspecao no Recebimento | toggle | Nao | — | Indica se o item requer inspecao ao ser recebido |
-| Item Critico | toggle | Nao | — | Indica se e um item critico para a producao |
+| Fornecedor Preferencial | select | Não | Lista de fornecedores | Fornecedor preferencial para compra |
+| Checklist Recebimento | select | Não | Lista de checklists | Checklist aplicado no recebimento do item |
+| Safra | texto | Não | — | Identificação de safra ou lote agricola |
+| Origem | select | Não | Nacional / Importado | Origem do item para fins fiscais |
+| Prazo de Entrega | número | Não | — | Prazo médio de entrega do fornecedor em dias |
+| Inspeção no Recebimento | toggle | Não | — | Indica se o item requer inspeção ao ser recebido |
+| Item Crítico | toggle | Não | — | Indica se e um item crítico para a produção |
 
-## Observacoes importantes
+## Observações importantes
 
-- A alteracao do campo **Tipo** (Fabricado/Comprado) pode impactar a disponibilidade do item nos modulos de producao e compras. Verifique a consistencia antes de alterar.
+- A alteração do campo **Tipo** (Fabricado/Comprado) pode impactar a disponibilidade do item nos módulos de produção e compras. Verifique a consistência antes de alterar.
 - O campo **Saude (Health)** deve ser revisado periodicamente como parte do processo de saneamento de cadastros, itens obsoletos devem ser marcados para evitar uso indevido.
-- Itens marcados como **Fantasma** na estrutura nao geram ordens de producao proprias, sendo produzidos apenas como parte do item pai na explosao da BOM.
-- A aba **Planejamento** deve ser preenchida com atencao, pois parametros como Tamanho do Lote e Lead Time afetam diretamente o calculo do MRP e os prazos de entrega ao cliente.
-- O botao **PDM** na barra de acoes oferece um atalho direto para a tela de [VITE0115 (Modificadores PDM)](/engenharia/vite0115), facilitando a configuracao de itens configuraveis.
-- A validacao do sistema impede salvar um item com codigo duplicado ou campos obrigatorios nao preenchidos em qualquer uma das abas.
+- Itens marcados como **Fantasma** na estrutura não geram ordens de produção proprias, sendo produzidos apenas como parte do item pai na explosão da BOM.
+- A aba **Planejamento** deve ser preenchida com atenção, pois parâmetros como Tamanho do Lote e Lead Time afetam diretamente o cálculo do MRP e os prazos de entrega ao cliente.
+- O botão **PDM** na barra de ações oferece um atalho direto para a tela de [VITE0115 (Modificadores PDM)](/engenharia/vite0115), facilitando a configuração de itens configuráveis.
+- A validação do sistema impede salvar um item com código duplicado ou campos obrigatórios não preenchidos em qualquer uma das abas.
 
 ## Telas relacionadas
 
 - [VITE0114 (Grupos PDM)](/engenharia/vite0114): Grupos PDM referenciados na aba Capa do cadastro de itens.
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM associados a itens configuraveis.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM associados a itens configuráveis.
 - [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM do item gerenciada na aba Engenharia.
-- [VENT0202 (Roteiro de Fabricacao)](/engenharia/vent0202): Roteiros de fabricacao associados ao item.
+- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202): Roteiros de fabricação associados ao item.
 - [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM que organizam a hierarquia de itens.
-- [VFIS0350 (Classificacoes Fiscais)](/fiscal/vfis0350): Classificacoes fiscais utilizadas na aba Contabil.
-- [VENT0800 (Cadastro Almoxarifado)](/almoxarifado/vent0800): Armazens referenciados nas abas Estoque e Suprimentos.
+- [VFIS0350 (Classificações Fiscais)](/fiscal/vfis0350): Classificações fiscais utilizadas na aba Contábil.
+- [VENT0800 (Cadastro Almoxarifado)](/almoxarifado/vent0800): Armazéns referenciados nas abas Estoque e Suprimentos.
