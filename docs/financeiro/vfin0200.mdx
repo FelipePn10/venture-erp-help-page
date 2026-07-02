@@ -6,27 +6,27 @@ description: "Lancar, aprovar, baixar e cancelar contas a pagar."
 
 # VFIN0200 — Contas a Pagar
 
-> Lancar, aprovar, baixar e cancelar contas a pagar; dashboard de aging e gestao completa do ciclo de vida dos titulos.
+> Lancar, aprovar, baixar e cancelar contas a pagar; dashboard de aging e gestão completa do ciclo de vida dos títulos.
 
-**Codigo fonte:** `src/components/screens/financeiro/Vfin0200Page.tsx`
+**Código fonte:** `src/components/screens/financeiro/Vfin0200Page.tsx`
 
 ## Objetivo
 
-Gerenciar o ciclo de vida completo dos titulos a pagar. A tela opera em dois modos principais: "list" (visualizacao de titulos com filtros e metricas) e "create" (cadastro de novos titulos). No modo listagem, exibe um dashboard de metricas de aging com faixas de vencimento (a vencer, vencidos em 30, 60, 90 e +90 dias, e total), seguido de uma tabela com todos os titulos. O fluxo de aprovacao e um controle interno onde o titulo e aprovado ou rejeitado com motivo. O painel de baixa suporta baixa parcial nativamente, utilizando as contas bancarias cadastradas na VFIN0100.
+Gerenciar o ciclo de vida completo dos títulos a pagar. A tela opera em dois modos principais: "list" (visualização de títulos com filtros e métricas) e "create" (cadastro de novos títulos). No modo listagem, exibe um dashboard de métricas de aging com faixas de vencimento (a vencer, vencidos em 30, 60, 90 e +90 dias, e total), seguido de uma tabela com todos os títulos. O fluxo de aprovação e um controle interno onde o titulo e aprovado ou rejeitado com motivo. O painel de baixa suporta baixa parcial nativamente, utilizando as contas bancárias cadastradas na VFIN0100.
 
 ## Pre-requisitos
 
-- Ter contas bancarias cadastradas em **VFIN0100 (Contas Bancarias)** para realizar baixas.
-- Recomenda-se ter plano de contas (VFIN0120) e centros de custo (VFIN0130) cadastrados para classificacao opcional dos titulos.
-- Fornecedores devem estar cadastrados para vinculacao ao titulo.
+- Ter contas bancárias cadastradas em **VFIN0100 (Contas Bancárias)** para realizar baixas.
+- Recomenda-se ter plano de contas (VFIN0120) e centros de custo (VFIN0130) cadastrados para classificação opcional dos títulos.
+- Fornecedores devem estar cadastrados para vinculação ao titulo.
 
 ## Passo a passo
 
 1. Acesse **Financeiro > Contas a Pagar** (VFIN0200).
-2. O modo listagem exibe o dashboard de aging no topo e a tabela de titulos abaixo.
+2. O modo listagem exibe o dashboard de aging no topo e a tabela de títulos abaixo.
 3. Use os filtros de status para segmentar: Todos / Pendente / Aprovado / Pago / Cancelado.
 4. Para criar um novo titulo, clique em **+ Nova Conta**.
-5. Preencha os dados do titulo: Numero do Documento, Fornecedor, Emissao, Vencimento, Valor Bruto, Desconto, Parcelas.
+5. Preencha os dados do titulo: Número do Documento, Fornecedor, Emissão, Vencimento, Valor Bruto, Desconto, Parcelas.
 6. Opcionalmente, vincule a Plano de Contas (VFIN0120) e Centro de Custo (VFIN0130).
 7. Clique em **Salvar**. O titulo entra com status "pendente".
 8. Para aprovar, clique em **Aprovar** na linha do titulo.
@@ -36,50 +36,50 @@ Gerenciar o ciclo de vida completo dos titulos a pagar. A tela opera em dois mod
     - Informe o **Valor Pago** e a **Data de Pagamento**.
     - Clique em **Confirmar Baixa**.
 11. Para cancelar um titulo, clique em **Cancelar**.
-12. Para exportar, use o botao **Exportar**.
+12. Para exportar, use o botão **Exportar**.
 
 ## Campos
 
-### Criacao de Titulo
+### Criação de Titulo
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Nº Documento | texto | Sim | — | Numero do documento fiscal (ex: "NF-5500") |
-| Tipo Doc. | texto | Nao | — | Tipo do documento (default "NF-e") |
-| Fornecedor (ID) | numero | Nao | — | ID do fornecedor vinculado |
-| NF Entrada (ID) | numero | Nao | — | ID da nota fiscal de entrada vinculada |
-| Forma Pagamento | texto | Nao | — | Meio de pagamento (default "transferencia") |
-| Emissao | data | Sim | — | Data de emissao (default hoje) |
+| Nº Documento | texto | Sim | — | Número do documento fiscal (ex: "NF-5500") |
+| Tipo Doc. | texto | Não | — | Tipo do documento (default "NF-e") |
+| Fornecedor (ID) | número | Não | — | ID do fornecedor vinculado |
+| NF Entrada (ID) | número | Não | — | ID da nota fiscal de entrada vinculada |
+| Forma Pagamento | texto | Não | — | Meio de pagamento (default "transferência") |
+| Emissão | data | Sim | — | Data de emissão (default hoje) |
 | Vencimento | data | Sim | — | Data de vencimento (default hoje) |
-| Valor Bruto | numero | Sim | — | Valor total do titulo |
-| Desconto | numero | Nao | — | Valor de desconto |
-| Parc. nº | numero | Nao | — | Numero da parcela atual (default 1) |
-| Parc. tot. | numero | Nao | — | Total de parcelas (default 1) |
-| Plano Contas (ID) | numero | Nao | — | Vinculo com plano de contas (VFIN0120) |
-| Centro Custo (ID) | numero | Nao | — | Vinculo com centro de custo (VFIN0130) |
-| Observacao | texto | Nao | — | Texto livre |
+| Valor Bruto | número | Sim | — | Valor total do titulo |
+| Desconto | número | Não | — | Valor de desconto |
+| Parc. nº | número | Não | — | Número da parcela atual (default 1) |
+| Parc. tot. | número | Não | — | Total de parcelas (default 1) |
+| Plano Contas (ID) | número | Não | — | Vínculo com plano de contas (VFIN0120) |
+| Centro Custo (ID) | número | Não | — | Vínculo com centro de custo (VFIN0130) |
+| Observação | texto | Não | — | Texto livre |
 
 ### Baixa
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Conta Bancaria | selecao | Sim | Contas cadastradas em VFIN0100 | Conta do pagamento |
-| Valor Pago | numero | Sim | — | Valor a ser pago |
+| Conta Bancaria | seleção | Sim | Contas cadastradas em VFIN0100 | Conta do pagamento |
+| Valor Pago | número | Sim | — | Valor a ser pago |
 | Data Pagamento | data | Sim | — | Data do pagamento (default hoje) |
-| Observacao | texto | Nao | — | Observacao da baixa |
+| Observação | texto | Não | — | Observação da baixa |
 
-## Observacoes importantes
+## Observações importantes
 
 - A baixa parcial e suportada: o valor pago pode ser menor que o valor do titulo. O status muda para "parcial" e o saldo remanescente permanece em aberto.
 - O dashboard de aging no topo reflete os filtros ativos e atualiza em tempo real.
-- Titulos aprovados podem ser baixados; titulos pendentes precisam ser aprovados primeiro.
-- O cancelamento e irreversivel — certifique-se antes de confirmar.
-- Os status sao exibidos com pills coloridas: verde = pago, azul = aprovado, ambar = pendente, vermelho = cancelado.
+- Títulos aprovados podem ser baixados; títulos pendentes precisam ser aprovados primeiro.
+- O cancelamento e irreversível — certifique-se antes de confirmar.
+- Os status são exibidos com pills coloridas: verde = pago, azul = aprovado, âmbar = pendente, vermelho = cancelado.
 
 ## Telas relacionadas
 
-- **[VFIN0100 (Contas Bancarias)](/financeiro/vfin0100):** Contas utilizadas na baixa de titulos.
-- **[VFIN0120 (Plano de Contas)](/financeiro/vfin0120):** Opcionalmente vinculado ao titulo para classificacao contabil.
+- **[VFIN0100 (Contas Bancárias)](/financeiro/vfin0100):** Contas utilizadas na baixa de títulos.
+- **[VFIN0120 (Plano de Contas)](/financeiro/vfin0120):** Opcionalmente vinculado ao titulo para classificação contábil.
 - **[VFIN0130 (Centros de Custo)](/financeiro/vfin0130):** Opcionalmente vinculado ao titulo para rateio.
 - **[VFIN0300 (Fluxo de Caixa)](/financeiro/vfin0300):** Alimenta o fluxo de caixa realizado com as baixas.
-- **[VFIS0210 (NF-e de Entrada)](/fiscal/vfis0210):** Aprovacao de NF-e gera contas a pagar automaticamente.
+- **[VFIS0210 (NF-e de Entrada)](/fiscal/vfis0210):** Aprovação de NF-e gera contas a pagar automaticamente.

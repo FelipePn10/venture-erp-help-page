@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+title: "VSUP0500 — Cadastro de Fornecedor"
+description: "Cadastrar fornecedores e transportadoras com dados fiscais e comerciais organizados em pastas."
+---
+
+# VSUP0500 — Cadastro de Fornecedor
+
+> Cadastrar **fornecedores e transportadoras** com todos os dados fiscais e comerciais, organizados em pastas. Alimenta o Pedido de Compra e a NF de entrada com defaults automáticos.
+
+## Objetivo
+
+Manter o cadastro de fornecedores/transportadoras (endereço, telefones, e-mails, vencimentos, contatos, empresas), reaproveitando condição de pagamento, transportadora e região do módulo de Cliente.
+
+## Pré-requisitos
+
+- **Tipos de fornecedor** cadastrados (VSUP0510) — obrigatório para criar o fornecedor.
+
+## Passo a passo
+
+1. Acesse **VSUP0500** e clique em **Novo**.
+2. Na aba **Dados**, informe **Razão social**, tipo de pessoa (Jurídica/Física), **CNPJ/CPF** (com validação de dígito), **Inscrição Estadual**, **Tipo de fornecedor**, **Tipo de frete** e **Contribuinte de ICMS**. Use **🔎 CNPJ** para pré-preencher pela Receita.
+3. Preencha o **Endereço** (a UF do endereço é usada na consulta SEFAZ).
+4. Nas pastas, adicione **telefones**, **e-mails**, **vencimentos**, **contatos** e o **vínculo por empresa** (conta financeira, IPI, tipo de NF, tabela de preço de compra).
+5. Salve. Use **Bloquear/Desbloquear** para controlar a situação de faturamento.
+6. **Consulta SEFAZ** grava a situação cadastral (Liberado/Bloqueado) no fornecedor.
+
+## Regras de negócio
+
+- **Inscrição Estadual obrigatória**, exceto para transportadoras (`TRANSPORTADORA`/`TRANSP_REDESP`/`REDESPACHO`).
+- **MEI** não pode ser marcado para Pessoa Física.
+- **Registro M.A.** (Ministério da Agricultura) deve seguir o formato `AA-99999-9`.
+- **Documento duplicado** → o sistema retorna conflito indicando o fornecedor existente.
+
+## Observações importantes
+
+- Diferente do cliente, o fornecedor **tem atualização** (edição do cadastro).
+- O **provider de defaults** (condição de pagamento, tipo de frete, conta financeira, tabela de preço) é consumido automaticamente pelo Pedido de Compra.
+- Exportação da lista em Excel/PDF/CSV.
+
+## Telas relacionadas
+
+- **[VSUP0510 (Apoio de Fornecedores)](/compras/vsup0510):** tipos e parâmetros.
+- **[VSUP0200 (Pedido de Compra)](/compras/vsup0200):** usa os defaults do fornecedor.
+- **[VFIS0210 (NF-e de Entrada)](/fiscal/vfis0210):** casa o CNPJ do emitente ao fornecedor.

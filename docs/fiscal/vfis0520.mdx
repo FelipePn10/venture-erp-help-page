@@ -1,69 +1,69 @@
 ---
 sidebar_position: 15
-title: "VFIS0520 — Codigos Ajuste 5.2/5.3/5.6/5.7"
-description: "Cadastro dos codigos de ajuste de ICMS para os blocos 5.2, 5.3, 5.6 e 5.7 da apuracao estadual (SPED Fiscal)."
+title: "VFIS0520 — Códigos Ajuste 5.2/5.3/5.6/5.7"
+description: "Cadastro dos códigos de ajuste de ICMS para os blocos 5.2, 5.3, 5.6 e 5.7 da apuração estadual (SPED Fiscal)."
 ---
 
-# VFIS0520 — Codigos Ajuste 5.2/5.3/5.6/5.7
+# VFIS0520 — Códigos Ajuste 5.2/5.3/5.6/5.7
 
-> Tela de cadastro dos codigos de ajuste de ICMS para as secoes 5.2, 5.3, 5.6 e 5.7 da apuracao fiscal, abrangendo ajustes de documentos de terceiros, ajustes de ST, ajustes de entradas e ajustes de exportacao.
+> Tela de cadastro dos códigos de ajuste de ICMS para as seções 5.2, 5.3, 5.6 e 5.7 da apuração fiscal, abrangendo ajustes de documentos de terceiros, ajustes de ST, ajustes de entradas e ajustes de exportação.
 
-**Codigo fonte:** `src/modules/fiscal/icms-adjust-codes-suppl/vfis0520.vue`
+**Código fonte:** `src/modules/fiscal/icms-adjust-codes-suppl/vfis0520.vue`
 
 ## Objetivo
 
-A VFIS0520 complementa a VFIS0510, cadastrando os codigos de ajuste para as demais secoes da apuracao fiscal estadual (EFD-ICMS/IPI — SPED Fiscal). Enquanto a secao 5.1.1 trata de ajustes de documentos fiscais proprios, as demais secoes cobrem: **5.2 — Ajustes de Documentos Fiscais de Terceiros** (notas de fornecedores que precisam de ajuste, como creditos extemporaneos), **5.3 — Ajustes de ICMS-ST** (ajustes especificos da Substituicao Tributaria), **5.6 — Ajustes de Entradas** (ajustes em notas de compras) e **5.7 — Ajustes de Exportacao** (ajustes relacionados a operacoes de comercio exterior). Cada secao possui codigos proprios definidos pela SEFAZ de cada estado.
+A VFIS0520 complementa a VFIS0510, cadastrando os códigos de ajuste para as demais seções da apuração fiscal estadual (EFD-ICMS/IPI — SPED Fiscal). Enquanto a seção 5.1.1 trata de ajustes de documentos fiscais proprios, as demais seções cobrem: **5.2 — Ajustes de Documentos Fiscais de Terceiros** (notas de fornecedores que precisam de ajuste, como creditos extemporaneos), **5.3 — Ajustes de ICMS-ST** (ajustes específicos da Substituição Tributária), **5.6 — Ajustes de Entradas** (ajustes em notas de compras) e **5.7 — Ajustes de Exportação** (ajustes relacionados a operações de comércio exterior). Cada seção possui códigos proprios definidos pela SEFAZ de cada estado.
 
 ## Pre-requisitos
 
-- **VFIS0510 (Codigos Ajuste 5.1.1):** Conhecimento da logica de codigos de ajuste (a VFIS0510 cobre a secao de documentos proprios).
-- **Tabela de codigos da SEFAZ:** Consulte a tabela completa de codigos de ajuste no site da SEFAZ do estado.
-- **VFIS0540 (Lancamentos Resumo ICMS):** Tela onde os codigos serao utilizados.
+- **VFIS0510 (Códigos Ajuste 5.1.1):** Conhecimento da lógica de códigos de ajuste (a VFIS0510 cobre a seção de documentos proprios).
+- **Tabela de códigos da SEFAZ:** Consulte a tabela completa de códigos de ajuste no site da SEFAZ do estado.
+- **VFIS0540 (Lancamentos Resumo ICMS):** Tela onde os códigos serão utilizados.
 
 ## Passo a passo
 
-1. Acesse **Fiscal > Tabelas > Codigos Ajuste 5.2/5.3/5.6/5.7 (VFIS0520)**.
-2. A tela principal possui abas ou filtro por **Secao**. Selecione a secao desejada: 5.2, 5.3, 5.6 ou 5.7.
-3. Para **criar um novo codigo**, clique em **Novo**.
-4. Selecione a **Secao** do ajuste:
+1. Acesse **Fiscal > Tabelas > Códigos Ajuste 5.2/5.3/5.6/5.7 (VFIS0520)**.
+2. A tela principal possui abas ou filtro por **Seção**. Selecione a seção desejada: 5.2, 5.3, 5.6 ou 5.7.
+3. Para **criar um novo código**, clique em **Novo**.
+4. Selecione a **Seção** do ajuste:
    - **5.2 — Documentos de Terceiros:** Ajustes em notas de fornecedores (creditos extemporaneos, complementos de ICMS de entrada, estornos).
-   - **5.3 — ICMS-ST:** Ajustes especificos de Substituicao Tributaria (complemento de ST, ressarcimento, restituicao).
-   - **5.6 — Entradas:** Ajustes em operacoes de entrada (compras) nao cobertas pelas secoes 5.1.1 e 5.2.
-   - **5.7 — Exportacao:** Ajustes relacionados a operacoes de exportacao (creditos acumulados, drawback, etc.).
+   - **5.3 — ICMS-ST:** Ajustes específicos de Substituição Tributária (complemento de ST, ressarcimento, restituição).
+   - **5.6 — Entradas:** Ajustes em operações de entrada (compras) não cobertas pelas seções 5.1.1 e 5.2.
+   - **5.7 — Exportação:** Ajustes relacionados a operações de exportação (creditos acumulados, drawback, etc.).
 5. Selecione a **UF** do estado.
-6. Informe o **Codigo de Ajuste** conforme a tabela SEFAZ (formato: 2 letras UF + 6 digitos).
-7. Preencha a **Descricao** do ajuste.
+6. Informe o **Código de Ajuste** conforme a tabela SEFAZ (formato: 2 letras UF + 6 digitos).
+7. Preencha a **Descrição** do ajuste.
 8. Classifique o **Tipo de Ajuste**: `Debito` (aumenta ICMS a pagar) ou `Credito` (diminui ICMS a pagar).
-9. Defina a **Natureza**: `Documento Fiscal` (vinculado a uma nota especifica) ou `Generico`.
+9. Defina a **Natureza**: `Documento Fiscal` (vinculado a uma nota específica) ou `Generico`.
 10. Clique em **Salvar**.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Secao | Select | Sim | 5.2 / 5.3 / 5.6 / 5.7 | Secao da apuracao a qual o codigo pertence. |
-| UF | Select | Sim | UFs brasileiras | Estado ao qual o codigo se aplica. |
-| Codigo Ajuste | Texto (20) | Sim | — | Codigo conforme tabela SEFAZ. |
-| Descricao | Texto (200) | Sim | — | Descricao do ajuste. |
-| Tipo Ajuste | Select | Sim | Debito / Credito | Indica se aumenta (debito) ou diminui (credito) o ICMS. |
-| Natureza | Select | Sim | Documento Fiscal / Generico | Vinculacao do ajuste a documento fiscal. |
-| Dispositivo Legal | Select | Nao | VFIS0310 | Fundamento legal do ajuste. |
-| Ativo | Checkbox | Sim | Sim / Nao | Indica se o codigo esta ativo. |
+| Seção | Select | Sim | 5.2 / 5.3 / 5.6 / 5.7 | Seção da apuração a qual o código pertence. |
+| UF | Select | Sim | UFs brasileiras | Estado ao qual o código se aplica. |
+| Código Ajuste | Texto (20) | Sim | — | Código conforme tabela SEFAZ. |
+| Descrição | Texto (200) | Sim | — | Descrição do ajuste. |
+| Tipo Ajuste | Select | Sim | Débito / Crédito | Indica se aumenta (débito) ou diminui (crédito) o ICMS. |
+| Natureza | Select | Sim | Documento Fiscal / Genérico | Vinculação do ajuste a documento fiscal. |
+| Dispositivo Legal | Select | Não | VFIS0310 | Fundamento legal do ajuste. |
+| Ativo | Checkbox | Sim | Sim / Não | Indica se o código esta ativo. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **Diferenca entre as secoes:**
-  - **5.2:** Ajustes em documentos de terceiros. Ex: credito extemporaneo de uma nota de compra do ano anterior, estorno de credito de ICMS de fornecedor.
-  - **5.3:** Ajustes especificos de ST. Ex: complemento de ICMS-ST pago a menor, ressarcimento de ST pago a maior, restituicao de ST.
-  - **5.6:** Ajustes de entradas que nao se enquadram em 5.1.1 e 5.2. Ex: creditos acumulados de entrada, ajustes de inventario.
-  - **5.7:** Ajustes de exportacao. Ex: creditos acumulados de exportacao, drawback, Recof.
-- **Exportacao SPED Fiscal:** No SPED, os ajustes 5.2, 5.3, 5.6 e 5.7 sao exportados nos registros E220/E230, E310/E311, E510/E511, E520/E521, conforme a secao. Codigos incorretos geram erros no PVA.
-- **Consistencia entre estados:** Empresas com IE em varios estados devem cadastrar os codigos de ajuste para cada UF separadamente. Os codigos variam de estado para estado.
+- **Diferença entre as seções:**
+  - **5.2:** Ajustes em documentos de terceiros. Ex: crédito extemporaneo de uma nota de compra do ano anterior, estorno de crédito de ICMS de fornecedor.
+  - **5.3:** Ajustes específicos de ST. Ex: complemento de ICMS-ST pago a menor, ressarcimento de ST pago a maior, restituição de ST.
+  - **5.6:** Ajustes de entradas que não se enquadram em 5.1.1 e 5.2. Ex: creditos acumulados de entrada, ajustes de inventário.
+  - **5.7:** Ajustes de exportação. Ex: creditos acumulados de exportação, drawback, Recof.
+- **Exportação SPED Fiscal:** No SPED, os ajustes 5.2, 5.3, 5.6 e 5.7 são exportados nos registros E220/E230, E310/E311, E510/E511, E520/E521, conforme a seção. Códigos incorretos geram erros no PVA.
+- **Consistência entre estados:** Empresas com IE em varios estados devem cadastrar os códigos de ajuste para cada UF separadamente. Os códigos variam de estado para estado.
 
 ## Telas relacionadas
 
-- **[VFIS0510 (Codigos Ajuste 5.1.1)](/fiscal/vfis0510):** Codigos de ajuste para documentos fiscais proprios.
-- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao onde os ajustes sao consolidados.
-- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos que utilizam estes codigos de ajuste.
-- **[VFIS0550 (Restituicao ICMS ST)](/fiscal/vfis0550):** Restituicao de ST que utiliza codigos de ajuste 5.3.
+- **[VFIS0510 (Códigos Ajuste 5.1.1)](/fiscal/vfis0510):** Códigos de ajuste para documentos fiscais proprios.
+- **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração onde os ajustes são consolidados.
+- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos que utilizam estes códigos de ajuste.
+- **[VFIS0550 (Restituição ICMS ST)](/fiscal/vfis0550):** Restituição de ST que utiliza códigos de ajuste 5.3.
 - **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Fundamento legal dos ajustes.

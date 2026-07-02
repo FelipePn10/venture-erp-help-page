@@ -1,65 +1,65 @@
 ---
 sidebar_position: 1
 title: "VPLA0102 — Demandas Independentes"
-description: "Cadastro de demandas independentes de producao com validacao de dia util."
+description: "Cadastro de demandas independentes de produção com validação de dia útil."
 ---
 
 # VPLA0102 — Demandas Independentes
 
-> Cadastro de demandas independentes de producao com validacao automatica de dia util contra o calendario industrial.
+> Cadastro de demandas independentes de produção com validação automática de dia útil contra o calendário industrial.
 
 ## Objetivo
 
-Permitir o registro e manutencao das demandas independentes de producao, que representam a previsao de venda ou necessidade de producao de itens finais em um determinado periodo. Estas demandas alimentam o MRP (Material Requirements Planning), que a partir delas explodira a necessidade de componentes e materias-primas. A tela realiza validacao automatica dos dias uteis utilizando o calendario industrial, garantindo que as datas das demandas respeitem os dias efetivamente disponiveis para producao.
+Permitir o registro e manutenção das demandas independentes de produção, que representam a previsão de venda ou necessidade de produção de itens finais em um determinado período. Estas demandas alimentam o MRP (Material Requirements Planning), que a partir delas explodira a necessidade de componentes e materias-primas. A tela realiza validação automática dos dias úteis utilizando o calendário industrial, garantindo que as datas das demandas respeitem os dias efetivamente disponíveis para produção.
 
 ## Pre-requisitos
 
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que serao objeto das demandas independentes devem estar cadastrados.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108) — Calendario industrial configurado para validacao de dia util.
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para apropriacao da demanda.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que serão objeto das demandas independentes devem estar cadastrados.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108) — Calendário industrial configurado para validação de dia útil.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para apropriação da demanda.
 
 ## Passo a passo
 
 1. Acesse a tela VPLA0102 pelo menu Planejamento > Demandas Independentes.
 2. Clique em **Nova** para criar uma nova demanda.
-3. Informe o **Item** que sera demandado. Ao digitar o codigo, o sistema carrega a descricao automaticamente.
-4. Preencha a **Quantidade** demandada (campo numerico com precisao de 0.001).
-5. Informe a **Data** da demanda. O sistema validara automaticamente se a data corresponde a um dia util no calendario industrial.
-6. Se o item for **Configurado**, ative o toggle e preencha a **Mascara** correspondente no campo condicional que sera exibido.
-7. Informe o **Centro de Custo** para apropriacao da demanda.
-8. Clique em **Salvar** para registrar a demanda. O numero da demanda e gerado automaticamente pelo sistema.
-9. Para buscar demandas existentes, utilize os filtros de **Item** e **Periodo** e clique em **Pesquisar**.
-10. Para editar uma demanda, selecione-a na grid de resultados e clique em **Carregar**, faca as alteracoes e salve novamente.
+3. Informe o **Item** que sera demandado. Ao digitar o código, o sistema carrega a descrição automaticamente.
+4. Preencha a **Quantidade** demandada (campo numérico com precisão de 0.001).
+5. Informe a **Data** da demanda. O sistema validara automaticamente se a data corresponde a um dia útil no calendário industrial.
+6. Se o item for **Configurado**, ative o toggle e preencha a **Máscara** correspondente no campo condicional que sera exibido.
+7. Informe o **Centro de Custo** para apropriação da demanda.
+8. Clique em **Salvar** para registrar a demanda. O número da demanda e gerado automaticamente pelo sistema.
+9. Para buscar demandas existentes, utilize os filtros de **Item** e **Período** e clique em **Pesquisar**.
+10. Para editar uma demanda, selecione-a na grid de resultados e clique em **Carregar**, faca as alterações e salve novamente.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Demanda | numero (auto) | Sim | — | Numero gerado automaticamente pelo sistema |
-| Item | numero | Sim | — | Codigo do item demandado |
-| Descricao do Item | texto | Nao | — | Descricao carregada automaticamente do cadastro |
-| Configurado | toggle | Nao | — | Indica se o item possui configuracao PDM |
-| Mascara | texto | Condicional | — | Mascara do item configurado (exibida se toggle ativado) |
-| Centro de Custo | numero | Nao | — | Centro de custo para apropriacao da demanda |
-| Quantidade | numero | Sim | — | Quantidade demandada (precisao de 0.001) |
-| Data | data | Sim | — | Data da demanda, validada como dia util |
-| Quantidade Atendida | numero | Nao | — | Quantidade ja atendida por ordens de producao |
-| Observacao | texto | Nao | — | Informacoes complementares sobre a demanda |
+| Demanda | número (auto) | Sim | — | Número gerado automaticamente pelo sistema |
+| Item | número | Sim | — | Código do item demandado |
+| Descrição do Item | texto | Não | — | Descrição carregada automaticamente do cadastro |
+| Configurado | toggle | Não | — | Indica se o item possui configuração PDM |
+| Máscara | texto | Condicional | — | Máscara do item configurado (exibida se toggle ativado) |
+| Centro de Custo | número | Não | — | Centro de custo para apropriação da demanda |
+| Quantidade | número | Sim | — | Quantidade demandada (precisão de 0.001) |
+| Data | data | Sim | — | Data da demanda, validada como dia útil |
+| Quantidade Atendida | número | Não | — | Quantidade já atendida por ordens de produção |
+| Observação | texto | Não | — | Informações complementares sobre a demanda |
 
-## Observacoes importantes
+## Observações importantes
 
-- A validacao de **dia util** utiliza o calendario industrial configurado em [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108). Datas em finais de semana ou feriados sao rejeitadas com uma mensagem de alerta.
-- Demandas com toggle **Configurado** ativado exigem o preenchimento obrigatorio da mascara, que identifica exatamente qual variacao do item configurado esta sendo demandada.
-- A **Quantidade Atendida** e atualizada automaticamente a medida que ordens de producao sao geradas e vinculadas a demanda, permitindo acompanhar o saldo em aberto.
-- Demandas podem ser **excluidas** desde que nao tenham sido parcial ou totalmente atendidas por ordens de producao.
-- O campo **Quantidade** com precisao de 0.001 permite o tratamento de itens com unidades de medida que exigem alta precisao, como produtos quimicos ou materiais a granel.
-- E possivel gerar demandas independentes em **lote** atraves de importacao de planilha, disponivel no menu de acoes da tela.
+- A validação de **dia útil** utiliza o calendário industrial configurado em [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108). Datas em finais de semana ou feriados são rejeitadas com uma mensagem de alerta.
+- Demandas com toggle **Configurado** ativado exigem o preenchimento obrigatório da máscara, que identifica exatamente qual variação do item configurado esta sendo demandada.
+- A **Quantidade Atendida** e atualizada automaticamente a medida que ordens de produção são geradas e vinculadas a demanda, permitindo acompanhar o saldo em aberto.
+- Demandas podem ser **excluidas** desde que não tenham sido parcial ou totalmente atendidas por ordens de produção.
+- O campo **Quantidade** com precisão de 0.001 permite o tratamento de itens com unidades de medida que exigem alta precisão, como produtos químicos ou materiais a granel.
+- E possível gerar demandas independentes em **lote** através de importação de planilha, disponível no menu de ações da tela.
 
 ## Telas relacionadas
 
 - [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens referenciados nas demandas independentes.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108): Calendario utilizado na validacao de dia util.
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centro de custo para apropriacao das demandas.
-- [VPLA0101 (Previsao de Vendas)](/planejamento/vpla0102): Outra forma de entrada de demanda para o MRP.
-- [VPLA0200 (Calculo MRP)](/planejamento/vplc0200): Processamento que consome as demandas independentes.
-- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM utilizada na explosao das demandas pelo MRP.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108): Calendário utilizado na validação de dia útil.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centro de custo para apropriação das demandas.
+- [VPLA0101 (Previsão de Vendas)](/planejamento/vpla0102): Outra forma de entrada de demanda para o MRP.
+- [VPLA0200 (Cálculo MRP)](/planejamento/vplc0200): Processamento que consome as demandas independentes.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM utilizada na explosão das demandas pelo MRP.

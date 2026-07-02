@@ -1,0 +1,33 @@
+---
+sidebar_position: 17
+title: "VEST0100 — Estoque (Movimentos, Saldos, ATP, Reservas, Lotes)"
+description: "Central operacional do estoque: movimentos, saldos, ATP, reservas, lotes e consumo médio."
+---
+
+# VEST0100 — Estoque (Movimentos, Saldos, ATP, Reservas, Lotes)
+
+> Central operacional do estoque: lançar movimentos, consultar saldos e o **ATP** (disponível para promessa), gerenciar **reservas**, registrar **lotes** com rastreabilidade (genealogia) e acompanhar o consumo médio mensal.
+
+## Objetivo
+
+Operar todo o estoque: entradas, saídas, transferências, ajustes, reservas, lotes e ponto de reposição.
+
+## Passo a passo
+
+1. Informe um **item** e clique em **Consultar** — o sistema traz movimentos, saldos por depósito, o painel **ATP** (Em mãos / Reservado / Disponível) e os lotes.
+2. **Lançar movimento**: item, depósito, **tipo** (IN, OUT, TRANSFER_IN/OUT, ADJUST), quantidade, preço e lote. O saldo e o **custo médio ponderado** são atualizados na mesma transação.
+3. **Reservas**: crie uma reserva (reduz o ATP) e depois **Libere** ou **Consuma** por ID.
+4. **Lotes**: registre um lote (corrida/heat, certificado) e clique em **Genealogia** para ver o histórico bidirecional (OFs que consumiram × produziram o lote).
+5. **Consumo médio (ROP)**: clique em **Recalcular** para atualizar a média móvel (padrão 6 meses) usada no ponto de reposição.
+
+## Conceitos
+
+- **ATP = saldo em mãos − reservas.** Confirmar um pedido de venda reserva o disponível automaticamente.
+- Todo movimento com **lote** atualiza o saldo segregado por lote.
+
+## Telas relacionadas
+
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200):** reserva o ATP ao confirmar.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** gera OUT (consumo) e IN (conclusão com lote).
+- **[VEXP0100 (Romaneio / Expedição)](/almoxarifado/vexp0100):** reserva na separação e consome no despacho.
+- **[VEST0200 (Inventário)](/pcp/vest0200):** ajusta divergências de saldo.

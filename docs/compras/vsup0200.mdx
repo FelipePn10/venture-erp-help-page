@@ -1,0 +1,36 @@
+---
+sidebar_position: 6
+title: "VSUP0200 — Pedido de Compra"
+description: "Gerir o pedido de compra e aprovar/rejeitar as sugestões de compra geradas pelo MRP."
+---
+
+# VSUP0200 — Pedido de Compra
+
+> Gerir o **pedido de compra** (capa + itens) enviado ao fornecedor e **aprovar/rejeitar as sugestões de compra** geradas pelo MRP. Ao adicionar um item, o backend resolve automaticamente preço, %IPI e UM interna.
+
+## Objetivo
+
+Emitir pedidos de compra com defaults automáticos e converter sugestões do MRP em pedidos firmes.
+
+## Pré-requisitos
+
+- **Fornecedor** cadastrado (VSUP0500); itens (VENT0200).
+
+## Passo a passo
+
+1. Aba **Pedidos**: crie a capa (empresa, **fornecedor**, moeda, tipo de frete). Se não informar a condição de pagamento, ela vem dos **defaults do fornecedor**.
+2. Abra o pedido e **adicione itens** (item, quantidade, preço). Preço/IPI/UM são resolvidos pelo sistema.
+3. **Cancele** o pedido quando necessário.
+4. Aba **Sugestões**: veja as sugestões do MRP e **Aprove** (informando fornecedor e preço → gera um pedido de compra firme) ou **Rejeite**.
+
+## Observações importantes
+
+- Aprovar uma sugestão gera um `purchase_order` (origem MRP) e torna a ordem planejada firme — só suprimentos firmes entram no *netting* do MRP.
+- O preço vem da **Tabela de Preço de Compra** (VSUP0120), o %IPI da classificação fiscal e a UM interna das conversões (VSUP0110).
+
+## Telas relacionadas
+
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** origem das sugestões de compra.
+- **[VSUP0500 (Cadastro de Fornecedor)](/compras/vsup0500):** defaults de condição/frete/conta.
+- **[VSUP0120 (Tabela de Preço)](/compras/vsup0120):** origem do preço.
+- **[VSUP0110 (Conversão de UM)](/compras/vsup0110):** origem da UM interna.

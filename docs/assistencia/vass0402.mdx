@@ -1,82 +1,82 @@
 ---
 sidebar_position: 2
-title: "VASS0402 — Consulta Assistencia"
-description: "Tela de consulta de chamados de assistencia tecnica com 14 filtros avancados."
+title: "VASS0402 — Consulta Assistência"
+description: "Tela de consulta de chamados de assistência técnica com 14 filtros avançados."
 ---
 
-# VASS0402 — Consulta Assistencia
+# VASS0402 — Consulta Assistência
 
-> Tela de consulta avancada de chamados de assistencia tecnica com 14 filtros que permitem buscas detalhadas e analises gerenciais.
+> Tela de consulta avançada de chamados de assistência técnica com 14 filtros que permitem buscas detalhadas e análises gerenciais.
 
 ## Objetivo
 
-Fornecer uma interface robusta de consulta aos chamados de assistencia tecnica, equipada com 14 criterios de filtro que cobrem todas as dimensoes relevantes: cliente, produto, tipo de chamado, status, tecnico, periodo, regiao, entre outros. A tela atende tanto a necessidade operacional (acompanhar chamados em andamento) quanto a necessidade gerencial (analisar volume de chamados, tempo medio de atendimento, recorrencia de problemas por produto).
+Fornecer uma interface robusta de consulta aos chamados de assistência técnica, equipada com 14 critérios de filtro que cobrem todas as dimensões relevantes: cliente, produto, tipo de chamado, status, técnico, período, região, entre outros. A tela atende tanto a necessidade operacional (acompanhar chamados em andamento) quanto a necessidade gerencial (analisar volume de chamados, tempo médio de atendimento, recorrência de problemas por produto).
 
 ## Pre-requisitos
 
-- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201) — Chamados que serao consultados.
+- [VASS0201 (Cadastro Chamado Assistência)](/assistencia/vass0201) — Chamados que serão consultados.
 - [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Produtos objeto dos chamados.
 - [Cadastro de Clientes](/cliente/vcli0500) — Clientes associados aos chamados.
 
 ## Passo a passo
 
-1. Acesse a tela VASS0402 pelo menu Assistencia > Consulta Assistencia.
-2. No painel de filtros, utilize qualquer combinacao dos 14 criterios disponiveis:
-   - **Filtro 1 — Numero do Chamado**: busca exata.
-   - **Filtro 2 — Cliente**: por nome ou codigo.
+1. Acesse a tela VASS0402 pelo menu Assistência > Consulta Assistência.
+2. No painel de filtros, utilize qualquer combinação dos 14 critérios disponíveis:
+   - **Filtro 1 — Número do Chamado**: busca exata.
+   - **Filtro 2 — Cliente**: por nome ou código.
    - **Filtro 3 — Produto/Item**: filtra por produto.
-   - **Filtro 4 — Tipo de Chamado**: Garantia, Orcamento, Revisao, Recall, Cortesia, Interno.
+   - **Filtro 4 — Tipo de Chamado**: Garantia, Orçamento, Revisão, Recall, Cortesia, Interno.
    - **Filtro 5 — Status**: Aberto, Em Andamento, Concluido, Cancelado.
-   - **Filtro 6 — Tecnico**: tecnico responsavel.
-   - **Filtro 7 — Periodo de Abertura**: data inicial e final.
-   - **Filtro 8 — Periodo de Conclusao**: data inicial e final.
-   - **Filtro 9 — Regiao**: UF ou cidade do cliente.
-   - **Filtro 10 — Numero de Serie**: busca por numero de serie do produto.
+   - **Filtro 6 — Técnico**: técnico responsável.
+   - **Filtro 7 — Período de Abertura**: data inicial e final.
+   - **Filtro 8 — Período de Conclusão**: data inicial e final.
+   - **Filtro 9 — Região**: UF ou cidade do cliente.
+   - **Filtro 10 — Número de Série**: busca por número de série do produto.
    - **Filtro 11 — Cobertura de Garantia**: Dentro / Fora da Garantia.
    - **Filtro 12 — Valor do Chamado**: faixa de valor (min-max).
-   - **Filtro 13 — Possui Orcamento Pendente**: apenas chamados aguardando aprovacao de orcamento.
+   - **Filtro 13 — Possui Orçamento Pendente**: apenas chamados aguardando aprovação de orçamento.
    - **Filtro 14 — Nota Fiscal de Venda**: busca pela NF de origem.
 3. Clique em **Pesquisar** para carregar os resultados.
-4. A grid exibe os chamados com suas principais informacoes.
-5. Clique em um chamado para abrir o **detalhamento completo** com historico de atendimento.
-6. Utilize os botoes de **Exportar** para gerar relatorios em Excel ou PDF.
-7. O **Dashboard Resumo** exibe graficos com distribuicao de chamados por tipo, status e periodo.
+4. A grid exibe os chamados com suas principais informações.
+5. Clique em um chamado para abrir o **detalhamento completo** com histórico de atendimento.
+6. Utilize os botões de **Exportar** para gerar relatórios em Excel ou PDF.
+7. O **Dashboard Resumo** exibe gráficos com distribuição de chamados por tipo, status e período.
 
 ## Campos de Filtro
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Numero do Chamado | numero | Nao | — | Busca exata pelo numero |
-| Cliente | select | Nao | Lista de clientes | Filtrar por cliente |
-| Produto/Item | select | Nao | Lista de itens | Filtrar por produto |
-| Tipo de Chamado | multi-select | Nao | 6 tipos | Filtrar por tipo |
-| Status | multi-select | Nao | Todos os status | Filtrar por situacao |
-| Tecnico | select | Nao | Lista de tecnicos | Filtrar por responsavel |
-| Periodo Abertura — Inicio | data | Nao | — | Data inicial |
-| Periodo Abertura — Fim | data | Nao | — | Data final |
-| Periodo Conclusao — Inicio | data | Nao | — | Data inicial de conclusao |
-| Periodo Conclusao — Fim | data | Nao | — | Data final de conclusao |
-| Regiao | select | Nao | Lista de UFs | Filtrar por estado |
-| Numero de Serie | texto | Nao | — | Busca exata por serie |
-| Cobertura de Garantia | select | Nao | Dentro / Fora | Filtrar por cobertura |
-| Valor Minimo | numero | Nao | — | Valor minimo do chamado |
-| Valor Maximo | numero | Nao | — | Valor maximo do chamado |
-| Orcamento Pendente | toggle | Nao | — | Apenas chamados aguardando aprovacao |
-| Nota Fiscal de Venda | numero | Nao | — | Filtrar por NF de origem |
+| Número do Chamado | número | Não | — | Busca exata pelo número |
+| Cliente | select | Não | Lista de clientes | Filtrar por cliente |
+| Produto/Item | select | Não | Lista de itens | Filtrar por produto |
+| Tipo de Chamado | multi-select | Não | 6 tipos | Filtrar por tipo |
+| Status | multi-select | Não | Todos os status | Filtrar por situação |
+| Técnico | select | Não | Lista de técnicos | Filtrar por responsável |
+| Período Abertura — Início | data | Não | — | Data inicial |
+| Período Abertura — Fim | data | Não | — | Data final |
+| Período Conclusão — Início | data | Não | — | Data inicial de conclusão |
+| Período Conclusão — Fim | data | Não | — | Data final de conclusão |
+| Região | select | Não | Lista de UFs | Filtrar por estado |
+| Número de Série | texto | Não | — | Busca exata por série |
+| Cobertura de Garantia | select | Não | Dentro / Fora | Filtrar por cobertura |
+| Valor Mínimo | número | Não | — | Valor mínimo do chamado |
+| Valor Máximo | número | Não | — | Valor máximo do chamado |
+| Orçamento Pendente | toggle | Não | — | Apenas chamados aguardando aprovação |
+| Nota Fiscal de Venda | número | Não | — | Filtrar por NF de origem |
 
-## Observacoes importantes
+## Observações importantes
 
-- Os **14 filtros** cobrem praticamente qualquer cenario de busca, desde uma consulta pontual ("qual o status do chamado 12345?") ate analises complexas ("quais produtos tiveram mais chamados de garantia no ultimo trimestre na regiao Sudeste?").
-- O filtro **Orcamento Pendente** e de uso gerencial: identifica chamados que estao parados aguardando aprovacao do cliente, permitindo acao proativa (contato telefonico, follow-up).
-- O filtro por **Numero de Serie** e essencial para rastrear o historico completo de um produto especifico ao longo de sua vida util.
-- O **Dashboard Resumo** atualiza dinamicamente com os filtros aplicados, permitindo analises visuais rapidas.
-- A exportacao em **Excel** inclui todas as colunas e permite manipulacao adicional para criacao de graficos e tabelas dinamicas.
-- Consultas com muitos resultados podem ser **paginadas** para melhor desempenho, com opcoes de 25, 50, 100 ou 200 registros por pagina.
+- Os **14 filtros** cobrem praticamente qualquer cenário de busca, desde uma consulta pontual ("qual o status do chamado 12345?") até análises complexas ("quais produtos tiveram mais chamados de garantia no ultimo trimestre na região Sudeste?").
+- O filtro **Orçamento Pendente** e de uso gerencial: identifica chamados que estao parados aguardando aprovação do cliente, permitindo ação proativa (contato telefônico, follow-up).
+- O filtro por **Número de Série** e essencial para rastrear o histórico completo de um produto específico ao longo de sua vida útil.
+- O **Dashboard Resumo** atualiza dinamicamente com os filtros aplicados, permitindo análises visuais rápidas.
+- A exportação em **Excel** inclui todas as colunas e permite manipulação adicional para criação de gráficos e tabelas dinâmicas.
+- Consultas com muitos resultados podem ser **paginadas** para melhor desempenho, com opções de 25, 50, 100 ou 200 registros por pagina.
 
 ## Telas relacionadas
 
-- [VASS0201 (Cadastro Chamado Assistencia)](/assistencia/vass0201): Cadastro dos chamados consultados.
+- [VASS0201 (Cadastro Chamado Assistência)](/assistencia/vass0201): Cadastro dos chamados consultados.
 - [VATC0280 (Cadastro Chamados Alternativo)](/assistencia/vatc0280): Cadastro alternativo de chamados.
-- [VATC0380 (Relatorio Chamados)](/assistencia/vatc0380): Relatorio gerencial de chamados.
+- [VATC0380 (Relatório Chamados)](/assistencia/vatc0380): Relatório gerencial de chamados.
 - [VATC0480 (Consulta Chamados)](/assistencia/vatc0480): Consulta alternativa com filtros client-side.
 - [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Produtos objeto dos chamados.

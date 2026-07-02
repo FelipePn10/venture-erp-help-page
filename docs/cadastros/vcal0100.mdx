@@ -1,18 +1,18 @@
 ---
 sidebar_position: 1
-title: "VCAL0100 — Calendario Industrial"
-description: "Calendario de dias uteis e nao-uteis do ano."
+title: "VCAL0100 — Calendário Industrial"
+description: "Calendário de dias úteis e não-úteis do ano."
 ---
 
-# VCAL0100 — Calendario Industrial
+# VCAL0100 — Calendário Industrial
 
-> Calendario que define dias uteis e nao-uteis do ano para planejamento.
+> Calendário que define dias úteis e não-úteis do ano para planejamento.
 
-**Codigo fonte:** `src/components/screens/cadastros/Vcal0100Page.tsx`
+**Código fonte:** `src/components/screens/cadastros/Vcal0100Page.tsx`
 
 ## Objetivo
 
-Gerenciar o calendario industrial da empresa, definindo quais dias do ano sao uteis ou nao-uteis (feriados, fins de semana, dias de parada). O sistema calcula automaticamente metricas visuais: total de dias uteis, nao-uteis e total de dias no periodo. Essencial para planejamento de producao, calculo de prazos de entrega e validacao de datas nos modulos de engenharia e planejamento.
+Gerenciar o calendário industrial da empresa, definindo quais dias do ano são úteis ou não-úteis (feriados, fins de semana, dias de parada). O sistema calcula automaticamente métricas visuais: total de dias úteis, não-úteis e total de dias no período. Essencial para planejamento de produção, cálculo de prazos de entrega e validação de datas nos módulos de engenharia e planejamento.
 
 ## Pre-requisitos
 
@@ -20,35 +20,35 @@ Gerenciar o calendario industrial da empresa, definindo quais dias do ano sao ut
 
 ## Passo a passo
 
-1. Acesse **Cadastros > Calendario Industrial** (VCAL0100).
-2. Use os filtros de **Ano** e **Mes** para navegar no calendario.
-3. A visualizacao mostra o calendario do periodo com indicacao de dias uteis e nao-uteis.
+1. Acesse **Cadastros > Calendário Industrial** (VCAL0100).
+2. Use os filtros de **Ano** e **Mês** para navegar no calendário.
+3. A visualização mostra o calendário do período com indicação de dias úteis e não-úteis.
 4. Para registrar um dia, clique sobre ele e preencha:
-   - **Dia util?** — Ative ou desative o toggle.
-   - **Descricao** — Informe o motivo (ex: "Feriado — Tiradentes", "Parada programada").
+   - **Dia útil?** — Ative ou desative o toggle.
+   - **Descrição** — Informe o motivo (ex: "Feriado — Tiradentes", "Parada programada").
 5. Clique em **Salvar**.
-6. As metricas no topo sao atualizadas automaticamente.
-7. Use **Exportar** para gerar planilha com o calendario.
+6. As métricas no topo são atualizadas automaticamente.
+7. Use **Exportar** para gerar planilha com o calendário.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Ano | numero (filtro) | Nao | — | Ano de referencia |
-| Mes | selecao (Jan a Dez) | Nao | — | Mes de referencia |
-| Dia | numero (1-31) | Sim | — | Dia a registrar |
-| Dia util? | toggle | Nao | — | Indicador de dia util |
-| Descricao | texto | Nao | — | Descricao (ex: feriado, parada) |
+| Ano | número (filtro) | Não | — | Ano de referência |
+| Mês | seleção (Jan a Dez) | Não | — | Mês de referência |
+| Dia | número (1-31) | Sim | — | Dia a registrar |
+| Dia útil? | toggle | Não | — | Indicador de dia útil |
+| Descrição | texto | Não | — | Descrição (ex: feriado, parada) |
 
-## Observacoes importantes
+## Observações importantes
 
-- Dias nao marcados explicitamente sao considerados uteis por padrao (dependendo da configuracao do sistema).
-- O calendario e anual — recomenda-se configura-lo no inicio de cada ano.
-- As metricas de dias uteis impactam diretamente o calculo de prazos de entrega nos modulos de planejamento e engenharia.
+- Dias não marcados explicitamente são considerados úteis por padrão (dependendo da configuração do sistema).
+- O calendário e anual — recomenda-se configura-lo no início de cada ano.
+- As métricas de dias úteis impactam diretamente o cálculo de prazos de entrega nos módulos de planejamento e engenharia.
 - Feriados nacionais, estaduais e municipais devem ser cadastrados conforme a localidade da empresa.
 
 ## Telas relacionadas
 
-- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102):** Valida se data de demanda cai em dia util.
-- **[VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108):** Base para o calendario financeiro/industrial.
-- **[VPME0102ITE (Calendario Promessa por Item)](/engenharia/vpme0102ite):** Dias nao-uteis herdados pelo calendario por item.
+- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102):** Valida se data de demanda cai em dia útil.
+- **[VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108):** Base para o calendário financeiro/industrial.
+- **[VPME0102ITE (Calendário Promessa por Item)](/engenharia/vpme0102ite):** Dias não-úteis herdados pelo calendário por item.

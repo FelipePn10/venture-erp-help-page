@@ -66,44 +66,40 @@ const config: Config = {
     footer: {
       links: [
         {
-          title: 'Documentação',
+          title: 'Processos',
           items: [
             {
-              label: 'Índice de Telas',
+              label: 'Índice Geral',
               to: '/indice',
             },
             {
-              label: 'Comercial',
-              to: '/comercial/vent0100',
-            },
-            {
-              label: 'Financeiro',
+              label: 'Financeiro, Contábil e Cadastros',
               to: '/financeiro/vfin0100',
             },
             {
-              label: 'Fiscal',
-              to: '/fiscal/vfis0100',
+              label: 'Industrial e Produção',
+              to: '/engenharia/vent0200',
+            },
+            {
+              label: 'Comercial, Vendas e PDV',
+              to: '/pdv/vpdv0200',
             },
           ],
         },
         {
-          title: 'Módulos',
+          title: 'Processos',
           items: [
             {
-              label: 'Engenharia',
-              to: '/engenharia/veng0204',
+              label: 'Fiscal',
+              to: '/fiscal/vfis0100',
             },
             {
-              label: 'Suprimento',
-              to: '/suprimento/vavr0200',
+              label: 'PCP, Chão de Fábrica e Estoque',
+              to: '/pcp/vmrp0100',
             },
             {
-              label: 'Inspeção',
-              to: '/inspecao/vavf0101',
-            },
-            {
-              label: 'PDV / Pedidos',
-              to: '/pdv/vpdv0108',
+              label: 'Suprimento e Compras',
+              to: '/compras/vsup0500',
             },
           ],
         },

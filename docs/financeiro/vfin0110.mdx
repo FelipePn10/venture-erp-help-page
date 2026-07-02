@@ -1,18 +1,18 @@
 ---
 sidebar_position: 2
-title: "VFIN0110 — Condicoes de Pagamento"
-description: "Cadastrar as condicoes de pagamento utilizadas no ERP."
+title: "VFIN0110 — Condições de Pagamento"
+description: "Cadastrar as condições de pagamento utilizadas no ERP."
 ---
 
-# VFIN0110 — Condicoes de Pagamento
+# VFIN0110 — Condições de Pagamento
 
-> Cadastrar as condicoes de pagamento utilizadas em todo o sistema ERP.
+> Cadastrar as condições de pagamento utilizadas em todo o sistema ERP.
 
-**Codigo fonte:** `src/components/screens/financeiro/Vfin0110Page.tsx`
+**Código fonte:** `src/components/screens/financeiro/Vfin0110Page.tsx`
 
 ## Objetivo
 
-Cadastrar as condicoes de pagamento utilizadas em todo o sistema ERP. Estas condicoes definem as regras de parcelamento — quantas parcelas e em quantos dias cada uma vence a partir da data base.
+Cadastrar as condições de pagamento utilizadas em todo o sistema ERP. Estas condições definem as regras de parcelamento — quantas parcelas e em quantos dias cada uma vence a partir da data base.
 
 ## Pre-requisitos
 
@@ -20,30 +20,30 @@ Cadastrar as condicoes de pagamento utilizadas em todo o sistema ERP. Estas cond
 
 ## Passo a passo
 
-1. Acesse **Financeiro > Condicoes de Pagamento** (VFIN0110).
-2. Clique em **+ Nova Condicao**.
+1. Acesse **Financeiro > Condições de Pagamento** (VFIN0110).
+2. Clique em **+ Nova Condição**.
 3. No campo **Nome**, informe um identificador descritivo (ex: `30/60/90`, `28/56`, `A Vista`).
 4. No campo **Parcelas**, informe os dias de vencimento separados por virgula. Exemplos:
    - `0` = pagamento a vista
-   - `30,60,90` = tres parcelas: 30, 60 e 90 dias
+   - `30,60,90` = três parcelas: 30, 60 e 90 dias
 5. Clique em **Salvar**.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
 | Nome | texto | Sim | — | Nome identificador (ex: "30/60/90", "A Vista") |
 | Parcelas | texto | Sim | — | Dias de vencimento separados por virgula. `0` = a vista. |
 
-## Observacoes importantes
+## Observações importantes
 
-- Espacos em branco no campo Parcelas sao removidos automaticamente ao salvar.
-- O valor `0` tem significado especial: indica pagamento unico a vista.
-- Condicoes de pagamento nao podem ser excluidas se ja estiverem referenciadas em titulos ou pedidos.
+- Espacos em branco no campo Parcelas são removidos automaticamente ao salvar.
+- O valor `0` tem significado especial: indica pagamento único a vista.
+- Condições de pagamento não podem ser excluidas se já estiverem referenciadas em títulos ou pedidos.
 
 ## Telas relacionadas
 
-- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Referencia condicoes de pagamento para calcular datas de vencimento.
-- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Referencia condicoes de pagamento para titulos a receber.
-- **[VCLI0520 (Apoio Cliente Comercial)](/cliente/vcli0520):** Possui cadastro proprio de condicoes de pagamento para clientes.
-- **[VPDV0200 (Cadastro de Pedido de Venda)](/pdv/vpdv0200):** Utiliza condicoes de pagamento no fechamento de pedidos.
+- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Referência condições de pagamento para calcular datas de vencimento.
+- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Referência condições de pagamento para títulos a receber.
+- **[VCLI0520 (Apoio Cliente Comercial)](/cliente/vcli0520):** Possui cadastro próprio de condições de pagamento para clientes.
+- **[VPDV0200 (Cadastro de Pedido de Venda)](/pdv/vpdv0200):** Utiliza condições de pagamento no fechamento de pedidos.

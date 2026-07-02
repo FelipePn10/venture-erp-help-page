@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+title: "VITM0100 — Item & Prontidão para o MRP"
+description: "Cadastrar itens pelas pastas e validar se estão prontos para o MRP, produção e compras."
+---
+
+# VITM0100 — Item & Prontidão para o MRP
+
+> Listar itens, criar novos pelas pastas (PDM, Almoxarifado, Engenharia, Planejamento, Suprimentos) e, principalmente, **validar se um item está pronto para participar do MRP, da produção e das compras**.
+
+## Objetivo
+
+Listar os itens cadastrados, criar novos pelas **pastas** e validar a **prontidão** de um item para o planejamento e a produção. O item vai da matéria-prima ao produto final, e cada papel exige configurações diferentes.
+
+## Conceitos-chave
+
+| Conceito | O que significa |
+|----------|-----------------|
+| **Natureza** | Item Base (molde de variações), Genérico ou Configurado (gera máscara por atributos/PDM). |
+| **PDM** | A descrição técnica é **composta** por Grupo + Modificador + Atributos, não digitada livre. |
+| **LLC** | Nível do item na estrutura: **1** = produto final; **2–8** = intermediários; **9** = matéria-prima. |
+| **Tipo MRP** | MRP, Min/Max, Kanban, Ponto de Pedido (ROP), MPS — a política que decide como o item é reposto. |
+
+## Pré-requisitos
+
+- Empresa cadastrada no sistema.
+- Para itens comprados com UM de compra diferente da de estoque: conversão de UM cadastrada (VSUP0110).
+
+## Passo a passo
+
+1. Clique em **Listar** para trazer os itens (filtre por código/descrição).
+2. Para cadastrar, use o **Cadastro rápido**: código (opcional), natureza, **grupo/modificador** (PDM), UM de estoque, tipo de engenharia, estrutura, **tipo MRP** e **LLC**. Clique em **Criar item**.
+3. Selecione um item e clique em **Prontidão**: o sistema roda o **checklist de ativação** e mostra se o item está ✅ pronto ou ⚠️ com pendências/alertas, além da estrutura (BOM) do item.
+
+## O checklist de prontidão
+
+Ao clicar em **Prontidão**, o sistema confere automaticamente se o item tem tudo o que precisa:
+
+- Item **fabricado** → precisa de **estrutura (BOM)** e **roteiro**.
+- Item **comprado** → precisa de **fornecedor preferencial** e recebe alerta se faltar a **conversão de unidade de medida** (quando a UM de compra difere da UM de estoque).
+
+A verificação **apenas informa** — não altera o item. Use-a como conferência final antes de colocar o item para operar.
+
+## Observações importantes
+
+- **UM de compra ≠ UM de estoque** (ex.: chapa comprada em KG, estocada em UN): cadastre o fator em **VSUP0110**, senão o pedido de compra não calcula a quantidade interna.
+- **Ponto de pedido (ROP)** = `(TR × CM / CR) + ES` — usado quando o Tipo MRP é Ponto de Pedido.
+- **Percentual de perda** na estrutura (corte/estampagem) aumenta a necessidade que o MRP calcula.
+
+## Telas relacionadas
+
+- **[VENT0210 (Estrutura de Produtos)](/engenharia/vent0210):** cadastra a BOM (pai → filho, quantidade, perda).
+- **[VSUP0110 (Conversão de UM)](/compras/vsup0110):** pré-requisito de compra.
+- **[VSUP0130 (Fornecedor Preferencial)](/compras/vsup0130):** pré-requisito de compra.
+- **[VMAQ0200 (Máquinas e Tempos)](/pcp/vmaq0200):** tempos por item × máquina (APS/CRP).
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** consome o item pronto no cálculo.

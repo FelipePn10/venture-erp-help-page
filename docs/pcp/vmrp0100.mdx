@@ -1,0 +1,61 @@
+---
+sidebar_position: 2
+title: "VMRP0100 — MRP (Planejamento de Materiais)"
+description: "Rodar o MRP, analisar sugestões e firmar ordens de produção e compra."
+---
+
+# VMRP0100 — MRP (Planejamento de Materiais)
+
+> O posto de comando do planejador: acionar o cálculo do MRP, analisar as sugestões e decidir o que **firmar** (aprovar) ou descartar.
+
+## Objetivo
+
+Ser o posto de comando do planejador: acionar o cálculo do **MRP** (Planejamento das Necessidades de Materiais), analisar as **sugestões** de ordens que o motor gera e decidir o que **firmar** ou descartar. O MRP responde: *"o que produzir/comprar, quanto e até quando, para entregar tudo que foi pedido?"*
+
+> **O MRP calcula automaticamente, mas quem decide é uma pessoa.** O motor explode a estrutura, verifica o estoque e calcula a necessidade líquida — porém gera **sugestões**, não ordens definitivas. *"O MRP propõe, o planejador dispõe."* Uma sugestão só vira **Ordem Planejada** (e, se for produção, **Ordem de Fabricação**) quando você a **firma**.
+
+## Pré-requisitos
+
+- **Demandas** registradas — pedidos de venda confirmados (VVND0200) geram demanda automaticamente, ou demanda independente manual (VPLA0102).
+- **Estrutura de Produto / BOM** (VENT0210) e **itens** (VENT0200) com tipo, lead time, lote mínimo e estoque de segurança configurados.
+- Um **plano** de planejamento cadastrado.
+
+## Passo a passo
+
+1. Acesse **VMRP0100 — MRP**. Em **Planos de produção**, crie um plano (código + nome + modos de planejamento) ou selecione um existente.
+2. Clique em **Rodar MRP**. O motor tira um *snapshot* do estoque, calcula o **LLC**, processa item a item (demanda − estoque − ordens abertas = necessidade líquida), aplica as regras do item e **gera as sugestões**.
+3. Clique em **Consultar** para carregar sugestões, exceções e ordens planejadas.
+4. Na tabela de **Sugestões**, analise cada proposta (item, quantidade, tipo, demanda, datas, LLC) e clique em **Firmar** para aprovar: a sugestão vira **Ordem Planejada**; se for Fabricação, uma **Ordem de Produção** é criada automaticamente.
+5. Consulte o **Perfil MRP** de um item: demanda, ordens planejadas, ordens firmes e **estoque projetado** ao longo do horizonte.
+6. Veja as **exceções** (atrasos, compras vencidas, excesso de estoque, sobrecarga) e cadastre **regras configuradas** por item sem alterar o cadastro.
+
+## Conceitos-chave
+
+| Termo | Significado |
+|-------|-------------|
+| **Demanda independente** | O que o cliente pediu (pedido/previsão). Entrada do MRP. |
+| **Demanda dependente** | O que precisa ser feito por causa da independente (explosão da BOM). |
+| **Necessidade líquida** | Demanda − estoque disponível − ordens abertas. Se ≤ 0, não sugere nada. |
+| **LLC (Low-Level Code)** | Nível mais fundo em que um item aparece; garante somar toda a demanda de uma vez. |
+| **Firmar** | Ação irreversível: aprova a sugestão. Ordens firmes contam nos próximos cálculos. |
+
+## Regras de geração
+
+- Item **Fabricado** + necessidade líquida > 0 → sugere **Ordem de Produção**.
+- Item **Comprado** + necessidade líquida > 0 → sugere **Ordem de Compra**.
+- **Não gera nada** para: item de terceiro, tipo MRP = Projeto, estoque suficiente, ou estrutura Comercial.
+- Rodar o MRP de novo recalcula do zero; **ordens já firmadas não são afetadas**.
+
+## Observações importantes
+
+- O **calendário industrial** (VCAL0100) empurra datas que caem em fim de semana/feriado para o próximo dia útil.
+- As **regras do item** (lote mínimo, lead time, estoque de segurança) ajustam quantidades e datas.
+
+## Telas relacionadas
+
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200):** origem automática da demanda ao confirmar.
+- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102):** demanda manual/previsão.
+- **[VENT0210 (Estrutura de Produtos)](/engenharia/vent0210):** a BOM que o MRP explode.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** criada ao firmar uma sugestão de fabricação.
+- **[VPRO0200 (CRP)](/pcp/vpro0200)** e **[VPRO0210 (APS)](/pcp/vpro0210):** analisam a capacidade das ordens propostas.
+- **[VPRO0700 (Alertas de Exceções MRP)](/pcp/vpro0700):** notifica as exceções.

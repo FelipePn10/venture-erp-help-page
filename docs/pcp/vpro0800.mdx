@@ -1,0 +1,23 @@
+---
+sidebar_position: 14
+title: "VPRO0800 — Restrições e Configurador"
+description: "Definir regras de negócio que validam combinações de atributos de um item (configurador de produto)."
+---
+
+# VPRO0800 — Restrições e Configurador
+
+> Definir **regras de negócio** que controlam quais combinações de atributos de um item são válidas (configurador de produto / validação de cadastro). Suporta os operadores `==`, `!=`, `>`, `<`, `>=`, `<=`, `IN`, `NOT_IN`.
+
+## Objetivo
+
+Garantir que apenas combinações válidas de atributos sejam configuradas para um item.
+
+## Passo a passo
+
+1. **Crie uma restrição** com a condição desejada (atributo, operador, valor).
+2. Use **Avaliar** informando um contexto (conjunto de atributos) para testar se a combinação é válida.
+
+## Telas relacionadas
+
+- **[VITE0116 (Atributos PDM)](/engenharia/vite0116):** grupos, modificadores e atributos que a restrição valida.
+- **[VITE0313 (Geração Máscara)](/engenharia/vite0313):** gera a máscara dos itens configurados.

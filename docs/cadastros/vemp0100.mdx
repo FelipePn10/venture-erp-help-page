@@ -1,62 +1,62 @@
 ---
 sidebar_position: 3
 title: "VEMP0100 — Cadastro Empresa"
-description: "Cadastro principal de empresas com validacao de CNPJ."
+description: "Cadastro principal de empresas com validação de CNPJ."
 ---
 
 # VEMP0100 — Cadastro Empresa
 
-> Cadastro principal de empresas (matriz e filiais) com validacao de CNPJ em tempo real.
+> Cadastro principal de empresas (matriz e filiais) com validação de CNPJ em tempo real.
 
-**Codigo fonte:** `src/components/screens/cadastros/Vemp0100Page.tsx`
+**Código fonte:** `src/components/screens/cadastros/Vemp0100Page.tsx`
 
 ## Objetivo
 
-Cadastrar e manter os dados cadastrais das empresas (matriz e filiais) que operam no sistema. O CNPJ possui validacao de digito verificador em tempo real. O regime tributario definido aqui determina o comportamento fiscal em todo o ERP. E o cadastro central do sistema, referenciado por praticamente todos os modulos.
+Cadastrar e manter os dados cadastrais das empresas (matriz e filiais) que operam no sistema. O CNPJ possui validação de dígito verificador em tempo real. O regime tributário definido aqui determina o comportamento fiscal em todo o ERP. E o cadastro central do sistema, referenciado por praticamente todos os módulos.
 
 ## Pre-requisitos
 
-- Dados cadastrais completos da empresa: CNPJ, Razao Social, endereco, regime tributario.
+- Dados cadastrais completos da empresa: CNPJ, Razão Social, endereço, regime tributário.
 - Para filiais: CNPJ da matriz deve estar previamente cadastrado.
 - UFs e municipios devem existir em **VUTL0555 (UFs e Cidades)**.
 
 ## Passo a passo
 
 1. Acesse **Cadastros > Empresa** (VEMP0100).
-2. Preencha o **CNPJ** — o sistema valida o digito verificador em tempo real (✓ valido / ✗ invalido).
-3. Preencha **Razao Social** (obrigatorio) e **Nome Fantasia** (opcional).
-4. Informe **IE** (Inscricao Estadual) e **IM** (Inscricao Municipal) conforme aplicavel.
-5. Selecione o **Regime Tributario**: Simples Nacional, Lucro Presumido ou Lucro Real.
-6. Preencha o endereco completo: UF, Municipio, Cod. IBGE, CEP, Logradouro, Numero, Bairro.
+2. Preencha o **CNPJ** — o sistema valida o dígito verificador em tempo real (✓ valido / ✗ inválido).
+3. Preencha **Razão Social** (obrigatório) e **Nome Fantasia** (opcional).
+4. Informe **IE** (Inscrição Estadual) e **IM** (Inscrição Municipal) conforme aplicável.
+5. Selecione o **Regime Tributário**: Simples Nacional, Lucro Presumido ou Lucro Real.
+6. Preencha o endereço completo: UF, Municipio, Cod. IBGE, CEP, Logradouro, Número, Bairro.
 7. Informe o **Telefone** para contato.
 8. Para filiais: preencha o campo **Matriz CNPJ** com o CNPJ da empresa matriz.
 9. Clique em **Salvar**.
-10. Use **Limpar** para resetar o formulario e **Exportar** para gerar planilha.
+10. Use **Limpar** para resetar o formulário e **Exportar** para gerar planilha.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| CNPJ | texto (com validacao ✓/✗) | Sim | — | CNPJ com validacao de digito |
-| Razao Social | texto | Sim | — | Nome empresarial |
-| Nome Fantasia | texto | Nao | — | Nome fantasia |
-| IE | texto | Nao | — | Inscricao Estadual |
-| IM | texto | Nao | — | Inscricao Municipal |
-| Regime Tributario | selecao | Sim | 1-Simples / 2-Lucro Presumido / 3-Lucro Real | Regime |
-| UF / Municipio / Cod. IBGE / CEP / Logradouro / Numero / Bairro | texto | Nao | — | Endereco completo |
-| Telefone | texto | Nao | — | Telefone |
-| Matriz CNPJ | texto (para filiais) | Nao | — | CNPJ da matriz |
+| CNPJ | texto (com validação ✓/✗) | Sim | — | CNPJ com validação de dígito |
+| Razão Social | texto | Sim | — | Nome empresarial |
+| Nome Fantasia | texto | Não | — | Nome fantasia |
+| IE | texto | Não | — | Inscrição Estadual |
+| IM | texto | Não | — | Inscrição Municipal |
+| Regime Tributário | seleção | Sim | 1-Simples / 2-Lucro Presumido / 3-Lucro Real | Regime |
+| UF / Municipio / Cod. IBGE / CEP / Logradouro / Número / Bairro | texto | Não | — | Endereço completo |
+| Telefone | texto | Não | — | Telefone |
+| Matriz CNPJ | texto (para filiais) | Não | — | CNPJ da matriz |
 
-## Observacoes importantes
+## Observações importantes
 
-- A validacao do CNPJ ocorre em tempo real — o sistema indica visualmente se o digito verificador e valido.
-- O regime tributario impacta o calculo de impostos em todo o sistema. Altere com cautela e apenas no inicio da operacao.
+- A validação do CNPJ ocorre em tempo real — o sistema indica visualmente se o dígito verificador e valido.
+- O regime tributário impacta o cálculo de impostos em todo o sistema. Altere com cautela e apenas no início da operação.
 - Para filiais, o CNPJ da matriz deve estar previamente cadastrado no sistema.
-- Dados de endereco sao utilizados em documentos fiscais — mantenha-os sempre atualizados.
+- Dados de endereço são utilizados em documentos fiscais — mantenha-os sempre atualizados.
 
 ## Telas relacionadas
 
-- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Regime tributario define comportamento fiscal.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Regime tributário define comportamento fiscal.
 - **[VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102):** Centros de custo vinculados a empresa.
-- **[VFIN0100 (Contas Bancarias)](/financeiro/vfin0100):** Contas bancarias pertencem a empresa.
-- **[VUTL0555 (UFs e Cidades)](/contabilidade/vutl0555):** Base de municipios para o endereco.
+- **[VFIN0100 (Contas Bancárias)](/financeiro/vfin0100):** Contas bancárias pertencem a empresa.
+- **[VUTL0555 (UFs e Cidades)](/contabilidade/vutl0555):** Base de municipios para o endereço.

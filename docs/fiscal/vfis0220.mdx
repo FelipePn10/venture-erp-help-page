@@ -1,94 +1,94 @@
 ---
 sidebar_position: 5
 title: "VFIS0220 — CTe"
-description: "Cadastro de Conhecimento de Transporte Eletronico com rateio de valores por peso ou valor para rateio no custo das mercadorias."
+description: "Cadastro de Conhecimento de Transporte Eletrônico com rateio de valores por peso ou valor para rateio no custo das mercadorias."
 ---
 
 # VFIS0220 — CTe
 
-> Tela de cadastro do Conhecimento de Transporte Eletronico (CTe). Permite o registro local de CTes emitidos por transportadoras, com funcionalidade de rateio do valor do frete entre as notas fiscais vinculadas — por valor ou por peso — para composicao precisa do custo das mercadorias.
+> Tela de cadastro do Conhecimento de Transporte Eletrônico (CTe). Permite o registro local de CTes emitidos por transportadoras, com funcionalidade de rateio do valor do frete entre as notas fiscais vinculadas — por valor ou por peso — para composição precisa do custo das mercadorias.
 
-**Codigo fonte:** `src/modules/fiscal/cte/vfis0220.vue`
+**Código fonte:** `src/modules/fiscal/cte/vfis0220.vue`
 
 ## Objetivo
 
-A VFIS0220 gerencia o registro de Conhecimentos de Transporte Eletronicos recebidos de transportadoras. Embora a emissao do CTe propriamente dita ocorra na transportadora, o tomador do servico (a empresa) precisa registrar o CTe internamente para: (a) apropriar o credito de ICMS sobre o frete (quando aplicavel), (b) ratear o custo do transporte entre as mercadorias transportadas, compondo o custo de aquisicao, e (c) manter a rastreabilidade documental para fins de auditoria fiscal. A tela oferece dois modos de rateio: por **VALOR** (proporcional ao valor de cada nota fiscal) e por **PESO** (proporcional ao peso bruto de cada nota), atendendo as exigencias contabeis e fiscais de apropriacao de custos.
+A VFIS0220 gerencia o registro de Conhecimentos de Transporte Eletrônicos recebidos de transportadoras. Embora a emissão do CTe propriamente dita ocorra na transportadora, o tomador do serviço (a empresa) precisa registrar o CTe internamente para: (a) apropriar o crédito de ICMS sobre o frete (quando aplicável), (b) ratear o custo do transporte entre as mercadorias transportadas, compondo o custo de aquisição, e (c) manter a rastreabilidade documental para fins de auditoria fiscal. A tela oferece dois modos de rateio: por **VALOR** (proporcional ao valor de cada nota fiscal) e por **PESO** (proporcional ao peso bruto de cada nota), atendendo as exigências contábeis e fiscais de apropriação de custos.
 
 ## Pre-requisitos
 
-- **VFIS0100 (Configuracao Fiscal):** Configuracao fiscal ativa, pois o CTe utiliza o mesmo token Focus NFe para consultas.
+- **VFIS0100 (Configuração Fiscal):** Configuração fiscal ativa, pois o CTe utiliza o mesmo token Focus NFe para consultas.
 - **VFIS0210 (NFe de Entrada):** As notas fiscais de entrada a serem vinculadas ao CTe devem estar previamente registradas e aprovadas.
 - **VCAD0200 (Cadastro de Fornecedores):** Transportadora cadastrada como fornecedora com CNPJ, IE e dados completos.
-- **VFIS0300 (CFOPs):** CFOP 1.352, 2.352 e similares (frete e carreto) para registro do credito de ICMS.
+- **VFIS0300 (CFOPs):** CFOP 1.352, 2.352 e similares (frete e carreto) para registro do crédito de ICMS.
 
 ## Passo a passo
 
 1. Acesse **Fiscal > Documentos > CTe (VFIS0220)**.
-2. A grade principal lista todos os CTes registrados. Utilize os filtros de periodo, transportadora, numero e chave de acesso para localizar documentos.
+2. A grade principal lista todos os CTes registrados. Utilize os filtros de período, transportadora, número e chave de acesso para localizar documentos.
 3. Clique em **Novo CTe** para registrar um novo conhecimento de transporte.
-4. Selecione a **Transportadora** (fornecedor do servico de transporte). O sistema carregara CNPJ, IE e endereco automaticamente.
-5. Informe os dados do **Documento Fiscal**: modelo (57=CTe), serie, numero, data de emissao, chave de acesso de 44 digitos e valor total do frete.
-6. No quadro **Notas Vinculadas**, adicione as NFe de entrada que foram transportadas neste CTe. Clique em **Vincular NFe** e selecione as notas na lista. E possivel vincular uma ou varias notas a um mesmo CTe.
-7. Para cada nota vinculada, o sistema exibira o valor total e o peso bruto (se informado na NFe). Esses dados sao usados para o rateio automatico.
+4. Selecione a **Transportadora** (fornecedor do serviço de transporte). O sistema carregara CNPJ, IE e endereço automaticamente.
+5. Informe os dados do **Documento Fiscal**: modelo (57=CTe), série, número, data de emissão, chave de acesso de 44 digitos e valor total do frete.
+6. No quadro **Notas Vinculadas**, adicione as NFe de entrada que foram transportadas neste CTe. Clique em **Vincular NFe** e selecione as notas na lista. E possível vincular uma ou varias notas a um mesmo CTe.
+7. Para cada nota vinculada, o sistema exibira o valor total e o peso bruto (se informado na NFe). Esses dados são usados para o rateio automático.
 8. Selecione o **Modo de Rateio**: `VALOR` (proporcional ao valor total de cada NFe) ou `PESO` (proporcional ao peso bruto de cada NFe). O sistema calculara automaticamente a parcela do frete atribuida a cada nota vinculada.
-9. Verifique a **Distribuicao do Frete** na coluna `Valor Rateado`. O somatorio dos valores rateados deve ser igual ao valor total do frete informado. Se necessario, ajuste manualmente o valor rateado de cada nota.
-10. Informe o **CFOP** da operacao de transporte (ex: 1.352 para compra de frete interestadual, 2.352 para compra de frete interno).
-11. Preencha os dados de **ICMS sobre o Frete**: base de calculo, aliquota, valor do ICMS e ICMS-ST (se aplicavel). O credito de ICMS sobre o frete sera registrado na apuracao fiscal.
+9. Verifique a **Distribuição do Frete** na coluna `Valor Rateado`. O somatório dos valores rateados deve ser igual ao valor total do frete informado. Se necessário, ajuste manualmente o valor rateado de cada nota.
+10. Informe o **CFOP** da operação de transporte (ex: 1.352 para compra de frete interestadual, 2.352 para compra de frete interno).
+11. Preencha os dados de **ICMS sobre o Frete**: base de cálculo, alíquota, valor do ICMS e ICMS-ST (se aplicável). O crédito de ICMS sobre o frete sera registrado na apuração fiscal.
 12. Clique em **Salvar**. O sistema validara se a soma dos valores rateados iguala o total do frete e se todas as notas vinculadas estao aprovadas.
-13. Apos salvar, clique em **Aprovar**. A aprovacao dispara:
-    - O rateio do frete e consolidado no custo de cada nota fiscal vinculada (o valor rateado e adicionado ao custo de aquisicao dos itens).
-    - O credito de ICMS sobre o frete e registrado no livro fiscal.
-    - O CTe fica disponivel para consulta e auditoria.
+13. Após salvar, clique em **Aprovar**. A aprovação dispara:
+    - O rateio do frete e consolidado no custo de cada nota fiscal vinculada (o valor rateado e adicionado ao custo de aquisição dos itens).
+    - O crédito de ICMS sobre o frete e registrado no livro fiscal.
+    - O CTe fica disponível para consulta e auditoria.
 
 ## Campos
 
-### Cabecalho
+### Cabeçalho
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Transportadora | Select | Sim | VCAD0200 | Fornecedor do servico de transporte. |
-| Modelo | Numero (2) | Sim | 57 | Modelo do documento (CTe=57). |
-| Serie | Numero (3) | Sim | — | Serie do CTe. |
-| Numero | Numero (9) | Sim | — | Numero do CTe. |
-| Data Emissao | Data | Sim | — | Data de emissao do CTe. |
+| Transportadora | Select | Sim | VCAD0200 | Fornecedor do serviço de transporte. |
+| Modelo | Número (2) | Sim | 57 | Modelo do documento (CTe=57). |
+| Série | Número (3) | Sim | — | Série do CTe. |
+| Número | Número (9) | Sim | — | Número do CTe. |
+| Data Emissão | Data | Sim | — | Data de emissão do CTe. |
 | Chave Acesso | Texto (44) | Sim | — | Chave de acesso de 44 digitos do CTe. |
-| Valor Total Frete | Decimal (15,2) | Sim | — | Valor total do servico de transporte. |
-| CFOP | Texto (4) | Sim | VFIS0300 | CFOP da operacao de frete. |
+| Valor Total Frete | Decimal (15,2) | Sim | — | Valor total do serviço de transporte. |
+| CFOP | Texto (4) | Sim | VFIS0300 | CFOP da operação de frete. |
 | Modo Rateio | Select | Sim | VALOR / PESO | Criterio de rateio do frete entre as notas. |
 
 ### ICMS sobre o Frete
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Base Calculo ICMS | Decimal (15,2) | Condicional | — | Base de calculo do ICMS sobre o frete. |
-| Aliquota ICMS | Decimal (5,2) | Condicional | — | Aliquota de ICMS aplicada ao frete. |
+| Base Cálculo ICMS | Decimal (15,2) | Condicional | — | Base de cálculo do ICMS sobre o frete. |
+| Alíquota ICMS | Decimal (5,2) | Condicional | — | Alíquota de ICMS aplicada ao frete. |
 | Valor ICMS | Decimal (15,2) | Condicional | — | Valor do ICMS sobre o frete. |
-| ICMS-ST | Decimal (15,2) | Nao | — | ICMS-ST, se aplicavel. |
+| ICMS-ST | Decimal (15,2) | Não | — | ICMS-ST, se aplicável. |
 
 ### Notas Vinculadas (grid)
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
 | NFe | Select | Sim | VFIS0210 | Nota fiscal de entrada vinculada ao CTe. |
-| Numero NFe | Texto | Auto | — | Numero da NFe vinculada. |
+| Número NFe | Texto | Auto | — | Número da NFe vinculada. |
 | Valor NFe | Decimal (15,2) | Auto | — | Valor total da NFe (para rateio por valor). |
 | Peso Bruto | Decimal (15,4) | Auto | — | Peso bruto da NFe (para rateio por peso). |
 | Percentual Rateio | Decimal (5,2) | Auto | — | Percentual do frete atribuido a esta NFe. |
 | Valor Rateado | Decimal (15,2) | Auto | — | Valor do frete rateado para esta NFe. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **Rateio VALOR vs. PESO:** O rateio por VALOR e o mais comum e distribui o frete proporcionalmente ao valor da mercadoria. O rateio por PESO e recomendado quando o custo do transporte e predominantemente determinado pelo peso (ex: commodities, insumos a granel). A escolha impacta o custo unitario dos itens e, consequentemente, o CPV (Custo do Produto Vendido).
-- **Soma do Rateio:** O sistema nao permite aprovar o CTe se a soma dos valores rateados for diferente do valor total do frete (tolerancia de R$ 0,02). Ajuste manualmente os valores rateados para fechar a conta.
-- **CTe sem NFe Vinculada:** E possivel registrar um CTe sem vincular notas fiscais. Neste caso, o valor do frete fica como despesa administrativa e nao compoe o custo de produtos. Utilize esta opcao para fretes de servicos, materiais de consumo ou quando a nota fiscal ainda nao foi registrada.
-- **Chave de Acesso:** A chave de acesso do CTe tem o mesmo formato da NFe (44 digitos), porem com modelo 57. O sistema valida o digito verificador e o modelo antes de salvar.
-- **Credito de ICMS sobre Frete:** O direito ao credito de ICMS sobre o frete depende do regime tributario da empresa e da natureza da operacao. Consulte o CFOP adequado (1.352, 2.352) e verifique a legislacao do seu estado.
+- **Rateio VALOR vs. PESO:** O rateio por VALOR e o mais comum e distribui o frete proporcionalmente ao valor da mercadoria. O rateio por PESO e recomendado quando o custo do transporte e predominantemente determinado pelo peso (ex: commodities, insumos a granel). A escolha impacta o custo unitário dos itens e, consequentemente, o CPV (Custo do Produto Vendido).
+- **Soma do Rateio:** O sistema não permite aprovar o CTe se a soma dos valores rateados for diferente do valor total do frete (tolerância de R$ 0,02). Ajuste manualmente os valores rateados para fechar a conta.
+- **CTe sem NFe Vinculada:** E possível registrar um CTe sem vincular notas fiscais. Neste caso, o valor do frete fica como despesa administrativa e não compoe o custo de produtos. Utilize esta opção para fretes de serviços, materiais de consumo ou quando a nota fiscal ainda não foi registrada.
+- **Chave de Acesso:** A chave de acesso do CTe tem o mesmo formato da NFe (44 digitos), porém com modelo 57. O sistema valida o dígito verificador e o modelo antes de salvar.
+- **Crédito de ICMS sobre Frete:** O direito ao crédito de ICMS sobre o frete depende do regime tributário da empresa e da natureza da operação. Consulte o CFOP adequado (1.352, 2.352) e verifique a legislação do seu estado.
 
 ## Telas relacionadas
 
-- **[VFIS0100 (Configuracao Fiscal)](/fiscal/vfis0100):** Configuracao base do emitente para comunicacao com SEFAZ.
-- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Emissao de NFe de saida, que pode incluir o valor do frete no XML.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Notas fiscais de entrada que serao vinculadas ao CTe.
-- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Cadastro de CFOPs especificos para operacoes de frete.
-- **[VFIS0530 (Linhas Apuracao ICMS)](/fiscal/vfis0530):** Apuracao do ICMS onde o credito do frete e apropriado.
-- **[VFOR0130 (Contas a Pagar)](/financeiro/vfin0130):** Modulo financeiro para pagamento do frete a transportadora.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base do emitente para comunicação com SEFAZ.
+- **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Emissão de NFe de saída, que pode incluir o valor do frete no XML.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Notas fiscais de entrada que serão vinculadas ao CTe.
+- **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Cadastro de CFOPs específicos para operações de frete.
+- **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração do ICMS onde o crédito do frete e apropriado.
+- **[VFOR0130 (Contas a Pagar)](/financeiro/vfin0130):** Módulo financeiro para pagamento do frete a transportadora.

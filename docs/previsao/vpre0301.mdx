@@ -1,63 +1,63 @@
 ---
 sidebar_position: 5
 title: "VPRE0301 — Previsto X Realizado"
-description: "Painel comparativo entre previsoes de venda e vendas realizadas com 4 KPIs e barras coloridas."
+description: "Painel comparativo entre previsões de venda e vendas realizadas com 4 KPIs e barras coloridas."
 ---
 
 # VPRE0301 — Previsto X Realizado
 
-> Painel de analise comparativa entre previsoes de venda e vendas realizadas, com 4 indicadores-chave e visualizacao em barras coloridas.
+> Painel de análise comparativa entre previsões de venda e vendas realizadas, com 4 indicadores-chave e visualização em barras coloridas.
 
 ## Objetivo
 
-Fornecer uma ferramenta visual de analise comparativa entre as previsoes de venda e as vendas efetivamente realizadas, permitindo avaliar a acuracia do processo de previsao. O painel exibe 4 KPIs principais (Acuracia, Vies, Desvio Absoluto e Tendencia) e graficos de barras coloridas que facilitam a identificacao rapida de periodos com desvios significativos. Esta analise e fundamental para o ciclo de melhoria continua do processo de S&OP, permitindo calibrar indices de projecao e identificar produtos com comportamento de venda imprevisivel.
+Fornecer uma ferramenta visual de análise comparativa entre as previsões de venda e as vendas efetivamente realizadas, permitindo avaliar a acuracia do processo de previsão. O painel exibe 4 KPIs principais (Acuracia, Vies, Desvio Absoluto e Tendência) e gráficos de barras coloridas que facilitam a identificação rápida de periodos com desvios significativos. Esta análise e fundamental para o ciclo de melhoria continua do processo de S&OP, permitindo calibrar indices de projeção e identificar produtos com comportamento de venda imprevisível.
 
 ## Pre-requisitos
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201) — Previsoes de venda cadastradas para os periodos analisados.
-- [VPRE0251 (Geracao Previsao)](/previsao/vpre0251) — Opcional: previsoes geradas automaticamente que serao avaliadas.
-- Modulo de Vendas — Vendas realizadas contra as quais as previsoes serao comparadas.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201) — Previsões de venda cadastradas para os periodos analisados.
+- [VPRE0251 (Geração Previsão)](/previsao/vpre0251) — Opcional: previsões geradas automaticamente que serão avaliadas.
+- Módulo de Vendas — Vendas realizadas contra as quais as previsões serão comparadas.
 
 ## Passo a passo
 
-1. Acesse a tela VPRE0301 pelo menu Previsao > Previsto X Realizado.
-2. Selecione o **Ano** e o **Periodo** (Mensal ou Semanal) para analise.
-3. Escolha o **Item**, **Familia de Produtos** ou deixe em branco para visao consolidada.
-4. O painel exibe os **4 KPIs** no topo da tela: Acuracia (%), Vies (%), Desvio Absoluto Medio e Indicador de Tendencia.
-5. Abaixo dos KPIs, o **grafico de barras coloridas** mostra, para cada mes/semana, a barra azul (Previsto) sobreposta a barra verde (Realizado) ou vermelha (se abaixo).
+1. Acesse a tela VPRE0301 pelo menu Previsão > Previsto X Realizado.
+2. Selecione o **Ano** e o **Período** (Mensal ou Semanal) para análise.
+3. Escolha o **Item**, **Familia de Produtos** ou deixe em branco para visão consolidada.
+4. O painel exibe os **4 KPIs** no topo da tela: Acuracia (%), Vies (%), Desvio Absoluto Médio e Indicador de Tendência.
+5. Abaixo dos KPIs, o **gráfico de barras coloridas** mostra, para cada mês/semana, a barra azul (Previsto) sobreposta a barra verde (Realizado) ou vermelha (se abaixo).
 6. Barras **verdes** indicam periodos onde o realizado superou o previsto. Barras **vermelhas** indicam periodos onde o realizado ficou abaixo do previsto.
 7. Passe o mouse sobre cada barra para ver os valores exatos e o percentual de desvio.
-8. Utilize o filtro de **Top 10 Desvios** para destacar os itens com maior divergencia entre previsto e realizado.
-9. Clique em **Exportar** para gerar um relatorio detalhado em Excel ou PDF.
-10. Utilize a analise para ajustar os **indices de projecao** da proxima rodada de geracao de previsoes.
+8. Utilize o filtro de **Top 10 Desvios** para destacar os itens com maior divergência entre previsto e realizado.
+9. Clique em **Exportar** para gerar um relatório detalhado em Excel ou PDF.
+10. Utilize a análise para ajustar os **indices de projeção** da próxima rodada de geração de previsões.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Ano | select | Sim | Lista de anos | Ano de referencia da analise |
-| Periodo | select | Sim | Mensal / Semanal | Granularidade da analise |
-| Item | select | Nao | Lista de itens | Filtrar por item especifico |
-| Familia de Produtos | select | Nao | Lista de familias | Filtrar por familia de produtos |
-| KPI — Acuracia (%) | indicador | — | Calculado | Percentual de acerto da previsao |
-| KPI — Vies (%) | indicador | — | Calculado | Tendencia de superestimacao ou subestimacao |
-| KPI — Desvio Absoluto Medio | indicador | — | Calculado | Media dos desvios absolutos no periodo |
-| KPI — Tendencia | indicador | — | Melhorando / Estavel / Piorando | Direcao da acuracia ao longo do tempo |
-| Top 10 Desvios | toggle | Nao | — | Filtro para destacar maiores divergencias |
+| Ano | select | Sim | Lista de anos | Ano de referência da análise |
+| Período | select | Sim | Mensal / Semanal | Granularidade da análise |
+| Item | select | Não | Lista de itens | Filtrar por item específico |
+| Familia de Produtos | select | Não | Lista de familias | Filtrar por familia de produtos |
+| KPI — Acuracia (%) | indicador | — | Calculado | Percentual de acerto da previsão |
+| KPI — Vies (%) | indicador | — | Calculado | Tendência de superestimação ou subestimação |
+| KPI — Desvio Absoluto Médio | indicador | — | Calculado | Média dos desvios absolutos no período |
+| KPI — Tendência | indicador | — | Melhorando / Estável / Piorando | Direção da acuracia ao longo do tempo |
+| Top 10 Desvios | toggle | Não | — | Filtro para destacar maiores divergências |
 
-## Observacoes importantes
+## Observações importantes
 
-- A **Acuracia** mede o quao proxima a previsao esta do realizado. Acuracia acima de 80% e considerada boa para a maioria dos setores industriais.
-- O **Vies positivo** indica que as previsoes estao consistentemente acima do realizado (superestimacao). Vies negativo indica subestimacao sistematica.
-- **Barras vermelhas** merecem atencao imediata, especialmente se recorrentes no mesmo item, indicando possivel necessidade de revisao do modelo de previsao para aquele produto.
-- O filtro **Top 10 Desvios** e uma ferramenta gerencial poderosa para focar a atencao nos itens que mais distorcem o planejamento.
-- A analise de **Tendencia** (Melhorando/Estavel/Piorando) e calculada comparando a acuracia dos ultimos 3 periodos com os 3 periodos anteriores.
-- Recomenda-se realizar esta analise **mensalmente** como parte do ciclo de S&OP, utilizando os insights para refinar os parametros da proxima geracao de previsoes em [VPRE0251 (Geracao Previsao)](/previsao/vpre0251).
+- A **Acuracia** mede o quao próxima a previsão esta do realizado. Acuracia acima de 80% e considerada boa para a maioria dos setores industriais.
+- O **Vies positivo** indica que as previsões estao consistentemente acima do realizado (superestimação). Vies negativo indica subestimação sistemática.
+- **Barras vermelhas** merecem atenção imediata, especialmente se recorrentes no mesmo item, indicando possível necessidade de revisão do modelo de previsão para aquele produto.
+- O filtro **Top 10 Desvios** e uma ferramenta gerencial poderosa para focar a atenção nos itens que mais distorcem o planejamento.
+- A análise de **Tendência** (Melhorando/Estável/Piorando) e calculada comparando a acuracia dos ultimos 3 periodos com os 3 periodos anteriores.
+- Recomenda-se realizar esta análise **mensalmente** como parte do ciclo de S&OP, utilizando os insights para refinar os parâmetros da próxima geração de previsões em [VPRE0251 (Geração Previsão)](/previsao/vpre0251).
 
 ## Telas relacionadas
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201): Previsoes de venda que sao objeto da analise comparativa.
-- [VPRE0251 (Geracao Previsao)](/previsao/vpre0251): Ferramenta de geracao que se beneficia dos insights desta analise.
-- [VPRE0101 (Tabela Apropriacao)](/previsao/vpre0101): Tabelas de rateio que impactam a distribuicao das previsoes analisadas.
-- [VPRE0102 (Bloqueio Previsao)](/previsao/vpre0102): Periodos de bloqueio que podem afetar a capacidade de correcao de desvios.
-- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Demandas de producao que derivam das previsoes analisadas.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201): Previsões de venda que são objeto da análise comparativa.
+- [VPRE0251 (Geração Previsão)](/previsao/vpre0251): Ferramenta de geração que se beneficia dos insights desta análise.
+- [VPRE0101 (Tabela Apropriação)](/previsao/vpre0101): Tabelas de rateio que impactam a distribuição das previsões analisadas.
+- [VPRE0102 (Bloqueio Previsão)](/previsao/vpre0102): Periodos de bloqueio que podem afetar a capacidade de correção de desvios.
+- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Demandas de produção que derivam das previsões analisadas.

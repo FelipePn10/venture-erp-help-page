@@ -1,133 +1,171 @@
 ---
 sidebar_position: 1
-sidebar_label: "Visao Geral"
-title: "HELP - Telas do ERP Venture"
-description: "Documentacao completa de todas as telas do sistema ERP Venture Desktop."
+sidebar_label: "Visão Geral"
+title: "Documentação de Telas — ERP Venture"
+description: "Guia completo das telas do ERP Venture, organizado por processos de negócio."
 slug: /indice
 ---
 
-# HELP - Telas do ERP Venture
+# Documentação de Telas — ERP Venture
 
-> Documentacao completa de todas as telas do sistema ERP Venture Desktop.
-> Total de telas documentadas: **110**
-> Estilo: Processos de negocio com fluxos, pre-requisitos e passo a passo.
-> Ultima atualizacao: Junho 2026
-
----
-
-## Indice de Processos
-
-| Processo | Telas |
-|----------|-------|
-| [Processo Financeiro, Contabil e Cadastros](#processo-financeiro-contabil-e-cadastros) | 18 |
-| [Processo Industrial e Producao](#processo-industrial-e-producao) | 54 |
-| [Processo Comercial, Vendas e PDV](#processo-comercial-vendas-e-pdv) | 18 |
-| [Processo Fiscal](#processo-fiscal) | 20 |
+> Guia completo das telas (rotinas) do sistema **ERP Venture Desktop**.
+> Organizado por **processos de negócio** — o fluxo real de trabalho, não os menus.
+> Última atualização: Junho 2026.
 
 ---
 
-## Processo Financeiro, Contabil e Cadastros
+## Índice de Processos
 
-Os modulos **Financeiro**, **Contabilidade** e **Cadastros** formam a espinha dorsal administrativa do ERP Venture. Juntos, gerenciam todo o ciclo financeiro — desde o cadastro das entidades fundamentais ate a execucao de pagamentos, recebimentos, apuracao de impostos e emissao de relatorios gerenciais.
-
-| Modulo | Telas |
-|--------|-------|
-| [Financeiro](financeiro/vfin0100) | 9 |
-| [Contabilidade](contabilidade/vctb0102) | 3 |
-| [Cadastros](cadastros/vcal0100) | 6 |
-
-### Fluxo Financeiro Completo
-
-```
-Cadastros Base → VEMP0100 → VFIN0100 → VFIN0110 → VFIN0120 → VFIN0130
-                                          ↓
-                    VFIS0210 (NF Entrada) → VFIN0200 (Pagar) → VFIN0300 (Fluxo Caixa)
-                    VFIS0200 (NF Saida)   → VFIN0210 (Receber) → VFIN0500 (Relatorios)
-```
+| Processo | O que cobre |
+|----------|-------------|
+| [Financeiro, Contábil e Cadastros](#financeiro-contábil-e-cadastros) | Contas, títulos, apuração, contabilidade e cadastros fundacionais |
+| [Industrial e Produção](#industrial-e-produção) | Engenharia, planejamento, inspeção, importação, assistência e garantia |
+| [Comercial, Vendas e PDV](#comercial-vendas-e-pdv) | Cliente, políticas comerciais, pedido de venda, precificação e expedição |
+| [Fiscal](#fiscal) | Configuração, tabelas tributárias, emissão de documentos e apuração |
+| [PCP, Chão de Fábrica, Estoque e Custos](#pcp-chão-de-fábrica-estoque-e-custos) | MRP, CRP/APS, ordem de produção, corte, custos e estoque |
+| [Suprimento e Compras](#suprimento-e-compras) | Fornecedor, mestres de compra, solicitação, cotação e pedido |
 
 ---
 
-## Processo Industrial e Producao
+## O ERP Venture em uma frase
 
-O produto nasce na **Engenharia** (VENT0200), onde recebe codigo, estrutura e roteiro. Planejado via **MRP/MPS** (VPLA0102), dispara ordens de compra em **Suprimentos** (VPDC0200). Ao chegar, passa por **Inspecao** (VINS0200) e e estocado (VENT0800). Vendido (VPDV0200) e expedido (VEXP0100), fecha o ciclo.
+Um sistema que acompanha o produto do **pedido do cliente** até a **entrega e o
+faturamento** — passando por **planejamento (MRP)**, **compras**, **produção** e
+**estoque** — mantendo o **fiscal** e o **financeiro** sincronizados automaticamente.
 
-| Modulo | Telas |
-|--------|-------|
-| [Engenharia](engenharia/veng0204) | 17 |
-| [Planejamento](planejamento/vpla0102) | 3 |
-| [Previsao de Vendas](previsao/vpre0101) | 5 |
-| [Manutencao](manutencao/vman0202) | 2 |
-| [Suprimento](suprimento/vavr0200) | 7 |
-| [Importacao](importacao/vimp0101) | 3 |
-| [Inspecao](inspecao/vavf0101) | 11 |
-| [Assistencia Tecnica](assistencia/vass0201) | 5 |
-| [Garantia](garantia/vgar0211) | 1 |
-
-### Fluxo Macro do Produto
+### O grande fluxo (visão de 30 segundos)
 
 ```
-ENGENHARIA → PLANEJAMENTO → SUPRIMENTO → INSPECAO → ESTOQUE → COMERCIAL → EXPEDICAO
-VENT0200  → VPLA0102    → VPDC0200  → VINS0200 → VENT0800 → VPDV0200 → VEXP0100
-  Item       Demanda        Pedido      Roteiro    Saldo      Pedido     Carga
+CLIENTE  →  Pedido de Venda  →  (confirma)  →  gera DEMANDA + reserva estoque
+                                                   │
+                                                   ▼
+                                                  MRP  →  sugere COMPRAS e PRODUÇÃO
+                                                   │              │
+                          ┌────────────────────────┘              │
+                          ▼                                        ▼
+                 Pedido de Compra                        Ordem de Produção
+                 (recebe → estoque)                       (consome → produz → estoque)
+                                                                   │
+                                                                   ▼
+                                          NF-e de Saída  →  baixa estoque + Conta a Receber
+                                                                   │
+                                                                   ▼
+                                                    Romaneio / Expedição  →  ENTREGA
 ```
+
+Cada seta é **automática** no Venture: confirmar o pedido já gera a demanda do MRP;
+firmar a sugestão do MRP já cria a ordem; concluir a produção já movimenta o estoque; e
+autorizar a NF-e já baixa o estoque e gera o título financeiro.
 
 ---
 
-## Processo Comercial, Vendas e PDV
+## Financeiro, Contábil e Cadastros
 
-O modulo **Comercial** e o coracao do ERP Venture — todo o fluxo operacional se origina de um pedido de venda. A partir da venda, dispara processos de expedicao, faturamento e contas a receber.
+A espinha dorsal administrativa. Gerencia todo o ciclo financeiro — do cadastro das
+entidades fundamentais até pagamentos, recebimentos, apuração de impostos e relatórios
+gerenciais — além da contabilidade (SPED ECD) e dos cadastros que fundam o sistema.
 
-| Modulo | Telas |
-|--------|-------|
-| [Comercial](comercial/vent0100) | 3 |
-| [Cliente](cliente/vcli0117) | 6 |
-| [PDV / Pedidos](pdv/vpdv0108) | 6 |
-| [Almoxarifado](almoxarifado/vent0800) | 2 |
-| [Custos / Precificacao](custos/vcst0202) | 1 |
-
-### Fluxo Comercial
-
-```
-Cadastros Apoio → Cadastro Cliente → Politicas Comerciais
-                                              ↓
-                                  Pedido de Venda (VPDV0200)
-                                              ↓
-                        Acompanhamento / Reprogramacoes / Comissoes
-                                              ↓
-                                  Expedicao (VEXP0100)
-                                              ↓
-                                Faturamento → Contas a Receber
-```
+- **[Financeiro](/financeiro/vfin0100)** — contas bancárias, condições de pagamento,
+  plano de contas, centros de custo, contas a pagar/receber, fluxo de caixa e relatórios.
+- **[Contabilidade](/contabilidade/vctb0102)** — centro de custo contábil, SPED ECD e a
+  tabela base de UFs e cidades.
+- **[Cadastros](/cadastros/vemp0100)** — empresa, funcionários, localização, classificação
+  de itens, calendário industrial e prioridades.
 
 ---
 
-## Processo Fiscal
+## Industrial e Produção
 
-O processo fiscal cobre o ciclo completo dos documentos fiscais — configuracao do emitente, tabelas tributarias, emissao de NF-e, apuracao de impostos e geracao de declaracoes.
+Do item de engenharia ao produto acabado e ao atendimento pós-venda. O produto nasce na
+**Engenharia** (VENT0200), é planejado (VPLA0102), suprido (VPDC0200), inspecionado
+(VINS0200), estocado, vendido e expedido.
 
-| Modulo | Telas |
-|--------|-------|
-| [Fiscal](fiscal/vfis0100) | 20 |
-
-### Camadas do Processo Fiscal
-
-1. **Configuracao Fiscal** (VFIS0100) — Fundacao do modulo
-2. **Tabelas Tributarias** (VFIS0110) — Aliquotas por NCM e UF
-3. **Classificacoes e Parametros** (VFIS0300-VFIS0360) — Especializacao tributaria
-4. **Emissao de Documentos** (VFIS0200, VFIS0210, VFIS0220, VNFS0100) — NFe, CTe, NFSe
-5. **Apuracao e Ajustes** (VFIS0340, VFIS0500-VFIS0560) — Fechamento fiscal
+- **[Engenharia](/engenharia/vent0200)** — item, estrutura (BOM), roteiro, configurador
+  PDM e calendários.
+- **[Planejamento](/planejamento/vpla0102)** — demandas independentes, montagem de carga
+  e orientações de entrega.
+- **[Previsão de Vendas](/previsao/vpre0101)** — apropriação, bloqueio, cadastro, geração
+  e previsto × realizado.
+- **[Manutenção](/manutencao/vman0202)** — apontamento e consulta de ordens de serviço.
+- **[Suprimento](/suprimento/vavr0200)** — fornecedores, contratos e pedido de compra.
+- **[Importação](/importacao/vimp0101)** — status logístico, conhecimentos e console.
+- **[Inspeção](/inspecao/vins0200)** — roteiros, ocorrências, ordens e avaliação de
+  fornecedores (IQF).
+- **[Assistência Técnica](/assistencia/vass0201)** — chamados, consultas e relatórios.
+- **[Garantia](/garantia/vgar0211)** — geração de pedido de devolução.
 
 ---
 
-## Como usar esta documentacao
+## Comercial, Vendas e PDV
 
-Cada tela do ERP Venture e documentada com:
+O coração do fluxo operacional — todo o processo se origina de um pedido de venda, que
+dispara expedição, faturamento e contas a receber.
 
-- **Objetivo** — proposito e contexto da tela no processo de negocio
-- **Pre-requisitos** — cadastros e configuracoes necessarios antes de usar a tela
-- **Passo a passo** — instrucoes numeradas para executar a operacao principal
-- **Campos** — tabela detalhada com nome, tipo, obrigatoriedade, opcoes e descricao
-- **Observacoes importantes** — dicas, restricoes e informacoes criticas
-- **Telas relacionadas** — dependencias com explicacao de como se conectam
+- **[Comercial](/comercial/vent0100)** — consulta de pedidos, divisão de vendas e
+  reprogramação de entrega.
+- **[Cliente](/cliente/vcli0500)** — cadastro de cliente e cadastros de apoio (básico,
+  comercial e fiscal), permissões e fretes.
+- **[PDV / Pedidos](/pdv/vpdv0200)** — políticas de desconto e frete, pedido de venda,
+  acompanhamento, recorrências e comissões.
+- **[Almoxarifado](/almoxarifado/vent0800)** — cadastro de almoxarifado e expedição.
+- **[Custos / Precificação](/custos/vcst0202)** — simulação e formação de preços.
 
-Navegue pelo menu lateral para acessar a documentacao de cada modulo e tela.
+---
+
+## Fiscal
+
+O ciclo tributário completo: configuração do emitente, tabelas, classificações, emissão
+de NF-e / NFS-e / CT-e, apuração e ajustes que alimentam o SPED Fiscal.
+
+- **[Fiscal](/fiscal/vfis0100)** — da configuração fiscal e tabelas tributárias à emissão
+  de documentos e à apuração de ICMS/IPI/PIS/COFINS.
+
+### Camadas do processo fiscal
+
+1. **Configuração Fiscal** (VFIS0100) — fundação do módulo.
+2. **Tabelas Tributárias** (VFIS0110) — alíquotas por NCM e UF.
+3. **Classificações e Parâmetros** (VFIS0300–VFIS0360) — especialização tributária.
+4. **Emissão de Documentos** (VFIS0200, VFIS0210, VFIS0220, VNFS0100) — NF-e, CT-e, NFS-e.
+5. **Apuração e Ajustes** (VFIS0340, VFIS0500–VFIS0560) — fechamento fiscal.
+
+---
+
+## PCP, Chão de Fábrica, Estoque e Custos
+
+O PCP responde a três perguntas: **o que** produzir/comprar, **quanto** e **quando**. A
+partir do pedido de venda confirmado, o sistema explode a estrutura, lê o roteiro e
+calcula quando cada ordem deve ser emitida — executada no chão de fábrica, com custo real
+e rastreabilidade de lote.
+
+- **[PCP / Chão de Fábrica](/pcp/vmrp0100)** — item e prontidão, MRP, CRP/APS, ordem de
+  produção, custo padrão, qualidade, manutenção preventiva, previsão estatística, plano de
+  corte, custos, estoque e inventário.
+
+> **Regra de ouro do estoque:** o **romaneio reserva**, a **NF-e baixa**. A reserva reduz
+> o *disponível* (ATP) sem mexer no físico; a NF-e de saída reduz o físico.
+
+---
+
+## Suprimento e Compras
+
+Garante os materiais certos, do fornecedor certo, no prazo certo. A necessidade nasce do
+**MRP** (sugestões de compra) ou de uma **solicitação** manual; passa (opcionalmente) por
+uma **cotação**; e vira um **pedido de compra**.
+
+- **[Suprimento e Compras](/compras/vsup0500)** — cadastro de fornecedor, apoio, conversão
+  de UM, tabela de preço, fornecedor preferencial, pedido, solicitação e cotação.
+
+---
+
+## Como usar esta documentação
+
+Cada tela é descrita com a mesma estrutura, para você encontrar o que precisa rapidamente:
+
+- **Objetivo** — o que a tela resolve, em linguagem de negócio.
+- **Pré-requisitos** — o que precisa existir antes (cadastros, permissões).
+- **Passo a passo** — a sequência de ações para concluir a tarefa.
+- **Campos** — o significado de cada campo e suas opções.
+- **Observações importantes** — regras, automações e cuidados.
+- **Telas relacionadas** — para onde ir antes/depois.
+
+Navegue pelo menu lateral para acessar cada processo e tela.

@@ -1,67 +1,67 @@
 ---
 sidebar_position: 3
 title: "VCON0200 — Contratos Fornecedores"
-description: "Gestao de contratos de fornecimento com operacao em modo dual: cadastro e consulta integrados."
+description: "Gestão de contratos de fornecimento com operação em modo dual: cadastro e consulta integrados."
 ---
 
 # VCON0200 — Contratos Fornecedores
 
-> Tela de gestao de contratos de fornecimento operando em modo dual, integrando cadastro e consulta em uma unica interface.
+> Tela de gestão de contratos de fornecimento operando em modo dual, integrando cadastro e consulta em uma única interface.
 
 ## Objetivo
 
-Permitir a gestao completa dos contratos de fornecimento com fornecedores, operando em **modo dual**: a mesma tela funciona tanto como cadastro (para criar e editar contratos) quanto como consulta (para pesquisar e visualizar contratos existentes). O contrato estabelece condicoes comerciais, precos, quantidades e prazos acordados com o fornecedor, servindo como base para a emissao de pedidos de compra. O controle de saldo contratual garante que os pedidos nao excedam o valor ou quantidade acordados.
+Permitir a gestão completa dos contratos de fornecimento com fornecedores, operando em **modo dual**: a mesma tela funciona tanto como cadastro (para criar e editar contratos) quanto como consulta (para pesquisar e visualizar contratos existentes). O contrato estabelece condições comerciais, preços, quantidades e prazos acordados com o fornecedor, servindo como base para a emissão de pedidos de compra. O controle de saldo contratual garante que os pedidos não excedam o valor ou quantidade acordados.
 
 ## Pre-requisitos
 
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedor deve estar cadastrado e ativo.
 - [VCON0100 (Tipos de Contratos)](/suprimento/vcon0100) — Tipo de contrato deve estar definido.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que serao incluidos no contrato devem estar cadastrados.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que serão incluídos no contrato devem estar cadastrados.
 
 ## Passo a passo
 
 1. Acesse a tela VCON0200 pelo menu Suprimento > Contratos Fornecedores.
 2. No **modo de Cadastro**, clique em **Novo** para criar um novo contrato.
-3. Preencha o **Numero do Contrato** (manual ou automatico conforme parametrizacao).
+3. Preencha o **Número do Contrato** (manual ou automático conforme parametrização).
 4. Selecione o **Fornecedor** e o **Tipo de Contrato**.
-5. Defina a **Vigencia** do contrato com datas de inicio e fim.
-6. Na tabela de **Itens do Contrato**, inclua os produtos ou servicos contratados, com precos e quantidades.
-7. Configure o **Cronograma de Entregas** se o contrato prever entregas periodicas.
-8. Anexe o **Documento do Contrato** (PDF, documento assinado) utilizando o botao de upload.
-9. Submeta para **Aprovacao** se o tipo de contrato exigir este passo.
+5. Defina a **Vigência** do contrato com datas de início e fim.
+6. Na tabela de **Itens do Contrato**, inclua os produtos ou serviços contratados, com preços e quantidades.
+7. Configure o **Cronograma de Entregas** se o contrato prever entregas periódicas.
+8. Anexe o **Documento do Contrato** (PDF, documento assinado) utilizando o botão de upload.
+9. Submeta para **Aprovação** se o tipo de contrato exigir este passo.
 10. No **modo de Consulta**, utilize os filtros para localizar contratos e visualize saldos, pedidos emitidos e status.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Numero do Contrato | texto | Sim | — | Identificador do contrato |
+| Número do Contrato | texto | Sim | — | Identificador do contrato |
 | Fornecedor | select | Sim | Lista de fornecedores | Fornecedor parte do contrato |
-| Tipo de Contrato | select | Sim | Lista de tipos | Classificacao do contrato |
-| Data Inicio | data | Sim | — | Data de inicio da vigencia |
-| Data Fim | data | Sim | — | Data de termino da vigencia |
-| Valor Total | numero | Nao | — | Calculado: soma dos itens x precos x quantidades |
-| Status | select | Nao | Em Edicao / Pendente Aprovacao / Aprovado / Vigente / Encerrado / Cancelado | Situacao do contrato |
-| Itens do Contrato | tabela | Sim | — | Produtos/servicos objeto do contrato |
-| Cronograma de Entregas | tabela | Nao | — | Datas e quantidades previstas de entrega |
-| Documento Anexo | arquivo | Nao | — | Contrato assinado ou termo aditivo digitalizado |
-| Saldo — Quantidade | numero | Nao | — | Quantidade contratada menos ja pedida |
-| Saldo — Valor | numero | Nao | — | Valor contratado menos ja pedido |
+| Tipo de Contrato | select | Sim | Lista de tipos | Classificação do contrato |
+| Data Início | data | Sim | — | Data de início da vigência |
+| Data Fim | data | Sim | — | Data de término da vigência |
+| Valor Total | número | Não | — | Calculado: soma dos itens x preços x quantidades |
+| Status | select | Não | Em Edição / Pendente Aprovação / Aprovado / Vigente / Encerrado / Cancelado | Situação do contrato |
+| Itens do Contrato | tabela | Sim | — | Produtos/serviços objeto do contrato |
+| Cronograma de Entregas | tabela | Não | — | Datas e quantidades previstas de entrega |
+| Documento Anexo | arquivo | Não | — | Contrato assinado ou termo aditivo digitalizado |
+| Saldo — Quantidade | número | Não | — | Quantidade contratada menos já pedida |
+| Saldo — Valor | número | Não | — | Valor contratado menos já pedido |
 
-## Observacoes importantes
+## Observações importantes
 
 - O **modo dual** permite alternar rapidamente entre cadastro e consulta sem sair da tela, agilizando o fluxo de trabalho do comprador.
 - O **Saldo Contratual** e atualizado automaticamente a cada pedido de compra emitido contra o contrato. Quando o saldo se aproxima de zero, o sistema emite um alerta.
-- O **Cronograma de Entregas** e utilizado pela funcionalidade de geracao automatica de pedidos, criando pedidos de compra nas datas programadas.
-- A **aprovacao** do contrato segue o fluxo definido no tipo de contrato. Enquanto nao aprovado, pedidos nao podem ser emitidos contra o contrato.
-- O **Documento Anexo** e importante para auditoria, armazenando a versao assinada do contrato. Formatos aceitos: PDF, JPG, PNG, DOC.
-- Contratos **Encerrados** naturalmente (por termino de vigencia) podem ser reabertos como novo aditivo. Contratos **Cancelados** nao podem ser reativados.
+- O **Cronograma de Entregas** e utilizado pela funcionalidade de geração automática de pedidos, criando pedidos de compra nas datas programadas.
+- A **aprovação** do contrato segue o fluxo definido no tipo de contrato. Enquanto não aprovado, pedidos não podem ser emitidos contra o contrato.
+- O **Documento Anexo** e importante para auditoria, armazenando a versão assinada do contrato. Formatos aceitos: PDF, JPG, PNG, DOC.
+- Contratos **Encerrados** naturalmente (por término de vigência) podem ser reabertos como novo aditivo. Contratos **Cancelados** não podem ser reativados.
 
 ## Telas relacionadas
 
-- [VCON0100 (Tipos de Contratos)](/suprimento/vcon0100): Tipos de contrato que definem as regras aplicaveis.
+- [VCON0100 (Tipos de Contratos)](/suprimento/vcon0100): Tipos de contrato que definem as regras aplicáveis.
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores partes nos contratos.
-- [VCON0202 (Cancelamento Itens Contrato)](/suprimento/vcon0202): Cancelamento de itens especificos do contrato.
-- [VCON0400 (Consulta Contratos)](/suprimento/vcon0400): Consulta avancada de contratos com 13 filtros.
+- [VCON0202 (Cancelamento Itens Contrato)](/suprimento/vcon0202): Cancelamento de itens específicos do contrato.
+- [VCON0400 (Consulta Contratos)](/suprimento/vcon0400): Consulta avançada de contratos com 13 filtros.
 - [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra emitidos contra o contrato.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens incluidos nos contratos.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens incluídos nos contratos.

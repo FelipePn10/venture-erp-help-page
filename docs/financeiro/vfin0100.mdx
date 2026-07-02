@@ -1,59 +1,59 @@
 ---
 sidebar_position: 1
-title: "VFIN0100 — Contas Bancarias"
-description: "Cadastrar e manter as contas bancarias da empresa."
+title: "VFIN0100 — Contas Bancárias"
+description: "Cadastrar e manter as contas bancárias da empresa."
 ---
 
-# VFIN0100 — Contas Bancarias
+# VFIN0100 — Contas Bancárias
 
-> Cadastrar e manter as contas bancarias da empresa. Este e o cadastro FUNDAMENTAL do modulo financeiro.
+> Cadastrar e manter as contas bancárias da empresa. Este e o cadastro FUNDAMENTAL do módulo financeiro.
 
-**Codigo fonte:** `src/components/screens/financeiro/Vfin0100Page.tsx`
+**Código fonte:** `src/components/screens/financeiro/Vfin0100Page.tsx`
 
 ## Objetivo
 
-Cadastrar e manter as contas bancarias da empresa. Este e o cadastro FUNDAMENTAL do modulo financeiro — todas as operacoes de baixa nas telas VFIN0200 e VFIN0210 utilizam as contas aqui cadastradas. A tela VFIN0300 exibe os saldos destas contas na aba "Saldos das Contas".
+Cadastrar e manter as contas bancárias da empresa. Este e o cadastro FUNDAMENTAL do módulo financeiro — todas as operações de baixa nas telas VFIN0200 e VFIN0210 utilizam as contas aqui cadastradas. A tela VFIN0300 exibe os saldos destas contas na aba "Saldos das Contas".
 
 ## Pre-requisitos
 
-- Nenhum. Esta e uma das primeiras telas a ser configurada no modulo financeiro.
-- Ter em maos os dados bancarios: codigo do banco, agencia, numero da conta, digito verificador.
+- Nenhum. Esta e uma das primeiras telas a ser configurada no módulo financeiro.
+- Ter em maos os dados bancários: código do banco, agência, número da conta, dígito verificador.
 
 ## Passo a passo
 
-1. Acesse o modulo **Financeiro > Contas Bancarias** (VFIN0100).
-2. Clique no botao **+ Nova Conta**.
-3. Preencha o campo **Banco** com o codigo numerico da instituicao (ex: `341` para Itau, `001` para Banco do Brasil).
-4. Preencha o campo **Conta** com o numero da conta corrente (sem o digito).
-5. Preencha o campo **Descricao** com um nome identificador (ex: "Conta Principal Itau", "Conta Investimento BB").
-6. Preencha opcionalmente **Agencia**, **Digito**, **Titular** e **Saldo Inicial**.
+1. Acesse o módulo **Financeiro > Contas Bancárias** (VFIN0100).
+2. Clique no botão **+ Nova Conta**.
+3. Preencha o campo **Banco** com o código numérico da instituição (ex: `341` para Itau, `001` para Banco do Brasil).
+4. Preencha o campo **Conta** com o número da conta corrente (sem o dígito).
+5. Preencha o campo **Descrição** com um nome identificador (ex: "Conta Principal Itau", "Conta Investimento BB").
+6. Preencha opcionalmente **Agência**, **Dígito**, **Titular** e **Saldo Inicial**.
 7. Se a conta aceitar PIX, selecione o **Tipo Chave PIX** e informe a **Chave PIX**.
 8. Clique em **Salvar**.
 9. A conta aparecera na tabela de listagem com o saldo atual formatado em reais (R$).
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Funcao |
+| Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
-| Banco | texto | Sim | — | Codigo do banco (ex: `341`, `001`, `237`) |
-| Agencia | texto | Nao | — | Numero da agencia bancaria |
-| Conta | texto | Sim | — | Numero da conta corrente |
-| Digito | texto | Nao | — | Digito verificador da conta |
-| Descricao | texto | Sim | — | Nome descritivo (ex: "Conta Principal Itau") |
-| Titular | texto | Nao | — | Nome do titular da conta |
-| Saldo Inicial | numero | Nao | — | Saldo inicial para conciliacao bancaria |
-| Tipo Chave PIX | selecao | Nao | CNPJ / CPF / E-mail / Telefone / Aleatoria | Tipo de chave PIX |
-| Chave PIX | texto | Nao | — | Valor da chave PIX conforme o tipo |
+| Banco | texto | Sim | — | Código do banco (ex: `341`, `001`, `237`) |
+| Agência | texto | Não | — | Número da agência bancaria |
+| Conta | texto | Sim | — | Número da conta corrente |
+| Dígito | texto | Não | — | Dígito verificador da conta |
+| Descrição | texto | Sim | — | Nome descritivo (ex: "Conta Principal Itau") |
+| Titular | texto | Não | — | Nome do titular da conta |
+| Saldo Inicial | número | Não | — | Saldo inicial para conciliação bancaria |
+| Tipo Chave PIX | seleção | Não | CNPJ / CPF / E-mail / Telefone / Aleatoria | Tipo de chave PIX |
+| Chave PIX | texto | Não | — | Valor da chave PIX conforme o tipo |
 
-## Observacoes importantes
+## Observações importantes
 
-- A tela nao possui funcionalidade de edicao ou exclusao de contas ja cadastradas.
-- O **Saldo Inicial** e o ponto de partida para a conciliacao. Os saldos exibidos na VFIN0300 consideram este valor inicial mais todas as movimentacoes.
+- A tela não possui funcionalidade de edição ou exclusão de contas já cadastradas.
+- O **Saldo Inicial** e o ponto de partida para a conciliação. Os saldos exibidos na VFIN0300 consideram este valor inicial mais todas as movimentações.
 - A chave PIX e opcional mas recomendada, pois permite identificar recebimentos via PIX no fluxo de caixa.
 
 ## Telas relacionadas
 
-- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Utiliza as contas bancarias no painel de baixa para registrar pagamentos.
-- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Utiliza as contas bancarias no painel de baixa para registrar recebimentos.
+- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** Utiliza as contas bancárias no painel de baixa para registrar pagamentos.
+- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** Utiliza as contas bancárias no painel de baixa para registrar recebimentos.
 - **[VFIN0300 (Fluxo de Caixa e Saldos)](/financeiro/vfin0300):** A aba "Saldos das Contas" exibe o saldo atualizado de cada conta cadastrada aqui.
 - **[VEMP0100 (Cadastro Empresa)](/cadastros/vemp0100):** A empresa a qual as contas pertencem.

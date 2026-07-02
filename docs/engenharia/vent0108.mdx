@@ -1,62 +1,62 @@
 ---
 sidebar_position: 9
-title: "VENT0108 — Calendario Financeiro/Industrial"
-description: "Cadastro dos calendarios utilizados nos modulos financeiro e industrial para contagem de dias uteis."
+title: "VENT0108 — Calendário Financeiro/Industrial"
+description: "Cadastro dos calendários utilizados nos módulos financeiro e industrial para contagem de dias úteis."
 ---
 
-# VENT0108 — Calendario Financeiro/Industrial
+# VENT0108 — Calendário Financeiro/Industrial
 
-> Cadastro centralizado de calendarios utilizados pelos modulos financeiro e industrial para calculo de prazos em dias uteis.
+> Cadastro centralizado de calendários utilizados pelos módulos financeiro e industrial para cálculo de prazos em dias úteis.
 
 ## Objetivo
 
-Permitir o cadastro e manutencao dos calendarios de dias uteis utilizados em toda a empresa, abrangendo tanto o calendario financeiro (para calculo de prazos de pagamento, vencimentos e juros) quanto o calendario industrial (para calculo de prazos de producao, promessa de entrega e lead times). Cada calendario define quais dias sao considerados uteis, feriados ou pontos facultativos, servindo como base para todos os calculos de prazo em dias uteis no sistema.
+Permitir o cadastro e manutenção dos calendários de dias úteis utilizados em toda a empresa, abrangendo tanto o calendário financeiro (para cálculo de prazos de pagamento, vencimentos e juros) quanto o calendário industrial (para cálculo de prazos de produção, promessa de entrega e lead times). Cada calendário define quais dias são considerados úteis, feriados ou pontos facultativos, servindo como base para todos os calculos de prazo em dias úteis no sistema.
 
 ## Pre-requisitos
 
-Nao ha pre-requisitos obrigatorios. O calendario e uma tabela basica independente, mas e referenciado por diversos outros modulos.
+Não ha pre-requisitos obrigatórios. O calendário e uma tabela básica independente, mas e referenciado por diversos outros módulos.
 
 ## Passo a passo
 
-1. Acesse a tela VENT0108 pelo menu Engenharia > Calendario Financeiro/Industrial.
-2. Clique em **Novo** para criar um novo calendario ou selecione um existente para edicao.
-3. Preencha o **Codigo** e a **Descricao** do calendario (ex: "SP-CAPITAL" para calendario da cidade de Sao Paulo).
-4. Defina o **Ano de Referencia** para o qual o calendario sera configurado.
-5. Para cada mes do ano, marque ou desmarque os dias como uteis clicando nos dias do calendario mensal.
-6. Utilize o botao **Feriados** para cadastrar feriados nacionais, estaduais e municipais, que serao automaticamente marcados como nao uteis.
-7. Utilize o botao **Importar Feriados** para carregar feriados oficiais a partir de uma lista pre-definida por estado e cidade.
-8. Para **Pontos Facultativos**, marque os dias manualmente e adicione uma observacao explicativa.
-9. Para criar o calendario do proximo ano, utilize o botao **Copiar Calendario** e ajuste os feriados que mudam de data.
-10. Clique em **Salvar** para persistir o calendario.
+1. Acesse a tela VENT0108 pelo menu Engenharia > Calendário Financeiro/Industrial.
+2. Clique em **Novo** para criar um novo calendário ou selecione um existente para edição.
+3. Preencha o **Código** e a **Descrição** do calendário (ex: "SP-CAPITAL" para calendário da cidade de São Paulo).
+4. Defina o **Ano de Referência** para o qual o calendário sera configurado.
+5. Para cada mês do ano, marque ou desmarque os dias como úteis clicando nos dias do calendário mensal.
+6. Utilize o botão **Feriados** para cadastrar feriados nacionais, estaduais e municipais, que serão automaticamente marcados como não úteis.
+7. Utilize o botão **Importar Feriados** para carregar feriados oficiais a partir de uma lista pre-definida por estado e cidade.
+8. Para **Pontos Facultativos**, marque os dias manualmente e adicione uma observação explicativa.
+9. Para criar o calendário do próximo ano, utilize o botão **Copiar Calendário** e ajuste os feriados que mudam de data.
+10. Clique em **Salvar** para persistir o calendário.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo | texto | Sim | — | Identificador unico do calendario |
-| Descricao | texto | Sim | — | Nome descritivo do calendario |
-| Ano de Referencia | numero | Sim | — | Ano para o qual o calendario e valido |
-| Tipo | select | Sim | Financeiro / Industrial / Ambos | Classificacao de uso do calendario |
-| Mes | navegacao | Sim | — | Mes do calendario em visualizacao |
-| Dias Uteis (total) | numero | Nao | — | Total de dias uteis calculado automaticamente para o mes/ano |
-| Feriados Cadastrados | tabela | Nao | — | Lista de feriados associados ao calendario |
-| Data do Feriado | data | Nao | — | Data especifica do feriado |
-| Descricao do Feriado | texto | Nao | — | Nome do feriado (ex: "Independencia do Brasil") |
-| Abrangencia | select | Nao | Nacional / Estadual / Municipal | Nivel de abrangencia do feriado |
+| Código | texto | Sim | — | Identificador único do calendário |
+| Descrição | texto | Sim | — | Nome descritivo do calendário |
+| Ano de Referência | número | Sim | — | Ano para o qual o calendário e valido |
+| Tipo | select | Sim | Financeiro / Industrial / Ambos | Classificação de uso do calendário |
+| Mês | navegação | Sim | — | Mês do calendário em visualização |
+| Dias Úteis (total) | número | Não | — | Total de dias úteis calculado automaticamente para o mês/ano |
+| Feriados Cadastrados | tabela | Não | — | Lista de feriados associados ao calendário |
+| Data do Feriado | data | Não | — | Data específica do feriado |
+| Descrição do Feriado | texto | Não | — | Nome do feriado (ex: "Independência do Brasil") |
+| Abrangência | select | Não | Nacional / Estadual / Municipal | Nível de abrangência do feriado |
 
-## Observacoes importantes
+## Observações importantes
 
-- Cada empresa pode ter **multiplos calendarios** para diferentes regioes (filiais em cidades diferentes, por exemplo) ou finalidades (financeiro vs. industrial).
-- O tipo **Ambos** permite que o mesmo calendario seja utilizado tanto para calculos financeiros quanto industriais, simplificando a manutencao.
-- A funcionalidade **Importar Feriados** agiliza o cadastro, mas sempre verifique os feriados importados, pois feriados municipais podem nao estar contemplados na base.
-- A alteracao de um calendario **nao retroage** — calculos de prazos ja realizados com base em versoes anteriores do calendario nao sao recalculados automaticamente.
-- E recomendavel criar o calendario do ano seguinte com antecedencia (novembro/dezembro), garantindo que calculos de prazos para o proximo ano estejam corretos desde o primeiro dia util.
-- Calendarios do tipo **Financeiro** sao utilizados pelo modulo financeiro para calculo de vencimentos, enquanto calendarios **Industriais** sao usados pela producao e vendas para promessa de entrega.
+- Cada empresa pode ter **múltiplos calendários** para diferentes regiões (filiais em cidades diferentes, por exemplo) ou finalidades (financeiro vs. industrial).
+- O tipo **Ambos** permite que o mesmo calendário seja utilizado tanto para calculos financeiros quanto industriais, simplificando a manutenção.
+- A funcionalidade **Importar Feriados** agiliza o cadastro, mas sempre verifique os feriados importados, pois feriados municipais podem não estar contemplados na base.
+- A alteração de um calendário **não retroage** — calculos de prazos já realizados com base em versões anteriores do calendário não são recalculados automaticamente.
+- E recomendável criar o calendário do ano seguinte com antecedência (novembro/dezembro), garantindo que calculos de prazos para o próximo ano estejam corretos desde o primeiro dia útil.
+- Calendários do tipo **Financeiro** são utilizados pelo módulo financeiro para cálculo de vencimentos, enquanto calendários **Industriais** são usados pela produção e vendas para promessa de entrega.
 
 ## Telas relacionadas
 
-- [VPME0102 (Parametros Promessa de Entrega)](/engenharia/vpme0102): Parametros que selecionam qual calendario sera utilizado no calculo de promessa.
-- [VPME0102ITE (Calendario Promessa por Item)](/engenharia/vpme0102ite): Calendario personalizado por item que deriva do calendario industrial.
-- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Tela que valida datas contra o calendario industrial.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens cujo lead time e calculado com base no calendario industrial.
-- [VCAL0100 (Calendario Industrial)](/cadastros/vcal0100): Outra visualizacao do calendario industrial no modulo de cadastros.
+- [VPME0102 (Parâmetros Promessa de Entrega)](/engenharia/vpme0102): Parâmetros que selecionam qual calendário sera utilizado no cálculo de promessa.
+- [VPME0102ITE (Calendário Promessa por Item)](/engenharia/vpme0102ite): Calendário personalizado por item que deriva do calendário industrial.
+- [VPLA0102 (Demandas Independentes)](/planejamento/vpla0102): Tela que valida datas contra o calendário industrial.
+- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens cujo lead time e calculado com base no calendário industrial.
+- [VCAL0100 (Calendário Industrial)](/cadastros/vcal0100): Outra visualização do calendário industrial no módulo de cadastros.

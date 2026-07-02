@@ -1,60 +1,60 @@
 ---
 sidebar_position: 2
-title: "VPRE0102 — Bloqueio Previsao"
-description: "Configuracao de periodos de bloqueio para previsoes de venda, em semanas por ano."
+title: "VPRE0102 — Bloqueio Previsão"
+description: "Configuração de periodos de bloqueio para previsões de venda, em semanas por ano."
 ---
 
-# VPRE0102 — Bloqueio Previsao
+# VPRE0102 — Bloqueio Previsão
 
-> Painel de configuracao de periodos de bloqueio para previsao de vendas, permitindo definir semanas especificas do ano onde alteracoes sao restritas.
+> Painel de configuração de periodos de bloqueio para previsão de vendas, permitindo definir semanas específicas do ano onde alterações são restritas.
 
 ## Objetivo
 
-Permitir a configuracao de periodos de bloqueio para o modulo de previsao de vendas, definindo quais semanas do ano estao abertas ou fechadas para alteracoes nas previsoes. Este controle e essencial para o processo de S&OP (Sales and Operations Planning), onde apos a consolidacao de um periodo, as previsoes sao congeladas para garantir estabilidade no planejamento da producao e suprimentos. A configuracao e feita por semana e ano, oferecendo granularidade fina sobre o controle de alteracoes.
+Permitir a configuração de periodos de bloqueio para o módulo de previsão de vendas, definindo quais semanas do ano estao abertas ou fechadas para alterações nas previsões. Este controle e essencial para o processo de S&OP (Sales and Operations Planning), onde após a consolidação de um período, as previsões são congeladas para garantir estabilidade no planejamento da produção e suprimentos. A configuração e feita por semana e ano, oferecendo granularidade fina sobre o controle de alterações.
 
 ## Pre-requisitos
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201) — Previsoes de venda que serao impactadas pelos bloqueios.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108) — Calendario de referencia para definicao das semanas.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201) — Previsões de venda que serão impactadas pelos bloqueios.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108) — Calendário de referência para definição das semanas.
 
 ## Passo a passo
 
-1. Acesse a tela VPRE0102 pelo menu Previsao > Bloqueio Previsao.
+1. Acesse a tela VPRE0102 pelo menu Previsão > Bloqueio Previsão.
 2. Selecione o **Ano** para o qual deseja configurar os bloqueios.
 3. A tela exibe uma **matriz de semanas** (1 a 52/53) para o ano selecionado, com cada semana tendo um toggle de bloqueio.
 4. Para cada semana, ative ou desative o toggle de **Bloqueio** conforme o cronograma de S&OP da empresa.
-5. Para bloquear um periodo contiguo, selecione a semana inicial e arraste ate a semana final, acionando todas simultaneamente.
-6. Configure a **Mensagem de Bloqueio** que sera exibida ao usuario que tentar alterar previsoes em semanas bloqueadas.
-7. Defina usuarios ou perfis **excecoes** que poderao editar previsoes mesmo em semanas bloqueadas (ex: coordenador de planejamento).
-8. Clique em **Salvar** para aplicar a configuracao de bloqueios.
-9. Para copiar a configuracao de um ano para outro, utilize o botao **Copiar de Ano Anterior**.
+5. Para bloquear um período contiguo, selecione a semana inicial e arraste até a semana final, acionando todas simultaneamente.
+6. Configure a **Mensagem de Bloqueio** que sera exibida ao usuário que tentar alterar previsões em semanas bloqueadas.
+7. Defina usuários ou perfis **exceções** que poderao editar previsões mesmo em semanas bloqueadas (ex: coordenador de planejamento).
+8. Clique em **Salvar** para aplicar a configuração de bloqueios.
+9. Para copiar a configuração de um ano para outro, utilize o botão **Copiar de Ano Anterior**.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Ano | select | Sim | Lista de anos | Ano de referencia para os bloqueios |
-| Semana | navegacao | Sim | 1 a 53 | Numero da semana no ano |
-| Bloqueado | toggle | Sim | — | Indica se a semana esta bloqueada para alteracoes |
-| Mensagem de Bloqueio | texto | Nao | — | Texto exibido ao tentar editar semana bloqueada |
-| Usuarios com Excecao | multi-select | Nao | Lista de usuarios | Usuarios autorizados a burlar o bloqueio |
-| Perfis com Excecao | multi-select | Nao | Lista de perfis | Perfis autorizados a burlar o bloqueio |
-| Data Inicio da Semana | data | Nao | — | Calculado automaticamente: segunda-feira da semana |
-| Data Fim da Semana | data | Nao | — | Calculado automaticamente: domingo da semana |
+| Ano | select | Sim | Lista de anos | Ano de referência para os bloqueios |
+| Semana | navegação | Sim | 1 a 53 | Número da semana no ano |
+| Bloqueado | toggle | Sim | — | Indica se a semana esta bloqueada para alterações |
+| Mensagem de Bloqueio | texto | Não | — | Texto exibido ao tentar editar semana bloqueada |
+| Usuários com Exceção | multi-select | Não | Lista de usuários | Usuários autorizados a burlar o bloqueio |
+| Perfis com Exceção | multi-select | Não | Lista de perfis | Perfis autorizados a burlar o bloqueio |
+| Data Início da Semana | data | Não | — | Calculado automaticamente: segunda-feira da semana |
+| Data Fim da Semana | data | Não | — | Calculado automaticamente: domingo da semana |
 
-## Observacoes importantes
+## Observações importantes
 
-- O **bloqueio de semanas** e tipicamente alinhado com o ciclo de S&OP. Semanas ja consolidadas sao bloqueadas para garantir que o plano de producao e suprimentos nao seja impactado por alteracoes tardias.
-- O botao **Copiar de Ano Anterior** agiliza a configuracao, mas sempre revise as datas, pois as semanas podem cair em dias diferentes de um ano para outro (especialmente em anos bissextos).
-- Usuarios com **excecao** de bloqueio devem ser limitados a um grupo restrito (tipicamente coordenadores e gerentes de planejamento), mantendo a integridade do processo.
-- A **Mensagem de Bloqueio** deve ser clara e informativa, explicando o motivo do bloqueio e indicando a quem recorrer para solicitar uma excecao.
-- Bloqueios podem ser **alterados a qualquer momento**, mas a pratica recomendada e planejar a configuracao anual no inicio do ano fiscal.
-- O sistema registra em **log de auditoria** todas as alteracoes realizadas em semanas bloqueadas por usuarios com excecao.
+- O **bloqueio de semanas** e tipicamente alinhado com o ciclo de S&OP. Semanas já consolidadas são bloqueadas para garantir que o plano de produção e suprimentos não seja impactado por alterações tardias.
+- O botão **Copiar de Ano Anterior** agiliza a configuração, mas sempre revise as datas, pois as semanas podem cair em dias diferentes de um ano para outro (especialmente em anos bissextos).
+- Usuários com **exceção** de bloqueio devem ser limitados a um grupo restrito (tipicamente coordenadores e gerentes de planejamento), mantendo a integridade do processo.
+- A **Mensagem de Bloqueio** deve ser clara e informativa, explicando o motivo do bloqueio e indicando a quem recorrer para solicitar uma exceção.
+- Bloqueios podem ser **alterados a qualquer momento**, mas a prática recomendada e planejar a configuração anual no início do ano fiscal.
+- O sistema registra em **log de auditoria** todas as alterações realizadas em semanas bloqueadas por usuários com exceção.
 
 ## Telas relacionadas
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201): Previsoes de venda sujeitas aos bloqueios semanais.
-- [VPRE0251 (Geracao Previsao)](/previsao/vpre0251): Geracao de previsoes que respeita os periodos de bloqueio.
-- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Analise que pode ser impactada por alteracoes em periodos bloqueados.
-- [VENT0108 (Calendario Financeiro/Industrial)](/engenharia/vent0108): Calendario de referencia para as semanas.
-- [VPRE0101 (Tabela Apropriacao)](/previsao/vpre0101): Tabelas de rateio utilizadas nas previsoes.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201): Previsões de venda sujeitas aos bloqueios semanais.
+- [VPRE0251 (Geração Previsão)](/previsao/vpre0251): Geração de previsões que respeita os periodos de bloqueio.
+- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Análise que pode ser impactada por alterações em periodos bloqueados.
+- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108): Calendário de referência para as semanas.
+- [VPRE0101 (Tabela Apropriação)](/previsao/vpre0101): Tabelas de rateio utilizadas nas previsões.

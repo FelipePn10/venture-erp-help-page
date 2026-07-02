@@ -1,65 +1,65 @@
 ---
 sidebar_position: 1
-title: "VIMP0101 — Status Logistico da Carga"
-description: "Acompanhamento do status logistico de cargas de importacao com visualizacao do ciclo completo."
+title: "VIMP0101 — Status Logístico da Carga"
+description: "Acompanhamento do status logístico de cargas de importação com visualização do ciclo completo."
 ---
 
-# VIMP0101 — Status Logistico da Carga
+# VIMP0101 — Status Logístico da Carga
 
-> Painel de acompanhamento do status logistico de cargas de importacao, exibindo o ciclo completo desde a origem ate o destino final.
+> Painel de acompanhamento do status logístico de cargas de importação, exibindo o ciclo completo desde a origem até o destino final.
 
 ## Objetivo
 
-Permitir o acompanhamento visual e atualizado do status logistico de cada carga de importacao ao longo de todo o ciclo logistico. O painel exibe os marcos principais do processo (embarque na origem, transito maritimo/aereo, chegada no porto, desembaraco aduaneiro, liberacao, transporte interno e recebimento), com indicadores coloridos de status para cada etapa. A tela centraliza informacoes dispersas de diferentes agentes logisticos, proporcionando visibilidade total sobre o pipeline de importacao.
+Permitir o acompanhamento visual e atualizado do status logístico de cada carga de importação ao longo de todo o ciclo logístico. O painel exibe os marcos principais do processo (embarque na origem, trânsito maritimo/aereo, chegada no porto, desembaraco aduaneiro, liberação, transporte interno e recebimento), com indicadores coloridos de status para cada etapa. A tela centraliza informações dispersas de diferentes agentes logísticos, proporcionando visibilidade total sobre o pipeline de importação.
 
 ## Pre-requisitos
 
-- [VIMP0200 (Console Processos Importacao)](/importacao/vimp0200) — Processos de importacao que originam as cargas.
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Transportadores e agentes logisticos cadastrados.
-- [Cadastro de Portos/Aeroportos](/cadastros/vcal0100) — Infraestrutura de entrada para parametrizacao de prazos.
+- [VIMP0200 (Console Processos Importação)](/importacao/vimp0200) — Processos de importação que originam as cargas.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Transportadores e agentes logísticos cadastrados.
+- [Cadastro de Portos/Aeroportos](/cadastros/vcal0100) — Infraestrutura de entrada para parametrização de prazos.
 
 ## Passo a passo
 
-1. Acesse a tela VIMP0101 pelo menu Importacao > Status Logistico da Carga.
-2. A tela exibe a lista de cargas em andamento, cada uma com seu **status atual** e proximos marcos.
-3. Utilize os filtros de **Fornecedor**, **Porto de Origem**, **Navio/Voo** e **Status** para localizar cargas especificas.
-4. Clique em uma carga para expandir o **ciclo logistico completo** com todos os marcos.
-5. Para cada marco logistico, a tela exibe: data prevista, data realizada, responsavel e status (Concluido / Em Andamento / Pendente / Atrasado).
-6. Marcos **atrasados** sao destacados em vermelho e geram alertas no painel.
-7. Para atualizar o status de um marco, clique em **Atualizar** e informe a nova data e observacoes.
-8. Anexe documentos logisticos (Bill of Lading, conhecimento de transporte, comprovante de chegada) clicando no icone de upload em cada marco.
-9. O **Cronograma Visual** (grafico de Gantt) exibe todas as cargas em uma linha do tempo, facilitando a visao consolidada.
+1. Acesse a tela VIMP0101 pelo menu Importação > Status Logístico da Carga.
+2. A tela exibe a lista de cargas em andamento, cada uma com seu **status atual** e próximos marcos.
+3. Utilize os filtros de **Fornecedor**, **Porto de Origem**, **Navio/Voo** e **Status** para localizar cargas específicas.
+4. Clique em uma carga para expandir o **ciclo logístico completo** com todos os marcos.
+5. Para cada marco logístico, a tela exibe: data prevista, data realizada, responsável e status (Concluido / Em Andamento / Pendente / Atrasado).
+6. Marcos **atrasados** são destacados em vermelho e geram alertas no painel.
+7. Para atualizar o status de um marco, clique em **Atualizar** e informe a nova data e observações.
+8. Anexe documentos logísticos (Bill of Lading, conhecimento de transporte, comprovante de chegada) clicando no ícone de upload em cada marco.
+9. O **Cronograma Visual** (gráfico de Gantt) exibe todas as cargas em uma linha do tempo, facilitando a visão consolidada.
 10. Exporte o status para Excel ou PDF para compartilhamento com stakeholders.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Carga / Processo | numero | Nao | — | Identificador da carga ou processo de importacao |
-| Fornecedor Origem | texto | Nao | — | Fornecedor internacional |
-| Porto/Aeroporto Origem | texto | Nao | — | Local de embarque |
-| Porto/Aeroporto Destino | texto | Nao | — | Local de desembarque |
-| Navio / Voo | texto | Nao | — | Identificacao do transporte |
-| Data Embarque (Prevista) | data | Nao | — | Data prevista de saida da origem |
-| Data Embarque (Realizada) | data | Nao | — | Data real de saida |
-| Data Chegada (Prevista) | data | Nao | — | ETA — Estimated Time of Arrival |
-| Data Chegada (Realizada) | data | Nao | — | ATA — Actual Time of Arrival |
-| Status Atual | select | Nao | Em Trafego / Chegou / Desembaracando / Liberada / Entregue | Status consolidado da carga |
-| Dias em Trafego | numero | Nao | — | Calculado: diferenca entre embarque e hoje |
-| Marcos Logisticos | tabela | Nao | — | Detalhamento de cada etapa do ciclo |
+| Carga / Processo | número | Não | — | Identificador da carga ou processo de importação |
+| Fornecedor Origem | texto | Não | — | Fornecedor internacional |
+| Porto/Aeroporto Origem | texto | Não | — | Local de embarque |
+| Porto/Aeroporto Destino | texto | Não | — | Local de desembarque |
+| Navio / Voo | texto | Não | — | Identificação do transporte |
+| Data Embarque (Prevista) | data | Não | — | Data prevista de saída da origem |
+| Data Embarque (Realizada) | data | Não | — | Data real de saída |
+| Data Chegada (Prevista) | data | Não | — | ETA — Estimated Time of Arrival |
+| Data Chegada (Realizada) | data | Não | — | ATA — Actual Time of Arrival |
+| Status Atual | select | Não | Em Trafego / Chegou / Desembaracando / Liberada / Entregue | Status consolidado da carga |
+| Dias em Trafego | número | Não | — | Calculado: diferença entre embarque e hoje |
+| Marcos Logísticos | tabela | Não | — | Detalhamento de cada etapa do ciclo |
 
-## Observacoes importantes
+## Observações importantes
 
-- O **Cronograma Visual** (Gantt) e a ferramenta mais poderosa para gestao de multiplas cargas simultaneas, permitindo identificar sobreposicoes e gargalos logisticos.
-- Marcos em **vermelho** (atrasados) acionam um alerta no painel principal e podem ser configurados para envio de notificacao por e-mail aos responsaveis.
-- A atualizacao dos marcos pode ser feita **manualmente** pela equipe de importacao ou **automaticamente** via integracao com sistemas de tracking de transportadoras.
-- Documentos anexados em cada marco (BL, conhecimento de transporte) ficam disponiveis para consulta por todos os usuarios autorizados, eliminando a necessidade de compartilhar documentos por e-mail.
-- O campo **Dias em Trafego** e calculado automaticamente e e util para comparar o desempenho real com o lead time planejado.
-- Atrasos recorrentes em uma mesma rota ou transportador podem indicar necessidade de revisao do lead time nos parametros de planejamento de itens importados.
+- O **Cronograma Visual** (Gantt) e a ferramenta mais poderosa para gestão de múltiplas cargas simultâneas, permitindo identificar sobreposições e gargalos logísticos.
+- Marcos em **vermelho** (atrasados) acionam um alerta no painel principal e podem ser configurados para envio de notificação por e-mail aos responsáveis.
+- A atualização dos marcos pode ser feita **manualmente** pela equipe de importação ou **automaticamente** via integração com sistemas de tracking de transportadoras.
+- Documentos anexados em cada marco (BL, conhecimento de transporte) ficam disponíveis para consulta por todos os usuários autorizados, eliminando a necessidade de compartilhar documentos por e-mail.
+- O campo **Dias em Trafego** e calculado automaticamente e e útil para comparar o desempenho real com o lead time planejado.
+- Atrasos recorrentes em uma mesma rota ou transportador podem indicar necessidade de revisão do lead time nos parâmetros de planejamento de itens importados.
 
 ## Telas relacionadas
 
-- [VIMP0200 (Console Processos Importacao)](/importacao/vimp0200): Processos de importacao que geram as cargas acompanhadas.
+- [VIMP0200 (Console Processos Importação)](/importacao/vimp0200): Processos de importação que geram as cargas acompanhadas.
 - [VIMP0102 (Tipos Conhecimentos Transporte)](/importacao/vimp0102): Tipos de documentos de transporte utilizados na carga.
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Transportadores responsaveis pela carga.
+- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Transportadores responsáveis pela carga.
 - [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra internacionais associados a carga.

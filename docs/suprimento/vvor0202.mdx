@@ -1,74 +1,74 @@
 ---
 sidebar_position: 7
 title: "VVOR0202 — Itens por Fornecedor"
-description: "Analise detalhada de itens por fornecedor com 18 colunas de informacoes."
+description: "Análise detalhada de itens por fornecedor com 18 colunas de informações."
 ---
 
 # VVOR0202 — Itens por Fornecedor
 
-> Tela de analise detalhada dos itens fornecidos por cada fornecedor, com 18 colunas de dados que permitem uma visao abrangente da relacao comercial.
+> Tela de análise detalhada dos itens fornecidos por cada fornecedor, com 18 colunas de dados que permitem uma visão abrangente da relação comercial.
 
 ## Objetivo
 
-Fornecer uma visao analitica completa dos itens adquiridos de cada fornecedor, consolidando em 18 colunas informacoes como: codigo e descricao do item, precos praticados (ultimo, medio, minimo, maximo), lead time de entrega, desempenho (ontime, qualidade), saldo em contrato, consumo mensal e classificacao ABC. Esta tela e uma ferramenta essencial para compradores e gestores de suprimentos analisarem a relacao com fornecedores, identificarem oportunidades de negociacao e avaliarem a dependencia de itens fornecidos.
+Fornecer uma visão analítica completa dos itens adquiridos de cada fornecedor, consolidando em 18 colunas informações como: código e descrição do item, preços praticados (ultimo, médio, mínimo, máximo), lead time de entrega, desempenho (ontime, qualidade), saldo em contrato, consumo mensal e classificação ABC. Esta tela e uma ferramenta essencial para compradores e gestores de suprimentos analisarem a relação com fornecedores, identificarem oportunidades de negociação e avaliarem a dependência de itens fornecidos.
 
 ## Pre-requisitos
 
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedores devem estar cadastrados.
 - [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens devem estar cadastrados.
-- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200) — Historico de pedidos de compra para calculo dos indicadores.
-- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200) — Contratos para informacoes de preco contratado e saldo.
+- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200) — Histórico de pedidos de compra para cálculo dos indicadores.
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200) — Contratos para informações de preço contratado e saldo.
 
 ## Passo a passo
 
 1. Acesse a tela VVOR0202 pelo menu Suprimento > Itens por Fornecedor.
 2. Selecione o **Fornecedor** que deseja analisar.
-3. Opcionalmente, refine por **Grupo de Itens** ou **Item Especifico**.
-4. A grid de resultados exibe as **18 colunas** com todas as informacoes dos itens fornecidos.
-5. Analise as colunas de **Precos** (ultimo, medio, minimo, maximo) para identificar variabilidade e oportunidades de negociacao.
+3. Opcionalmente, refine por **Grupo de Itens** ou **Item Específico**.
+4. A grid de resultados exibe as **18 colunas** com todas as informações dos itens fornecidos.
+5. Análise as colunas de **Preços** (ultimo, médio, mínimo, máximo) para identificar variabilidade e oportunidades de negociação.
 6. Verifique as colunas de **Desempenho** (OnTime Delivery, Indice de Qualidade) para avaliar a confiabilidade do fornecimento.
-7. Observe a coluna **Classificacao ABC** para identificar itens estrategicos vs. itens de baixo valor.
+7. Observe a coluna **Classificação ABC** para identificar itens estratégicos vs. itens de baixo valor.
 8. Utilize os **filtros de coluna** para ordenar e segmentar os dados (ex: todos os itens classe A com OnTime abaixo de 90%).
-9. O botao **Exportar** gera uma planilha Excel completa com as 18 colunas e filtros aplicados.
-10. Clique em um item para abrir o **historico completo** de compras daquele item com o fornecedor.
+9. O botão **Exportar** gera uma planilha Excel completa com as 18 colunas e filtros aplicados.
+10. Clique em um item para abrir o **histórico completo** de compras daquele item com o fornecedor.
 
 ## As 18 Colunas
 
-| Coluna | Descricao |
+| Coluna | Descrição |
 |--------|-----------|
-| 1. Codigo do Item | Identificador do item no sistema |
-| 2. Descricao do Item | Nome descritivo do item |
+| 1. Código do Item | Identificador do item no sistema |
+| 2. Descrição do Item | Nome descritivo do item |
 | 3. Unidade de Medida | UM do item (UN, KG, M, etc.) |
-| 4. Grupo de Itens | Classificacao por grupo de compras |
-| 5. Preco Contratado | Preco vigente em contrato (se houver) |
-| 6. Ultimo Preco | Preco da ultima compra realizada |
-| 7. Preco Medio | Media de precos das ultimas 12 compras |
-| 8. Preco Minimo | Menor preco praticado nos ultimos 12 meses |
-| 9. Preco Maximo | Maior preco praticado nos ultimos 12 meses |
-| 10. Lead Time Medio (dias) | Tempo medio entre pedido e entrega |
+| 4. Grupo de Itens | Classificação por grupo de compras |
+| 5. Preço Contratado | Preço vigente em contrato (se houver) |
+| 6. Ultimo Preço | Preço da última compra realizada |
+| 7. Preço Médio | Média de preços das ultimas 12 compras |
+| 8. Preço Mínimo | Menor preço praticado nos ultimos 12 meses |
+| 9. Preço Máximo | Maior preço praticado nos ultimos 12 meses |
+| 10. Lead Time Médio (dias) | Tempo médio entre pedido e entrega |
 | 11. OnTime Delivery (%) | Percentual de entregas no prazo |
-| 12. Indice de Qualidade | Taxa de aceitacao na inspecao de recebimento |
-| 13. Consumo Mensal Medio | Quantidade media consumida por mes |
-| 14. Estoque Atual | Quantidade disponivel em estoque |
-| 15. Cobertura (dias) | Dias de estoque disponivel ao consumo atual |
-| 16. Saldo em Contrato | Quantidade ainda disponivel em contrato |
-| 17. Classificacao ABC | A (alto valor) / B (medio) / C (baixo) |
+| 12. Indice de Qualidade | Taxa de aceitação na inspeção de recebimento |
+| 13. Consumo Mensal Médio | Quantidade média consumida por mês |
+| 14. Estoque Atual | Quantidade disponível em estoque |
+| 15. Cobertura (dias) | Dias de estoque disponível ao consumo atual |
+| 16. Saldo em Contrato | Quantidade ainda disponível em contrato |
+| 17. Classificação ABC | A (alto valor) / B (médio) / C (baixo) |
 | 18. Item Ativo | Status do item no sistema (Ativo/Inativo) |
 
-## Observacoes importantes
+## Observações importantes
 
-- As **18 colunas** oferecem uma visao 360 graus da relacao item-fornecedor. E possivel reordenar, ocultar ou fixar colunas conforme a necessidade.
-- A **Classificacao ABC** segue a curva de Pareto: itens Classe A (20% dos itens, 80% do valor) requerem atencao redobrada na gestao de suprimentos.
-- O **Preco Medio** e calculado com base nas ultimas 12 compras. Compras muito antigas ou atipicas podem distorcer a media — verifique tambem o preco da ultima compra.
-- O **OnTime Delivery** abaixo de 90% e um sinal de alerta. Considere aumentar o estoque de seguranca do item ou buscar fornecedores alternativos.
-- A **Cobertura em dias** e calculada como Estoque Atual dividido pelo Consumo Mensal Medio, convertido para dias. Cobertura baixa indica risco de ruptura.
-- O historico de compras disponivel ao clicar em um item mostra a evolucao dos precos ao longo do tempo, util para negociacoes e auditoria.
+- As **18 colunas** oferecem uma visão 360 graus da relação item-fornecedor. E possível reordenar, ocultar ou fixar colunas conforme a necessidade.
+- A **Classificação ABC** segue a curva de Pareto: itens Classe A (20% dos itens, 80% do valor) requerem atenção redobrada na gestão de suprimentos.
+- O **Preço Médio** e calculado com base nas ultimas 12 compras. Compras muito antigas ou atipicas podem distorcer a média — verifique também o preço da última compra.
+- O **OnTime Delivery** abaixo de 90% e um sinal de alerta. Considere aumentar o estoque de segurança do item ou buscar fornecedores alternativos.
+- A **Cobertura em dias** e calculada como Estoque Atual dividido pelo Consumo Mensal Médio, convertido para dias. Cobertura baixa indica risco de ruptura.
+- O histórico de compras disponível ao clicar em um item mostra a evolução dos preços ao longo do tempo, útil para negociações e auditoria.
 
 ## Telas relacionadas
 
 - [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores analisados nesta tela.
 - [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra que alimentam os indicadores.
-- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos de onde derivam precos e saldos.
+- [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos de onde derivam preços e saldos.
 - [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro dos itens analisados.
 - [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF dos fornecedores que impacta o Indice de Qualidade.
-- [VINS0313 (Consulta Inspecoes Recebimento)](/inspecao/vins0313): Inspecoes que alimentam o Indice de Qualidade.
+- [VINS0313 (Consulta Inspeções Recebimento)](/inspecao/vins0313): Inspeções que alimentam o Indice de Qualidade.

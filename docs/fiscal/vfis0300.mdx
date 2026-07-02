@@ -1,68 +1,68 @@
 ---
 sidebar_position: 6
 title: "VFIS0300 — CFOPs"
-description: "Cadastro de Codigos Fiscais de Operacoes e Prestacoes (CFOP), com natureza, flags DIFAL e doacao."
+description: "Cadastro de Códigos Fiscais de Operações e Prestações (CFOP), com natureza, flags DIFAL e doação."
 ---
 
 # VFIS0300 — CFOPs
 
-> Tela de cadastro dos CFOPs (Codigos Fiscais de Operacoes e Prestacoes). Esses codigos de 4 digitos classificam cada operacao fiscal e determinam o enquadramento tributario, a natureza da operacao e comportamentos especificos como DIFAL, doacao e ST.
+> Tela de cadastro dos CFOPs (Códigos Fiscais de Operações e Prestações). Esses códigos de 4 digitos classificam cada operação fiscal e determinam o enquadramento tributário, a natureza da operação e comportamentos específicos como DIFAL, doação e ST.
 
-**Codigo fonte:** `src/modules/fiscal/cfop/vfis0300.vue`
+**Código fonte:** `src/modules/fiscal/cfop/vfis0300.vue`
 
 ## Objetivo
 
-A VFIS0300 centraliza o cadastro de todos os CFOPs utilizados pelo sistema. Cada CFOP e um codigo de 4 digitos definido pelo CONFAZ que classifica a natureza da operacao fiscal — se e uma venda, uma compra, uma devolucao, uma remessa para industrializacao, um retorno, uma transferencia, etc. O primeiro digito indica a direcao da operacao: 1 e 5 para saidas dentro do estado; 2 e 6 para saidas interestaduais; 3 e 7 para entradas dentro do estado; 4 e 8 para entradas interestaduais. Alem da descricao padrao, a VFIS0300 permite associar flags de comportamento que afetam o calculo fiscal automatico, como **DIFAL** (Diferencial de Aliquotas para operacoes interestaduais com consumidor final), **Doacao** (operacoes sem valor comercial para fins de ICMS) e **ST** (Substituicao Tributaria).
+A VFIS0300 centraliza o cadastro de todos os CFOPs utilizados pelo sistema. Cada CFOP e um código de 4 digitos definido pelo CONFAZ que classifica a natureza da operação fiscal — se e uma venda, uma compra, uma devolução, uma remessa para industrialização, um retorno, uma transferência, etc. O primeiro dígito indica a direção da operação: 1 e 5 para saídas dentro do estado; 2 e 6 para saídas interestaduais; 3 e 7 para entradas dentro do estado; 4 e 8 para entradas interestaduais. Além da descrição padrão, a VFIS0300 permite associar flags de comportamento que afetam o cálculo fiscal automático, como **DIFAL** (Diferencial de Alíquotas para operações interestaduais com consumidor final), **Doação** (operações sem valor comercial para fins de ICMS) e **ST** (Substituição Tributária).
 
 ## Pre-requisitos
 
-- **Conhecimento da tabela CFOP oficial (CONFAZ):** Os codigos CFOP sao publicados pelo CONFAZ (Ajuste SINIEF) e atualizados periodicamente. Consulte a tabela oficial antes de cadastrar ou modificar CFOPs.
-- **Permissao de acesso fiscal:** Apenas usuarios com perfil fiscal ou administrativo devem ter acesso a esta tela, pois alteracoes indevidas em CFOPs podem causar erros de calculo e rejeicoes na SEFAZ.
+- **Conhecimento da tabela CFOP oficial (CONFAZ):** Os códigos CFOP são publicados pelo CONFAZ (Ajuste SINIEF) e atualizados periodicamente. Consulte a tabela oficial antes de cadastrar ou modificar CFOPs.
+- **Permissão de acesso fiscal:** Apenas usuários com perfil fiscal ou administrativo devem ter acesso a esta tela, pois alterações indevidas em CFOPs podem causar erros de cálculo e rejeições na SEFAZ.
 
 ## Passo a passo
 
 1. Acesse **Fiscal > Tabelas > CFOPs (VFIS0300)**.
-2. A grade lista todos os CFOPs cadastrados, organizados por codigo numerico. O sistema ja vem com os principais CFOPs pre-cadastrados (tabela padrao CONFAZ), mas permite alteracoes e inclusoes.
-3. Para **criar um novo CFOP**, clique em **Novo**. Informe o codigo de 4 digitos (ex: 5102, 6102, 1403, 2403) e a descricao oficial conforme a tabela CONFAZ.
-4. No campo **Natureza**, defina a natureza da operacao. Ela pode ser: `Venda`, `Compra`, `Devolucao`, `Remessa`, `Retorno`, `Transferencia`, `Bonificacao`, `Doacao`, `Consignacao`, `Industrializacao`, `Prestacao de Servico`, entre outras. Esta natureza e utilizada internamente pelo motor fiscal para determinar o tipo de calculo.
+2. A grade lista todos os CFOPs cadastrados, organizados por código numérico. O sistema já vem com os principais CFOPs pre-cadastrados (tabela padrão CONFAZ), mas permite alterações e inclusões.
+3. Para **criar um novo CFOP**, clique em **Novo**. Informe o código de 4 digitos (ex: 5102, 6102, 1403, 2403) e a descrição oficial conforme a tabela CONFAZ.
+4. No campo **Natureza**, defina a natureza da operação. Ela pode ser: `Venda`, `Compra`, `Devolucao`, `Remessa`, `Retorno`, `Transferencia`, `Bonificacao`, `Doacao`, `Consignacao`, `Industrializacao`, `Prestacao de Servico`, entre outras. Esta natureza e utilizada internamente pelo motor fiscal para determinar o tipo de cálculo.
 5. Marque os **flags de comportamento**:
-   - **DIFAL:** Indica que a operacao esta sujeita ao Diferencial de Aliquotas (DIFAL). Comum em vendas interestaduais para consumidor final nao contribuinte (CFOPs 6.1xx, 6.5xx, 6.6xx, 6.7xx). Quando ativo, o sistema calculara automaticamente o DIFAL e a partilha conforme EC 87/15.
-   - **Doacao:** Marca o CFOP como operacao de doacao. Nestes casos, a base de calculo do ICMS pode ser o valor de mercado do produto, nao o valor da nota (que e zero ou simbolico).
-   - **ST:** Indica que a operacao esta sujeita ao regime de Substituicao Tributaria. O sistema calculara automaticamente o ICMS-ST para produtos marcados como ST.
-   - **Servico:** CFOP de prestacao de servico. Relevante para NFSe e para notas conjugadas (produto + servico).
-6. Defina se o CFOP e de **Entrada** (CFOPs iniciados em 1, 2, 3, 4) ou **Saida** (CFOPs iniciados em 5, 6, 7, 8).
-7. Informe o **Grupo de Estado** (opcional). Este campo permite agrupar CFOPs conforme a regiao da operacao (ex: CFOPs 5.102 e 6.102 sao vendas, mas o primeiro e dentro do estado e o segundo interestadual). Utilizado para relatorios e validacoes.
-8. Clique em **Salvar**. O sistema validara se o codigo ja existe e se o padrao de 4 digitos foi respeitado.
+   - **DIFAL:** Indica que a operação esta sujeita ao Diferencial de Alíquotas (DIFAL). Comum em vendas interestaduais para consumidor final não contribuinte (CFOPs 6.1xx, 6.5xx, 6.6xx, 6.7xx). Quando ativo, o sistema calculara automaticamente o DIFAL e a partilha conforme EC 87/15.
+   - **Doação:** Marca o CFOP como operação de doação. Nestes casos, a base de cálculo do ICMS pode ser o valor de mercado do produto, não o valor da nota (que e zero ou simbólico).
+   - **ST:** Indica que a operação esta sujeita ao regime de Substituição Tributária. O sistema calculara automaticamente o ICMS-ST para produtos marcados como ST.
+   - **Serviço:** CFOP de prestação de serviço. Relevante para NFSe e para notas conjugadas (produto + serviço).
+6. Defina se o CFOP e de **Entrada** (CFOPs iniciados em 1, 2, 3, 4) ou **Saída** (CFOPs iniciados em 5, 6, 7, 8).
+7. Informe o **Grupo de Estado** (opcional). Este campo permite agrupar CFOPs conforme a região da operação (ex: CFOPs 5.102 e 6.102 são vendas, mas o primeiro e dentro do estado e o segundo interestadual). Utilizado para relatórios e validações.
+8. Clique em **Salvar**. O sistema validara se o código já existe e se o padrão de 4 digitos foi respeitado.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Codigo CFOP | Texto (4) | Sim | — | Codigo de 4 digitos conforme tabela CONFAZ. |
-| Descricao | Texto (200) | Sim | — | Descricao oficial do CFOP (ex: "Venda de producao do estabelecimento"). |
-| Natureza | Select | Sim | Venda / Compra / Devolucao / Remessa / Retorno / Transferencia / Bonificacao / Doacao / Consignacao / Industrializacao / Prestacao de Servico | Natureza da operacao fiscal. |
-| Direcao | Select | Sim | Entrada / Saida | Indica se o CFOP e de entrada ou saida. |
-| Flag DIFAL | Checkbox | Nao | — | Operacao sujeita ao Diferencial de Aliquotas (DIFAL). |
-| Flag Doacao | Checkbox | Nao | — | Operacao de doacao (ICMS calculado sobre valor de mercado). |
-| Flag ST | Checkbox | Nao | — | Operacao sujeita a Substituicao Tributaria. |
-| Flag Servico | Checkbox | Nao | — | Operacao de prestacao de servico. |
-| Flag Devolucao | Checkbox | Nao | — | Operacao de devolucao (credita ICMS de volta). |
-| Grupo Estado | Select | Nao | — | Agrupamento regional do CFOP para relatorios. |
-| Ativo | Checkbox | Sim | Sim / Nao | Indica se o CFOP esta ativo. CFOPs inativos nao aparecem nas listas de selecao. |
+| Código CFOP | Texto (4) | Sim | — | Código de 4 digitos conforme tabela CONFAZ. |
+| Descrição | Texto (200) | Sim | — | Descrição oficial do CFOP (ex: "Venda de produção do estabelecimento"). |
+| Natureza | Select | Sim | Venda / Compra / Devolução / Remessa / Retorno / Transferência / Bonificação / Doação / Consignação / Industrialização / Prestação de Serviço | Natureza da operação fiscal. |
+| Direção | Select | Sim | Entrada / Saída | Indica se o CFOP e de entrada ou saída. |
+| Flag DIFAL | Checkbox | Não | — | Operação sujeita ao Diferencial de Alíquotas (DIFAL). |
+| Flag Doação | Checkbox | Não | — | Operação de doação (ICMS calculado sobre valor de mercado). |
+| Flag ST | Checkbox | Não | — | Operação sujeita a Substituição Tributária. |
+| Flag Serviço | Checkbox | Não | — | Operação de prestação de serviço. |
+| Flag Devolução | Checkbox | Não | — | Operação de devolução (credita ICMS de volta). |
+| Grupo Estado | Select | Não | — | Agrupamento regional do CFOP para relatórios. |
+| Ativo | Checkbox | Sim | Sim / Não | Indica se o CFOP esta ativo. CFOPs inativos não aparecem nas listas de seleção. |
 
-## Observacoes importantes
+## Observações importantes
 
-- **CFOP e direcao fiscal:** Um erro classico e usar CFOP de entrada em uma nota de saida (ou vice-versa). O sistema valida a direcao do CFOP (Entrada/Saida) com base no tipo de documento (NFe saida ou NFe entrada) e bloqueia a emissao se houver inconsistencia.
-- **DIFAL e EC 87/15:** A partir de 2016, a EC 87/15 instituiu a partilha do DIFAL entre o estado de origem e o estado de destino nas vendas interestaduais para consumidor final nao contribuinte. Os CFOPs com flag DIFAL acionam o calculo automatico da partilha no XML da NFe. Verifique se os CFOPs 6.1xx, 6.5xx, 6.6xx e 6.7xx estao com o flag DIFAL ativo.
-- **CFOP e ST:** Produtos sujeitos a ST devem utilizar CFOPs especificos (5.4xx, 6.4xx para saidas; 1.4xx, 2.4xx para entradas). O flag ST no CFOP aciona o calculo do ICMS-ST e a inclusao dos campos obrigatorios no XML.
+- **CFOP e direção fiscal:** Um erro clássico e usar CFOP de entrada em uma nota de saída (ou vice-versa). O sistema valida a direção do CFOP (Entrada/Saída) com base no tipo de documento (NFe saída ou NFe entrada) e bloqueia a emissão se houver inconsistência.
+- **DIFAL e EC 87/15:** A partir de 2016, a EC 87/15 instituiu a partilha do DIFAL entre o estado de origem e o estado de destino nas vendas interestaduais para consumidor final não contribuinte. Os CFOPs com flag DIFAL acionam o cálculo automático da partilha no XML da NFe. Verifique se os CFOPs 6.1xx, 6.5xx, 6.6xx e 6.7xx estao com o flag DIFAL ativo.
+- **CFOP e ST:** Produtos sujeitos a ST devem utilizar CFOPs específicos (5.4xx, 6.4xx para saídas; 1.4xx, 2.4xx para entradas). O flag ST no CFOP aciona o cálculo do ICMS-ST e a inclusão dos campos obrigatórios no XML.
 - **Tabela oficial:** A tabela CFOP e atualizada periodicamente pelo CONFAZ. Consulte o Ajuste SINIEF mais recente para garantir que a base de CFOPs esta completa e atualizada.
 
 ## Telas relacionadas
 
-- **[VFIS0200 (NFe de Saida)](/fiscal/vfis0200):** Emissao de NFe onde o CFOP e selecionado para cada operacao.
+- **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Emissão de NFe onde o CFOP e selecionado para cada operação.
 - **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Registro de entrada onde o CFOP classifica a natureza da compra.
-- **[VFIS0220 (CTe)](/fiscal/vfis0220):** CTe que utiliza CFOPs especificos de frete (ex: 1.352).
-- **[VFIS0320 (Parametros ICMS/IPI)](/fiscal/vfis0320):** Parametrizacao fiscal que utiliza o CFOP como uma das chaves de busca.
-- **[VFIS0330 (Reducao/Substituicao/Diferimento)](/fiscal/vfis0330):** Regras que se aplicam com base no CFOP da operacao.
-- **[VFIS0360 (Tipos Operacao Entrada)](/fiscal/vfis0360):** Tipos de operacao que referenciam CFOPs.
-- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** NFSe que utiliza CFOPs de servico.
+- **[VFIS0220 (CTe)](/fiscal/vfis0220):** CTe que utiliza CFOPs específicos de frete (ex: 1.352).
+- **[VFIS0320 (Parâmetros ICMS/IPI)](/fiscal/vfis0320):** Parametrização fiscal que utiliza o CFOP como uma das chaves de busca.
+- **[VFIS0330 (Redução/Substituição/Diferimento)](/fiscal/vfis0330):** Regras que se aplicam com base no CFOP da operação.
+- **[VFIS0360 (Tipos Operação Entrada)](/fiscal/vfis0360):** Tipos de operação que referenciam CFOPs.
+- **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** NFSe que utiliza CFOPs de serviço.

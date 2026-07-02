@@ -1,60 +1,60 @@
 ---
 sidebar_position: 1
-title: "VPRE0101 — Tabela Apropriacao"
-description: "Definicao de percentuais de apropriacao para rateio de previsoes de venda."
+title: "VPRE0101 — Tabela Apropriação"
+description: "Definição de percentuais de apropriação para rateio de previsões de venda."
 ---
 
-# VPRE0101 — Tabela Apropriacao
+# VPRE0101 — Tabela Apropriação
 
-> Configuracao de percentuais de apropriacao que distribuem as previsoes de venda entre diferentes centros de custo ou produtos.
+> Configuração de percentuais de apropriação que distribuem as previsões de venda entre diferentes centros de custo ou produtos.
 
 ## Objetivo
 
-Permitir a definicao e manutencao das tabelas de apropriacao, que determinam como as previsoes de venda serao distribuidas (rateadas) entre diferentes centros de custo, linhas de produto ou unidades de negocio. Cada tabela define percentuais cuja soma deve totalizar exatamente 100%, garantindo que toda a previsao seja integralmente apropriada. Estas tabelas sao utilizadas pelo modulo de previsao de vendas para ratear automaticamente os valores previstos, simplificando o processo de planejamento orcamentario.
+Permitir a definição e manutenção das tabelas de apropriação, que determinam como as previsões de venda serão distribuidas (rateadas) entre diferentes centros de custo, linhas de produto ou unidades de negócio. Cada tabela define percentuais cuja soma deve totalizar exatamente 100%, garantindo que toda a previsão seja integralmente apropriada. Estas tabelas são utilizadas pelo módulo de previsão de vendas para ratear automaticamente os valores previstos, simplificando o processo de planejamento orçamentário.
 
 ## Pre-requisitos
 
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para os quais os percentuais serao definidos.
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201) — Previsoes de venda que utilizarao as tabelas de apropriacao.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para os quais os percentuais serão definidos.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201) — Previsões de venda que utilizarão as tabelas de apropriação.
 
 ## Passo a passo
 
-1. Acesse a tela VPRE0101 pelo menu Previsao > Tabela Apropriacao.
-2. Clique em **Novo** para criar uma nova tabela de apropriacao.
-3. Preencha o **Codigo** e a **Descricao** da tabela (ex: "RATEIO-PADRAO" — Rateio Padrao por Linha de Produto).
+1. Acesse a tela VPRE0101 pelo menu Previsão > Tabela Apropriação.
+2. Clique em **Novo** para criar uma nova tabela de apropriação.
+3. Preencha o **Código** e a **Descrição** da tabela (ex: "RATEIO-PADRÃO" — Rateio Padrão por Linha de Produto).
 4. Para cada linha da tabela, informe o **Centro de Custo** ou **Produto** de destino.
-5. Informe o **Percentual** de apropriacao para cada linha.
+5. Informe o **Percentual** de apropriação para cada linha.
 6. O sistema exibe em tempo real a **Soma Total** dos percentuais, que deve totalizar exatamente 100%. Um indicador visual (verde/vermelho) mostra se a soma esta correta.
-7. Ajuste os percentuais ate que a soma atinja 100%.
-8. Defina a **Vigencia Inicial** e **Vigencia Final** da tabela, se aplicavel.
-9. Clique em **Salvar** para armazenar a tabela de apropriacao.
+7. Ajuste os percentuais até que a soma atinja 100%.
+8. Defina a **Vigência Inicial** e **Vigência Final** da tabela, se aplicável.
+9. Clique em **Salvar** para armazenar a tabela de apropriação.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo | texto | Sim | — | Identificador unico da tabela de apropriacao |
-| Descricao | texto | Sim | — | Nome descritivo da tabela |
-| Linha — Centro de Custo | select | Sim | Lista de centros de custo | Destino da apropriacao |
-| Linha — Produto | select | Nao | Lista de produtos | Alternativa ao centro de custo: produto destino |
-| Linha — Percentual (%) | numero | Sim | 0 a 100 | Percentual de rateio para esta linha |
-| Soma Total | numero | Nao | — | Soma calculada em tempo real (deve ser 100%) |
-| Vigencia Inicial | data | Nao | — | Data de inicio da vigencia da tabela |
-| Vigencia Final | data | Nao | — | Data de termino da vigencia da tabela |
-| Ativo | toggle | Sim | — | Status da tabela de apropriacao |
+| Código | texto | Sim | — | Identificador único da tabela de apropriação |
+| Descrição | texto | Sim | — | Nome descritivo da tabela |
+| Linha — Centro de Custo | select | Sim | Lista de centros de custo | Destino da apropriação |
+| Linha — Produto | select | Não | Lista de produtos | Alternativa ao centro de custo: produto destino |
+| Linha — Percentual (%) | número | Sim | 0 a 100 | Percentual de rateio para esta linha |
+| Soma Total | número | Não | — | Soma calculada em tempo real (deve ser 100%) |
+| Vigência Inicial | data | Não | — | Data de início da vigência da tabela |
+| Vigência Final | data | Não | — | Data de término da vigência da tabela |
+| Ativo | toggle | Sim | — | Status da tabela de apropriação |
 
-## Observacoes importantes
+## Observações importantes
 
 - A **Soma Total** deve ser exatamente **100%**. O sistema impede salvar uma tabela cuja soma dos percentuais seja diferente de 100%.
-- O indicador visual **verde** confirma que a soma esta correta (100%), enquanto o **vermelho** alerta para divergencia, exibindo a diferenca (para mais ou para menos).
-- E possivel criar **multiplas tabelas** com diferentes criterios de rateio e associa-las a diferentes previsoes de venda, permitindo flexibilidade no planejamento.
-- Tabelas com **Vigencia** definida sao automaticamente desativadas apos a data final, evitando o uso de tabelas desatualizadas em novos periodos.
-- A alteracao de percentuais em uma tabela ja em uso **nao retroage** — previsoes ja apropriadas com percentuais anteriores mantem seus valores originais.
-- E recomendavel manter um numero reduzido de linhas por tabela (maximo 10-15) para facilitar a manutencao e auditoria.
+- O indicador visual **verde** confirma que a soma esta correta (100%), enquanto o **vermelho** alerta para divergência, exibindo a diferença (para mais ou para menos).
+- E possível criar **múltiplas tabelas** com diferentes critérios de rateio e associa-las a diferentes previsões de venda, permitindo flexibilidade no planejamento.
+- Tabelas com **Vigência** definida são automaticamente desativadas após a data final, evitando o uso de tabelas desatualizadas em novos periodos.
+- A alteração de percentuais em uma tabela já em uso **não retroage** — previsões já apropriadas com percentuais anteriores mantém seus valores originais.
+- E recomendável manter um número reduzido de linhas por tabela (máximo 10-15) para facilitar a manutenção e auditoria.
 
 ## Telas relacionadas
 
-- [VPRE0201 (Cadastro Previsao Vendas)](/previsao/vpre0201): Previsoes de venda que utilizam as tabelas de apropriacao para rateio.
-- [VPRE0251 (Geracao Previsao)](/previsao/vpre0251): Geracao de previsoes que podem utilizar tabelas de apropriacao.
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo destino da apropriacao.
-- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Comparativo que reflete a apropriacao definida nas tabelas.
+- [VPRE0201 (Cadastro Previsão Vendas)](/previsao/vpre0201): Previsões de venda que utilizam as tabelas de apropriação para rateio.
+- [VPRE0251 (Geração Previsão)](/previsao/vpre0251): Geração de previsões que podem utilizar tabelas de apropriação.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo destino da apropriação.
+- [VPRE0301 (Previsto X Realizado)](/previsao/vpre0301): Comparativo que reflete a apropriação definida nas tabelas.

@@ -1,0 +1,27 @@
+---
+sidebar_position: 4
+title: "VSUP0120 — Tabela de Preço de Compra"
+description: "Cadastrar tabelas de preço de compra e seus itens, genéricas ou específicas por fornecedor."
+---
+
+# VSUP0120 — Tabela de Preço de Compra
+
+> Cadastrar **tabelas de preço de compra** (cabeçalho com código, descrição, moeda e vigência) e seus **itens** (preço por item, com UM e quantidade mínima). O preço pode ser **genérico** ou **específico por fornecedor**.
+
+## Objetivo
+
+Manter os preços de compra que o Pedido de Compra resolve automaticamente ao adicionar um item.
+
+## Passo a passo
+
+1. Crie a **tabela** (descrição, moeda, vigência).
+2. Selecione a tabela e adicione **itens**: item, preço, UM, quantidade mínima e, opcionalmente, o fornecedor específico.
+
+## Observações importantes
+
+- É o **1º nível** da hierarquia de preço do Pedido de Compra (prefere o preço específico do fornecedor, cai para o genérico).
+
+## Telas relacionadas
+
+- **[VSUP0200 (Pedido de Compra)](/compras/vsup0200):** consome o preço da tabela.
+- **[VSUP0500 (Cadastro de Fornecedor)](/compras/vsup0500):** vincula tabela de preço por empresa.

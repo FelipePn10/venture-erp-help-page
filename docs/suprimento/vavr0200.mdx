@@ -1,101 +1,101 @@
 ---
 sidebar_position: 1
 title: "VAVR0200 — Fornecedores/Transportadoras"
-description: "Cadastro unificado de fornecedores e transportadoras com 5 abas de informacoes."
+description: "Cadastro unificado de fornecedores e transportadoras com 5 abas de informações."
 ---
 
 # VAVR0200 — Fornecedores/Transportadoras
 
-> Cadastro unificado de fornecedores e transportadoras com 5 abas que consolidam dados fiscais, comerciais, financeiros, logisticos e de qualidade.
+> Cadastro unificado de fornecedores e transportadoras com 5 abas que consolidam dados fiscais, comerciais, financeiros, logísticos e de qualidade.
 
 ## Objetivo
 
-Centralizar o cadastro de fornecedores e transportadoras em uma unica tela com 5 abas, eliminando a dispersao de informacoes por diferentes modulos. A tela abrange: dados cadastrais (razao social, CNPJ, endereco), dados fiscais (inscricao estadual, regime tributario), dados comerciais (condicoes de pagamento, prazos), dados logisticos (rotas, fretes, transportadoras associadas) e dados de qualidade (certificacoes, avaliacao, historico de ocorrencias). O cadastro unificado garante consistencia dos dados de fornecedores em todos os modulos que os referenciam.
+Centralizar o cadastro de fornecedores e transportadoras em uma única tela com 5 abas, eliminando a dispersão de informações por diferentes módulos. A tela abrange: dados cadastrais (razão social, CNPJ, endereço), dados fiscais (inscrição estadual, regime tributário), dados comerciais (condições de pagamento, prazos), dados logísticos (rotas, fretes, transportadoras associadas) e dados de qualidade (certificações, avaliação, histórico de ocorrencias). O cadastro unificado garante consistência dos dados de fornecedores em todos os módulos que os referenciam.
 
 ## Pre-requisitos
 
-- [VAVF0101 (Parametros Avaliacao Fornecedores)](/inspecao/vavf0101) — Parametros de avaliacao que serao aplicados ao fornecedor.
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para classificacao contabil do fornecedor.
-- [Cadastro de Municipios/Estados](/cadastros/vcal0100) — Tabelas auxiliares para endereco.
+- [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101) — Parâmetros de avaliação que serão aplicados ao fornecedor.
+- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para classificação contábil do fornecedor.
+- [Cadastro de Municipios/Estados](/cadastros/vcal0100) — Tabelas auxiliares para endereço.
 
 ## Passo a passo
 
 1. Acesse a tela VAVR0200 pelo menu Suprimento > Fornecedores/Transportadoras.
 2. Clique em **Novo** para cadastrar um novo fornecedor ou transportadora.
-3. Na aba **Capa**, preencha razao social, nome fantasia, CNPJ/CPF, tipo (Fornecedor, Transportadora ou Ambos) e situacao.
-4. Na aba **Fiscal**, informe inscricao estadual, regime tributario, retencoes de impostos e dados para emissao de NF-e.
-5. Na aba **Comercial**, configure as condicoes comerciais: prazo de pagamento padrao, desconto negociado, comprador responsavel.
-6. Na aba **Logistica**, defina rotas de entrega, transportadoras associadas, fretes padrao e prazos de entrega.
-7. Na aba **Qualidade**, associe parametros de avaliacao, registre certificacoes (ISO, etc.) e visualize o historico de ocorrencias e IQF.
-8. Utilize o botao **Pesquisar** para localizar fornecedores por CNPJ, razao social ou codigo.
-9. O botao **Duplicar** permite criar um novo fornecedor com base em um existente, agilizando cadastros similares.
+3. Na aba **Capa**, preencha razão social, nome fantasia, CNPJ/CPF, tipo (Fornecedor, Transportadora ou Ambos) e situação.
+4. Na aba **Fiscal**, informe inscrição estadual, regime tributário, retenções de impostos e dados para emissão de NF-e.
+5. Na aba **Comercial**, configure as condições comerciais: prazo de pagamento padrão, desconto negociado, comprador responsável.
+6. Na aba **Logística**, defina rotas de entrega, transportadoras associadas, fretes padrão e prazos de entrega.
+7. Na aba **Qualidade**, associe parâmetros de avaliação, registre certificações (ISO, etc.) e visualize o histórico de ocorrencias e IQF.
+8. Utilize o botão **Pesquisar** para localizar fornecedores por CNPJ, razão social ou código.
+9. O botão **Duplicar** permite criar um novo fornecedor com base em um existente, agilizando cadastros similares.
 10. Clique em **Salvar** para persistir os dados em todas as abas.
 
 ## Campos
 
 ### Aba Capa
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Codigo | numero | Sim | — | Codigo unico do fornecedor |
-| Razao Social | texto | Sim | — | Razao social completa |
-| Nome Fantasia | texto | Nao | — | Nome fantasia comercial |
-| CNPJ/CPF | texto | Sim | — | Cadastro nacional de pessoa juridica/fisica |
-| Tipo | select | Sim | Fornecedor / Transportadora / Ambos | Classificacao do cadastro |
-| Situacao | select | Sim | Ativo / Inativo / Bloqueado | Status do fornecedor |
-| Website | texto | Nao | — | Endereco eletronico do fornecedor |
+| Código | número | Sim | — | Código único do fornecedor |
+| Razão Social | texto | Sim | — | Razão social completa |
+| Nome Fantasia | texto | Não | — | Nome fantasia comercial |
+| CNPJ/CPF | texto | Sim | — | Cadastro nacional de pessoa jurídica/física |
+| Tipo | select | Sim | Fornecedor / Transportadora / Ambos | Classificação do cadastro |
+| Situação | select | Sim | Ativo / Inativo / Bloqueado | Status do fornecedor |
+| Website | texto | Não | — | Endereço eletrônico do fornecedor |
 
 ### Aba Fiscal
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Inscricao Estadual | texto | Nao | — | IE do fornecedor |
-| Regime Tributario | select | Nao | Simples / Lucro Presumido / Lucro Real | Regime tributario |
-| Retencao IR | toggle | Nao | — | Indica se ha retencao de IR |
-| Retencao INSS | toggle | Nao | — | Indica se ha retencao de INSS |
-| Retencao ISS | toggle | Nao | — | Indica se ha retencao de ISS |
+| Inscrição Estadual | texto | Não | — | IE do fornecedor |
+| Regime Tributário | select | Não | Simples / Lucro Presumido / Lucro Real | Regime tributário |
+| Retenção IR | toggle | Não | — | Indica se ha retenção de IR |
+| Retenção INSS | toggle | Não | — | Indica se ha retenção de INSS |
+| Retenção ISS | toggle | Não | — | Indica se ha retenção de ISS |
 
 ### Aba Comercial
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Condicao de Pagamento | select | Nao | Lista de condicoes | Prazo de pagamento padrao |
-| Desconto Padrao (%) | numero | Nao | — | Percentual de desconto negociado |
-| Comprador | select | Nao | Lista de compradores | Comprador responsavel pelo fornecedor |
-| Prazo de Entrega Medio | numero | Nao | — | Prazo medio de entrega em dias |
+| Condição de Pagamento | select | Não | Lista de condições | Prazo de pagamento padrão |
+| Desconto Padrão (%) | número | Não | — | Percentual de desconto negociado |
+| Comprador | select | Não | Lista de compradores | Comprador responsável pelo fornecedor |
+| Prazo de Entrega Médio | número | Não | — | Prazo médio de entrega em dias |
 
-### Aba Logistica
+### Aba Logística
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Rota de Entrega | select | Nao | Lista de rotas | Rota padrao de entrega |
-| Frete Padrao | select | Nao | CIF / FOB | Modalidade de frete |
-| Transportadora Associada | select | Nao | Lista de transportadoras | Transportadora vinculada |
+| Rota de Entrega | select | Não | Lista de rotas | Rota padrão de entrega |
+| Frete Padrão | select | Não | CIF / FOB | Modalidade de frete |
+| Transportadora Associada | select | Não | Lista de transportadoras | Transportadora vinculada |
 
 ### Aba Qualidade
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Parametro Avaliacao | select | Nao | Lista de parametros | Conjunto de criterios de avaliacao |
-| Certificacoes | multi-select | Nao | ISO 9001 / ISO 14001 / etc. | Certificacoes do fornecedor |
-| IQF Atual | numero | Nao | — | Indice de Qualidade do Fornecedor calculado |
-| Data Ultima Avaliacao | data | Nao | — | Data da ultima avaliacao realizada |
-| Historico de Ocorrencias | tabela | Nao | — | Resumo de ocorrencias registradas |
+| Parâmetro Avaliação | select | Não | Lista de parâmetros | Conjunto de critérios de avaliação |
+| Certificações | multi-select | Não | ISO 9001 / ISO 14001 / etc. | Certificações do fornecedor |
+| IQF Atual | número | Não | — | Indice de Qualidade do Fornecedor calculado |
+| Data Última Avaliação | data | Não | — | Data da última avaliação realizada |
+| Histórico de Ocorrencias | tabela | Não | — | Resumo de ocorrencias registradas |
 
-## Observacoes importantes
+## Observações importantes
 
-- O tipo **Ambos** e util para empresas que atuam simultaneamente como fornecedoras de materiais e transportadoras, evitando duplicidade de cadastro.
-- A aba **Qualidade** consolida dados calculados automaticamente pelo sistema, como o IQF (Indice de Qualidade do Fornecedor), baseado em [VAVF0101 (Parametros Avaliacao Fornecedores)](/inspecao/vavf0101).
-- Fornecedores **Bloqueados** nao podem ser selecionados em novos pedidos de compra, mas continuam visiveis para consulta historica.
-- O botao **Duplicar** copia os dados de todas as abas, exceto CNPJ e Inscricao Estadual, que devem ser preenchidos manualmente.
-- A alteracao de dados fiscais de um fornecedor **nao retroage** — documentos fiscais ja emitidos mantem os dados originais do fornecedor no momento da emissao.
-- E possivel associar **multiplas transportadoras** a um mesmo fornecedor quando ele trabalha com diferentes rotas ou modalidades de frete.
+- O tipo **Ambos** e útil para empresas que atuam simultaneamente como fornecedoras de materiais e transportadoras, evitando duplicidade de cadastro.
+- A aba **Qualidade** consolida dados calculados automaticamente pelo sistema, como o IQF (Indice de Qualidade do Fornecedor), baseado em [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101).
+- Fornecedores **Bloqueados** não podem ser selecionados em novos pedidos de compra, mas continuam visíveis para consulta histórica.
+- O botão **Duplicar** cópia os dados de todas as abas, exceto CNPJ e Inscrição Estadual, que devem ser preenchidos manualmente.
+- A alteração de dados fiscais de um fornecedor **não retroage** — documentos fiscais já emitidos mantém os dados originais do fornecedor no momento da emissão.
+- E possível associar **múltiplas transportadoras** a um mesmo fornecedor quando ele trabalha com diferentes rotas ou modalidades de frete.
 
 ## Telas relacionadas
 
-- [VAVF0101 (Parametros Avaliacao Fornecedores)](/inspecao/vavf0101): Parametros de avaliacao referenciados na aba Qualidade.
-- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): Envio e visualizacao do IQF dos fornecedores.
+- [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101): Parâmetros de avaliação referenciados na aba Qualidade.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): Envio e visualização do IQF dos fornecedores.
 - [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos associados ao fornecedor.
 - [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra emitidos para o fornecedor.
-- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Analise de itens fornecidos por cada fornecedor.
+- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Análise de itens fornecidos por cada fornecedor.
 - [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo associados.

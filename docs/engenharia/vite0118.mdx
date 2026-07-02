@@ -1,66 +1,66 @@
 ---
 sidebar_position: 15
 title: "VITE0118 — Regras Itens Configurados"
-description: "Definicao de regras condicionais para itens configurados que controlam compatibilidade e restricoes."
+description: "Definição de regras condicionais para itens configurados que controlam compatibilidade e restrições."
 ---
 
 # VITE0118 — Regras Itens Configurados
 
-> Motor de regras condicionais que define restricoes de compatibilidade, dependencia e exclusao entre atributos de itens configurados.
+> Motor de regras condicionais que define restrições de compatibilidade, dependência e exclusão entre atributos de itens configurados.
 
 ## Objetivo
 
-Permitir a criacao e gestao de regras condicionais que controlam o comportamento do configurador de produtos. Estas regras definem relacoes de dependencia (se escolher A, entao B deve ser escolhido), exclusao (se escolher A, entao B nao pode ser escolhido) e recomendacao (se escolher A, sugira B) entre atributos de diferentes modificadores. As regras garantem que apenas combinacoes viaveis do ponto de vista tecnico e comercial sejam permitidas, evitando erros de configuracao que resultariam em produtos impossiveis de fabricar ou comercializar.
+Permitir a criação e gestão de regras condicionais que controlam o comportamento do configurador de produtos. Estas regras definem relações de dependência (se escolher A, entao B deve ser escolhido), exclusão (se escolher A, entao B não pode ser escolhido) e recomendação (se escolher A, sugira B) entre atributos de diferentes modificadores. As regras garantem que apenas combinações viáveis do ponto de vista técnico e comercial sejam permitidas, evitando erros de configuração que resultariam em produtos impossíveis de fabricar ou comercializar.
 
 ## Pre-requisitos
 
 - [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores PDM com atributos cadastrados.
-- [VITE0116 (Atributos PDM)](/engenharia/vite0116) — Atributos PDM que serao utilizados nas condicoes das regras.
-- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupos PDM para os quais as regras serao aplicaveis.
-- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210) — Estrutura BOM impactada pelas regras de configuracao.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116) — Atributos PDM que serão utilizados nas condições das regras.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupos PDM para os quais as regras serão aplicáveis.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210) — Estrutura BOM impactada pelas regras de configuração.
 
 ## Passo a passo
 
 1. Acesse a tela VITE0118 pelo menu Engenharia > Regras Itens Configurados.
 2. Selecione o **Grupo PDM** para o qual a regra sera aplicada.
-3. Clique em **Nova Regra** para iniciar a definicao de uma nova regra condicional.
-4. Escolha o **Tipo de Regra**: Dependencia (IF-THEN), Exclusao (NOT WITH), Recomendacao (SUGGEST) ou Restricao Condicional.
-5. Defina a **Condicao** (IF): selecione o modificador e o atributo que disparam a regra.
-6. Defina a **Acao** (THEN): selecione o modificador e o atributo que serao afetados pela regra.
-7. Configure a **Mensagem** que sera exibida ao usuario quando a regra for acionada no configurador.
-8. Defina a **Prioridade** da regra para resolver conflitos quando multiplas regras se aplicam simultaneamente.
+3. Clique em **Nova Regra** para iniciar a definição de uma nova regra condicional.
+4. Escolha o **Tipo de Regra**: Dependência (IF-THEN), Exclusão (NOT WITH), Recomendação (SUGGEST) ou Restrição Condicional.
+5. Defina a **Condição** (IF): selecione o modificador e o atributo que disparam a regra.
+6. Defina a **Ação** (THEN): selecione o modificador e o atributo que serão afetados pela regra.
+7. Configure a **Mensagem** que sera exibida ao usuário quando a regra for acionada no configurador.
+8. Defina a **Prioridade** da regra para resolver conflitos quando múltiplas regras se aplicam simultaneamente.
 9. Marque o toggle **Regra Ativa** para que a regra entre em vigor no configurador.
 10. Clique em **Salvar** para armazenar a regra.
 
 ## Campos
 
-| Campo | Tipo | Obrigatorio | Opcoes | Descricao |
+| Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Grupo PDM | select | Sim | Lista de grupos PDM | Grupo PDM de abrangencia da regra |
-| Tipo de Regra | select | Sim | Dependencia / Exclusao / Recomendacao / Restricao | Categoria da regra condicional |
-| Condicao — Modificador | select | Sim | Lista de modificadores | Modificador que dispara a condicao |
-| Condicao — Atributo | select | Sim | Lista de atributos | Atributo que dispara a condicao |
-| Acao — Modificador | select | Sim | Lista de modificadores | Modificador afetado pela regra |
-| Acao — Atributo | select | Sim | Lista de atributos | Atributo afetado pela regra |
-| Mensagem | texto | Sim | — | Texto explicativo exibido ao usuario no configurador |
-| Prioridade | numero | Nao | — | Ordem de avaliacao da regra (menor = maior prioridade) |
-| Regra Ativa | toggle | Sim | — | Status de vigencia da regra |
-| Severidade | select | Nao | Erro / Aviso / Informativo | Nivel de severidade da mensagem exibida |
+| Grupo PDM | select | Sim | Lista de grupos PDM | Grupo PDM de abrangência da regra |
+| Tipo de Regra | select | Sim | Dependência / Exclusão / Recomendação / Restrição | Categoria da regra condicional |
+| Condição — Modificador | select | Sim | Lista de modificadores | Modificador que dispara a condição |
+| Condição — Atributo | select | Sim | Lista de atributos | Atributo que dispara a condição |
+| Ação — Modificador | select | Sim | Lista de modificadores | Modificador afetado pela regra |
+| Ação — Atributo | select | Sim | Lista de atributos | Atributo afetado pela regra |
+| Mensagem | texto | Sim | — | Texto explicativo exibido ao usuário no configurador |
+| Prioridade | número | Não | — | Ordem de avaliação da regra (menor = maior prioridade) |
+| Regra Ativa | toggle | Sim | — | Status de vigência da regra |
+| Severidade | select | Não | Erro / Aviso / Informativo | Nível de severidade da mensagem exibida |
 
-## Observacoes importantes
+## Observações importantes
 
-- Regras do tipo **Dependencia** (IF-THEN) forcam automaticamente a selecao do atributo dependente quando a condicao e satisfeita, sem permitir que o usuario desmarque.
-- Regras do tipo **Exclusao** (NOT WITH) impedem que dois atributos incompatveis sejam selecionados simultaneamente. Se o usuario tentar, o sistema exibe a mensagem de erro e bloqueia a selecao.
-- Regras do tipo **Recomendacao** (SUGGEST) apenas sugerem ao usuario uma combinacao recomendada, mas permitem que ele escolha outra opcao se desejar.
-- A **Severidade "Erro"** bloqueia o usuario de prosseguir com a configuracao. **"Aviso"** alerta, mas permite continuar. **"Informativo"** apenas mostra uma dica.
-- A **Prioridade** e importante quando duas regras entram em conflito. A regra com menor numero de prioridade prevalece.
-- Recomenda-se testar exaustivamente as regras no configurador apos cada alteracao, simulando diferentes combinacoes de atributos para garantir que as restricoes funcionem conforme esperado.
+- Regras do tipo **Dependência** (IF-THEN) forcam automaticamente a seleção do atributo dependente quando a condição e satisfeita, sem permitir que o usuário desmarque.
+- Regras do tipo **Exclusão** (NOT WITH) impedem que dois atributos incompatveis sejam selecionados simultaneamente. Se o usuário tentar, o sistema exibe a mensagem de erro e bloqueia a seleção.
+- Regras do tipo **Recomendação** (SUGGEST) apenas sugerem ao usuário uma combinação recomendada, mas permitem que ele escolha outra opção se desejar.
+- A **Severidade "Erro"** bloqueia o usuário de prosseguir com a configuração. **"Aviso"** alerta, mas permite continuar. **"Informativo"** apenas mostra uma dica.
+- A **Prioridade** e importante quando duas regras entram em conflito. A regra com menor número de prioridade prevalece.
+- Recomenda-se testar exaustivamente as regras no configurador após cada alteração, simulando diferentes combinações de atributos para garantir que as restrições funcionem conforme esperado.
 
 ## Telas relacionadas
 
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores cujos atributos sao utilizados nas regras.
-- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos referenciados nas condicoes e acoes das regras.
-- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM para os quais as regras sao definidas.
-- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM impactada pelas regras de configuracao.
-- [VENG0204 (Regras Variaveis Equivalentes)](/engenharia/veng0204): Regras de equivalencia entre atributos de diferentes modificadores.
-- [VITE0313 (Geracao Mascara Itens Configurados)](/engenharia/vite0313): Geracao de itens que devem respeitar as regras definidas.
+- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores cujos atributos são utilizados nas regras.
+- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos referenciados nas condições e ações das regras.
+- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupos PDM para os quais as regras são definidas.
+- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM impactada pelas regras de configuração.
+- [VENG0204 (Regras Variáveis Equivalentes)](/engenharia/veng0204): Regras de equivalência entre atributos de diferentes modificadores.
+- [VITE0313 (Geração Máscara Itens Configurados)](/engenharia/vite0313): Geração de itens que devem respeitar as regras definidas.
