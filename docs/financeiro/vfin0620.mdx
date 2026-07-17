@@ -1,0 +1,37 @@
+---
+sidebar_position: 12
+title: "VFIN0620 — Conciliação Bancária por OFX"
+description: "Importar o extrato OFX do banco e conciliar seus movimentos com a conta bancária do ERP."
+---
+
+# VFIN0620 — Conciliação Bancária por OFX
+
+> Importa o **extrato eletrônico OFX** disponibilizado pelo banco e reconcilia seus movimentos com a conta bancária do ERP. O arquivo é lido localmente apenas para envio; todo o processamento ocorre no sistema.
+
+## Objetivo
+
+Conciliar os lançamentos do ERP com o extrato real do banco, identificando movimentos lidos, conciliados, criados ou ignorados na conta selecionada.
+
+## Pré-requisitos
+
+- Conta cadastrada ([VFIN0100](/financeiro/vfin0100)) correspondente à conta do extrato.
+- Arquivo **OFX íntegro** exportado no internet banking para o período desejado.
+
+## Passo a passo
+
+1. Selecione **Importar arquivo OFX**.
+2. Informe o **ID da conta bancária**. Compare banco, agência e conta com o cabeçalho do arquivo para evitar conciliação na conta errada.
+3. Em **Arquivo OFX**, escolha o `.ofx` original — a tela lê o texto e não usa conteúdo simulado.
+4. Clique em **Importar** e confira as quantidades retornadas: movimentos lidos, conciliados, criados ou ignorados.
+5. Abra o extrato/fluxo na [VFIN0300](/financeiro/vfin0300) e valide datas, sinais (débito/crédito), valores e saldo.
+
+## Observações importantes
+
+- A **extensão `.ofx` é apenas um filtro de seleção**, não garantia de conteúdo válido — não renomeie PDF/CSV/planilha.
+- Se o banco fornecer identificador único por movimento, confira **duplicidades** antes de reimportar.
+- Arquivo vazio, conteúdo não-OFX, conta inexistente ou falta de permissão interrompem a importação.
+
+## Telas relacionadas
+
+- **[VFIN0300 (Fluxo de Caixa / Extrato)](/financeiro/vfin0300):** onde os movimentos conciliados aparecem.
+- **[VFIN0610 (Remessa CNAB 240)](/financeiro/vfin0610):** geração da cobrança bancária.

@@ -1,0 +1,36 @@
+---
+sidebar_position: 27
+title: "VSUP0680 — Fontes e Atualização de Preços de Compra"
+description: "Selecionar fontes e candidatos de preços praticados, aplicá-los na tabela de compra e copiar ajustes entre itens."
+---
+
+# VSUP0680 — Fontes e Atualização de Preços de Compra
+
+> Encontra os **preços realmente praticados**, seleciona candidatos para uma tabela de compra, aplica as fontes escolhidas e copia critérios de ajuste entre linhas.
+
+## Objetivo
+
+Manter as tabelas de preço de compra alinhadas à realidade — a partir de pedidos e documentos de origem — sem digitar preços manualmente.
+
+## Pré-requisitos
+
+- Tabela de compra e seus itens cadastrados na rotina mestre.
+- Pedidos, fornecedores e classificações de origem existentes na mesma empresa.
+
+## Passo a passo
+
+1. **Consultar fontes**: informe início e fim (`AAAA-MM-DD`) e, opcionalmente, fornecedor, tabela e origem. Compare preço, moeda, unidade, data e documento.
+2. **Consultar candidatos**: informe a tabela (modo padrão **Interno** e ordenação **Numérica**); a classificação restringe os itens.
+3. **Aplicar fontes**: informe a tabela e mantenha **Sobrescrever** desmarcado para proteger preços existentes; adicione uma linha por **origem** (tipo e documento de origem). Confira quantas foram aplicadas.
+4. **Copiar ajustes**: informe os **IDs das linhas** de origem e destino (não os códigos dos itens) e o modo.
+
+## Observações importantes
+
+- Marcar **Sobrescrever** **pode substituir preço vigente** — registre a justificativa e confira o histórico depois.
+- Intervalo invertido, origem inexistente, candidato de outra empresa e IDs inválidos são recusados.
+- A rotina **não inventa preços** nem completa fontes quando a consulta retorna vazia.
+
+## Telas relacionadas
+
+- **[VSUP0650 (Histórico de Movimentos)](/compras/vsup0650):** origem dos preços praticados.
+- **[VSUP0510 (Tabela de Preço)](/compras/vsup0510):** tabela mestre de preços de compra.

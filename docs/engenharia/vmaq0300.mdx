@@ -1,0 +1,41 @@
+---
+sidebar_position: 33
+title: "VMAQ0300 — Tempos e Programação de Máquina"
+description: "Registrar tempos produtivos do item por máquina e agendar ordens na máquina real."
+---
+
+# VMAQ0300 — Tempos e Programação de Máquina
+
+> Dois lados da mesma máquina: **registrar o tempo produtivo** de um item nela e **programar ordens** (agenda) no recurso real.
+
+## Objetivo
+
+Alimentar o planejamento com os tempos produtivos por item×máquina e organizar a agenda da máquina, apoiando o sequenciamento (APS).
+
+## Pré-requisitos
+
+- Máquina cadastrada ([VMAQ0101](/engenharia/vmaq0101)) e item ([VENT0200](/engenharia/vent0200)).
+- Ordem existente para programar.
+
+## Passo a passo
+
+1. Em **Registrar tempo**, selecione a **Máquina** e informe **Item**, **Prioridade** (menor = maior preferência) e o **Tempo produtivo** (com a unidade).
+2. Em **Programar máquina**, informe **Ordem**, **Data**, **Início/Fim**, **Quantidade planejada**, **Situação** e **Sequência**.
+3. Consulte o sequenciamento em **[VAPS0600](/pcp/vaps0600)** após a inclusão para detectar sobreposição.
+
+## Campos
+
+| Ação | Campos |
+|------|--------|
+| **Tempo** | Item, Prioridade, Tempo produtivo (+ unidade) |
+| **Programação** | Ordem, Data, Início/Fim, Quantidade planejada, Situação, Sequência, Observações |
+
+## Observações importantes
+
+- **Não** use esta rotina para registrar produção realizada — a **quantidade produzida** só é informada quando o processo responsável permite.
+- A ordem e a máquina devem existir e o intervalo (início/fim) deve ser cronológico — a tela recusa fim anterior ao início.
+
+## Telas relacionadas
+
+- **[VMAQ0101 (Máquinas)](/engenharia/vmaq0101)** e **[VMAQ0200 (Tempos de Máquina)](/pcp/vmaq0200):** cadastro e tempos base.
+- **[VAPS0600 (Sequenciamento)](/pcp/vaps0600):** consulta da agenda resultante.

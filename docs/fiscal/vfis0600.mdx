@@ -1,0 +1,46 @@
+---
+sidebar_position: 30
+title: "VFIS0600 — SPED EFD ICMS/IPI"
+description: "Gerar o arquivo texto da Escrituração Fiscal Digital (ICMS/IPI) para o período informado."
+---
+
+# VFIS0600 — SPED EFD ICMS/IPI
+
+> Gera o arquivo oficial da **Escrituração Fiscal Digital (ICMS/IPI)** do período, reunindo participantes, itens, documentos fiscais e inventário para validação no PVA.
+
+## Objetivo
+
+Produzir o arquivo da EFD ICMS/IPI a partir dos cadastros e documentos fiscais do período, para validação e posterior entrega à Receita — a geração **não equivale à entrega**.
+
+## Pré-requisitos
+
+- Cadastro fiscal da empresa, participantes, unidades, itens, documentos e inventário conferidos.
+- **Período fiscal fechado**; contabilista e regime tributário validados.
+
+## Passo a passo
+
+1. Preencha os **dados da empresa** e o **período**.
+2. Informe os **dados do contabilista**.
+3. Revise participantes, unidades, itens, documentos fiscais e inventário.
+4. Clique em **Gerar EFD** — o arquivo é baixado.
+5. **Valide o arquivo no PVA** antes de transmitir.
+
+## Campos principais
+
+| Grupo | Campos |
+|-------|--------|
+| **Empresa** | CNPJ, Nome, UF, Inscrição estadual/municipal, Suframa, Município (IBGE), Regime tributário. |
+| **Período** | Data inicial, Data final, Indicador de situação do arquivo. |
+| **Contabilista** | Nome, CPF, CRC, CNPJ do escritório. |
+| **Blocos** | Participantes, Unidades, Itens, Documentos fiscais, Inventário. |
+
+## Observações importantes
+
+- **A geração não equivale à entrega à Receita** — validação no PVA e transmissão são etapas externas.
+- A tela recusa datas invertidas, CNPJ/município inválidos ou documentos inconsistentes.
+- Nunca transmita sem validação fiscal e autorização do responsável.
+
+## Telas relacionadas
+
+- **[VFIS0340 (Apuração de Impostos)](/fiscal/vfis0340):** apuração que alimenta a EFD.
+- **[VCTB0600 (SPED ECD)](/contabilidade/vctb0600):** escrituração contábil correlata.

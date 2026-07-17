@@ -8,8 +8,6 @@ description: "Parametrização avançada de ICMS e IPI por UF combinada com NCM 
 
 > Tela de parametrização avançada dos impostos ICMS e IPI. Permite definir regras fiscais combinando UF (origem e destino), NCM e Tipo de Operação, controlando alíquotas, reduções de base de cálculo, Substituição Tributária, creditos e enquadramento legal.
 
-**Código fonte:** `src/modules/fiscal/icms-ipi-params/vfis0320.vue`
-
 ## Objetivo
 
 A VFIS0320 e a camada mais granular da parametrização fiscal do ERP. Enquanto a VFIS0110 define alíquotas genéricas por UF+NCM e a VFIS0330 gerencia regras específicas de redução/ST/diferimento, a VFIS0320 atua como um motor de combinação entre UF (origem + destino), NCM e Tipo de Operação, permitindo definir exatamente qual alíquota de ICMS, qual regra de ST, qual redução de base de cálculo, qual alíquota de IPI, qual dispositivo legal e qual modalidade de crédito se aplicam a cada cenário fiscal. Esta tela e consultada pelo motor de cálculo a cada emissão de documento fiscal, que busca a regra mais específica para a operação em questao.

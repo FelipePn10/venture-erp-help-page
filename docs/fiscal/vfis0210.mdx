@@ -8,11 +8,9 @@ description: "Registro de Notas Fiscais de Entrada (compras) em três modos: dig
 
 > Tela dedicada ao registro de Notas Fiscais Eletrônicas de Entrada (compras, devoluções de clientes, remessas para industrialização). Disponibiliza três modos de entrada de dados e, ao aprovar a nota, gera automaticamente a conta a pagar no módulo financeiro.
 
-**Código fonte:** `src/modules/fiscal/input-nfe/vfis0210.vue`
-
 ## Objetivo
 
-A VFIS0210 permite registrar NFe de entrada no ERP — documentos fiscais emitidos por fornecedores contra a empresa. O sistema oferece três modos de entrada: **digitação manual** (para notas de fornecedores não eletrônicos ou quando o XML não esta disponível), **consulta pela chave de 44 digitos** (busca automática o XML na SEFAZ via API Focus NFe e preenche todos os campos) e **upload de arquivo XML** (importa o XML baixado do portal da SEFAZ ou recebido do fornecedor). Após o registro e conferência, a aprovação da nota gera automaticamente uma conta a pagar no módulo financeiro (VFOR0130), vinculando a obrigação de pagamento ao documento fiscal de origem.
+A VFIS0210 permite registrar NFe de entrada no ERP — documentos fiscais emitidos por fornecedores contra a empresa. O sistema oferece três modos de entrada: **digitação manual** (para notas de fornecedores não eletrônicos ou quando o XML não esta disponível), **consulta pela chave de 44 digitos** (busca automática o XML na SEFAZ via integração Focus NF-e e preenche todos os campos) e **upload de arquivo XML** (importa o XML baixado do portal da SEFAZ ou recebido do fornecedor). Após o registro e conferência, a aprovação da nota gera automaticamente uma conta a pagar no módulo financeiro (VFOR0130), vinculando a obrigação de pagamento ao documento fiscal de origem.
 
 ## Pre-requisitos
 
@@ -38,7 +36,7 @@ A VFIS0210 permite registrar NFe de entrada no ERP — documentos fiscais emitid
 
    **Modo 2 — Chave de 44 Digitos:**
    4. Informe a **Chave de Acesso** completa (44 digitos) da NFe. O sistema formatara automaticamente e validara o dígito verificador.
-   5. Clique em **Consultar SEFAZ**. O sistema utilizara a API Focus NFe para baixar o XML completo da NFe na base da SEFAZ.
+   5. Clique em **Consultar SEFAZ**. O sistema utilizara a integração Focus NF-e para baixar o XML completo da NFe na base da SEFAZ.
    6. O sistema extraira automaticamente: emitente (fornecedor), destinatário, itens, impostos, totais, transporte, cobrança e informações adicionais.
    7. Revise os dados importados. O sistema destacara itens cujo NCM ou produto não foram encontrados na base local para que você faca a vinculação.
    8. Ajuste eventuais divergências e clique em **Salvar**.
@@ -121,7 +119,7 @@ A VFIS0210 permite registrar NFe de entrada no ERP — documentos fiscais emitid
 
 ## Telas relacionadas
 
-- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base do emitente, necessária para consulta de XML via API.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base do emitente, necessária para consulta de XML via integração fiscal.
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Tela de emissão de NFe de saída (vendas).
 - **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Códigos Fiscais de Operação com CFOPs de entrada.
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração onde os creditos de ICMS serão apropriados.

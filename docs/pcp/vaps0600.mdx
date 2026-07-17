@@ -1,0 +1,49 @@
+---
+sidebar_position: 36
+title: "VAPS0600 — Cálculo e Consulta do Sequenciamento (APS)"
+description: "Executar o cálculo do sequenciamento, consultar recursos/eventos, reprogramar operações, exportar e administrar parâmetros."
+---
+
+# VAPS0600 — Cálculo e Consulta do Sequenciamento (APS)
+
+> O motor do APS: **executa o cálculo** do sequenciamento finito, **consulta** recursos e eventos, permite **reprogramar** operações e **exporta** a agenda. O Gantt operacional (arrastar-e-soltar) fica na [VPRO0210](/pcp/vpro0210).
+
+## Objetivo
+
+Rodar e inspecionar o sequenciamento de capacidade finita — quais operações entram, em que recurso e quando — preparando os dados que o Gantt operacional consome.
+
+## Pré-requisitos
+
+- Recursos, grupos, calendários e capacidades configurados ([VAPS0100](/pcp/vaps0100) / [VAPS0200](/pcp/vaps0200)).
+- Ordens com operações a sequenciar.
+
+## Passo a passo
+
+### Sequenciar
+
+1. Informe a **data/hora inicial**.
+2. Opcionalmente, restrinja por **ordens**, **máquinas**, **centros** e **operações** — deixar os filtros **em branco** faz o motor considerar todo o universo elegível.
+3. Execute e confira as operações **sequenciadas**, as **não sequenciadas** e as mensagens de capacidade.
+
+### Consultar, reprogramar e exportar
+
+- **Consultar recursos** para escolher o grupo.
+- **Consultar visão**: informe **De** / **Até**, o **Grupo de recursos**, a **Unidade de tempo** e o valor de atualização.
+- **Reprogramar** uma operação: informe o **novo início**, opcionalmente um **novo centro/máquina**, e marque **Encadear** para empurrar as operações dependentes (padrão ligado).
+- **Exportar eventos** usa os mesmos filtros da visão.
+
+### Parâmetro
+
+- **Listar somente recursos ativos** controla as listas (exige administrador). Após mudar, reabra a consulta de recursos.
+
+## Observações importantes
+
+- O **Gantt operacional permanece na [VPRO0210](/pcp/vpro0210)**; a VAPS0600 prepara e consulta os dados do motor.
+- Operações **não sequenciadas** indicam falta de capacidade, calendário ou dependência — investigue antes de firmar.
+- Com **Encadear** ligado, a reprogramação empurra as operações dependentes para manter a sequência válida; a tela recusa um movimento que quebre a cadeia.
+
+## Telas relacionadas
+
+- **[VPRO0210 (APS / Gantt)](/pcp/vpro0210):** visão operacional do sequenciamento.
+- **[VAPS0100 (Recursos)](/pcp/vaps0100)** e **[VAPS0200 (Calendários)](/pcp/vaps0200):** insumos do cálculo.
+- **[VMRP0200 (Pipeline MRP→CRP→APS)](/planejamento/vmrp0200):** execução coordenada.

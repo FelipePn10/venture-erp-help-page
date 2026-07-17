@@ -8,8 +8,6 @@ description: "Cadastro de tipos de operação fiscal com validação por UF e ag
 
 > Tela de cadastro dos tipos de operação fiscal. Cada tipo define a natureza da operação e pode conter validações por UF e agrupamento de estados, orientando o motor de cálculo a selecionar os parâmetros corretos.
 
-**Código fonte:** `src/modules/fiscal/operation-types/vfis0360.vue`
-
 ## Objetivo
 
 A VFIS0360 permite criar e gerenciar **tipos de operação fiscal** que categorizam cada transação no ERP. Diferente do CFOP (que e um código oficial definido pelo CONFAZ), o Tipo de Operação e uma abstração interna do sistema que agrupa operações similares e serve como uma das chaves de busca do motor de cálculo fiscal (junto com UF e NCM). Cada tipo de operação pode ter validações por **UF** (determinando em quais estados a operação e permitida) e por **Grupo de Estado** (agrupando estados com regras fiscais similares para simplificar a parametrização). Além disso, o tipo de operação define se gera imposto (ICMS, IPI, etc.) ou se e uma operação sem tributação (bonificação, remessa para demonstração, etc.).

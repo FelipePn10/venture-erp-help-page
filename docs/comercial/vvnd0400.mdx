@@ -1,0 +1,47 @@
+---
+sidebar_position: 5
+title: "VVND0400 — Representantes"
+description: "Cadastrar vendedores, gerentes e prepostos com documento, território, comissão, pastas, bloqueio e follow-up comercial."
+---
+
+# VVND0400 — Representantes
+
+> Centraliza o cadastro de **vendedores externos e internos, gerentes e prepostos**. Cada pedido/orçamento aponta para um representante cadastrado — com documento, território e comissão — em vez de texto livre.
+
+## Objetivo
+
+Manter a força de vendas de forma estruturada: dados, tipos, pastas (empresas de atuação, telefones, e-mails), bloqueio, relatório cadastral e ficha de acompanhamento comercial (follow-up).
+
+## Pré-requisitos
+
+- Ao menos um **Tipo de representante** cadastrado (opcional, mas recomendado).
+- **Nome** e **documento** (CPF/CNPJ) — obrigatórios.
+
+## Passo a passo
+
+1. Na aba **Tipos**, crie os tipos (Externo, Interno, Gerente…). Marque **Disponível sem restrição** e **Ignora faturamento direto** conforme a política.
+2. Em **Novo representante**, informe nome, documento, tipo, UF/cidade, região e comissão % (a UF é normalizada em maiúsculas). Opcionalmente vincule um cliente existente.
+3. Complete as pastas: **Empresas** (empresa de atuação + comissão padrão) e **Contatos** (telefones e e-mails; o principal é atualizado pelo menor ranking).
+4. Use **Bloquear** (exige motivo) / **Desbloquear** para controlar disponibilidade.
+5. **Relatório** consolida por UF/região/situação; **Follow-up** mostra a evolução comercial (orçamentos, pedidos, comissão).
+
+## Campos principais
+
+| Campo | Obrigatório | Função |
+|-------|-------------|--------|
+| Nome | Sim | Identificação do representante |
+| Documento | Sim | CPF ou CNPJ |
+| Tipo | Não | Externo/interno/gerente… |
+| UF / Cidade | Não | Território de atuação |
+| Comissão % | Não | Percentual padrão |
+
+## Observações importantes
+
+- O representante pode ser vinculado a um **cliente e/ou fornecedor** existente sem duplicar cadastros.
+- **Relatório cadastral** aceita filtros por UF, região, tipo e situação; **Follow-up** consolida carteira, valores e comissão futura.
+
+## Telas relacionadas
+
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200)** e **[VVND0300 (Orçamento)](/comercial/vvnd0300):** apontam para o representante.
+- **[VREP0600 (Complementos do Representante)](/comercial/vrep0600):** segmentos, planos e correspondência.
+- **[VVND0500 (Metas de Vendas)](/comercial/vvnd0500):** metas por representante.

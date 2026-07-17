@@ -1,0 +1,37 @@
+---
+sidebar_position: 8
+title: "VPDC0210 — Consulta, Aprovação e Recebimento de Pedidos"
+description: "Consultar a carteira de pedidos de compra, aprovar por alçada, autorizar bloqueados e registrar o recebimento físico."
+---
+
+# VPDC0210 — Consulta, Aprovação e Recebimento de Pedidos
+
+> O posto operacional do comprador: **consulta** a carteira de pedidos, **aprova** conforme a alçada, **autoriza** pedidos bloqueados e **registra** o recebimento físico.
+
+## Objetivo
+
+Concentrar as ações pós-emissão do pedido de compra — do acompanhamento à entrada do material — aplicando alçadas, saldos e tolerâncias.
+
+## Pré-requisitos
+
+- Pedidos de compra emitidos ([VPDC0200](/suprimento/vpdc0200)).
+- Alçadas configuradas ([VSUP0610](/compras/vsup0610)); perfil **administrador** para autorizar.
+
+## Passo a passo
+
+1. Em **Consultar**, use os filtros de **faixa de pedido/fornecedor/item**, **Comprador**, **Emissão**, **Entrega**, **Posição** e **Moeda de destino**.
+2. Clique em **Aprovar** para liberar o pedido conforme a alçada.
+3. Use **Autorizar** para liberar pedidos bloqueados por alçada (requer administrador).
+4. Em **Registrar recebimento**, informe as **linhas do pedido**, as **quantidades**, o **almoxarifado** e o **lote**.
+
+## Observações importantes
+
+- **Autorizar exige administrador.**
+- No recebimento, o sistema aplica **saldos e tolerâncias** ([VSUP0630](/compras/vsup0630)) automaticamente e evita lançamentos duplicados.
+- Após uma falha no recebimento, **consulte antes de repetir** para não duplicar.
+
+## Telas relacionadas
+
+- **[VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200):** emissão do pedido.
+- **[VSUP0610 (Alçadas e Parâmetros)](/compras/vsup0610):** limites aplicados na aprovação.
+- **[VSUP0630 (Tolerâncias)](/compras/vsup0630):** desvios aceitos no recebimento.

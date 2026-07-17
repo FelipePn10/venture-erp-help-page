@@ -6,13 +6,11 @@ description: "Cadastro da identidade fiscal do emitente, token Focus NFe e alíq
 
 # VFIS0100 — Configuração Fiscal
 
-> Tela mestra do módulo Fiscal. Centraliza a identidade fiscal da empresa emitente, as credenciais de comunicação com a SEFAZ via API Focus NFe e os parâmetros tributários padrão que serão herdados por todas as operações fiscais do ERP.
-
-**Código fonte:** `src/modules/fiscal/configuration/vfis0100.vue`
+> Tela mestra do módulo Fiscal. Centraliza a identidade fiscal da empresa emitente, as credenciais de comunicação com a SEFAZ via integração Focus NF-e e os parâmetros tributários padrão que serão herdados por todas as operações fiscais do ERP.
 
 ## Objetivo
 
-A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da empresa emitente no sistema. Aqui são definidos os dados cadastrais que aparecerão nos XMLs de NFe, NFCe, CTe e NFSe: razão social, CNPJ, inscrição estadual, regime tributário, CNAE principal, endereço do estabelecimento e informações de contato. Além disso, esta tela armazena o token de autenticação da API Focus NFe — o barramento fiscal que conecta o ERP a SEFAZ de cada estado — e as alíquotas padrão de ICMS, PIS, COFINS, IPI, ISS e IRPJ que serão sugeridas automaticamente durante o preenchimento de documentos fiscais.
+A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da empresa emitente no sistema. Aqui são definidos os dados cadastrais que aparecerão nos XMLs de NFe, NFCe, CTe e NFSe: razão social, CNPJ, inscrição estadual, regime tributário, CNAE principal, endereço do estabelecimento e informações de contato. Além disso, esta tela armazena o token de autenticação da integração Focus NF-e — o barramento fiscal que conecta o ERP a SEFAZ de cada estado — e as alíquotas padrão de ICMS, PIS, COFINS, IPI, ISS e IRPJ que serão sugeridas automaticamente durante o preenchimento de documentos fiscais.
 
 ## Pre-requisitos
 
@@ -34,7 +32,7 @@ A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da 
 9. Configure a **Série e Numeração** padrão das NFe e NFCe. Defina a série atual e o próximo número sequencial a ser utilizado.
 10. Selecione o **Tipo de Emissão** padrão: Normal, Contingência FS-DA, SVC-AN, SVC-RS ou DPEC.
 11. Na aba **NFSe**, configure os dados específicos para emissão de Nota Fiscal de Serviço: cidade, provedor (ISS Fortaleza, NFSe Nacional, etc.), token e alíquotas de ISS.
-12. Clique em **Salvar**. O sistema validara o CNPJ, a consistência do token Focus NFe (testando uma chamada simples a API) e a integridade do certificado digital.
+12. Clique em **Salvar**. O sistema validara o CNPJ, a consistência do token Focus NFe (testando uma chamada simples à integração) e a integridade do certificado digital.
 13. Após salvar, utilize o botão **Testar Conexao** para verificar se o token Focus NFe esta ativo e se o certificado digital e valido. Em caso de erro, verifique as mensagens no log e corrija os dados.
 
 ## Campos
@@ -56,7 +54,7 @@ A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da 
 | Bairro | Texto (60) | Sim | — | Bairro do estabelecimento. |
 | CEP | Texto (8) | Sim | — | CEP do estabelecimento (apenas numeros). |
 | Municipio | Select | Sim | — | Municipio com código IBGE (7 digitos). |
-| Token Focus NFe | Texto (200) | Sim | — | Token de autenticação da API Focus NFe. |
+| Token Focus NFe | Texto (200) | Sim | — | Token de autenticação da integração Focus NF-e. |
 | Ambiente | Select | Sim | Homologação / Produção | Define se as NFe serão emitidas em homologação ou produção. |
 | Alíquota ICMS Interna | Decimal (5,2) | Não | — | Percentual padrão de ICMS para operações internas. |
 | Alíquota ICMS Interestadual | Decimal (5,2) | Não | — | Percentual padrão de ICMS para operações interestaduais. |

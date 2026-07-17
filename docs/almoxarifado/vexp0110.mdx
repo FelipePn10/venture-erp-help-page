@@ -1,0 +1,56 @@
+---
+sidebar_position: 5
+title: "VEXP0110 — Gestão de Cargas de Expedição"
+description: "Montar a carga física que agrupa romaneios e notas fiscais e conduzir seu ciclo até o despacho."
+---
+
+# VEXP0110 — Gestão de Cargas de Expedição
+
+> Controla a **carga física** que agrupa um ou mais romaneios ([VEXP0100](/almoxarifado/vexp0100)) e suas notas fiscais, conduzindo o ciclo completo **Aberta → Liberada → Carregando → Carregada → Despachada**.
+
+## Objetivo
+
+Consolidar romaneios e documentos fiscais em uma **carga** vinculada a transportadora, veículo e motorista, e executar o ciclo logístico até o despacho, com monitores de acompanhamento.
+
+> O código legado **VPLC0200** abre esta mesma rotina.
+
+## Pré-requisitos
+
+- Romaneios separados e conferidos na [VEXP0100](/almoxarifado/vexp0100).
+- Caixas/posições cadastradas na [VEXP0120](/almoxarifado/vexp0120).
+- Transportadora, veículo e motorista definidos.
+
+## Passo a passo
+
+1. Em **Criar**, informe descrição, transportadora, placa, motorista e documento; complete rota, origem, destino, caixa de despacho, datas previstas e observações.
+2. **Adicione romaneios** informando o código da carga, o romaneio e a sequência física de entrega.
+3. Em **Adicionar nota fiscal**, informe a saída fiscal, sequência e (quando existentes) romaneio, número e chave da NF-e — confira se cada remessa tem cobertura fiscal.
+4. Percorra o **ciclo obrigatório**:
+   - **Liberar carga** → bloqueia a composição para iniciar a execução.
+   - **Iniciar carregamento** → veículo e equipe começam a movimentação.
+   - **Concluir carregamento** → somente após conferência física, lacres e documentos.
+   - **Despachar carga** → encerra a saída logística (não antes da autorização fiscal).
+5. Acompanhe por **Monitor geral**, **Monitor de separação** e **Painel logístico**.
+
+## Estados da carga
+
+| Estado | Significado |
+|--------|-------------|
+| **Aberta** | Em montagem — aceita vínculos de romaneio/NF-e. |
+| **Liberada** | Composição liberada para execução. |
+| **Carregando** | Carregamento em andamento. |
+| **Carregada** | Carregamento concluído e conferido. |
+| **Despachada** | Despachada — saída logística encerrada. |
+
+## Observações importantes
+
+- **Remover o vínculo de um romaneio não cancela nem exclui o romaneio.**
+- **Cancelar carga** é exceção — registre o motivo e verifique efeitos sobre reservas, romaneios e documentos fiscais.
+- Uma transição inválida, romaneio/nota incompatível ou dado obrigatório ausente é recusada pela tela; recarregue a carga antes de tentar de novo.
+- Após uma falha ao despachar, **consulte a situação atual** antes de repetir.
+
+## Telas relacionadas
+
+- **[VEXP0100 (Romaneio / Expedição)](/almoxarifado/vexp0100):** origem dos romaneios agrupados.
+- **[VEXP0120 (Instruções e Caixas de Despacho)](/almoxarifado/vexp0120):** posições e orientações usadas na carga.
+- **[VFIS0200 (NF-e de Saída)](/fiscal/vfis0200):** documento fiscal vinculado à carga.

@@ -8,8 +8,6 @@ description: "Cadastro das tabelas auxiliares NCM, ICMS Interno e ICMS Interesta
 
 > Tela auxiliar que centraliza as três principais tabelas de referência do motor tributário: NCM (Nomenclatura Comum do Mercosul), ICMS Interno e ICMS Interestadual. Essas tabelas alimentam automaticamente o cálculo dos impostos nos documentos fiscais.
 
-**Código fonte:** `src/modules/fiscal/tributary-tables/vfis0110.vue`
-
 ## Objetivo
 
 A VFIS0110 organiza em abas as tabelas tributárias que servem de base para o motor de cálculo fiscal. A aba **NCM** cadastra os códigos de classificação de mercadorias com suas alíquotas federais (IPI, PIS, COFINS) e de comércio exterior (II — Imposto de Importação). A aba **ICMS Interno** define as alíquotas de ICMS para operações dentro do estado do emitente, segmentadas por NCM, faixa de valor e tipo de produto. A aba **ICMS Interestadual** define as alíquotas para operações entre estados diferentes, incluindo o DIFAL (Diferencial de Alíquotas). Cada tabela e carregada pelo motor de cálculo no momento da geração do documento fiscal, aplicando a combinação de regras mais específica encontrada.

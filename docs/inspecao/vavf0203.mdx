@@ -1,0 +1,44 @@
+---
+sidebar_position: 14
+title: "VAVF0203 — Homologação de Fornecedores"
+description: "Registrar faixas de aprovação, validade e categoria da homologação e gerar os vínculos de itens do fornecedor."
+---
+
+# VAVF0203 — Homologação de Fornecedores
+
+> Define **quando** um fornecedor está homologado (ou condicional), com que **nota mínima**, em que **categoria** e até **qual validade** — e gera os vínculos de itens a partir do histórico real de compras.
+
+## Objetivo
+
+Formalizar a homologação do fornecedor: as faixas de nota que o classificam, a categoria (A/B/C), a situação e a validade. A homologação apoia a liberação de compras e o direcionamento de cotações.
+
+## Pré-requisitos
+
+- Fornecedor cadastrado e, idealmente, com [IQF apurado (VAVF0300)](/inspecao/vavf0300).
+- Período avaliado definido.
+
+## Passo a passo
+
+1. **Consulte** as homologações existentes do fornecedor.
+2. **Registre** a homologação informando período avaliado, nota mínima para **homologado** e para **condicional**, situação (homologado, condicional…), categoria e **validade**.
+3. Use **Gerar itens do fornecedor** para criar os vínculos de itens a partir do histórico real de compras.
+
+## Campos-chave
+
+| Campo | Descrição |
+|-------|-----------|
+| **Nota mínima (homologado)** | Nota mínima para o status homologado. |
+| **Nota mínima (condicional)** | Nota mínima para o status condicional. |
+| **Situação** | Situação da homologação (homologado, condicional…). |
+| **Categoria** | Categoria do fornecedor (A/B/C). |
+| **Validade** | Data de validade da homologação. |
+
+## Observações importantes
+
+- A ação **Gerar itens do fornecedor** cria vínculos a partir do histórico de compras — execute-a somente após revisar o fornecedor informado.
+- A homologação tem **validade**: acompanhe o vencimento para renovar a avaliação.
+
+## Telas relacionadas
+
+- **[VAVF0300 (Scorecard e IQF)](/inspecao/vavf0300):** fonte das notas que classificam a homologação.
+- **[VVOR0202 (Cotações)](/suprimento/vvor0202)** e **[VSUP0500 (Fornecedores)](/compras/vsup0500):** consomem a homologação.

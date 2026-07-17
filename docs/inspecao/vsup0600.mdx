@@ -1,0 +1,47 @@
+---
+sidebar_position: 12
+title: "VSUP0600 — Inspeção de Recebimento"
+description: "Fluxo completo de inspeção de compra: roteiro, ordem, resultados, análise e destinação do material recebido."
+---
+
+# VSUP0600 — Inspeção de Recebimento
+
+> Centraliza a inspeção do material comprado: **cadastrar o roteiro**, **gerar a ordem** para o recebido, **apontar resultados**, **analisar** e **destinar** as quantidades aprovadas e rejeitadas.
+
+## Objetivo
+
+Garantir que o material recebido do fornecedor seja verificado antes de entrar no estoque disponível — medindo características, separando conforme/rejeitado e movimentando cada parcela para o almoxarifado correto (aprovado, quarentena ou rejeição).
+
+## Pré-requisitos
+
+- Item e fornecedor cadastrados; pedido de compra com recebimento.
+- Almoxarifados de inspeção, quarentena e rejeição definidos.
+
+## Passo a passo
+
+1. **Cadastre o roteiro** de inspeção (por item ou por máscara): passos com tipo (numérico, atributo…), modo de apontamento por amostra, tamanho da amostra e limites de aceitação/rejeição.
+2. **Gere a ordem** de inspeção a partir do pedido de compra e do item recebido, informando a quantidade.
+3. **Registre os resultados** por passo/amostra (valor medido, aprovado/reprovado).
+4. **Analise a ordem**: quantidades conforme, rejeitada, retrabalho e restrita; tratamento (aprovação parcial…) e se afeta a nota do fornecedor.
+5. **Destine o estoque**: informe as quantidades e os almoxarifados de destino e de quarentena.
+
+## Conceitos-chave
+
+| Termo | Significado |
+|-------|-------------|
+| **Roteiro** | Modelo de passos de inspeção por item/máscara. |
+| **Ordem** | Instância de inspeção sobre um recebimento específico. |
+| **Análise** | Consolidação das quantidades conforme/rejeitada/retrabalho. |
+| **Destinação** | Movimento de estoque para aprovado, quarentena ou rejeição. |
+
+## Observações importantes
+
+- Para **quarentena**, informe o almoxarifado correspondente.
+- A **soma das quantidades destinadas** deve representar o material efetivamente inspecionado.
+- A análise pode **afetar o IQF** do fornecedor quando marcada.
+
+## Telas relacionadas
+
+- **[VAVR0200 (Aviso de Recebimento)](/suprimento/vavr0200):** entrada do material que será inspecionado.
+- **[VAVF0300 (Scorecard e IQF)](/inspecao/vavf0300):** onde o resultado da inspeção impacta a nota do fornecedor.
+- **[VINS0200 (Ordens de Inspeção)](/inspecao/vins0200):** inspeção de produção correlata.

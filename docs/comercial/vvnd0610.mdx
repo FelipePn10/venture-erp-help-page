@@ -1,0 +1,37 @@
+---
+sidebar_position: 10
+title: "VVND0610 — Reajuste de Venda Recorrente"
+description: "Recalcular o valor ajustado de um contrato recorrente e registrar a justificativa comercial do reajuste."
+---
+
+# VVND0610 — Reajuste de Venda Recorrente
+
+> Recalcula o valor ajustado de uma **venda recorrente** já cadastrada, preservando o percentual aplicado e a justificativa. **Altera o contrato real** — não é uma simulação de preço.
+
+## Objetivo
+
+Aplicar o reajuste contratual periódico a uma venda recorrente, mantendo a rastreabilidade da decisão (percentual, índice, cláusula, aprovação).
+
+## Pré-requisitos
+
+- Código da venda recorrente e contrato **ativo**.
+- Percentual já aprovado segundo o processo da empresa (índice, período, autorização).
+
+## Passo a passo
+
+1. Abra a venda recorrente na consulta e anote código, valor vigente e data do último reajuste.
+2. Selecione **Recalcular reajuste** e informe o código.
+3. Em **Percentual de reajuste**, informe o percentual contratual (ex.: `5.25` = +5,25%). Valor **negativo** reduz o contrato e só com autorização expressa.
+4. Em **Motivo**, registre índice, período de referência, aprovação ou cláusula — evite textos genéricos.
+5. Execute **uma única vez** e confira código, percentual, valor anterior e recalculado.
+
+## Observações importantes
+
+- A rotina **não recalcula documentos já faturados** e não substitui a aprovação comercial.
+- Código inexistente, contrato inativo, percentual fora da regra ou motivo ausente são recusados.
+- Se a chamada expirar, **consulte antes de repetir** — a primeira solicitação pode ter sido gravada.
+
+## Telas relacionadas
+
+- **[VPDV0200 (Pedido de Venda)](/pdv/vpdv0200)** e **[VPDV0253 (Console)](/pdv/vpdv0253):** pedidos gerados pela recorrência.
+- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** títulos afetados pelo novo valor.

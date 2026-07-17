@@ -1,0 +1,44 @@
+---
+sidebar_position: 3
+title: "VEST0300 — Máscaras de Lote e Série"
+description: "Compor o número de lote/série por partes (fixa, data e sequência) e gerar automaticamente o próximo código."
+---
+
+# VEST0300 — Máscaras de Lote e Série
+
+> Define **como** o número de lote/série é montado — por partes fixas, datas e sequências — e **gera** automaticamente o próximo código no contexto do item.
+
+## Objetivo
+
+Padronizar a numeração de lotes e séries por aplicação/contexto, garantindo rastreabilidade consistente no recebimento, na produção e na expedição. A máscara é composta por partes ordenadas e o sistema gera o próximo código a partir dela.
+
+## Pré-requisitos
+
+- Item com controle de lote/série quando aplicável.
+- Definição da política de reinício da sequência (zerar na virada de ano).
+
+## Passo a passo
+
+1. Clique em **Nova máscara** e informe a **Aplicação** (ex.: Recebimento), a **Descrição** e o **Tipo de classificação** (ex.: por item).
+2. **Adicione as partes** na ordem desejada, escolhendo o **Tipo de parte** de cada uma.
+3. Defina a opção **Zerar no ano** — **antes** do uso produtivo da sequência.
+4. Use **Gerar** informando a **Aplicação** e o **Item** para produzir o próximo código.
+
+## Tipos de parte
+
+| Tipo | O que produz |
+|------|--------------|
+| **Caractere fixo** | Um texto constante (ex.: prefixo da planta). |
+| **Data** | A data de geração no formato escolhido (ex.: `AAAAMMDD`). |
+| **Sequência numérica** | Um contador que incrementa a cada geração. |
+| **Sequência alfabética** | Um contador em letras. |
+
+## Observações importantes
+
+- A opção **Zerar no ano** deve ser definida **antes** de a sequência entrar em uso — mudar depois compromete a unicidade histórica.
+- A **ordem das partes** determina a montagem final do código.
+
+## Telas relacionadas
+
+- **[VLOT0100 (Máscaras de Lote/Série)](/almoxarifado/vlot0100):** o mesmo recurso de composição de lote/série.
+- **[VEST0100 (Estoque)](/pcp/vest0100)** e **[VEST0400 (Consultas por Almoxarifado)](/almoxarifado/vest0400):** onde os lotes gerados aparecem nos saldos.

@@ -1,0 +1,46 @@
+---
+sidebar_position: 4
+title: "VCTB0600 — SPED ECD (Escrituração Contábil Digital)"
+description: "Gerar o arquivo oficial da ECD a partir do plano de contas e dos lançamentos reais do período."
+---
+
+# VCTB0600 — SPED ECD (Escrituração Contábil Digital)
+
+> Gera o arquivo oficial da **Escrituração Contábil Digital** a partir do plano e dos lançamentos **reais** do período, complementado pelos dados cadastrais e livros exigidos pelo leiaute.
+
+## Objetivo
+
+Produzir o TXT da **ECD** para validação no PVA e posterior assinatura/transmissão à Receita Federal. O arquivo é montado a partir do plano de contas, das contas, dos lançamentos e dos saldos gravados — a geração **não corrige** inconsistências contábeis.
+
+## Pré-requisitos
+
+- **Período contábil fechado** e lançamentos **balanceados**.
+- Plano referencial, centros de custo e saldos conferidos.
+- Dados legais da empresa e numeração do livro definidos.
+
+## Passo a passo
+
+1. Selecione **Gerar SPED ECD** e informe o **Plano de contas**, a **Empresa** e o **período** (início e fim).
+2. Revise os **dados da empresa**: CNPJ/CPF, nome, UF, município IBGE, endereço, NIRE, indicadores legais, tipo da ECD e dados de substituição (quando houver).
+3. Nos **Livros**, mantenha uma linha por livro: número de ordem, natureza, número, descrição, período e hashes (somente quando exigidos).
+4. Execute. O sistema consulta plano, contas, lançamentos e saldos e retorna **`SPED_ECD.txt`**, baixado diretamente.
+5. **Valide o arquivo no PVA vigente**, corrija a origem de qualquer erro e gere novamente.
+
+## Campos-chave
+
+| Campo | Descrição |
+|-------|-----------|
+| **Plano de contas** | Plano base da escrituração. |
+| **Período (de / até)** | Início e fim do período escriturado. |
+| **Dados da empresa** | Dados cadastrais/legais (CNPJ, UF, município IBGE, NIRE, indicadores). |
+| **Livros** | Livro(s) escriturado(s): natureza, número, descrição e período. |
+
+## Observações importantes
+
+- Datas inválidas, período invertido, lançamentos não balanceados, plano de outra empresa ou dados cadastrais incompletos **causam rejeição**.
+- **A criação do TXT não representa assinatura nem transmissão.** Nunca transmita sem validação contábil e assinatura autorizada.
+
+## Telas relacionadas
+
+- **[VCTB0102 (Centro de Custo Contábil)](/contabilidade/vctb0102):** estrutura que alimenta a escrituração.
+- **[VCTB0200 (SPED ECD — base)](/contabilidade/vctb0200):** parâmetros e preparação contábil.

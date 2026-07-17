@@ -1,0 +1,34 @@
+---
+sidebar_position: 7
+title: "VEST0400 — Consultas de Movimentos e Saldos por Almoxarifado"
+description: "Consultar movimentos, saldo pontual e a posição consolidada do estoque real por almoxarifado."
+---
+
+# VEST0400 — Consultas de Movimentos e Saldos por Almoxarifado
+
+> As consultas de estoque **somente leitura**: a trilha de movimentos, o saldo pontual de um item e a posição consolidada de um almoxarifado.
+
+## Objetivo
+
+Oferecer visibilidade do estoque real por almoxarifado — sem alterar nada — para conferência, auditoria e apuração de divergências.
+
+## Pré-requisitos
+
+- Almoxarifado e itens cadastrados; lote informado para itens controlados.
+
+## Passo a passo
+
+1. **Movimentos do almoxarifado**: trilha cronológica de entradas e saídas.
+2. **Consultar saldo**: informe item e almoxarifado (lote é obrigatório apenas para item controlado).
+3. **Saldos do almoxarifado**: posição consolidada de todos os itens.
+4. Compare **saldo × movimentos × reservas** antes de concluir uma divergência.
+
+## Observações importantes
+
+- As consultas **não corrigem estoque** — para ajuste, use a rotina de inventário/movimentação com justificativa e autorização.
+- Resultado **vazio** significa ausência de registros para o contexto autenticado.
+
+## Telas relacionadas
+
+- **[VEST0100 (Estoque)](/pcp/vest0100)** e **[VEST0200 (Inventário)](/pcp/vest0200):** posição e ajuste de estoque.
+- **[VENT0800 (Almoxarifado)](/almoxarifado/vent0800):** cadastro dos almoxarifados consultados.

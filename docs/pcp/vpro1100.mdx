@@ -1,0 +1,35 @@
+---
+sidebar_position: 37
+title: "VPRO1100 — Parâmetros de Estoque da Manufatura"
+description: "Configurar lotes, baixa automática, controle por item e endereçamento de almoxarifados da produção."
+---
+
+# VPRO1100 — Parâmetros de Estoque da Manufatura
+
+> Os parâmetros **transversais** que definem como a produção movimenta o estoque: modo de retorno de lote, baixa automática, controle por item e endereçamento de almoxarifados.
+
+## Objetivo
+
+Configurar o comportamento de estoque da manufatura de forma centralizada — reservas, baixas e retornos — para que as ordens de produção movimentem o estoque conforme a política da empresa.
+
+## Pré-requisitos
+
+- Almoxarifados cadastrados (consulte a **lista de almoxarifados** antes de informar os endereços).
+- Usuário autorizado — a rotina afeta o comportamento transversal da produção.
+
+## Passo a passo
+
+1. Em **Parâmetros gerais**, escolha o **Modo de retorno de lote**, a **Baixa automática** e a **janela de movimentos** (**De** / **Até**).
+2. Em **Controle por item**, informe a **Unidade de estoque**, se **controla lote** e **endereço**, o **Grupo de inventário**, o **Tipo de baixa** e o **Almoxarifado de linha**.
+3. Em **Endereços de almoxarifado**, informe o **Almoxarifado**, se usa **WMS** e a **saída intermediária**.
+4. Após alterar, abra uma **ordem de produção de teste** e valide reserva, baixa e retorno.
+
+## Observações importantes
+
+- **Não mude parâmetros durante apontamentos em andamento** — o comportamento é transversal.
+- Combinações incompatíveis de lote, WMS ou almoxarifado são **recusadas** pela tela — corrija antes de repetir.
+
+## Telas relacionadas
+
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** consome estes parâmetros na baixa/retorno.
+- **[VEST0100 (Estoque)](/pcp/vest0100)** e **[VEST0400 (Consultas por Almoxarifado)](/almoxarifado/vest0400):** efeito no estoque.

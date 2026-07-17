@@ -1,0 +1,37 @@
+---
+sidebar_position: 11
+title: "VCLI0600 — Manutenção Avançada de Preços de Venda"
+description: "Consultar histórico, alterar/excluir linhas de preço e gerar preços em lote a partir da política comercial."
+---
+
+# VCLI0600 — Manutenção Avançada de Preços de Venda
+
+> A oficina de preços de venda: consultar o preço pontual, revisar o histórico, **alterar/excluir** uma linha e **gerar preços em lote** a partir de política comercial e custos gravados.
+
+## Objetivo
+
+Manter as tabelas de preço de venda com rastreabilidade — cada alteração e cada geração ficam registradas — usando custos e políticas do sistema (a tela não inventa valores).
+
+## Pré-requisitos
+
+- Tabela de preço e política comercial cadastradas.
+- Custos de origem disponíveis para a geração em lote.
+
+## Passo a passo
+
+1. **Preço do item**: informe tabela e item; compare preço, unidade, conversão, máscara, situação e bloqueio.
+2. **Histórico**: informe a tabela (e opcionalmente o item) para confirmar alterações, vigências e justificativas.
+3. **Alterar preço**: use o **ID da linha** retornada (não o código da tabela); preencha preço, UME/UMC, preço convertido, fórmula, situação, bloqueio, observação, linha de produto e máscara.
+4. **Excluir preço**: remove/desativa a linha — valide que pedidos abertos não dependem dela.
+5. **Gerar em lote**: informe tabela, política, códigos reais dos itens, almoxarifado de custo e motivo; confira o resultado e o histórico.
+
+## Observações importantes
+
+- A alteração usa o **ID da linha**, não o código da tabela.
+- Tabela, política ou item inexistente, custo ausente, margem inválida e falta de permissão impedem a geração.
+- Após uma falha, **consulte o histórico antes de reexecutar** — a primeira solicitação pode ter sido gravada.
+
+## Telas relacionadas
+
+- **[VCST0202 (Formação de Preço)](/custos/vcst0202):** simulação e política de preços.
+- **[VCLI0202 (Políticas de Frete e Preço)](/cliente/vcli0202):** regras que alimentam a formação.

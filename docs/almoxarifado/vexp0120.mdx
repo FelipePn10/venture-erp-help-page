@@ -1,0 +1,46 @@
+---
+sidebar_position: 6
+title: "VEXP0120 — Instruções e Caixas de Despacho"
+description: "Manter orientações de entrega e posições físicas (docas/caixas) usadas na montagem das cargas."
+---
+
+# VEXP0120 — Instruções e Caixas de Despacho
+
+> Dois cadastros de apoio à expedição: as **instruções de entrega** (orientações por carga ou cliente) e as **caixas/posições de despacho** (docas físicas) usadas ao montar cargas.
+
+## Objetivo
+
+Padronizar as orientações de entrega e as posições físicas de despacho, para que a [gestão de cargas (VEXP0110)](/almoxarifado/vexp0110) vincule instruções corretas e docas válidas.
+
+> O código legado **VPLC0211** abre esta rotina com o contrato real do sistema.
+
+## Pré-requisitos
+
+- Cargas e/ou clientes para associar às instruções.
+- Almoxarifado e zona definidos para as caixas.
+
+## Passo a passo
+
+### Instruções de entrega
+
+1. Consulte por carga quando a orientação for específica; mantenha **Somente ativas** no trabalho diário.
+2. Em **Criar**, informe título objetivo e instrução completa. Use **carga** para uma viagem específica ou **cliente** para uma regra recorrente.
+3. Defina a **prioridade** (números menores = leitura/execução anterior).
+4. Reconsulte para confirmar que a orientação aparece na carga correta.
+
+### Caixas e posições de despacho
+
+1. Consulte as caixas ativas antes de cadastrar para evitar código duplicado.
+2. Informe código curto e estável, descrição, almoxarifado e zona.
+3. Use o código na [VEXP0110](/almoxarifado/vexp0110) para vincular a posição à carga.
+
+## Observações importantes
+
+- A **caixa é uma posição/doca operacional**, não um volume da [VEXP0100](/almoxarifado/vexp0100).
+- **Nunca** coloque senhas, documentos pessoais desnecessários ou segredos no texto da instrução.
+- Código duplicado, almoxarifado inexistente ou carga de outra empresa são recusados.
+
+## Telas relacionadas
+
+- **[VEXP0110 (Gestão de Cargas)](/almoxarifado/vexp0110):** consome instruções e caixas.
+- **[VEXP0100 (Romaneio / Expedição)](/almoxarifado/vexp0100):** separação que precede o despacho.

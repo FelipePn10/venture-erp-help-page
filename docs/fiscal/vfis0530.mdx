@@ -8,8 +8,6 @@ description: "Apuração do ICMS próprio com linhas detalhadas que compõem o B
 
 > Tela de apuração do ICMS próprio que organiza as linhas de débito, crédito e ajustes que compõem o Bloco E da EFD-ICMS/IPI (SPED Fiscal), gerando o valor final de ICMS a pagar ou a recuperar.
 
-**Código fonte:** `src/modules/fiscal/icms-calculation/vfis0530.vue`
-
 ## Objetivo
 
 A VFIS0530 e o coração da apuração periódica do ICMS próprio. Ela consolida todas as operações do período (mês) em linhas de apuração que seguem a estrutura do **Bloco E** da EFD-ICMS/IPI (SPED Fiscal): total de saídas (débitos de ICMS), total de entradas (creditos de ICMS), estornos de débitos, estornos de creditos e ajustes de apuração (códigos de ajuste das seções 5.1.1, 5.2, 5.3, 5.6 e 5.7). O resultado final — saldo devedor (ICMS a pagar), saldo credor (crédito acumulado para o mês seguinte) ou saldo zero — e exportado para a DAPI/GIA e para o SPED Fiscal.

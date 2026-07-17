@@ -1,0 +1,50 @@
+---
+sidebar_position: 25
+title: "VCFG0600 — Configurador: Regras"
+description: "Manter regras equivalentes pai-filho e regras de preenchimento de campos do item configurado, com avaliação prévia."
+---
+
+# VCFG0600 — Configurador: Regras
+
+> A inteligência do configurador: **regras equivalentes** (uma resposta no item pai determina o filho) e **regras de item** (preenchem campos do item a partir das respostas), sempre testáveis antes de ativar.
+
+## Objetivo
+
+Automatizar decisões na configuração — derivar componentes e valores a partir das respostas, sem intervenção manual — mantendo consistência entre pai e filho.
+
+## Pré-requisitos
+
+- Itens, características e variáveis cadastrados ([VCFG0100](/engenharia/vcfg0100)–[VCFG0300](/engenharia/vcfg0300)).
+
+## Passo a passo
+
+1. Na **regra equivalente**, relacione o **item pai** e o **item filho** por característica, **operador** e variável.
+2. Clique em **Aplicar** informando o item pai e respostas de exemplo para conferir o resultado.
+3. Na **regra de item**, defina a **tabela** e o **campo** alvo, o **conteúdo/fórmula** e as **condições**.
+4. Clique em **Avaliar** com respostas de exemplo **antes** de deixar a regra **Ativa**.
+
+## Operadores da condição
+
+| Operador | Significado |
+|----------|-------------|
+| **Igual** | Igual à variável esperada. |
+| **Diferente** | Diferente. |
+| **Maior** | Maior que. |
+| **Menor** | Menor que. |
+| **Pertence** | Pertence ao conjunto. |
+| **Não pertence** | Não pertence. |
+
+## Campos-chave
+
+- **Regra equivalente**: item pai, característica e operador do pai, variável do pai; item filho, característica e operador do filho; fórmula opcional.
+- **Regra de item**: tabela e campo alvo, conteúdo, fórmula, **Situação** (Ativa/Inativa) e as condições (característica + operador + variável).
+
+## Observações importantes
+
+- **Teste com Aplicar/Avaliar** antes de ativar — regras ativas alteram o resultado da configuração.
+- Regras equivalentes propagam do pai ao filho; regras de item preenchem campos do próprio item.
+
+## Telas relacionadas
+
+- **[VCFG0200 (Características)](/engenharia/vcfg0200)** e **[VCFG0300 (Características por Item)](/engenharia/vcfg0300):** insumos das regras.
+- **[VRES0100 (Motivos de Restrição)](/pcp/vres0100):** motivos usados em restrições/dependências.

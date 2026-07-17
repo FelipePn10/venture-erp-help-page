@@ -1,0 +1,43 @@
+---
+sidebar_position: 32
+title: "VENG0610 — Seriais Físicos de Ferramentas"
+description: "Consultar, corrigir situação e desativar instâncias físicas serializadas das ferramentas industriais."
+---
+
+# VENG0610 — Seriais Físicos de Ferramentas
+
+> Rastreia **cada unidade física** de uma ferramenta por número de série, situação e localização — a instância real que a produção usa e cuja vida útil é consumida.
+
+## Objetivo
+
+Manter as instâncias serializadas das ferramentas industriais: consultar, corrigir o cadastro e desativar unidades perdidas ou descartadas, preservando a rastreabilidade.
+
+## Pré-requisitos
+
+- Ferramenta mestre cadastrada (com tipo de vida — golpes, horas ou peças — e limite) e serial gerado.
+
+## Passo a passo
+
+1. Em **Consultar serial**, informe a série e confira ferramenta mestre, vida consumida, situação e localização.
+2. Em **Alterar serial**, informe o **Número de série** gravado na peça, a **Situação**, a **Localização** e uma **Observação** auditável.
+3. Consulte novamente **antes** de disponibilizar a ferramenta à produção.
+4. Use **Desativar serial** somente para baixa definitiva, perda ou descarte autorizado.
+
+## Campos
+
+| Campo | Função |
+|-------|--------|
+| **Número de série** | Número físico gravado na peça (único). |
+| **Situação** | Situação da instância (ex.: disponível, em manutenção). |
+| **Localização** | Localização física (ex.: ferramentaria). |
+| **Observação** | Nota auditável. |
+
+## Observações importantes
+
+- **Não reutilize** um número físico em outra instância — a tela recusa duplicidade.
+- Desativação **não substitui** registro de manutenção ou consumo de vida útil — a vida é debitada por série no apontamento ([VPRO1000](/pcp/vpro1000)).
+
+## Telas relacionadas
+
+- **[VPRO1000 (Ficha de Produção da Ferramenta)](/pcp/vpro1000):** vincula a série à operação e debita a vida.
+- **[VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202):** operações que consomem ferramentas.

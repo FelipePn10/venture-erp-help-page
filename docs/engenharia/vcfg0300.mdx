@@ -1,0 +1,50 @@
+---
+sidebar_position: 22
+title: "VCFG0300 — Configurador: Características por Item"
+description: "Vincular e ordenar as características que compõem cada item configurável, com resposta padrão, parentesco e fórmula."
+---
+
+# VCFG0300 — Configurador: Características por Item
+
+> Define **quais** características, e em **que ordem**, aparecem ao configurar um item — com resposta padrão, parentesco (dependência), fórmula e indicadores de desenho/carga.
+
+## Objetivo
+
+Montar o roteiro de perguntas de um item configurável, ligando as características ([VCFG0200](/engenharia/vcfg0200)) na sequência correta e definindo seu comportamento específico naquele item.
+
+## Pré-requisitos
+
+- Item configurável cadastrado.
+- Características cadastradas ([VCFG0200](/engenharia/vcfg0200)).
+
+## Passo a passo
+
+1. Informe o **item** e veja as características já vinculadas.
+2. Clique em **Adicionar característica**, escolha a característica e informe a **Sequência** e o comportamento.
+3. Ajuste a ordem editando a **Sequência** — números menores aparecem primeiro na configuração.
+4. Remova um vínculo indevido antes de o item entrar em uso produtivo.
+
+## Campos do vínculo
+
+| Campo | Função |
+|-------|--------|
+| **Sequência** | Ordem de apresentação (menor primeiro). |
+| **Resposta padrão** | Resposta pré-selecionada ao abrir a configuração. |
+| **Característica pai** | Cria dependência entre respostas (parentesco). |
+| **Especial** | Tratamento especial no item. |
+| **Desenho** | A resposta alimenta o desenho técnico. |
+| **Carga** | A resposta entra no cálculo de carga. |
+| **Fórmula** | Fórmula específica deste vínculo. |
+| **Respostas padrão** | Conjunto de respostas padrão (para escolha múltipla). |
+
+## Observações importantes
+
+- A **Sequência** controla a ordem de apresentação — planeje-a antes de liberar o item.
+- A **Característica pai** deve ser uma característica já vinculada ao **mesmo** item; a tela recusa parentesco inválido e sequência duplicada.
+- Os indicadores **Desenho** e **Carga** conectam a resposta ao desenho técnico e ao cálculo de carga do produto.
+
+## Telas relacionadas
+
+- **[VCFG0200 (Características)](/engenharia/vcfg0200):** catálogo de características.
+- **[VCFG0400 (Geração de Máscaras)](/engenharia/vcfg0400):** gera o código a partir das respostas.
+- **[VCFG0500 (Descrições)](/engenharia/vcfg0500):** texto do item configurado.

@@ -1,0 +1,34 @@
+---
+sidebar_position: 13
+title: "VTER0300 — Remessas e Retornos de Terceiros"
+description: "Registrar movimentos (protegidos contra duplicidade) de remessa, retorno, recebimento e ajuste com lote e almoxarifado."
+---
+
+# VTER0300 — Remessas e Retornos de Terceiros
+
+> Os **movimentos logísticos** da industrialização por terceiros: remessa do material ao fornecedor, retorno, recebimento e ajustes, com proteção contra lançamentos duplicados.
+
+## Objetivo
+
+Controlar a movimentação física da ordem de serviço terceirizado, evitando duplicidade por meio de uma chave única.
+
+## Pré-requisitos
+
+- Ordem de serviço de terceiro existente ([VTER0200](/suprimento/vter0200)).
+- Perfil **ADMIN** para registrar movimentos.
+
+## Passo a passo
+
+1. **Liste** os movimentos da ordem.
+2. **Registre o movimento**: tipo (remessa, retorno, recebimento, ajuste), quantidade, data, referência, almoxarifado/lote e uma **chave única** (evita duplicidade).
+3. Consulte o **histórico** da ordem.
+
+## Observações importantes
+
+- **Reutilizar a mesma chave impede a duplicação** acidental do movimento.
+- Informe corretamente almoxarifado e lote para manter a rastreabilidade.
+
+## Telas relacionadas
+
+- **[VTER0200 (Ordens de Serviço)](/suprimento/vter0200):** ordem que recebe os movimentos.
+- **[VEST0400 (Consultas por Almoxarifado)](/almoxarifado/vest0400):** efeito no estoque.

@@ -1,0 +1,43 @@
+---
+sidebar_position: 30
+title: "VRES0100 — Motivos de Restrição"
+description: "Cadastrar os motivos apresentados quando uma combinação comercial ou configurada é recusada."
+---
+
+# VRES0100 — Motivos de Restrição
+
+> O catálogo de **mensagens de recusa**: os motivos que aparecem ao usuário quando uma combinação comercial ou de configuração não é permitida.
+
+## Objetivo
+
+Padronizar as justificativas de restrição usadas pelo configurador e pelas regras comerciais, com texto orientado ao usuário (e não à regra técnica confidencial).
+
+## Pré-requisitos
+
+- Acesso ao módulo de restrições.
+
+## Passo a passo
+
+1. Clique em **Consultar** e procure uma descrição equivalente antes de cadastrar (evite duplicidade).
+2. Clique em **Cadastrar**, escreva uma **Descrição** objetiva e defina a **Situação** como **Ativa**.
+3. Use **Abrir** para confirmar o motivo cadastrado.
+4. Em **Alterar**, prefira **Inativar** quando o motivo já fizer parte do histórico.
+5. Antes de **Excluir**, confirme que nenhuma restrição o referencia.
+
+## Campos
+
+| Campo | Valores |
+|-------|---------|
+| **Descrição** | Texto orientado ao usuário (obrigatório). |
+| **Situação** | Ativa / Inativa. |
+
+## Observações importantes
+
+- A **exclusão é bloqueada** quando o motivo está referenciado por uma restrição — não contorne a integridade.
+- Evite mensagens técnicas ou que revelem regra confidencial no texto do motivo.
+- Uma consulta vazia significa que ainda não há motivo cadastrado para a empresa.
+
+## Telas relacionadas
+
+- **[VCFG0600 (Regras do Configurador)](/engenharia/vcfg0600):** usa os motivos nas restrições.
+- **[VCLI0117 (Permissões e Restrições de Venda)](/cliente/vcli0117):** restrições comerciais.

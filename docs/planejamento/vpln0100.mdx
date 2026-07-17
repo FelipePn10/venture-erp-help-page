@@ -1,0 +1,35 @@
+---
+sidebar_position: 5
+title: "VPLN0100 — Pipeline de Planejamento e Parâmetros"
+description: "Executar MRP, CRP e APS num único disparo com parecer de viabilidade e manter os parâmetros de planejamento."
+---
+
+# VPLN0100 — Pipeline de Planejamento e Parâmetros
+
+> O posto de comando do planejamento integrado: dispara **MRP → CRP → APS** com **parecer de viabilidade** e concentra a manutenção dos **parâmetros** que regem todo o cálculo.
+
+## Objetivo
+
+Oferecer uma visão única do planejamento — executar o pipeline completo e ajustar os parâmetros que o MRP e o planejamento industrial consomem — para que o planejador avalie a viabilidade do plano sem alternar entre várias telas.
+
+## Pré-requisitos
+
+- Plano de planejamento e demandas cadastrados.
+- Estruturas, roteiros e capacidades atualizados.
+
+## Passo a passo
+
+1. Configure/valide os **parâmetros de planejamento** (política de lote, estoque de segurança, horizontes).
+2. Dispare o **pipeline** (MRP → CRP → APS) para o plano.
+3. Leia o **parecer de viabilidade** de cada etapa e decida o que firmar.
+
+## Observações importantes
+
+- Alterar parâmetros de cálculo pode mudar **todas as sugestões futuras** — documente a mudança.
+- O parecer de viabilidade é um apoio à decisão; a firmação continua sendo manual.
+
+## Telas relacionadas
+
+- **[VMRP0200 (Pipeline MRP → CRP → APS)](/planejamento/vmrp0200):** execução coordenada do pipeline.
+- **[VPLA0300 (Parâmetros do Planejamento)](/planejamento/vpla0300):** manutenção dos parâmetros numerados.
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** execução e firmação do MRP.

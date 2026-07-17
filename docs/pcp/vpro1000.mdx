@@ -1,0 +1,44 @@
+---
+sidebar_position: 31
+title: "VPRO1000 — Ficha de Produção da Ferramenta"
+description: "Vincular a série física de ferramenta em cada operação da OF (com histórico) e cadastrar ferramentas/séries com vida útil."
+---
+
+# VPRO1000 — Ficha de Produção da Ferramenta
+
+> Quando a fábrica tem **várias cópias físicas da mesma ferramenta** (mesmo molde/matriz, cada uma com seu número de série), esta tela define **qual série** roda em cada operação da OF — e debita o desgaste **na série exata**.
+
+## Objetivo
+
+Rastrear a vida útil por **série física** de ferramenta: ao concluir a operação, o desgaste (golpes/peças/horas) é debitado na série vinculada, revelando qual peça física está chegando ao fim da vida. Também concentra o cadastro de ferramentas e séries.
+
+## Pré-requisitos
+
+- Ordem de produção com roteiro explodido ([VPRO0900](/pcp/vpro0900) / [VPRO0100](/pcp/vpro0100)).
+- Ferramentas e séries cadastradas (aba **Cadastro de Ferramentas**).
+
+## Passo a passo
+
+### Aba Ficha de Produção
+
+1. Em **Filtrar por nº / item**, busque a **ordem** (a lista **exclui ordens tipo OFC**) e clique em **Abrir**.
+2. A ficha traz o cabeçalho e as **operações** com recurso, ferramenta e série atual.
+3. Para cada operação, selecione **ferramenta** e **série** e clique em **Vincular**.
+4. Para trocar a série (quebra, manutenção), selecione a **nova série**, informe o **motivo** e clique em **Substituir** — o histórico (série antiga → nova + motivo) é guardado.
+
+### Aba Cadastro de Ferramentas
+
+1. Cadastre a ferramenta (código **gerado automaticamente**): nome, tipo, **tipo de vida** (GOLPES/HORAS/PEÇAS), limite de vida e custo.
+2. Gerencie as **séries** (número, status ATIVA/MANUTENCAO/INATIVA, localização).
+3. **Zerar vida útil** após a troca física; **Inativar** a ferramenta quando aposentada.
+
+## Observações importantes
+
+- O consumo de vida é debitado na **série** vinculada, não na ferramenta genérica.
+- **Ferramentas → precisam de troca** lista as que atingiram o limite de vida.
+
+## Telas relacionadas
+
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** origem das operações da ficha.
+- **[VPRO0100 (Roteiro de Fabricação)](/pcp/vpro0100):** define operações e ferramentas por operação.
+- **[VENG0610 (Seriais Físicos de Ferramentas)](/engenharia/veng0610):** cadastro das instâncias serializadas.

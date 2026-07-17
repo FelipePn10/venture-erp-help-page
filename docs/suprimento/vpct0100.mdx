@@ -1,0 +1,42 @@
+---
+sidebar_position: 9
+title: "VPCT0100 — Tolerâncias de Pedido de Compra"
+description: "Faixas de tolerância (quantidade, preço do item, total de produtos) por fornecedor, com ação bloquear/avisar e avaliação."
+---
+
+# VPCT0100 — Tolerâncias de Pedido de Compra
+
+> Define **faixas de tolerância** por tipo e fornecedor, com a ação a tomar no desvio: **Bloquear** (impede) ou **Avisar**.
+
+## Objetivo
+
+Parametrizar o quanto de desvio o pedido de compra aceita e como reagir quando ele é ultrapassado, protegendo o recebimento e a entrada fiscal contra divergências indevidas.
+
+## Pré-requisitos
+
+- Fornecedores cadastrados.
+
+## Passo a passo
+
+1. Clique em **Cadastrar** e defina o **Tipo**, o **Aplica-se a**, a **Faixa** e a **Ação**.
+2. Use **Avaliar** para simular um cenário **esperado** × **realizado** antes de ativar.
+3. Ative a regra.
+
+## Opções
+
+| Campo | Opções |
+|-------|--------|
+| **Tipo de tolerância** | **Quantidade** · **Preço do item** · **Total de produtos**. |
+| **Aplica-se a** | **Aviso de recebimento** · **Nota de entrada** · **Todos**. |
+| **Tipo de valor** | **Percentual** · **Fixo**. |
+| **Ação** | **Bloquear** · **Avisar**. |
+
+## Observações importantes
+
+- **Bloquear** impede a operação fora da faixa; **Avisar** apenas alerta.
+- A **[VSUP0630](/compras/vsup0630)** cobre a mesma capacidade de tolerâncias.
+
+## Telas relacionadas
+
+- **[VSUP0630 (Tolerâncias de Pedido)](/compras/vsup0630):** cadastro equivalente.
+- **[VPDC0210 (Recebimento)](/suprimento/vpdc0210):** aplica a tolerância.

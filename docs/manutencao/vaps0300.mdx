@@ -1,0 +1,45 @@
+---
+sidebar_position: 3
+title: "VAPS0300 — Paradas de Máquinas"
+description: "Registrar indisponibilidades planejadas ou emergenciais de máquinas e seu impacto na capacidade do APS."
+---
+
+# VAPS0300 — Paradas de Máquinas
+
+> Toda parada de máquina — preventiva, corretiva ou emergencial — registrada aqui **reduz a disponibilidade** do recurso no sequenciamento (APS) durante a janela informada.
+
+## Objetivo
+
+Registrar as indisponibilidades de máquinas (início, fim, tipo, motivo e eventual ordem de manutenção) para que o **APS** ([VPRO0210](/pcp/vpro0210)) e o **CRP** ([VPRO0200](/pcp/vpro0200)) considerem a capacidade real, sem sequenciar ordens em recursos parados.
+
+## Pré-requisitos
+
+- Máquina/recurso cadastrado ([VMAQ0101](/engenharia/vmaq0101)).
+- Perfil **administrador** para cadastrar e para excluir uma parada.
+
+## Passo a passo
+
+1. Filtre por **Máquina** e **período** (**De** / **Até**) para ver as paradas existentes.
+2. Clique em **Nova parada** e informe **Máquina**, **Início**, **Fim**, **Tipo**, **Motivo** e — se aplicável — a **Ordem de manutenção**.
+3. Para remover uma parada lançada por engano, use **Excluir** (requer administrador).
+
+## Campos
+
+| Campo | Função |
+|-------|--------|
+| **Máquina** | Recurso indisponível. |
+| **Início / Fim** | Janela da parada (data/hora). |
+| **Tipo** | Tipo da parada (ex.: manutenção, emergência). |
+| **Motivo** | Motivo descritivo. |
+| **Ordem de manutenção** | Ordem que originou a parada (opcional). |
+
+## Observações importantes
+
+- A parada **reduz a disponibilidade do recurso no APS** durante a janela — sobrepõe o calendário da [VAPS0200](/pcp/vaps0200).
+- A tela recusa uma parada com **Fim** anterior ou igual ao **Início**.
+- Vincular a **Ordem de manutenção** conecta a parada ao plano preventivo/corretivo.
+
+## Telas relacionadas
+
+- **[VMAN0202 (Apontamento de Ordem de Manutenção)](/manutencao/vman0202):** execução que gera a parada.
+- **[VPRO0210 (APS)](/pcp/vpro0210)** e **[VPRO0200 (CRP)](/pcp/vpro0200):** consomem a disponibilidade afetada.

@@ -1,0 +1,53 @@
+---
+sidebar_position: 21
+title: "VCFG0200 — Configurador: Características"
+description: "Manter características do configurador: tipos de resposta, fórmulas, limites numéricos, idiomas e itens de recebimento."
+---
+
+# VCFG0200 — Configurador: Características
+
+> As **perguntas** do configurador: cada característica (ex.: "Cor") tem um **tipo de resposta**, um conjunto padrão, fórmula, limites, obrigatoriedade e, quando gera material, itens de recebimento.
+
+## Objetivo
+
+Definir as características que o usuário responde ao configurar um produto e como cada resposta afeta preço, metas e o item recebido/vinculado.
+
+## Pré-requisitos
+
+- **Conjuntos e variáveis** cadastrados ([VCFG0100](/engenharia/vcfg0100)) — necessários para os tipos que escolhem de um conjunto.
+
+## Passo a passo
+
+1. Clique em **Nova característica** e informe **Código**, **Descrição**, **Tipo**, o **Conjunto** padrão, a **Máscara** e se é **Obrigatória**.
+2. Para tipos numéricos, informe **Mínimo**, **Máximo** e **Múltiplo**; para o tipo **Opção (Sim/Não)**, informe os rótulos de **Sim** e **Não**.
+3. Para o tipo **Fórmula**, preencha o campo **Fórmula** (a tela não deixa salvar uma característica de fórmula sem ela).
+4. Use **Traduzir** por idioma e vincule **Itens do tipo recebimento** quando a resposta determinar o material recebido.
+
+## Tipos de resposta
+
+| Tipo | Significado |
+|------|-------------|
+| **Escolha** | Escolhe **uma** variável do conjunto. |
+| **Escolha múltipla** | Escolhe **várias** variáveis do conjunto. |
+| **Informação numérica** | Número dentro de faixa/múltiplo. |
+| **Informação caractere** | Texto livre complementar. |
+| **Opção (Sim/Não)** | Resposta booleana. |
+| **Fórmula** | Resposta **calculada** por fórmula. |
+| **Desenho** | Código de desenho. |
+| **Campo** | Puxada de um campo do pedido de venda. |
+| **Sequencial** | Número sequencial (lote/série). |
+
+## Indicadores de comportamento
+
+**Obrigatória**, **Especial**, **Afeta preço** e **Controla metas**. O **Recebimento** pode ser **Nenhum**, **Recebimento**, **Vínculo** ou **Recebimento e vínculo**.
+
+## Observações importantes
+
+- **Desativar** (desmarcar **Ativo**) preserva o histórico; verifique antes se a característica está vinculada a itens — a tela impede excluir uma característica em uso.
+- **Afeta preço** e **Controla metas** mudam o comportamento comercial da resposta.
+
+## Telas relacionadas
+
+- **[VCFG0100 (Conjuntos e Variáveis)](/engenharia/vcfg0100):** domínio das respostas.
+- **[VCFG0300 (Características por Item)](/engenharia/vcfg0300):** ordena as características no item.
+- **[VCFG0600 (Regras)](/engenharia/vcfg0600):** regras que dependem das características.

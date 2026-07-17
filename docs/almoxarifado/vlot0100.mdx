@@ -1,0 +1,43 @@
+---
+sidebar_position: 4
+title: "VLOT0100 — Máscaras de Lote/Série"
+description: "Compor o número de lote/série por partes (caractere, data e sequencial) e gerar o próximo lote."
+---
+
+# VLOT0100 — Máscaras de Lote/Série
+
+> Compõe o número de lote/série a partir de **partes** — caractere fixo, data e sequencial — e gera o **próximo lote** conforme o contexto do item.
+
+## Objetivo
+
+Definir o formato dos códigos de lote e série que dão rastreabilidade ao estoque, e produzir o próximo código automaticamente. É o cadastro de plataforma que sustenta o controle de lote no recebimento, na produção e na expedição.
+
+## Pré-requisitos
+
+- Política de numeração definida (partes, tamanhos e reinício).
+- Item com controle de lote/série, quando aplicável.
+
+## Passo a passo
+
+1. Cadastre a **máscara** por aplicação/contexto.
+2. Adicione as **partes** na ordem desejada, escolhendo o **Tipo** de cada uma.
+3. Use **Gerar** para produzir o próximo lote do item.
+
+## Tipos de parte
+
+| Tipo | O que produz |
+|------|--------------|
+| **Caractere fixo** | Texto constante. |
+| **Data** | Data de geração formatada. |
+| **Sequência numérica** | Contador numérico incremental. |
+| **Sequência alfabética** | Contador em letras. |
+
+## Observações importantes
+
+- Defina o reinício da sequência (ex.: **Zerar no ano**) **antes** do uso produtivo.
+- Esta rotina e a **[VEST0300](/almoxarifado/vest0300)** cobrem a mesma capacidade — use a que aparecer no seu menu.
+
+## Telas relacionadas
+
+- **[VEST0300 (Máscaras de Lote e Série)](/almoxarifado/vest0300):** composição e geração equivalentes.
+- **[VEST0100 (Estoque)](/pcp/vest0100):** saldos por lote.

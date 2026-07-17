@@ -1,0 +1,43 @@
+---
+sidebar_position: 33
+title: "VAPS0200 — Calendários de Máquinas"
+description: "Definir os intervalos semanais de disponibilidade que limitam o sequenciamento de capacidade finita."
+---
+
+# VAPS0200 — Calendários de Máquinas
+
+> Define **quando** cada máquina trabalha: os intervalos semanais (dia e horário) que determinam a capacidade disponível para o sequenciamento finito.
+
+## Objetivo
+
+Estabelecer a jornada de trabalho dos recursos para que o APS ([VAPS0600](/pcp/vaps0600)) só aloque operações dentro da capacidade real de cada máquina.
+
+## Pré-requisitos
+
+- Recursos/máquinas cadastrados.
+- Perfil **administrador** para criar/excluir calendário.
+
+## Passo a passo
+
+1. Clique em **Novo calendário** e informe **Código** e **Descrição** (ex.: "Turno normal").
+2. Adicione os **intervalos**: **Dia da semana**, **Início** e **Fim** (ex.: segunda, 08:00 às 17:00).
+3. Vincule o calendário aos recursos na [VAPS0100](/pcp/vaps0100).
+
+## Campos do intervalo
+
+| Campo | Função |
+|-------|--------|
+| **Dia da semana** | Dia a que o intervalo se aplica. |
+| **Início** | Início do turno. |
+| **Fim** | Fim do turno. |
+
+## Observações importantes
+
+- **Não sobreponha intervalos** no mesmo dia — a soma dos intervalos define a capacidade disponível.
+- Paradas pontuais (manutenção/emergência) são registradas na [VAPS0300](/manutencao/vaps0300) e reduzem a disponibilidade sobre este calendário.
+
+## Telas relacionadas
+
+- **[VAPS0100 (Grupos e Parâmetros de Recursos)](/pcp/vaps0100):** vincula o calendário ao recurso.
+- **[VAPS0300 (Paradas de Máquinas)](/manutencao/vaps0300):** indisponibilidades pontuais.
+- **[VAPS0600 (Sequenciamento)](/pcp/vaps0600):** consome a disponibilidade.

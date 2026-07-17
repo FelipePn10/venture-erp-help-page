@@ -1,0 +1,35 @@
+---
+sidebar_position: 8
+title: "VDPR0100 — Promessa de Entrega: Ocupação e Reservas"
+description: "Consultar ocupação diária de tanque/setor, reservar capacidade comercial, expirar reservas e reprogramar entregas em lote."
+---
+
+# VDPR0100 — Promessa de Entrega: Ocupação e Reservas
+
+> Apoia a **promessa de data**: mostra a **ocupação diária** de tanque/setor produtivo, cria/simula **reserva de capacidade** para venda futura, **expira** reservas vencidas e **reprograma** datas de entrega em lote.
+
+## Objetivo
+
+Dar ao comercial visibilidade da capacidade disponível para prometer datas com segurança, reservando capacidade sem gerar pedido nem demanda de MRP.
+
+## Pré-requisitos
+
+- Capacidade diária por tanque/setor definida.
+- Parâmetros e calendário por item ([VPME0102](/engenharia/vpme0102) / [VPME0102ITE](/engenharia/vpme0102ite)).
+
+## Passo a passo
+
+1. **Ocupação**: informe período e capacidade diária e clique em **Calcular ocupação** — veja alocado, livre, % de ocupação e valor previsto por dia/tanque.
+2. **Reserva de tanque**: informe data prometida, validade, capacidade e as linhas (item, quantidade, preço). Marque **Descontar ATP** para verificar estoque e **Gravar** para confirmar (desmarcado apenas simula).
+3. **Reprogramação em lote**: filtre por período/cliente e informe a **nova data** — pedidos e itens com **data firme** são ignorados.
+
+## Observações importantes
+
+- A reserva **não vira pedido nem demanda de MRP** — é apenas um compromisso de capacidade.
+- Com **Descontar ATP** marcado, a reserva verifica o disponível-para-promessa antes de confirmar.
+
+## Telas relacionadas
+
+- **[VEXR0100 (Reprogramação de Entrega)](/comercial/vexr0100):** histórico de remarcações por pedido.
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200):** origem das datas de entrega.
+- **[VCAL0200 (Dias Úteis Prometidos por Item)](/planejamento/vcal0200):** calendário efetivo da promessa.

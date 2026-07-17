@@ -8,11 +8,9 @@ description: "Gerenciamento do ciclo completo da Nota Fiscal Eletrônica de Saí
 
 > Tela principal de emissão e gestão da Nota Fiscal Eletrônica de Saída (NFe e NFCe). Gerencia o ciclo de vida completo do documento: criação de rascunhos, transmissão para a SEFAZ, autorização, cancelamento, inutilização e emissão de Carta de Correção Eletrônica (CC-e).
 
-**Código fonte:** `src/modules/fiscal/output-nfe/vfis0200.vue`
-
 ## Objetivo
 
-A VFIS0200 e o centro operacional das notas fiscais de saída do ERP. Ela permite criar NFe e NFCe a partir de pedidos de venda ou manualmente, calcular automaticamente todos os impostos (ICMS, IPI, PIS, COFINS, ST, DIFAL, FCP) com base nas tabelas tributárias, transmitir o XML para a SEFAZ via API Focus NFe, acompanhar o retorno (autorização, rejeição ou denegação), gerar o DANFE em PDF, cancelar notas autorizadas e emitir Cartas de Correção para ajustes pontuais. A tela oferece uma visão em grade de todas as notas emitidas com filtros por período, status, cliente e tipo de operação, e um fluxo de trabalho que guia o usuário desde o rascunho até a conclusão.
+A VFIS0200 e o centro operacional das notas fiscais de saída do ERP. Ela permite criar NFe e NFCe a partir de pedidos de venda ou manualmente, calcular automaticamente todos os impostos (ICMS, IPI, PIS, COFINS, ST, DIFAL, FCP) com base nas tabelas tributárias, transmitir o XML para a SEFAZ via integração Focus NF-e, acompanhar o retorno (autorização, rejeição ou denegação), gerar o DANFE em PDF, cancelar notas autorizadas e emitir Cartas de Correção para ajustes pontuais. A tela oferece uma visão em grade de todas as notas emitidas com filtros por período, status, cliente e tipo de operação, e um fluxo de trabalho que guia o usuário desde o rascunho até a conclusão.
 
 ## Pre-requisitos
 
@@ -36,7 +34,7 @@ A VFIS0200 e o centro operacional das notas fiscais de saída do ERP. Ela permit
 9. Na aba **Cobrança**, informe dados de fatura(s), duplicata(s) e pagamento (a prazo ou a vista).
 10. Na aba **Informações Adicionais**, inclua observações fiscais (campo `infAdFisco`) e informações ao consumidor (campo `infCpl`).
 11. Clique em **Gerar XML**. O sistema montara o XML no padrão NFe 4.00, realizara as validações de schema e exibira eventuais erros de preenchimento. Corrija todos os erros antes de prosseguir.
-12. Clique em **Transmitir**. O XML sera assinado digitalmente com o certificado A1 e enviado a SEFAZ via API Focus NFe. O status mudara para `Aguardando Retorno`. Acompanhe o progresso no painel de status.
+12. Clique em **Transmitir**. O XML sera assinado digitalmente com o certificado A1 e enviado a SEFAZ via integração Focus NF-e. O status mudara para `Aguardando Retorno`. Acompanhe o progresso no painel de status.
 13. Ao receber o retorno, o sistema atualizara o status: **Autorizada** (protocolo SEFAZ disponível, DANFE gerado automaticamente), **Rejeitada** (corrija o motivo e retransmita) ou **Denegada** (irregularidade no cadastro do emitente ou destinatário).
 14. Para **Cancelar** uma nota autorizada: selecione a nota, clique em Cancelar, informe o motivo (mínimo 15 caracteres) e confirme. O evento de cancelamento sera transmitido a SEFAZ. O prazo para cancelamento e de 24 horas (regra geral) a 7 dias (combustíveis, perecíveis).
 15. Para emitir uma **Carta de Correção (CC-e)**: selecione a nota autorizada, clique em CC-e, descreva a correção (mínimo 15 caracteres) e transmita. A CC-e pode ser emitida em até 30 dias após a autorização e não pode alterar valores ou dados do destinatário.

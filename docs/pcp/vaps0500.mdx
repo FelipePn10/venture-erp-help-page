@@ -1,0 +1,40 @@
+---
+sidebar_position: 35
+title: "VAPS0500 — Perfil Industrial de Máquinas"
+description: "Manter uso, preparação, marca, responsáveis, serviços preventivos, itens consumidos e campos especiais do recurso."
+---
+
+# VAPS0500 — Perfil Industrial de Máquinas
+
+> A ficha industrial da máquina: **uso**, tempo de **preparação**, marca, responsáveis, **serviços preventivos** com seus itens, e campos especiais do recurso.
+
+## Objetivo
+
+Detalhar o recurso além da capacidade — como é preparado, quem responde por ele, quais serviços preventivos exige e que insumos consome — enriquecendo planejamento e manutenção.
+
+## Pré-requisitos
+
+- Recurso/máquina cadastrado ([VMAQ0101](/engenharia/vmaq0101)).
+- Perfil **administrador** para alterações (a consulta é liberada).
+
+## Passo a passo
+
+1. Informe o **recurso** para consultar o perfil.
+2. Em **Salvar perfil**, informe **Uso**, **Tempo de preparação** (e a unidade), **Marca**, **Fornecedor**, **Responsável** e se é **Preferido**.
+3. Gerencie os **serviços preventivos**, seus **itens** e os **campos especiais** do recurso.
+
+## Campos
+
+- **Serviço preventivo**: **Código**, **Tipo**, **Frequência** (valor + unidade), **Tolerância máxima**, **Data de implantação**, **itens consumidos** e **responsáveis**.
+- **Campo especial**: **Nome**, **Tipo do valor** (texto ou numérico), o **Valor** e o **Tamanho máximo**.
+
+## Observações importantes
+
+- **Alterações exigem administrador**; a consulta é liberada.
+- O **Tempo de preparação** entra no sequenciamento; os serviços preventivos apoiam a manutenção e as paradas ([VAPS0300](/manutencao/vaps0300)).
+
+## Telas relacionadas
+
+- **[VAPS0100 (Grupos e Parâmetros)](/pcp/vaps0100):** capacidade e calendário do recurso.
+- **[VAPS0300 (Paradas de Máquinas)](/manutencao/vaps0300):** indisponibilidades preventivas.
+- **[VMAQ0101 (Máquinas)](/engenharia/vmaq0101):** cadastro base do recurso.

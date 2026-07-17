@@ -1,0 +1,46 @@
+---
+sidebar_position: 7
+title: "VSAC0100 — Atendimento ao Consumidor (SAC)"
+description: "Centralizar consumidores finais, chamados de SAC, reclamações, visitas técnicas, retornos e indicadores."
+---
+
+# VSAC0100 — Atendimento ao Consumidor (SAC)
+
+> A central de relacionamento com o **consumidor final**: consumidores, chamados (recebido/efetuado/garantia), reclamações com sintomas, visitas técnicas, retornos e indicadores de tempo de resolução.
+
+## Objetivo
+
+Centralizar o atendimento ao consumidor e o histórico de contatos, com posições e prazos, separado do fluxo de assistência técnica (reparo/garantia).
+
+## Pré-requisitos
+
+- **Tipos de chamado** e **locais/meios de conhecimento** cadastrados (aba **Apoio**).
+- **Consumidor** cadastrado (aba **Consumidores**).
+
+## Passo a passo
+
+1. Na aba **Apoio**, crie os **tipos de chamado** (marque **É reclamação** quando deve exigir sintomas) e os **locais de conhecimento**.
+2. Na aba **Consumidores**, em **Novo consumidor**, informe nome, pessoa (Física/Jurídica — física não aceita CNPJ e jurídica não aceita CPF), documento, UF/cidade e local de conhecimento; adicione telefones/e-mails.
+3. Na aba **Chamados**, em **Novo chamado**, informe estabelecimento, consumidor, tipo, direção, assunto, posição e situação. Se a situação for **Visita técnica**, a data é obrigatória; se o tipo for **reclamação**, os **sintomas** são obrigatórios.
+4. Abra o chamado para **Agendar/Resolver** e **Registrar retorno/contato**.
+5. **Relatório** consolida totais por posição, vistorias e tempo médio de resolução.
+
+## Campos principais
+
+| Campo | Obrigatório | Função |
+|-------|-------------|--------|
+| Nome / Pessoa | Sim | Identificação do consumidor (F/J) |
+| Tipo de chamado | Sim | Classificação; `É reclamação` exige sintomas |
+| Assunto | Sim | Resumo do chamado |
+| Situação | Não | OTHER / ORDER / DISCONTINUED_ORDER / TECHNICAL_VISIT |
+| Data da visita | Condicional | Obrigatória quando situação = Visita técnica |
+
+## Observações importantes
+
+- O **contato com cliente é histórico imutável** — não há alteração/exclusão depois de gravado.
+- **Posições**: Pendente → Agendado → Resolvido.
+
+## Telas relacionadas
+
+- **[VSAC0200 (Relatórios e Anexos do Atendimento)](/assistencia/vsac0200):** etiquetas, relatórios e anexos.
+- **[VATC0280](/assistencia/vatc0280) / [VASS0201](/assistencia/vass0201) (Assistência Técnica):** chamados de garantia/reparo (fluxo distinto do SAC).

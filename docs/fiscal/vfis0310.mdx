@@ -8,8 +8,6 @@ description: "Cadastro de dispositivos legais (ICMS, IPI, LAUDO, PIS, COFINS) qu
 
 > Tela de cadastro dos dispositivos legais que embasam a tributação aplicada em cada documento fiscal. Registra leis, decretos, convenios, laudos técnicos e outros instrumentos normativos exigidos nos campos de enquadramento legal do XML da NFe.
 
-**Código fonte:** `src/modules/fiscal/legal-devices/vfis0310.vue`
-
 ## Objetivo
 
 A VFIS0310 permite cadastrar e gerenciar os dispositivos legais que fundamentam cada tipo de tributação aplicada nos documentos fiscais. No XML da NFe, diversos campos exigem a indicação do enquadramento legal: o campo `orig` do ICMS (origem da mercadoria), a CST de ICMS, IPI, PIS e COFINS, e o enquadramento legal de suspensão, isenção ou diferimento. Cada dispositivo legal cadastrado na VFIS0310 vincula-se a um tipo de imposto (ICMS, IPI, LAUDO, PIS, COFINS) e a um artigo/especificação da legislação. Durante a emissão da NFe (VFIS0200), estes dispositivos são sugeridos automaticamente conforme o enquadramento fiscal do produto e da operação.

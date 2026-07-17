@@ -1,0 +1,51 @@
+---
+sidebar_position: 11
+title: "VTER0100 — Preços de Serviços de Terceiros"
+description: "Manter preços de serviço por item, fornecedor e operação, com vigência, frete, impostos, fórmula, regras, reajuste e histórico."
+---
+
+# VTER0100 — Preços de Serviços de Terceiros
+
+> A tabela de preços da industrialização por terceiros: preço por **item × fornecedor × operação**, com vigência, frete, impostos, fórmula e regras de característica.
+
+## Objetivo
+
+Precificar os serviços subcontratados de forma rastreável, resolvendo o custo por contexto (item, operação, data) para alimentar o custeio e as ordens de serviço.
+
+## Pré-requisitos
+
+- Item, fornecedor e operação cadastrados.
+- Perfil **administrador** para criar, alterar, reajustar, copiar/mover e excluir.
+
+## Passo a passo
+
+1. Em **Consultar**, filtre por faixas de **item**, **fornecedor**, **operação** e **data de referência**.
+2. Em **Cadastrar**, informe os campos abaixo.
+3. Use **Resolver** para ver o preço vigente de um contexto e **Custo** para o custo resolvido.
+4. **Reajustar**, **Copiar/mover** e **Histórico** apoiam a manutenção em lote e a rastreabilidade.
+
+## Campos
+
+| Campo | Função |
+|-------|--------|
+| **Item / Máscara** | Item (e configuração) do serviço. |
+| **Fornecedor / Operação** | Fornecedor e operação do roteiro. |
+| **Unidade / Data de referência** | Unidade e vigência. |
+| **Preço unitário / Fator de conversão** | Valor e conversão. |
+| **Tipo de frete / Valor do frete** | Frete (ex.: CIF/FOB). |
+| **% de imposto / Fórmula** | Impostos e fórmula opcional. |
+| **Preferencial** | Marca o preço preferencial. |
+| **Regras** | Regras por característica (característica + resposta). |
+
+No **reajuste**, informe o **percentual** e o **motivo**; em **copiar/mover**, o **fornecedor/operação** de destino e se é para **mover**.
+
+## Observações importantes
+
+- **Consulta e histórico são liberados**; as demais operações exigem administrador.
+- O preço pode depender de **fórmula** e **regras de característica** — use **Resolver** para confirmar o valor efetivo.
+
+## Telas relacionadas
+
+- **[VTER0200 (Ordens de Serviço)](/suprimento/vter0200):** consomem o preço.
+- **[VTER0400 (Conversões Globais)](/suprimento/vter0400):** fatores usados no custeio.
+- **[VTPS0100 (Serviços de Terceiros)](/suprimento/vtps0100):** visão geral do processo.

@@ -1,0 +1,42 @@
+---
+sidebar_position: 25
+title: "VSUP0660 — Parâmetros e Contatos do Fornecedor"
+description: "Definir regras corporativas do cadastro de fornecedores e complementar telefones/e-mails de contatos gravados."
+---
+
+# VSUP0660 — Parâmetros e Contatos Complementares do Fornecedor
+
+> Dois papéis: as **regras corporativas** aplicadas a todos os fornecedores de uma empresa e a inclusão de **telefones/e-mails** em contatos já existentes.
+
+## Objetivo
+
+Padronizar o comportamento do cadastro de fornecedores (conta financeira, unicidade de código, UM de estoque, cópia de observações…) e complementar os meios de comunicação de contatos gravados.
+
+## Pré-requisitos
+
+- Empresa existente e fornecedor cadastrado ([VSUP0500](/compras/vsup0500)).
+- **ID do contato** (não apenas o código do fornecedor) para incluir telefone/e-mail.
+
+## Passo a passo
+
+### Parâmetros
+
+1. **Consultar parâmetros** informando a empresa.
+2. **Salvar parâmetros**: **Conta financeira padrão**, **Exigir conta financeira**, **Código de item único por fornecedor**, **Usar unidade de estoque**, **Tipo padrão de fornecedor de compra**, **Copiar observações para o pedido/entrada**, **Homologação padrão**, **Fornecedor genérico** e **Base padrão de vencimento**.
+
+### Contatos
+
+1. Abra o fornecedor e identifique o **ID do contato**.
+2. **Cadastre** o telefone ou e-mail selecionando o **contato**, informando o **valor** e o **ranking** (1 = prioritário).
+3. Reabra o fornecedor para conferir.
+
+## Observações importantes
+
+- **Alterar parâmetros afeta operações futuras** de compras e entradas — valide em um fornecedor controlado antes de liberar.
+- Telefone/e-mail do **fornecedor geral** e do **contato** são registros diferentes.
+- **Homologação padrão** só quando a política permitir homologação inicial automática.
+
+## Telas relacionadas
+
+- **[VSUP0500 (Fornecedores)](/compras/vsup0500):** cadastro base do fornecedor.
+- **[VAVF0203 (Homologação)](/inspecao/vavf0203):** homologação afetada pela **Homologação padrão**.
