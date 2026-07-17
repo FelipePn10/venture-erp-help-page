@@ -1,0 +1,36 @@
+---
+sidebar_position: 8
+title: "VUSR0100 — Solicitações de Troca de Senha"
+description: "Visão gerencial das solicitações de troca de senha: solicitar, aprovar, concluir ou rejeitar."
+---
+
+# VUSR0100 — Solicitações de Troca de Senha
+
+> A visão gerencial do ciclo de troca de senha: acompanhar, **aprovar**, **rejeitar** ou **concluir** as solicitações abertas pelos usuários.
+
+## Objetivo
+
+Oferecer ao administrador o painel de acompanhamento das solicitações de troca de senha, complementando o fluxo operacional da **[VSEC0100](/cadastros/vsec0100)**. É por aqui que se visualiza a fila de pedidos e se decide cada caso.
+
+## Pré-requisitos
+
+- Perfil **ADMIN** para aprovar/rejeitar; o titular conclui a própria troca.
+- Solicitações registradas via VSEC0100.
+
+## Passo a passo
+
+1. Liste as solicitações filtrando por situação (**Pendente**, **Aprovada**, **Rejeitada**, **Usada**, **Expirada**).
+2. Analise o solicitante e o instante do pedido.
+3. **Aprove** para abrir a janela de conclusão (15 minutos) ou **Rejeite** com motivo.
+4. Acompanhe a conclusão pelo titular — a solicitação passa a **Usada**.
+
+## Observações importantes
+
+- A **nova senha é sempre definida pelo titular**, nunca pelo administrador.
+- Solicitações expiram em 15 minutos após aprovadas se não forem concluídas.
+- Toda decisão fica registrada na auditoria.
+
+## Telas relacionadas
+
+- **[VSEC0100 (Solicitação e Aprovação de Troca de Senha)](/cadastros/vsec0100):** o fluxo passo a passo.
+- **[VADM0100 (Trilha de Auditoria)](/cadastros/vadm0100):** evidências das decisões.

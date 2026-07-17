@@ -1,0 +1,47 @@
+---
+sidebar_position: 9
+title: "VADM0100 — Trilha de Auditoria"
+description: "Consulta administrativa de alterações do sistema por usuário, rota e período (somente administrador)."
+---
+
+# VADM0100 — Trilha de Auditoria
+
+> A consulta forense do ERP: **quem** alterou **o quê**, em **qual tela** e **quando**. Somente leitura e exclusiva de administrador.
+
+## Objetivo
+
+Permitir ao administrador investigar as alterações registradas do sistema, filtrando por **usuário**, **tela** e **período**. É a fonte de evidência para apurar uma ação específica sem alterar nenhum dado.
+
+## Pré-requisitos
+
+- Perfil **administrador** — usuários comuns não têm acesso a esta tela.
+- Saber o recorte da investigação: o **identificador do usuário** e/ou a tela e um intervalo de datas.
+
+## Passo a passo
+
+1. Defina o objetivo da investigação e um **intervalo de data/hora curto**.
+2. Para um operador específico, informe o **identificador do usuário**; para uma família de ações, informe a **tela**. Os filtros podem ser combinados.
+3. Mantenha o **limite em 100** na primeira consulta e confira o **fuso** exibido nas datas.
+4. Execute e leia do evento mais recente para o mais antigo: usuário, tela, ação, instante e contexto.
+5. Havendo mais registros, avance o **deslocamento** sem alterar os demais filtros. O máximo por página é **500**.
+6. Correlacione o evento com o histórico do registro e guarde a evidência conforme a política interna.
+
+## Campos de filtro
+
+| Campo | Uso |
+|-------|-----|
+| **Usuário** | Identificador do operador. |
+| **Tela** | Tela/ação auditada. |
+| **De / Até** | Intervalo de data/hora. |
+| **Limite / Deslocamento** | Paginação — no máximo 500 por página. |
+
+## Observações importantes
+
+- Resultado **vazio** significa ausência de evento *compatível com os filtros*, não ausência de atividade.
+- A trilha **não substitui** o histórico de negócio e não expõe senhas nem dados sensíveis.
+- Identificador, data ou paginação inválidos são recusados — corrija os filtros.
+
+## Telas relacionadas
+
+- **[VAUD0100 (Log de Auditoria)](/cadastros/vaud0100):** consulta equivalente dos eventos de auditoria.
+- **[VSEC0100 (Troca de Senha)](/cadastros/vsec0100)** e **[VUSR0100](/cadastros/vusr0100):** eventos frequentemente auditados.

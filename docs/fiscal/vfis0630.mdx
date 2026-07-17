@@ -1,0 +1,43 @@
+---
+sidebar_position: 33
+title: "VFIS0630 — Tabela IBPT e Carga Tributária Aproximada"
+description: "Importar o arquivo oficial IBPT/SCI por UF e consultar a carga tributária aproximada por NCM (Lei da Transparência)."
+---
+
+# VFIS0630 — Tabela IBPT e Carga Tributária Aproximada
+
+> Mantém as **alíquotas aproximadas da Lei da Transparência** por UF e NCM, a partir do arquivo oficial IBPT/SCI — os percentuais que aparecem no rodapé da nota ("valor aproximado dos tributos").
+
+## Objetivo
+
+Importar a tabela IBPT vigente e consultar a carga tributária aproximada por NCM/UF que o faturamento usa para informar os tributos aproximados ao consumidor.
+
+## Pré-requisitos
+
+- Arquivo CSV oficial IBPT/SCI vigente, com UF, versão e validade conferidas.
+- Perfil **administrador** para importar.
+
+## Passo a passo
+
+1. Em **Importar tabela IBPT**, informe a **UF** e selecione o **arquivo CSV** oficial (separado por ponto e vírgula).
+2. Confira a **quantidade importada**; não interrompa nem repita sem validar a versão.
+3. Em **Consultar alíquota**, informe **NCM** e **UF** e confira a fonte, a vigência e os percentuais.
+4. Faça **consultas de amostragem** antes de liberar o cálculo ao faturamento.
+
+## Campos
+
+| Ação | Campos |
+|------|--------|
+| **Importar** | UF, Arquivo CSV (IBPT/SCI oficial). |
+| **Consultar** | NCM, UF. |
+
+## Observações importantes
+
+- Somente **administrador** importa; a importação substitui a tabela da UF pela versão do arquivo.
+- A tela recusa arquivo de outra UF, cabeçalho incompatível, NCM inválido ou versão ausente.
+- A rotina **não cria alíquotas** quando a consulta não encontra registro.
+
+## Telas relacionadas
+
+- **[VFIS0110 (Tabelas Tributárias por NCM)](/fiscal/vfis0110):** tributação efetiva por NCM.
+- **[VFIS0200 (NF-e de Saída)](/fiscal/vfis0200):** consome a carga aproximada.

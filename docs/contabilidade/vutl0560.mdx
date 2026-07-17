@@ -1,0 +1,35 @@
+---
+sidebar_position: 5
+title: "VUTL0560 — Consulta Pontual de UF e Região Comercial"
+description: "Confirmar os dados de uma UF (pela sigla) ou de uma região comercial (pelo código) sem percorrer toda a listagem."
+---
+
+# VUTL0560 — Consulta Pontual de UF e Região Comercial
+
+> Uma consulta cirúrgica: confirmar os dados gravados de **uma UF** ou de **uma região comercial** sem abrir a listagem administrativa inteira.
+
+## Objetivo
+
+Validar rapidamente os cadastros corporativos de **UF** e **região comercial** usados em endereços, clientes e regras comerciais. É uma tela de conferência, não de manutenção.
+
+## Pré-requisitos
+
+- UF cadastrada no sistema (sigla de duas letras).
+- Região comercial cadastrada (código interno exibido na **[VCLI0510](/cliente/vcli0510)**).
+
+## Passo a passo
+
+1. Para **UF**, informe a sigla de duas letras e confira nome, código IBGE e situação.
+2. Para **região**, informe o código interno e confira descrição e estado ativo.
+3. Use o resultado para validar cadastros de endereço, clientes e regras comerciais.
+
+## Observações importantes
+
+- **Não digite um código apenas com base no nome** apresentado em documentos externos — confirme sempre pela consulta.
+- Sigla inválida, região inexistente ou registro de **outra empresa** retorna erro/resultado vazio.
+- A rotina **não cria** UF ou região e **não possui fallback local** de municípios/estados/regiões: os dados vêm sempre do sistema.
+
+## Telas relacionadas
+
+- **[VCLI0510 (Regiões Comerciais)](/cliente/vcli0510):** cadastro das regiões consultadas aqui.
+- **[VLOC0100 (Localização)](/cadastros/vloc0100):** base de UFs e municípios.

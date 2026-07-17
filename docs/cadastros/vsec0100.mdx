@@ -1,0 +1,58 @@
+---
+sidebar_position: 7
+title: "VSEC0100 — Solicitação e Aprovação de Troca de Senha"
+description: "Fluxo seguro de troca de senha: o titular solicita, o administrador aprova e o próprio titular conclui."
+---
+
+# VSEC0100 — Solicitação e Aprovação de Troca de Senha
+
+> Fluxo seguro em três etapas — **o titular solicita**, **o administrador aprova** e **o próprio titular conclui** informando a senha atual e a nova. O administrador nunca conhece nem define a senha do usuário.
+
+## Objetivo
+
+Controlar a troca de senha de um usuário por um caminho auditável e seguro, separando quem **pede**, quem **autoriza** e quem **define** a nova senha. Evita que um administrador redefina senhas às cegas e garante que apenas o titular, de posse da senha atual, conclua a alteração.
+
+## Pré-requisitos
+
+- Usuário autenticado (para solicitar e concluir) e perfil **ADMIN** (para aprovar ou rejeitar).
+- Política de senha vigente: 12 a 128 caracteres, com maiúscula, minúscula, número e caractere especial.
+
+## Passo a passo
+
+### Fluxo do titular
+
+1. Selecione **Solicitar troca**. A solicitação nasce **pendente** para a empresa e o usuário autenticados.
+2. Aguarde a aprovação do administrador. Depois de aprovada, a autorização vale por **15 minutos**.
+3. Em **Concluir troca**, informe o ID da solicitação, a **senha atual**, a **nova senha** e a **confirmação**.
+4. Após a confirmação, autentique-se novamente — as sessões anteriores são invalidadas pela versão de autenticação.
+
+### Fluxo administrativo
+
+1. Consulte por situação (**Pendente**, **Aprovada**, **Rejeitada**, **Usada** ou **Expirada**).
+2. **Aprove** para liberar a janela de 15 minutos, ou **Rejeite** informando um motivo objetivo (até 500 caracteres).
+
+## Campos e situações
+
+| Situação | Significado |
+|----------|-------------|
+| **Pendente** | Solicitada, aguardando aprovação do administrador. |
+| **Aprovada** | Autorizada; o titular tem 15 minutos para concluir. |
+| **Rejeitada** | Recusada pelo administrador, com motivo registrado. |
+| **Usada** | Troca concluída; a solicitação não pode ser reutilizada. |
+| **Expirada** | Janela de 15 minutos vencida sem conclusão. |
+
+## Regras e mensagens de erro
+
+- Se a **senha atual** estiver incorreta, ou a **nova senha** for fraca ou diferente da confirmação, a tela recusa a troca.
+- Solicitação **vencida**, **usada** ou pertencente a **outra empresa** não pode ser concluída.
+- O administrador não conhece nem define a nova senha — apenas autoriza o fluxo.
+
+## Observações importantes
+
+- Concluir a troca **invalida as sessões anteriores** do usuário (a sessão é renovada).
+- Mantenha a janela de 15 minutos em mente: se expirar, é preciso uma nova solicitação.
+
+## Telas relacionadas
+
+- **[VUSR0100 (Solicitações de Troca de Senha)](/cadastros/vusr0100):** visão gerencial das solicitações.
+- **[VADM0100 (Trilha de Auditoria)](/cadastros/vadm0100):** rastreia aprovações e conclusões.

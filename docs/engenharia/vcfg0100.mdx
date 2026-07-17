@@ -1,0 +1,49 @@
+---
+sidebar_position: 20
+title: "VCFG0100 — Configurador: Conjuntos e Variáveis"
+description: "Cadastrar conjuntos de respostas, variáveis, composição da máscara e traduções do configurador de produto."
+---
+
+# VCFG0100 — Configurador: Conjuntos e Variáveis
+
+> A base do configurador de produto: **conjuntos** de respostas e, dentro deles, as **variáveis** que o cliente escolhe — cada uma com seu pedaço da máscara e traduções por idioma.
+
+## Objetivo
+
+Definir o vocabulário do configurador. Um **conjunto** agrupa respostas possíveis (ex.: "Cores") e cada **variável** é uma resposta concreta (ex.: "Azul") com código, composição da máscara e indicadores de comportamento. Conjuntos e variáveis são reaproveitados por várias características e itens.
+
+## Pré-requisitos
+
+- Planejamento das características e do formato da máscara do item configurável.
+
+## Passo a passo
+
+1. Clique em **Novo conjunto**, informe a **Descrição** (ex.: "Cores disponíveis") e salve — o conjunto nasce **ativo**.
+2. Selecione o conjunto e clique em **Nova variável** para cadastrar cada resposta.
+3. Para versão multi-idioma, abra a variável e use **Traduzir**.
+4. Para tirar de uso, edite e desmarque **Ativo** — a exclusão definitiva só é aceita quando a variável não está em uso.
+
+## Campos da variável
+
+| Campo | Função |
+|-------|--------|
+| **Código** | Código curto da resposta (compõe a máscara). |
+| **Descrição** | Descrição legível. |
+| **Composição da máscara** | Pedaço do código que a variável contribui à máscara final. |
+| **Especial** | Marca resposta de tratamento especial. |
+| **Inclui descrição** | Inclui a descrição no texto configurado. |
+| **Dados especiais** | Dado auxiliar do tratamento especial. |
+| **Marketing** | Sinaliza uso comercial/marketing. |
+
+Na **tradução**, informe **Idioma**, **País** e o **Texto traduzido**.
+
+## Observações importantes
+
+- A **composição da máscara** de cada variável é o que forma o código do item configurado — mantenha-a consistente entre as variáveis do mesmo conjunto.
+- A tela recusa código de variável **duplicado** no mesmo conjunto e a exclusão de uma variável **em uso**.
+- Traduções são mantidas por idioma **e** país (ex.: Inglês / EUA).
+
+## Telas relacionadas
+
+- **[VCFG0200 (Características)](/engenharia/vcfg0200):** usam os conjuntos como domínio de resposta.
+- **[VCFG0300 (Características por Item)](/engenharia/vcfg0300)** e **[VCFG0400 (Geração de Máscaras)](/engenharia/vcfg0400):** consomem variáveis e conjuntos.

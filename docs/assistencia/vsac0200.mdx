@@ -1,0 +1,36 @@
+---
+sidebar_position: 6
+title: "VSAC0200 — Relatórios, Etiquetas e Anexos do Atendimento"
+description: "Gerar etiquetas e relatórios do atendimento ao consumidor e vincular documentos ao chamado."
+---
+
+# VSAC0200 — Relatórios, Etiquetas e Anexos do Atendimento
+
+> As saídas operacionais do SAC: **etiquetas** de consumidores e chamados, **relatório de contatos** e o vínculo de **anexos** (documentos) ao chamado.
+
+## Objetivo
+
+Complementar o atendimento ao consumidor ([VSAC0100](/comercial/vsac0100)) com relatórios e etiquetas baseados nos dados reais, além de anexar documentos recebidos (evidências, laudos) diretamente ao chamado.
+
+## Pré-requisitos
+
+- Consumidores e chamados registrados no SAC.
+- Documentos a anexar já disponíveis no repositório acessível ao sistema.
+
+## Passo a passo
+
+1. Gere **Etiquetas de consumidores** ou **Etiquetas de chamados** a partir dos filtros gravados.
+2. Emita o **Relatório de contatos** para consolidar os contatos reais.
+3. Para **Vincular anexo**, abra o chamado e informe nome, caminho persistente, tipo do arquivo e observação.
+4. Reabra o chamado para confirmar o **ID do anexo** retornado.
+
+## Observações importantes
+
+- O campo **caminho não envia o conteúdo** do arquivo: confirme que o documento já está no repositório definido pela implantação.
+- Nenhuma consulta gera consumidores fictícios quando não há resultado — resultado vazio é resultado válido.
+- Chamado inexistente, caminho inválido ou falta de permissão impedem a inclusão do anexo.
+
+## Telas relacionadas
+
+- **[VSAC0100 (Atendimento ao Consumidor)](/comercial/vsac0100):** onde o chamado é aberto e tratado.
+- **[VASS0201 (Chamados de Assistência)](/assistencia/vass0201):** atendimento técnico correlato.

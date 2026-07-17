@@ -1,0 +1,53 @@
+---
+sidebar_position: 4
+title: "VMRP0200 — Pipeline MRP → CRP → APS"
+description: "Executar de forma coordenada o planejamento de materiais (MRP), capacidade (CRP) e sequenciamento (APS) em um único disparo."
+---
+
+# VMRP0200 — Pipeline MRP → CRP → APS
+
+> Um único disparo que roda o planejamento de ponta a ponta: **MRP** (o que/quanto/quando comprar e produzir) → **CRP** (a capacidade aguenta?) → **APS** (em que ordem e em qual recurso).
+
+## Objetivo
+
+Executar as três etapas do planejamento em sequência coordenada, evitando rodar cada motor manualmente. O resultado permite avaliar materiais, capacidade e sequenciamento de forma consistente para um mesmo plano.
+
+## Pré-requisitos
+
+- Plano de planejamento cadastrado.
+- Demandas, estruturas ([VENT0210](/engenharia/vent0210)) e roteiros ([VENT0202](/engenharia/vent0202)) atualizados.
+- Recursos, calendários e capacidades configurados (APS).
+
+## Passo a passo
+
+1. Selecione **Executar pipeline** e informe o **plano**, o **número inicial de ordem** e a **data inicial**.
+2. Marque se deve **gerar o LLC** (recálculo do nível de menor código) antes do MRP.
+3. Execute e **revise o retorno de cada estágio** (MRP → CRP → APS) antes de liberar ordens sugeridas.
+
+## Campos
+
+| Campo | Função |
+|-------|--------|
+| **Plano** | Plano de planejamento a executar. |
+| **Número inicial de ordem** | Numeração a partir da qual as ordens sugeridas são criadas. |
+| **Gerar LLC** | Recalcula o nível mais baixo de cada item antes do MRP. |
+| **Data inicial** | Ponto de partida do horizonte de planejamento. |
+
+## Conceitos-chave
+
+| Etapa | Responde |
+|-------|----------|
+| **MRP** | O que produzir/comprar, quanto e quando. |
+| **CRP** | A capacidade dos centros de trabalho suporta a carga? |
+| **APS** | Em que sequência e em qual recurso cada operação entra. |
+
+## Observações importantes
+
+- **Revise cada estágio** antes de firmar — o pipeline propõe, o planejador dispõe.
+- Ordens já firmadas não são recalculadas; o pipeline planeja sobre a necessidade líquida.
+
+## Telas relacionadas
+
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** execução isolada do MRP e firmação de sugestões.
+- **[VPRO0200 (CRP)](/pcp/vpro0200)** e **[VPRO0210 (APS)](/pcp/vpro0210):** análise detalhada de capacidade e sequência.
+- **[VPLN0100 (Pipeline de Planejamento)](/planejamento/vpln0100)** e **[VPLA0300 (Parâmetros)](/planejamento/vpla0300):** parâmetros que regem o cálculo.

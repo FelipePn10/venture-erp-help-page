@@ -1,0 +1,44 @@
+---
+sidebar_position: 26
+title: "VENG0300 — Cabeçalho e Revisão de Estrutura (BOM)"
+description: "Controlar versão, efetividade e status do cabeçalho da estrutura do produto (rascunho → aprovada → obsoleta)."
+---
+
+# VENG0300 — Cabeçalho e Revisão de Estrutura (BOM)
+
+> O "documento de capa" da estrutura: controla **tipo** (engenharia/manufatura), **efetividade** e **status** da BOM de um item.
+
+## Objetivo
+
+Versionar a estrutura do produto de forma controlada — criar o cabeçalho, consultá-lo por item e conduzir seu status ao longo do ciclo de vida, garantindo que só estruturas aprovadas alimentem MRP e produção.
+
+## Pré-requisitos
+
+- Item cadastrado ([VENT0200](/engenharia/vent0200)).
+- Componentes definidos na estrutura ([VENT0210](/engenharia/vent0210)).
+
+## Passo a passo
+
+1. Clique em **Novo cabeçalho** e informe o **Item**, a **Máscara** (opcional), o **Tipo de estrutura** e a **Vigência**. Ele nasce como **Rascunho**.
+2. Use **Consultar por item** para localizar as versões existentes.
+3. Em **Alterar status**, avance conforme a estrutura evolui: **Rascunho → Aprovada → Obsoleta**.
+
+## Campos e opções
+
+| Campo | Opções |
+|-------|--------|
+| **Tipo de estrutura** | **Engenharia** (EBOM) · **Manufatura** (MBOM — padrão). |
+| **Vigência** | Data a partir da qual a versão vale. |
+| **Status** | **Rascunho** → **Aprovada** → **Obsoleta**. |
+
+## Observações importantes
+
+- Use **Rascunho** durante a montagem e **Aprovada** somente após validar componentes, quantidades, vigência e versão; aposente com **Obsoleta**.
+- Só a versão **Aprovada** deve alimentar o MRP e a produção.
+- Se o **Tipo** não for informado, o sistema assume **Manufatura**.
+
+## Telas relacionadas
+
+- **[VBOM0100 (Cabeçalhos de Estrutura)](/engenharia/vbom0100):** mesma capacidade de versionamento da BOM.
+- **[VENT0210 (Estrutura de Produtos)](/engenharia/vent0210):** os componentes da estrutura.
+- **[VENG0500 (Estruturas Avançadas)](/engenharia/veng0500):** explosão e onde-usado.

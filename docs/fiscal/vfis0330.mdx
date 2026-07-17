@@ -8,8 +8,6 @@ description: "Motor hierárquico de regras fiscais avancadas com simulador integ
 
 > Motor hierárquico que gerencia as três principais exceções fiscais do ICMS: Redução de Base de Cálculo, Substituição Tributária (ST) e Diferimento. Inclui um simulador que permite testar as regras com cenários reais antes da emissão de documentos.
 
-**Código fonte:** `src/modules/fiscal/icms-reduction-st-deferral/vfis0330.vue`
-
 ## Objetivo
 
 A VFIS0330 e o componente mais avancado do motor fiscal do ERP. Ela implementa um sistema hierárquico de regras para Redução de Base de Cálculo do ICMS (ex: cesta básica, medicamentos, veículos), Substituição Tributária (ICMS-ST, onde o imposto e recolhido antecipadamente pelo fabricante ou importador) e Diferimento (postergação do recolhimento do ICMS para etapa posterior da cadeia). O motor hierárquico permite que uma regra mais específica sobrescreva uma regra genérica, e o **Simulador** integrado permite testar qualquer combinação de UF, NCM, tipo de operação e valor para visualizar exatamente quais regras serão aplicadas e qual o resultado do cálculo, sem precisar emitir uma nota fiscal real.

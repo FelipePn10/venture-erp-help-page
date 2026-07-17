@@ -8,8 +8,6 @@ description: "Lancamentos fiscais detalhados de ICMS com sub-entidades Notas e C
 
 > Tela de lancamentos fiscais de ICMS que registra cada operação tributável em nível de detalhe, com sub-entidades para Notas (documentos vinculados) e C197 (itens de documento SPED), alimentando a apuração (VFIS0530) e o SPED Fiscal.
 
-**Código fonte:** `src/modules/fiscal/icms-entries/vfis0540.vue`
-
 ## Objetivo
 
 A VFIS0540 e o livro fiscal digital do ICMS. Ela registra cada lancamento fiscal — seja um débito de ICMS proveniente de uma NFe de saída, um crédito de uma NFe de entrada, um estorno ou um ajuste — em nível granular. Cada lancamento pertence a uma **Natureza** (Débito, Crédito, Estorno, Ajuste) e pode ter duas sub-entidades vinculadas: **Notas** (os documentos fiscais que originaram o lancamento, como NFe, CTe, NFSe) e **C197** (itens detalhados do SPED Fiscal, correspondendo ao registro C197 da EFD-ICMS/IPI, que detalha a composição de cada CFOP). A consolidação destes lancamentos alimenta a VFIS0530 (Linhas Apuração ICMS) e a exportação do SPED Fiscal.

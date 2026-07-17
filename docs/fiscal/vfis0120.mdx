@@ -1,0 +1,35 @@
+---
+sidebar_position: 3
+title: "VFIS0120 — Exclusão Controlada de Tributação NCM"
+description: "Remover de forma controlada uma tributação de NCM obsoleta ou cadastrada incorretamente."
+---
+
+# VFIS0120 — Exclusão Controlada de Tributação NCM
+
+> A operação **destrutiva isolada**: remover uma tributação de NCM obsoleta ou incorreta. A consulta e a manutenção normais continuam na [VFIS0110](/fiscal/vfis0110).
+
+## Objetivo
+
+Separar a exclusão de uma tributação NCM em uma rotina própria, para que a remoção seja consciente e não se confunda com a manutenção rotineira.
+
+## Pré-requisitos
+
+- NCM conferido na [VFIS0110](/fiscal/vfis0110) (código, vigência, alíquotas).
+- Confirmação de que itens, pedidos ou documentos abertos não dependem do cadastro.
+
+## Passo a passo
+
+1. Consulte o NCM na [VFIS0110](/fiscal/vfis0110) e confirme código, vigência e alíquotas.
+2. Verifique dependências (itens, pedidos, documentos abertos).
+3. Informe o **NCM exatamente como gravado**, clique em excluir e confirme.
+4. Consulte novamente na VFIS0110 e valide o comportamento dos itens afetados.
+
+## Observações importantes
+
+- **Não exclua apenas para mudar alíquota** — atualize o cadastro quando houver continuidade histórica.
+- NCM **em uso** ou de outra empresa pode ser recusado.
+- A confirmação **não substitui** a autorização fiscal interna.
+
+## Telas relacionadas
+
+- **[VFIS0110 (Tabelas Tributárias por NCM)](/fiscal/vfis0110):** consulta e manutenção normal do NCM.

@@ -6,7 +6,7 @@ description: "Gerir o pedido de compra e aprovar/rejeitar as sugestões de compr
 
 # VSUP0200 — Pedido de Compra
 
-> Gerir o **pedido de compra** (capa + itens) enviado ao fornecedor e **aprovar/rejeitar as sugestões de compra** geradas pelo MRP. Ao adicionar um item, o backend resolve automaticamente preço, %IPI e UM interna.
+> Gerir o **pedido de compra** (capa + itens) enviado ao fornecedor e **aprovar/rejeitar as sugestões de compra** geradas pelo MRP. Ao adicionar um item, o sistema resolve automaticamente preço, %IPI e UM interna.
 
 ## Objetivo
 
@@ -25,7 +25,7 @@ Emitir pedidos de compra com defaults automáticos e converter sugestões do MRP
 
 ## Observações importantes
 
-- Aprovar uma sugestão gera um `purchase_order` (origem MRP) e torna a ordem planejada firme — só suprimentos firmes entram no *netting* do MRP.
+- Aprovar uma sugestão gera um **pedido de compra** (origem MRP) e torna a ordem planejada firme — só suprimentos firmes entram no cálculo de necessidade líquida do MRP.
 - O preço vem da **Tabela de Preço de Compra** (VSUP0120), o %IPI da classificação fiscal e a UM interna das conversões (VSUP0110).
 
 ## Telas relacionadas

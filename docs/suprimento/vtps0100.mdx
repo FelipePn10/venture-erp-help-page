@@ -1,0 +1,35 @@
+---
+sidebar_position: 10
+title: "VTPS0100 — Serviços de Terceiros"
+description: "Visão geral dos serviços de terceiros: preços por item×fornecedor×operação e ordens de serviço (OF → requisição → OC)."
+---
+
+# VTPS0100 — Serviços de Terceiros
+
+> O ponto de entrada da **industrialização por terceiros**: os preços de serviço por item×fornecedor×operação e as ordens de serviço que nascem da OF e seguem para requisição e pedido de compra.
+
+## Objetivo
+
+Consolidar a subcontratação de operações: precificar o serviço, gerar a ordem a partir da ordem de fabricação e acompanhar o encadeamento até a execução.
+
+## Pré-requisitos
+
+- Fornecedor de serviço e item cadastrados.
+- Operação do roteiro que será terceirizada.
+
+## Fluxo geral
+
+1. **Preços** — mantenha o preço do serviço por item, fornecedor e operação ([VTER0100](/suprimento/vter0100)).
+2. **Ordem de serviço** — gere a partir da OF; o encadeamento é `OF → requisição → pedido de compra → execução` ([VTER0200](/suprimento/vter0200)).
+3. **Remessas e retornos** — registre os movimentos logísticos ([VTER0300](/suprimento/vter0300)).
+4. **Conversões globais** — mantenha os fatores de unidade usados no custeio ([VTER0400](/suprimento/vter0400)).
+
+## Observações importantes
+
+- A subcontratação conecta a produção (OF) ao suprimento (requisição/OC) — trate os preços antes de gerar ordens.
+
+## Telas relacionadas
+
+- **[VTER0100 (Preços de Serviços)](/suprimento/vter0100):** tabela de preços de serviço.
+- **[VTER0200 (Ordens de Serviço)](/suprimento/vter0200):** ordens geradas pela OF.
+- **[VTER0300 (Remessas e Retornos)](/suprimento/vter0300)** e **[VTER0400 (Conversões Globais)](/suprimento/vter0400).**

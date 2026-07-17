@@ -1,0 +1,40 @@
+---
+sidebar_position: 27
+title: "VBOM0100 — Cabeçalhos de Estrutura (BOM)"
+description: "Versão, tipo (engenharia/manufatura) e status (rascunho → aprovada → obsoleta) da estrutura por item."
+---
+
+# VBOM0100 — Cabeçalhos de Estrutura (BOM)
+
+> O cadastro de plataforma que versiona a estrutura do produto: **tipo** (engenharia/manufatura) e **status** (rascunho → aprovada → obsoleta) por item.
+
+## Objetivo
+
+Manter os cabeçalhos versionados das estruturas, garantindo que cada item tenha uma versão vigente aprovada e um histórico de versões obsoletas.
+
+## Pré-requisitos
+
+- Item cadastrado ([VENT0200](/engenharia/vent0200)).
+
+## Passo a passo
+
+1. Crie o **cabeçalho** para o item, escolhendo o **Tipo** (Engenharia/Manufatura, padrão Manufatura) e a **Vigência**.
+2. Conduza o **Status**: **Rascunho** durante a edição, **Aprovada** para liberar, **Obsoleta** ao aposentar.
+
+## Status
+
+| Status | Significado |
+|--------|-------------|
+| **Rascunho** | Em edição — não deve alimentar MRP/produção. |
+| **Aprovada** | Vigente — liberada para uso. |
+| **Obsoleta** | Aposentada — mantida como histórico. |
+
+## Observações importantes
+
+- Só a versão **Aprovada** deve ser consumida por MRP e ordens de produção.
+- Esta rotina e a **[VENG0300](/engenharia/veng0300)** cobrem o versionamento da BOM — use a que aparecer no seu menu.
+
+## Telas relacionadas
+
+- **[VENG0300 (Cabeçalho e Revisão de Estrutura)](/engenharia/veng0300):** controle de vigência e status.
+- **[VENT0210 (Estrutura de Produtos)](/engenharia/vent0210):** componentes da estrutura.

@@ -15,7 +15,7 @@ Evitar planejar produção em horários de máquina parada, mantendo planos e or
 ## Passo a passo
 
 1. Crie um **plano**: máquina, centro de trabalho, **frequência** (Diária / Semanal / Mensal / Personalizada), intervalo em dias e horas estimadas de parada.
-2. **Gerar ordens** (por horizonte de dias) cria ordens **Planejadas** de forma idempotente (não duplica plano + data).
+2. **Gerar ordens** (por horizonte de dias) cria ordens **Planejadas** de forma protegido contra duplicidade (não duplica plano + data).
 3. Avance a ordem: **Planejada → Em execução** (registra início) **→ Concluída** (registra horas reais e término).
 
 ## Telas relacionadas

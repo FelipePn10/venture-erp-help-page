@@ -1,0 +1,35 @@
+---
+sidebar_position: 7
+title: "VCAL0200 — Dias Úteis Prometidos por Item"
+description: "Consultar o calendário mensal efetivo usado no cálculo de promessa de entrega de um item."
+---
+
+# VCAL0200 — Dias Úteis Prometidos por Item
+
+> Mostra exatamente **quais dias úteis** entram no cálculo da promessa de entrega de um item em um mês — o calendário efetivo, item a item.
+
+## Objetivo
+
+Confirmar o calendário mensal que o sistema usa para prometer prazos de um item (e de sua configuração), considerando o calendário industrial e as exceções específicas do item.
+
+## Pré-requisitos
+
+- Item cadastrado; máscara de configuração quando aplicável.
+- Calendário industrial base ([VCAL0100](/cadastros/vcal0100)).
+
+## Passo a passo
+
+1. Informe **item**, **máscara**, **ano** e **mês**.
+2. Para item sem configuração, use a **máscara vazia** aceita pelo cadastro; quando o campo exigir valor, use o identificador de máscara definido no item — **nunca uma máscara inventada**.
+3. Analise os **dias úteis gravados** que participam do cálculo de promessa.
+4. Compare o mês com a [VCAL0100](/cadastros/vcal0100) e com as exceções do item.
+
+## Observações importantes
+
+- Uma **lista vazia** significa ausência de dias configurados — não deve ser preenchida manualmente pela interface.
+- Ano/mês inválido, item inexistente ou máscara incompatível retornam erro.
+
+## Telas relacionadas
+
+- **[VCAL0100 (Calendário Industrial)](/cadastros/vcal0100):** calendário base e feriados.
+- **[VDPR0100 (Promessa de Entrega)](/comercial/vdpr0100):** usa os dias úteis na data prometida.

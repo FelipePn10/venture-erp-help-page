@@ -1,0 +1,36 @@
+---
+sidebar_position: 24
+title: "VSUP0650 — Histórico de Movimentos de Compra"
+description: "Consultar a rastreabilidade consolidada de movimentos de compra por fornecedor e item."
+---
+
+# VSUP0650 — Histórico de Movimentos de Compra
+
+> A tela **consultiva** que consolida as compras gravadas por fornecedor e item — para avaliar relacionamento, recorrência e evolução de preço.
+
+## Objetivo
+
+Rastrear o histórico de aquisições, comparando fornecedores para um item ou a evolução de um fornecedor, sem alterar nada.
+
+## Pré-requisitos
+
+- Movimentos de compra gravados.
+
+## Passo a passo
+
+1. Informe o **fornecedor** para avaliar relacionamento, recorrência ou evolução de preço.
+2. Informe o **item** para comparar aquisições entre fornecedores (use ambos para o vínculo específico).
+3. Comece com **limite baixo (100)** e execute **Listar**.
+4. Confira pedido/documento de origem, data, quantidade, unidade, preço, moeda e fornecedor antes de usar a linha como evidência.
+5. Aumente o limite apenas quando o período necessário não foi coberto.
+
+## Observações importantes
+
+- **Nenhuma ação altera estoque, pedido ou financeiro** — é somente consulta.
+- Movimento histórico **não** transforma automaticamente um vínculo em preferencial (compare com [VSUP0670](/compras/vsup0670)).
+- Resultado vazio significa ausência de movimentos para os filtros e a empresa.
+
+## Telas relacionadas
+
+- **[VSUP0670 (Itens e Qualidade do Fornecedor)](/compras/vsup0670):** vínculo item-fornecedor.
+- **[VSUP0680 (Fontes de Preços de Compra)](/compras/vsup0680):** usa o histórico para formar preços.

@@ -1,0 +1,48 @@
+---
+sidebar_position: 4
+title: "VVND0300 — Orçamento de Venda"
+description: "Registrar a proposta comercial (capa + itens), acompanhar a carteira e converter o saldo aberto em pedido de venda."
+---
+
+# VVND0300 — Orçamento de Venda
+
+> A etapa de **negociação** antes do pedido: guarda a intenção da venda (validade, probabilidade, condições, frete, descontos) e, quando o cliente aprova, é **convertida em pedido**, copiando apenas o **saldo aberto** dos itens.
+
+## Objetivo
+
+Registrar e acompanhar oportunidades comerciais (a carteira), calculando o **valor ponderado** pela probabilidade de fechamento. O orçamento é a proposta; o pedido é o compromisso.
+
+## Pré-requisitos
+
+- **Cliente** cadastrado ([VCLI0500](/cliente/vcli0500)).
+- **Itens** cadastrados ([VENT0200](/engenharia/vent0200)).
+- **Condição de pagamento** ([VFIN0110](/financeiro/vfin0110)), quando aplicável.
+
+## Passo a passo
+
+1. Clique em **Novo orçamento** e informe estabelecimento, cliente, tipo (VENDA, NEGOCIACAO, CONSULTA…), validade, probabilidade % e demais condições. Nasce como **Rascunho (R)**.
+2. Abra o orçamento e adicione **itens** (item, quantidade, preço, desconto, data de entrega). Totais e valor ponderado são calculados pelo sistema.
+3. Quando aprovado, clique em **Converter em pedido** — cria o pedido de venda com o **saldo aberto** e registra o vínculo (**→ Pedido N**).
+4. Alternativas: **Atender** encerra a proposta sem gerar pedido; **Cancelar** (exige motivo) mantém o registro; **Descancelar** reabre.
+
+## Campos principais
+
+| Campo | Obrigatório | Função |
+|-------|-------------|--------|
+| Estabelecimento | Sim | Empresa emissora |
+| Cliente | Sim | Destinatário da proposta |
+| Tipo | Não | VENDA, NEGOCIACAO, CONSULTA, API_TERCEIROS, FOCCOPORTAL, IMPORTADO |
+| Válido até | Não | Prazo de validade |
+| Probabilidade % | Não | Peso do valor ponderado da carteira |
+
+## Observações importantes
+
+- **Não** emite NF-e nem autoriza documento fiscal — o campo **Venda NFC-e** apenas prepara a intenção fiscal que o pedido/faturamento consome depois.
+- A **conversão é bloqueada** para orçamentos cancelados, expirados, atendidos, do tipo CONSULTA, bloqueados comercialmente ou já convertidos.
+- Itens só podem ser adicionados/cancelados enquanto o orçamento está em **Rascunho**.
+
+## Telas relacionadas
+
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200):** destino da conversão do orçamento.
+- **[VVND0100 (Divisão de Vendas)](/comercial/vvnd0100):** organização comercial associável.
+- **[VCLI0500 (Cadastro de Cliente)](/cliente/vcli0500):** origem do cliente da proposta.

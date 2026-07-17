@@ -1,0 +1,35 @@
+---
+sidebar_position: 9
+title: "VVND0600 — Análise, Atendimento e Conferência de Pedidos"
+description: "Executar as decisões pós-cadastro do pedido de venda: analisar, atender, conferir e registrar motivo de atraso."
+---
+
+# VVND0600 — Análise, Atendimento e Conferência de Pedidos
+
+> O **workflow** de decisões que controlam o pedido depois de cadastrado: **analisar**, **atender**, **conferir** e registrar **motivo de atraso** — sempre na ordem prevista pelo processo comercial.
+
+## Objetivo
+
+Conduzir o pedido de venda ([VVND0200](/pcp/vvnd0200)) pelas etapas de decisão comercial e operacional, mantendo a rastreabilidade de cada transição.
+
+## Pré-requisitos
+
+- Pedido existente na [VVND0200](/pcp/vvnd0200).
+
+## Passo a passo
+
+1. **Analisar**: informe área, decisão e justificativa. A análise **não substitui crédito**.
+2. **Atender**: registre motivo e data efetiva somente quando o pedido puder seguir.
+3. **Conferir**: informe situação e justificativa após validar cliente, itens, preços, impostos, quantidades e datas.
+4. **Motivo de atraso**: registre motivo e ação de **reprogramar**, conforme a regra, quando a promessa não puder ser cumprida.
+
+## Observações importantes
+
+- **Reabra o pedido depois de cada ação** para confirmar o novo estado.
+- Transição fora de ordem, pedido cancelado, bloqueio comercial ou situação inválida retornam erro.
+- Após uma falha, **consulte o histórico antes de repetir** para evitar eventos duplicados.
+
+## Telas relacionadas
+
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200):** cadastro e ciclo do pedido.
+- **[VPDV0253 (Console de Acompanhamento)](/pdv/vpdv0253):** posição da carteira.

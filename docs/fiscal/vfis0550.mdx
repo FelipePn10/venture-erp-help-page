@@ -8,8 +8,6 @@ description: "Gestão do processo de restituição e ressarcimento de ICMS-ST pa
 
 > Tela de gestão do processo de restituição e ressarcimento de ICMS-ST (Substituição Tributária). Realiza o cálculo do valor a restituir com base nas notas de saída com ST, gera os documentos fiscais de ressarcimento e registra os creditos na apuração.
 
-**Código fonte:** `src/modules/fiscal/icms-st-restitution/vfis0550.vue`
-
 ## Objetivo
 
 A VFIS0550 gerencia o processo de restituição e ressarcimento do ICMS Substituição Tributária (ICMS-ST). Quando uma empresa realiza vendas interestaduais de produtos sujeitos a ST, o ICMS-ST já foi recolhido antecipadamente pelo fornecedor (substituto tributário). Ao revender a mercadoria para outro estado, a empresa (substituida) tem direito a restituição do ICMS-ST já pago, pois o imposto sera devido no destino, não na origem. Esta tela realiza o cálculo automático do valor a restituir com base nas NFe de saída com ST, gera a Nota Fiscal de Ressarcimento (modelo 55 ou 65) e registra o crédito na apuração do ICMS (VFIS0530) para abatimento do imposto a pagar.

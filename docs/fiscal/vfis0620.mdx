@@ -1,0 +1,51 @@
+---
+sidebar_position: 32
+title: "VFIS0620 — Manifestação do Destinatário e Inutilização"
+description: "Transmitir à SEFAZ eventos de manifestação de NF-e recebida e inutilizar faixas de numeração própria não usadas."
+---
+
+# VFIS0620 — Manifestação do Destinatário e Inutilização
+
+> Dois eventos oficiais transmitidos à SEFAZ: a **manifestação** de uma NF-e recebida (ciência, confirmação, desconhecimento…) e a **inutilização** de uma faixa de numeração própria que nunca foi usada.
+
+## Objetivo
+
+Cumprir as obrigações de destinatário (manifestar as notas recebidas) e regularizar faixas de numeração que ficaram sem uso, usando a configuração fiscal e o token da integração já cadastrados.
+
+## Pré-requisitos
+
+- Configuração fiscal e integração (Focus NF-e) válidas, no ambiente correto.
+
+## Passo a passo
+
+### Manifestação
+
+1. Confirme a **Chave de acesso** (44 dígitos) na NF-e consultada.
+2. Escolha o **Tipo de manifestação**, informe a chave e a **Justificativa** (quando exigida).
+3. Execute **uma única vez** e arquive o protocolo/status retornado.
+
+### Inutilização
+
+1. Confirme no sequencial fiscal que **nenhum número da faixa** foi autorizado, cancelado ou usado.
+2. Informe **Série**, **Número inicial**, **Número final** (maior ou igual ao inicial) e uma **Justificativa** objetiva.
+3. Registre o protocolo — **não reutilize a faixa**.
+
+## Tipos de manifestação
+
+| Tipo | Quando usar |
+|------|-------------|
+| **Ciência da operação** | Reconhece que a nota existe, sem confirmar ainda a operação. |
+| **Confirmação da operação** | Confirma que a compra/entrada realmente ocorreu. |
+| **Desconhecimento da operação** | A nota foi emitida contra o seu CNPJ sem que a operação exista. |
+| **Operação não realizada** | A operação foi cancelada/não concretizada. |
+
+## Observações importantes
+
+- **Não manifeste desconhecimento** antes de conferir CNPJ, fornecedor e escrituração.
+- A **inutilização não cancela** NF-e existente — serve só para faixas nunca usadas.
+- A tela recusa token ausente, ambiente incorreto, chave inválida, justificativa insuficiente ou faixa já utilizada. Em caso de falha de comunicação, **consulte a SEFAZ antes de repetir**.
+
+## Telas relacionadas
+
+- **[VFIS0210 (Eventos de NF-e)](/fiscal/vfis0210):** cancelamento e carta de correção.
+- **[VFIS0610 (Importação de NF-e por Chave)](/fiscal/vfis0610):** entrada da nota manifestada.

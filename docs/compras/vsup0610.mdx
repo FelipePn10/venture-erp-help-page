@@ -1,0 +1,45 @@
+---
+sidebar_position: 20
+title: "VSUP0610 — Alçadas e Parâmetros de Compras"
+description: "Manter limites de aprovação por empresa/escopo/moeda e os parâmetros operacionais de suprimentos."
+---
+
+# VSUP0610 — Alçadas e Parâmetros de Compras
+
+> Define **quem pode aprovar quanto**: limites de aprovação por empresa, escopo e moeda — e os parâmetros que governam a operação de compras.
+
+## Objetivo
+
+Estabelecer as **alçadas** (aprovação automática até um teto, bloqueio acima de outro) e os parâmetros operacionais que padronizam o comportamento de suprimentos.
+
+## Pré-requisitos
+
+- Perfil **administrador** para cadastrar alçadas e alterar parâmetros.
+- Empresa e escopos definidos.
+
+## Passo a passo
+
+1. Clique em **Cadastrar alçada** e informe o **Escopo**, a **Moeda**, o valor de **Aprovação automática**, o valor de **Bloqueio** e a **Vigência**.
+2. Em **Parâmetros**, consulte por **Domínio** e use **Salvar** para ajustar cada parâmetro.
+
+## Campos da alçada
+
+| Campo | Função |
+|-------|--------|
+| **Escopo** | Onde a alçada vale (ex.: pedido de compra). |
+| **Moeda** | Moeda dos limites (ex.: Real). |
+| **Aprovação automática** | Aprova sozinho até este valor. |
+| **Bloqueio** | Bloqueia acima deste valor. |
+| **Vigência (de/até)** | Período de validade da alçada. |
+
+Cada **parâmetro** tem **Domínio**, **Chave**, **Valor**, **Tipo do valor** e **Descrição**.
+
+## Observações importantes
+
+- **Cadastro de alçada e alteração de parâmetros exigem administrador.**
+- A alçada define o ponto em que o pedido passa a exigir **autorização superior** ([VPDC0210](/suprimento/vpdc0210)).
+
+## Telas relacionadas
+
+- **[VPDC0210 (Consulta, Aprovação e Recebimento)](/suprimento/vpdc0210):** aplica a alçada na aprovação.
+- **[VSUP0630 (Tolerâncias de Pedido)](/compras/vsup0630):** tolerâncias de desvio no recebimento.

@@ -1,0 +1,44 @@
+---
+sidebar_position: 35
+title: "VFIS0660 — Consultas Pontuais de Parâmetros Fiscais"
+description: "Localizar diretamente cadastros fiscais (dispositivos, CFOP, parâmetros ICMS/IPI, ajustes, apuração) por chave e filtros."
+---
+
+# VFIS0660 — Consultas Pontuais de Parâmetros Fiscais
+
+> A busca cirúrgica do fiscal: localizar **um** registro fiscal específico — dispositivo legal, CFOP, parâmetro ICMS/IPI, código de ajuste, linha de apuração — sem percorrer a listagem ampla. Somente leitura.
+
+## Objetivo
+
+Validar rapidamente um cadastro fiscal por sua chave quando a listagem das VFIS0300–VFIS0540 não é prática, sempre no contexto da empresa autenticada.
+
+## Pré-requisitos
+
+- Conhecer a **chave** (código funcional ou ID técnico) do registro a consultar.
+
+## Passo a passo
+
+1. Selecione a consulta correspondente ao dado a validar.
+2. **Copie a chave da tela de origem** — não confunda código funcional com ID técnico.
+3. Execute e confira situação, vigência, UF, operação e descrição.
+4. Um resultado vazio significa que a chave não existe para a empresa atual — volte à rotina de cadastro adequada.
+
+## Consultas disponíveis
+
+| Grupo | Chave |
+|-------|-------|
+| Dispositivos legais | por código ou por tipo (ICMS, IPI, PIS, COFINS, laudo) |
+| CFOP | por código ou por direção (ENTRADA/SAIDA) |
+| Parâmetros ICMS/IPI | por ID, UF, item ou NCM |
+| Ajustes e apuração | motivo DAPI, códigos de ajuste, linha e lançamento resumo |
+| Simples Nacional | por competência (`AAAA-MM`) e anexo |
+
+## Observações importantes
+
+- **Uma consulta pontual não calcula o imposto final** e não substitui a simulação fiscal do documento.
+- Regras por item, NCM e UF podem coexistir — respeite a **precedência** definida no sistema.
+
+## Telas relacionadas
+
+- **[VFIS0300–VFIS0360 (Classificações e Parâmetros)](/fiscal/vfis0300):** cadastro dos parâmetros consultados.
+- **[VFIS0540 (Lançamentos de Apuração)](/fiscal/vfis0540):** notas vinculadas a um lançamento resumo.

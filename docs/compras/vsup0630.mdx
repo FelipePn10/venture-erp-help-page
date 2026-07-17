@@ -1,0 +1,46 @@
+---
+sidebar_position: 22
+title: "VSUP0630 — Tolerâncias de Pedido de Compra"
+description: "Definir faixas e ações (avisar/bloquear) para desvios de quantidade e preço no pedido de compra, e avaliar cenários."
+---
+
+# VSUP0630 — Tolerâncias de Pedido de Compra
+
+> Define **quanto desvio é aceitável** em quantidade e preço — e o que fazer quando estoura: **avisar** ou **bloquear**.
+
+## Objetivo
+
+Parametrizar as tolerâncias do pedido de compra por tipo, aplicação, faixa e fornecedor, aplicando a ação correta quando o recebido/faturado difere do pedido.
+
+## Pré-requisitos
+
+- Fornecedores cadastrados.
+
+## Passo a passo
+
+1. Clique em **Cadastrar** e defina o **Tipo de tolerância**, o **Aplica-se a**, a **Faixa**, o **Valor** e a **Ação**.
+2. Use **Avaliar** para simular um valor **esperado** × **realizado** antes de ativar.
+3. Marque **Ativa** para colocar a regra em uso.
+
+## Campos e opções
+
+| Campo | Opções |
+|-------|--------|
+| **Tipo de tolerância** | **Quantidade** · **Preço do item** · **Total de produtos**. |
+| **Aplica-se a** | **Aviso de recebimento** · **Nota de entrada** · **Todos**. |
+| **Tipo de valor** | **Percentual** · **Fixo**. |
+| **Ação** | **Avisar** · **Bloquear**. |
+| **Faixa (mín./máx.)** | Faixa de valor a que a regra se aplica. |
+| **Tolerância** | Desvio permitido (percentual ou fixo). |
+| **Fornecedor** | Restringe a regra a um fornecedor (opcional). |
+
+## Observações importantes
+
+- **Simule com Avaliar** antes de ativar — a ação **Bloquear** impede a operação fora da faixa; **Avisar** apenas alerta.
+- A **[VPCT0100](/suprimento/vpct0100)** cobre a mesma capacidade — use a que aparecer no seu menu.
+
+## Telas relacionadas
+
+- **[VPCT0100 (Tolerâncias)](/suprimento/vpct0100):** cadastro equivalente.
+- **[VSUP0620 (EDI de Fornecedores)](/compras/vsup0620):** usa as tolerâncias na confirmação.
+- **[VPDC0210 (Recebimento)](/suprimento/vpdc0210):** aplica a tolerância no recebimento físico.

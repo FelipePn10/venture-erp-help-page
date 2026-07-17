@@ -1,0 +1,46 @@
+---
+sidebar_position: 6
+title: "VVND0500 — Metas de Vendas"
+description: "Definir metas comerciais por período, representante e cliente e acompanhar previsto × realizado, premiação e saldos."
+---
+
+# VVND0500 — Metas de Vendas
+
+> Define e acompanha **objetivos comerciais** por período, representante, grupo e cliente — por valor ou quantidade — comparando **previsto × realizado**, atingimento, premiação e saldos excedentes.
+
+## Objetivo
+
+Dar visibilidade e cobrança à força de vendas. A base **SALES** calcula o realizado pelos pedidos de venda no período; **INVOICING** fica registrada para fechar por faturamento conforme a integração fiscal evoluir.
+
+## Pré-requisitos
+
+- Pelo menos um **Período** cadastrado (aba **Períodos**).
+- **Representante** cadastrado ([VVND0400](/comercial/vvnd0400)).
+
+## Passo a passo
+
+1. Na aba **Períodos**, crie a janela da meta: tipo (Mensal/Semanal/Customizado), início e fim (período invertido é rejeitado).
+2. Em **Nova meta**, informe representante, período, base (Vendas/Faturamento) e premiação %.
+3. Na aba **Itens da meta**, adicione linhas — cada linha aponta **exatamente um alvo**: item, classificação **ou** grupo — com quantidade, valor, unidade e bônus.
+4. Use **Relatório** para consolidar previsto × realizado, percentual e situação (OPEN / ACHIEVED / NO_TARGET).
+
+## Campos principais
+
+| Campo | Obrigatório | Função |
+|-------|-------------|--------|
+| Representante | Sim | Dono da meta |
+| Período | Sim | Janela de apuração |
+| Base de análise | Não | SALES (pedidos) ou INVOICING (faturamento) |
+| Premiação % | Não | Bônus sobre o atingimento |
+| Alvo da linha | Sim | Item **ou** classificação **ou** grupo — nunca mais de um |
+
+## Observações importantes
+
+- **Regra do alvo único**: informar mais de um alvo na mesma linha é rejeitado.
+- Percentuais negativos e período invertido são bloqueados.
+- Saldos excedentes (realizado acima da meta) podem ser considerados no período seguinte.
+
+## Telas relacionadas
+
+- **[VVND0400 (Representantes)](/comercial/vvnd0400):** dono das metas e base de comissão.
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200):** origem do realizado na base SALES.

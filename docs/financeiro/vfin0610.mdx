@@ -1,0 +1,39 @@
+---
+sidebar_position: 11
+title: "VFIN0610 — Remessa Bancária CNAB 240"
+description: "Gerar o arquivo .rem no padrão CNAB 240 a partir do convênio bancário e dos títulos a enviar ao banco."
+---
+
+# VFIN0610 — Remessa Bancária CNAB 240
+
+> Gera o arquivo **`.rem` no padrão CNAB 240** a partir dos dados reais do convênio e dos títulos que serão enviados ao banco para cobrança. A tela baixa exatamente o conteúdo produzido pelo sistema.
+
+## Objetivo
+
+Produzir o arquivo de **remessa bancária** que registra títulos no banco (cobrança). Requer os dados do convênio e a lista de títulos com o sacado completo.
+
+## Pré-requisitos
+
+- Convênio bancário confirmado com o banco: código, agência, conta, convênio, sequência do arquivo e regras da carteira.
+- Títulos existentes no financeiro com dados do sacado completos.
+- Permissão de **gestão financeira** (operação ADMIN).
+
+## Passo a passo
+
+1. Selecione **Gerar remessa**.
+2. Nos **dados do convênio**, preencha banco, agência e dígito, conta e dígito, razão social e CNPJ/CPF da empresa, convênio e **sequência do arquivo** (não reutilize uma sequência já aceita pelo banco).
+3. Na lista de **títulos**, mantenha uma linha por cobrança: nosso número, documento, vencimento e emissão, valor, nome do sacado, tipo de pessoa (CPF ou CNPJ), documento sem formatação, endereço, bairro, cidade, UF e CEP.
+4. Confira valores, vencimentos e documentos contra a [VFIN0210](/financeiro/vfin0210).
+5. Clique em **Gerar remessa** — o arquivo **`remessa.rem`** é baixado.
+6. **Valide o arquivo no homologador do banco** antes de transmiti-lo e arquive o protocolo.
+
+## Observações importantes
+
+- **Gerar o arquivo não significa que o banco registrou os títulos** — a validação bancária é uma etapa externa.
+- Datas inválidas, campos incompatíveis com o leiaute, documentos incompletos ou configuração incorreta produzem rejeição local ou bancária.
+- O exemplo exibido é um **modelo editável**: substitua todos os valores pelos dados reais.
+
+## Telas relacionadas
+
+- **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** origem dos títulos enviados na remessa.
+- **[VFIN0620 (Conciliação Bancária por OFX)](/financeiro/vfin0620):** conciliação do retorno bancário.

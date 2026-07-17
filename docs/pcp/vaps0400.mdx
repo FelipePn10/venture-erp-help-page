@@ -1,0 +1,48 @@
+---
+sidebar_position: 34
+title: "VAPS0400 — Perfil de Operadores (APS)"
+description: "Manter contatos, funções, centro de custo, supervisão e limite de crédito dos operadores usados no sequenciamento."
+---
+
+# VAPS0400 — Perfil de Operadores (APS)
+
+> O perfil do operador para o APS: **contatos**, **funções**, centro de custo e os indicadores de **supervisor/gerente** que qualificam quem executa cada operação.
+
+## Objetivo
+
+Enriquecer o cadastro de funcionários com os dados que o sequenciamento usa — funções habilitadas, centro de custo e hierarquia — para alocar operações a operadores aptos.
+
+## Pré-requisitos
+
+- Funcionário cadastrado ([VFUN0100](/cadastros/vfun0100)).
+- Perfil **administrador** para salvar/alterar (a consulta é liberada a qualquer usuário).
+
+## Passo a passo
+
+1. Informe o **funcionário** para consultar o perfil.
+2. Em **Salvar perfil**, informe os **contatos**, as **funções**, o **Limite de crédito** e a **Validade** (opcional).
+3. Ajuste **contatos** e **funções** individualmente conforme necessário.
+
+## Campos
+
+**Contato**: **Tipo** (ex.: e-mail), **Valor** e **Principal**.
+
+**Função**:
+
+| Campo | Função |
+|-------|--------|
+| **Nome da função** | Ex.: Operador. |
+| **Centro de custo** | Centro de custo da função. |
+| **Supervisor** | Marca supervisor. |
+| **Gerente** | Marca gerente. |
+
+## Observações importantes
+
+- **Salvar exige administrador**; a consulta é liberada.
+- Os indicadores **Supervisor/Gerente** afetam permissões e a alocação no sequenciamento.
+
+## Telas relacionadas
+
+- **[VFUN0100 (Funcionários)](/cadastros/vfun0100):** cadastro base do funcionário.
+- **[VAPS0500 (Perfil Industrial de Máquinas)](/pcp/vaps0500):** perfil equivalente para máquinas.
+- **[VAPS0600 (Sequenciamento)](/pcp/vaps0600):** aloca operações aos operadores.

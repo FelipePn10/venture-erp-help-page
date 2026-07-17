@@ -1,0 +1,46 @@
+---
+sidebar_position: 30
+title: "VENG0500 — Consulta e Manutenção Avançada de Estruturas"
+description: "Alterar componentes (perda, coproduto, substitutos) e consultar filhos, explosão multinível e onde-usado."
+---
+
+# VENG0500 — Consulta e Manutenção Avançada de Estruturas
+
+> As consultas de engenharia sobre a BOM — **filhos diretos**, **explosão multinível** (com data de efetividade) e **onde-usado** — além da alteração pontual de componentes com perda, coproduto e grupos de substituição.
+
+## Objetivo
+
+Analisar e manter a estrutura em profundidade: navegar a árvore por efetividade, descobrir em quais produtos um componente participa e ajustar componentes com segurança.
+
+## Pré-requisitos
+
+- Item pai e componentes já cadastrados ([VENT0210](/engenharia/vent0210)).
+
+## Passo a passo
+
+1. **Filhos diretos**: informe o **item pai** para conferir apenas o primeiro nível.
+2. **Consultar estrutura**: informe **Item**, **Máscara** (opcional), **Data de efetividade** e a quantidade de **Níveis** (**0 = todos os níveis**).
+3. **Onde usado**: informe o **componente** para a pesquisa inversa — em quais produtos ele participa.
+4. **Alterar componente**: antes, consulte a árvore e confirme que a mudança **não cria ciclo**; depois, repita a consulta na mesma data de efetividade.
+
+## Campos da alteração
+
+| Campo | Função |
+|-------|--------|
+| **Item pai / Componente** | O par que está sendo alterado. |
+| **Quantidade / Unidade** | Quanto do componente e em que unidade. |
+| **Perda (%) / Fórmula de perda** | Perda de processo. |
+| **Posição** | Sequência do componente. |
+| **Início / Fim de vigência** | Efetividade da alteração. |
+| **Coproduto / Quantidade fixa** | Marca coproduto e quantidade fixa. |
+| **Grupo / Prioridade de substituição** | Substitutos do componente. |
+
+## Observações importantes
+
+- A **Data de efetividade** determina qual versão da estrutura é retornada.
+- A tela recusa **ciclo**, quantidade inválida ou vigência conflitante — **não repita a gravação sem reler a árvore** após um erro.
+
+## Telas relacionadas
+
+- **[VENT0210 (Estrutura de Produtos)](/engenharia/vent0210):** cadastro base da BOM.
+- **[VENG0300 (Cabeçalho de Estrutura)](/engenharia/veng0300):** versão e status.

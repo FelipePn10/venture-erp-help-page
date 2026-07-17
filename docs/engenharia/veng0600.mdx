@@ -1,0 +1,36 @@
+---
+sidebar_position: 31
+title: "VENG0600 — Rede de Precedência do Roteiro"
+description: "Manter dependências predecessor-sucessor e sobreposição entre operações de um roteiro de fabricação."
+---
+
+# VENG0600 — Rede de Precedência do Roteiro
+
+> Define **a ordem lógica** entre operações do roteiro — inclusive quando uma operação pode **começar antes** do término da anterior (sobreposição). Essa rede alimenta o lead time e o caminho crítico.
+
+## Objetivo
+
+Modelar as dependências entre operações de um roteiro, permitindo execução parcialmente simultânea, para que o cálculo de lead time e o caminho crítico reflitam a realidade da fábrica.
+
+## Pré-requisitos
+
+- Roteiro com operações cadastradas ([VENT0202](/engenharia/vent0202)).
+
+## Passo a passo
+
+1. Abra o roteiro e confirme os **IDs internos das operações**.
+2. Em **Definir dependência**, informe roteiro, **predecessora**, **sucessora** e **sobreposição %** (0 exige o término da predecessora; positivo permite simultaneidade parcial).
+3. Consulte novamente o detalhe/lead time do roteiro.
+4. Para retirar uma ligação, use **Remover dependência** com o mesmo par de IDs.
+
+## Observações importantes
+
+- **Não** ligue uma operação a ela mesma nem crie ciclo (direto ou indireto).
+- Os IDs são das **operações vinculadas ao roteiro**, não da biblioteca de operações.
+- Sobreposição incompatível, operação de outro roteiro ou ciclo são recusados.
+
+## Telas relacionadas
+
+- **[VENT0202 (Roteiro de Fabricação por Item)](/engenharia/vent0202):** operações que compõem a rede.
+- **[VENT0363 (Relatório de Tempos)](/engenharia/vent0363):** análise de tempos e lead time.
+- **[VPRO0210 (APS)](/pcp/vpro0210):** consome o sequenciamento resultante.

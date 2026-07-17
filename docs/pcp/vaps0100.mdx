@@ -1,0 +1,47 @@
+---
+sidebar_position: 32
+title: "VAPS0100 — Grupos e Parâmetros de Recursos (APS)"
+description: "Agrupar recursos e configurar calendário, localização, criticidade, centros de custo e capacidade por centro de trabalho."
+---
+
+# VAPS0100 — Grupos e Parâmetros de Recursos (APS)
+
+> A base do sequenciamento finito: **agrupa recursos** e configura, por recurso e por centro de trabalho, o calendário, a criticidade, os centros de custo e a **capacidade**.
+
+## Objetivo
+
+Organizar os recursos do chão de fábrica para o APS — quais recursos existem, como se agrupam e com que capacidade/calendário — para que o sequenciamento respeite a capacidade real.
+
+## Pré-requisitos
+
+- Recursos/máquinas cadastrados ([VMAQ0101](/engenharia/vmaq0101)).
+- Calendários de máquina ([VAPS0200](/pcp/vaps0200)) e centros de custo definidos.
+- Perfil **administrador** — criar grupo e configurar recurso/centro exigem administrador.
+
+## Passo a passo
+
+1. Clique em **Novo grupo de recursos** e informe **Código** e **Descrição** (ex.: "Máquinas de corte").
+2. Abra um recurso e, em **Sequenciamento**, defina o **Grupo**, o **Calendário**, a **Localização**, se é **Crítico** e se está **Ativo**.
+3. Abra o centro de trabalho e informe os **Centros de custo** (de máquina e de mão de obra) e a **Capacidade (horas)**.
+
+## Campos do recurso
+
+| Campo | Função |
+|-------|--------|
+| **Grupo** | Grupo a que o recurso pertence. |
+| **Calendário** | Calendário de disponibilidade ([VAPS0200](/pcp/vaps0200)). |
+| **Localização** | Localização física. |
+| **Crítico** | Marca recurso gargalo. |
+| **Ativo** | Disponível para sequenciamento. |
+
+## Observações importantes
+
+- Todas as **alterações exigem administrador**.
+- A **Criticidade** e a **Capacidade** influenciam diretamente o resultado do sequenciamento em [VAPS0600](/pcp/vaps0600).
+- A tela recusa excluir um grupo que ainda esteja em uso por recursos.
+
+## Telas relacionadas
+
+- **[VAPS0200 (Calendários de Máquinas)](/pcp/vaps0200):** disponibilidade semanal.
+- **[VAPS0600 (Sequenciamento)](/pcp/vaps0600):** consome grupos e parâmetros.
+- **[VPRO0210 (APS / Gantt)](/pcp/vpro0210):** visão operacional.

@@ -1,0 +1,34 @@
+---
+sidebar_position: 6
+title: "VPLA0300 — Parâmetros do Planejamento"
+description: "Consultar e manter os parâmetros numerados usados pelo MRP e pelo planejamento industrial."
+---
+
+# VPLA0300 — Parâmetros do Planejamento
+
+> Os "botões de calibração" do planejamento: parâmetros numerados, armazenados como texto e interpretados pelo MRP e pelo planejamento industrial.
+
+## Objetivo
+
+Consultar e ajustar os parâmetros que governam o comportamento do cálculo — política de lote, estoque de segurança, horizontes e chaves de comportamento — sem alterar o código do sistema.
+
+## Pré-requisitos
+
+- Conhecer o **número documentado** do parâmetro e o efeito que ele controla.
+
+## Passo a passo
+
+1. **Consulte a lista** e localize o número do parâmetro.
+2. **Abra pelo número** e confira descrição, valor atual e o tipo interpretado pelo MRP.
+3. Em **Alterar**, informe número e novo valor (o usuário atual é obtido da sessão).
+4. Reabra o parâmetro e **execute um cálculo controlado** para validar o efeito.
+
+## Observações importantes
+
+- Os valores são armazenados como **texto** e interpretados pelo domínio — não inclua símbolos ou formatação incompatível.
+- Alterar lote, estoque de segurança ou políticas de cálculo pode modificar **todas as sugestões futuras**; documente a mudança.
+
+## Telas relacionadas
+
+- **[VPLN0100 (Pipeline de Planejamento)](/planejamento/vpln0100):** onde os parâmetros regem o pipeline.
+- **[VMRP0100 (MRP)](/pcp/vmrp0100):** consumidor direto dos parâmetros.

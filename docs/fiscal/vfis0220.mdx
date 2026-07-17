@@ -8,8 +8,6 @@ description: "Cadastro de Conhecimento de Transporte Eletrônico com rateio de v
 
 > Tela de cadastro do Conhecimento de Transporte Eletrônico (CTe). Permite o registro local de CTes emitidos por transportadoras, com funcionalidade de rateio do valor do frete entre as notas fiscais vinculadas — por valor ou por peso — para composição precisa do custo das mercadorias.
 
-**Código fonte:** `src/modules/fiscal/cte/vfis0220.vue`
-
 ## Objetivo
 
 A VFIS0220 gerencia o registro de Conhecimentos de Transporte Eletrônicos recebidos de transportadoras. Embora a emissão do CTe propriamente dita ocorra na transportadora, o tomador do serviço (a empresa) precisa registrar o CTe internamente para: (a) apropriar o crédito de ICMS sobre o frete (quando aplicável), (b) ratear o custo do transporte entre as mercadorias transportadas, compondo o custo de aquisição, e (c) manter a rastreabilidade documental para fins de auditoria fiscal. A tela oferece dois modos de rateio: por **VALOR** (proporcional ao valor de cada nota fiscal) e por **PESO** (proporcional ao peso bruto de cada nota), atendendo as exigências contábeis e fiscais de apropriação de custos.

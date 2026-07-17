@@ -1,0 +1,33 @@
+---
+sidebar_position: 10
+title: "VAUD0100 — Log de Auditoria"
+description: "Consulta dos eventos de auditoria do sistema (somente ADMIN)."
+---
+
+# VAUD0100 — Log de Auditoria
+
+> O registro imutável de eventos do sistema. Consulta exclusiva de administrador, somente leitura.
+
+## Objetivo
+
+Consultar os **eventos de auditoria** que o ERP registra automaticamente a cada operação sensível — criações, alterações, aprovações e cancelamentos — para fins de conformidade e investigação.
+
+## Pré-requisitos
+
+- Perfil **ADMIN**; a tela é bloqueada para usuários comuns.
+
+## Passo a passo
+
+1. Abra o **Log de Auditoria**.
+2. Recorte por período e, se necessário, pelo usuário ou pela rota.
+3. Analise cada evento: autor, ação, alvo e instante.
+4. Exporte ou registre a evidência conforme a política interna — a auditoria **não é editável**.
+
+## Observações importantes
+
+- A auditoria é **append-only**: nenhum evento pode ser alterado ou apagado pela interface.
+- Para a consulta detalhada por usuário/rota/período, use a **[VADM0100 (Trilha de Auditoria)](/cadastros/vadm0100)**, que expõe os filtros completos.
+
+## Telas relacionadas
+
+- **[VADM0100 (Trilha de Auditoria)](/cadastros/vadm0100):** consulta filtrada dos mesmos eventos.

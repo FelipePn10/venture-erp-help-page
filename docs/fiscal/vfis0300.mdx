@@ -8,8 +8,6 @@ description: "Cadastro de Códigos Fiscais de Operações e Prestações (CFOP),
 
 > Tela de cadastro dos CFOPs (Códigos Fiscais de Operações e Prestações). Esses códigos de 4 digitos classificam cada operação fiscal e determinam o enquadramento tributário, a natureza da operação e comportamentos específicos como DIFAL, doação e ST.
 
-**Código fonte:** `src/modules/fiscal/cfop/vfis0300.vue`
-
 ## Objetivo
 
 A VFIS0300 centraliza o cadastro de todos os CFOPs utilizados pelo sistema. Cada CFOP e um código de 4 digitos definido pelo CONFAZ que classifica a natureza da operação fiscal — se e uma venda, uma compra, uma devolução, uma remessa para industrialização, um retorno, uma transferência, etc. O primeiro dígito indica a direção da operação: 1 e 5 para saídas dentro do estado; 2 e 6 para saídas interestaduais; 3 e 7 para entradas dentro do estado; 4 e 8 para entradas interestaduais. Além da descrição padrão, a VFIS0300 permite associar flags de comportamento que afetam o cálculo fiscal automático, como **DIFAL** (Diferencial de Alíquotas para operações interestaduais com consumidor final), **Doação** (operações sem valor comercial para fins de ICMS) e **ST** (Substituição Tributária).

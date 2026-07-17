@@ -1,0 +1,45 @@
+---
+sidebar_position: 4
+title: "VIMP0300 — Importação e Custo Nacionalizado"
+description: "Controlar o processo de importação: itens, despesas, rateio, recálculo e situação, formando o custo nacionalizado."
+---
+
+# VIMP0300 — Importação e Custo Nacionalizado
+
+> Do FOB ao custo na prateleira: reúne itens, moeda, câmbio e **despesas de importação**, rateia tudo e forma o **custo nacionalizado** de cada item.
+
+## Objetivo
+
+Controlar um processo de importação de ponta a ponta — itens, moeda/câmbio, frete, seguro e demais despesas — e **ratear** essas despesas sobre os itens para chegar ao custo nacionalizado usado no estoque e no custeio.
+
+## Pré-requisitos
+
+- Fornecedor (exterior) cadastrado.
+- Incoterm, moeda e câmbio definidos.
+- Itens da importação com peso e preço FOB.
+
+## Passo a passo
+
+1. **Crie o processo** informando empresa, fornecedor, referência, incoterm, moeda, câmbio e a **base de rateio** (Valor, Peso, etc.).
+2. Adicione os **itens** (código, quantidade, peso, preço FOB unitário) e as **despesas** (tipo, valor e se compõem o custo do item).
+3. **Recalcule** para distribuir as despesas sobre os itens conforme a base escolhida.
+4. Avance a **situação** do processo à medida que ele progride.
+
+## Campos-chave
+
+| Campo | Descrição |
+|-------|-----------|
+| **Incoterm** | Termo internacional (FOB, CIF, etc.). |
+| **Moeda / Câmbio** | Moeda e câmbio para conversão. |
+| **Base de rateio** | Base do rateio (valor, peso…). |
+| **Compõe custo** | Marca se a despesa **compõe** o custo do item. |
+
+## Observações importantes
+
+- Revise a **base de rateio** e a marcação **compõe custo** de cada despesa **antes** de recalcular.
+- O recálculo redistribui as despesas — refaça-o sempre que alterar itens ou despesas.
+
+## Telas relacionadas
+
+- **[VIMP0101 (Status Logístico)](/importacao/vimp0101)** e **[VIMP0200 (Console de Importação)](/importacao/vimp0200):** acompanhamento logístico do processo.
+- **[VCUS0100 / VCST0202 (Custos)](/pcp/vcus0100):** onde o custo nacionalizado se reflete.

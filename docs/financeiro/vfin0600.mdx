@@ -1,0 +1,47 @@
+---
+sidebar_position: 10
+title: "VFIN0600 — Adiantamentos de Clientes e Fornecedores"
+description: "Registrar antecipações financeiras, controlar o saldo e aplicá-lo em contas a pagar ou a receber."
+---
+
+# VFIN0600 — Adiantamentos de Clientes e Fornecedores
+
+> Controla **dinheiro recebido antecipadamente** de clientes e **valores pagos antecipadamente** a fornecedores, mantendo saldo, aplicações e vínculo com a conta bancária. O saldo é consumido ao ser **aplicado** em um título existente.
+
+## Objetivo
+
+Registrar o movimento financeiro de uma antecipação e, posteriormente, **abater** esse saldo em uma conta a pagar ou a receber. A rotina não cria um título fictício — ela registra o adiantamento e depois consome o saldo em um título real.
+
+## Pré-requisitos
+
+- Conta bancária cadastrada ([VFIN0100](/financeiro/vfin0100)).
+- Cliente ou fornecedor correspondente.
+- Para aplicar: o **título** já existente na [VFIN0200](/financeiro/vfin0200) (pagar) ou [VFIN0210](/financeiro/vfin0210) (receber).
+
+## Passo a passo
+
+### Registrar um adiantamento
+
+1. Selecione **Cadastrar**.
+2. Em **Tipo**, use `PAGAR` (adiantamento a fornecedor) ou `RECEBER` (valor antecipado por cliente). O tipo define em que espécie de título o saldo poderá ser aplicado.
+3. Informe **Parceiro**, **Conta bancária**, **Número do documento**, **Data** (`AAAA-MM-DD`), **Valor original** (> 0) e **Descrição**.
+4. Execute e confira no retorno o identificador, o valor original e o **saldo disponível**.
+
+### Consultar e aplicar
+
+1. Em **Consultar**, filtre por `PAGAR`/`RECEBER` e parceiro, ou deixe vazio para todos.
+2. Use **Abrir adiantamento** e confira o saldo e a coleção `aplicacoes` — essa é a conferência oficial antes de abater um título.
+3. Selecione **Aplicar em título**: informe o adiantamento, o **Tipo de conta** (igual ao tipo do adiantamento), a **conta a pagar/receber**, o **valor a abater** e a **data**.
+4. Execute **uma única vez** e reabra o adiantamento e o título para validar o efeito.
+
+## Regras e erros
+
+- Valor **zero, negativo ou superior ao saldo** é recusado.
+- Um adiantamento `PAGAR` **não pode** ser usado em conta a receber, nem `RECEBER` em conta a pagar.
+- IDs inexistentes, registros de outra empresa e datas inválidas são rejeitados.
+- **A aplicação é uma operação financeira efetiva e não possui exclusão** nesta rotina.
+
+## Telas relacionadas
+
+- **[VFIN0100 (Contas Bancárias)](/financeiro/vfin0100):** conta movimentada pelo adiantamento.
+- **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200)** e **[VFIN0210 (Contas a Receber)](/financeiro/vfin0210):** títulos que recebem a aplicação.

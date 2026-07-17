@@ -8,9 +8,9 @@ slug: /indice
 
 # Documentação de Telas — ERP Venture
 
-> Guia completo das telas (rotinas) do sistema **ERP Venture Desktop**.
-> Organizado por **processos de negócio** — o fluxo real de trabalho, não os menus.
-> Última atualização: Junho 2026.
+> Guia completo das **210 telas** (rotinas) do sistema **ERP Venture Desktop**, distribuídas em **18 módulos** e **6 processos de negócio**.
+> Organizado pelo **fluxo real de trabalho**, não pelos menus.
+> Última atualização: Julho 2026.
 
 ---
 
@@ -66,11 +66,12 @@ entidades fundamentais até pagamentos, recebimentos, apuração de impostos e r
 gerenciais — além da contabilidade (SPED ECD) e dos cadastros que fundam o sistema.
 
 - **[Financeiro](/financeiro/vfin0100)** — contas bancárias, condições de pagamento,
-  plano de contas, centros de custo, contas a pagar/receber, fluxo de caixa e relatórios.
+  plano de contas, centros de custo, contas a pagar/receber, fluxo de caixa, adiantamentos,
+  remessa CNAB 240, conciliação OFX e relatórios.
 - **[Contabilidade](/contabilidade/vctb0102)** — centro de custo contábil, SPED ECD e a
   tabela base de UFs e cidades.
-- **[Cadastros](/cadastros/vemp0100)** — empresa, funcionários, localização, classificação
-  de itens, calendário industrial e prioridades.
+- **[Cadastros & Plataforma](/cadastros/vemp0100)** — empresa, funcionários, localização,
+  classificação de itens, calendário industrial, prioridades, troca de senha e auditoria.
 
 ---
 
@@ -80,17 +81,20 @@ Do item de engenharia ao produto acabado e ao atendimento pós-venda. O produto 
 **Engenharia** (VENT0200), é planejado (VPLA0102), suprido (VPDC0200), inspecionado
 (VINS0200), estocado, vendido e expedido.
 
-- **[Engenharia](/engenharia/vent0200)** — item, estrutura (BOM), roteiro, configurador
-  PDM e calendários.
-- **[Planejamento](/planejamento/vpla0102)** — demandas independentes, montagem de carga
-  e orientações de entrega.
+- **[Engenharia](/engenharia/vent0200)** — item, estrutura (BOM) e cabeçalhos versionados,
+  roteiro e rede de precedência, desenhos e revisões, ferramentas e o configurador de produto.
+- **[Planejamento](/planejamento/vpla0102)** — demandas independentes, pipeline MRP→CRP→APS,
+  parâmetros de planejamento e calendário de promessa por item.
 - **[Previsão de Vendas](/previsao/vpre0101)** — apropriação, bloqueio, cadastro, geração
   e previsto × realizado.
-- **[Manutenção](/manutencao/vman0202)** — apontamento e consulta de ordens de serviço.
-- **[Suprimento](/suprimento/vavr0200)** — fornecedores, contratos e pedido de compra.
-- **[Importação](/importacao/vimp0101)** — status logístico, conhecimentos e console.
-- **[Inspeção](/inspecao/vins0200)** — roteiros, ocorrências, ordens e avaliação de
-  fornecedores (IQF).
+- **[Manutenção](/manutencao/vman0202)** — apontamento e consulta de ordens de serviço e
+  paradas de máquina.
+- **[Suprimento](/suprimento/vavr0200)** — fornecedores, contratos, pedido de compra e
+  serviços de terceiros (preços, ordens, remessas e conversões).
+- **[Importação](/importacao/vimp0101)** — status logístico, conhecimentos, console e custo
+  nacionalizado.
+- **[Inspeção](/inspecao/vins0200)** — roteiros, ocorrências, ordens, inspeção de recebimento,
+  homologação e avaliação de fornecedores (IQF).
 - **[Assistência Técnica](/assistencia/vass0201)** — chamados, consultas e relatórios.
 - **[Garantia](/garantia/vgar0211)** — geração de pedido de devolução.
 
@@ -101,13 +105,14 @@ Do item de engenharia ao produto acabado e ao atendimento pós-venda. O produto 
 O coração do fluxo operacional — todo o processo se origina de um pedido de venda, que
 dispara expedição, faturamento e contas a receber.
 
-- **[Comercial](/comercial/vent0100)** — consulta de pedidos, divisão de vendas e
-  reprogramação de entrega.
+- **[Comercial](/comercial/vent0100)** — consulta de pedidos, orçamento, representantes,
+  metas de venda, SAC, promessa de entrega, preços avançados e reprogramação.
 - **[Cliente](/cliente/vcli0500)** — cadastro de cliente e cadastros de apoio (básico,
   comercial e fiscal), permissões e fretes.
 - **[PDV / Pedidos](/pdv/vpdv0200)** — políticas de desconto e frete, pedido de venda,
   acompanhamento, recorrências e comissões.
-- **[Almoxarifado](/almoxarifado/vent0800)** — cadastro de almoxarifado e expedição.
+- **[Almoxarifado](/almoxarifado/vent0800)** — cadastro de almoxarifado, expedição, gestão
+  de cargas, máscaras de lote/série e consultas de saldo.
 - **[Custos / Precificação](/custos/vcst0202)** — simulação e formação de preços.
 
 ---
@@ -123,10 +128,11 @@ de NF-e / NFS-e / CT-e, apuração e ajustes que alimentam o SPED Fiscal.
 ### Camadas do processo fiscal
 
 1. **Configuração Fiscal** (VFIS0100) — fundação do módulo.
-2. **Tabelas Tributárias** (VFIS0110) — alíquotas por NCM e UF.
-3. **Classificações e Parâmetros** (VFIS0300–VFIS0360) — especialização tributária.
-4. **Emissão de Documentos** (VFIS0200, VFIS0210, VFIS0220, VNFS0100) — NF-e, CT-e, NFS-e.
-5. **Apuração e Ajustes** (VFIS0340, VFIS0500–VFIS0560) — fechamento fiscal.
+2. **Tabelas Tributárias** (VFIS0110, VFIS0120, VFIS0630/IBPT) — alíquotas por NCM e UF.
+3. **Classificações e Parâmetros** (VFIS0300–VFIS0360, VFIS0660) — especialização tributária.
+4. **Emissão de Documentos** (VFIS0200, VFIS0210, VFIS0220, VFIS0640, VNFS0100) — NF-e, CT-e, NFS-e.
+5. **Entrada e Eventos** (VFIS0610, VFIS0620) — importação de NF-e por chave, manifestação e inutilização.
+6. **Apuração e SPED** (VFIS0340, VFIS0500–VFIS0560, VFIS0600/EFD) — fechamento fiscal e obrigações acessórias.
 
 ---
 
@@ -137,9 +143,10 @@ partir do pedido de venda confirmado, o sistema explode a estrutura, lê o rotei
 calcula quando cada ordem deve ser emitida — executada no chão de fábrica, com custo real
 e rastreabilidade de lote.
 
-- **[PCP / Chão de Fábrica](/pcp/vmrp0100)** — item e prontidão, MRP, CRP/APS, ordem de
-  produção, custo padrão, qualidade, manutenção preventiva, previsão estatística, plano de
-  corte, custos, estoque e inventário.
+- **[PCP / Chão de Fábrica](/pcp/vmrp0100)** — item e prontidão, MRP, CRP/APS e
+  sequenciamento, recursos e calendários, ordem de produção, ficha de ferramentas, custo
+  padrão, qualidade, plano de corte, parâmetros de estoque da manufatura, custos, estoque
+  e inventário.
 
 > **Regra de ouro do estoque:** o **romaneio reserva**, a **NF-e baixa**. A reserva reduz
 > o *disponível* (ATP) sem mexer no físico; a NF-e de saída reduz o físico.
@@ -153,7 +160,8 @@ Garante os materiais certos, do fornecedor certo, no prazo certo. A necessidade 
 uma **cotação**; e vira um **pedido de compra**.
 
 - **[Suprimento e Compras](/compras/vsup0500)** — cadastro de fornecedor, apoio, conversão
-  de UM, tabela de preço, fornecedor preferencial, pedido, solicitação e cotação.
+  de UM, tabela de preço, fornecedor preferencial, pedido, solicitação, cotação, alçadas,
+  tolerâncias, EDI, fontes de preço e histórico de compras.
 
 ---
 

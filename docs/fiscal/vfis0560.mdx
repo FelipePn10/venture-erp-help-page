@@ -8,8 +8,6 @@ description: "Geração de notas fiscais especiais de ajuste de ICMS com lancame
 
 > Tela de gerencia de notas fiscais especiais de ajuste de ICMS. Permite criar documentos fiscais específicos para ajustes contábeis e fiscais, como complemento de ICMS, estorno de crédito, ajuste de inventário e outros, com geração automática de lancamentos na apuração.
 
-**Código fonte:** `src/modules/fiscal/adjustment-notes/vfis0560.vue`
-
 ## Objetivo
 
 A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fiscais emitidos não para registrar uma venda ou compra, mas para fins de ajuste contábil e fiscal do ICMS. Essas notas são utilizadas em situações específicas como: complemento de ICMS pago a menor, estorno de crédito indevido, ajuste de valores por quebra ou perda de mercadoria, ajuste de inventário (diferença entre estoque físico e contábil), baixa de creditos prescritos, entre outros. A nota especial de ajuste gera automaticamente lancamentos na VFIS0540 (Lancamentos Resumo ICMS), que por sua vez alimentam a apuração (VFIS0530) e o SPED Fiscal.

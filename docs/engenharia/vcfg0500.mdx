@@ -1,0 +1,45 @@
+---
+sidebar_position: 24
+title: "VCFG0500 — Configurador: Descrições Configuradas"
+description: "Manter tipos e linhas que formam o texto de um item configurado e renderizá-lo com respostas reais."
+---
+
+# VCFG0500 — Configurador: Descrições Configuradas
+
+> Monta o **texto** de um item configurado a partir de linhas ordenadas (característica, composição da máscara, texto livre) — e permite **renderizar** com respostas reais antes de usar.
+
+## Objetivo
+
+Gerar descrições consistentes (comercial, técnica, para programa, relatório ou lista de valores) de itens configurados, controlando o que cada linha exibe e a ordem.
+
+## Pré-requisitos
+
+- Item configurável com características ([VCFG0300](/engenharia/vcfg0300)).
+
+## Passo a passo
+
+1. Cadastre os **tipos de descrição** informando **Código**, **Descrição** e a **Finalidade** (Programa, Relatório, Lista de valores ou Geral).
+2. Crie a **descrição do item** ligando o item a um tipo.
+3. Monte as **linhas**: ordem, o que mostrar e o texto.
+4. Use **Recarregar** para trazer as linhas base das características e **Renderizar** para pré-visualizar com respostas reais.
+
+## Campos da linha
+
+| Campo | Função |
+|-------|--------|
+| **Ordem** | Posição da linha no texto. |
+| **Mostrar característica** | Exibe a característica. |
+| **Mostrar máscara** | Exibe a composição da máscara. |
+| **Tipo da linha** | **Descrição** (texto) ou **Composição da máscara**. |
+| **Texto** | Texto fixo da linha. |
+| **Quebra de linha** | Quebra após a linha. |
+
+## Observações importantes
+
+- Use **Renderizar** antes de gravar o uso da descrição em programa, relatório ou lista de valores — é uma prévia, não grava nada.
+- Cada linha decide o que exibe: característica, composição da máscara ou texto fixo.
+
+## Telas relacionadas
+
+- **[VCFG0400 (Geração de Máscaras)](/engenharia/vcfg0400):** gera o item que recebe a descrição.
+- **[VCFG0600 (Regras)](/engenharia/vcfg0600):** regras que preenchem campos do item.

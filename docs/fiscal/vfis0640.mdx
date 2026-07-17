@@ -1,0 +1,47 @@
+---
+sidebar_position: 34
+title: "VFIS0640 — Faturamento Fiscal de Carga e DANFE"
+description: "Gerar a NF-e de saída a partir de uma carga expedida e consultar os endereços oficiais do DANFE e do XML."
+---
+
+# VFIS0640 — Faturamento Fiscal de Carga e DANFE
+
+> Transforma uma **carga expedida** em **NF-e de saída**, aproveitando itens e quantidades já gravados, e recupera os endereços oficiais do **DANFE** e do **XML** após a autorização.
+
+## Objetivo
+
+Faturar diretamente a partir da expedição — sem redigitar itens — e obter os documentos oficiais quando a nota for autorizada.
+
+## Pré-requisitos
+
+- Carga expedida com itens, lotes e pesos gravados ([VEXP0110](/almoxarifado/vexp0110)).
+- Configuração fiscal e integração ativas.
+
+## Passo a passo
+
+1. Em **Gerar NF-e da carga**, confira carga, cliente, itens, lotes, pesos e entrega e preencha os campos abaixo.
+2. Use a **substituição por item** apenas para ajustar dados fiscais/preços de itens específicos.
+3. Execute, confira o código da saída e **revise/autorize na [VFIS0200](/fiscal/vfis0200)**.
+4. Em **Consultar DANFE**, após a autorização, informe a saída — o sistema retorna os links do DANFE e do XML.
+
+## Campos da NF-e
+
+| Campo | Função |
+|-------|--------|
+| **Carga** | Carga expedida que origina a nota. |
+| **Série / Data de emissão / Data de saída** | Identificação e datas do documento. |
+| **Destinatário** | CNPJ, razão social, IE, UF e tipo de pessoa. |
+| **CFOP / Natureza da operação** | Classificação fiscal da saída. |
+| **Frete / Seguro / Desconto** | Valores acessórios. |
+| **Origem da mercadoria** | Origem para fins de ICMS. |
+
+## Observações importantes
+
+- **Não gere duas saídas para a mesma carga** — em caso de falha, consulte a lista fiscal antes de repetir.
+- A consulta de DANFE **não gera PDF local**: abra somente os links retornados. DANFE indisponível geralmente indica nota não autorizada ou rejeitada.
+- A tela recusa divergência de destinatário, item sem tributação, carga vazia ou já faturada.
+
+## Telas relacionadas
+
+- **[VEXP0110 (Gestão de Cargas)](/almoxarifado/vexp0110):** origem da carga faturada.
+- **[VFIS0200 (NF-e de Saída)](/fiscal/vfis0200):** revisão e autorização da nota.

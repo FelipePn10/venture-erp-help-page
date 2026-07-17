@@ -1,0 +1,42 @@
+---
+sidebar_position: 21
+title: "VSUP0620 — EDI de Fornecedores"
+description: "Receber confirmações eletrônicas de pedidos e evidenciar divergências de quantidade, preço e prazo."
+---
+
+# VSUP0620 — EDI de Fornecedores
+
+> A troca eletrônica com o fornecedor: registra **confirmações de pedido** e evidencia automaticamente as **divergências** de quantidade, preço e prazo contra o pedido de compra.
+
+## Objetivo
+
+Automatizar a confirmação de pedidos por EDI, comparando o que o fornecedor confirmou com o que foi pedido e destacando os desvios conforme as tolerâncias.
+
+## Pré-requisitos
+
+- Fornecedor e pedido de compra existentes.
+- Tolerâncias de quantidade/preço definidas ([VSUP0630](/compras/vsup0630)).
+
+## Passo a passo
+
+1. Clique em **Consultar** e filtre por **Fornecedor** e **Situação**.
+2. Em **Cadastrar**, informe a **Direção** (recebida do fornecedor), o **Tipo de mensagem** (confirmação de pedido), o **Pedido**, as **tolerâncias** e as **linhas** confirmadas.
+3. Use **Abrir** para conferir as divergências calculadas.
+
+## Campos-chave
+
+| Campo | Função |
+|-------|--------|
+| **Direção** | Recebida do fornecedor (entrada). |
+| **Tipo de mensagem** | Ex.: confirmação de pedido. |
+| **Tolerância de quantidade / preço** | Aplicadas ao comparar. |
+| **Linhas** | Quantidade, preço e data confirmados vs. os do pedido. |
+
+## Observações importantes
+
+- As **linhas** carregam os valores confirmados **e** os do pedido — a divergência é **derivada** pelo sistema, não digitada.
+
+## Telas relacionadas
+
+- **[VSUP0630 (Tolerâncias de Pedido)](/compras/vsup0630):** faixas que definem o que é divergência.
+- **[VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200):** pedido confirmado por EDI.

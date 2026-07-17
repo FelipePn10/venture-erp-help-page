@@ -1,0 +1,42 @@
+---
+sidebar_position: 31
+title: "VFIS0610 — Importação de NF-e de Compra por Chave"
+description: "Buscar a NF-e de compra pela chave, criar a entrada fiscal, baixar o pedido e movimentar o estoque."
+---
+
+# VFIS0610 — Importação de NF-e de Compra por Chave
+
+> Do XML ao estoque em um passo: busca a **NF-e de compra** pela chave na integração fiscal, cria a **entrada**, baixa o **pedido** e movimenta o **estoque**.
+
+## Objetivo
+
+Automatizar a entrada de mercadorias a partir da NF-e do fornecedor, evitando digitação e mantendo a rastreabilidade entre nota, pedido e estoque.
+
+## Pré-requisitos
+
+- Token e ambiente da integração fiscal configurados.
+- Pedido de compra (opcional) e almoxarifado de entrada.
+
+## Passo a passo
+
+1. Informe a **Chave de acesso** (44 dígitos), o **Pedido de compra** (opcional) e o **Almoxarifado de entrada**.
+2. Execute **uma única vez** — o sistema consulta a NF-e, identifica fornecedor e itens, cria a entrada, baixa as linhas compatíveis do pedido e movimenta o estoque.
+3. Confira no retorno: entrada criada, quantidade de movimentos, fornecedor encontrado, linhas baixadas e itens ignorados.
+
+## Campos
+
+| Campo | Função |
+|-------|--------|
+| **Chave de acesso** | Chave de 44 dígitos da NF-e. |
+| **Pedido de compra** | Pedido a baixar (opcional). |
+| **Almoxarifado de entrada** | Onde o material dá entrada. |
+
+## Observações importantes
+
+- Após uma falha, **procure a chave nas entradas fiscais** antes de repetir, para evitar duplicidade.
+- Fornecedor não identificado, item sem correspondência ou token ausente aparecem no resultado e exigem correção cadastral antes de nova tentativa.
+
+## Telas relacionadas
+
+- **[VPDC0210 (Recebimento de Pedidos)](/suprimento/vpdc0210):** recebimento físico correlato.
+- **[VEST0400 (Consultas por Almoxarifado)](/almoxarifado/vest0400):** movimentos gerados.

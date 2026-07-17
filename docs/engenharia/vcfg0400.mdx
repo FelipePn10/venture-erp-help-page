@@ -1,0 +1,42 @@
+---
+sidebar_position: 23
+title: "VCFG0400 — Configurador: Geração de Máscaras"
+description: "Gerar a máscara de um item configurado a partir das respostas, individualmente ou em lote (produto cartesiano)."
+---
+
+# VCFG0400 — Configurador: Geração de Máscaras
+
+> Transforma as **respostas** no **código (máscara)** do item configurado — uma máscara por vez, ou várias combinações de uma vez pelo produto cartesiano.
+
+## Objetivo
+
+Produzir os códigos configurados a partir das características respondidas, com opção de **simular** antes de gravar. Apenas as características do tipo **Escolha** participam do produto cartesiano em lote.
+
+## Pré-requisitos
+
+- Item com características vinculadas ([VCFG0300](/engenharia/vcfg0300)).
+
+## Passo a passo
+
+### Geração individual
+
+1. Informe o **item** e responda cada característica.
+2. Para características de escolha, selecione a **variável**; para as demais (numérica, texto, opção, desenho), preencha o **valor**.
+3. Deixe **Gravar** desmarcado para apenas **simular** a máscara; marque-o só depois de conferir o resultado.
+
+### Geração em lote
+
+1. Informe o **item** e defina **ao menos uma restrição** — fixe uma característica a um subconjunto de variáveis para limitar o volume.
+2. Opcionalmente informe **Cliente** e **Divisão**.
+3. A tela gera **todas as combinações** válidas; mantenha **Gravar** desmarcado para pré-visualizar.
+
+## Observações importantes
+
+- **Simule primeiro** — o produto cartesiano pode gerar muitas combinações.
+- A geração em lote **exige pelo menos uma restrição**; sem ela, a tela recusa para evitar explosão combinatória.
+- Valores numéricos respeitam o **Mínimo**, **Máximo** e **Múltiplo** definidos na [VCFG0200](/engenharia/vcfg0200) — fora disso a resposta é recusada.
+
+## Telas relacionadas
+
+- **[VCFG0300 (Características por Item)](/engenharia/vcfg0300):** define as características disponíveis.
+- **[VCFG0500 (Descrições Configuradas)](/engenharia/vcfg0500):** texto descritivo do item gerado.

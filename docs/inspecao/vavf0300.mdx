@@ -1,0 +1,45 @@
+---
+sidebar_position: 13
+title: "VAVF0300 — Scorecard e IQF do Fornecedor"
+description: "Calcular automaticamente ou lançar manualmente o IQF do fornecedor e consultar seu histórico."
+---
+
+# VAVF0300 — Scorecard e IQF do Fornecedor
+
+> Mede o desempenho do fornecedor pelo **IQF** (Índice de Qualificação de Fornecedores), combinando qualidade, entrega, comercial e atendimento — calculado a partir dos recebimentos reais ou lançado manualmente.
+
+## Objetivo
+
+Consolidar a nota do fornecedor em um período fechado, alimentando as decisões de compra e a homologação. O IQF pode ser **calculado** com os dados reais de recebimento ou **registrado** manualmente.
+
+## Pré-requisitos
+
+- Fornecedor cadastrado.
+- Período de avaliação **fechado** (início e fim).
+- Histórico de recebimentos e inspeções para o cálculo automático.
+
+## Passo a passo
+
+1. **Consulte o histórico** de scorecards do fornecedor.
+2. Para calcular, use **Calcular scorecard** informando fornecedor, período e as notas comercial e de atendimento; marque **persistir** quando o resultado deva compor o histórico oficial.
+3. Para lançar manualmente, use **Registrar scorecard** com as notas de qualidade, entrega, comercial e atendimento, além dos totais de recebimentos, rejeições e atrasos.
+
+## Conceitos-chave
+
+| Dimensão | Origem |
+|----------|--------|
+| **Qualidade** | Recebimentos rejeitados vs. total (inspeção). |
+| **Entrega** | Recebimentos em atraso vs. total. |
+| **Comercial** | Nota atribuída (preço, condições). |
+| **Atendimento** | Nota atribuída (suporte, resposta). |
+
+## Observações importantes
+
+- Informe **período fechado** — apurações sobre períodos abertos distorcem o índice.
+- Use **persistir** apenas quando o cálculo for oficial; sem persistir, é uma simulação.
+
+## Telas relacionadas
+
+- **[VAVF0203 (Homologação de Fornecedores)](/inspecao/vavf0203):** usa as faixas do IQF para homologar.
+- **[VSUP0600 (Inspeção de Recebimento)](/inspecao/vsup0600):** alimenta as dimensões de qualidade e entrega.
+- **[VAVF0204 (Avaliação de Fornecedores)](/inspecao/vavf0204):** avaliação correlata.

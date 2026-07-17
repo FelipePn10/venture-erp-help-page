@@ -1,0 +1,43 @@
+---
+sidebar_position: 23
+title: "VSUP0640 — Registros Operacionais de Compras"
+description: "Registrar e consultar ocorrências normalizadas de compra, recebimento e inspeção sem tela especializada."
+---
+
+# VSUP0640 — Registros Operacionais de Compras
+
+> A rotina de **rastreabilidade** para ocorrências operacionais de compra/recebimento/inspeção que ainda não têm uma tela especializada.
+
+## Objetivo
+
+Registrar de forma normalizada as ocorrências operacionais do suprimento, mantendo rastreabilidade quando não existe um fluxo dedicado.
+
+## Pré-requisitos
+
+- Fornecedor, pedido e item existentes para referência.
+
+## Passo a passo
+
+1. Clique em **Consultar** e filtre por **Tipo** e **Situação**.
+2. Use **Abrir** para ver o registro.
+3. Em **Cadastrar**, informe o **Tipo**, a **Situação**, as referências (**Fornecedor**, **Pedido**, **Item da linha**), o **Item**, a **Máscara**, o **Almoxarifado**, a **Quantidade**, a **Referência** externa e os dados complementares.
+4. Use **Alterar situação** para avançar o registro conforme o fluxo.
+
+## Campos
+
+| Campo | Função |
+|-------|--------|
+| **Tipo do registro** | Natureza da ocorrência (ex.: inspeção de recebimento). |
+| **Situação** | Estado (ex.: aberta → fechada). |
+| **Fornecedor / Pedido / Item da linha** | Referências de origem. |
+| **Item / Máscara / Almoxarifado / Quantidade** | Material da ocorrência. |
+| **Referência** | Referência externa. |
+
+## Observações importantes
+
+- **Prefira sempre [VAVR0200](/suprimento/vavr0200) ou [VSUP0600](/inspecao/vsup0600)** quando existir fluxo específico — não duplique a mesma ocorrência.
+
+## Telas relacionadas
+
+- **[VAVR0200 (Aviso de Recebimento)](/suprimento/vavr0200)** e **[VSUP0600 (Inspeção de Recebimento)](/inspecao/vsup0600):** fluxos especializados.
+- **[VSUP0650 (Histórico de Movimentos)](/compras/vsup0650):** consulta consolidada.
