@@ -40,6 +40,16 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      'vercel-analytics',
+      {
+        debug: true,
+        mode: 'auto',
+      },
+    ],
+  ],
+
   themeConfig: {
     image: 'img/og-image.png',
     algolia: {
