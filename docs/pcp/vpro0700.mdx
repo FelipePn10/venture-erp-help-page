@@ -12,6 +12,12 @@ description: "Consolidar e notificar as exceções do MRP por webhook e/ou e-mai
 
 Reunir e distribuir as exceções do planejamento: ordens atrasadas, compras vencidas, excesso de estoque, ordem aberta sem demanda e sobrecarga de capacidade.
 
+## Pré-requisitos
+
+- Plano MRP calculado e com exceções disponíveis.
+- Destinatários internos ou webhook autorizados e válidos.
+- Serviço de e-mail configurado quando esse canal for usado.
+
 ## Passo a passo
 
 1. Informe o **código do plano** MRP.
@@ -24,7 +30,9 @@ ordem vencida, compra vencida, estoque acima do máximo, ordem sem demanda, cent
 
 ## Observações importantes
 
-- Os dois canais funcionam juntos. Se o SMTP não estiver configurado, o e-mail é ignorado silenciosamente, sem afetar o webhook.
+- Os dois canais podem ser usados juntos. Confira o retorno da operação para saber quais comunicações foram processadas.
+- Envie somente para destinos autorizados: a lista pode conter informações operacionais da empresa.
+- Recalcular o MRP pode mudar as exceções; confirme o plano antes de cobrar uma ação do responsável.
 
 ## Telas relacionadas
 

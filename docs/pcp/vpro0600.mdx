@@ -12,6 +12,12 @@ description: "Calcular a previsão de demanda a partir do histórico, escolhendo
 
 Projetar a demanda futura de um item com base no histórico, selecionando o modelo estatístico mais preciso.
 
+## Pré-requisitos
+
+- Item identificado e série histórica em períodos comparáveis.
+- Histórico suficiente e sem mistura de unidades.
+- Horizonte de previsão definido conforme a decisão de planejamento.
+
 ## Passo a passo
 
 1. Informe o **item** e a **quantidade de períodos à frente**.
@@ -21,6 +27,8 @@ Projetar a demanda futura de um item com base no histórico, selecionando o mode
 ## Observações importantes
 
 - A previsão é calculada em tempo real e **não é gravada** automaticamente. Para armazenar, use os blocos de previsão de vendas (Planejamento).
+- MAPE menor indica melhor ajuste sobre o histórico, mas não garante o resultado futuro; avalie promoções, rupturas e eventos fora do padrão.
+- Períodos ausentes ou valores excepcionais podem distorcer a escolha automática do modelo.
 
 ## Telas relacionadas
 

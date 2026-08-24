@@ -10,12 +10,12 @@ description: "Cadastro dos códigos de ajuste do ICMS para o bloco 5.1.1 da apur
 
 ## Objetivo
 
-A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da apuração fiscal estadual — Ajustes de Documentos Fiscais Proprios. Estes códigos, definidos pela SEFAZ de cada estado, permitem adicionar ou deduzir valores de ICMS na apuração que não constam diretamente nos documentos fiscais. Por exemplo: creditos presumidos, creditos extemporaneos, estornos de débito, complementos de ICMS, ajustes de DIFAL e outros. Os códigos são utilizados na VFIS0540 (Lancamentos Resumo ICMS) e exportados para o SPED Fiscal (EFD-ICMS/IPI) no bloco E110/E111.
+A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da apuração fiscal estadual — Ajustes de Documentos Fiscais Proprios. Estes códigos, definidos pela SEFAZ de cada estado, permitem adicionar ou deduzir valores de ICMS na apuração que não constam diretamente nos documentos fiscais. Por exemplo: créditos presumidos, créditos extemporaneos, estornos de débito, complementos de ICMS, ajustes de DIFAL e outros. Os códigos são utilizados na VFIS0540 (Lançamentos Resumo ICMS) e exportados para o SPED Fiscal (EFD-ICMS/IPI) no bloco E110/E111.
 
 ## Pre-requisitos
 
 - **Conhecimento da tabela de códigos de ajuste da SEFAZ do estado:** Cada estado publica sua própria tabela de códigos de ajuste. Consulte o site da SEFAZ correspondente.
-- **VFIS0540 (Lancamentos Resumo ICMS):** Tela onde os códigos de ajuste serão efetivamente utilizados.
+- **VFIS0540 (Lançamentos Resumo ICMS):** Tela onde os códigos de ajuste serão efetivamente utilizados.
 
 ## Passo a passo
 
@@ -23,7 +23,7 @@ A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da
 2. A grade principal lista todos os códigos de ajuste cadastrados. Filtre por UF para ver os códigos de um estado específico.
 3. Para **criar um novo código de ajuste**, clique em **Novo**.
 4. Selecione a **UF** (estado) a qual o código se aplica.
-5. Informe o **Código de Ajuste** conforme a tabela da SEFAZ (ex: "SP000001", "MG000002"). O formato geralmente e: 2 letras da UF + 6 digitos numéricos.
+5. Informe o **Código de Ajuste** conforme a tabela da SEFAZ (ex: "SP000001", "MG000002"). O formato geralmente e: 2 letras da UF + 6 dígitos numéricos.
 6. Preencha a **Descrição** do ajuste (ex: "Crédito presumido para estabelecimento industrial", "Estorno de débito de ICMS por saída interestadual", "Complemento de ICMS — DIFAL").
 7. Classifique o **Tipo de Ajuste**:
    - **Débito (Ajuste de Débito):** Aumenta o ICMS a pagar. Ex: complemento de alíquota, estorno de crédito.
@@ -43,7 +43,7 @@ A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da
 | Descrição | Texto (200) | Sim | — | Descrição do ajuste. |
 | Tipo Ajuste | Select | Sim | Débito / Crédito | Indica se o ajuste aumenta (débito) ou diminui (crédito) o ICMS a pagar. |
 | Natureza Ajuste | Select | Sim | Documento Fiscal / Genérico | Indica se o ajuste e vinculado a um documento fiscal ou e genérico. |
-| Tipo Lancamento | Select | Sim | Automático / Manual | Indica se o ajuste e gerado automaticamente ou manualmente. |
+| Tipo Lançamento | Select | Sim | Automático / Manual | Indica se o ajuste e gerado automaticamente ou manualmente. |
 | Dispositivo Legal | Select | Não | VFIS0310 | Fundamento legal do ajuste (opcional). |
 | Ativo | Checkbox | Sim | Sim / Não | Indica se o código esta ativo. |
 
@@ -58,6 +58,6 @@ A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da
 
 - **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais códigos de ajuste para os outros blocos da apuração.
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração do ICMS onde os ajustes são consolidados.
-- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos fiscais que utilizam os códigos de ajuste.
+- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos fiscais que utilizam os códigos de ajuste.
 - **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Fundamento legal de cada ajuste.
 - **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base da empresa.

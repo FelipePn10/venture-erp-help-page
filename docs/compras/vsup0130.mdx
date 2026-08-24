@@ -12,10 +12,32 @@ description: "Vincular um item a fornecedores com ranking de preferência, códi
 
 Definir o fornecedor preferido de cada item — usado pelo sistema ao gerar pedidos a partir de solicitações.
 
+## Pré-requisitos
+
+- Item comprado cadastrado e ativo.
+- Fornecedores cadastrados e liberados para compra.
+- Unidade usada pelo fornecedor e eventual conversão cadastradas.
+
 ## Passo a passo
 
 1. Informe o **item** e carregue os vínculos.
 2. Cadastre um fornecedor com **ranking** (1 = preferido), código/descrição/UM do item no fornecedor e **lead time** em dias.
+3. Repita para as alternativas, usando rankings maiores, e confira a ordem exibida.
+
+## Campos principais
+
+| Campo | Função |
+|-------|--------|
+| Ranking | Ordem de preferência; 1 representa a primeira opção |
+| Código no fornecedor | Referência que aparece na comunicação de compra |
+| UM do fornecedor | Unidade em que o fornecedor comercializa o item |
+| Lead time | Prazo esperado entre a compra e a disponibilidade |
+
+## Observações importantes
+
+- Não use o mesmo ranking para fornecedores do mesmo item: isso torna a escolha automática ambígua.
+- O vínculo não substitui preço, conversão de unidade nem homologação do fornecedor.
+- Revise o lead time sempre que o prazo negociado mudar, pois ele influencia as datas sugeridas pelo planejamento.
 
 ## Telas relacionadas
 

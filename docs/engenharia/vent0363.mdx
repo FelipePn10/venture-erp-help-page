@@ -14,7 +14,7 @@ Fornecer uma visão consolidada dos tempos de fabricação e custos associados a
 
 ## Pre-requisitos
 
-- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202) — Roteiros de fabricação com operações e formulas de tempo devidamente cadastrados.
+- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202) — Roteiros de fabricação com operações e fórmulas de tempo devidamente cadastrados.
 - [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Centros de trabalho com taxas horarias definidas.
 - [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com roteiros associados e dados de planejamento configurados.
 
@@ -25,7 +25,7 @@ Fornecer uma visão consolidada dos tempos de fabricação e custos associados a
 3. Defina o **Período** de análise preenchendo as datas de início e fim.
 4. Escolha o **Tipo de Tempo** a ser exibido: Tempo de Setup, Tempo de Execução, Tempo Total ou Todos.
 5. Clique em **Gerar Relatório** para processar os dados dos roteiros.
-6. O relatório exibe para cada item/operação os tempos calculados e o custo total (tempo x taxa horaria do centro de trabalho).
+6. O relatório exibe para cada item/operação os tempos calculados e o custo total (tempo x taxa horária do centro de trabalho).
 7. Utilize os filtros de agrupamento para consolidar por **Centro de Trabalho**, **Item** ou **Tipo de Operação**.
 8. Análise a coluna de **% de Ocupação** para identificar centros de trabalho próximos da capacidade maxima.
 9. Exporte o relatório em Excel ou PDF utilizando os botões de exportação disponíveis.
@@ -40,15 +40,15 @@ Fornecer uma visão consolidada dos tempos de fabricação e custos associados a
 | Tipo de Tempo | select | Não | Setup / Execução / Total / Todos | Tipo de tempo a ser exibido |
 | Item | número | Não | — | Filtrar por um item específico |
 | Agrupamento | select | Não | Centro de Trabalho / Item / Operação | Nível de agrupamento do relatório |
-| Taxa Horaria | número | Não | — | Taxa horaria do centro de trabalho (editável) |
+| Taxa Horaria | número | Não | — | Taxa horária do centro de trabalho (editável) |
 
 ## Observações importantes
 
 - O custo total de cada operação e calculado multiplicando o tempo total pela **Taxa Horaria** do centro de trabalho. Certifique-se de que as taxas estao atualizadas.
 - Centros de trabalho com **% de Ocupação** acima de 85% no período indicam possível gargalo e necessidade de ação (horas extras, terceirização ou investimento).
-- O relatório considera as **formulas de tempo** com a variável `QTD` preenchida com o tamanho do lote padrão do item. Para simulações com diferentes tamanhos de lote, utilize parâmetros avançados.
+- O relatório considera as **fórmulas de tempo** com a variável `QTD` preenchida com o tamanho do lote padrão do item. Para simulações com diferentes tamanhos de lote, utilize parâmetros avançados.
 - Tempos de operações de itens inativos ou com roteiros desatualizados podem distorcer a análise. Mantenha os roteiros sempre atualizados.
-- A exportação para Excel inclui as formulas e permite manipulação adicional dos dados em planilha eletrônica.
+- A exportação para Excel inclui as fórmulas e permite manipulação adicional dos dados em planilha eletrônica.
 
 ## Telas relacionadas
 

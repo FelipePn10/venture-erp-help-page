@@ -6,7 +6,7 @@ description: "Gestão do processo de restituição e ressarcimento de ICMS-ST pa
 
 # VFIS0550 — Restituição ICMS ST
 
-> Tela de gestão do processo de restituição e ressarcimento de ICMS-ST (Substituição Tributária). Realiza o cálculo do valor a restituir com base nas notas de saída com ST, gera os documentos fiscais de ressarcimento e registra os creditos na apuração.
+> Tela de gestão do processo de restituição e ressarcimento de ICMS-ST (Substituição Tributária). Realiza o cálculo do valor a restituir com base nas notas de saída com ST, gera os documentos fiscais de ressarcimento e registra os créditos na apuração.
 
 ## Objetivo
 
@@ -17,7 +17,7 @@ A VFIS0550 gerencia o processo de restituição e ressarcimento do ICMS Substitu
 - **VFIS0100 (Configuração Fiscal):** Configuração do emitente ativa.
 - **VFIS0200 (NFe de Saída):** NFe de saída de produtos sujeitos a ST emitidas no período, com o flag ST ativo e CST 10, 30, 60 ou 70.
 - **VFIS0330 (Redução/ST/Diferimento):** Regras de ST configuradas para os produtos.
-- **Legislação estadual sobre ressarcimento de ST:** Cada estado possui regras proprias para ressarcimento de ST. Consulte a legislação do seu estado (RICMS e Portarias da SEFAZ).
+- **Legislação estadual sobre ressarcimento de ST:** Cada estado possui regras próprias para ressarcimento de ST. Consulte a legislação do seu estado (RICMS e Portarias da SEFAZ).
 
 ## Passo a passo
 
@@ -35,7 +35,7 @@ A VFIS0550 gerencia o processo de restituição e ressarcimento do ICMS Substitu
 8. Revise o pedido. Se necessário, ajuste manualmente os valores de restituição por nota.
 9. Clique em **Gerar Nota de Ressarcimento**. O sistema criara uma NFe (modelo 55) de saída com CFOP específico de ressarcimento de ST (ex: 5.601, 5.602), tendo como destinatário o fornecedor original (substituto) ou, em alguns estados, a própria SEFAZ.
 10. Transmita a Nota de Ressarcimento na VFIS0200 normalmente (clicando em Transmitir).
-11. Após a autorização da Nota de Ressarcimento, o sistema registrara automaticamente um lancamento de crédito na VFIS0540 (Lancamentos Resumo ICMS) e na VFIS0530 (Linhas Apuração), reduzindo o ICMS a pagar no período.
+11. Após a autorização da Nota de Ressarcimento, o sistema registrara automaticamente um lancamento de crédito na VFIS0540 (Lançamentos Resumo ICMS) e na VFIS0530 (Linhas Apuração), reduzindo o ICMS a pagar no período.
 
 ## Campos
 
@@ -67,7 +67,7 @@ A VFIS0550 gerencia o processo de restituição e ressarcimento do ICMS Substitu
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
 | CFOP Ressarcimento | Select | Sim | VFIS0300 | CFOP específico de ressarcimento de ST (5.601, 5.602, etc.). |
-| Destinatário Ressarcimento | Select | Sim | VCAD0200 | Fornecedor substituto ou SEFAZ. |
+| Destinatário Ressarcimento | Seleção | Sim | VSUP0500 | Fornecedor substituto ou SEFAZ. |
 | Número Nota Ressarcimento | Texto (9) | Auto | — | Número da NFe de ressarcimento gerada. |
 | Chave Nota Ressarcimento | Texto (44) | Auto | — | Chave de acesso da NFe de ressarcimento. |
 | Valor Ressarcido | Decimal (15,2) | Auto | — | Valor total restituido. |
@@ -89,4 +89,4 @@ A VFIS0550 gerencia o processo de restituição e ressarcimento do ICMS Substitu
 - **[VFIS0500 (Motivos Transferência DAPI)](/fiscal/vfis0500):** Motivos para transferência de crédito de ST.
 - **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Códigos de ajuste 5.3 específicos para ST.
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração onde o crédito de restituição e apropriado.
-- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamento de crédito gerado pela restituição.
+- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamento de crédito gerado pela restituição.

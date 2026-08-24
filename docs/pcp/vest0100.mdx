@@ -12,6 +12,13 @@ description: "Central operacional do estoque: movimentos, saldos, ATP, reservas,
 
 Operar todo o estoque: entradas, saídas, transferências, ajustes, reservas, lotes e ponto de reposição.
 
+## Pré-requisitos
+
+- Item, almoxarifado e tipo de movimento cadastrados.
+- Lote informado quando o item exigir rastreabilidade.
+- Saldo disponível para saídas, transferências e consumo de reservas.
+- Permissão e justificativa adequadas para ajustes manuais.
+
 ## Passo a passo
 
 1. Informe um **item** e clique em **Consultar** — o sistema traz movimentos, saldos por depósito, o painel **ATP** (Em mãos / Reservado / Disponível) e os lotes.
@@ -24,6 +31,13 @@ Operar todo o estoque: entradas, saídas, transferências, ajustes, reservas, lo
 
 - **ATP = saldo em mãos − reservas.** Confirmar um pedido de venda reserva o disponível automaticamente.
 - Todo movimento com **lote** atualiza o saldo segregado por lote.
+
+## Observações importantes
+
+- Reserva reduz o disponível para promessa, mas não reduz o saldo físico; o consumo da reserva é que efetiva a saída correspondente.
+- Transferências devem manter entrada e saída coerentes entre origem e destino. Não use dois ajustes independentes para simular uma transferência.
+- Confira item, almoxarifado, lote, quantidade e sentido antes de confirmar: movimentos de estoque afetam custo e rastreabilidade.
+- Para divergência apurada por contagem, prefira o fluxo de inventário ou contagem cíclica, preservando a justificativa.
 
 ## Telas relacionadas
 

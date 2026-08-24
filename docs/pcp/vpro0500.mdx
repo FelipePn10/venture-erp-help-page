@@ -12,11 +12,23 @@ description: "Gerenciar planos de manutenção periódica e as ordens geradas, d
 
 Evitar planejar produção em horários de máquina parada, mantendo planos e ordens de manutenção preventiva.
 
+## Pré-requisitos
+
+- Máquina e centro de trabalho cadastrados e ativos.
+- Frequência, duração prevista e horizonte de geração definidos.
+- Calendário de capacidade disponível para refletir as paradas.
+
 ## Passo a passo
 
 1. Crie um **plano**: máquina, centro de trabalho, **frequência** (Diária / Semanal / Mensal / Personalizada), intervalo em dias e horas estimadas de parada.
 2. **Gerar ordens** (por horizonte de dias) cria ordens **Planejadas** de forma protegido contra duplicidade (não duplica plano + data).
 3. Avance a ordem: **Planejada → Em execução** (registra início) **→ Concluída** (registra horas reais e término).
+
+## Observações importantes
+
+- Revise o horizonte antes de gerar ordens; a proteção contra duplicidade considera o plano e a data programada.
+- As horas previstas reduzem a capacidade usada pelo CRP. Mantenha duração e datas coerentes para não criar sobrecarga artificial.
+- Ao concluir, registre as horas reais para preservar a diferença entre planejamento e execução.
 
 ## Telas relacionadas
 

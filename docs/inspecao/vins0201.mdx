@@ -27,7 +27,7 @@ Permitir a gestão operacional das ordens de inspeção de qualidade, oferecendo
 4. Para **iniciar uma inspeção**, clique no botão inline **Iniciar** na linha da ordem.
 5. O status da ordem muda para "Em Execução" e o roteiro de inspeção e exibido na grade de sequências.
 6. Execute cada **sequência** do roteiro, registrando os resultados (Aprovado/Reprovado) e medições.
-7. Se um ensaio for reprovado, utilize a ação inline **Registrar Ocorrencia** para criar uma ocorrencia vinculada.
+7. Se um ensaio for reprovado, utilize a ação inline **Registrar Ocorrencia** para criar uma ocorrência vinculada.
 8. Para **pausar** uma inspeção (ex: aguardando laudo externo), clique em **Pausar**. A ordem pode ser retomada posteriormente.
 9. Ao finalizar todos os ensaios, clique em **Concluir**. O sistema calcula automaticamente o resultado final da ordem.
 10. Para ordens que não precisam ser executadas, utilize a ação inline **Cancelar** com justificativa.
@@ -56,14 +56,14 @@ Permitir a gestão operacional das ordens de inspeção de qualidade, oferecendo
 | Retomar | Volta a executar uma inspeção pausada |
 | Concluir | Finaliza a inspeção com resultado consolidado |
 | Cancelar | Cancela a ordem com justificativa obrigatória |
-| Registrar Ocorrencia | Abre atalho para registro de ocorrencia vinculada |
+| Registrar Ocorrencia | Abre atalho para registro de ocorrência vinculada |
 | Imprimir | Gera relatório da ordem de inspeção |
 
 ## Observações importantes
 
 - As **ações inline** eliminam a necessidade de abrir e fechar modais constantemente, aumentando significativamente a produtividade do inspetor que trabalha com dezenas de ordens por dia.
 - Ordens com status **Pausada** são excluidas das métricas de SLA até serem retomadas, evitando distorcer os indicadores de tempo de inspeção.
-- O **Resultado Aprovado com Ressalva** e utilizado quando o item passa na inspeção, mas com ocorrencias menores que foram abonadas condicionalmente.
+- O **Resultado Aprovado com Ressalva** e utilizado quando o item passa na inspeção, mas com ocorrências menores que foram abonadas condicionalmente.
 - A **conclusão** de uma ordem dispara automaticamente a atualização do status do item no estoque (liberado ou bloqueado) e a atualização do IQF do fornecedor.
 - Ordens **canceladas** devem ter justificativa obrigatória, registrada no histórico para fins de auditoria.
 - O contador de **Sequências Executadas** oferece uma visão rápida do progresso de cada inspeção na grid principal.

@@ -22,7 +22,7 @@ A VFIS0110 organiza em abas as tabelas tributárias que servem de base para o mo
 
 1. Acesse **Fiscal > Tabelas > Tabelas Tributárias (VFIS0110)**.
 2. A tela abre na aba **NCM**. Utilize o campo de busca para localizar um NCM existente ou clique em **Novo** para cadastrar um código.
-3. Para cada NCM, preencha o código (8 digitos), descrição, alíquota de IPI, alíquota de PIS (modalidade e percentual), alíquota de COFINS (modalidade e percentual) e alíquota de II (Imposto de Importação).
+3. Para cada NCM, preencha o código (8 dígitos), descrição, alíquota de IPI, alíquota de PIS (modalidade e percentual), alíquota de COFINS (modalidade e percentual) e alíquota de II (Imposto de Importação).
 4. A modalidade de PIS e COFINS pode ser `Cumulativo` (regime anterior, alíquotas menores) ou `Nao Cumulativo` (regime atual, alíquotas maiores). O sistema selecionara automaticamente conforme o regime tributário da empresa.
 5. Va para a aba **ICMS Interno**. Aqui são configuradas as alíquotas para operações dentro da UF do emitente. Clique em **Novo** para criar uma regra.
 6. Defina a UF de origem (a UF do emitente), o NCM (ou deixe em branco para aplicar a todos), o tipo de operação (Normal, ST, Diferimento, etc.) e as alíquotas de ICMS, FCP (Fundo de Combate a Pobreza), ICMS-ST e redução de base de cálculo.
@@ -39,7 +39,7 @@ A VFIS0110 organiza em abas as tabelas tributárias que servem de base para o mo
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Código NCM | Texto (8) | Sim | — | Código de 8 digitos da Nomenclatura Comum do Mercosul. |
+| Código NCM | Texto (8) | Sim | — | Código de 8 dígitos da Nomenclatura Comum do Mercosul. |
 | Descrição | Texto (200) | Sim | — | Descrição oficial do NCM. |
 | Alíquota IPI | Decimal (5,2) | Não | — | Percentual de IPI aplicável ao NCM. |
 | Modalidade PIS | Select | Não | Cumulativo / Não Cumulativo | Regime de tributação do PIS para este NCM. |

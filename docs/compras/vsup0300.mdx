@@ -12,11 +12,24 @@ description: "Registrar solicitações de compra e gerar pedidos agrupados por f
 
 Formalizar o pedido interno de compra e transformá-lo em pedidos de compra por fornecedor. O **saldo** do item = quantidade − atendida − cancelada.
 
+## Pré-requisitos
+
+- Empresa, solicitante, itens e unidades cadastrados.
+- Fornecedor informado na geração ou fornecedor preferencial configurado para cada item.
+- Preço sugerido ou fonte de preço disponível quando exigido pelo processo de compra.
+
 ## Passo a passo
 
 1. Crie a solicitação (empresa, solicitante) com um ou mais **itens** (quantidade, UM, preço sugerido).
 2. Abra a solicitação e adicione itens, se necessário.
 3. Em **Gerar pedidos**, informe a **quantidade a atender** e (opcional) o **fornecedor** de cada item — sem fornecedor, usa o **preferencial** (VSUP0130). O sistema agrupa por fornecedor e gera um pedido por grupo, registrando o atendimento de volta na solicitação.
+
+## Observações importantes
+
+- A quantidade gerada não pode ultrapassar o saldo aberto do item.
+- Itens de fornecedores diferentes resultam em pedidos separados.
+- Uma solicitação parcial continua aberta pelo saldo restante; confira o atendimento antes de repetir a geração.
+- Se nenhum fornecedor for informado nem encontrado como preferencial, corrija o cadastro antes de gerar o pedido.
 
 ## Telas relacionadas
 

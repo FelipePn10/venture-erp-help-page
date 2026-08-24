@@ -1,7 +1,7 @@
 ---
 sidebar_position: 16
 title: "VFIS0530 — Linhas Apuração ICMS (Bloco E)"
-description: "Apuração do ICMS próprio com linhas detalhadas que compõem o Bloco E da EFD-ICMS/IPI, consolidando débitos, creditos e ajustes."
+description: "Apuração do ICMS próprio com linhas detalhadas que compõem o Bloco E da EFD-ICMS/IPI, consolidando débitos, créditos e ajustes."
 ---
 
 # VFIS0530 — Linhas Apuração ICMS (Bloco E)
@@ -10,15 +10,15 @@ description: "Apuração do ICMS próprio com linhas detalhadas que compõem o B
 
 ## Objetivo
 
-A VFIS0530 e o coração da apuração periódica do ICMS próprio. Ela consolida todas as operações do período (mês) em linhas de apuração que seguem a estrutura do **Bloco E** da EFD-ICMS/IPI (SPED Fiscal): total de saídas (débitos de ICMS), total de entradas (creditos de ICMS), estornos de débitos, estornos de creditos e ajustes de apuração (códigos de ajuste das seções 5.1.1, 5.2, 5.3, 5.6 e 5.7). O resultado final — saldo devedor (ICMS a pagar), saldo credor (crédito acumulado para o mês seguinte) ou saldo zero — e exportado para a DAPI/GIA e para o SPED Fiscal.
+A VFIS0530 e o coração da apuração periódica do ICMS próprio. Ela consolida todas as operações do período (mês) em linhas de apuração que seguem a estrutura do **Bloco E** da EFD-ICMS/IPI (SPED Fiscal): total de saídas (débitos de ICMS), total de entradas (créditos de ICMS), estornos de débitos, estornos de créditos e ajustes de apuração (códigos de ajuste das seções 5.1.1, 5.2, 5.3, 5.6 e 5.7). O resultado final — saldo devedor (ICMS a pagar), saldo credor (crédito acumulado para o mês seguinte) ou saldo zero — e exportado para a DAPI/GIA e para o SPED Fiscal.
 
 ## Pre-requisitos
 
 - **VFIS0200 (NFe de Saída):** Todas as NFe de saída do período autorizadas, com seus valores de ICMS corretos.
-- **VFIS0210 (NFe de Entrada):** Todas as NFe de entrada aprovadas, com creditos de ICMS registrados.
-- **VFIS0220 (CTe):** CTes aprovados, com creditos de ICMS sobre frete registrados.
-- **VFIS0510 e VFIS0520:** Códigos de ajuste cadastrados para eventuais ajustes manuais ou automaticos.
-- **VFIS0540 (Lancamentos Resumo ICMS):** Lancamentos fiscais processados para o período.
+- **VFIS0210 (NFe de Entrada):** Todas as NFe de entrada aprovadas, com créditos de ICMS registrados.
+- **VFIS0220 (CTe):** CTes aprovados, com créditos de ICMS sobre frete registrados.
+- **VFIS0510 e VFIS0520:** Códigos de ajuste cadastrados para eventuais ajustes manuais ou automáticos.
+- **VFIS0540 (Lançamentos Resumo ICMS):** Lançamentos fiscais processados para o período.
 - **VFIS0550 (Restituição ICMS ST):** Eventuais restituições de ST a serem abatidas.
 - **VFIS0560 (Notas Especiais Ajuste):** Notas de ajuste geradas no período.
 
@@ -28,19 +28,19 @@ A VFIS0530 e o coração da apuração periódica do ICMS próprio. Ela consolid
 2. Selecione a **Empresa**, o **Local** e o **Período de Apuração** (ano e mês).
 3. Clique em **Gerar Apuração**. O sistema automaticamente:
    - **Totaliza os débitos (saídas):** Soma do ICMS próprio destacado em todas as NFe de saída do período, agrupado por CFOP (registro E110).
-   - **Totaliza os creditos (entradas):** Soma do ICMS destacado em todas as NFe de entrada do período, mais creditos de frete (CTe), agrupados por CFOP (registro E110).
+   - **Totaliza os créditos (entradas):** Soma do ICMS destacado em todas as NFe de entrada do período, mais créditos de frete (CTe), agrupados por CFOP (registro E110).
    - **Calcula estornos:** Estornos de débito (devoluções de venda recebidas, saídas canceladas) e estornos de crédito (devoluções de compra enviadas), registrados no período.
    - **Aplica ajustes:** Lanca automaticamente os ajustes marcados como "Automático" na VFIS0510 e VFIS0520.
 4. A grade **Linhas da Apuração** exibira cada linha componente do Bloco E:
    - **Linhas de Débito:** ICMS sobre vendas internas, interestaduais, DIFAL, etc.
    - **Linhas de Crédito:** ICMS sobre compras internas, interestaduais, frete, etc.
    - **Linhas de Estorno:** Estornos de débito e de crédito.
-   - **Linhas de Ajuste:** Códigos de ajuste 5.1.1 (proprios), 5.2 (terceiros), 5.3 (ST), 5.6 (entradas), 5.7 (exportação).
+   - **Linhas de Ajuste:** Códigos de ajuste 5.1.1 (próprios), 5.2 (terceiros), 5.3 (ST), 5.6 (entradas), 5.7 (exportação).
 5. Verifique cada linha. Para adicionar um **ajuste manual**, clique em **Novo Ajuste**, selecione o código de ajuste (VFIS0510/VFIS0520), informe o valor e a justificativa.
 6. O sistema calculara o **Resultado da Apuração**:
    - **Total de Débitos:** Soma de todas as linhas de débito e estornos de crédito.
-   - **Total de Creditos:** Soma de todas as linhas de crédito e estornos de débito.
-   - **Saldo:** Débitos - Creditos.
+   - **Total de Créditos:** Soma de todas as linhas de crédito e estornos de débito.
+   - **Saldo:** Débitos - Créditos.
      - Se > 0: **Saldo Devedor** (ICMS a pagar).
      - Se < 0: **Saldo Credor** (crédito acumulado para o mês seguinte).
      - Se = 0: Apuração zerada.
@@ -58,8 +58,8 @@ A VFIS0530 e o coração da apuração periódica do ICMS próprio. Ela consolid
 | Ano | Número (4) | Sim | — | Ano da apuração. |
 | Mês | Select | Sim | 01 a 12 | Mês de competência. |
 | Total Débitos | Decimal (15,2) | Auto | — | Soma das linhas de débito. |
-| Total Creditos | Decimal (15,2) | Auto | — | Soma das linhas de crédito. |
-| Saldo | Decimal (15,2) | Auto | — | Débitos - Creditos. |
+| Total Créditos | Decimal (15,2) | Auto | — | Soma das linhas de crédito. |
+| Saldo | Decimal (15,2) | Auto | — | Débitos - Créditos. |
 | Status | Select | Auto | Em Andamento / Finalizada / Exportada | Status da apuração. |
 
 ### Linhas da Apuração (grid)
@@ -76,19 +76,19 @@ A VFIS0530 e o coração da apuração periódica do ICMS próprio. Ela consolid
 ## Observações importantes
 
 - **Período de competência:** A apuração do ICMS e mensal. Certifique-se de que todos os documentos do mês foram processados antes de iniciar a apuração. Documentos processados após o fechamento devem ser tratados como extemporaneos no mês seguinte.
-- **Saldo Credor:** O saldo credor (quando os creditos superam os débitos) e acumulado para o mês seguinte. O sistema transfere automaticamente o saldo credor do mês anterior para a apuração do mês atual.
+- **Saldo Credor:** O saldo credor (quando os créditos superam os débitos) e acumulado para o mês seguinte. O sistema transfere automaticamente o saldo credor do mês anterior para a apuração do mês atual.
 - **DIFAL e EC 87/15:** O DIFAL (Diferencial de Alíquotas) recolhido sobre vendas interestaduais para consumidor final e uma linha de débito na apuração do estado de origem (partilha) e do estado de destino. Verifique se as linhas de DIFAL estao sendo geradas corretamente.
-- **Exportação SPED Fiscal:** A VFIS0530 gera os registros E100 (período), E110 (resumo), E111 (detalhe de ajustes proprios), E220/E230 (ajustes terceiros), E310/E311 (ajustes ST), E510/E511 (ajustes entradas) e E520/E521 (ajustes exportação).
-- **Conciliação:** Antes de exportar, concilie a apuração: o total de débitos deve bater com a soma dos ICMS das NFe de saída, e o total de creditos com a soma dos ICMS das NFe de entrada + fretes.
+- **Exportação SPED Fiscal:** A VFIS0530 gera os registros E100 (período), E110 (resumo), E111 (detalhe de ajustes próprios), E220/E230 (ajustes terceiros), E310/E311 (ajustes ST), E510/E511 (ajustes entradas) e E520/E521 (ajustes exportação).
+- **Conciliação:** Antes de exportar, concilie a apuração: o total de débitos deve bater com a soma dos ICMS das NFe de saída, e o total de créditos com a soma dos ICMS das NFe de entrada + fretes.
 
 ## Telas relacionadas
 
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Documentos que geram os débitos de ICMS.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Documentos que geram os creditos de ICMS.
-- **[VFIS0220 (CTe)](/fiscal/vfis0220):** CTes que geram creditos de ICMS sobre frete.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Documentos que geram os créditos de ICMS.
+- **[VFIS0220 (CTe)](/fiscal/vfis0220):** CTes que geram créditos de ICMS sobre frete.
 - **[VFIS0500 (Motivos Transferência DAPI)](/fiscal/vfis0500):** Motivos de transferência de crédito.
 - **[VFIS0510 (Códigos Ajuste 5.1.1)](/fiscal/vfis0510):** Códigos de ajuste utilizados na apuração.
 - **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais códigos de ajuste.
-- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos fiscais detalhados.
+- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos fiscais detalhados.
 - **[VFIS0550 (Restituição ICMS ST)](/fiscal/vfis0550):** Restituição de ST que afeta a apuração.
 - **[VFIS0560 (Notas Especiais Ajuste)](/fiscal/vfis0560):** Notas de ajuste que impactam a apuração.

@@ -12,6 +12,12 @@ description: "Descrever como um item é produzido: operações, sequência, cent
 
 Descrever a rota produtiva do item. O roteiro é criado manualmente pelo PCP/engenharia; o MRP, CRP e APS apenas o *leem*. Calcula o lead time pelo caminho crítico (CPM).
 
+## Pré-requisitos
+
+- Item fabricado e centros de trabalho cadastrados.
+- Operações e tempos padrão definidos ou conhecidos.
+- Calendário e recursos produtivos disponíveis para o planejamento posterior.
+
 ## Passo a passo
 
 1. **Crie operações genéricas** (biblioteca reutilizável): Nome, **Origem** (Interna = gera OF; Externa/Terceiros = gera OS) e tempo padrão.

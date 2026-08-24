@@ -14,7 +14,7 @@ A VFIS0310 permite cadastrar e gerenciar os dispositivos legais que fundamentam 
 
 ## Pre-requisitos
 
-- **Conhecimento da legislação fiscal vigente:** E fundamental conhecer os dispositivos legais aplicáveis a cada situação (ex: Convenio ICMS 100/97 para ST, LC 123/06 para Simples Nacional, Decreto estadual para creditos presumidos).
+- **Conhecimento da legislação fiscal vigente:** E fundamental conhecer os dispositivos legais aplicáveis a cada situação (ex: Convênio ICMS 100/97 para ST, LC 123/06 para Simples Nacional, Decreto estadual para créditos presumidos).
 - **VFIS0110 (Tabelas Tributárias) e VFIS0320 (Parâmetros ICMS/IPI):** Os dispositivos legais são referenciados nas tabelas tributárias e nos parâmetros ICMS/IPI para associação automática.
 
 ## Passo a passo
@@ -23,7 +23,7 @@ A VFIS0310 permite cadastrar e gerenciar os dispositivos legais que fundamentam 
 2. A grade lista todos os dispositivos legais cadastrados, agrupados por tipo de imposto.
 3. Para **criar um novo dispositivo legal**, clique em **Novo**.
 4. Selecione o **Tipo**: `ICMS`, `IPI`, `LAUDO`, `PIS` ou `COFINS`. Cada tipo tem campos específicos de enquadramento legal no XML.
-5. Para dispositivos do tipo **ICMS**: informe o código de enquadramento legal (campo `cEnq` do XML — ex: "100/97" para Convenio ICMS 100/97), a descrição do dispositivo (ex: "Convenio ICMS 100/97 — Substituição Tributária") e os códigos CST de ICMS associados (00=Tributado integralmente, 10=Tributado com ST, 20=Com redução de BC, 30=Isento, 40=Imune, 41=Não tributado, 50=Diferido, 51=Diferido com ST, 60=Cobrado anteriormente por ST, 70=Com redução de BC e ST, 90=Outros).
+5. Para dispositivos do tipo **ICMS**: informe o código de enquadramento legal (campo `cEnq` do XML — ex: "100/97" para Convênio ICMS 100/97), a descrição do dispositivo (ex: "Convênio ICMS 100/97 — Substituição Tributária") e os códigos CST de ICMS associados (00=Tributado integralmente, 10=Tributado com ST, 20=Com redução de BC, 30=Isento, 40=Imune, 41=Não tributado, 50=Diferido, 51=Diferido com ST, 60=Cobrado anteriormente por ST, 70=Com redução de BC e ST, 90=Outros).
 6. Para dispositivos do tipo **IPI**: informe o código de enquadramento legal (campo `cEnq` do IPI) e os códigos CST de IPI (00=Tributado alíquota normal, 01=Tributado alíquota zero, 02=Isento, 03=Não tributado, 04=Imune, 05=Suspenso, 49=Outras entradas, 50=Suspenso, 51=Diferido, 55=Suspenso, 99=Outras saídas).
 7. Para dispositivos do tipo **PIS** e **COFINS**: informe o código CST de PIS (01 a 99) ou COFINS e o enquadramento legal correspondente.
 8. Para dispositivos do tipo **LAUDO**: informe o número do laudo técnico e o órgão emissor. Laudos são utilizados para fundamentar isenções ou reduções de base de cálculo baseadas em características técnicas do produto (ex: veículos para pessoas com deficiência, equipamentos médico-hospitalares).
@@ -36,7 +36,7 @@ A VFIS0310 permite cadastrar e gerenciar os dispositivos legais que fundamentam 
 |---|---|---|---|---|
 | Tipo | Select | Sim | ICMS / IPI / LAUDO / PIS / COFINS | Tipo de imposto ao qual o dispositivo legal se aplica. |
 | Código Enquadramento | Texto (20) | Sim | — | Código do enquadramento legal (campo `cEnq` do XML). Ex: "100/97". |
-| Descrição | Texto (200) | Sim | — | Descrição do dispositivo legal (ex: "Convenio ICMS 100/97"). |
+| Descrição | Texto (200) | Sim | — | Descrição do dispositivo legal (ex: "Convênio ICMS 100/97"). |
 | CST ICMS | Texto (4) | Condicional | 00, 10, 20, 30, 40, 41, 50, 51, 60, 70, 90 | CST de ICMS vinculado ao dispositivo. Valido apenas para tipo ICMS. |
 | CST IPI | Texto (2) | Condicional | 00, 01, 02, 03, 04, 05, 49, 50, 51, 55, 99 | CST de IPI vinculado ao dispositivo. Valido apenas para tipo IPI. |
 | CST PIS/COFINS | Texto (2) | Condicional | 01-99 | CST de PIS ou COFINS vinculado ao dispositivo. |
@@ -47,14 +47,14 @@ A VFIS0310 permite cadastrar e gerenciar os dispositivos legais que fundamentam 
 ## Observações importantes
 
 - **Enquadramento legal no XML:** A ausência do campo `cEnq` (código de enquadramento legal) em operações com ST, redução de BC ou isenção gera rejeição na SEFAZ (códigos 588, 589, 591). Sempre associe o dispositivo legal correto a cada parâmetro fiscal.
-- **Convenio ICMS 100/97:** E o dispositivo mais comum para Substituição Tributária. Deve estar cadastrado com o código "100/97" e associado a todos os parâmetros de ICMS-ST na VFIS0320.
+- **Convênio ICMS 100/97:** E o dispositivo mais comum para Substituição Tributária. Deve estar cadastrado com o código "100/97" e associado a todos os parâmetros de ICMS-ST na VFIS0320.
 - **LC 123/06 (Simples Nacional):** Empresas do Simples Nacional devem cadastrar a LC 123/06 como dispositivo legal para operações com CST 90 (ICMS recolhido via Simples) e CSOSN (Código de Situação da Operação do Simples Nacional).
 - **Laudos Técnicos:** Para produtos com isenção ou redução de ICMS baseada em laudo (ex: equipamentos para PCD, medicamentos de alto custo), o número do laudo e obrigatório no XML. Cadastre cada laudo individualmente.
 
 ## Telas relacionadas
 
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** NFe de saída onde os dispositivos legais são selecionados nos itens.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza dispositivos legais para creditos.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza dispositivos legais para créditos.
 - **[VFIS0110 (Tabelas Tributárias)](/fiscal/vfis0110):** Tabelas que referenciam dispositivos legais.
 - **[VFIS0320 (Parâmetros ICMS/IPI)](/fiscal/vfis0320):** Parâmetros fiscais que associam dispositivos legais a combinações de UF+NCM+Tipo Operação.
 - **[VFIS0330 (Redução/Substituição/Diferimento)](/fiscal/vfis0330):** Regras fiscais que utilizam dispositivos legais para fundamentação.

@@ -12,6 +12,12 @@ description: "Calcular o custo de fabricação planejado (materiais + operaçõe
 
 Compor o custo padrão do item, resolvendo primeiro os intermediários (rollup) antes do produto final.
 
+## Pré-requisitos
+
+- Estrutura de materiais e roteiro vigentes.
+- Quantidades e perdas dos componentes revisadas.
+- Custos de compra, custo/hora e overhead cadastrados na VCUS0100.
+
 ## Passo a passo
 
 1. Informe o **item** e clique em **Calcular** (executa o rollup).
@@ -23,6 +29,12 @@ Compor o custo padrão do item, resolvendo primeiro os intermediários (rollup) 
 ```
 custo = Σ material(BOM) + Σ (tempo_operação × custo/hora_centro) + overhead
 ```
+
+## Observações importantes
+
+- O resultado depende da vigência e completude dos dados de origem; custo zero pode indicar cadastro ausente, não produto sem custo.
+- Recalcule o rollup após mudar estrutura, roteiro, preço de compra, custo/hora ou taxa de overhead.
+- Use a mesma referência de custo ao comparar padrão e realizado para evitar uma variância artificial.
 
 ## Telas relacionadas
 

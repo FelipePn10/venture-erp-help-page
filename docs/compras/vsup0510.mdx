@@ -12,11 +12,23 @@ description: "Manter tipos de fornecedor, tipos de contato e parâmetros por emp
 
 Fornecer as tabelas de apoio consumidas pelo cadastro de fornecedor (VSUP0500) e configurar o comportamento do módulo por empresa.
 
+## Pré-requisitos
+
+- Empresa correta selecionada.
+- Plano financeiro disponível quando a empresa exigir conta padrão.
+- Fornecedor genérico previamente cadastrado quando usado na entrada de NF-e.
+
 ## Passo a passo
 
 1. Aba **Tipos**: cadastre tipos de fornecedor informando descrição e **kind** (Normal, Transportadora, Transp. Redespacho, Redespacho).
 2. Aba **Contatos**: cadastre os tipos de contato (Comprador, Gerente…).
 3. Aba **Parâmetros**: por empresa, defina conta financeira default, se exige conta, homologação default, **data base padrão para vencimentos** (Emissão/Entrada/Digitação), fornecedor genérico da NF-e, etc.
+
+## Observações importantes
+
+- Alterações nos parâmetros afetam novos cadastros e operações; revise o impacto antes de salvar.
+- O tipo do fornecedor controla validações do cadastro, inclusive o tratamento da inscrição estadual.
+- Não desative um cadastro de apoio ainda utilizado sem antes revisar os fornecedores vinculados.
 
 ## Telas relacionadas
 
