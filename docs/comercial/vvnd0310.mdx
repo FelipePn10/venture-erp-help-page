@@ -1,0 +1,53 @@
+---
+sidebar_position: 4
+title: "VVND0310 — Parâmetros de Orçamento"
+description: "Configurar regras do orçamento de venda, padrões de comissão e motivos de cancelamento por empresa."
+---
+
+# VVND0310 — Parâmetros de Orçamento
+
+> Reúne os cadastros de apoio que determinam como o orçamento de venda se comporta na empresa.
+
+## Objetivo
+
+Configurar os rótulos comerciais, regras de NFC-e e frete, padrões de comissão e motivos usados para cancelar ou descancelar orçamentos e itens.
+
+## Pré-requisitos
+
+- Empresa selecionada no ERP.
+- Cliente consumidor final cadastrado, caso a operação use NFC-e ou documento estrangeiro.
+- Perfil **ADMIN** para gravar. Usuários sem esse perfil podem apenas consultar e exportar.
+
+## Passo a passo
+
+1. Em **Parâmetros**, ajuste os nomes dos campos comerciais que aparecem no orçamento.
+2. Se aplicável, selecione o cliente consumidor final e configure o padrão de NFC-e e a aceitação de itens de serviço.
+3. Defina o frete CIF mínimo e se o valor de redespacho deve ser incorporado ao frete.
+4. Em **Padrões de comissão**, informe descrição e percentuais e clique em **Gravar padrão**.
+5. Em **Motivos de cancelamento**, cadastre o código, a descrição e as regras de complemento e descancelamento.
+6. Use **Exportar** para gerar uma cópia da lista atualmente exibida.
+
+## Regras principais
+
+| Configuração | Regra |
+|--------------|-------|
+| Cliente consumidor final | Permite ao orçamento desse cliente tratar documento estrangeiro e endereço do consumidor |
+| Padrão NFC-e | Novos orçamentos já iniciam marcados para NFC-e |
+| Item de serviço em NFC-e | Além da permissão, o orçamento exige entrega com recibo |
+| Frete CIF mínimo | Não aceita valor negativo e é aplicado quando o orçamento manda conferir frete |
+| Padrão de comissão | Percentual no faturamento + percentual no pagamento deve ser igual à comissão total |
+| Motivo com complemento | Exige uma explicação ao cancelar |
+| Motivo que permite descancelar | É o único tipo aceito na reabertura de um cancelamento |
+
+## Observações importantes
+
+- As configurações são mantidas por empresa; confira a empresa ativa antes de alterar.
+- Código em branco no padrão de comissão é gerado pelo sistema. Informar um código existente atualiza o cadastro.
+- O motivo de cancelamento exige código. Gravar um código existente atualiza o motivo.
+- Sem ao menos um motivo cadastrado, o cancelamento de orçamento fica indisponível.
+
+## Telas relacionadas
+
+- **[VVND0300 (Orçamento de Venda)](/comercial/vvnd0300):** rotina que consome estes parâmetros.
+- **[VCLI0500 (Cadastro de Cliente)](/cliente/vcli0500):** origem do cliente consumidor final.
+- **[VVND0400 (Representantes)](/comercial/vvnd0400):** representantes associados à negociação e às comissões.

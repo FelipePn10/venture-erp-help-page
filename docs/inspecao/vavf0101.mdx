@@ -10,7 +10,7 @@ description: "Configuração dos parâmetros de avaliação de fornecedores com 
 
 ## Objetivo
 
-Permitir a definição e ponderação dos critérios utilizados na avaliação periódica de fornecedores. A tela e organizada em 3 sub-tabelas que correspondem as dimensões de avaliação: **Qualidade** (desempenho nas inspeções, ocorrencias, certificações), **Comercial** (preços, prazos de pagamento, flexibilidade negocial) e **Logística** (pontualidade de entrega, conformidade de volumes, documentação). Cada sub-tabela permite definir os critérios, seus pesos e a forma de cálculo, resultando em uma nota consolidada que alimenta o IQF (Indice de Qualidade do Fornecedor).
+Permitir a definição e ponderação dos critérios utilizados na avaliação periódica de fornecedores. A tela e organizada em 3 sub-tabelas que correspondem as dimensões de avaliação: **Qualidade** (desempenho nas inspeções, ocorrências, certificações), **Comercial** (preços, prazos de pagamento, flexibilidade negocial) e **Logística** (pontualidade de entrega, conformidade de volumes, documentação). Cada sub-tabela permite definir os critérios, seus pesos e a forma de cálculo, resultando em uma nota consolidada que alimenta o IQF (Indice de Qualidade do Fornecedor).
 
 ## Pre-requisitos
 
@@ -81,8 +81,8 @@ Permitir a definição e ponderação dos critérios utilizados na avaliação p
 ## Observações importantes
 
 - A **soma dos pesos** das 3 dimensões deve totalizar 100%. O sistema valida esta condição e impede salvar se houver divergência.
-- A **Fórmula Personalizada** permite escrever uma expressão SQL ou função customizada para calculos complexos, exigindo conhecimento técnico avancado.
-- O botão **Simular** e uma ferramenta poderosa para calibrar os parâmetros. Ele aplica os critérios configurados sobre dados historicos de um fornecedor e mostra o resultado que seria obtido.
+- A **Fórmula Personalizada** permite escrever uma expressão SQL ou função customizada para cálculos complexos, exigindo conhecimento técnico avançado.
+- O botão **Simular** e uma ferramenta poderosa para calibrar os parâmetros. Ele aplica os critérios configurados sobre dados históricos de um fornecedor e mostra o resultado que seria obtido.
 - As **Faixas de Classificação** determinam a cor e o tratamento do fornecedor: A (verde, recomendado), B (azul, aceitável), C (amarelo, requer atenção), D (vermelho, restrito).
 - Fornecedores classificados como **D** por periodos consecutivos podem ser automaticamente bloqueados para novos pedidos de compra, conforme parametrização.
 - A alteração dos parâmetros de avaliação **não retroage** — avaliações já realizadas mantém os critérios e pesos vigentes a epoca do cálculo.

@@ -1,0 +1,53 @@
+---
+sidebar_position: 9
+title: "VNOT0100 — Central de Alertas"
+description: "Configurar alertas internos e resumos por e-mail, acompanhar entregas e reenviar comunicações com falha."
+---
+
+# VNOT0100 — Central de Alertas
+
+> Centraliza as regras de comunicação do ERP: quais eventos geram alertas, quem recebe, quando o e-mail é enviado e o que aconteceu com cada entrega.
+
+## Objetivo
+
+Configurar alertas internos por evento, usuário, papel ou departamento e acompanhar todo o ciclo da comunicação — do alerta aberto ao envio, incluindo falhas e reenvios.
+
+## Pré-requisitos
+
+- Usuários e departamentos destinatários ativos.
+- Serviço de e-mail configurado pela administração do ambiente.
+- Permissão para administrar as configurações e assinaturas da empresa.
+
+## Passo a passo
+
+1. Em **Configuração**, habilite a central e defina horário do resumo, fuso horário, retenção, limites de envio e de anexos.
+2. Use **Enviar e-mail de teste** e acompanhe o resultado na aba **Histórico**.
+3. Em **Assinaturas**, escolha um evento ativo, a cadência e o destinatário interno.
+4. Informe limites ou antecedência quando o evento aceitar esses critérios e clique em **Criar assinatura**.
+5. Consulte **Alertas** para ver ocorrências abertas e seus detalhes.
+6. Consulte **Histórico** para confirmar entregas. Em **Falhas esgotadas**, corrija a causa antes de solicitar um novo envio.
+
+## Campos e opções principais
+
+| Campo | Função |
+|-------|--------|
+| Horário do resumo | Horário diário usado pelas assinaturas de resumo |
+| Fuso horário | Referência para o agendamento; por exemplo, `America/Sao_Paulo` |
+| Retenção | Quantidade de dias de histórico preservada |
+| Evento | Situação de negócio monitorada pela assinatura |
+| Cadência | Envio imediato, resumo diário ou ambos, conforme o evento |
+| Destinatário | Usuário, papel ou departamento interno |
+| Antecedência / limites | Critérios adicionais para eventos que trabalham com prazo, quantidade ou valor |
+
+## Observações importantes
+
+- A tela não permite digitar um endereço externo: os destinatários vêm dos usuários, papéis e departamentos da própria empresa.
+- Eventos marcados como **Futuro** são informativos e ainda não podem gerar uma assinatura.
+- Um reenvio não apaga a tentativa anterior; o histórico permanece disponível para auditoria.
+- Senhas e dados do servidor de e-mail não são exibidos nem alterados nesta tela.
+
+## Telas relacionadas
+
+- **[VUSR0100 (Solicitações de Troca de Senha)](/cadastros/vusr0100):** usuários que podem receber comunicações internas.
+- **[VNOT0100 não substitui a auditoria](/cadastros/vadm0100):** consulte a trilha de operações na VADM0100.
+- **[VAUD0100 (Histórico de Alterações)](/cadastros/vaud0100):** visão de auditoria exclusiva de administrador.

@@ -1,16 +1,16 @@
 ---
 sidebar_position: 4
 title: "VPRE0251 — Geração Previsão"
-description: "Ferramenta de geração automática de previsões baseada em histórico de vendas e indices de projeção."
+description: "Ferramenta de geração automática de previsões baseada em histórico de vendas e índices de projeção."
 ---
 
 # VPRE0251 — Geração Previsão
 
-> Ferramenta de geração automática de previsões de venda que combina histórico de vendas com indices de projeção configurados pelo usuário.
+> Ferramenta de geração automática de previsões de venda que combina histórico de vendas com índices de projeção configurados pelo usuário.
 
 ## Objetivo
 
-Permitir a geração automática de previsões de venda a partir do histórico de vendas real, aplicando indices de projeção (crescimento, sazonalidade, tendência) para estimar a demanda futura. A ferramenta le o histórico de vendas de um período base e projeta os valores para um período futuro, aplicando fatores de ajuste configurados pelo usuário. Este processo agiliza significativamente a criação de previsões para itens com comportamento de venda estável, reduzindo o esforco manual e aumentando a precisão das estimativas.
+Permitir a geração automática de previsões de venda a partir do histórico de vendas real, aplicando índices de projeção (crescimento, sazonalidade, tendência) para estimar a demanda futura. A ferramenta le o histórico de vendas de um período base e projeta os valores para um período futuro, aplicando fatores de ajuste configurados pelo usuário. Este processo agiliza significativamente a criação de previsões para itens com comportamento de venda estável, reduzindo o esforço manual e aumentando a precisão das estimativas.
 
 ## Pre-requisitos
 
@@ -51,7 +51,7 @@ Permitir a geração automática de previsões de venda a partir do histórico d
 
 - O botão **Simular** e essencial antes da geração definitiva. Ele mostra exatamente os valores que serão gerados e destaca itens com variações anomalas (acima de 50% de crescimento ou queda).
 - O **Indice de Sazonalidade** e útil para itens com comportamento sazonal conhecido. Ele aplica percentuais diferentes para cada mês, refletindo a sazonalidade histórica do período base.
-- A opção **Considerar Tendência** utiliza regressão linear simples sobre os dados historicos para projetar crescimento ou declinio contínuo, complementando os indices estáticos.
+- A opção **Considerar Tendência** utiliza regressão linear simples sobre os dados históricos para projetar crescimento ou declínio contínuo, complementando os índices estáticos.
 - O toggle **Substituir Previsões Existentes** deve ser usado com cautela. Desmarcado, apenas itens sem previsão recebem valores gerados.
 - Periodos de **média móvel** maiores (4 a 6) suavizam variações, enquanto periodos menores (2 a 3) respondem mais rapidamente a mudancas de tendência.
 - A geração respeita o **bloqueio de semanas** configurado em [VPRE0102 (Bloqueio Previsão)](/previsao/vpre0102), a menos que o toggle "Gerar para Semanas Bloqueadas" esteja ativado.

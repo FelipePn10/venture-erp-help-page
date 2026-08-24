@@ -23,10 +23,21 @@ Controlar a movimentação física da ordem de serviço terceirizado, evitando d
 2. **Registre o movimento**: tipo (remessa, retorno, recebimento, ajuste), quantidade, data, referência, almoxarifado/lote e uma **chave única** (evita duplicidade).
 3. Consulte o **histórico** da ordem.
 
+## Tipos de movimento
+
+| Tipo | Uso |
+|------|-----|
+| Remessa | Envio do material ao terceiro |
+| Retorno | Devolução do material ou produto pelo terceiro |
+| Recebimento | Confirmação física do que retornou |
+| Ajuste | Correção excepcional, com justificativa e conferência |
+
 ## Observações importantes
 
 - **Reutilizar a mesma chave impede a duplicação** acidental do movimento.
 - Informe corretamente almoxarifado e lote para manter a rastreabilidade.
+- A chave única identifica a tentativa de lançamento; não crie outra chave apenas para contornar uma duplicidade sem investigar o primeiro resultado.
+- Quantidade, lote e ordem devem corresponder ao documento físico de remessa ou retorno.
 
 ## Telas relacionadas
 

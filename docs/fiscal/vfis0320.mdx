@@ -1,16 +1,16 @@
 ---
 sidebar_position: 8
 title: "VFIS0320 — Parâmetros ICMS/IPI"
-description: "Parametrização avançada de ICMS e IPI por UF combinada com NCM e Tipo de Operação, definindo alíquotas, reduções, ST e creditos."
+description: "Parametrização avançada de ICMS e IPI por UF combinada com NCM e Tipo de Operação, definindo alíquotas, reduções, ST e créditos."
 ---
 
 # VFIS0320 — Parâmetros ICMS/IPI
 
-> Tela de parametrização avançada dos impostos ICMS e IPI. Permite definir regras fiscais combinando UF (origem e destino), NCM e Tipo de Operação, controlando alíquotas, reduções de base de cálculo, Substituição Tributária, creditos e enquadramento legal.
+> Tela de parametrização avançada dos impostos ICMS e IPI. Permite definir regras fiscais combinando UF (origem e destino), NCM e Tipo de Operação, controlando alíquotas, reduções de base de cálculo, Substituição Tributária, créditos e enquadramento legal.
 
 ## Objetivo
 
-A VFIS0320 e a camada mais granular da parametrização fiscal do ERP. Enquanto a VFIS0110 define alíquotas genéricas por UF+NCM e a VFIS0330 gerencia regras específicas de redução/ST/diferimento, a VFIS0320 atua como um motor de combinação entre UF (origem + destino), NCM e Tipo de Operação, permitindo definir exatamente qual alíquota de ICMS, qual regra de ST, qual redução de base de cálculo, qual alíquota de IPI, qual dispositivo legal e qual modalidade de crédito se aplicam a cada cenário fiscal. Esta tela e consultada pelo motor de cálculo a cada emissão de documento fiscal, que busca a regra mais específica para a operação em questao.
+A VFIS0320 e a camada mais granular da parametrização fiscal do ERP. Enquanto a VFIS0110 define alíquotas genéricas por UF+NCM e a VFIS0330 gerencia regras específicas de redução/ST/diferimento, a VFIS0320 atua como um motor de combinação entre UF (origem + destino), NCM e Tipo de Operação, permitindo definir exatamente qual alíquota de ICMS, qual regra de ST, qual redução de base de cálculo, qual alíquota de IPI, qual dispositivo legal e qual modalidade de crédito se aplicam a cada cenário fiscal. Esta tela e consultada pelo motor de cálculo a cada emissão de documento fiscal, que busca a regra mais específica para a operação em questão.
 
 ## Pre-requisitos
 
@@ -38,7 +38,7 @@ A VFIS0320 e a camada mais granular da parametrização fiscal do ERP. Enquanto 
    - **Redução Base Cálculo:** Percentual de redução da base de cálculo do ICMS (ex: 41,67% para cesta básica).
    - **Alíquota ICMS-ST:** Alíquota para Substituição Tributária.
    - **MVA (Margem de Valor Agregado):** Percentual de MVA para ST.
-   - **Dispositivo Legal ICMS:** Vinculado a VFIS0310 (ex: Convenio 100/97).
+   - **Dispositivo Legal ICMS:** Vinculado a VFIS0310 (ex: Convênio 100/97).
 9. Na seção **IPI**, configure:
    - **CST de IPI:** 00 (tributado), 01 (alíquota zero), 02 (isento), 03 (não tributado), 04 (imune), 05 (suspenso), 49 (outras entradas), 50 (suspenso), 51 (diferido), 55 (suspenso), 99 (outras saídas).
    - **Alíquota IPI:** Percentual de IPI.
@@ -96,7 +96,7 @@ A VFIS0320 e a camada mais granular da parametrização fiscal do ERP. Enquanto 
 - **Hierarquia de regras:** O motor de cálculo segue a seguinte prioridade ao buscar parâmetros: 1) UF Origem + UF Destino + NCM + Tipo Operação (regra mais específica); 2) UF Origem + UF Destino + NCM; 3) UF Origem + NCM; 4) UF Origem + UF Destino; 5) UF Origem; 6) Alíquotas padrão da VFIS0100. Cadastre regras da mais específica para a mais genérica.
 - **CST vs. CSOSN:** Utilize CST para empresas do regime normal (Lucro Presumido/Real) e CSOSN para empresas do Simples Nacional. Não preencha ambos no mesmo parâmetro — o sistema utilizara um ou outro conforme o regime da empresa.
 - **MVA Ajustada:** Em operações interestaduais com ST, a MVA deve ser ajustada conforme a fórmula do Protocolo ICMS. O sistema pode calcular a MVA ajustada automaticamente se as alíquotas interestadual e interna do destino estiverem configuradas corretamente.
-- **Percentual de Crédito ICMS:** Para empresas atacadistas, alguns estados limitam o crédito de ICMS a 7% nas compras interestaduais (Convenio ICMS 42/92). Utilize este campo para configurar creditos restritos.
+- **Percentual de Crédito ICMS:** Para empresas atacadistas, alguns estados limitam o crédito de ICMS a 7% nas compras interestaduais (Convênio ICMS 42/92). Utilize este campo para configurar créditos restritos.
 
 ## Telas relacionadas
 

@@ -23,10 +23,17 @@ Oferecer visibilidade do estoque real por almoxarifado — sem alterar nada — 
 3. **Saldos do almoxarifado**: posição consolidada de todos os itens.
 4. Compare **saldo × movimentos × reservas** antes de concluir uma divergência.
 
+## Como interpretar
+
+- **Movimento** explica cada entrada ou saída e deve ser lido em ordem cronológica.
+- **Saldo pontual** responde pela posição de um item, almoxarifado e lote específicos.
+- **Posição consolidada** reúne os itens do almoxarifado; ela é mais adequada para conferência geral e exportação.
+
 ## Observações importantes
 
 - As consultas **não corrigem estoque** — para ajuste, use a rotina de inventário/movimentação com justificativa e autorização.
 - Resultado **vazio** significa ausência de registros para o contexto autenticado.
+- Para item controlado por lote, comparar apenas o saldo total pode ocultar uma diferença entre lotes.
 
 ## Telas relacionadas
 

@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2
 title: "VENT0210 — Estrutura de Produtos (BOM)"
-description: "Estrutura em arvore hierárquica com breadcrumb e grid de componentes para BOM."
+description: "Estrutura em árvore hierárquica com breadcrumb e grid de componentes para BOM."
 ---
 
 # VENT0210 — Estrutura de Produtos (BOM)
 
-> Estrutura em arvore (Bill of Materials) com navegação hierárquica por breadcrumb, grid de componentes e painel de detalhes para cada nível da estrutura.
+> Estrutura em árvore (Bill of Materials) com navegação hierárquica por breadcrumb, grid de componentes e painel de detalhes para cada nível da estrutura.
 
 ## Objetivo
 
-Permitir a construção e manutenção da estrutura de produtos (BOM) de forma hierárquica, representando a composição de cada item fabricado em termos de seus componentes, quantidades e posições. A arvore hierárquica com breadcrumb permite navegar entre os níveis da estrutura de forma intuitiva, visualizando componentes, subcomponentes e materias-primas em cada nível. O grid de componentes exibe posição, código, descrição, quantidade, percentual de perda e saude de cada item, enquanto o painel de detalhes mostra informações completas do item selecionado.
+Permitir a construção e manutenção da estrutura de produtos (BOM) de forma hierárquica, representando a composição de cada item fabricado em termos de seus componentes, quantidades e posições. A árvore hierárquica com breadcrumb permite navegar entre os níveis da estrutura de forma intuitiva, visualizando componentes, subcomponentes e materias-primas em cada nível. O grid de componentes exibe posição, código, descrição, quantidade, percentual de perda e saude de cada item, enquanto o painel de detalhes mostra informações completas do item selecionado.
 
 ## Pre-requisitos
 
@@ -23,9 +23,9 @@ Permitir a construção e manutenção da estrutura de produtos (BOM) de forma h
 
 1. Acesse a tela VENT0210 pelo menu Engenharia > Estrutura de Produtos.
 2. No campo **Código Raiz**, informe o código do item pai cuja estrutura deseja visualizar ou editar. Pressione Enter ou clique em **Carregar**.
-3. A arvore hierárquica exibira o item raiz no primeiro nível. Clique no ícone de expansão para visualizar os componentes diretos.
+3. A árvore hierárquica exibira o item raiz no primeiro nível. Clique no ícone de expansão para visualizar os componentes diretos.
 4. Para adicionar um novo componente, clique em **Incluir Item**. Preencha o código do componente, posição, quantidade e percentual de perda.
-5. Utilize o **breadcrumb** no topo da arvore para navegar rapidamente entre os níveis hierárquicos da estrutura. Cada nível clicável no breadcrumb carrega os componentes daquele nível.
+5. Utilize o **breadcrumb** no topo da árvore para navegar rapidamente entre os níveis hierárquicos da estrutura. Cada nível clicável no breadcrumb carrega os componentes daquele nível.
 6. Selecione um componente no grid para visualizar seus detalhes no painel lateral, incluindo tipo, unidade de medida e dados de planejamento.
 7. Para itens configuráveis, utilize o botão **Configurador** para aplicar regras PDM a estrutura, definindo componentes obrigatórios, opcionais ou alternativos.
 8. O botão **Alternativos** permite definir itens substitutos para componentes, que serão considerados pelo MRP em caso de indisponibilidade do componente principal.
@@ -52,7 +52,7 @@ Permitir a construção e manutenção da estrutura de produtos (BOM) de forma h
 
 ## Observações importantes
 
-- A navegação por **breadcrumb** e a forma mais agil de percorrer estruturas profundas com muitos níveis. Cada segmento do breadcrumb e clicável e carrega instantaneamente aquele nível.
+- A navegação por **breadcrumb** e a forma mais ágil de percorrer estruturas profundas com muitos níveis. Cada segmento do breadcrumb e clicável e carrega instantaneamente aquele nível.
 - Componentes marcados como **FANTASMA** na saude indicam que o item não e produzido separadamente, sendo incorporado diretamente na montagem do item pai durante a explosão da estrutura.
 - O **Percentual de Perda** e considerado pelo MRP no cálculo de necessidade liquida, adicionando uma margem sobre a quantidade necessária do componente.
 - O **Lead Time Offset** permite definir que um componente deve ser obtido X dias antes ou depois do início da produção do item pai, útil para componentes com longos prazos de entrega.

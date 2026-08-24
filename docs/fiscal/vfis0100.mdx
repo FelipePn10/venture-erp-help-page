@@ -15,7 +15,7 @@ A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da 
 ## Pre-requisitos
 
 - **VEMP0100 (Cadastro de Empresas):** A empresa deve estar previamente cadastrada no módulo de Gestão Empresarial, pois a VFIS0100 vincula o registro fiscal a uma entidade empresarial já existente.
-- **VLOC0100 (Cadastro de Locais):** O local de emissão (estabelecimento) deve estar cadastrado, com endereço completo, CEP, municipio e código IBGE corretos, pois esses dados compõem o XML fiscal.
+- **VLOC0100 (Cadastro de Locais):** O local de emissão (estabelecimento) deve estar cadastrado, com endereço completo, CEP, município e código IBGE corretos, pois esses dados compõem o XML fiscal.
 - **Token Focus NFe:** E necessário contratar o serviço Focus NFe e obter o token de autenticação no painel do provedor (https://focusnfe.com.br). Sem este token, a emissão de NFe, NFCe e CTe não funcionara.
 - **Usuário com permissão:** Acesso restrito a perfis administrativos/fiscais definidos no módulo de segurança.
 
@@ -24,7 +24,7 @@ A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da 
 1. Acesse o menu **Fiscal > Configurações > Configuração Fiscal (VFIS0100)**.
 2. Selecione a empresa e o local desejados nos combos superiores. O sistema carregara os dados já cadastrados ou exibira um formulário em branco para novo registro.
 3. Preencha os **Dados do Emitente**: razão social, nome fantasia, CNPJ, inscrição estadual, inscrição municipal, regime tributário (Simples Nacional, Lucro Presumido ou Lucro Real), CNAE principal e CNAE secundário.
-4. Informe o **Endereço do Estabelecimento**: logradouro, número, complemento, bairro, CEP, municipio (com código IBGE), UF e telefone de contato. Esses dados são exportados para o XML da NFe no grupo `<emit>/<enderEmit>`.
+4. Informe o **Endereço do Estabelecimento**: logradouro, número, complemento, bairro, CEP, município (com código IBGE), UF e telefone de contato. Esses dados são exportados para o XML da NFe no grupo `<emit>/<enderEmit>`.
 5. Na seção **Token Focus NFe**, cole o token de autenticação obtido no painel do provedor. Marque o checkbox `Ambiente de homologacao` se estiver em fase de testes. O campo `URL Base` e preenchido automaticamente conforme o ambiente selecionado.
 6. Na seção **Alíquotas Padrão**, defina os percentuais de ICMS interestadual e interno, PIS, COFINS, IPI, ISS e IRPJ. Esses valores serão sugeridos automaticamente nos documentos fiscais, mas podem ser alterados pontualmente.
 7. Configure o **E-mail de Envio**: endereço de e-mail, servidor SMTP, porta, SSL/TLS e credenciais para envio automático dos XMLs e DANFEs aos destinatários.
@@ -53,7 +53,7 @@ A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da 
 | Número | Texto (10) | Sim | — | Número do endereço. |
 | Bairro | Texto (60) | Sim | — | Bairro do estabelecimento. |
 | CEP | Texto (8) | Sim | — | CEP do estabelecimento (apenas numeros). |
-| Municipio | Select | Sim | — | Municipio com código IBGE (7 digitos). |
+| Municipio | Select | Sim | — | Municipio com código IBGE (7 dígitos). |
 | Token Focus NFe | Texto (200) | Sim | — | Token de autenticação da integração Focus NF-e. |
 | Ambiente | Select | Sim | Homologação / Produção | Define se as NFe serão emitidas em homologação ou produção. |
 | Alíquota ICMS Interna | Decimal (5,2) | Não | — | Percentual padrão de ICMS para operações internas. |
@@ -79,7 +79,7 @@ A VFIS0100 tem como objetivo cadastrar e manter a identidade fiscal completa da 
 
 - **[VFIS0110 (Tabelas Tributárias)](/fiscal/vfis0110):** Cadastro das tabelas de NCM, ICMS interno e interestadual que complementam a configuração fiscal base.
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Emissão e gerenciamento do ciclo completo da NFe de saída.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Registro de NFe de entrada (compras) por digitação manual, chave de 44 digitos ou upload de XML.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** Registro de NFe de entrada (compras) por digitação manual, chave de 44 dígitos ou upload de XML.
 - **[VFIS0220 (CTe)](/fiscal/vfis0220):** Emissão de Conhecimento de Transporte Eletrônico.
 - **[VFIS0340 (Apuração Simples Nacional)](/fiscal/vfis0340):** Cálculo automático do imposto unificado para empresas do Simples Nacional.
 - **[VNFS0100 (NFSe)](/fiscal/vnfs0100):** Emissão de Nota Fiscal de Serviço Eletrônica.

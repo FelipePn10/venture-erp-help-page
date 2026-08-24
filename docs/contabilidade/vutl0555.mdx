@@ -1,29 +1,29 @@
 ---
 sidebar_position: 3
 title: "VUTL0555 — Cadastro UFs e Cidades"
-description: "Tabela-base de UFs e municipios com código IBGE."
+description: "Tabela-base de UFs e municípios com código IBGE."
 ---
 
 # VUTL0555 — Cadastro UFs e Cidades
 
-> Tabela-base de Unidades Federativas e municipios com código IBGE.
+> Tabela-base de Unidades Federativas e municípios com código IBGE.
 
 ## Objetivo
 
-Manter a base de UFs e municipios com códigos IBGE. E a referência central para validação de endereços em todo o ERP, utilizada por módulos de clientes, fornecedores, empresas e cadastros fiscais. Garante a consistência e padronização dos dados de localização em todo o sistema.
+Manter a base de UFs e municípios com códigos IBGE. E a referência central para validação de endereços em todo o ERP, utilizada por módulos de clientes, fornecedores, empresas e cadastros fiscais. Garante a consistência e padronização dos dados de localização em todo o sistema.
 
 ## Pre-requisitos
 
 - Países e UFs cadastrados em **VLOC0100 (Localização Países/UFs)** como base previa.
-- Lista atualizada de municipios com códigos IBGE para inserção.
+- Lista atualizada de municípios com códigos IBGE para inserção.
 
 ## Passo a passo
 
 1. Acesse **Contabilidade > UFs e Cidades** (VUTL0555).
-2. Para cadastrar um novo municipio, clique em **+ Novo**.
+2. Para cadastrar um novo município, clique em **+ Novo**.
 3. Preencha o campo **UF** com a sigla do estado (ex: `SP`, `RJ`, `MG`).
 4. Preencha o campo **Nome UF** com o nome do estado por extenso.
-5. Informe o **Cod. IBGE** (opcional) com o código do municipio no IBGE.
+5. Informe o **Cod. IBGE** (opcional) com o código do município no IBGE.
 6. Preencha o campo **Municipio** com o nome da cidade.
 7. Clique em **Salvar**.
 8. Para editar um registro existente, selecione-o na tabela, clique em **Editar**, altere e salve.
@@ -35,12 +35,12 @@ Manter a base de UFs e municipios com códigos IBGE. E a referência central par
 |-------|------|-------------|--------|--------|
 | UF | texto | Sim | — | Sigla da UF |
 | Nome UF | texto | Sim | — | Nome do estado |
-| Cod. IBGE | texto | Não | — | Código IBGE do municipio |
-| Municipio | texto | Sim | — | Nome do municipio |
+| Cod. IBGE | texto | Não | — | Código IBGE do município |
+| Municipio | texto | Sim | — | Nome do município |
 
 ## Observações importantes
 
-- Esta tabela e a base única de municipios para todo o ERP. Alterações aqui impactam todos os módulos.
+- Esta tabela e a base única de municípios para todo o ERP. Alterações aqui impactam todos os módulos.
 - O código IBGE e opcional, mas fortemente recomendado para integridade com sistemas externos e obrigações fiscais.
 - A UF deve ser previamente cadastrada em VLOC0100 para consistência.
 - Mantenha a base atualizada conforme mudancas na divisão territorial brasileira.
@@ -48,7 +48,7 @@ Manter a base de UFs e municipios com códigos IBGE. E a referência central par
 ## Telas relacionadas
 
 - **[VLOC0100 (Localização Países/UFs)](/cadastros/vloc0100):** Base de países e UFs que alimenta este cadastro.
-- **[VCLI0500 (Cadastro de Cliente)](/cliente/vcli0500):** UFs e municipios nos endereços de clientes.
-- **[VAVR0200 (Cadastro de Fornecedor)](/suprimento/vavr0200):** UFs e municipios nos endereços de fornecedores.
-- **[VEMP0100 (Cadastro Empresa)](/cadastros/vemp0100):** UFs e municipios no cadastro da empresa.
-- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** UFs e municipios no cadastro fiscal.
+- **[VCLI0500 (Cadastro de Cliente)](/cliente/vcli0500):** UFs e municípios nos endereços de clientes.
+- **[VAVR0200 (Cadastro de Fornecedor)](/suprimento/vavr0200):** UFs e municípios nos endereços de fornecedores.
+- **[VEMP0100 (Cadastro Empresa)](/cadastros/vemp0100):** UFs e municípios no cadastro da empresa.
+- **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** UFs e municípios no cadastro fiscal.

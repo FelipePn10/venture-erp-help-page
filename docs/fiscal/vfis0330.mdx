@@ -10,7 +10,7 @@ description: "Motor hierárquico de regras fiscais avancadas com simulador integ
 
 ## Objetivo
 
-A VFIS0330 e o componente mais avancado do motor fiscal do ERP. Ela implementa um sistema hierárquico de regras para Redução de Base de Cálculo do ICMS (ex: cesta básica, medicamentos, veículos), Substituição Tributária (ICMS-ST, onde o imposto e recolhido antecipadamente pelo fabricante ou importador) e Diferimento (postergação do recolhimento do ICMS para etapa posterior da cadeia). O motor hierárquico permite que uma regra mais específica sobrescreva uma regra genérica, e o **Simulador** integrado permite testar qualquer combinação de UF, NCM, tipo de operação e valor para visualizar exatamente quais regras serão aplicadas e qual o resultado do cálculo, sem precisar emitir uma nota fiscal real.
+A VFIS0330 e o componente mais avançado do motor fiscal do ERP. Ela implementa um sistema hierárquico de regras para Redução de Base de Cálculo do ICMS (ex: cesta básica, medicamentos, veículos), Substituição Tributária (ICMS-ST, onde o imposto e recolhido antecipadamente pelo fabricante ou importador) e Diferimento (postergação do recolhimento do ICMS para etapa posterior da cadeia). O motor hierárquico permite que uma regra mais específica sobrescreva uma regra genérica, e o **Simulador** integrado permite testar qualquer combinação de UF, NCM, tipo de operação e valor para visualizar exatamente quais regras serão aplicadas e qual o resultado do cálculo, sem precisar emitir uma nota fiscal real.
 
 ## Pre-requisitos
 
@@ -28,7 +28,7 @@ A VFIS0330 e o componente mais avancado do motor fiscal do ERP. Ela implementa u
 3. Na aba **Redução BC**, clique em **Nova Regra** para criar uma regra de redução de base de cálculo.
 4. Defina as **chaves de busca**: UF Origem, UF Destino (opcional), NCM (opcional) e Tipo de Operação (opcional). O motor aplica a regra quando todos os campos preenchidos coincidem com a operação.
 5. Informe o **Percentual de Redução** (ex: 41,67% para cestas básicas, 61,11% para medicamentos, 30% para veículos).
-6. Selecione o **Dispositivo Legal** correspondente (VFIS0310) — por exemplo, o Convenio ICMS que autoriza a redução.
+6. Selecione o **Dispositivo Legal** correspondente (VFIS0310) — por exemplo, o Convênio ICMS que autoriza a redução.
 7. Defina a **prioridade** da regra (1 a 99). Regras com prioridade menor (mais baixa) são avaliadas primeiro e, se aplicáveis, impedem a avaliação de regras de prioridade maior (menos específicas).
 8. Repita o processo na aba **Substituição Tributária** para regras de ICMS-ST. Além das chaves de busca, configure:
    - **MVA (Margem de Valor Agregado):** Percentual a ser adicionado ao valor do produto para compor a base de cálculo da ST.
@@ -89,8 +89,8 @@ A VFIS0330 e o componente mais avancado do motor fiscal do ERP. Ela implementa u
 ## Observações importantes
 
 - **Hierarquia do motor:** O motor avalia as regras em ordem de prioridade (1 primeiro, 99 por ultimo). Ao encontrar uma regra cujas chaves correspondem a operação (UF, NCM, Tipo), o motor a aplica e **para a avaliação**. Isso significa que regras mais específicas devem ter prioridade menor (mais altas na hierarquia) do que regras genéricas. Exemplo: uma regra de redução para NCM específico "0201.30.00" deve ter prioridade 10, enquanto a regra genérica "todos os NCMs" deve ter prioridade 50.
-- **Simulador:** O simulador e uma ferramenta de validação, não de emissão. Ele mostra exatamente quais regras seriam aplicadas, mas não gera nenhum documento fiscal. Utilize-o sempre que criar ou alterar regras para verificar o impacto nos calculos.
-- **Conflito com Parâmetros VFIS0320:** A VFIS0330 (Redução/ST/Diferimento) atua em complemento a VFIS0320 (Parâmetros ICMS/IPI). A VFIS0330 define SE uma redução, ST ou diferimento se aplicam, enquanto a VFIS0320 define COMO o cálculo e feito (alíquotas, CSTs, creditos). Se houver conflito, a VFIS0330 prevalece.
+- **Simulador:** O simulador e uma ferramenta de validação, não de emissão. Ele mostra exatamente quais regras seriam aplicadas, mas não gera nenhum documento fiscal. Utilize-o sempre que criar ou alterar regras para verificar o impacto nos cálculos.
+- **Conflito com Parâmetros VFIS0320:** A VFIS0330 (Redução/ST/Diferimento) atua em complemento a VFIS0320 (Parâmetros ICMS/IPI). A VFIS0330 define SE uma redução, ST ou diferimento se aplicam, enquanto a VFIS0320 define COMO o cálculo e feito (alíquotas, CSTs, créditos). Se houver conflito, a VFIS0330 prevalece.
 - **Atualização Legislativa:** Regras de ST mudam frequentemente (novos Protocolos e Convenios ICMS). Revise periodicamente as regras de ST para garantir que estao alinhadas com a legislação vigente.
 
 ## Telas relacionadas

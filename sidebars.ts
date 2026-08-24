@@ -52,6 +52,7 @@ const sidebars: SidebarsConfig = {
             'cadastros/vpri0100',
             'cadastros/vsec0100',
             'cadastros/vusr0100',
+            'cadastros/vnot0100',
             'cadastros/vadm0100',
             'cadastros/vaud0100',
           ],
@@ -221,6 +222,7 @@ const sidebars: SidebarsConfig = {
             'comercial/vent0100',
             'comercial/vvnd0100',
             'comercial/vvnd0300',
+            'comercial/vvnd0310',
             'comercial/vvnd0400',
             'comercial/vvnd0500',
             'comercial/vvnd0600',
@@ -270,6 +272,7 @@ const sidebars: SidebarsConfig = {
             'almoxarifado/vlot0100',
             'almoxarifado/vest0300',
             'almoxarifado/vest0400',
+            'almoxarifado/vest0500',
           ],
         },
         {

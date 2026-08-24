@@ -10,7 +10,7 @@ description: "Cadastro completo de NCM, CEST, Ex Tarifário com sub-entidades pa
 
 ## Objetivo
 
-A VFIS0350 centraliza o cadastro completo das classificações fiscais de produtos utilizadas em todas as operações do ERP. O **NCM** (código de 8 digitos) e a classificação padrão para mercadorias no Mercosul e e obrigatório em toda NFe (campo `NCM` do item). O **CEST** (7 digitos) e obrigatório para produtos sujeitos a Substituição Tributária. O **Ex Tarifário** (atualmente de 3 ou 4 digitos) identifica exceções tarifarias. Além dessas classificações principais, a tela possui sub-entidades: **Idiomas** (tradução da descrição do NCM para outros idiomas, útil para comércio exterior) e **Atributos de Exportação** (Drawback, Recof, Recof-Sped e outros regimes especiais de exportação), atendendo requisitos fiscais e aduaneiros.
+A VFIS0350 centraliza o cadastro completo das classificações fiscais de produtos utilizadas em todas as operações do ERP. O **NCM** (código de 8 dígitos) e a classificação padrão para mercadorias no Mercosul e e obrigatório em toda NFe (campo `NCM` do item). O **CEST** (7 dígitos) e obrigatório para produtos sujeitos a Substituição Tributária. O **Ex Tarifário** (atualmente de 3 ou 4 dígitos) identifica exceções tarifarias. Além dessas classificações principais, a tela possui sub-entidades: **Idiomas** (tradução da descrição do NCM para outros idiomas, útil para comércio exterior) e **Atributos de Exportação** (Drawback, Recof, Recof-Sped e outros regimes especiais de exportação), atendendo requisitos fiscais e aduaneiros.
 
 ## Pre-requisitos
 
@@ -23,13 +23,13 @@ A VFIS0350 centraliza o cadastro completo das classificações fiscais de produt
 1. Acesse **Fiscal > Tabelas > Classificações Fiscais (VFIS0350)**.
 2. A tela principal e uma grade com todos os NCMs cadastrados. Utilize a busca por código ou descrição para localizar um NCM específico.
 3. Para **cadastrar um novo NCM**, clique em **Novo**. Informe:
-   - **Código NCM:** 8 digitos (ex: 0201.30.00 — Carnes de bovino frescas).
+   - **Código NCM:** 8 dígitos (ex: 0201.30.00 — Carnes de bovino frescas).
    - **Descrição:** Descrição oficial conforme TIPI.
    - **Alíquota II (Imposto de Importação):** Percentual para operações de importação.
    - **Alíquota IPI:** Percentual conforme TIPI (pode ser zero, isento ou não tributado).
    - **Alíquota PIS/Cofins Importação:** Percentuais específicos para importação.
-4. Na sub-entidade **CEST**, vincule o NCM ao código CEST (quando o produto estiver sujeito a ST). Informe o código CEST de 7 digitos e a descrição do segmento (ex: "0100100 — Refrigerantes"). Um NCM pode ter varios CESTs associados (diferentes segmentos de ST).
-5. Na sub-entidade **Ex Tarifário**, cadastre as exceções tarifarias. Informe o código Ex (3 ou 4 digitos) e a descrição da exceção. Um NCM pode ter varios Ex Tarifários. O Ex Tarifário altera a alíquota de IPI e II, e deve ser informado no XML da NFe (campo `EXTIPI`).
+4. Na sub-entidade **CEST**, vincule o NCM ao código CEST (quando o produto estiver sujeito a ST). Informe o código CEST de 7 dígitos e a descrição do segmento (ex: "0100100 — Refrigerantes"). Um NCM pode ter varios CESTs associados (diferentes segmentos de ST).
+5. Na sub-entidade **Ex Tarifário**, cadastre as exceções tarifarias. Informe o código Ex (3 ou 4 dígitos) e a descrição da exceção. Um NCM pode ter varios Ex Tarifários. O Ex Tarifário altera a alíquota de IPI e II, e deve ser informado no XML da NFe (campo `EXTIPI`).
 6. Na sub-entidade **Idiomas**, cadastre traduções da descrição do NCM para outros idiomas (ingles, espanhol, etc.). Isto e útil para documentos de exportação (Nota Fiscal de Exportação, Declaração de Exportação, Invoice Comercial).
 7. Na sub-entidade **Atributos de Exportação**, marque os regimes aduaneiros especiais aplicáveis a este NCM: Drawback (Isenção/Suspensão/Restituição), Recof, Recof-Sped, Repetro, Entreposto Aduaneiro, etc.
 8. Clique em **Salvar**. O sistema validara se o NCM já existe e se os códigos CEST e Ex são validos.
@@ -40,7 +40,7 @@ A VFIS0350 centraliza o cadastro completo das classificações fiscais de produt
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Código NCM | Texto (8) | Sim | — | Código de 8 digitos conforme TIPI. |
+| Código NCM | Texto (8) | Sim | — | Código de 8 dígitos conforme TIPI. |
 | Descrição | Texto (200) | Sim | — | Descrição oficial do NCM. |
 | Alíquota II | Decimal (5,2) | Não | — | Alíquota de Imposto de Importação. |
 | Alíquota IPI | Decimal (5,2) | Não | — | Alíquota de IPI conforme TIPI. |
@@ -52,7 +52,7 @@ A VFIS0350 centraliza o cadastro completo das classificações fiscais de produt
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Código CEST | Texto (7) | Sim | — | Código de 7 digitos do CEST. |
+| Código CEST | Texto (7) | Sim | — | Código de 7 dígitos do CEST. |
 | Descrição CEST | Texto (200) | Sim | — | Descrição do segmento de ST. |
 | Ativo | Checkbox | Sim | Sim / Não | Indica se o CEST esta ativo. |
 
@@ -90,6 +90,6 @@ A VFIS0350 centraliza o cadastro completo das classificações fiscais de produt
 
 - **[VFIS0110 (Tabelas Tributárias)](/fiscal/vfis0110):** Tabelas de alíquotas que referenciam NCMs e CESTs.
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** NFe onde o NCM, CEST e Ex Tarifário são informados nos itens.
-- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza NCM e CEST para creditos.
+- **[VFIS0210 (NFe de Entrada)](/fiscal/vfis0210):** NFe de entrada que utiliza NCM e CEST para créditos.
 - **[VFIS0320 (Parâmetros ICMS/IPI)](/fiscal/vfis0320):** Parâmetros que usam NCM como chave de busca.
 - **[VFIS0330 (Redução/ST/Diferimento)](/fiscal/vfis0330):** Regras de ST que utilizam CEST e NCM.

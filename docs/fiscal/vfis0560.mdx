@@ -1,16 +1,16 @@
 ---
 sidebar_position: 19
 title: "VFIS0560 — Notas Especiais Ajuste"
-description: "Geração de notas fiscais especiais de ajuste de ICMS com lancamentos fiscais automaticos para fins de apuração."
+description: "Geração de notas fiscais especiais de ajuste de ICMS com lançamentos fiscais automáticos para fins de apuração."
 ---
 
 # VFIS0560 — Notas Especiais Ajuste
 
-> Tela de gerencia de notas fiscais especiais de ajuste de ICMS. Permite criar documentos fiscais específicos para ajustes contábeis e fiscais, como complemento de ICMS, estorno de crédito, ajuste de inventário e outros, com geração automática de lancamentos na apuração.
+> Tela de gerencia de notas fiscais especiais de ajuste de ICMS. Permite criar documentos fiscais específicos para ajustes contábeis e fiscais, como complemento de ICMS, estorno de crédito, ajuste de inventário e outros, com geração automática de lançamentos na apuração.
 
 ## Objetivo
 
-A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fiscais emitidos não para registrar uma venda ou compra, mas para fins de ajuste contábil e fiscal do ICMS. Essas notas são utilizadas em situações específicas como: complemento de ICMS pago a menor, estorno de crédito indevido, ajuste de valores por quebra ou perda de mercadoria, ajuste de inventário (diferença entre estoque físico e contábil), baixa de creditos prescritos, entre outros. A nota especial de ajuste gera automaticamente lancamentos na VFIS0540 (Lancamentos Resumo ICMS), que por sua vez alimentam a apuração (VFIS0530) e o SPED Fiscal.
+A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fiscais emitidos não para registrar uma venda ou compra, mas para fins de ajuste contábil e fiscal do ICMS. Essas notas são utilizadas em situações específicas como: complemento de ICMS pago a menor, estorno de crédito indevido, ajuste de valores por quebra ou perda de mercadoria, ajuste de inventário (diferença entre estoque físico e contábil), baixa de créditos prescritos, entre outros. A nota especial de ajuste gera automaticamente lançamentos na VFIS0540 (Lançamentos Resumo ICMS), que por sua vez alimentam a apuração (VFIS0530) e o SPED Fiscal.
 
 ## Pre-requisitos
 
@@ -29,7 +29,7 @@ A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fisc
    - **Estorno de Crédito:** Cancelamento/estorno de um crédito de ICMS registrado indevidamente. Gera uma nota de saída de estorno.
    - **Estorno de Débito:** Cancelamento/estorno de um débito de ICMS registrado indevidamente. Gera uma nota de entrada de estorno.
    - **Ajuste de Inventário:** Diferença entre estoque físico e contábil apurada em inventário. Pode gerar nota de saída (se estoque físico menor) ou entrada (se estoque físico maior).
-   - **Baixa de Crédito Prescrito:** Baixa de creditos de ICMS com mais de 5 anos não utilizados.
+   - **Baixa de Crédito Prescrito:** Baixa de créditos de ICMS com mais de 5 anos não utilizados.
    - **Ajuste de Exportação:** Ajustes relacionados a drawback, Recof, etc.
    - **Outros Ajustes:** Ajustes fiscais diversos.
 5. Preencha o **Cabeçalho** da nota: data de emissão, CFOP de ajuste (ex: 5.949 para saída, 1.949 para entrada), natureza da operação e código de ajuste (VFIS0510/VFIS0520).
@@ -40,7 +40,7 @@ A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fisc
 10. Revise os dados na tela de detalhe e clique em **Gerar XML**. O sistema criara o XML da NFe no modelo 55, com os campos de ajuste preenchidos conforme a finalidade.
 11. Clique em **Transmitir** para enviar a nota a SEFAZ.
 12. Após a autorização, o sistema gerara automaticamente:
-    - Um **lancamento** na VFIS0540 (Lancamentos Resumo ICMS) do tipo "Ajuste", com o valor do ICMS.
+    - Um **lancamento** na VFIS0540 (Lançamentos Resumo ICMS) do tipo "Ajuste", com o valor do ICMS.
     - Um **item C197** correspondente, vinculando o código de ajuste da VFIS0510/VFIS0520.
     - A atualização da **apuração** (VFIS0530) com a nova linha de ajuste.
 
@@ -74,7 +74,7 @@ A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fisc
 | Modelo | Número (2) | Auto | 55 | Modelo do documento (NFe=55). |
 | Série | Número (3) | Auto | — | Série da NFe. |
 | Número | Número (9) | Auto | — | Número da NFe gerada. |
-| Chave Acesso | Texto (44) | Auto | — | Chave de acesso de 44 digitos. |
+| Chave Acesso | Texto (44) | Auto | — | Chave de acesso de 44 dígitos. |
 | Status | Select | Auto | Rascunho / Transmitida / Autorizada / Rejeitada | Situação da nota de ajuste. |
 
 ## Observações importantes
@@ -82,14 +82,14 @@ A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fisc
 - **CFOP de ajuste:** As notas de ajuste devem utilizar CFOPs específicos que indiquem "outras saídas" ou "outras entradas" (5.949, 5.949, 1.949, 2.949) ou CFOPs específicos de ajuste conforme a classificação da operação. CFOPs de venda ou compra normais não devem ser usados para ajustes.
 - **Código de Ajuste no SPED:** E obrigatório informar o código de ajuste da SEFAZ (VFIS0510/VFIS0520) na nota de ajuste. Este código e exportado no registro C197 do SPED Fiscal. A omissão do código gera erro na validação do PVA.
 - **Ajuste de Inventário:** O ajuste de inventário deve ser realizado após o fechamento do inventário físico. A diferença entre o estoque contábil e o físico (em valor de ICMS) gera uma nota de ajuste. Se o estoque físico for menor (perda, quebra), gera uma nota de saída (débito de ICMS). Se o estoque físico for maior (sobra), gera uma nota de entrada (crédito de ICMS, se comprovada a origem).
-- **Baixa de Crédito Prescrito:** Creditos de ICMS não utilizados em 5 anos devem ser baixados contabilmente e informados no SPED Fiscal. A nota de ajuste de baixa de crédito prescrito e emitida sem transmissão para a SEFAZ (apenas registro interno), mas gera lancamento na apuração e no SPED.
+- **Baixa de Crédito Prescrito:** Créditos de ICMS não utilizados em 5 anos devem ser baixados contabilmente e informados no SPED Fiscal. A nota de ajuste de baixa de crédito prescrito e emitida sem transmissão para a SEFAZ (apenas registro interno), mas gera lancamento na apuração e no SPED.
 
 ## Telas relacionadas
 
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Emissão de NFe normais, onde o conceito de ajuste também se aplica.
 - **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** CFOPs de ajuste específicos.
 - **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Dispositivos legais que fundamentam os ajustes.
-- **[VFIS0510 (Códigos Ajuste 5.1.1)](/fiscal/vfis0510):** Códigos de ajuste para notas de ajuste de documentos proprios.
+- **[VFIS0510 (Códigos Ajuste 5.1.1)](/fiscal/vfis0510):** Códigos de ajuste para notas de ajuste de documentos próprios.
 - **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais códigos de ajuste.
-- **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração que recebe os lancamentos gerados pelas notas de ajuste.
-- **[VFIS0540 (Lancamentos Resumo ICMS)](/fiscal/vfis0540):** Lancamentos automaticos gerados pelas notas de ajuste.
+- **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração que recebe os lançamentos gerados pelas notas de ajuste.
+- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos automáticos gerados pelas notas de ajuste.

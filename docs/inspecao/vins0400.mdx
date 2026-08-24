@@ -6,11 +6,11 @@ description: "Tela de consulta consolidada com 2 abas independentes: Ocorrencias
 
 # VINS0400 — Consulta Ocorrencias/Ordens
 
-> Tela de consulta consolidada com 2 abas independentes que permitem pesquisar e analisar tanto ocorrencias de qualidade quanto ordens de inspeção.
+> Tela de consulta consolidada com 2 abas independentes que permitem pesquisar e analisar tanto ocorrências de qualidade quanto ordens de inspeção.
 
 ## Objetivo
 
-Fornecer uma interface unificada de consulta ao módulo de inspeção, organizada em 2 abas independentes: **Aba Ocorrencias** (busca e análise de todas as ocorrencias de qualidade registradas) e **Aba Ordens de Inspeção** (busca e análise de todas as ordens de inspeção, independentemente do tipo). Cada aba possui seus proprios filtros e grids, funcionando de forma totalmente independente. A tela atende tanto ao uso operacional (localizar um registro específico) quanto ao uso gerencial (análises e métricas de qualidade).
+Fornecer uma interface unificada de consulta ao módulo de inspeção, organizada em 2 abas independentes: **Aba Ocorrencias** (busca e análise de todas as ocorrências de qualidade registradas) e **Aba Ordens de Inspeção** (busca e análise de todas as ordens de inspeção, independentemente do tipo). Cada aba possui seus próprios filtros e grids, funcionando de forma totalmente independente. A tela atende tanto ao uso operacional (localizar um registro específico) quanto ao uso gerencial (análises e métricas de qualidade).
 
 ## Pre-requisitos
 
@@ -22,11 +22,11 @@ Fornecer uma interface unificada de consulta ao módulo de inspeção, organizad
 1. Acesse a tela VINS0400 pelo menu Inspeção > Consulta Ocorrencias/Ordens.
 2. A tela abre na **Aba Ocorrencias** por padrão. Navegue entre as abas clicando nas guias no topo.
 3. **Na Aba Ocorrencias**:
-   - Utilize os filtros: tipo de ocorrencia, item, fornecedor, status, gravidade, período.
-   - Clique em **Pesquisar** para carregar as ocorrencias.
+   - Utilize os filtros: tipo de ocorrência, item, fornecedor, status, gravidade, período.
+   - Clique em **Pesquisar** para carregar as ocorrências.
    - A grid exibe número, tipo, item, gravidade, status e data.
-   - Clique em uma ocorrencia para abrir o detalhamento completo.
-   - Utilize o botão **Gráfico de Tendências** para visualizar a evolução das ocorrencias ao longo do tempo.
+   - Clique em uma ocorrência para abrir o detalhamento completo.
+   - Utilize o botão **Gráfico de Tendências** para visualizar a evolução das ocorrências ao longo do tempo.
 4. **Na Aba Ordens de Inspeção**:
    - Utilize os filtros: roteiro, tipo de roteiro, item, fornecedor, status, resultado, período.
    - Clique em **Pesquisar** para carregar as ordens.
@@ -42,7 +42,7 @@ Fornecer uma interface unificada de consulta ao módulo de inspeção, organizad
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |-------|------|-------------|--------|-----------|
-| Tipo de Ocorrencia | multi-select | Não | Lista de tipos | Filtrar por tipo de ocorrencia |
+| Tipo de Ocorrencia | multi-select | Não | Lista de tipos | Filtrar por tipo de ocorrência |
 | Item | select | Não | Lista de itens | Filtrar por item |
 | Fornecedor | select | Não | Lista de fornecedores | Filtrar por fornecedor |
 | Status | multi-select | Não | Todos os status | Filtrar por situação |
@@ -65,16 +65,16 @@ Fornecer uma interface unificada de consulta ao módulo de inspeção, organizad
 
 ## Observações importantes
 
-- As **2 abas independentes** permitem que o usuário mantenha duas pesquisas simultâneas: por exemplo, analisar ocorrencias de um fornecedor na Aba 1 enquanto verifica as ordens de inspeção do mesmo fornecedor na Aba 2.
+- As **2 abas independentes** permitem que o usuário mantenha duas pesquisas simultâneas: por exemplo, analisar ocorrências de um fornecedor na Aba 1 enquanto verifica as ordens de inspeção do mesmo fornecedor na Aba 2.
 - Os filtros são **gravados por aba**: ao navegar entre as abas, cada uma mantém seus filtros e resultados, evitando retrabalho.
-- O **Gráfico de Tendências** na Aba Ocorrencias plota a quantidade de ocorrencias ao longo do tempo, permitindo identificar picos e tendências sazonais de problemas de qualidade.
+- O **Gráfico de Tendências** na Aba Ocorrencias plota a quantidade de ocorrências ao longo do tempo, permitindo identificar picos e tendências sazonais de problemas de qualidade.
 - Os **Indicadores** na Aba Ordens oferecem uma visão gerencial rápida: taxa de aprovação, TMI (Tempo Médio de Inspeção), fornecedores com maior indice de reprovação.
-- A exportação em **Excel** e independente por aba: e possível exportar apenas as ocorrencias, apenas as ordens ou ambos separadamente.
+- A exportação em **Excel** e independente por aba: e possível exportar apenas as ocorrências, apenas as ordens ou ambos separadamente.
 - A consulta respeita a **segurança de perfil** — usuários podem ter acesso a apenas uma das abas ou a ambas, conforme configuração de permissões.
 
 ## Telas relacionadas
 
-- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Registro e gestão das ocorrencias consultadas.
+- [VINS0106 (Ocorrencias)](/inspecao/vins0106): Registro e gestão das ocorrências consultadas.
 - [VINS0201 (Manutenção Ordens Inspeção)](/inspecao/vins0201): Gestão das ordens de inspeção consultadas.
 - [VINS0313 (Consulta Inspeções Recebimento)](/inspecao/vins0313): Consulta focada apenas em recebimento.
-- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF que consome dados das ocorrencias e ordens.
+- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF que consome dados das ocorrências e ordens.

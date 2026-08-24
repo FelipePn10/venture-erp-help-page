@@ -1,22 +1,22 @@
 ---
 sidebar_position: 2
 title: "VCTB0200 — Contabilidade SPED ECD"
-description: "Gestão completa do plano de contas e lancamentos contábeis."
+description: "Gestão completa do plano de contas e lançamentos contábeis."
 ---
 
 # VCTB0200 — Contabilidade SPED ECD
 
-> Gestão completa do plano de contas contábil, lancamentos e balancete para o SPED ECD.
+> Gestão completa do plano de contas contábil, lançamentos e balancete para o SPED ECD.
 
 ## Objetivo
 
-Centralizar a gestão contábil completa da empresa. O plano de contas e hierárquico com notação de ponto. Os lancamentos seguem o principio de partidas dobradas (débito e crédito). A estrutura atende aos requisitos do SPED ECD (Escrituração Contábil Digital), permitindo gerar o balancete e exportar os dados no formato exigido pelo fisco.
+Centralizar a gestão contábil completa da empresa. O plano de contas e hierárquico com notação de ponto. Os lançamentos seguem o principio de partidas dobradas (débito e crédito). A estrutura atende aos requisitos do SPED ECD (Escrituração Contábil Digital), permitindo gerar o balancete e exportar os dados no formato exigido pelo fisco.
 
 ## Pre-requisitos
 
 - Conhecimento de contabilidade (plano de contas, partidas dobradas, natureza das contas).
 - Empresa cadastrada em **VEMP0100 (Cadastro Empresa)**.
-- Recomenda-se definir a estrutura hierárquica do plano de contas antes de iniciar os lancamentos.
+- Recomenda-se definir a estrutura hierárquica do plano de contas antes de iniciar os lançamentos.
 
 ## Passo a passo
 
@@ -28,9 +28,9 @@ Centralizar a gestão contábil completa da empresa. O plano de contas e hierár
 4. Para subcontas: informe **Código** com ponto (ex: `1.1`, `1.1.01`), preencha **Código Pai** com a conta superior.
 5. Clique em **Salvar**.
 
-### Lancamentos Contábeis
+### Lançamentos Contábeis
 
-1. Na seção **Lancamentos**, clique em **+ Novo Lancamento**.
+1. Na seção **Lançamentos**, clique em **+ Novo Lançamento**.
 2. Informe o **Período** contábil e a **Data** do lancamento.
 3. Selecione a **Conta Débito** e a **Conta Crédito** (partidas dobradas).
 4. Informe o **Valor** do lancamento.
@@ -40,7 +40,7 @@ Centralizar a gestão contábil completa da empresa. O plano de contas e hierár
 ### Balancete
 
 1. Na seção **Balancete**, selecione o período desejado.
-2. O sistema consolida os saldos de todas as contas, exibindo débitos, creditos e saldo final.
+2. O sistema consolida os saldos de todas as contas, exibindo débitos, créditos e saldo final.
 
 ## Campos
 
@@ -54,7 +54,7 @@ Centralizar a gestão contábil completa da empresa. O plano de contas e hierár
 | Tipo | seleção | Sim | RECEITA / DESPESA / ATIVO / PASSIVO / PATRIMONIO | Classificação |
 | Natureza | seleção | Sim | CRÉDITO / DÉBITO | Natureza do saldo |
 
-### Lancamentos
+### Lançamentos
 
 | Campo | Tipo | Obrigatório | Opções | Função |
 |-------|------|-------------|--------|--------|
@@ -68,9 +68,9 @@ Centralizar a gestão contábil completa da empresa. O plano de contas e hierár
 ## Observações importantes
 
 - O plano de contas utiliza notação hierárquica: o nível e calculado automaticamente pela quantidade de segmentos no código.
-- Todos os lancamentos devem seguir o principio de partidas dobradas (total de débitos = total de creditos).
+- Todos os lançamentos devem seguir o principio de partidas dobradas (total de débitos = total de créditos).
 - O balancete e a base para geração dos arquivos do SPED ECD.
-- Alterações no plano de contas após início dos lancamentos devem ser feitas com cautela para não quebrar a integridade contábil.
+- Alterações no plano de contas após início dos lançamentos devem ser feitas com cautela para não quebrar a integridade contábil.
 
 ## Telas relacionadas
 

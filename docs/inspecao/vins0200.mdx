@@ -26,7 +26,7 @@ Permitir a definição de roteiros de inspeção de qualidade que determinam qua
 6. Na seção **Sequências**, adicione cada ensaio ou verificação a ser executado durante a inspeção.
 7. Para cada sequência, preencha: ordem, descrição do ensaio, metodo, instrumento de medição, criterio de aceitação e tolerância.
 8. Utilize o **Modal de Especie/Tipo** para classificar cada sequência em uma categoria (Dimensional, Visual, Funcional, Elétrico, Químico, Documental, etc.).
-9. Vincule **Tipos de Ocorrencia** a cada sequência, para que falhas detectadas gerem automaticamente ocorrencias do tipo adequado.
+9. Vincule **Tipos de Ocorrencia** a cada sequência, para que falhas detectadas gerem automaticamente ocorrências do tipo adequado.
 10. Clique em **Salvar** para armazenar o roteiro de inspeção completo com todas as sequências.
 
 ## Campos
@@ -37,8 +37,8 @@ Permitir a definição de roteiros de inspeção de qualidade que determinam qua
 |-------|------|-------------|--------|-----------|
 | Código do Roteiro | texto | Sim | — | Identificador único do roteiro |
 | Descrição | texto | Sim | — | Nome descritivo do roteiro |
-| Tipo de Roteiro | select | Sim | Lista de tipos | Classificação conforme VINS0211 |
-| Item / Grupo de Itens | select | Sim | Lista | Item ou familia associada ao roteiro |
+| Tipo de Roteiro | seleção | Sim | Lista de tipos | Classificação do roteiro de inspeção |
+| Item / Grupo de Itens | select | Sim | Lista | Item ou família associada ao roteiro |
 | Frequência de Inspeção | select | Sim | A Cada Recebimento / Periódica / Por Lote / Amostragem | Periodicidade da inspeção |
 | Plano de Amostragem | select | Não | ISO 2859-1 / NBR 5426 / Manual | Norma de amostragem aplicável |
 | Tamanho do Lote | número | Não | — | Tamanho padrão para definição da amostra |
@@ -63,7 +63,7 @@ Permitir a definição de roteiros de inspeção de qualidade que determinam qua
 - O **Modal de Especie/Tipo** organiza os ensaios em categorias visuais, facilitando a leitura do roteiro e permitindo que inspetores identifiquem rapidamente os tipos de verificação.
 - A **Frequência de Inspeção** define automaticamente quando as ordens de inspeção serão geradas: a cada recebimento gera uma OS para cada nota fiscal de entrada; periódica gera em intervalos fixos.
 - O **Plano de Amostragem** integrado com normas como ISO 2859-1 permite que o sistema calcule automaticamente o tamanho da amostra com base no tamanho do lote e no nível de inspeção.
-- A vinculação de **Tipos de Ocorrencia** as sequências permite que, ao marcar uma falha em um ensaio, o sistema crie automaticamente a ocorrencia do tipo adequado, agilizando o registro.
+- A vinculação de **Tipos de Ocorrencia** as sequências permite que, ao marcar uma falha em um ensaio, o sistema crie automaticamente a ocorrência do tipo adequado, agilizando o registro.
 - Roteiros inativos não geram novas ordens de inspeção, mas ordens já em andamento com este roteiro continuam validas.
 - E possível **copiar** um roteiro existente como base para um novo, agilizando o cadastro de roteiros similares.
 

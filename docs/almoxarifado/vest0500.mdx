@@ -1,0 +1,54 @@
+---
+sidebar_position: 8
+title: "VEST0500 — Programação e Execução de Contagem Cíclica"
+description: "Programar conferências de estoque, registrar a quantidade física, tratar divergências e aprovar a contagem."
+---
+
+# VEST0500 — Programação e Execução de Contagem Cíclica
+
+> Executa as contagens recorrentes definidas pela política do item e permite programar uma conferência manual extraordinária.
+
+## Objetivo
+
+Conferir periodicamente o estoque físico sem perder o histórico do processo, registrando a quantidade esperada, a quantidade contada, a divergência e a decisão final.
+
+## Pré-requisitos
+
+- Almoxarifado e item cadastrados.
+- Endereço informado quando a localização física precisar ser controlada.
+- Máscara e lote informados quando o item usar esses controles.
+- Para contagens automáticas, política e intervalo de contagem definidos no cadastro do item.
+
+## Passo a passo
+
+1. Clique em **Atualizar** e selecione uma contagem na lista.
+2. Para uma conferência fora do calendário, informe almoxarifado, item e data/hora em **Programação manual extraordinária**.
+3. Altere uma contagem **Programada** para **Em contagem**; nesse momento o sistema apura a quantidade esperada.
+4. Faça a conferência física e informe a **Quantidade física**.
+5. Marque como **Divergente** quando for necessário investigar a diferença ou como **Concluída** quando a conferência terminar.
+6. Depois da análise, altere uma contagem concluída para **Aprovada**. Use **Cancelada** somente quando a ocorrência não deva ser executada.
+
+## Situações da contagem
+
+| Situação | Significado |
+|----------|-------------|
+| Programada | Aguardando início da conferência |
+| Em contagem | Conferência física em andamento |
+| Divergente | Quantidade física diferente da esperada e pendente de análise |
+| Concluída | Conferência encerrada e aguardando aprovação |
+| Aprovada | Processo revisado e finalizado |
+| Cancelada | Contagem encerrada sem execução |
+
+## Observações importantes
+
+- A programação manual é destinada a uma conferência extraordinária. A recorrência deve ser configurada na política do item.
+- A quantidade física é obrigatória para concluir a conferência ou registrar uma divergência.
+- Uma contagem aprovada ou cancelada não possui próxima etapa na tela.
+- A rotina registra e aprova a conferência; não presuma que uma divergência alterou o saldo antes de confirmar o movimento de ajuste correspondente.
+
+## Telas relacionadas
+
+- **[VITM0100 (Item e Prontidão para o MRP)](/pcp/vitm0100):** política e intervalo de contagem do item.
+- **[VEST0100 (Estoque)](/pcp/vest0100):** saldos, reservas, lotes e movimentos.
+- **[VEST0200 (Inventário)](/pcp/vest0200):** inventário e tipos de movimento.
+- **[VEST0400 (Consultas de Estoque)](/almoxarifado/vest0400):** conferência de movimentos e saldos por almoxarifado.

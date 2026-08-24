@@ -23,9 +23,19 @@ Consultar os **eventos de auditoria** que o ERP registra automaticamente a cada 
 3. Analise cada evento: autor, ação, alvo e instante.
 4. Exporte ou registre a evidência conforme a política interna — a auditoria **não é editável**.
 
+## Informações exibidas
+
+| Informação | Como usar |
+|------------|-----------|
+| Data e hora | Posiciona o evento na sequência da investigação |
+| Usuário | Identifica quem iniciou a operação |
+| Ação e rota | Indicam a operação executada |
+| Alvo | Identifica o cadastro ou processo afetado |
+
 ## Observações importantes
 
 - A auditoria é **append-only**: nenhum evento pode ser alterado ou apagado pela interface.
+- Um evento comprova que a operação foi solicitada; analise também o resultado e os registros de negócio antes de concluir a investigação.
 - Para a consulta detalhada por usuário/rota/período, use a **[VADM0100 (Trilha de Auditoria)](/cadastros/vadm0100)**, que expõe os filtros completos.
 
 ## Telas relacionadas

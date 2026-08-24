@@ -18,7 +18,7 @@ A VFIS0200 e o centro operacional das notas fiscais de saída do ERP. Ela permit
 - **VFIS0110 (Tabelas Tributárias):** Tabelas de NCM e alíquotas ICMS interno/interestadual preenchidas para cálculo automático dos impostos.
 - **VFIS0300 (CFOPs):** CFOPs cadastrados para cada tipo de operação (venda, devolução, remessa, retorno, etc.).
 - **VCLI0500 (Cadastro de Clientes):** Cliente destinatário com CNPJ/CPF, IE, endereço completo e indicador de consumidor final.
-- **VCAD0100 (Cadastro de Produtos):** Produtos com NCM, CEST, unidade, EAN e demais dados fiscais.
+- **VENT0200 (Cadastro de Itens):** Produtos com NCM, CEST, unidade, EAN e demais dados fiscais.
 - **VFIS0360 (Tipos Operação Entrada):** Tipos de operação configurados para orientar o cálculo fiscal.
 
 ## Passo a passo
@@ -67,13 +67,13 @@ A VFIS0200 e o centro operacional das notas fiscais de saída do ERP. Ela permit
 | IE | Texto (20) | Condicional | — | Inscrição Estadual. Obrigatória para contribuintes. |
 | Indicador IE | Select | Sim | Contribuinte / Isento / Não Contribuinte | Indicador da situação fiscal do destinatário. |
 | Endereço | Texto (200) | Sim | — | Endereço completo do destinatário. |
-| Municipio IBGE | Texto (7) | Sim | — | Código IBGE do municipio do destinatário. |
+| Municipio IBGE | Texto (7) | Sim | — | Código IBGE do município do destinatário. |
 
 ### Itens
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Produto | Select | Sim | VCAD0100 | Produto ou serviço da nota. |
+| Produto | Seleção | Sim | VENT0200 | Produto ou serviço da nota. |
 | Quantidade | Decimal (15,4) | Sim | — | Quantidade do item. |
 | Valor Unitário | Decimal (15,4) | Sim | — | Valor unitário do item. |
 | Valor Total | Decimal (15,2) | Auto | — | Quantidade x Valor Unitário. Calculado automaticamente. |

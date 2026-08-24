@@ -10,14 +10,14 @@ description: "Emissão de Nota Fiscal de Serviço Eletrônica com RPS, cadastro 
 
 ## Objetivo
 
-A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônicas (NFSe). Diferente da NFe (modelo 55), que e regulada pela SEFAZ estadual, a NFSe e regulada por cada municipio brasileiro, o que resulta em diferentes padroes, provedores e regras de emissão. O ERP integra-se com provedores como ISS Fortaleza, NFSe Nacional (ABRASF), GINFES, NFSe Paulistana, NFSe BH, entre outros. A tela gerencia o ciclo completo: RPS (Recibo Provisório de Serviço), cadastro do tomador, detalhamento do serviço (código de serviço, alíquota ISS), retenções (IR, PIS, COFINS, CSLL, INSS), cálculo automático do ISS, transmissão ao provedor municipal e geração do PDF da NFSe.
+A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônicas (NFSe). Diferente da NFe (modelo 55), que e regulada pela SEFAZ estadual, a NFSe e regulada por cada município brasileiro, o que resulta em diferentes padroes, provedores e regras de emissão. O ERP integra-se com provedores como ISS Fortaleza, NFSe Nacional (ABRASF), GINFES, NFSe Paulistana, NFSe BH, entre outros. A tela gerencia o ciclo completo: RPS (Recibo Provisório de Serviço), cadastro do tomador, detalhamento do serviço (código de serviço, alíquota ISS), retenções (IR, PIS, COFINS, CSLL, INSS), cálculo automático do ISS, transmissão ao provedor municipal e geração do PDF da NFSe.
 
-## Pre-requisitos
+## Pré-requisitos
 
 - **VFIS0100 (Configuração Fiscal):** Aba NFSe configurada com o provedor correto (ISS Fortaleza, NFSe Nacional, etc.), token/homologação, cidade e alíquotas padrão de ISS.
-- **VCAD0100 (Cadastro de Clientes/Tomadores):** Tomadores do serviço cadastrados com CNPJ/CPF, endereço, municipio e indicador de retenção de ISS.
-- **VCAD0300 (Cadastro de Serviços):** Serviços cadastrados com código de serviço municipal, código CNAE, alíquota ISS padrão e tributação federal (PIS, COFINS, IR, CSLL, INSS).
-- **Conhecimento da legislação municipal:** Cada municipio tem suas proprias alíquotas de ISS, regras de retenção e códigos de serviço (geralmente baseados na LC 116/2003).
+- **VCLI0500 (Cadastro de Clientes):** tomadores cadastrados com CNPJ/CPF, endereço, município e indicador de retenção de ISS.
+- **VENT0200 (Cadastro de Itens):** itens de serviço cadastrados com as classificações fiscais aplicáveis.
+- **Conhecimento da legislação municipal:** Cada município tem suas próprias alíquotas de ISS, regras de retenção e códigos de serviço (geralmente baseados na LC 116/2003).
 
 ## Passo a passo
 
@@ -25,15 +25,15 @@ A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônica
 2. A grade principal lista todas as NFSe emitidas. Filtre por período, tomador, status e número.
 3. Clique em **Nova NFSe** para iniciar a emissão.
 4. O sistema exibe a seção **RPS (Recibo Provisório de Serviço)**. O RPS e um número sequencial que identifica a prestação antes da autorização. Informe o tipo de RPS e o número (geralmente sequencial automático).
-5. No quadro **Tomador**, selecione o cliente/tomador do serviço. O sistema carregara CNPJ/CPF, endereço e municipio. Para tomadores fora do municipio do prestador, o sistema aplicara a regra de local de recolhimento do ISS (local da prestação vs. local do estabelecimento).
+5. No quadro **Tomador**, selecione o cliente/tomador do serviço. O sistema carregara CNPJ/CPF, endereço e município. Para tomadores fora do município do prestador, o sistema aplicara a regra de local de recolhimento do ISS (local da prestação vs. local do estabelecimento).
 6. No quadro **Serviços**, adicione os itens de serviço prestado:
    - **Serviço:** selecione o serviço da base.
    - **Código de Serviço:** código municipal do serviço (conforme LC 116/2003 e legislação municipal).
    - **Quantidade e Valor Unitário.**
-   - **Alíquota ISS:** percentual de ISS (varia por municipio e tipo de serviço, geralmente de 2% a 5%).
+   - **Alíquota ISS:** percentual de ISS (varia por município e tipo de serviço, geralmente de 2% a 5%).
    - **Base Cálculo ISS:** valor sobre o qual o ISS sera calculado.
    - **Valor ISS:** calculado automaticamente (Base Cálculo x Alíquota).
-   - **Retenção ISS?** Indica se o tomador e responsável pela retenção do ISS na fonte (tomador órgão público ou empresa de outro municipio).
+   - **Retenção ISS?** Indica se o tomador e responsável pela retenção do ISS na fonte (tomador órgão público ou empresa de outro município).
 7. Na seção **Retenções Federais**, informe (se aplicável):
    - **IR (Imposto de Renda):** alíquota de retenção (1,5% ou 4,8% conforme serviço).
    - **PIS:** retenção de 0,65%.
@@ -41,7 +41,7 @@ A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônica
    - **CSLL:** retenção de 1%.
    - **INSS:** retenção de 11% (com teto).
    - **Valor Líquido:** calculado automaticamente (Valor Total - Retenções).
-8. Na seção **Informações Adicionais**, inclua observações sobre o serviço prestado, período de prestação e outras informações exigidas pelo municipio.
+8. Na seção **Informações Adicionais**, inclua observações sobre o serviço prestado, período de prestação e outras informações exigidas pelo município.
 9. Clique em **Salvar Rascunho**. O RPS fica registrado e pode ser transmitido posteriormente.
 10. Clique em **Transmitir NFSe**. O sistema enviara o RPS ao provedor municipal configurado. O provedor retornara a NFSe autorizada (com número, código de verificação e chave de acesso) ou rejeitada (com o motivo).
 11. Após a autorização, o sistema:
@@ -49,7 +49,7 @@ A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônica
     - Gera o PDF da NFSe com código de barras (se aplicável).
     - Registra o valor do ISS para apuração futura.
     - Disponibiliza a NFSe no portal do provedor para consulta pelo tomador.
-12. Para **Cancelar** uma NFSe: selecione a nota autorizada, clique em Cancelar e informe o motivo. O cancelamento e enviado ao provedor municipal. O prazo e as regras de cancelamento variam por municipio.
+12. Para **Cancelar** uma NFSe: selecione a nota autorizada, clique em Cancelar e informe o motivo. O cancelamento e enviado ao provedor municipal. O prazo e as regras de cancelamento variam por município.
 
 ## Campos
 
@@ -67,7 +67,7 @@ A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônica
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Tomador | Select | Sim | VCAD0100 | Cliente tomador do serviço. |
+| Tomador | Seleção | Sim | VCLI0500 | Cliente tomador do serviço. |
 | CNPJ/CPF | Texto (14) | Sim | — | Documento do tomador. |
 | Inscrição Municipal | Texto (20) | Condicional | — | IM do tomador (se contribuinte de ISS). |
 | Municipio | Select | Sim | — | Municipio do tomador (código IBGE). |
@@ -78,13 +78,13 @@ A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônica
 
 | Campo | Tipo | Obrigatório | Opções | Descrição |
 |---|---|---|---|---|
-| Serviço | Select | Sim | VCAD0300 | Item de serviço prestado. |
+| Serviço | Seleção | Sim | VENT0200 | Item de serviço prestado. |
 | Código Serviço | Texto (10) | Sim | — | Código de serviço municipal (LC 116/2003). |
 | Descrição Serviço | Texto (200) | Auto | — | Descrição do serviço prestado. |
 | Quantidade | Decimal (15,4) | Sim | — | Quantidade de serviço prestado. |
 | Valor Unitário | Decimal (15,4) | Sim | — | Valor unitário do serviço. |
 | Valor Total | Decimal (15,2) | Auto | — | Quantidade x Valor Unitário. |
-| Alíquota ISS | Decimal (5,2) | Sim | — | Alíquota de ISS (2% a 5% conforme municipio). |
+| Alíquota ISS | Decimal (5,2) | Sim | — | Alíquota de ISS (2% a 5% conforme município). |
 | Base Cálculo ISS | Decimal (15,2) | Sim | — | Base de cálculo do ISS. |
 | Valor ISS | Decimal (15,2) | Auto | — | BC ISS x Alíquota ISS. |
 | Retenção ISS | Checkbox | Não | — | Indica se o ISS sera retido pelo tomador. |
@@ -123,10 +123,10 @@ A VNFS0100 e a tela dedicada a emissão de Notas Fiscais de Serviço Eletrônica
 ## Observações importantes
 
 - **Provedores Municipais:** O ERP integra-se com varios provedores de NFSe. A configuração correta do provedor na VFIS0100 (aba NFSe) e crucial. Provedores comuns incluem: ISS Fortaleza, NFSe Nacional (ABRASF), GINFES (SP), NFSe BH, NFSe Curitiba, NFSe Rio de Janeiro, entre outros. Cada provedor tem seu próprio padrão de comunicação.
-- **Local do ISS:** A LC 116/2003 estabelece que o ISS e devido no municipio do estabelecimento do prestador (regra geral), mas ha exceções (construção civil, limpeza, vigilância, etc. — ISS devido no local da prestação). O sistema aplica a regra geral. Para exceções, verifique a configuração municipal.
-- **Retenção de ISS:** O tomador deve reter o ISS na fonte quando: (a) o prestador não e estabelecido no municipio da prestação e o ISS e devido no local, ou (b) o tomador e órgão público (que sempre retem). Marque o checkbox "Retenção ISS" para que o sistema não calcule o ISS (o tomador fara o recolhimento).
+- **Local do ISS:** A LC 116/2003 estabelece que o ISS e devido no município do estabelecimento do prestador (regra geral), mas ha exceções (construção civil, limpeza, vigilância, etc. — ISS devido no local da prestação). O sistema aplica a regra geral. Para exceções, verifique a configuração municipal.
+- **Retenção de ISS:** O tomador deve reter o ISS na fonte quando: (a) o prestador não e estabelecido no município da prestação e o ISS e devido no local, ou (b) o tomador e órgão público (que sempre retem). Marque o checkbox "Retenção ISS" para que o sistema não calcule o ISS (o tomador fara o recolhimento).
 - **Retenções Federais (IN 459/2004):** Serviços prestados por pessoa jurídica a outra pessoa jurídica estao sujeitos a retenções federais (IR, PIS, COFINS, CSLL) quando o valor do serviço for superior a R$ 215,05 (em 2024). O INSS e retido sobre serviços de cessão de mao-de-obra ou empreitada. O sistema calcula automaticamente as retenções, mas e responsabilidade do usuário verificar as alíquotas e limites.
-- **RPS e Cancelamento:** O RPS e um documento provisório. A NFSe so e valida após a autorização pelo provedor municipal. O prazo para cancelamento varia por municipio (geralmente 24 horas a 30 dias). Alguns municipios não permitem cancelamento de NFSe — apenas substituição por nota complementar.
+- **RPS e Cancelamento:** O RPS e um documento provisório. A NFSe so e valida após a autorização pelo provedor municipal. O prazo para cancelamento varia por município (geralmente 24 horas a 30 dias). Alguns municípios não permitem cancelamento de NFSe — apenas substituição por nota complementar.
 
 ## Telas relacionadas
 

@@ -15,16 +15,16 @@ Gerenciar o ciclo de vida dos títulos a receber. Diferente de Contas a Pagar, n
 ## Pre-requisitos
 
 - Ter contas bancárias cadastradas em **VFIN0100 (Contas Bancárias)** para registrar recebimentos.
-- Clientes devem estar cadastrados para vinculação ao titulo.
+- Clientes devem estar cadastrados para vinculação ao título.
 
 ## Passo a passo
 
 1. Acesse **Financeiro > Contas a Receber** (VFIN0210).
 2. O modo listagem exibe o dashboard de aging no topo e a tabela de títulos.
-3. Para criar um novo titulo, clique em **+ Nova Conta**.
+3. Para criar um novo título, clique em **+ Nova Conta**.
 4. Preencha: Número do Documento, Cliente, Emissão, Vencimento, Valor Bruto, Desconto, Parcelas e Observação.
-5. Clique em **Salvar**. O titulo entra com status "pendente".
-6. Para receber, clique em **Baixar** na linha do titulo:
+5. Clique em **Salvar**. O título entra com status "pendente".
+6. Para receber, clique em **Baixar** na linha do título:
    - Selecione a **Conta Bancaria** (de VFIN0100).
    - Informe o **Valor Recebido** e a **Data de Recebimento**.
    - Clique em **Confirmar Baixa**.
@@ -41,7 +41,7 @@ Gerenciar o ciclo de vida dos títulos a receber. Diferente de Contas a Pagar, n
 | Cliente (ID) | número | Não | — | ID do cliente devedor |
 | NF Saída (ID) | número | Não | — | ID da nota fiscal de saída vinculada |
 | Forma Pagamento | texto | Não | — | Meio de recebimento (default "boleto") |
-| Valor Bruto | número | Sim | — | Valor total do titulo |
+| Valor Bruto | número | Sim | — | Valor total do título |
 | Emissão | data | Sim | — | Data de emissão (default hoje) |
 | Vencimento | data | Sim | — | Data de vencimento (default hoje) |
 | Desconto | número | Não | — | Desconto concedido |
@@ -61,7 +61,7 @@ Gerenciar o ciclo de vida dos títulos a receber. Diferente de Contas a Pagar, n
 ## Observações importantes
 
 - Não ha fluxo de aprovação — títulos a receber já entram disponíveis para baixa.
-- Recebimento parcial e suportado: o valor recebido pode ser menor que o valor do titulo.
+- Recebimento parcial e suportado: o valor recebido pode ser menor que o valor do título.
 - O dashboard de aging e atualizado conforme os filtros aplicados.
 - O cancelamento e irreversível.
 - Os status são exibidos com pills coloridas: verde = pago, âmbar = pendente, vermelho = cancelado.

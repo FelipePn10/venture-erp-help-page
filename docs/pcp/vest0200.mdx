@@ -12,16 +12,31 @@ description: "Conduzir o inventário físico (criar → contar → ajustar → f
 
 Realizar contagens de inventário e acertar divergências de saldo, além de manter a tabela de tipos de movimento usada nos lançamentos.
 
-## Passo a passo (inventário)
+## Pré-requisitos
+
+- Almoxarifado e itens cadastrados.
+- Responsáveis pela contagem definidos e movimentações do local controladas durante a conferência.
+- Tipos de movimento de ajuste configurados.
+
+## Passo a passo
+
+### Inventário
 
 1. Clique em **Carregar**. Em **Novo inventário**, informe o depósito e a descrição → nasce **Aberto (OPEN)**.
 2. Abra o inventário e **registre contagens** por item/depósito (quantidade contada).
 3. **Ajuste** as diferenças por item — cada ajuste gera um **movimento de acerto** de saldo.
 4. **Feche** o inventário quando terminar.
 
-## Passo a passo (tipos de movimento)
+### Tipos de movimento
 
 - Cadastre com **Sigla** e **Descrição** (e tipo IN/OUT). São usados para classificar os lançamentos no VEST0100.
+
+## Observações importantes
+
+- Registrar a contagem não altera o estoque; o saldo muda quando o ajuste da diferença é confirmado.
+- Feche o inventário somente após revisar todos os itens e movimentos de ajuste.
+- Um tipo IN aumenta e um tipo OUT reduz o estoque. A classificação incorreta inverte o efeito do lançamento.
+- Preserve a descrição e a justificativa da contagem para auditoria.
 
 ## Telas relacionadas
 
