@@ -23,12 +23,14 @@ Gerir o pedido de venda ponta a ponta: cabeçalho (cliente, empresa, moeda, cond
 1. Acesse **VVND0200 — Pedido de Venda**.
 2. Em **Novo pedido**, informe Empresa, Cliente, Moeda, Condição de pagamento e clique em **Criar pedido** (nasce como **Rascunho / R**).
 3. Abra o pedido e adicione **itens** (item, depósito, quantidade, preço, desconto). Os totais são calculados pelo sistema.
-4. Clique em **Confirmar (→P)**. Isso dispara **três automações**:
+4. Clique em **Confirmar (→P)**. Isso dispara **três efeitos**:
    - **Checagem de crédito** — se o cliente estourar o limite (ou estiver bloqueado), o pedido fica **bloqueado**, sem gerar demanda nem reserva.
    - **Reserva de estoque (ATP)** — cada linha reserva o disponível no depósito.
-   - **Demanda independente** — gera, por item, a necessidade que alimenta o MRP.
+   - **Planejamento** — o saldo em aberto de cada linha passa a ser necessidade para o MRP.
 5. Se ficar bloqueado, use **Desbloquear** (após liberar o crédito).
 6. O pedido é marcado como **Faturado (F)** automaticamente quando a NF-e de saída é autorizada.
+7. Para cancelar o pedido inteiro, clique em **Cancelar**, informe o **Motivo do cancelamento** e clique em **Confirmar cancelamento**. Os itens em aberto saem da carteira e as reservas de estoque são liberadas.
+8. Para cancelar só um item, use o botão **Cancelar** da linha, na aba de itens, e confirme em **Cancelar item**. Se parte do item já foi faturada, só o saldo em aberto é cancelado e a linha fica como **Atendido**.
 
 ## Campos principais
 
@@ -45,7 +47,10 @@ Gerir o pedido de venda ponta a ponta: cabeçalho (cliente, empresa, moeda, cond
 
 - **Filtros**: liste pedidos por cliente ou por status.
 - Um pedido bloqueado não gera demanda nem reserva — resolva o crédito primeiro.
-- **Cancelar** encerra o pedido e libera as reservas.
+- **Cancelar** encerra o pedido e libera as reservas. Não está disponível para pedido **Faturado**: cancele antes a NF-e (VFIS0200), que devolve o pedido à carteira.
+- Itens só podem ser **adicionados** em Rascunho. Depois de confirmado, use **Alterar qtd** na linha para mudar a quantidade (não pode ficar abaixo do já atendido + cancelado; o preço é conferido na tabela e a reserva de estoque acompanha) ou **Cancelar** para cancelar o saldo em aberto.
+- A coluna **Status** da linha mostra **Em aberto**, **Parcial**, **Atendido** ou **Cancelado**; passe o mouse para ver quanto foi atendido e cancelado.
+- Quando a NF-e do pedido é cancelada, a mercadoria volta ao estoque e a reserva do pedido é refeita até o saldo em aberto, dentro do disponível. Se a reserva não puder ser refeita, a tela da NF-e mostra o aviso.
 
 ## Telas relacionadas
 

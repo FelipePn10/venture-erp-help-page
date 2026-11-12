@@ -10,12 +10,12 @@ description: "Cadastro dos códigos de ajuste do ICMS para o bloco 5.1.1 da apur
 
 ## Objetivo
 
-A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da apuração fiscal estadual — Ajustes de Documentos Fiscais Proprios. Estes códigos, definidos pela SEFAZ de cada estado, permitem adicionar ou deduzir valores de ICMS na apuração que não constam diretamente nos documentos fiscais. Por exemplo: créditos presumidos, créditos extemporaneos, estornos de débito, complementos de ICMS, ajustes de DIFAL e outros. Os códigos são utilizados na VFIS0540 (Lançamentos Resumo ICMS) e exportados para o SPED Fiscal (EFD-ICMS/IPI) no bloco E110/E111.
+A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da apuração fiscal estadual — Ajustes de Documentos Fiscais Proprios. Estes códigos, definidos pela SEFAZ de cada estado, permitem adicionar ou deduzir valores de ICMS na apuração que não constam diretamente nos documentos fiscais. Por exemplo: créditos presumidos, créditos extemporaneos, estornos de débito, complementos de ICMS, ajustes de DIFAL e outros. Os códigos são utilizados na VFIN0400 (Apuração de Impostos) e exportados para o SPED Fiscal (EFD-ICMS/IPI) no bloco E110/E111.
 
 ## Pre-requisitos
 
 - **Conhecimento da tabela de códigos de ajuste da SEFAZ do estado:** Cada estado publica sua própria tabela de códigos de ajuste. Consulte o site da SEFAZ correspondente.
-- **VFIS0540 (Lançamentos Resumo ICMS):** Tela onde os códigos de ajuste serão efetivamente utilizados.
+- **VFIN0400 (Apuração de Impostos):** Tela onde os códigos de ajuste serão efetivamente utilizados.
 
 ## Passo a passo
 
@@ -51,13 +51,13 @@ A VFIS0510 cadastra os códigos de ajuste de ICMS utilizados na seção 5.1.1 da
 
 - **Códigos por estado:** Códigos de ajuste variam por UF. O mesmo ajuste pode ter códigos diferentes em estados diferentes. Cadastre os códigos para cada UF onde a empresa possui IE.
 - **Registro E110/E111 do SPED Fiscal:** Os códigos de ajuste 5.1.1 são exportados nos registros E110 (resumo da apuração) e E111 (detalhe dos ajustes) do SPED Fiscal. Códigos incorretos geram rejeição na validação do PVA (Programa Validador e Assinador).
-- **Ajustes Automaticos:** Ajustes marcados como "Automático" são gerados pelo sistema com base em regras pre-definidas. Exemplo: crédito presumido calculado mensalmente com base no faturamento. Ajustes manuais são lancados pelo usuário na VFIS0540.
+- **Ajustes Automaticos:** Ajustes marcados como "Automático" são gerados pelo sistema com base em regras pre-definidas. Exemplo: crédito presumido calculado mensalmente com base no faturamento. Ajustes manuais são lancados pelo usuário na VFIN0400.
 - **Conciliação com SPED:** Antes de gerar o SPED Fiscal, verifique se todos os códigos de ajuste utilizados na apuração estao cadastrados na VFIS0510. Códigos ausentes geram erros na exportação.
 
 ## Telas relacionadas
 
 - **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais códigos de ajuste para os outros blocos da apuração.
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração do ICMS onde os ajustes são consolidados.
-- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos fiscais que utilizam os códigos de ajuste.
+- **[VFIN0400 (Apuração de Impostos)](/financeiro/vfin0400):** Lançamentos fiscais que utilizam os códigos de ajuste.
 - **[VFIS0310 (Dispositivos Legais)](/fiscal/vfis0310):** Fundamento legal de cada ajuste.
 - **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração base da empresa.

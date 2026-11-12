@@ -1,46 +1,12 @@
 ---
 sidebar_position: 12
 title: "VTER0200 — Ordens de Serviço de Terceiros"
-description: "Gerar ordens de serviço a partir da OF e acompanhar o encadeamento requisição → pedido de compra → execução."
+description: "Esta rotina agora fica na VTPS0100 — Serviços de Terceiros."
+unlisted: true
 ---
 
 # VTER0200 — Ordens de Serviço de Terceiros
 
-> A ordem que operacionaliza a subcontratação: nasce da **ordem de fabricação** e percorre `OF → requisição → pedido de compra → execução`.
-
-## Objetivo
-
-Gerar e acompanhar as ordens de serviço terceirizado, mantendo a rastreabilidade entre a produção interna e a compra do serviço.
-
-## Pré-requisitos
-
-- Ordem de fabricação com operação a terceirizar.
-- Preços de serviço cadastrados ([VTER0100](/suprimento/vter0100)).
-- Perfil **ADMIN** para gerar e mudar status.
-
-## Passo a passo
-
-1. **Gerar pela OF**: informe a ordem de fabricação — o sistema cria a(s) ordem(ns) de serviço.
-2. **Consulte** por status e fornecedor; emita o **relatório**.
-3. **Altere o status** conforme o encadeamento (requisição criada, pedido criado…), vinculando requisição e pedido de compra.
-
-## Vínculos que devem ser conferidos
-
-| Vínculo | Finalidade |
-|---------|------------|
-| Ordem de fabricação | Identifica a necessidade produtiva de origem |
-| Fornecedor | Define quem executará a operação externa |
-| Requisição | Formaliza a necessidade de contratação |
-| Pedido de compra | Registra a contratação comercial do serviço |
-
-## Observações importantes
-
-- **Geração e mudança de status exigem ADMIN**; consultas e relatório são liberados.
-- A ordem conecta a produção à compra do serviço — acompanhe até a execução.
-- Não avance a situação apenas para liberar a etapa seguinte: confirme primeiro o número do documento criado.
-
-## Telas relacionadas
-
-- **[VTER0100 (Preços de Serviços)](/suprimento/vter0100):** preço aplicado à ordem.
-- **[VTER0300 (Remessas e Retornos)](/suprimento/vter0300):** movimentos logísticos da ordem.
-- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** OF de origem.
+:::info Esta rotina mudou de lugar
+O que se fazia na VTER0200 agora fica na tela **[VTPS0100 — Serviços de Terceiros](/suprimento/vtps0100)**.
+:::

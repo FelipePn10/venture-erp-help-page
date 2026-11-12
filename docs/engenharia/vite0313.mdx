@@ -1,61 +1,12 @@
 ---
 sidebar_position: 11
-title: "VITE0313 — Geração Máscara Itens Configurados"
-description: "Ferramenta de geração automática de códigos de itens configurados baseada na máscara PDM."
+title: "VITE0313 — Geração de Máscara para Itens Configurados"
+description: "Esta rotina agora fica na VCFG0100 — Conjuntos e Variáveis do Configurador."
+unlisted: true
 ---
 
-# VITE0313 — Geração Máscara Itens Configurados
+# VITE0313 — Geração de Máscara para Itens Configurados
 
-> Ferramenta que gera automaticamente os códigos dos itens configurados com base na máscara definida no grupo PDM e nos modificadores selecionados.
-
-## Objetivo
-
-Automatizar a geração de códigos para itens configurados a partir da máscara definida no grupo PDM. Esta ferramenta interpreta a máscara de codificação (que pode incluir segmentos fixos e variáveis) e gera códigos únicos para cada combinação possível de modificadores e atributos. O processo garante que todos os itens configurados tenham códigos padronizados e rastreáveis, eliminando erros de digitação manual e garantindo a unicidade dos códigos gerados.
-
-## Pre-requisitos
-
-- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204) — Grupo PDM com máscara de codificação definida.
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores vinculados ao grupo PDM.
-- [VITE0116 (Atributos PDM)](/engenharia/vite0116) — Atributos PDM com seus respectivos valores cadastrados.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens base e genéricos que servirao como origem para geração.
-
-## Passo a passo
-
-1. Acesse a tela VITE0313 pelo menu Engenharia > Geração Máscara Itens Configurados.
-2. Selecione o **Grupo PDM** cujos itens configurados terao os códigos gerados.
-3. O sistema exibe a **Máscara** definida no grupo PDM, mostrando como o código sera estruturado.
-4. Selecione os **Modificadores** que devem ser considerados na geração. E possível gerar para todos ou apenas para um subconjunto.
-5. Escolha o **Modo de Geração**: Gerar Códigos Faltantes (apenas para combinações sem código) ou Regenerar Todos (substitui todos os códigos).
-6. Clique em **Simular** para visualizar os códigos que serão gerados antes de efetivar a operação.
-7. Revise a lista de códigos gerados. Destaques coloridos indicam códigos duplicados ou que não seguem a máscara.
-8. Clique em **Gerar** para efetivar a criação dos códigos e grava-los no cadastro de itens.
-9. Verifique na tela de [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) se os novos itens foram criados corretamente com os códigos gerados.
-
-## Campos
-
-| Campo | Tipo | Obrigatório | Opções | Descrição |
-|-------|------|-------------|--------|-----------|
-| Grupo PDM | select | Sim | Lista de grupos PDM | Grupo PDM de origem para geração dos códigos |
-| Máscara | texto | Não | — | Máscara de codificação exibida do grupo PDM |
-| Modificadores | multi-select | Sim | Lista de modificadores | Modificadores considerados na geração |
-| Modo de Geração | select | Sim | Gerar Faltantes / Regenerar Todos | Estrategia de geração de códigos |
-| Item Base | select | Não | Lista de itens | Item base para heranca de dados |
-| Pre-visualização | tabela | Não | — | Grid com códigos simulados antes da geração |
-| Status da Geração | texto | Não | — | Resultado do processamento após a geração |
-
-## Observações importantes
-
-- A opção **Gerar Códigos Faltantes** e mais segura para uso em produção, pois afeta apenas combinações de modificadores que ainda não possuem item gerado.
-- A opção **Regenerar Todos** substitui todos os códigos existentes e deve ser usada com extrema cautela, preferencialmente em ambiente de testes primeiro.
-- O botão **Simular** e obrigatório como boa prática antes da geração definitiva. Ele mostra exatamente quais códigos serão criados e permite identificar problemas na máscara.
-- Códigos duplicados destacados em vermelho na simulação indicam que a máscara não esta gerando códigos únicos, sendo necessário revisar a máscara ou os atributos antes de gerar.
-- A geração de itens configurados também cria automaticamente a **Estrutura BOM** e o **Roteiro de Fabricação** baseados no item base do grupo PDM, se a opção estiver habilitada.
-
-## Telas relacionadas
-
-- [VENT0204 (Cadastro de Grupo PDM)](/engenharia/vent0204): Grupo PDM com a máscara de codificação.
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM que compõem a máscara.
-- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos cujos valores compõem os códigos gerados.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Destino dos itens configurados criados pela geração.
-- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras aplicadas pos-geração dos itens configurados.
-- [VENT0210 (Estrutura de Produtos)](/engenharia/vent0210): Estrutura BOM gerada para os itens configurados.
+:::info Esta rotina mudou de lugar
+O que se fazia na VITE0313 agora fica na tela **[VCFG0100 — Conjuntos e Variáveis do Configurador](/engenharia/vcfg0100)** (gerar máscara).
+:::

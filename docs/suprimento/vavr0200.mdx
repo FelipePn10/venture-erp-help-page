@@ -14,7 +14,6 @@ Centralizar o cadastro de fornecedores e transportadoras em uma única tela com 
 
 ## Pre-requisitos
 
-- [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101) — Parâmetros de avaliação que serão aplicados ao fornecedor.
 - [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para classificação contábil do fornecedor.
 - [Cadastro de Municipios/Estados](/cadastros/vcal0100) — Tabelas auxiliares para endereço.
 
@@ -85,7 +84,7 @@ Centralizar o cadastro de fornecedores e transportadoras em uma única tela com 
 ## Observações importantes
 
 - O tipo **Ambos** e útil para empresas que atuam simultaneamente como fornecedoras de materiais e transportadoras, evitando duplicidade de cadastro.
-- A aba **Qualidade** consolida dados calculados automaticamente pelo sistema, como o IQF (Indice de Qualidade do Fornecedor), baseado em [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101).
+- A aba **Qualidade** consolida dados calculados automaticamente pelo sistema, como o IQF (Indice de Qualidade do Fornecedor).
 - Fornecedores **Bloqueados** não podem ser selecionados em novos pedidos de compra, mas continuam visíveis para consulta histórica.
 - O botão **Duplicar** cópia os dados de todas as abas, exceto CNPJ e Inscrição Estadual, que devem ser preenchidos manualmente.
 - A alteração de dados fiscais de um fornecedor **não retroage** — documentos fiscais já emitidos mantém os dados originais do fornecedor no momento da emissão.
@@ -93,9 +92,8 @@ Centralizar o cadastro de fornecedores e transportadoras em uma única tela com 
 
 ## Telas relacionadas
 
-- [VAVF0101 (Parâmetros Avaliação Fornecedores)](/inspecao/vavf0101): Parâmetros de avaliação referenciados na aba Qualidade.
 - [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): Envio e visualização do IQF dos fornecedores.
 - [VCON0200 (Contratos Fornecedores)](/suprimento/vcon0200): Contratos associados ao fornecedor.
 - [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200): Pedidos de compra emitidos para o fornecedor.
-- [VVOR0202 (Itens por Fornecedor)](/suprimento/vvor0202): Análise de itens fornecidos por cada fornecedor.
+- [VSUP0130 (Fornecedor Preferencial por Item)](/compras/vsup0130): Análise de itens fornecidos por cada fornecedor.
 - [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo associados.

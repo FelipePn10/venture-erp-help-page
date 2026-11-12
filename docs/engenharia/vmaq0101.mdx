@@ -1,66 +1,12 @@
 ---
 sidebar_position: 17
-title: "VMAQ0101 — Tipos de Maquina"
-description: "Cadastro de tipos de maquina e centros de trabalho com 9 categorias em layout de 2 colunas."
+title: "VMAQ0101 — Tipos de Máquina"
+description: "Esta rotina agora fica na VMAQ0200 — Máquinas, Tempos e Cálculo."
+unlisted: true
 ---
 
-# VMAQ0101 — Tipos de Maquina
+# VMAQ0101 — Tipos de Máquina
 
-> Cadastro dos tipos de maquina e centros de trabalho organizados em 9 categorias visuais com layout de 2 colunas.
-
-## Objetivo
-
-Permitir o cadastro e classificação de todos os tipos de maquinas, equipamentos e centros de trabalho utilizados na produção. A tela organiza os tipos de maquina em 9 categorias distintas, exibidas em um layout de 2 colunas que facilita a visualização e comparação entre categorias. Cada tipo de maquina define parâmetros como taxa horária, capacidade, eficiência e disponibilidade, que são utilizados pelo MRP para cálculo de capacidade produtiva e pelo módulo de custos para apropriação dos custos de transformação.
-
-## Pre-requisitos
-
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102) — Centros de custo para associação aos tipos de maquina.
-- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108) — Calendário para cálculo de dias úteis e horas disponíveis.
-
-## Passo a passo
-
-1. Acesse a tela VMAQ0101 pelo menu Engenharia > Tipos de Maquina.
-2. Visualize as 9 categorias de maquinas no layout de 2 colunas.
-3. Clique em uma categoria para expandir e visualizar os tipos de maquina já cadastrados.
-4. Para cadastrar um novo tipo de maquina, clique em **Novo** dentro da categoria desejada.
-5. Preencha o **Código** e a **Descrição** do tipo de maquina.
-6. Selecione a **Categoria** apropriada entre as 9 disponíveis: CNC, Convencional, Solda, Pintura, Montagem, Embalagem, Transporte, Inspeção ou Outros.
-7. Configure a **Taxa Horaria** (R$/hora) que sera usada no custeio da produção.
-8. Defina a **Capacidade** (horas/dia) e o **Número de Maquinas** disponíveis deste tipo.
-9. Informe o **Fator de Eficiência** (percentual) que ajusta a capacidade teórica para a capacidade real.
-10. Clique em **Salvar** para armazenar o tipo de maquina.
-
-## Campos
-
-| Campo | Tipo | Obrigatório | Opções | Descrição |
-|-------|------|-------------|--------|-----------|
-| Código | texto | Sim | — | Identificador único do tipo de maquina |
-| Descrição | texto | Sim | — | Nome descritivo do tipo de maquina |
-| Categoria | select | Sim | 9 categorias | Classificação do tipo de maquina |
-| Taxa Horaria (R$/h) | número | Sim | — | Custo por hora de operação da maquina |
-| Capacidade (horas/dia) | número | Sim | — | Horas disponíveis por dia |
-| Número de Maquinas | número | Sim | — | Quantidade de maquinas deste tipo |
-| Fator de Eficiência (%) | número | Não | 0 a 100 | Percentual de eficiência sobre a capacidade teórica |
-| Centro de Custo | select | Não | Lista de centros de custo | Centro de custo para apropriação |
-| Calendário | select | Não | Lista de calendários | Calendário de dias úteis aplicável |
-| Tempo de Setup Médio (min) | número | Não | — | Tempo médio de preparação |
-| Maquina Gargalo | toggle | Não | — | Indica se e uma maquina crítica/gargalo |
-| Permite Hora Extra | toggle | Não | — | Habilita cálculo de capacidade com horas extras |
-
-## Observações importantes
-
-- As **9 categorias** fornecem uma organização visual clara. A categoria escolhida não afeta o funcionamento técnico, mas e utilizada em relatórios gerenciais e dashboards de capacidade.
-- O **Fator de Eficiência** e crucial para o planejamento realista. Uma maquina com eficiência de 85% tera sua capacidade teórica reduzida em 15% para calcular a capacidade real disponível.
-- O toggle **Maquina Gargalo** identifica os centros de trabalho que limitam a capacidade total da fábrica. Estas maquinas recebem atenção especial nos relatórios de capacidade.
-- A **Taxa Horaria** deve incluir todos os custos associados a operação da maquina: depreciação, energia, manutenção, operador e overhead, garantindo que o custo de transformação seja preciso.
-- O toggle **Permite Hora Extra** habilita, nos cálculos de capacidade, a possibilidade de estender o turno além das horas normais, com uma taxa horária diferenciada.
-- Mantenha o cadastro de tipos de maquina atualizado, especialmente após aquisições ou desativação de equipamentos, para que o MRP tenha uma visão precisa da capacidade disponível.
-
-## Telas relacionadas
-
-- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202): Roteiros que referenciam os tipos de maquina como centros de trabalho.
-- [VENT0115 (Roteiro Padrão)](/engenharia/vent0115): Roteiros padrão que referenciam os centros de trabalho.
-- [VENT0363 (Relatório Tempo CT)](/engenharia/vent0363): Relatório de tempos e custos por centro de trabalho.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Itens cujos roteiros utilizam os tipos de maquina.
-- [VCTB0102 (Cadastro Centro Custo)](/contabilidade/vctb0102): Centros de custo associados aos tipos de maquina.
-- [VENT0108 (Calendário Financeiro/Industrial)](/engenharia/vent0108): Calendário utilizado no cálculo de disponibilidade das maquinas.
+:::info Esta rotina mudou de lugar
+O que se fazia na VMAQ0101 agora fica na tela **[VMAQ0200 — Máquinas, Tempos e Cálculo](/pcp/vmaq0200)** (centros de trabalho).
+:::

@@ -1,40 +1,12 @@
 ---
 sidebar_position: 14
 title: "VTER0400 — Conversões Globais de Terceiros"
-description: "Manter os fatores globais de conversão de unidades usados no custeio e nas movimentações terceirizadas."
+description: "Esta rotina agora fica na VTPS0100 — Serviços de Terceiros."
+unlisted: true
 ---
 
 # VTER0400 — Conversões Globais de Terceiros
 
-> Os **fatores de conversão** entre unidades usados na contratação, no custo e na movimentação de serviços de terceiros.
-
-## Objetivo
-
-Padronizar as conversões de unidade que o custeio e as movimentações terceirizadas aplicam, garantindo cálculos consistentes.
-
-## Pré-requisitos
-
-- Perfil **ADMIN** para alterações.
-- Unidades de origem e destino definidas e fator confirmado pela área responsável.
-
-## Passo a passo
-
-1. **Liste** as conversões existentes.
-2. **Cadastre** informando unidade de origem, unidade de destino e fator.
-3. Remova apenas conversões **não utilizadas**.
-
-## Exemplo
-
-Se o serviço é contratado em caixas e movimentado em unidades, uma conversão `CX → UN` com fator `12` representa **1 caixa = 12 unidades**. Teste o sentido do fator antes de usá-lo no custo.
-
-## Observações importantes
-
-- **Alterações exigem ADMIN** e podem afetar cálculos futuros.
-- **Não exclua** uma conversão ainda utilizada por preços vigentes.
-- Evite manter conversões direta e inversa com fatores incompatíveis.
-- A alteração afeta cálculos futuros; registros históricos não devem ser reinterpretados sem uma revisão formal.
-
-## Telas relacionadas
-
-- **[VTER0100 (Preços de Serviços)](/suprimento/vter0100):** usa os fatores no custo.
-- **[VTER0300 (Remessas e Retornos)](/suprimento/vter0300):** aplica conversões na movimentação.
+:::info Esta rotina mudou de lugar
+O que se fazia na VTER0400 agora fica na tela **[VTPS0100 — Serviços de Terceiros](/suprimento/vtps0100)**.
+:::

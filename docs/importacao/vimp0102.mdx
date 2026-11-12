@@ -1,63 +1,12 @@
 ---
 sidebar_position: 2
-title: "VIMP0102 — Tipos Conhecimentos Transporte"
-description: "Cadastro dos tipos de documentos de conhecimento de transporte utilizados na importação."
+title: "VIMP0102 — Conhecimentos de Transporte (CT-e)"
+description: "Esta rotina agora fica na VFIS0220 — CT-e (Conhecimento de Transporte)."
+unlisted: true
 ---
 
-# VIMP0102 — Tipos Conhecimentos Transporte
+# VIMP0102 — Conhecimentos de Transporte (CT-e)
 
-> Cadastro dos diferentes tipos de documentos de conhecimento de transporte (Bill of Lading, Air Waybill, Carta de Porte) utilizados no processo de importação.
-
-## Objetivo
-
-Permitir o cadastro e classificação dos tipos de documentos de conhecimento de transporte utilizados nos processos de importação. Cada tipo de conhecimento (BL Maritimo, AWB Aereo, CRT Rodoviário, etc.) possui características próprias que impactam a forma como a carga e rastreada, os dados que precisam ser informados e os documentos fiscais vinculados. A correta classificação e essencial para o desembaraco aduaneiro e para a gestão documental do processo de importação.
-
-## Pre-requisitos
-
-- [VIMP0101 (Status Logístico da Carga)](/importacao/vimp0101) — Cargas que utilizarão os tipos de conhecimento de transporte.
-- [VIMP0200 (Console Processos Importação)](/importacao/vimp0200) — Processos de importação que referenciam os conhecimentos de transporte.
-
-## Passo a passo
-
-1. Acesse a tela VIMP0102 pelo menu Importação > Tipos Conhecimentos Transporte.
-2. Clique em **Novo** para cadastrar um novo tipo de conhecimento de transporte.
-3. Preencha o **Código** e a **Descrição** do tipo (ex: "BL" — Bill of Lading, "AWB" — Air Waybill, "CRT" — Conhecimento Rodoviário).
-4. Selecione a **Modalidade de Transporte**: Maritimo, Aereo, Rodoviário, Ferroviário ou Multimodal.
-5. Defina a **Sigla Padrão** que sera utilizada na numeração dos documentos deste tipo.
-6. Marque os toggles conforme as características do tipo:
-   - **Exige Número Master**: Se o conhecimento possui um Master (ex: Master BL) além do House.
-   - **Exige Número House**: Se existe um conhecimento House (ex: House BL).
-   - **Exige Conteiner**: Para cargas conteinerizadas.
-   - **Exige Emissão na Origem**: Se o documento deve ser emitido antes do embarque.
-7. Configure o **Formato de Numeração** se o tipo exigir um padrão específico (ex: BL segue padrão da IATA).
-8. Clique em **Salvar** para armazenar o tipo de conhecimento de transporte.
-
-## Campos
-
-| Campo | Tipo | Obrigatório | Opções | Descrição |
-|-------|------|-------------|--------|-----------|
-| Código | texto | Sim | — | Identificador único do tipo de conhecimento |
-| Descrição | texto | Sim | — | Nome descritivo do tipo de conhecimento |
-| Modalidade de Transporte | select | Sim | Maritimo / Aereo / Rodoviário / Ferroviário / Multimodal | Meio de transporte associado |
-| Sigla Padrão | texto | Sim | — | Prefixo para numeração de documentos |
-| Exige Número Master | toggle | Não | — | Requer preenchimento do número Master |
-| Exige Número House | toggle | Não | — | Requer preenchimento do número House |
-| Exige Conteiner | toggle | Não | — | Requer informação de conteiner |
-| Exige Emissão na Origem | toggle | Não | — | Documento deve ser emitido antes do embarque |
-| Formato de Numeração | texto | Não | — | Máscara para validação do número do documento |
-| Ativo | toggle | Sim | — | Status do tipo de conhecimento |
-
-## Observações importantes
-
-- A diferenciação entre **Master** e **House** e crucial no transporte marítimo. O Master BL e emitido pelo armador, enquanto o House BL e emitido pelo agente de carga (freight forwarder).
-- A **Sigla Padrão** e utilizada pelo sistema para gerar automaticamente numeros de documentos sequenciais, garantindo unicidade e padronização.
-- O toggle **Exige Conteiner** habilita campos adicionais no processo de importação, como número e tipo de conteiner (20', 40', HC, Reefer).
-- A **Modalidade de Transporte** define regras de negócio associadas, como prazos fiscalização e documentação exigida pela aduana.
-- A alteração dos campos de um tipo de conhecimento já em uso **não afeta** documentos já emitidos — aplica-se apenas a novos registros.
-- E recomendável manter uma lista enxuta de tipos de conhecimento, cobrindo apenas as modalidades efetivamente utilizadas pela empresa.
-
-## Telas relacionadas
-
-- [VIMP0101 (Status Logístico da Carga)](/importacao/vimp0101): Cargas que utilizam os conhecimentos de transporte.
-- [VIMP0200 (Console Processos Importação)](/importacao/vimp0200): Processos de importação que referenciam os conhecimentos.
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Transportadores emissores dos conhecimentos.
+:::info Esta rotina mudou de lugar
+O que se fazia na VIMP0102 agora fica na tela **[VFIS0220 — CT-e (Conhecimento de Transporte)](/fiscal/vfis0220)**.
+:::
