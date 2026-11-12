@@ -50,7 +50,7 @@ A VFIS0210 permite registrar NF-e de entrada no ERP — documentos fiscais emiti
 12. Após salvar o rascunho, revise todas as informações na tela de detalhe. Confira especialmente os valores de impostos (ICMS, IPI, PIS, COFINS) para assegurar que os créditos fiscais serão calculados corretamente.
 13. Clique em **Aprovar**. A aprovação dispara dois processos automáticos:
     - **Geração da Conta a Pagar:** quando a integração financeira estiver configurada, o título é criado na VFIN0200 com referência ao documento fiscal.
-    - **Registro de Créditos Fiscais:** Os valores de ICMS, IPI, PIS e COFINS destacados na nota são registrados para posterior apropriação na apuração fiscal (VFIS0530, VFIS0540).
+    - **Registro de Créditos Fiscais:** Os valores de ICMS, IPI, PIS e COFINS destacados na nota são registrados para posterior apropriação na apuração fiscal (VFIS0530, VFIN0400).
 14. O status da nota mudara para **Aprovada**. A partir deste momento, a nota entra no fluxo fiscal e financeiro e so pode ser alterada por usuários com permissão especial.
 
 15. Para **Cancelar** uma aprovação (em caso de erro), clique em **Estornar**. O sistema cancelara a conta a pagar vinculada e revertera os créditos fiscais registrados.
@@ -123,5 +123,5 @@ A VFIS0210 permite registrar NF-e de entrada no ERP — documentos fiscais emiti
 - **[VFIS0200 (NFe de Saída)](/fiscal/vfis0200):** Tela de emissão de NFe de saída (vendas).
 - **[VFIS0300 (CFOPs)](/fiscal/vfis0300):** Códigos Fiscais de Operação com CFOPs de entrada.
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração onde os créditos de ICMS serão apropriados.
-- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos fiscais gerados a partir das notas de entrada aprovadas.
+- **[VFIN0400 (Apuração de Impostos)](/financeiro/vfin0400):** Lançamentos fiscais gerados a partir das notas de entrada aprovadas.
 - **[VFIN0200 (Contas a Pagar)](/financeiro/vfin0200):** títulos financeiros originados pela entrada, quando a integração estiver configurada.

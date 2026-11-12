@@ -10,7 +10,7 @@ description: "Geração de notas fiscais especiais de ajuste de ICMS com lançam
 
 ## Objetivo
 
-A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fiscais emitidos não para registrar uma venda ou compra, mas para fins de ajuste contábil e fiscal do ICMS. Essas notas são utilizadas em situações específicas como: complemento de ICMS pago a menor, estorno de crédito indevido, ajuste de valores por quebra ou perda de mercadoria, ajuste de inventário (diferença entre estoque físico e contábil), baixa de créditos prescritos, entre outros. A nota especial de ajuste gera automaticamente lançamentos na VFIS0540 (Lançamentos Resumo ICMS), que por sua vez alimentam a apuração (VFIS0530) e o SPED Fiscal.
+A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fiscais emitidos não para registrar uma venda ou compra, mas para fins de ajuste contábil e fiscal do ICMS. Essas notas são utilizadas em situações específicas como: complemento de ICMS pago a menor, estorno de crédito indevido, ajuste de valores por quebra ou perda de mercadoria, ajuste de inventário (diferença entre estoque físico e contábil), baixa de créditos prescritos, entre outros. A nota especial de ajuste gera automaticamente lançamentos na VFIN0400 (Apuração de Impostos), que por sua vez alimentam a apuração (VFIS0530) e o SPED Fiscal.
 
 ## Pre-requisitos
 
@@ -40,7 +40,7 @@ A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fisc
 10. Revise os dados na tela de detalhe e clique em **Gerar XML**. O sistema criara o XML da NFe no modelo 55, com os campos de ajuste preenchidos conforme a finalidade.
 11. Clique em **Transmitir** para enviar a nota a SEFAZ.
 12. Após a autorização, o sistema gerara automaticamente:
-    - Um **lancamento** na VFIS0540 (Lançamentos Resumo ICMS) do tipo "Ajuste", com o valor do ICMS.
+    - Um **lancamento** na VFIN0400 (Apuração de Impostos) do tipo "Ajuste", com o valor do ICMS.
     - Um **item C197** correspondente, vinculando o código de ajuste da VFIS0510/VFIS0520.
     - A atualização da **apuração** (VFIS0530) com a nova linha de ajuste.
 
@@ -92,4 +92,4 @@ A VFIS0560 gerencia as **Notas Fiscais Especiais de Ajuste** — documentos fisc
 - **[VFIS0510 (Códigos Ajuste 5.1.1)](/fiscal/vfis0510):** Códigos de ajuste para notas de ajuste de documentos próprios.
 - **[VFIS0520 (Códigos Ajuste 5.2/5.3/5.6/5.7)](/fiscal/vfis0520):** Demais códigos de ajuste.
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração que recebe os lançamentos gerados pelas notas de ajuste.
-- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos automáticos gerados pelas notas de ajuste.
+- **[VFIN0400 (Apuração de Impostos)](/financeiro/vfin0400):** Lançamentos automáticos gerados pelas notas de ajuste.

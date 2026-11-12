@@ -1,61 +1,12 @@
 ---
 sidebar_position: 3
-title: "VENT0204 — Cadastro de Grupo PDM"
-description: "Primeiro nível da hierarquia de configuração PDM para itens configuráveis."
+title: "VENT0204 — Cadastro de Grupo"
+description: "Esta rotina agora fica na VITE0116 — Padrão Descritivo (PDM)."
+unlisted: true
 ---
 
-# VENT0204 — Cadastro de Grupo PDM
+# VENT0204 — Cadastro de Grupo
 
-> Primeiro nível da hierarquia de configuração de itens PDM. Define os agrupamentos principais que organizam os itens configuráveis e suas variações.
-
-## Objetivo
-
-Estabelecer o primeiro nível da hierarquia de configuração de produtos no modelo PDM (Product Data Management). Os Grupos PDM funcionam como categorias principais que agrupam itens configuráveis com características similares, servindo como raiz da árvore de configuração. A partir do grupo, derivam-se os modificadores e atributos que definem as possíveis variações do produto. Esta e a tela fundamental para iniciar a parametrização de qualquer produto configurável no sistema.
-
-## Pre-requisitos
-
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens que serão associados aos grupos PDM devem estar cadastrados.
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115) — Modificadores que serão vinculados aos grupos PDM já devem estar definidos.
-
-## Passo a passo
-
-1. Acesse a tela VENT0204 pelo menu Engenharia > Cadastro de Grupo PDM.
-2. Clique em **Novo** para iniciar o cadastro de um novo grupo.
-3. Preencha o **Código do Grupo** com um identificador único e significativo.
-4. Informe a **Descrição** do grupo, detalhando o tipo de produto que ele abrange (ex: "Cadeiras", "Mesas", "Sofas").
-5. Selecione o **Item Base** que servira como modelo para os itens gerados a partir deste grupo.
-6. Defina a **Máscara** de codificação que determinara como os códigos dos itens configurados serão gerados.
-7. Marque os modificadores PDM que estarão disponíveis para este grupo na tabela de **Modificadores Vinculados**.
-8. Defina a **Ordem** de exibição dos modificadores, que determinara a sequência de escolha durante a configuração.
-9. Clique em **Salvar** para persistir o grupo PDM e suas associações.
-
-## Campos
-
-| Campo | Tipo | Obrigatório | Opções | Descrição |
-|-------|------|-------------|--------|-----------|
-| Código do Grupo | texto | Sim | — | Identificador único do grupo PDM |
-| Descrição | texto | Sim | — | Nome descritivo do grupo PDM |
-| Item Base | select | Não | Lista de itens | Item modelo para itens gerados pelo grupo |
-| Máscara | texto | Não | — | Padrão de codificação para itens configurados |
-| Situação | select | Sim | Ativo / Inativo | Status do grupo PDM no sistema |
-| Modificadores Vinculados | tabela | Não | Lista de modificadores | Modificadores PDM disponíveis para este grupo |
-| Ordem Modificador | número | Não | — | Ordem sequencial do modificador na configuração |
-| Obrigatoriedade | toggle | Não | — | Define se o modificador e obrigatório na configuração |
-
-## Observações importantes
-
-- O **Grupo PDM** e o ponto de partida da hierarquia de configuração. Sem ele, não e possível vincular modificadores e atributos aos itens.
-- A **Máscara** de codificação define o padrão automático de geração de códigos para itens configurados, garantindo unicidade e rastreabilidade.
-- O **Item Base** e utilizado como referência para herdar características comuns a todos os itens gerados a partir do grupo, como unidade de medida e tipo de planejamento.
-- A ordem dos modificadores influencia a experiência do usuário no configurador, determinando em qual sequência as escolhas serão apresentadas.
-- Grupos inativos não ficam disponíveis para novas associações, mas os itens já gerados a partir deles continuam funcionando normalmente.
-- E recomendável criar grupos PDM com nomes claros e objetivos, facilitando a localização por outros usuários durante a configuração de produtos.
-
-## Telas relacionadas
-
-- [VITE0114 (Grupos PDM)](/engenharia/vite0114): Visualização consolidada dos grupos PDM no tema azul.
-- [VITE0115 (Modificadores PDM)](/engenharia/vite0115): Modificadores PDM que serão vinculados ao grupo.
-- [VITE0116 (Atributos PDM)](/engenharia/vite0116): Atributos associados aos modificadores de cada grupo.
-- [VITE0118 (Regras Itens Configurados)](/engenharia/vite0118): Regras aplicadas aos itens gerados pelo grupo PDM.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro de itens que inclui o campo Grupo PDM.
-- [VITE0313 (Geração Máscara Itens Configurados)](/engenharia/vite0313): Geração automática de códigos baseada na máscara do grupo.
+:::info Esta rotina mudou de lugar
+O que se fazia na VENT0204 agora fica na tela **[VITE0116 — Padrão Descritivo (PDM)](/engenharia/vite0116)** (grupos).
+:::

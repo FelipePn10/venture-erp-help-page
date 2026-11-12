@@ -10,12 +10,12 @@ description: "Cadastro dos motivos de transferência de créditos utilizados na 
 
 ## Objetivo
 
-A VFIS0500 gerencia os motivos de transferência de créditos de ICMS entre estabelecimentos da mesma empresa ou entre empresas distintas, conforme permitido pela legislação de cada estado. A DAPI (Declaração de Apuração de ICMS) — também conhecida como GIA/ICMS em alguns estados — exige que toda transferência de crédito seja fundamentada com um motivo legal específico. Esta tela cadastra os códigos e descrições desses motivos, que serão referenciados nos lançamentos de transferência de crédito (VFIS0540) e exportados para o arquivo da DAPI.
+A VFIS0500 gerencia os motivos de transferência de créditos de ICMS entre estabelecimentos da mesma empresa ou entre empresas distintas, conforme permitido pela legislação de cada estado. A DAPI (Declaração de Apuração de ICMS) — também conhecida como GIA/ICMS em alguns estados — exige que toda transferência de crédito seja fundamentada com um motivo legal específico. Esta tela cadastra os códigos e descrições desses motivos, que serão referenciados nos lançamentos de transferência de crédito (VFIN0400) e exportados para o arquivo da DAPI.
 
 ## Pre-requisitos
 
 - **Conhecimento da legislação estadual:** Os motivos de transferência variam por estado. Consulte a legislação do seu estado (RICMS e Decretos) para identificar os motivos validos.
-- **VFIS0540 (Lançamentos Resumo ICMS):** Os motivos cadastrados aqui serão utilizados na VFIS0540 para registrar transferências de crédito.
+- **VFIN0400 (Apuração de Impostos):** Os motivos cadastrados aqui serão utilizados na VFIN0400 para registrar transferências de crédito.
 
 ## Passo a passo
 
@@ -47,6 +47,6 @@ A VFIS0500 gerencia os motivos de transferência de créditos de ICMS entre esta
 ## Telas relacionadas
 
 - **[VFIS0530 (Linhas Apuração ICMS)](/fiscal/vfis0530):** Apuração do ICMS onde as transferências de crédito são consolidadas.
-- **[VFIS0540 (Lançamentos Resumo ICMS)](/fiscal/vfis0540):** Lançamentos fiscais que incluem as transferências de crédito entre estabelecimentos.
+- **[VFIN0400 (Apuração de Impostos)](/financeiro/vfin0400):** Lançamentos fiscais que incluem as transferências de crédito entre estabelecimentos.
 - **[VFIS0550 (Restituição ICMS ST)](/fiscal/vfis0550):** Restituição de ICMS-ST, que pode envolver transferência de crédito.
 - **[VFIS0100 (Configuração Fiscal)](/fiscal/vfis0100):** Configuração da empresa emitente com IE por estado.

@@ -1,74 +1,12 @@
 ---
 sidebar_position: 7
-title: "VINS0313 — Consulta Inspeções Recebimento"
-description: "Consulta especializada de inspeções de recebimento com 11 filtros de busca."
+title: "VINS0313 — Consulta de Inspeções de Recebimento"
+description: "Rotina retirada do sistema na versão 1.17.0."
+unlisted: true
 ---
 
-# VINS0313 — Consulta Inspeções Recebimento
+# VINS0313 — Consulta de Inspeções de Recebimento
 
-> Tela de consulta focada em inspeções de recebimento de materiais, com 11 filtros que permitem buscas precisas e análises de desempenho.
-
-## Objetivo
-
-Fornecer uma consulta especializada e otimizada para inspeções de recebimento de materiais, oferecendo 11 critérios de filtro que cobrem as necessidades mais comuns da área de qualidade: busca por nota fiscal, fornecedor, item, período, status da inspeção, resultado, inspetor, entre outros. A tela e focada exclusivamente em inspeções de recebimento (tipo REC), excluindo outros tipos de inspeção para proporcionar uma experiência mais ágil e relevante para o time de qualidade de recebimento.
-
-## Pre-requisitos
-
-- [VINS0201 (Manutenção Ordens Inspeção)](/inspecao/vins0201) — Ordens de inspeção que alimentam a consulta.
-- [VINS0200 (Roteiro Inspeção)](/inspecao/vins0200) — Roteiros associados as ordens de recebimento.
-- [VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200) — Pedidos de compra que originam as inspeções de recebimento.
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200) — Fornecedores cujos materiais são inspecionados.
-
-## Passo a passo
-
-1. Acesse a tela VINS0313 pelo menu Inspeção > Consulta Inspeções Recebimento.
-2. No painel de filtros, utilize qualquer combinação dos 11 critérios disponíveis:
-   - **Filtro 1 — Nota Fiscal**: busca pelo número da NF-e de entrada.
-   - **Filtro 2 — Fornecedor**: um ou mais fornecedores.
-   - **Filtro 3 — Item**: item específico inspecionado.
-   - **Filtro 4 — Período de Inspeção**: data de início e fim.
-   - **Filtro 5 — Status da Inspeção**: Pendente, Em Execução, Concluida, Cancelada.
-   - **Filtro 6 — Resultado**: Aprovado, Reprovado, Aprovado com Ressalva.
-   - **Filtro 7 — Inspetor**: inspetor responsável.
-   - **Filtro 8 — Roteiro**: roteiro de inspeção utilizado.
-   - **Filtro 9 — Possui Ocorrencia**: apenas ordens com ou sem ocorrências registradas.
-   - **Filtro 10 — Tipo de Ocorrencia**: ordens com ocorrências de um tipo específico.
-   - **Filtro 11 — Lote/Série**: busca por identificação de lote ou número de série.
-3. Clique em **Pesquisar** para carregar os resultados.
-4. A grid exibe as ordens de inspeção com suas principais informações.
-5. Clique em uma ordem para abrir o **detalhamento** com os resultados de cada ensaio.
-6. Utilize o botão **Gráfico de Pareto** para visualizar as principais causas de reprovação agrupadas por tipo de ocorrência.
-7. O botão **Exportar** gera relatórios em Excel ou PDF.
-
-## Campos de Filtro
-
-| Campo | Tipo | Obrigatório | Opções | Descrição |
-|-------|------|-------------|--------|-----------|
-| Nota Fiscal | número | Não | — | Filtrar pela NF-e de entrada |
-| Fornecedor | multi-select | Não | Lista de fornecedores | Filtrar por um ou mais fornecedores |
-| Item | select | Não | Lista de itens | Filtrar por item inspecionado |
-| Data Inspeção — Início | data | Não | — | Data inicial do período |
-| Data Inspeção — Fim | data | Não | — | Data final do período |
-| Status | multi-select | Não | Todos os status | Filtrar por situação da inspeção |
-| Resultado | multi-select | Não | Aprovado / Reprovado / Aprovado com Ressalva | Filtrar por resultado |
-| Inspetor | select | Não | Lista de inspetores | Filtrar por responsável |
-| Roteiro | select | Não | Lista de roteiros | Filtrar por roteiro utilizado |
-| Possui Ocorrencia | select | Não | Sim / Não / Todas | Filtrar ordens com/sem ocorrências |
-| Lote/Série | texto | Não | — | Busca por lote ou número de série |
-
-## Observações importantes
-
-- A **foco exclusivo** em inspeções de recebimento torna a tela mais rápida e facil de usar para o time de qualidade que trabalha no recebimento de materiais.
-- O filtro **Possui Ocorrencia** e útil para identificar rapidamente ordens problemáticas que geraram não-conformidades durante o recebimento.
-- O **Gráfico de Pareto** e uma ferramenta de qualidade clássica: 80% dos problemas são causados por 20% das causas. Ajuda a priorizar ações corretivas.
-- A combinação de filtros **Fornecedor + Item + Período** e a mais utilizada pelo time de qualidade para avaliar o desempenho recente de um fornecedor em um item específico.
-- Os resultados podem ser **exportados em Excel** com colunas customizáveis, permitindo análises complementares em planilha.
-- O histórico de inspeções de recebimento alimenta os indicadores de **OnTime Quality** e **IQF** dos fornecedores.
-
-## Telas relacionadas
-
-- [VINS0201 (Manutenção Ordens Inspeção)](/inspecao/vins0201): Gestão das ordens de inspeção consultadas.
-- [VINS0200 (Roteiro Inspeção)](/inspecao/vins0200): Roteiros associados as ordens de recebimento.
-- [VINS0400 (Consulta Ocorrencias/Ordens)](/inspecao/vins0400): Consulta abrangente de todos os tipos de inspeção.
-- [VAVR0200 (Fornecedores/Transportadoras)](/suprimento/vavr0200): Fornecedores avaliados nas inspeções.
-- [VAVF0204 (Envio IQF Fornecedores)](/inspecao/vavf0204): IQF que consome dados das inspeções de recebimento.
+:::note Rotina retirada
+A VINS0313 foi retirada do sistema na versão 1.17.0 e não tem tela substituta.
+:::

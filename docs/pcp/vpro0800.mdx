@@ -1,44 +1,12 @@
 ---
 sidebar_position: 14
 title: "VPRO0800 — Restrições e Configurador"
-description: "Definir regras de negócio que validam combinações de atributos de um item (configurador de produto)."
+description: "Esta rotina agora fica na VCFG0100 — Conjuntos e Variáveis do Configurador."
+unlisted: true
 ---
 
 # VPRO0800 — Restrições e Configurador
 
-> Definir **regras de negócio** que controlam quais combinações de atributos de um item são válidas (configurador de produto / validação de cadastro). Suporta os operadores `==`, `!=`, `>`, `<`, `>=`, `<=`, `IN`, `NOT_IN`.
-
-## Objetivo
-
-Garantir que apenas combinações válidas de atributos sejam configuradas para um item.
-
-## Pré-requisitos
-
-- Grupo, modificadores e atributos PDM cadastrados.
-- Valores e tipos dos atributos definidos de forma consistente.
-- Regra de negócio descrita em termos testáveis antes do cadastro.
-
-## Passo a passo
-
-1. **Crie uma restrição** com a condição desejada (atributo, operador, valor).
-2. Use **Avaliar** informando um contexto (conjunto de atributos) para testar se a combinação é válida.
-3. Teste ao menos um cenário permitido e um proibido antes de liberar a regra para uso.
-
-## Operadores
-
-| Operador | Uso esperado |
-|----------|--------------|
-| `==` / `!=` | Igualdade ou diferença de um valor |
-| `>` / `<` / `>=` / `<=` | Comparação de valores numéricos ou ordenáveis |
-| `IN` / `NOT_IN` | Presença ou ausência em uma lista de valores |
-
-## Observações importantes
-
-- Use exatamente o nome e o tipo de valor esperados pelo atributo; diferenças de grafia podem impedir a avaliação correta.
-- Regras contraditórias podem bloquear todas as combinações. Teste o conjunto completo após incluir ou editar uma restrição.
-- A avaliação confirma a combinação informada, mas não cria o item nem gera seu código.
-
-## Telas relacionadas
-
-- **[VITE0116 (Atributos PDM)](/engenharia/vite0116):** grupos, modificadores e atributos que a restrição valida.
-- **[VITE0313 (Geração Máscara)](/engenharia/vite0313):** gera a máscara dos itens configurados.
+:::info Esta rotina mudou de lugar
+O que se fazia na VPRO0800 agora fica na tela **[VCFG0100 — Conjuntos e Variáveis do Configurador](/engenharia/vcfg0100)** (restrições).
+:::

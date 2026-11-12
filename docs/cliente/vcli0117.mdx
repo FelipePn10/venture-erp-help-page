@@ -56,7 +56,7 @@ Controlar de forma precisa quais itens podem ou não ser vendidos para cada clie
 
 ## Observações
 
-- As regras são validadas em tempo real durante a criação de pedidos em [VPDV0200](/pdv/vpdv0200). Se um item estiver restrito para o cliente, o sistema bloqueará sua inclusão no pedido e exibirá o motivo cadastrado.
+- As regras são validadas em tempo real durante a criação de pedidos em [VVND0200](/pcp/vvnd0200). Se um item estiver restrito para o cliente, o sistema bloqueará sua inclusão no pedido e exibirá o motivo cadastrado.
 - Regras sem data de fim de vigência são consideradas permanentes e permanecem ativas até que sejam removidas manualmente.
 - O campo **Motivo** é fundamental para auditoria e compliance. Recomenda-se sempre documentar a razão da regra, especialmente em casos de bloqueios fiscais ou comerciais.
 - A prioridade entre regras concorrentes segue a hierarquia: restrições prevalecem sobre permissões. Se um mesmo item possui uma regra de permissão e outra de restrição para o mesmo cliente, a restrição será aplicada.
@@ -67,4 +67,4 @@ Controlar de forma precisa quais itens podem ou não ser vendidos para cada clie
 - **[VCLI0500 — Cadastro de Cliente](/cliente/vcli0500):** Cliente alvo das regras de permissão e restrição.
 - **[VCLA0100 — Classificação de Itens](/cadastros/vcla0100):** Classificações utilizadas no escopo das regras.
 - **[VENT0200 — Cadastro de Itens](/engenharia/vent0200):** Itens referenciados nas regras de restrição ou permissão.
-- **[VPDV0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as regras são validadas durante a inclusão de itens no pedido.
+- **[VVND0200 — Cadastro de Pedido de Venda](/pdv/vpdv0200):** Tela onde as regras são validadas durante a inclusão de itens no pedido.

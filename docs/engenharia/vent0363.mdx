@@ -1,58 +1,12 @@
 ---
 sidebar_position: 6
-title: "VENT0363 — Relatório Tempo CT"
-description: "Relatório de tempos e custos por centro de trabalho com análise de capacidade."
+title: "VENT0363 — Relatório de Tempo de Centro de Trabalho"
+description: "Esta rotina agora fica na VENT0202 — Roteiro de Fabricação."
+unlisted: true
 ---
 
-# VENT0363 — Relatório Tempo CT
+# VENT0363 — Relatório de Tempo de Centro de Trabalho
 
-> Relatório analítico que consolida tempos de fabricação e custos por centro de trabalho, permitindo análise de capacidade produtiva.
-
-## Objetivo
-
-Fornecer uma visão consolidada dos tempos de fabricação e custos associados a cada centro de trabalho, a partir dos roteiros de fabricação cadastrados. O relatório permite analisar a carga de trabalho por centro, identificar gargalos produtivos, comparar tempos entre diferentes itens que compartilham o mesmo centro de trabalho e avaliar o custo de processamento. E uma ferramenta essencial para o planejamento de capacidade e para decisões de investimento em maquinas e equipamentos.
-
-## Pre-requisitos
-
-- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202) — Roteiros de fabricação com operações e fórmulas de tempo devidamente cadastrados.
-- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101) — Centros de trabalho com taxas horarias definidas.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200) — Itens com roteiros associados e dados de planejamento configurados.
-
-## Passo a passo
-
-1. Acesse a tela VENT0363 pelo menu Engenharia > Relatório Tempo CT.
-2. Selecione o **Centro de Trabalho** desejado ou deixe em branco para gerar o relatório de todos os centros.
-3. Defina o **Período** de análise preenchendo as datas de início e fim.
-4. Escolha o **Tipo de Tempo** a ser exibido: Tempo de Setup, Tempo de Execução, Tempo Total ou Todos.
-5. Clique em **Gerar Relatório** para processar os dados dos roteiros.
-6. O relatório exibe para cada item/operação os tempos calculados e o custo total (tempo x taxa horária do centro de trabalho).
-7. Utilize os filtros de agrupamento para consolidar por **Centro de Trabalho**, **Item** ou **Tipo de Operação**.
-8. Análise a coluna de **% de Ocupação** para identificar centros de trabalho próximos da capacidade maxima.
-9. Exporte o relatório em Excel ou PDF utilizando os botões de exportação disponíveis.
-
-## Campos
-
-| Campo | Tipo | Obrigatório | Opções | Descrição |
-|-------|------|-------------|--------|-----------|
-| Centro de Trabalho | select | Não | Lista de centros | Centro de trabalho a ser analisado |
-| Data Início | data | Não | — | Data inicial do período de análise |
-| Data Fim | data | Não | — | Data final do período de análise |
-| Tipo de Tempo | select | Não | Setup / Execução / Total / Todos | Tipo de tempo a ser exibido |
-| Item | número | Não | — | Filtrar por um item específico |
-| Agrupamento | select | Não | Centro de Trabalho / Item / Operação | Nível de agrupamento do relatório |
-| Taxa Horaria | número | Não | — | Taxa horária do centro de trabalho (editável) |
-
-## Observações importantes
-
-- O custo total de cada operação e calculado multiplicando o tempo total pela **Taxa Horaria** do centro de trabalho. Certifique-se de que as taxas estao atualizadas.
-- Centros de trabalho com **% de Ocupação** acima de 85% no período indicam possível gargalo e necessidade de ação (horas extras, terceirização ou investimento).
-- O relatório considera as **fórmulas de tempo** com a variável `QTD` preenchida com o tamanho do lote padrão do item. Para simulações com diferentes tamanhos de lote, utilize parâmetros avançados.
-- Tempos de operações de itens inativos ou com roteiros desatualizados podem distorcer a análise. Mantenha os roteiros sempre atualizados.
-- A exportação para Excel inclui as fórmulas e permite manipulação adicional dos dados em planilha eletrônica.
-
-## Telas relacionadas
-
-- [VENT0202 (Roteiro de Fabricação)](/engenharia/vent0202): Roteiros de fabricação que alimentam o relatório de tempos.
-- [VMAQ0101 (Tipos de Maquina)](/engenharia/vmaq0101): Cadastro de centros de trabalho com taxas horarias.
-- [VENT0200 (Cadastro de Itens)](/engenharia/vent0200): Cadastro de itens com dados de planejamento.
-- [VENT0115 (Roteiro Padrão)](/engenharia/vent0115): Roteiros padrão utilizados como base para roteiros de itens.
+:::info Esta rotina mudou de lugar
+O que se fazia na VENT0363 agora fica na tela **[VENT0202 — Roteiro de Fabricação](/engenharia/vent0202)**.
+:::

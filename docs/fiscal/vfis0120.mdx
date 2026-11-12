@@ -1,44 +1,12 @@
 ---
 sidebar_position: 3
-title: "VFIS0120 — Exclusão Controlada de Tributação NCM"
-description: "Remover de forma controlada uma tributação de NCM obsoleta ou cadastrada incorretamente."
+title: "VFIS0120 — Exclusão de Tributação NCM"
+description: "Esta rotina agora fica na VFIS0110 — Tabelas Tributárias."
+unlisted: true
 ---
 
-# VFIS0120 — Exclusão Controlada de Tributação NCM
+# VFIS0120 — Exclusão de Tributação NCM
 
-> A operação **destrutiva isolada**: remover uma tributação de NCM obsoleta ou incorreta. A consulta e a manutenção normais continuam na [VFIS0110](/fiscal/vfis0110).
-
-## Objetivo
-
-Separar a exclusão de uma tributação NCM em uma rotina própria, para que a remoção seja consciente e não se confunda com a manutenção rotineira.
-
-## Pré-requisitos
-
-- NCM conferido na [VFIS0110](/fiscal/vfis0110) (código, vigência, alíquotas).
-- Confirmação de que itens, pedidos ou documentos abertos não dependem do cadastro.
-
-## Passo a passo
-
-1. Consulte o NCM na [VFIS0110](/fiscal/vfis0110) e confirme código, vigência e alíquotas.
-2. Verifique dependências (itens, pedidos, documentos abertos).
-3. Informe o **NCM exatamente como gravado**, clique em excluir e confirme.
-4. Consulte novamente na VFIS0110 e valide o comportamento dos itens afetados.
-
-## Quando excluir ou atualizar
-
-| Situação | Ação recomendada |
-|----------|------------------|
-| Cadastro duplicado ou criado por engano e sem uso | Excluir após conferir dependências |
-| Mudança de alíquota ou regra com continuidade histórica | Atualizar ou criar nova vigência |
-| NCM usado em documento fiscal | Preservar o histórico e consultar o responsável fiscal |
-
-## Observações importantes
-
-- **Não exclua apenas para mudar alíquota** — atualize o cadastro quando houver continuidade histórica.
-- NCM **em uso** ou de outra empresa pode ser recusado.
-- A confirmação **não substitui** a autorização fiscal interna.
-- Registre a justificativa e a evidência da conferência conforme o procedimento fiscal da empresa.
-
-## Telas relacionadas
-
-- **[VFIS0110 (Tabelas Tributárias por NCM)](/fiscal/vfis0110):** consulta e manutenção normal do NCM.
+:::info Esta rotina mudou de lugar
+O que se fazia na VFIS0120 agora fica na tela **[VFIS0110 — Tabelas Tributárias](/fiscal/vfis0110)** (botão Desativar).
+:::
