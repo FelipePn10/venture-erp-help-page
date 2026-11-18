@@ -1,45 +1,81 @@
 ---
 sidebar_position: 5
 title: "VSUP0130 — Fornecedor Preferencial por Item"
-description: "Vincular um item a fornecedores com ranking de preferência, código e lead time."
+description: "Define de quais fornecedores cada item pode ser comprado, com preferência, prazo, lote, cota, vigência e bloqueio."
 ---
 
 # VSUP0130 — Fornecedor Preferencial por Item
 
-> Vincular um **item** a **fornecedores** com **ranking** de preferência. Guarda também o código, a descrição e a UM do item no fornecedor, além do lead time.
+> Diz **de quem** cada item pode ser comprado. Sem pelo menos um fornecedor **vigente** aqui, o item não entra em pedido de compra nem em remessa ao terceiro, e o planejamento não sabe de quem sugerir a compra.
 
 ## Objetivo
 
-Definir o fornecedor preferido de cada item — usado pelo sistema ao gerar pedidos a partir de solicitações.
+Manter a lista de fornecedores de cada item, com a ordem de preferência e as condições de compra de cada um. O planejamento (MRP) usa esta lista para escolher o fornecedor da sugestão de compra, o prazo de entrega e o tamanho do lote.
 
 ## Pré-requisitos
 
-- Item comprado cadastrado e ativo.
+- Item cadastrado e ativo.
 - Fornecedores cadastrados e liberados para compra.
-- Unidade usada pelo fornecedor e eventual conversão cadastradas.
 
 ## Passo a passo
 
-1. Informe o **item** e carregue os vínculos.
-2. Cadastre um fornecedor com **ranking** (1 = preferido), código/descrição/UM do item no fornecedor e **lead time** em dias.
-3. Repita para as alternativas, usando rankings maiores, e confira a ordem exibida.
+1. Escolha o **Item**. A lista de fornecedores carrega sozinha (use **Carregar** para atualizar).
+2. Em **Fornecedor**, escolha o fornecedor e informe o **Ranking** (1 = primeira opção). Marque **Fornecedor preferencial** para o fornecedor principal.
+3. Preencha, se houver, a **Política de compra deste fornecedor**: prazo de entrega, quantidade mínima, múltiplo de compra e cota.
+4. Se o fornecimento tiver data para começar ou terminar, preencha a **Vigência**.
+5. Clique em **Salvar vínculo**. Para outro fornecedor, use **+ Novo vínculo**: num vínculo já salvo o fornecedor não pode ser trocado.
 
 ## Campos principais
 
 | Campo | Função |
 |-------|--------|
-| Ranking | Ordem de preferência; 1 representa a primeira opção |
-| Código no fornecedor | Referência que aparece na comunicação de compra |
-| UM do fornecedor | Unidade em que o fornecedor comercializa o item |
-| Lead time | Prazo esperado entre a compra e a disponibilidade |
+| Ranking | Ordem de preferência; 1 é a primeira opção |
+| Fornecedor preferencial | Fornecedor escolhido primeiro pelo planejamento |
+| Prazo de entrega (dias) | Prazo deste fornecedor. Em branco, vale o prazo de compra do item |
+| Quantidade mínima | Menor quantidade que o fornecedor aceita, na unidade de estoque do item |
+| Múltiplo de compra | A sugestão é arredondada para cima até um múltiplo deste valor |
+| Cota da compra (%) | Parte das compras do item que deve ir para este fornecedor. A soma das cotas do item não passa de 100%, contando os bloqueados |
+| Válido de / Válido até | Período em que o fornecedor pode ser usado. Em branco, sem limite |
+| Código e descrição no fornecedor | Somente leitura: preenchidos pela entrada de nota fiscal quando a nota é ligada ao item |
+
+## Situação do fornecedor
+
+Cada fornecedor da lista mostra a sua situação:
+
+- **Vigente** — pode ser usado.
+- **Bloqueado** — suspenso, com o motivo registrado.
+- **Vencido** — passou a data de **Válido até**.
+- **Ainda não vigente** — a data de **Válido de** ainda não chegou.
+
+Só fornecedores **vigentes** contam como fonte do item. Um fornecedor com o selo **Máscara** vale só para aquela máscara do item.
+
+## Como o planejamento escolhe o fornecedor
+
+- **Sem cota:** usa o fornecedor preferencial; sem ele, o de menor ranking.
+- **Com cota:** cada necessidade vai inteira para o fornecedor que está mais abaixo da sua cota, contando as compras já feitas e as já firmadas desde a última mudança de cota do item. Mudar um percentual recomeça essa conta. Com o tempo, as compras se repartem pelos percentuais, sem dividir um pedido em pedaços menores que o mínimo de cada fornecedor.
+- A quantidade sugerida respeita a quantidade mínima e o múltiplo do fornecedor escolhido.
+- Ao aprovar a sugestão de compra, o fornecedor escolhido já vem preenchido.
+
+## Bloquear e desbloquear
+
+Use **Bloquear** para suspender um fornecedor deste item (por exemplo, atraso recorrente ou problema de qualidade) sem perder o cadastro. O sistema pede o motivo. Enquanto bloqueado, o fornecedor não é sugerido e não pode entrar em pedido de compra nem em remessa ao terceiro deste item.
+
+**Desbloquear** também pede motivo. Bloqueios e desbloqueios ficam no **Histórico de bloqueio**, com data e motivo.
+
+## Identificação na nota do fornecedor
+
+Quando uma nota de entrada é ligada a este item, o sistema guarda o código e a descrição que o fornecedor usa. As próximas notas desse fornecedor já chegam com o item certo. Se a ligação foi feita errada, use **Limpar**: a próxima nota com esse código volta a pedir a escolha do item.
 
 ## Observações importantes
 
-- Não use o mesmo ranking para fornecedores do mesmo item: isso torna a escolha automática ambígua.
-- O vínculo não substitui preço, conversão de unidade nem homologação do fornecedor.
-- Revise o lead time sempre que o prazo negociado mudar, pois ele influencia as datas sugeridas pelo planejamento.
+- Prefira **Bloquear** a **Excluir**: o bloqueio mantém o histórico e pode ser desfeito. Um fornecedor excluído volta a aparecer quando chega nova nota fiscal dele com o item; o bloqueado continua bloqueado.
+- Não use o mesmo ranking para fornecedores do mesmo item.
+- A solicitação de compra e a cotação podem ser feitas sem fornecedor cadastrado aqui. A solicitação mostra **Sem fornecedor** na linha, e ao gerar os pedidos essa linha fica de fora, com o motivo, até o fornecedor ser cadastrado.
+- A trava vale para o pedido de compra e para a liberação e a remessa ao terceiro.
+- Ao trocar o fornecedor de um pedido de compra, o novo fornecedor também precisa ser vigente para todos os itens do pedido.
 
 ## Telas relacionadas
 
-- **[VSUP0300 (Solicitação)](/compras/vsup0300):** sugere o fornecedor preferencial na geração de pedidos.
+- **[VPDC0200 (Pedido de Compra)](/suprimento/vpdc0200):** nas sugestões do MRP, mostra o fornecedor sugerido e já o preenche na aprovação.
+- **[VSUP0300 (Solicitação)](/compras/vsup0300):** mostra **Sem fornecedor** nas linhas cujo item não tem fornecedor vigente; ao gerar pedidos, usa o fornecedor preferencial.
 - **[VITM0100 (Item & Prontidão)](/pcp/vitm0100):** exige fornecedor preferencial para itens comprados.
