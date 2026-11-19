@@ -1,40 +1,76 @@
 ---
 sidebar_position: 8
 title: "VPRO0900 — Ordem de Produção (OF)"
-description: "Gerir a ordem de produção no chão de fábrica: apontamentos, consumo, conclusão e apuração de custo real."
+description: "Gerir a ordem de produção: identificação por cliente, projeto e OF pai, baixa automática do material, etapas do roteiro e custo real automático."
 ---
 
 # VPRO0900 — Ordem de Produção (OF)
 
-> Gerir a OF no chão de fábrica: ciclo **Aberta → Em produção → Concluída → Encerrada** (ou Cancelada), com apontamentos, consumo de insumos (OUT), conclusão (IN com lote), apuração de custo real e retorno de sucata.
+> Gerir a OF no chão de fábrica: ciclo **Aberta → Em produção → Concluída → Encerrada** (ou Cancelada). O material sai do estoque sozinho no apontamento, as etapas vêm do roteiro e o custo real se atualiza a cada movimento — você só aponta e entrega.
 
 ## Objetivo
 
-Executar a ordem de produção do início ao fim, movimentando o estoque, apurando o custo real e mantendo a rastreabilidade de lote.
+Executar a ordem de produção do início ao fim, sabendo sempre **o que** ela fabrica, **para quem** e **para qual outra OF** a peça vai, com o estoque, o custo real e a rastreabilidade de lote em dia.
 
 ## Pré-requisitos
 
-- **Item** com **roteiro** (VENT0202) e **estrutura** (VENT0210).
+- **Item** com **roteiro** aprovado (VENT0202) e **estrutura** (VENT0210).
 - **Insumos** com saldo em estoque (VEST0100).
+- Para agrupar por obra ou contrato: o projeto cadastrado na [VPLA0120](/planejamento/vpla0120).
+
+## Reconhecer a OF sem decorar o número
+
+"OF 194" sozinho não diz nada. Cada linha da lista mostra:
+
+- o **item** (código e nome);
+- o **cliente**, o **projeto** e o **pedido** ou a **demanda** que a ordem atende;
+- na OF de componente, **↳ para OF 239 · RN-01001** — a ordem que vai usar a peça.
+
+Clique em **Árvore** para ver as ordens agrupadas pelo **pedido de venda** (senão a demanda, senão o projeto), com o cliente no título do grupo. Dentro do grupo, a OF do produto final vem primeiro e as OFs dos componentes ficam penduradas embaixo, na ordem em que começam. Ordens sem pedido, demanda nem projeto ficam no fim, em **Sem pedido, demanda ou projeto**. A tela lembra a escolha.
+
+A busca acha por número da OF, item, cliente, projeto, pedido, demanda ou OF pai. Exemplo: buscar o código do projeto traz todas as OFs dele, inclusive as dos componentes.
+
+Ao abrir a OF, o cabeçalho mostra **Cliente**, **Projeto**, **Atende**, **Componente para** e **Produto final**. Clique na OF indicada para abri-la.
+
+## Cliente e projeto da OF
+
+A OF já nasce com cliente e projeto:
+
+- da **OF do pedido de venda**: o cliente e o projeto do pedido;
+- da **demanda independente**: o cliente e o projeto da demanda;
+- da **OF de componente**: os mesmos da OF que vai usar a peça.
+
+Para trocar, clique em **Cliente e projeto** no cabeçalho. As OFs dos componentes que herdaram desta ordem acompanham a troca; a que tem cliente ou projeto próprio fica como está. Escolher um projeto que tem cliente traz o cliente junto. OF encerrada ou cancelada não muda.
 
 ## Passo a passo
 
-1. Em **Nova ordem**, informe Item, **Quantidade planejada**, máquina, centro de custo e prioridade. Clique em **Criar OF** (nasce **Aberta**).
-2. Clique em **Iniciar (→ Em produção)**.
-3. **Explodir roteiro** (opcional) traz as operações da OF.
-4. **Consumir insumo**: informe Item e Quantidade → gera **OUT** no estoque e alimenta o custo real.
-5. **Apontar**: informe quantidade produzida/refugada. Com **backflush**, os componentes da BOM são baixados automaticamente.
-6. **Concluir (→ Concluída)**: informe o depósito do acabado e o **lote** → gera o **IN** do acabado e habilita a **genealogia**.
-7. **Apurar custo** e **Encerrar** a OF (o fechamento também apura o custo real automaticamente).
-8. **Retornar sucata**: registra subproduto valorizado (IN) para reaproveitamento.
+1. Em **+ Nova OF**, informe Item, **Quantidade**, e se quiser **Cliente**, **Projeto**, máquina, datas e almoxarifado. A OF nasce **Aberta**, já com os materiais da estrutura e as etapas do roteiro.
+2. Clique em **Iniciar produção**. Se a ordem ainda não tiver etapas (o item ganhou roteiro depois), o roteiro é aplicado nesse momento.
+3. Na aba **Execução**, cada posto inicia, pausa e conclui a sua etapa. Abra a etapa pela seta para ver o **material desta etapa** (o que sai da estrutura para ela, quanto por peça, quanto já saiu e quanto falta). Horas e peças não precisam ser digitadas: a etapa **cronometra sozinha** de **Iniciar** até **Pausar** ou **Concluir** (sem contar as pausas) e, sem peças informadas, vale a quantidade da ordem. Digite só para corrigir. Etapa em andamento há mais de 12 h (esquecida aberta de um dia para o outro) não grava sozinha: digite as horas trabalhadas. A coluna **Horas real / padrão** compara com o tempo do roteiro.
+   - Para o posto apontar pelo leitor, clique em **Etiquetas das etapas** (uma etiqueta por etapa a fazer) ou, dentro da etapa, em **Código de barras da etapa** → **Imprimir etiqueta**.
+4. Ainda na **Execução**, em **Apontar produção — última etapa**, informe as **Peças boas**, o refugo e o **Operador** e clique em **Registrar apontamento**. Os materiais de **baixa automática** saem do estoque na proporção do que foi produzido — não é preciso lançar o consumo.
+5. Na aba **Materiais**, use **Consumo extra ou perda** só para o que a baixa automática não cobre: material fora da lista, perda além da prevista ou material de baixa manual.
+6. Em **Entregar ao estoque**, informe o depósito do acabado, a quantidade e o **lote**. Na entrega final sai o material que ainda faltava e a OF fica **Concluída**.
+7. **Encerrar** fecha a ordem.
+8. **Retornar como sucata** devolve ao estoque, com valor, o subproduto aproveitável.
+
+## O que cada aba faz
+
+| Aba | Para que serve |
+|---|---|
+| **Resumo** | Planejado, produzido, refugo, entregue, datas, cliente, projeto, origem e a cadeia de fabricação. |
+| **Execução** | O roteiro na sequência. Cada etapa com a situação, os botões **Iniciar**, **Pausar**, **Interromper** e **Concluir** e, aberta pela seta, o **material desta etapa**, horas, peças e o código de barras. Embaixo, **Apontar produção — última etapa**, **Entregar ao estoque** e a lista de apontamentos. Mudar o roteiro depois não muda a OF já criada. |
+| **Materiais** | Tudo o que a ordem consome, numa lista só: veio da estrutura, com as trocas feitas depois (substituto, material incluído). Mostra a etapa, por peça, previsto, **já saiu**, **falta sair**, o disponível e se a baixa é **Automática** (sai no apontamento e na entrega) ou **Manual** (sai pela requisição ou pelo consumo). Na mesma aba ficam o consumo extra ou perda, o retorno como sucata e o histórico do que foi lançado à mão. |
+| **Custo** | Custo real × padrão, **atualizado sozinho** a cada apontamento (também pela leitura do código de barras), consumo, entrega, devolução de sucata e ao concluir ou pausar uma etapa com horas. |
 
 ## Componentes fabricados para a ordem (cadeia de fabricação)
 
-Quando um componente da estrutura também é fabricado — por exemplo, o RN precisa da bucha e do tubo, e os dois passam por processo próprio —, o MRP gera uma OF para cada um e o sistema liga essas ordens entre si e ao pedido de venda que as originou. A fabricação segue **de baixo para cima**: primeiro a bucha e o tubo, depois o RN.
+Quando um componente da estrutura também é fabricado — por exemplo, o RN precisa da bucha e do tubo, e os dois passam por processo próprio —, o MRP gera uma OF para cada um e o sistema liga essas ordens entre si e ao pedido de venda ou à demanda independente (produção para estoque, amostra, reposição…) que as originou. Vale também para a OF criada pelo botão **Gerar OF** da demanda independente: as OFs dos componentes que o MRP sugerir para ela ficam ligadas a essa OF. A fabricação segue **de baixo para cima**: primeiro a bucha e o tubo, depois o RN.
 
 Na aba **Resumo**, o quadro **Cadeia de fabricação** mostra:
 
 - **Pedido(s) de venda atendido(s):** o pedido, o item do pedido e o cliente de quem a ordem faz parte.
+- **Demanda(s) independente(s) atendida(s):** quando não há pedido — por exemplo, o RN feito para estoque —, a demanda, o motivo, o item, a quantidade e a data. Aparece também nas OFs dos componentes (a bucha mostra a demanda do RN).
 - **Componentes fabricados para esta ordem:** as OFs dos componentes, quanto já foi entregue do planejado, quanto está **Reservado para esta OF** e a situação. Componente ainda sem OF aparece como **Sem OF (ainda não liberada)**.
 - **Esta ordem fabrica componente para:** na OF do componente, a OF que vai usá-lo.
 
@@ -42,10 +78,10 @@ Clique no número da OF (por exemplo, **OF 44**) para abrir a ordem ligada.
 
 ### A peça fabricada fica reservada para a ordem dela
 
-- Quando a OF da bucha entrega as peças, elas ficam **reservadas para a OF do RN** que as pediu. Outra ordem — de outro pedido — não consegue baixar essas peças.
+- Quando a OF da bucha entrega as peças, elas ficam **reservadas para a OF do RN** que as pediu. Outra ordem — de outro pedido ou de outra demanda — não consegue baixar essas peças.
 - Se a bucha ficou pronta **antes** de a OF do RN existir (a bucha foi liberada primeiro), a reserva acontece quando a OF do RN é criada.
 - Uma OF de bucha em lote agrupado abastece mais de um RN: cada OF de RN recebe só a sua parte, primeiro a que começa antes. A sobra do lote fica livre.
-- A aba **Materiais** mostra, em **Disponibilidade para produzir**, a coluna **Reservado para esta OF**.
+- A aba **Materiais** mostra, na coluna **Disponível**, quanto está **reservado para esta OF**.
 - A reserva é consumida quando a própria OF baixa o material e é liberada quando a OF é concluída, encerrada ou cancelada. Se o saldo da peça diminuir por inventário ou estorno, a reserva diminui junto.
 
 ### Iniciar a produção antes de os componentes ficarem prontos
@@ -66,16 +102,18 @@ A mesma regra vale para o início pelo leitor de código de barras no chão de f
 
 Na programação (APS), a OF do componente vem antes, e a OF que o usa só é programada para começar depois de o componente terminar. Na programação de trás para frente (a partir da entrega), é o contrário: o componente é programado para terminar até o início da OF que o usa.
 
-## Automações de estoque
+## Automações
 
-- **Consumo → OUT** do insumo (atualiza saldo e custo médio).
-- **Conclusão → IN** do acabado (com lote, se informado).
-- **Fechar → apura o custo real** (material + conversão + overhead) e a **variância** vs padrão.
+- **Apontamento → saída do material** de baixa automática, na proporção da quantidade boa, do almoxarifado de cada material. O que já saiu para a ordem (inclusive um consumo extra do mesmo item) é descontado: nada sai duas vezes.
+- **Entrega → entrada do acabado** (com lote) e saída do material que ainda faltava na entrega final.
+- **Cada movimento → custo real atualizado** (material, máquina e preparação, mão de obra, terceiros e indiretos) e o desvio em relação ao padrão.
 
 ## Observações importantes
 
-- O **material real** vem do custo médio do estoque; a **conversão** vem das horas apontadas × custo/hora do centro (VCUS0100).
-- A apuração é **protegido contra duplicidade** — reexecutar recalcula a linha única da OF.
+- O **material real** vem do custo médio do estoque; máquina e mão de obra vêm das horas apontadas nas etapas × taxas do centro (VCUS0100).
+- OFs antigas que tinham produção mas nunca tiveram o custo calculado recebem o custo sozinhas, sem precisar de nenhum clique.
+- Se o custo não puder ser atualizado (por exemplo, falta a taxa do centro), a OF mostra **Custo não atualizado** com o motivo. Corrigida a causa, o próximo movimento refaz o custo, ou o administrador usa **Reapurar todas as OFs**.
+- Material com saldo insuficiente impede o apontamento e a tela diz qual item falta e em qual almoxarifado. Lance a entrada antes.
 
 ## Telas relacionadas
 
@@ -83,3 +121,4 @@ Na programação (APS), a OF do componente vem antes, e a OF que o usa só é pr
 - **[VCUS0100 (Custos)](/pcp/vcus0100):** fornece o custo/hora dos centros para a apuração.
 - **[VPRO0300 (Custo Padrão)](/pcp/vpro0300):** base de comparação para a variância.
 - **[VPLN0100 (Parâmetros de planejamento)](/planejamento/vpln0100):** parâmetro 52, conferência ao iniciar a OF.
+- **[VPLA0120 (Projetos)](/planejamento/vpla0120):** cadastro dos projetos que a OF herda.

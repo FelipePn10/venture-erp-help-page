@@ -1,0 +1,49 @@
+---
+sidebar_position: 2
+title: "VPLA0120 — Projetos"
+description: "Cadastro de projetos (obra, contrato ou desenvolvimento) que o pedido de venda, a demanda e as ordens de produção herdam."
+---
+
+# VPLA0120 — Projetos
+
+> Cadastre a obra, o contrato ou o desenvolvimento uma vez. O pedido de venda e a demanda escolhem o projeto, e as ordens de produção — inclusive as dos componentes — herdam o projeto e o cliente sozinhas.
+
+## Objetivo
+
+Agrupar tudo o que pertence a um mesmo trabalho e encontrar as ordens de produção pelo projeto, sem depender do número da OF.
+
+## Passo a passo
+
+1. Clique em **+ Novo projeto**.
+2. Informe o **Código** (é o que se escolhe no pedido e na demanda) e o **Nome**.
+3. Escolha o **Cliente**. Deixe vazio para projeto interno.
+4. Se quiser, informe **Início**, **Término** e **Observações**.
+5. Clique em **Cadastrar projeto**.
+
+Para alterar, clique no projeto na lista, mude os campos e clique em **Salvar alterações**.
+
+## Situação
+
+| Situação | O que acontece |
+|---|---|
+| **Ativo** | Pode ser escolhido no pedido, na demanda e na OF. |
+| **Encerrado** | Não recebe OF nova; as já ligadas continuam. |
+| **Cancelado** | Igual ao encerrado, para o projeto que não aconteceu. |
+
+## Como o projeto chega à OF
+
+- No **pedido de venda** ([VVND0200](/pcp/vvnd0200)) e na **demanda independente** ([VPLA0102](/planejamento/vpla0102)), o campo **Projeto** busca nesta lista.
+- A OF gerada herda o projeto e o cliente. As OFs dos componentes herdam da OF que vai usar a peça.
+- Na [VPRO0900](/pcp/vpro0900), busque o código do projeto para ver todas as OFs dele. O botão **Cliente e projeto** troca os dois na OF.
+
+## Observações importantes
+
+- O código não se repete dentro da empresa. Maiúsculas e minúsculas contam como o mesmo código.
+- Projeto com cliente: a OF ligada a ele leva esse cliente quando ainda não tem outro.
+- A lista mostra quantas OFs do projeto estão abertas e quantas existem no total.
+
+## Telas relacionadas
+
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900)**
+- **[VVND0200 (Pedido de Venda)](/pcp/vvnd0200)**
+- **[VPLA0102 (Demandas Independentes)](/planejamento/vpla0102)**

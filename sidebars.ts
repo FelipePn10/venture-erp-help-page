@@ -87,6 +87,7 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             'planejamento/vpla0102',
+            'planejamento/vpla0120',
             'planejamento/vpln0100',
             'planejamento/vplc0200',
             'planejamento/vplc0211',

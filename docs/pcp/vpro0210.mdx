@@ -28,6 +28,7 @@ Sequenciar as ordens abertas respeitando a capacidade finita de cada centro e ge
 
 - **Máquinas manuais** recebem uma operação por vez, como qualquer outra (o operador termina antes de começar a próxima).
 - Se uma operação não couber no dia, vai para o próximo dia útil (fins de semana são pulados). `duração = setup + tempo planejado`.
+- **OF que não cabe em um ano de máquina** fica fora da programação e as outras são programadas normalmente. A mensagem diz qual OF e qual etapa, e quantas horas ela pede, por exemplo: *"a etapa 10 da OF 606 precisa de 2377,3 h e não cabe em um ano de capacidade das máquinas do centro"*. Quase sempre é tempo do roteiro na unidade errada (segundos lidos como horas) ou uma quantidade fora da realidade: confira o roteiro do item ([VENT0202](/engenharia/vent0202)) e a quantidade da OF, e clique em **Sequenciar** de novo.
 
 ## Telas relacionadas
 
