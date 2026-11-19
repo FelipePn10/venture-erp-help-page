@@ -28,6 +28,44 @@ Executar a ordem de produção do início ao fim, movimentando o estoque, apuran
 7. **Apurar custo** e **Encerrar** a OF (o fechamento também apura o custo real automaticamente).
 8. **Retornar sucata**: registra subproduto valorizado (IN) para reaproveitamento.
 
+## Componentes fabricados para a ordem (cadeia de fabricação)
+
+Quando um componente da estrutura também é fabricado — por exemplo, o RN precisa da bucha e do tubo, e os dois passam por processo próprio —, o MRP gera uma OF para cada um e o sistema liga essas ordens entre si e ao pedido de venda que as originou. A fabricação segue **de baixo para cima**: primeiro a bucha e o tubo, depois o RN.
+
+Na aba **Resumo**, o quadro **Cadeia de fabricação** mostra:
+
+- **Pedido(s) de venda atendido(s):** o pedido, o item do pedido e o cliente de quem a ordem faz parte.
+- **Componentes fabricados para esta ordem:** as OFs dos componentes, quanto já foi entregue do planejado, quanto está **Reservado para esta OF** e a situação. Componente ainda sem OF aparece como **Sem OF (ainda não liberada)**.
+- **Esta ordem fabrica componente para:** na OF do componente, a OF que vai usá-lo.
+
+Clique no número da OF (por exemplo, **OF 44**) para abrir a ordem ligada.
+
+### A peça fabricada fica reservada para a ordem dela
+
+- Quando a OF da bucha entrega as peças, elas ficam **reservadas para a OF do RN** que as pediu. Outra ordem — de outro pedido — não consegue baixar essas peças.
+- Se a bucha ficou pronta **antes** de a OF do RN existir (a bucha foi liberada primeiro), a reserva acontece quando a OF do RN é criada.
+- Uma OF de bucha em lote agrupado abastece mais de um RN: cada OF de RN recebe só a sua parte, primeiro a que começa antes. A sobra do lote fica livre.
+- A aba **Materiais** mostra, em **Disponibilidade para produzir**, a coluna **Reservado para esta OF**.
+- A reserva é consumida quando a própria OF baixa o material e é liberada quando a OF é concluída, encerrada ou cancelada. Se o saldo da peça diminuir por inventário ou estorno, a reserva diminui junto.
+
+### Iniciar a produção antes de os componentes ficarem prontos
+
+Se ainda houver componente fabricado em produção, a tela mostra o aviso **componente(s) fabricado(s) para esta ordem ainda não pronto(s)** com o botão **Ver cadeia**. Ao clicar em **Iniciar produção**, o sistema pergunta **Iniciar antes de os componentes ficarem prontos?** e lista as OFs que faltam.
+
+O que acontece depois depende do parâmetro de planejamento **52** (tela [VPLN0100](/planejamento/vpln0100)):
+
+| Opção do parâmetro 52 | Ao iniciar a OF |
+|---|---|
+| **Avisar e deixar iniciar** (padrão) | A OF começa e a tela mostra o aviso de qual componente ainda falta. |
+| **Não deixar iniciar** | A OF não começa; a tela diz qual OF de componente ainda não foi concluída ou qual material falta. |
+| **Não conferir** | A OF começa sem conferência. |
+
+A mesma regra vale para o início pelo leitor de código de barras no chão de fábrica. OF de componente **cancelada** não segura o início — se a peça realmente faltar, a conferência do material avisa.
+
+### Programação da produção
+
+Na programação (APS), a OF do componente vem antes, e a OF que o usa só é programada para começar depois de o componente terminar. Na programação de trás para frente (a partir da entrega), é o contrário: o componente é programado para terminar até o início da OF que o usa.
+
 ## Automações de estoque
 
 - **Consumo → OUT** do insumo (atualiza saldo e custo médio).
@@ -44,3 +82,4 @@ Executar a ordem de produção do início ao fim, movimentando o estoque, apuran
 - **[VEST0100 (Estoque)](/pcp/vest0100):** recebe os movimentos OUT/IN e o lote.
 - **[VCUS0100 (Custos)](/pcp/vcus0100):** fornece o custo/hora dos centros para a apuração.
 - **[VPRO0300 (Custo Padrão)](/pcp/vpro0300):** base de comparação para a variância.
+- **[VPLN0100 (Parâmetros de planejamento)](/planejamento/vpln0100):** parâmetro 52, conferência ao iniciar a OF.

@@ -22,7 +22,7 @@ Formalizar o pedido interno de compra e transformá-lo em pedidos de compra por 
 
 1. Crie a solicitação (empresa, solicitante) com um ou mais **itens** (quantidade, UM, preço sugerido).
 2. Abra a solicitação e adicione itens, se necessário.
-3. Em **Gerar pedidos**, informe a **quantidade a atender** e (opcional) o **fornecedor** de cada item (busca por nome) — em branco, usa o **preferencial** (VSUP0130). A quantidade a atender não passa do saldo da linha. Linhas com **Sem fornecedor** ficam de fora, com o motivo na mensagem. O sistema agrupa por fornecedor e gera um pedido por grupo, registrando o atendimento de volta na solicitação.
+3. Em **Gerar pedidos**, informe a **quantidade a atender** e (opcional) o **fornecedor** de cada item (busca por nome) — em branco, usa o **preferencial** (VSUP0130). A quantidade a atender não passa do saldo da linha. Linhas com **Sem fornecedor** ficam de fora, com o motivo na mensagem. Se nenhuma linha virar pedido, a geração é recusada e a mensagem diz o motivo de cada linha. O sistema agrupa por fornecedor e gera um pedido por grupo, registrando o atendimento de volta na solicitação.
 
 ## Observações importantes
 

@@ -23,6 +23,16 @@ Oferecer uma visão única do planejamento — executar o pipeline completo e aj
 2. Dispare o **pipeline** (MRP → CRP → APS) para o plano.
 3. Leia o **parecer de viabilidade** de cada etapa e decida o que firmar.
 
+## Parâmetro 52 — conferência ao iniciar a ordem de produção
+
+Na aba **Parâmetros**, o parâmetro **52** escolhe o que acontece quando alguém inicia uma OF que ainda tem componente fabricado em produção ou material sem saldo:
+
+- **Avisar e deixar iniciar** (padrão): a OF começa e a tela mostra o aviso.
+- **Não deixar iniciar**: a OF só começa quando os componentes estiverem prontos e houver material.
+- **Não conferir**: a OF começa sem conferência.
+
+Diferente dos parâmetros de cálculo, o 52 vale na hora: a partir da próxima OF iniciada, sem precisar rodar o plano de novo. Veja como a ordem mostra os componentes em [VPRO0900](/pcp/vpro0900).
+
 ## Observações importantes
 
 - Alterar parâmetros de cálculo pode mudar **todas as sugestões futuras** — documente a mudança.
@@ -31,3 +41,4 @@ Oferecer uma visão única do planejamento — executar o pipeline completo e aj
 ## Telas relacionadas
 
 - **[VMRP0100 (MRP)](/pcp/vmrp0100):** execução e firmação do MRP.
+- **[VPRO0900 (Ordem de Produção)](/pcp/vpro0900):** cadeia de fabricação e início da OF.

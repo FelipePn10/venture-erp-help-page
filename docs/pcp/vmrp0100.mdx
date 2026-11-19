@@ -50,6 +50,7 @@ Ser o posto de comando do planejador: acionar o cálculo do **MRP** (Planejament
 
 - O **calendário industrial** (VCAL0100) empurra datas que caem em fim de semana/feriado para o próximo dia útil.
 - As **regras do item** (lote mínimo, lead time, estoque de segurança) ajustam quantidades e datas.
+- Antes de calcular, o planejamento confere as unidades das estruturas: linha gravada numa unidade antiga do componente é refeita na unidade de estoque atual. A linha cuja unidade não converte para a de estoque aparece no aviso ao fim do cálculo e em **Exceções e mensagens** do impresso do plano de materiais. Cadastre a conversão (VSUP0110) ou corrija a linha, e calcule de novo.
 
 ## Telas relacionadas
 
