@@ -126,7 +126,9 @@ Permitir o cadastro completo de itens no sistema ERP, abrangendo desde dados bá
 
 ## Observações importantes
 
-- A alteração do campo **Tipo** (Fabricado/Comprado) pode impactar a disponibilidade do item nos módulos de produção e compras. Verifique a consistência antes de alterar.
+- A alteração do campo **Tipo** (Fabricado/Comprado) pode impactar a disponibilidade do item nos módulos de produção e compras. Verifique a consistência antes de alterar. Item **Comprado** com estrutura ou roteiro ativos aparece como "não está pronto para o MRP": o planejamento compraria o item em vez de gerar a ordem de fabricação.
+- Ao trocar a **unidade de estoque**, as estruturas em que o item é componente são recalculadas na nova unidade (104 MM de tubo passam a 0,104 M) e a mensagem diz quantas linhas mudaram. A linha cuja unidade não converte para a nova é apontada para revisão. As ordens de produção já abertas não mudam.
+- O quadro **pronto para o MRP** também aponta linha de estrutura com quantidade na unidade antiga e operação externa do roteiro sem fornecedor ou que usa o próprio produto como item de serviço.
 - O campo **Saude (Health)** deve ser revisado periodicamente como parte do processo de saneamento de cadastros, itens obsoletos devem ser marcados para evitar uso indevido.
 - Itens marcados como **Fantasma** na estrutura não geram ordens de produção próprias, sendo produzidos apenas como parte do item pai na explosão da BOM.
 - A aba **Planejamento** deve ser preenchida com atenção, pois parâmetros como Tamanho do Lote e Lead Time afetam diretamente o cálculo do MRP e os prazos de entrega ao cliente.

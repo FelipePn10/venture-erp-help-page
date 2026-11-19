@@ -21,7 +21,7 @@ Manter o cadastro de fornecedores/transportadoras (endereço, telefones, e-mails
 1. Acesse **VSUP0500** e clique em **Novo**.
 2. Na aba **Dados**, informe **Razão social**, tipo de pessoa (Jurídica/Física), **CNPJ/CPF** (com validação de dígito), **Inscrição Estadual**, **Tipo de fornecedor**, **Tipo de frete** e **Contribuinte de ICMS**. Use **🔎 CNPJ** para pré-preencher pela Receita.
 3. Preencha o **Endereço** (a UF do endereço é usada na consulta SEFAZ).
-4. Nas pastas, adicione **telefones**, **e-mails**, **vencimentos**, **contatos** e o **vínculo por empresa** (conta financeira, IPI, tipo de NF, tabela de preço de compra).
+4. Nas pastas, adicione **telefones**, **e-mails**, **vencimentos**, **contatos** e o **vínculo por empresa** (conta financeira, IPI, tipo de NF, tabela de preço de compra). A **Tab. preço compra** é escolhida pela busca, pelo código ou pela descrição da tabela cadastrada na [VSUP0120](/compras/vsup0120); a grade mostra a descrição com o código entre parênteses. O **Tipo NF default** também é escolhido pela busca, pela descrição do tipo de nota, e a grade mostra o nome dele. Depois de gravar, a tela continua na mesma pasta.
 5. Salve. Use **Bloquear/Desbloquear** para controlar a situação de faturamento.
 6. **Consulta SEFAZ** grava a situação cadastral (Liberado/Bloqueado) no fornecedor.
 
@@ -35,7 +35,7 @@ Manter o cadastro de fornecedores/transportadoras (endereço, telefones, e-mails
 ## Observações importantes
 
 - Diferente do cliente, o fornecedor **tem atualização** (edição do cadastro).
-- O **provider de defaults** (condição de pagamento, tipo de frete, conta financeira, tabela de preço) é consumido automaticamente pelo Pedido de Compra.
+- A condição de pagamento, o tipo de frete, a conta financeira e a tabela de preço do vínculo são sugeridos automaticamente no Pedido de Compra, no pedido gerado pela requisição e no gerado pela cotação.
 - Exportação da lista em Excel/PDF/CSV.
 
 ## Telas relacionadas

@@ -80,7 +80,8 @@ Lista as compras que o planejamento sugeriu e ainda não viraram pedido.
 
 - A coluna **Fornecedor sugerido** mostra o fornecedor escolhido pelo planejamento (preferencial, ranking ou cota da [VSUP0130](/compras/vsup0130)). **Sem fornecedor** indica que o item não tinha fornecedor vigente quando a sugestão foi calculada.
 - Em **Aprovar**, o fornecedor sugerido já vem preenchido. Você pode trocar, mas só é aceito um fornecedor vigente do item na VSUP0130.
-- Informe o **Preço unitário** e clique em **Gerar pedido**.
+- O **Preço unitário** pode ficar em branco: o sistema usa o preço vigente da tabela de preço de compra do fornecedor ([VSUP0120](/compras/vsup0120)). Com mais de uma tabela vigente, vale a do fornecedor antes da geral e, entre elas, a de maior quantidade mínima que o pedido alcança — a quantidade mínima é conferida na unidade da própria tabela (uma tabela "a partir de 10 UN" não vale para 5 chapas, ainda que sejam 423 kg). Se o item não tem preço para esse fornecedor, a aprovação é recusada com o motivo — informe o preço ou cadastre-o na tabela.
+- Clique em **Gerar pedido**. O pedido sai na **unidade de compra** do item (a do fornecedor na VSUP0130 ou, sem ela, a do cadastro do item), convertida da necessidade e arredondada para cima nas casas da unidade: 376,79 kg de chapa, comprada em UN de 84,78 kg, viram 5 chapas. O preço digitado vale por essa unidade; o da tabela é convertido para ela.
 
 ## Observações importantes
 
