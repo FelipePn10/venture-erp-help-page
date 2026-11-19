@@ -37,7 +37,7 @@ Listar os itens cadastrados, criar novos pelas **pastas** e validar a **prontid�
 Ao clicar em **Prontidão**, o sistema confere automaticamente se o item tem tudo o que precisa:
 
 - Item **fabricado** → precisa de **estrutura (BOM)** e **roteiro**.
-- Item **comprado** → precisa de **fornecedor preferencial** e recebe alerta se faltar a **conversão de unidade de medida** (quando a UM de compra difere da UM de estoque).
+- Item **comprado** → precisa de **fornecedor preferencial** e da **conversão de unidade de medida** de cada unidade em que ele é comprado: a unidade de compra do cadastro, a unidade do fornecedor na [VSUP0130 (Fornecedor Preferencial por Item)](/compras/vsup0130) e a unidade dos preços na [VSUP0120 (Tabela de Preço de Compra)](/compras/vsup0120). Se faltar alguma, o item não fica pronto e a pendência diz qual unidade e de onde ela vem — por exemplo, **UN→KG (fonte de suprimento)**. Assim o problema aparece na liberação, e não só na aprovação do pedido de compra.
 
 A verificação **apenas informa** — não altera o item. Use-a como conferência final antes de colocar o item para operar.
 

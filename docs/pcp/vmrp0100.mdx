@@ -22,7 +22,7 @@ Ser o posto de comando do planejador: acionar o cálculo do **MRP** (Planejament
 
 ## Passo a passo
 
-1. Acesse **VMRP0100 — MRP**. Em **Planos de produção**, crie um plano (código + nome + modos de planejamento) ou selecione um existente.
+1. Acesse **VMRP0100 — MRP**. Em **Planos de produção**, crie um plano (código + nome + modos de planejamento) ou selecione um existente. Marque **Agrupar ordens do mesmo item no mesmo dia** para que as ordens planejadas do mesmo item com a mesma data virem uma só. Para mudar depois, escolha o plano e use **Alterar plano** (vale no próximo cálculo).
 2. Clique em **Rodar MRP**. O motor tira um *snapshot* do estoque, calcula o **LLC**, processa item a item (demanda − estoque − ordens abertas = necessidade líquida), aplica as regras do item e **gera as sugestões**.
 3. Clique em **Consultar** para carregar sugestões, exceções e ordens planejadas.
 4. Na tabela de **Sugestões**, analise cada proposta (item, quantidade, tipo, demanda, datas, LLC) e clique em **Firmar** para aprovar: a sugestão vira **Ordem Planejada**; se for Fabricação, uma **Ordem de Produção** é criada automaticamente.

@@ -53,7 +53,13 @@ Permitir o registro e manutenção das demandas independentes de produção, que
 - A **Quantidade Atendida** e atualizada automaticamente a medida que ordens de produção são geradas e vinculadas a demanda, permitindo acompanhar o saldo em aberto.
 - Demandas podem ser **excluidas** desde que não tenham sido parcial ou totalmente atendidas por ordens de produção.
 - O campo **Quantidade** com precisão de 0.001 permite o tratamento de itens com unidades de medida que exigem alta precisão, como produtos químicos ou materiais a granel.
+- Quando o item da demanda tem componentes fabricados (por exemplo, o RN-01001 para estoque precisa da bucha e do tubo), o MRP gera as ordens dos componentes ligadas à ordem do item. Na [VPRO0900 (Ordem de Produção)](/pcp/vpro0900), o quadro **Cadeia de fabricação** de cada uma dessas OFs mostra em **Demanda(s) independente(s) atendida(s)** a demanda que originou a produção — vale também para a OF criada pelo botão **Gerar OF**.
+- Demanda com motivo de estoque (**Estoque**, **Reposição**, **Antecipação de venda**) continua **Aberta** depois que a OF é concluída: ela é consumida pelos pedidos de venda que chegarem na janela de consumo ou vence depois da data. Demanda de finalidade própria (por exemplo, **Amostra**) reserva a peça produzida para ela na entrega da OF.
 - E possível gerar demandas independentes em **lote** através de importação de planilha, disponível no menu de ações da tela.
+
+## Projeto
+
+O campo **Projeto / obra** busca no cadastro de [Projetos (VPLA0120)](/planejamento/vpla0120). A OF gerada pela demanda herda o projeto e o cliente, e as OFs dos componentes também. Projeto novo se cadastra na VPLA0120.
 
 ## Telas relacionadas
 

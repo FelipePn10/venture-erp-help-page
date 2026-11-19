@@ -52,6 +52,10 @@ Gerir o pedido de venda ponta a ponta: cabeçalho (cliente, empresa, moeda, cond
 - A coluna **Status** da linha mostra **Em aberto**, **Parcial**, **Atendido** ou **Cancelado**; passe o mouse para ver quanto foi atendido e cancelado.
 - Quando a NF-e do pedido é cancelada, a mercadoria volta ao estoque e a reserva do pedido é refeita até o saldo em aberto, dentro do disponível. Se a reserva não puder ser refeita, a tela da NF-e mostra o aviso.
 
+## Projeto
+
+O campo **Projeto** busca no cadastro de [Projetos (VPLA0120)](/planejamento/vpla0120). As OFs geradas para o pedido herdam o projeto e o cliente, inclusive as dos componentes, e podem ser encontradas na [VPRO0900](/pcp/vpro0900) pelo código do projeto.
+
 ## Telas relacionadas
 
 - **[VEXR0100 (Reprogramação de Entrega)](/comercial/vexr0100):** remarca datas de entrega do pedido.
